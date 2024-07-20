@@ -1,0 +1,3441 @@
+{
+	"formatVersion": 4,
+	"modifications": [
+		{
+			"modification": "createEnum",
+			"enumName": "eventStatus",
+			"values": [
+				"open",
+				"cancelled",
+				"hidden"
+			]
+		},
+		{
+			"modification": "createEnum",
+			"enumName": "applicationFrStatus",
+			"values": [
+				"enabled",
+				"disabled",
+				"cancelled"
+			]
+		},
+		{
+			"modification": "createEnum",
+			"enumName": "applicationStatus",
+			"values": [
+				"enabled",
+				"disabled",
+				"cancelled"
+			]
+		},
+		{
+			"modification": "createEnum",
+			"enumName": "preferredSex",
+			"values": [
+				"man",
+				"woman",
+				"dontCare"
+			]
+		},
+		{
+			"modification": "createEnum",
+			"enumName": "rating",
+			"values": [
+				"one",
+				"three",
+				"four",
+				"five",
+				"two"
+			]
+		},
+		{
+			"modification": "createEnum",
+			"enumName": "applicationCzResult",
+			"values": [
+				"accepted",
+				"declined"
+			]
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "user",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				},
+				"name": "User"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "event",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				},
+				"name": "Event"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "buddy_pair",
+				"fields": {
+					"id": {
+						"name": "id",
+						"type": "Uuid",
+						"columnType": "uuid",
+						"nullable": false,
+						"columnName": "id"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				},
+				"name": "BuddyPair"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "person",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				},
+				"name": "Person"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "image",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				},
+				"name": "Image"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "image_metadata",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				},
+				"name": "ImageMetadata"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "section",
+				"fields": {
+					"id": {
+						"name": "id",
+						"type": "Uuid",
+						"columnType": "uuid",
+						"nullable": false,
+						"columnName": "id"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				},
+				"name": "Section"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "university",
+				"fields": {
+					"id": {
+						"name": "id",
+						"type": "Uuid",
+						"columnType": "uuid",
+						"nullable": false,
+						"columnName": "id"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				},
+				"name": "University"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "faculty",
+				"fields": {
+					"id": {
+						"name": "id",
+						"type": "Uuid",
+						"columnType": "uuid",
+						"nullable": false,
+						"columnName": "id"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				},
+				"name": "Faculty"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "country",
+				"fields": {
+					"id": {
+						"name": "id",
+						"type": "Uuid",
+						"columnType": "uuid",
+						"nullable": false,
+						"columnName": "id"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				},
+				"name": "Country"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "semester",
+				"fields": {
+					"id": {
+						"name": "id",
+						"type": "Uuid",
+						"columnType": "uuid",
+						"nullable": false,
+						"columnName": "id"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				},
+				"name": "Semester"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "buddy_task",
+				"fields": {
+					"id": {
+						"name": "id",
+						"type": "Uuid",
+						"columnType": "uuid",
+						"nullable": false,
+						"columnName": "id"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				},
+				"name": "BuddyTask"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "application_cz",
+				"fields": {
+					"id": {
+						"name": "id",
+						"type": "Uuid",
+						"columnType": "uuid",
+						"nullable": false,
+						"columnName": "id"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				},
+				"name": "ApplicationCz"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "application_fr",
+				"fields": {
+					"id": {
+						"name": "id",
+						"type": "Uuid",
+						"columnType": "uuid",
+						"nullable": false,
+						"columnName": "id"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				},
+				"name": "ApplicationFr"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "language",
+				"fields": {
+					"id": {
+						"name": "id",
+						"type": "Uuid",
+						"columnType": "uuid",
+						"nullable": false,
+						"columnName": "id"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				},
+				"name": "Language"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "hobby",
+				"fields": {
+					"id": {
+						"name": "id",
+						"type": "Uuid",
+						"columnType": "uuid",
+						"nullable": false,
+						"columnName": "id"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				},
+				"name": "Hobby"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "sport",
+				"fields": {
+					"id": {
+						"name": "id",
+						"type": "Uuid",
+						"columnType": "uuid",
+						"nullable": false,
+						"columnName": "id"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				},
+				"name": "Sport"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "n2n_party",
+				"fields": {
+					"id": {
+						"name": "id",
+						"type": "Uuid",
+						"columnType": "uuid",
+						"nullable": false,
+						"columnName": "id"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				},
+				"name": "N2nParty"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "club",
+				"fields": {
+					"id": {
+						"name": "id",
+						"type": "Uuid",
+						"columnType": "uuid",
+						"nullable": false,
+						"columnName": "id"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				},
+				"name": "Club"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "n2n_hour",
+				"fields": {
+					"id": {
+						"name": "id",
+						"type": "Uuid",
+						"columnType": "uuid",
+						"nullable": false,
+						"columnName": "id"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				},
+				"name": "N2nHour"
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "limitations",
+				"fields": {
+					"id": {
+						"name": "id",
+						"type": "Uuid",
+						"columnType": "uuid",
+						"nullable": false,
+						"columnName": "id"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				},
+				"name": "Limitations"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "User",
+			"field": {
+				"name": "createdAt",
+				"type": "DateTime",
+				"columnType": "timestamptz",
+				"nullable": false,
+				"columnName": "created_at",
+				"default": "now"
+			},
+			"fillValue": "now"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "User",
+			"field": {
+				"columnType": "timestamptz",
+				"nullable": false,
+				"columnName": "registration_date",
+				"type": "DateTime",
+				"name": "registrationDate"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "User",
+			"field": {
+				"columnType": "timestamptz",
+				"nullable": true,
+				"columnName": "last_login_date",
+				"type": "DateTime",
+				"name": "lastLoginDate"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "User",
+			"field": {
+				"columnType": "text",
+				"nullable": true,
+				"columnName": "phone_number",
+				"type": "String",
+				"name": "phoneNumber"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "User",
+			"field": {
+				"columnType": "text",
+				"nullable": true,
+				"columnName": "esn_card_id",
+				"type": "String",
+				"name": "esnCardId"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "User",
+			"field": {
+				"columnType": "text",
+				"nullable": false,
+				"columnName": "surname",
+				"type": "String",
+				"name": "surname"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "User",
+			"field": {
+				"columnType": "text",
+				"nullable": true,
+				"columnName": "xname",
+				"type": "String",
+				"name": "xname"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "User",
+			"field": {
+				"columnType": "boolean",
+				"nullable": true,
+				"columnName": "active",
+				"type": "Bool",
+				"name": "active"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "User",
+			"field": {
+				"columnType": "text",
+				"nullable": false,
+				"columnName": "first_name",
+				"type": "String",
+				"name": "firstName"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Event",
+			"field": {
+				"name": "createdAt",
+				"type": "DateTime",
+				"columnType": "timestamptz",
+				"nullable": false,
+				"columnName": "created_at",
+				"default": "now"
+			},
+			"fillValue": "now"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Event",
+			"field": {
+				"columnType": "text",
+				"nullable": false,
+				"columnName": "name",
+				"type": "String",
+				"name": "name"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Event",
+			"field": {
+				"columnType": "text",
+				"nullable": true,
+				"columnName": "description",
+				"type": "String",
+				"name": "description"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Event",
+			"field": {
+				"columnType": "timestamptz",
+				"nullable": false,
+				"columnName": "start_date",
+				"type": "DateTime",
+				"name": "startDate"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Event",
+			"field": {
+				"columnType": "timestamptz",
+				"nullable": false,
+				"columnName": "end_date",
+				"type": "DateTime",
+				"name": "endDate"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Event",
+			"field": {
+				"columnType": "integer",
+				"nullable": true,
+				"columnName": "capacity",
+				"type": "Integer",
+				"name": "capacity"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Event",
+			"field": {
+				"columnType": "double precision",
+				"nullable": true,
+				"columnName": "fee",
+				"type": "Double",
+				"name": "fee"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Event",
+			"field": {
+				"columnType": "text",
+				"nullable": true,
+				"columnName": "place",
+				"type": "String",
+				"name": "place"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Event",
+			"field": {
+				"columnType": "text",
+				"nullable": true,
+				"columnName": "what_to_bring",
+				"type": "String",
+				"name": "whatToBring"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Event",
+			"field": {
+				"columnType": "text",
+				"nullable": true,
+				"columnName": "whatsapp_link",
+				"type": "String",
+				"name": "whatsappLink"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Event",
+			"field": {
+				"columnType": "timestamptz",
+				"nullable": true,
+				"columnName": "registration_start_date",
+				"type": "DateTime",
+				"name": "registrationStartDate"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Event",
+			"field": {
+				"columnType": "timestamptz",
+				"nullable": true,
+				"columnName": "registration_end_date",
+				"type": "DateTime",
+				"name": "registrationEndDate"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Event",
+			"field": {
+				"columnType": "integer",
+				"nullable": true,
+				"columnName": "waiting_list",
+				"type": "Integer",
+				"name": "waitingList"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Event",
+			"field": {
+				"columnType": "text",
+				"nullable": true,
+				"columnName": "meeting_point",
+				"type": "String",
+				"name": "meetingPoint"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Event",
+			"field": {
+				"columnType": "eventStatus",
+				"nullable": true,
+				"columnName": "status",
+				"type": "Enum",
+				"name": "status"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Event",
+			"field": {
+				"columnType": "boolean",
+				"nullable": true,
+				"columnName": "private",
+				"type": "Bool",
+				"name": "private"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "BuddyPair",
+			"field": {
+				"name": "createdAt",
+				"type": "DateTime",
+				"columnType": "timestamptz",
+				"nullable": false,
+				"columnName": "created_at",
+				"default": "now"
+			},
+			"fillValue": "now"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "BuddyPair",
+			"field": {
+				"columnType": "text",
+				"nullable": true,
+				"columnName": "note",
+				"type": "String",
+				"name": "note"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Person",
+			"field": {
+				"name": "createdAt",
+				"type": "DateTime",
+				"columnType": "timestamptz",
+				"nullable": false,
+				"columnName": "created_at",
+				"default": "now"
+			},
+			"fillValue": "now"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Person",
+			"field": {
+				"name": "personId",
+				"columnName": "person_id",
+				"nullable": false,
+				"type": "Uuid",
+				"columnType": "uuid"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Image",
+			"field": {
+				"name": "createdAt",
+				"type": "DateTime",
+				"columnType": "timestamptz",
+				"nullable": false,
+				"columnName": "created_at",
+				"default": "now"
+			},
+			"fillValue": "now"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Image",
+			"field": {
+				"name": "url",
+				"columnName": "url",
+				"nullable": false,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Image",
+			"field": {
+				"name": "width",
+				"columnName": "width",
+				"nullable": true,
+				"type": "Integer",
+				"columnType": "integer"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Image",
+			"field": {
+				"name": "height",
+				"columnName": "height",
+				"nullable": true,
+				"type": "Integer",
+				"columnType": "integer"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Image",
+			"field": {
+				"name": "alt",
+				"columnName": "alt",
+				"nullable": true,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ImageMetadata",
+			"field": {
+				"name": "createdAt",
+				"type": "DateTime",
+				"columnType": "timestamptz",
+				"nullable": false,
+				"columnName": "created_at",
+				"default": "now"
+			},
+			"fillValue": "now"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ImageMetadata",
+			"field": {
+				"name": "fileName",
+				"columnName": "file_name",
+				"nullable": true,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ImageMetadata",
+			"field": {
+				"name": "lastModified",
+				"columnName": "last_modified",
+				"nullable": true,
+				"type": "DateTime",
+				"columnType": "timestamptz"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ImageMetadata",
+			"field": {
+				"name": "fileSize",
+				"columnName": "file_size",
+				"nullable": true,
+				"type": "Integer",
+				"columnType": "integer"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ImageMetadata",
+			"field": {
+				"name": "fileType",
+				"columnName": "file_type",
+				"nullable": true,
+				"type": "String",
+				"columnType": "text"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Section",
+			"field": {
+				"name": "createdAt",
+				"type": "DateTime",
+				"columnType": "timestamptz",
+				"nullable": false,
+				"columnName": "created_at",
+				"default": "now"
+			},
+			"fillValue": "now"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Section",
+			"field": {
+				"columnType": "text",
+				"nullable": false,
+				"columnName": "name",
+				"type": "String",
+				"name": "name"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Section",
+			"field": {
+				"columnType": "text",
+				"nullable": true,
+				"columnName": "description",
+				"type": "String",
+				"name": "description"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "University",
+			"field": {
+				"name": "createdAt",
+				"type": "DateTime",
+				"columnType": "timestamptz",
+				"nullable": false,
+				"columnName": "created_at",
+				"default": "now"
+			},
+			"fillValue": "now"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "University",
+			"field": {
+				"columnType": "text",
+				"nullable": false,
+				"columnName": "name",
+				"type": "String",
+				"name": "name"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Faculty",
+			"field": {
+				"name": "createdAt",
+				"type": "DateTime",
+				"columnType": "timestamptz",
+				"nullable": false,
+				"columnName": "created_at",
+				"default": "now"
+			},
+			"fillValue": "now"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Faculty",
+			"field": {
+				"columnType": "text",
+				"nullable": false,
+				"columnName": "name",
+				"type": "String",
+				"name": "name"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Country",
+			"field": {
+				"name": "createdAt",
+				"type": "DateTime",
+				"columnType": "timestamptz",
+				"nullable": false,
+				"columnName": "created_at",
+				"default": "now"
+			},
+			"fillValue": "now"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Country",
+			"field": {
+				"columnType": "text",
+				"nullable": false,
+				"columnName": "name",
+				"type": "String",
+				"name": "name"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Semester",
+			"field": {
+				"name": "createdAt",
+				"type": "DateTime",
+				"columnType": "timestamptz",
+				"nullable": false,
+				"columnName": "created_at",
+				"default": "now"
+			},
+			"fillValue": "now"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Semester",
+			"field": {
+				"columnType": "text",
+				"nullable": false,
+				"columnName": "name",
+				"type": "String",
+				"name": "name"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Semester",
+			"field": {
+				"columnType": "timestamptz",
+				"nullable": false,
+				"columnName": "start_date",
+				"type": "DateTime",
+				"name": "startDate"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Semester",
+			"field": {
+				"columnType": "timestamptz",
+				"nullable": false,
+				"columnName": "end_date",
+				"type": "DateTime",
+				"name": "endDate"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "BuddyTask",
+			"field": {
+				"name": "createdAt",
+				"type": "DateTime",
+				"columnType": "timestamptz",
+				"nullable": false,
+				"columnName": "created_at",
+				"default": "now"
+			},
+			"fillValue": "now"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "BuddyTask",
+			"field": {
+				"columnType": "text",
+				"nullable": false,
+				"columnName": "description",
+				"type": "String",
+				"name": "description"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "BuddyTask",
+			"field": {
+				"columnType": "boolean",
+				"nullable": false,
+				"columnName": "done",
+				"type": "Bool",
+				"name": "done"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "BuddyTask",
+			"field": {
+				"columnType": "boolean",
+				"nullable": true,
+				"columnName": "confirmed",
+				"type": "Bool",
+				"name": "confirmed"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ApplicationCz",
+			"field": {
+				"name": "createdAt",
+				"type": "DateTime",
+				"columnType": "timestamptz",
+				"nullable": false,
+				"columnName": "created_at",
+				"default": "now"
+			},
+			"fillValue": "now"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ApplicationCz",
+			"field": {
+				"columnType": "integer",
+				"nullable": true,
+				"columnName": "points",
+				"type": "Integer",
+				"name": "points"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ApplicationCz",
+			"field": {
+				"columnType": "text",
+				"nullable": true,
+				"columnName": "motivation",
+				"type": "String",
+				"name": "motivation"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ApplicationCz",
+			"field": {
+				"columnType": "applicationStatus",
+				"nullable": true,
+				"columnName": "status",
+				"type": "Enum",
+				"name": "status"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ApplicationCz",
+			"field": {
+				"columnType": "applicationCzResult",
+				"nullable": true,
+				"columnName": "result",
+				"type": "Enum",
+				"name": "result"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ApplicationCz",
+			"field": {
+				"columnType": "integer",
+				"nullable": true,
+				"columnName": "r_buddy",
+				"type": "Integer",
+				"name": "rBuddy"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ApplicationCz",
+			"field": {
+				"columnType": "integer",
+				"nullable": true,
+				"columnName": "r_party",
+				"type": "Integer",
+				"name": "rParty"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ApplicationCz",
+			"field": {
+				"columnType": "integer",
+				"nullable": true,
+				"columnName": "r_travel",
+				"type": "Integer",
+				"name": "rTravel"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ApplicationCz",
+			"field": {
+				"columnType": "integer",
+				"nullable": true,
+				"columnName": "r_sport",
+				"type": "Integer",
+				"name": "rSport"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ApplicationCz",
+			"field": {
+				"columnType": "preferredSex",
+				"nullable": true,
+				"columnName": "preferred_sex",
+				"type": "Enum",
+				"name": "preferredSex"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ApplicationFr",
+			"field": {
+				"name": "createdAt",
+				"type": "DateTime",
+				"columnType": "timestamptz",
+				"nullable": false,
+				"columnName": "created_at",
+				"default": "now"
+			},
+			"fillValue": "now"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ApplicationFr",
+			"field": {
+				"columnType": "applicationFrStatus",
+				"nullable": true,
+				"columnName": "status",
+				"type": "Enum",
+				"name": "status"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ApplicationFr",
+			"field": {
+				"columnType": "rating",
+				"nullable": true,
+				"columnName": "rating",
+				"type": "Enum",
+				"name": "rating"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ApplicationFr",
+			"field": {
+				"columnType": "integer",
+				"nullable": true,
+				"columnName": "r_buddy",
+				"type": "Integer",
+				"name": "rBuddy"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ApplicationFr",
+			"field": {
+				"columnType": "integer",
+				"nullable": true,
+				"columnName": "r_party",
+				"type": "Integer",
+				"name": "rParty"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ApplicationFr",
+			"field": {
+				"columnType": "integer",
+				"nullable": true,
+				"columnName": "r_travel",
+				"type": "Integer",
+				"name": "rTravel"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ApplicationFr",
+			"field": {
+				"columnType": "integer",
+				"nullable": true,
+				"columnName": "r_sport",
+				"type": "Integer",
+				"name": "rSport"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ApplicationFr",
+			"field": {
+				"columnType": "preferredSex",
+				"nullable": true,
+				"columnName": "preferred_buddy_sex",
+				"type": "Enum",
+				"name": "preferredBuddySex"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ApplicationFr",
+			"field": {
+				"columnType": "text",
+				"nullable": true,
+				"columnName": "email_for_information",
+				"type": "String",
+				"name": "emailForInformation"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Language",
+			"field": {
+				"name": "createdAt",
+				"type": "DateTime",
+				"columnType": "timestamptz",
+				"nullable": false,
+				"columnName": "created_at",
+				"default": "now"
+			},
+			"fillValue": "now"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Language",
+			"field": {
+				"columnType": "text",
+				"nullable": false,
+				"columnName": "name",
+				"type": "String",
+				"name": "name"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Hobby",
+			"field": {
+				"name": "createdAt",
+				"type": "DateTime",
+				"columnType": "timestamptz",
+				"nullable": false,
+				"columnName": "created_at",
+				"default": "now"
+			},
+			"fillValue": "now"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Hobby",
+			"field": {
+				"columnType": "text",
+				"nullable": false,
+				"columnName": "name",
+				"type": "String",
+				"name": "name"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Sport",
+			"field": {
+				"name": "createdAt",
+				"type": "DateTime",
+				"columnType": "timestamptz",
+				"nullable": false,
+				"columnName": "created_at",
+				"default": "now"
+			},
+			"fillValue": "now"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Sport",
+			"field": {
+				"columnType": "text",
+				"nullable": false,
+				"columnName": "name",
+				"type": "String",
+				"name": "name"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "N2nParty",
+			"field": {
+				"name": "createdAt",
+				"type": "DateTime",
+				"columnType": "timestamptz",
+				"nullable": false,
+				"columnName": "created_at",
+				"default": "now"
+			},
+			"fillValue": "now"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "N2nParty",
+			"field": {
+				"columnType": "text",
+				"nullable": false,
+				"columnName": "name",
+				"type": "String",
+				"name": "name"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "N2nParty",
+			"field": {
+				"columnType": "timestamptz",
+				"nullable": false,
+				"columnName": "date",
+				"type": "DateTime",
+				"name": "date"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "N2nParty",
+			"field": {
+				"columnType": "boolean",
+				"nullable": true,
+				"columnName": "open",
+				"type": "Bool",
+				"name": "open"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Club",
+			"field": {
+				"name": "createdAt",
+				"type": "DateTime",
+				"columnType": "timestamptz",
+				"nullable": false,
+				"columnName": "created_at",
+				"default": "now"
+			},
+			"fillValue": "now"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Club",
+			"field": {
+				"columnType": "text",
+				"nullable": false,
+				"columnName": "name",
+				"type": "String",
+				"name": "name"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "N2nHour",
+			"field": {
+				"name": "createdAt",
+				"type": "DateTime",
+				"columnType": "timestamptz",
+				"nullable": false,
+				"columnName": "created_at",
+				"default": "now"
+			},
+			"fillValue": "now"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "N2nHour",
+			"field": {
+				"columnType": "timestamptz",
+				"nullable": false,
+				"columnName": "from",
+				"type": "DateTime",
+				"name": "from"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "N2nHour",
+			"field": {
+				"columnType": "timestamptz",
+				"nullable": false,
+				"columnName": "to",
+				"type": "DateTime",
+				"name": "to"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Limitations",
+			"field": {
+				"name": "createdAt",
+				"type": "DateTime",
+				"columnType": "timestamptz",
+				"nullable": false,
+				"columnName": "created_at",
+				"default": "now"
+			},
+			"fillValue": "now"
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "User",
+			"owningSide": {
+				"name": "target",
+				"inversedBy": "userUndefined",
+				"nullable": true,
+				"type": "OneHasOne",
+				"target": "Person",
+				"joiningColumn": {
+					"columnName": "target_id",
+					"onDelete": "restrict"
+				}
+			},
+			"inverseSide": {
+				"name": "userUndefined",
+				"ownedBy": "target",
+				"target": "User",
+				"type": "OneHasOne",
+				"nullable": true
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "User",
+			"owningSide": {
+				"nullable": true,
+				"type": "ManyHasOne",
+				"name": "university",
+				"target": "University",
+				"inversedBy": "users",
+				"joiningColumn": {
+					"columnName": "university_id",
+					"onDelete": "set null"
+				}
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "users",
+				"target": "User",
+				"ownedBy": "university"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "User",
+			"owningSide": {
+				"nullable": true,
+				"type": "ManyHasOne",
+				"name": "faculty",
+				"target": "Faculty",
+				"inversedBy": "users",
+				"joiningColumn": {
+					"columnName": "faculty_id",
+					"onDelete": "set null"
+				}
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "users",
+				"target": "User",
+				"ownedBy": "faculty"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "User",
+			"owningSide": {
+				"nullable": true,
+				"type": "ManyHasOne",
+				"name": "country",
+				"target": "Country",
+				"inversedBy": "users",
+				"joiningColumn": {
+					"columnName": "country_id",
+					"onDelete": "set null"
+				}
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "users",
+				"target": "User",
+				"ownedBy": "country"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "User",
+			"owningSide": {
+				"name": "profilePicture",
+				"inversedBy": "userProfilePicture",
+				"nullable": true,
+				"type": "ManyHasOne",
+				"target": "Image",
+				"joiningColumn": {
+					"columnName": "profile_picture_id",
+					"onDelete": "restrict"
+				}
+			},
+			"inverseSide": {
+				"name": "userProfilePicture",
+				"ownedBy": "profilePicture",
+				"type": "OneHasMany",
+				"target": "User"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "Event",
+			"owningSide": {
+				"type": "ManyHasMany",
+				"name": "participants",
+				"target": "User",
+				"inversedBy": "participatedEvents",
+				"joiningTable": {
+					"tableName": "event_participants",
+					"joiningColumn": {
+						"columnName": "event_id",
+						"onDelete": "cascade"
+					},
+					"inverseJoiningColumn": {
+						"columnName": "user_id",
+						"onDelete": "cascade"
+					},
+					"eventLog": {
+						"enabled": true
+					}
+				}
+			},
+			"inverseSide": {
+				"type": "ManyHasMany",
+				"name": "participatedEvents",
+				"target": "Event",
+				"ownedBy": "participants"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "Event",
+			"owningSide": {
+				"nullable": true,
+				"type": "ManyHasOne",
+				"name": "section",
+				"target": "Section",
+				"inversedBy": "events",
+				"joiningColumn": {
+					"columnName": "section_id",
+					"onDelete": "set null"
+				}
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "events",
+				"target": "Event",
+				"ownedBy": "section"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "Event",
+			"owningSide": {
+				"nullable": true,
+				"type": "OneHasOne",
+				"name": "contactPerson",
+				"target": "User",
+				"inversedBy": "organizedEvents",
+				"joiningColumn": {
+					"columnName": "contact_person_id",
+					"onDelete": "restrict"
+				}
+			},
+			"inverseSide": {
+				"nullable": true,
+				"type": "OneHasOne",
+				"name": "organizedEvents",
+				"target": "Event",
+				"ownedBy": "contactPerson"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "Event",
+			"owningSide": {
+				"nullable": true,
+				"type": "ManyHasOne",
+				"name": "semester",
+				"target": "Semester",
+				"inversedBy": "events",
+				"joiningColumn": {
+					"columnName": "semester_id",
+					"onDelete": "set null"
+				}
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "events",
+				"target": "Event",
+				"ownedBy": "semester"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "Event",
+			"owningSide": {
+				"name": "picture",
+				"inversedBy": "eventPicture",
+				"nullable": true,
+				"type": "ManyHasOne",
+				"target": "Image",
+				"joiningColumn": {
+					"columnName": "picture_id",
+					"onDelete": "restrict"
+				}
+			},
+			"inverseSide": {
+				"name": "eventPicture",
+				"ownedBy": "picture",
+				"type": "OneHasMany",
+				"target": "Event"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "BuddyPair",
+			"owningSide": {
+				"nullable": true,
+				"type": "OneHasOne",
+				"name": "czechStudent",
+				"target": "User",
+				"inversedBy": "czechBuddyPair",
+				"joiningColumn": {
+					"columnName": "czech_student_id",
+					"onDelete": "set null"
+				}
+			},
+			"inverseSide": {
+				"nullable": true,
+				"type": "OneHasOne",
+				"name": "czechBuddyPair",
+				"target": "BuddyPair",
+				"ownedBy": "czechStudent"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "BuddyPair",
+			"owningSide": {
+				"nullable": true,
+				"type": "OneHasOne",
+				"name": "internationalStudent",
+				"target": "User",
+				"inversedBy": "internationalBuddyPair",
+				"joiningColumn": {
+					"columnName": "international_student_id",
+					"onDelete": "set null"
+				}
+			},
+			"inverseSide": {
+				"nullable": true,
+				"type": "OneHasOne",
+				"name": "internationalBuddyPair",
+				"target": "BuddyPair",
+				"ownedBy": "internationalStudent"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "Image",
+			"owningSide": {
+				"name": "meta",
+				"inversedBy": "image",
+				"nullable": true,
+				"type": "OneHasOne",
+				"target": "ImageMetadata",
+				"joiningColumn": {
+					"columnName": "meta_id",
+					"onDelete": "restrict"
+				}
+			},
+			"inverseSide": {
+				"name": "image",
+				"ownedBy": "meta",
+				"target": "Image",
+				"type": "OneHasOne",
+				"nullable": true
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "University",
+			"owningSide": {
+				"nullable": true,
+				"type": "ManyHasOne",
+				"name": "country",
+				"target": "Country",
+				"inversedBy": "universities",
+				"joiningColumn": {
+					"columnName": "country_id",
+					"onDelete": "set null"
+				}
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "universities",
+				"target": "University",
+				"ownedBy": "country"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "BuddyTask",
+			"owningSide": {
+				"nullable": true,
+				"type": "ManyHasOne",
+				"name": "buddyPair",
+				"target": "BuddyPair",
+				"inversedBy": "tasks",
+				"joiningColumn": {
+					"columnName": "buddy_pair_id",
+					"onDelete": "cascade"
+				}
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "tasks",
+				"target": "BuddyTask",
+				"ownedBy": "buddyPair"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "ApplicationCz",
+			"owningSide": {
+				"nullable": true,
+				"type": "ManyHasOne",
+				"name": "user",
+				"target": "User",
+				"inversedBy": "applications",
+				"joiningColumn": {
+					"columnName": "user_id",
+					"onDelete": "set null"
+				}
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "applications",
+				"target": "ApplicationCz",
+				"ownedBy": "user"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "ApplicationCz",
+			"owningSide": {
+				"nullable": true,
+				"type": "ManyHasOne",
+				"name": "semester",
+				"target": "Semester",
+				"inversedBy": "applications",
+				"joiningColumn": {
+					"columnName": "semester_id",
+					"onDelete": "set null"
+				}
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "applications",
+				"target": "ApplicationCz",
+				"ownedBy": "semester"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "ApplicationCz",
+			"owningSide": {
+				"nullable": true,
+				"type": "ManyHasOne",
+				"name": "preferredCountry",
+				"target": "Country",
+				"inversedBy": "preferredApplicationsCz",
+				"joiningColumn": {
+					"columnName": "preferred_country_id",
+					"onDelete": "set null"
+				}
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "preferredApplicationsCz",
+				"target": "ApplicationCz",
+				"ownedBy": "preferredCountry"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "ApplicationFr",
+			"owningSide": {
+				"nullable": true,
+				"type": "ManyHasOne",
+				"name": "semester",
+				"target": "Semester",
+				"inversedBy": "applicationsFr",
+				"joiningColumn": {
+					"columnName": "semester_id",
+					"onDelete": "set null"
+				}
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "applicationsFr",
+				"target": "ApplicationFr",
+				"ownedBy": "semester"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "ApplicationFr",
+			"owningSide": {
+				"nullable": true,
+				"type": "OneHasOne",
+				"name": "user",
+				"target": "User",
+				"inversedBy": "applicationsFr",
+				"joiningColumn": {
+					"columnName": "user_id",
+					"onDelete": "restrict"
+				}
+			},
+			"inverseSide": {
+				"nullable": true,
+				"type": "OneHasOne",
+				"name": "applicationsFr",
+				"target": "ApplicationFr",
+				"ownedBy": "user"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "ApplicationFr",
+			"owningSide": {
+				"nullable": true,
+				"type": "ManyHasOne",
+				"name": "language",
+				"target": "Language",
+				"inversedBy": "applicationsFr",
+				"joiningColumn": {
+					"columnName": "language_id",
+					"onDelete": "set null"
+				}
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "applicationsFr",
+				"target": "ApplicationFr",
+				"ownedBy": "language"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "ApplicationFr",
+			"owningSide": {
+				"type": "ManyHasMany",
+				"name": "hobbies",
+				"target": "Hobby",
+				"inversedBy": "applicationsFr",
+				"joiningTable": {
+					"tableName": "application_fr_hobbies",
+					"joiningColumn": {
+						"columnName": "application_fr_id",
+						"onDelete": "cascade"
+					},
+					"inverseJoiningColumn": {
+						"columnName": "hobby_id",
+						"onDelete": "cascade"
+					},
+					"eventLog": {
+						"enabled": true
+					}
+				}
+			},
+			"inverseSide": {
+				"type": "ManyHasMany",
+				"name": "applicationsFr",
+				"target": "ApplicationFr",
+				"ownedBy": "hobbies"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "ApplicationFr",
+			"owningSide": {
+				"nullable": true,
+				"type": "OneHasOne",
+				"name": "limitations",
+				"target": "Limitations",
+				"inversedBy": "applicationFr",
+				"joiningColumn": {
+					"columnName": "limitations_id",
+					"onDelete": "cascade"
+				}
+			},
+			"inverseSide": {
+				"nullable": true,
+				"type": "OneHasOne",
+				"name": "applicationFr",
+				"target": "ApplicationFr",
+				"ownedBy": "limitations"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "Sport",
+			"owningSide": {
+				"type": "ManyHasMany",
+				"name": "applicationsFr",
+				"target": "ApplicationFr",
+				"inversedBy": "sport",
+				"joiningTable": {
+					"tableName": "sport_applications_fr",
+					"joiningColumn": {
+						"columnName": "sport_id",
+						"onDelete": "cascade"
+					},
+					"inverseJoiningColumn": {
+						"columnName": "application_fr_id",
+						"onDelete": "cascade"
+					},
+					"eventLog": {
+						"enabled": true
+					}
+				}
+			},
+			"inverseSide": {
+				"type": "ManyHasMany",
+				"name": "sport",
+				"target": "Sport",
+				"ownedBy": "applicationsFr"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "N2nParty",
+			"owningSide": {
+				"nullable": true,
+				"type": "ManyHasOne",
+				"name": "semester",
+				"target": "Semester",
+				"inversedBy": "parties",
+				"joiningColumn": {
+					"columnName": "semester_id",
+					"onDelete": "set null"
+				}
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "parties",
+				"target": "N2nParty",
+				"ownedBy": "semester"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "N2nParty",
+			"owningSide": {
+				"nullable": true,
+				"type": "ManyHasOne",
+				"name": "club",
+				"target": "Club",
+				"inversedBy": "parties",
+				"joiningColumn": {
+					"columnName": "club_id",
+					"onDelete": "set null"
+				}
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "parties",
+				"target": "N2nParty",
+				"ownedBy": "club"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "N2nHour",
+			"owningSide": {
+				"nullable": true,
+				"type": "ManyHasOne",
+				"name": "party",
+				"target": "N2nParty",
+				"inversedBy": "hours",
+				"joiningColumn": {
+					"columnName": "party_id",
+					"onDelete": "cascade"
+				}
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "hours",
+				"target": "N2nHour",
+				"ownedBy": "party"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "N2nHour",
+			"owningSide": {
+				"type": "ManyHasMany",
+				"name": "user",
+				"target": "User",
+				"inversedBy": "n2nHours",
+				"joiningTable": {
+					"tableName": "n2n_hour_user",
+					"joiningColumn": {
+						"columnName": "n2n_hour_id",
+						"onDelete": "cascade"
+					},
+					"inverseJoiningColumn": {
+						"columnName": "user_id",
+						"onDelete": "cascade"
+					},
+					"eventLog": {
+						"enabled": true
+					}
+				}
+			},
+			"inverseSide": {
+				"type": "ManyHasMany",
+				"name": "n2nHours",
+				"target": "N2nHour",
+				"ownedBy": "user"
+			}
+		},
+		{
+			"modification": "createView",
+			"entity": {
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "tenant_person",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					},
+					"createdAt": {
+						"name": "createdAt",
+						"type": "DateTime",
+						"columnType": "timestamptz",
+						"nullable": false,
+						"columnName": "created_at",
+						"default": "now"
+					},
+					"identityId": {
+						"name": "identityId",
+						"columnName": "identity_id",
+						"nullable": false,
+						"type": "Uuid",
+						"columnType": "uuid"
+					},
+					"email": {
+						"name": "email",
+						"columnName": "email",
+						"nullable": true,
+						"type": "String",
+						"columnType": "text"
+					},
+					"name": {
+						"name": "name",
+						"columnName": "name",
+						"nullable": true,
+						"type": "String",
+						"columnType": "text"
+					},
+					"otpUri": {
+						"name": "otpUri",
+						"columnName": "otp_uri",
+						"nullable": true,
+						"type": "String",
+						"columnType": "text"
+					},
+					"otpActivatedAt": {
+						"name": "otpActivatedAt",
+						"columnName": "otp_activated_at",
+						"nullable": true,
+						"type": "String",
+						"columnType": "text"
+					},
+					"idpOnly": {
+						"name": "idpOnly",
+						"columnName": "idp_only",
+						"nullable": true,
+						"type": "String",
+						"columnType": "text"
+					},
+					"roles": {
+						"name": "roles",
+						"columnName": "roles",
+						"nullable": true,
+						"type": "String",
+						"columnType": "text"
+					},
+					"person": {
+						"name": "person",
+						"inversedBy": "tenantPerson",
+						"nullable": true,
+						"type": "OneHasOne",
+						"target": "Person",
+						"joiningColumn": {
+							"columnName": "person_id",
+							"onDelete": "restrict"
+						}
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				},
+				"name": "TenantPerson",
+				"view": {
+					"sql": "\n\tSELECT\n\t\ttenant_person.id,\n\t\ttenant_person.email,\n\t\ttenant_person.name,\n\t\ttenant_person.identity_id,\n\t\tcontent_person.id AS person_id,\n\t\tSTRING_AGG(DISTINCT project_membership.role, ', ') AS roles\n\tFROM person AS content_person\n\t\tFULL OUTER JOIN tenant.person AS tenant_person ON tenant_person.id = content_person.person_id\n\t\tLEFT JOIN tenant.identity AS tenant_identity ON tenant_person.identity_id = tenant_identity.id\n\t\tLEFT JOIN tenant.project_membership AS project_membership ON tenant_identity.id = project_membership.identity_id\n\tWHERE tenant_person.id IS NOT NULL\n\tGROUP BY tenant_person.id, content_person.id\n"
+				}
+			}
+		},
+		{
+			"modification": "createRelationInverseSide",
+			"entityName": "Person",
+			"relation": {
+				"name": "tenantPerson",
+				"ownedBy": "person",
+				"target": "TenantPerson",
+				"type": "OneHasOne",
+				"nullable": true
+			}
+		},
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent",
+					"value": {
+						"variables": {},
+						"entities": {
+							"ApplicationFr": {
+								"operations": {
+									"create": {
+										"createdAt": true,
+										"semester": true,
+										"user": true,
+										"status": true,
+										"language": true,
+										"hobbies": true,
+										"rating": true,
+										"rBuddy": true,
+										"rParty": true,
+										"rTravel": true,
+										"rSport": true,
+										"preferredBuddySex": true,
+										"emailForInformation": true,
+										"sport": true
+									},
+									"update": {
+										"createdAt": true,
+										"semester": true,
+										"user": true,
+										"status": true,
+										"language": true,
+										"hobbies": true,
+										"rating": true,
+										"rBuddy": true,
+										"rParty": true,
+										"rTravel": true,
+										"rSport": true,
+										"preferredBuddySex": true,
+										"emailForInformation": true,
+										"sport": true
+									},
+									"read": {
+										"createdAt": true,
+										"semester": true,
+										"user": true,
+										"status": true,
+										"language": true,
+										"hobbies": true,
+										"rating": true,
+										"rBuddy": true,
+										"rParty": true,
+										"rTravel": true,
+										"rSport": true,
+										"preferredBuddySex": true,
+										"emailForInformation": true,
+										"sport": true
+									},
+									"delete": true
+								},
+								"predicates": {}
+							},
+							"Language": {
+								"operations": {
+									"create": {
+										"createdAt": true,
+										"applicationsFr": true,
+										"name": true
+									},
+									"read": {
+										"createdAt": true,
+										"applicationsFr": true,
+										"name": true
+									}
+								},
+								"predicates": {}
+							},
+							"Sport": {
+								"operations": {
+									"create": {
+										"createdAt": true,
+										"name": true,
+										"applicationsFr": true
+									}
+								},
+								"predicates": {}
+							},
+							"Hobby": {
+								"operations": {
+									"create": {
+										"createdAt": true,
+										"applicationsFr": true,
+										"name": true
+									}
+								},
+								"predicates": {}
+							},
+							"Country": {
+								"operations": {
+									"create": {
+										"createdAt": true,
+										"users": true,
+										"universities": true,
+										"name": true,
+										"preferredApplicationsCz": true
+									},
+									"read": {
+										"createdAt": true,
+										"users": true,
+										"universities": true,
+										"name": true,
+										"preferredApplicationsCz": true
+									}
+								},
+								"predicates": {}
+							},
+							"University": {
+								"operations": {
+									"create": {
+										"createdAt": true,
+										"users": true,
+										"name": true,
+										"country": true
+									},
+									"read": {
+										"createdAt": true,
+										"users": true,
+										"name": true,
+										"country": true
+									}
+								},
+								"predicates": {}
+							},
+							"Event": {
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"name": true,
+										"description": true,
+										"startDate": true,
+										"endDate": true,
+										"capacity": true,
+										"fee": true,
+										"participants": true,
+										"place": true,
+										"whatToBring": true,
+										"whatsappLink": true,
+										"registrationStartDate": true,
+										"registrationEndDate": true,
+										"waitingList": true,
+										"section": true,
+										"meetingPoint": true,
+										"status": true,
+										"contactPerson": true,
+										"semester": true,
+										"private": true
+									}
+								},
+								"predicates": {}
+							},
+							"User": {
+								"operations": {
+									"create": {
+										"createdAt": true,
+										"registrationDate": true,
+										"lastLoginDate": true,
+										"phoneNumber": true,
+										"target": true,
+										"university": true,
+										"esnCardId": true,
+										"surname": true,
+										"xname": true,
+										"active": true,
+										"faculty": true,
+										"country": true,
+										"firstName": true,
+										"participatedEvents": true,
+										"organizedEvents": true,
+										"czechBuddyPair": true,
+										"internationalBuddyPair": true,
+										"applications": true,
+										"applicationsFr": true,
+										"n2nHours": true
+									},
+									"update": {
+										"createdAt": true,
+										"registrationDate": true,
+										"lastLoginDate": true,
+										"phoneNumber": true,
+										"target": true,
+										"university": true,
+										"esnCardId": true,
+										"surname": true,
+										"xname": true,
+										"active": true,
+										"faculty": true,
+										"country": true,
+										"firstName": true,
+										"participatedEvents": true,
+										"organizedEvents": true,
+										"czechBuddyPair": true,
+										"internationalBuddyPair": true,
+										"applications": true,
+										"applicationsFr": true,
+										"n2nHours": true
+									},
+									"read": {
+										"createdAt": true,
+										"registrationDate": true,
+										"lastLoginDate": true,
+										"phoneNumber": true,
+										"target": true,
+										"university": true,
+										"esnCardId": true,
+										"surname": true,
+										"xname": true,
+										"active": true,
+										"faculty": true,
+										"country": true,
+										"firstName": true,
+										"participatedEvents": true,
+										"organizedEvents": true,
+										"czechBuddyPair": true,
+										"internationalBuddyPair": true,
+										"applications": true,
+										"applicationsFr": true,
+										"n2nHours": true
+									}
+								},
+								"predicates": {}
+							},
+							"BuddyPair": {
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"czechStudent": true,
+										"internationalStudent": true,
+										"note": true,
+										"tasks": true
+									}
+								},
+								"predicates": {}
+							},
+							"BuddyTask": {
+								"operations": {
+									"update": {
+										"createdAt": true,
+										"description": true,
+										"buddyPair": true,
+										"done": true,
+										"confirmed": true
+									},
+									"read": {
+										"createdAt": true,
+										"description": true,
+										"buddyPair": true,
+										"done": true,
+										"confirmed": true
+									}
+								},
+								"predicates": {}
+							}
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember",
+					"value": {
+						"variables": {},
+						"entities": {
+							"Event": {
+								"operations": {
+									"create": {
+										"createdAt": true,
+										"name": true,
+										"description": true,
+										"startDate": true,
+										"endDate": true,
+										"capacity": true,
+										"fee": true,
+										"participants": true,
+										"place": true,
+										"whatToBring": true,
+										"whatsappLink": true,
+										"registrationStartDate": true,
+										"registrationEndDate": true,
+										"waitingList": true,
+										"section": true,
+										"meetingPoint": true,
+										"status": true,
+										"contactPerson": true,
+										"semester": true,
+										"private": true
+									},
+									"update": {
+										"createdAt": true,
+										"name": true,
+										"description": true,
+										"startDate": true,
+										"endDate": true,
+										"capacity": true,
+										"fee": true,
+										"participants": true,
+										"place": true,
+										"whatToBring": true,
+										"whatsappLink": true,
+										"registrationStartDate": true,
+										"registrationEndDate": true,
+										"waitingList": true,
+										"section": true,
+										"meetingPoint": true,
+										"status": true,
+										"contactPerson": true,
+										"semester": true,
+										"private": true
+									},
+									"read": {
+										"createdAt": true,
+										"name": true,
+										"description": true,
+										"startDate": true,
+										"endDate": true,
+										"capacity": true,
+										"fee": true,
+										"participants": true,
+										"place": true,
+										"whatToBring": true,
+										"whatsappLink": true,
+										"registrationStartDate": true,
+										"registrationEndDate": true,
+										"waitingList": true,
+										"section": true,
+										"meetingPoint": true,
+										"status": true,
+										"contactPerson": true,
+										"semester": true,
+										"private": true
+									},
+									"delete": true
+								},
+								"predicates": {}
+							},
+							"ApplicationFr": {
+								"operations": {
+									"create": {
+										"createdAt": true,
+										"semester": true,
+										"user": true,
+										"status": true,
+										"language": true,
+										"hobbies": true,
+										"rating": true,
+										"rBuddy": true,
+										"rParty": true,
+										"rTravel": true,
+										"rSport": true,
+										"preferredBuddySex": true,
+										"emailForInformation": true,
+										"sport": true
+									},
+									"update": {
+										"createdAt": true,
+										"semester": true,
+										"user": true,
+										"status": true,
+										"language": true,
+										"hobbies": true,
+										"rating": true,
+										"rBuddy": true,
+										"rParty": true,
+										"rTravel": true,
+										"rSport": true,
+										"preferredBuddySex": true,
+										"emailForInformation": true,
+										"sport": true
+									},
+									"read": {
+										"createdAt": true,
+										"semester": true,
+										"user": true,
+										"status": true,
+										"language": true,
+										"hobbies": true,
+										"rating": true,
+										"rBuddy": true,
+										"rParty": true,
+										"rTravel": true,
+										"rSport": true,
+										"preferredBuddySex": true,
+										"emailForInformation": true,
+										"sport": true
+									},
+									"delete": true
+								},
+								"predicates": {}
+							},
+							"BuddyPair": {
+								"operations": {
+									"create": {
+										"createdAt": true,
+										"czechStudent": true,
+										"internationalStudent": true,
+										"note": true,
+										"tasks": true
+									},
+									"update": {
+										"createdAt": true,
+										"czechStudent": true,
+										"internationalStudent": true,
+										"note": true,
+										"tasks": true
+									},
+									"read": {
+										"createdAt": true,
+										"czechStudent": true,
+										"internationalStudent": true,
+										"note": true,
+										"tasks": true
+									},
+									"delete": true
+								},
+								"predicates": {}
+							},
+							"BuddyTask": {
+								"operations": {
+									"create": {
+										"createdAt": true,
+										"description": true,
+										"buddyPair": true,
+										"done": true,
+										"confirmed": true
+									},
+									"update": {
+										"createdAt": true,
+										"description": true,
+										"buddyPair": true,
+										"done": true,
+										"confirmed": true
+									},
+									"read": {
+										"createdAt": true,
+										"description": true,
+										"buddyPair": true,
+										"done": true,
+										"confirmed": true
+									},
+									"delete": true
+								},
+								"predicates": {}
+							},
+							"ApplicationCz": {
+								"operations": {
+									"create": {
+										"createdAt": true,
+										"points": true,
+										"user": true,
+										"semester": true,
+										"motivation": true,
+										"status": true,
+										"result": true,
+										"preferredCountry": true,
+										"rBuddy": true,
+										"rParty": true,
+										"rTravel": true,
+										"rSport": true,
+										"preferredSex": true
+									},
+									"update": {
+										"createdAt": true,
+										"points": true,
+										"user": true,
+										"semester": true,
+										"motivation": true,
+										"status": true,
+										"result": true,
+										"preferredCountry": true,
+										"rBuddy": true,
+										"rParty": true,
+										"rTravel": true,
+										"rSport": true,
+										"preferredSex": true
+									},
+									"read": {
+										"createdAt": true,
+										"points": true,
+										"user": true,
+										"semester": true,
+										"motivation": true,
+										"status": true,
+										"result": true,
+										"preferredCountry": true,
+										"rBuddy": true,
+										"rParty": true,
+										"rTravel": true,
+										"rSport": true,
+										"preferredSex": true
+									},
+									"delete": true
+								},
+								"predicates": {}
+							},
+							"Language": {
+								"operations": {
+									"create": {
+										"createdAt": true,
+										"applicationsFr": true,
+										"name": true
+									},
+									"update": {
+										"createdAt": true,
+										"applicationsFr": true,
+										"name": true
+									},
+									"read": {
+										"createdAt": true,
+										"applicationsFr": true,
+										"name": true
+									},
+									"delete": true
+								},
+								"predicates": {}
+							},
+							"Section": {
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"events": true,
+										"name": true,
+										"description": true
+									}
+								},
+								"predicates": {}
+							},
+							"University": {
+								"operations": {
+									"create": {
+										"createdAt": true,
+										"users": true,
+										"name": true,
+										"country": true
+									},
+									"update": {
+										"createdAt": true,
+										"users": true,
+										"name": true,
+										"country": true
+									},
+									"read": {
+										"createdAt": true,
+										"users": true,
+										"name": true,
+										"country": true
+									},
+									"delete": true
+								},
+								"predicates": {}
+							},
+							"Faculty": {
+								"operations": {
+									"create": {
+										"createdAt": true,
+										"users": true,
+										"name": true
+									},
+									"update": {
+										"createdAt": true,
+										"users": true,
+										"name": true
+									},
+									"read": {
+										"createdAt": true,
+										"users": true,
+										"name": true
+									},
+									"delete": true
+								},
+								"predicates": {}
+							},
+							"Country": {
+								"operations": {
+									"create": {
+										"createdAt": true,
+										"users": true,
+										"universities": true,
+										"name": true,
+										"preferredApplicationsCz": true
+									},
+									"update": {
+										"createdAt": true,
+										"users": true,
+										"universities": true,
+										"name": true,
+										"preferredApplicationsCz": true
+									},
+									"read": {
+										"createdAt": true,
+										"users": true,
+										"universities": true,
+										"name": true,
+										"preferredApplicationsCz": true
+									},
+									"delete": true
+								},
+								"predicates": {}
+							},
+							"Semester": {
+								"operations": {
+									"update": {
+										"createdAt": true,
+										"events": true,
+										"name": true,
+										"startDate": true,
+										"endDate": true,
+										"applications": true,
+										"applicationsFr": true,
+										"parties": true
+									},
+									"read": {
+										"createdAt": true,
+										"events": true,
+										"name": true,
+										"startDate": true,
+										"endDate": true,
+										"applications": true,
+										"applicationsFr": true,
+										"parties": true
+									}
+								},
+								"predicates": {}
+							},
+							"User": {
+								"operations": {
+									"create": {
+										"createdAt": true,
+										"registrationDate": true,
+										"lastLoginDate": true,
+										"phoneNumber": true,
+										"target": true,
+										"university": true,
+										"esnCardId": true,
+										"surname": true,
+										"xname": true,
+										"active": true,
+										"faculty": true,
+										"country": true,
+										"firstName": true,
+										"participatedEvents": true,
+										"organizedEvents": true,
+										"czechBuddyPair": true,
+										"internationalBuddyPair": true,
+										"applications": true,
+										"applicationsFr": true,
+										"n2nHours": true
+									},
+									"update": {
+										"createdAt": true,
+										"registrationDate": true,
+										"lastLoginDate": true,
+										"phoneNumber": true,
+										"target": true,
+										"university": true,
+										"esnCardId": true,
+										"surname": true,
+										"xname": true,
+										"active": true,
+										"faculty": true,
+										"country": true,
+										"firstName": true,
+										"participatedEvents": true,
+										"organizedEvents": true,
+										"czechBuddyPair": true,
+										"internationalBuddyPair": true,
+										"applications": true,
+										"applicationsFr": true,
+										"n2nHours": true
+									},
+									"read": {
+										"createdAt": true,
+										"registrationDate": true,
+										"lastLoginDate": true,
+										"phoneNumber": true,
+										"target": true,
+										"university": true,
+										"esnCardId": true,
+										"surname": true,
+										"xname": true,
+										"active": true,
+										"faculty": true,
+										"country": true,
+										"firstName": true,
+										"participatedEvents": true,
+										"organizedEvents": true,
+										"czechBuddyPair": true,
+										"internationalBuddyPair": true,
+										"applications": true,
+										"applicationsFr": true,
+										"n2nHours": true
+									},
+									"delete": true
+								},
+								"predicates": {}
+							},
+							"Hobby": {
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"applicationsFr": true,
+										"name": true
+									}
+								},
+								"predicates": {}
+							},
+							"Sport": {
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"name": true,
+										"applicationsFr": true
+									}
+								},
+								"predicates": {}
+							}
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/public",
+					"value": {
+						"variables": {},
+						"entities": {
+							"Event": {
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"name": true,
+										"description": true,
+										"startDate": true,
+										"endDate": true,
+										"capacity": true,
+										"fee": true,
+										"participants": true,
+										"place": true,
+										"whatToBring": true,
+										"whatsappLink": true,
+										"registrationStartDate": true,
+										"registrationEndDate": true,
+										"waitingList": true,
+										"section": true,
+										"meetingPoint": true,
+										"status": true,
+										"contactPerson": true,
+										"semester": true,
+										"private": true
+									}
+								},
+								"predicates": {}
+							},
+							"University": {
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"users": true,
+										"name": true,
+										"country": true
+									}
+								},
+								"predicates": {}
+							},
+							"Faculty": {
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"users": true,
+										"name": true
+									}
+								},
+								"predicates": {}
+							},
+							"Country": {
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"users": true,
+										"universities": true,
+										"name": true,
+										"preferredApplicationsCz": true
+									}
+								},
+								"predicates": {}
+							},
+							"Semester": {
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"events": true,
+										"name": true,
+										"startDate": true,
+										"endDate": true,
+										"applications": true,
+										"applicationsFr": true,
+										"parties": true
+									}
+								},
+								"predicates": {}
+							},
+							"Language": {
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"applicationsFr": true,
+										"name": true
+									}
+								},
+								"predicates": {}
+							},
+							"Hobby": {
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"applicationsFr": true,
+										"name": true
+									}
+								},
+								"predicates": {}
+							},
+							"Sport": {
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"name": true,
+										"applicationsFr": true
+									}
+								},
+								"predicates": {}
+							}
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy",
+					"value": {
+						"variables": {},
+						"entities": {
+							"ApplicationCz": {
+								"operations": {
+									"create": {
+										"createdAt": true,
+										"points": true,
+										"user": true,
+										"semester": true,
+										"motivation": true,
+										"status": true,
+										"result": true,
+										"preferredCountry": true,
+										"rBuddy": true,
+										"rParty": true,
+										"rTravel": true,
+										"rSport": true,
+										"preferredSex": true
+									},
+									"update": {
+										"createdAt": true,
+										"points": true,
+										"user": true,
+										"semester": true,
+										"motivation": true,
+										"status": true,
+										"result": true,
+										"preferredCountry": true,
+										"rBuddy": true,
+										"rParty": true,
+										"rTravel": true,
+										"rSport": true,
+										"preferredSex": true
+									},
+									"read": {
+										"createdAt": true,
+										"points": true,
+										"user": true,
+										"semester": true,
+										"motivation": true,
+										"status": true,
+										"result": true,
+										"preferredCountry": true,
+										"rBuddy": true,
+										"rParty": true,
+										"rTravel": true,
+										"rSport": true,
+										"preferredSex": true
+									}
+								},
+								"predicates": {}
+							},
+							"BuddyTask": {
+								"operations": {
+									"create": {
+										"createdAt": true,
+										"description": true,
+										"buddyPair": true,
+										"done": true,
+										"confirmed": true
+									},
+									"update": {
+										"createdAt": true,
+										"description": true,
+										"buddyPair": true,
+										"done": true,
+										"confirmed": true
+									},
+									"read": {
+										"createdAt": true,
+										"description": true,
+										"buddyPair": true,
+										"done": true,
+										"confirmed": true
+									}
+								},
+								"predicates": {}
+							},
+							"Event": {
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"name": true,
+										"description": true,
+										"startDate": true,
+										"endDate": true,
+										"capacity": true,
+										"fee": true,
+										"participants": true,
+										"place": true,
+										"whatToBring": true,
+										"whatsappLink": true,
+										"registrationStartDate": true,
+										"registrationEndDate": true,
+										"waitingList": true,
+										"section": true,
+										"meetingPoint": true,
+										"status": true,
+										"contactPerson": true,
+										"semester": true,
+										"private": true
+									}
+								},
+								"predicates": {}
+							}
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechStudent",
+					"value": {
+						"variables": {},
+						"entities": {
+							"User": {
+								"operations": {
+									"create": {
+										"createdAt": true,
+										"registrationDate": true,
+										"lastLoginDate": true,
+										"phoneNumber": true,
+										"target": true,
+										"university": true,
+										"esnCardId": true,
+										"surname": true,
+										"xname": true,
+										"active": true,
+										"faculty": true,
+										"country": true,
+										"firstName": true,
+										"participatedEvents": true,
+										"organizedEvents": true,
+										"czechBuddyPair": true,
+										"internationalBuddyPair": true,
+										"applications": true,
+										"applicationsFr": true,
+										"n2nHours": true
+									},
+									"update": {
+										"createdAt": true,
+										"registrationDate": true,
+										"lastLoginDate": true,
+										"phoneNumber": true,
+										"target": true,
+										"university": true,
+										"esnCardId": true,
+										"surname": true,
+										"xname": true,
+										"active": true,
+										"faculty": true,
+										"country": true,
+										"firstName": true,
+										"participatedEvents": true,
+										"organizedEvents": true,
+										"czechBuddyPair": true,
+										"internationalBuddyPair": true,
+										"applications": true,
+										"applicationsFr": true,
+										"n2nHours": true
+									},
+									"read": {
+										"createdAt": true,
+										"registrationDate": true,
+										"lastLoginDate": true,
+										"phoneNumber": true,
+										"target": true,
+										"university": true,
+										"esnCardId": true,
+										"surname": true,
+										"xname": true,
+										"active": true,
+										"faculty": true,
+										"country": true,
+										"firstName": true,
+										"participatedEvents": true,
+										"organizedEvents": true,
+										"czechBuddyPair": true,
+										"internationalBuddyPair": true,
+										"applications": true,
+										"applicationsFr": true,
+										"n2nHours": true
+									}
+								},
+								"predicates": {}
+							},
+							"ApplicationFr": {
+								"operations": {
+									"create": {
+										"createdAt": true,
+										"semester": true,
+										"user": true,
+										"status": true,
+										"language": true,
+										"hobbies": true,
+										"rating": true,
+										"rBuddy": true,
+										"rParty": true,
+										"rTravel": true,
+										"rSport": true,
+										"preferredBuddySex": true,
+										"emailForInformation": true,
+										"sport": true
+									},
+									"update": {
+										"createdAt": true,
+										"semester": true,
+										"user": true,
+										"status": true,
+										"language": true,
+										"hobbies": true,
+										"rating": true,
+										"rBuddy": true,
+										"rParty": true,
+										"rTravel": true,
+										"rSport": true,
+										"preferredBuddySex": true,
+										"emailForInformation": true,
+										"sport": true
+									},
+									"read": {
+										"createdAt": true,
+										"semester": true,
+										"user": true,
+										"status": true,
+										"language": true,
+										"hobbies": true,
+										"rating": true,
+										"rBuddy": true,
+										"rParty": true,
+										"rTravel": true,
+										"rSport": true,
+										"preferredBuddySex": true,
+										"emailForInformation": true,
+										"sport": true
+									}
+								},
+								"predicates": {}
+							},
+							"BuddyPair": {
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"czechStudent": true,
+										"internationalStudent": true,
+										"note": true,
+										"tasks": true
+									}
+								},
+								"predicates": {}
+							},
+							"BuddyTask": {
+								"operations": {
+									"update": {
+										"createdAt": true,
+										"description": true,
+										"buddyPair": true,
+										"done": true,
+										"confirmed": true
+									},
+									"read": {
+										"createdAt": true,
+										"description": true,
+										"buddyPair": true,
+										"done": true,
+										"confirmed": true
+									}
+								},
+								"predicates": {}
+							}
+						}
+					}
+				}
+			]
+		}
+	]
+}
