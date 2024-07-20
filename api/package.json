@@ -1,0 +1,16 @@
+{
+  "name": "@buddy-is/api",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "type": "module",
+  "devDependencies": {
+    "@contember/schema": "1.4.0-rc.3",
+    "@contember/schema-definition": "1.4.0-rc.3"
+  },
+  "dependencies": {
+    "graphql": "^16.8.1"
+  }
+}

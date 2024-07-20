@@ -1,0 +1,31 @@
+import { c } from '@contember/schema-definition'
+import { internationalStudentRole, esnMemberRole, czechBuddyRole, czechStudentRole } from './acl'
+import { BuddyPair } from './BuddyPair'
+
+
+@c.Allow(internationalStudentRole, {
+	read: true,
+	update: true,
+})
+@c.Allow(esnMemberRole, {
+	read: true,
+	create: true,
+	update: true,
+	delete: true,
+})
+@c.Allow(czechBuddyRole, {
+	read: true,
+	create: true,
+	update: true,
+})
+@c.Allow(czechStudentRole, {
+	read: true,
+	update: true,
+})
+export class BuddyTask {
+	createdAt = c.dateTimeColumn().notNull().default('now')
+	description = c.stringColumn().notNull()
+	buddyPair = c.manyHasOne(BuddyPair, 'tasks').cascadeOnDelete()
+	done = c.boolColumn().notNull()
+	confirmed = c.boolColumn()
+}

@@ -1,0 +1,8 @@
+import { c } from '@contember/schema-definition'
+
+export const eventStatus = c.createEnum('open', 'cancelled', 'hidden')
+export const applicationFrStatus = c.createEnum('enabled', 'disabled', 'cancelled')
+export const applicationStatus = c.createEnum('enabled', 'disabled', 'cancelled')
+export const preferredSex = c.createEnum('man', 'woman', 'dontCare')
+export const rating = c.createEnum('one', 'three', 'four', 'five', 'two')
+export const applicationCzResult = c.createEnum('accepted', 'declined')
