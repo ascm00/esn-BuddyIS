@@ -27,10 +27,13 @@
     "vite-tsconfig-paths": "^4.3.1"
   },
   "dependencies": {
+    "@contember/admin": "^1.2.10",
     "@contember/schema": "1.4.0-rc.3",
     "@contember/schema-definition": "1.4.0-rc.3",
     "@contember/schema-utils": "1.4.0-rc.3",
-    "downshift": "^8.3.1"
+    "@radix-ui/react-radio-group": "^1.2.0",
+    "downshift": "^8.3.1",
+    "react-collapsible": "^2.10.0"
   },
   "workspaces": [
     "admin",

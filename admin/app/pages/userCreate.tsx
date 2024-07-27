@@ -2,7 +2,8 @@ import { UserCreateForm } from '@app/components/forms/user-create-form'
 import { Binding, PersistButton } from '@app/lib/binding'
 import { BackButton } from '@app/lib/buttons'
 import { Slots } from '@app/lib/layout'
-import { EntitySubTree, RedirectOnPersist } from '@contember/interface'
+import { InviteFormFields } from '@app/lib/tenant'
+import { EntitySubTree, InviteForm, RedirectOnPersist } from '@contember/interface'
 
 export default () => {
 	return (
@@ -20,8 +21,8 @@ export default () => {
 						<Slots.Actions>
 							<PersistButton />
 						</Slots.Actions>
-						<UserCreateForm />
-					</EntitySubTree>
+						<UserCreateForm />		
+						</EntitySubTree>
 				</div>
 			</Binding>
 		</>

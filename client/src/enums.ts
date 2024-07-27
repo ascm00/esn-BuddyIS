@@ -1,0 +1,25 @@
+export type applicationCzResult = 
+	 | "accepted"
+	 | "declined"
+export type applicationFrStatus = 
+	 | "enabled"
+	 | "disabled"
+	 | "cancelled"
+export type applicationStatus = 
+	 | "enabled"
+	 | "disabled"
+	 | "cancelled"
+export type eventStatus = 
+	 | "open"
+	 | "cancelled"
+	 | "hidden"
+export type preferredSex = 
+	 | "man"
+	 | "woman"
+	 | "dontCare"
+export type rating = 
+	 | "one"
+	 | "three"
+	 | "four"
+	 | "five"
+	 | "two"
