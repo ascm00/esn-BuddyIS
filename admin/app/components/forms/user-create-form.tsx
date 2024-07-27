@@ -1,28 +1,20 @@
 import { FormLayout, InputField, SelectField } from '@app/lib/form'
+import { InviteFormFields } from '@app/lib/tenant'
 import { Component, Field } from '@contember/interface'
 
 export const UserCreateForm = Component(() => <FormLayout>
+	<InputField field="firstName" label="First name" required />
+	<InputField field="surname" label="Surname" required />
+	<InputField field="xname" label="Xname" />
+	<InputField field="esnCardId" label="Esn card number" />
 	<InputField field="phoneNumber" label="Phone number" />
 	<SelectField
 		field="university"
-		label="University"
+		label="Home University"
 		createNewForm={<>
 			<InputField field="name" label="Name" required />
 		</>}
 		options="University"
-	>
-		<Field field="name" />
-	</SelectField>
-	<InputField field="esnCardId" label="Esn card id" />
-	<InputField field="surname" label="Surname" required />
-	<InputField field="xname" label="Xname" />
-	<SelectField
-		field="faculty"
-		label="Faculty"
-		createNewForm={<>
-			<InputField field="name" label="Name" required />
-		</>}
-		options="Faculty"
 	>
 		<Field field="name" />
 	</SelectField>
@@ -36,5 +28,14 @@ export const UserCreateForm = Component(() => <FormLayout>
 	>
 		<Field field="name" />
 	</SelectField>
-	<InputField field="firstName" label="First name" required />
+	<SelectField
+		field="faculty"
+		label="Faculty at VSE"
+		createNewForm={<>
+			<InputField field="name" label="Name" required />
+		</>}
+		options="Faculty"
+	>
+		<Field field="name" />
+	</SelectField>
 </FormLayout>)

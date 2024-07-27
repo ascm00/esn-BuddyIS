@@ -18,6 +18,11 @@ export default () => {
 					</Slots.Back>
 					<>
 						<Slots.Actions>
+						<Link to="personCreate">
+								<Button>
+									Create person
+								</Button>
+							</Link>
 							<Link to="userCreate">
 								<Button>
 									Create user
