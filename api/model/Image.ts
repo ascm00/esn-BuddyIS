@@ -1,7 +1,7 @@
 import { c } from '@contember/schema-definition'
 import { ImageMetadata } from './ImageMetadata'
-import { User } from './User'
 import { Event } from './Event'
+import { Person } from './Person'
 
 export class Image {
 	createdAt = c.dateTimeColumn().notNull().default('now')
@@ -10,6 +10,6 @@ export class Image {
 	height = c.intColumn()
 	alt = c.stringColumn()
 	meta = c.oneHasOne(ImageMetadata, 'image')
-	userProfilePicture = c.oneHasMany(User, 'profilePicture')
+	userProfilePicture = c.oneHasMany(Person, 'profilePicture')
 	eventPicture = c.oneHasMany(Event, 'picture')
 }

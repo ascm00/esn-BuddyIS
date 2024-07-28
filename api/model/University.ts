@@ -1,7 +1,7 @@
 import { c } from '@contember/schema-definition'
 import { internationalStudentRole, esnMemberRole, publicRole } from './acl'
-import { User } from './User'
 import { Country } from './Country'
+import { Person } from './Person'
 
 
 @c.Allow(internationalStudentRole, {
@@ -19,7 +19,7 @@ import { Country } from './Country'
 })
 export class University {
 	createdAt = c.dateTimeColumn().notNull().default('now')
-	users = c.oneHasMany(User, 'university')
+	users = c.oneHasMany(Person, 'university')
 	name = c.stringColumn().notNull()
 	country = c.manyHasOne(Country, 'universities').setNullOnDelete()
 }

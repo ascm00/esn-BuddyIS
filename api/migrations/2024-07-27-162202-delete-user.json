@@ -1,0 +1,614 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "updateSettings",
+			"op": "set",
+			"key": "useExistsInHasManyFilter",
+			"value": true
+		},
+		{
+			"modification": "updateSettings",
+			"op": "set",
+			"key": "tenant",
+			"value": {
+				"inviteExpirationMinutes": 10080
+			}
+		},
+		{
+			"modification": "removeEntity",
+			"entityName": "User"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Person",
+			"field": {
+				"name": "registrationDate",
+				"columnName": "registration_date",
+				"columnType": "timestamptz",
+				"nullable": false,
+				"type": "DateTime"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Person",
+			"field": {
+				"name": "lastLoginDate",
+				"columnName": "last_login_date",
+				"columnType": "timestamptz",
+				"nullable": true,
+				"type": "DateTime"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Person",
+			"field": {
+				"name": "phoneNumber",
+				"columnName": "phone_number",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Person",
+			"field": {
+				"name": "esnCardId",
+				"columnName": "esn_card_id",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Person",
+			"field": {
+				"name": "surname",
+				"columnName": "surname",
+				"columnType": "text",
+				"nullable": false,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Person",
+			"field": {
+				"name": "xname",
+				"columnName": "xname",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Person",
+			"field": {
+				"name": "active",
+				"columnName": "active",
+				"columnType": "boolean",
+				"nullable": true,
+				"type": "Bool"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Person",
+			"field": {
+				"name": "firstName",
+				"columnName": "first_name",
+				"columnType": "text",
+				"nullable": false,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "ApplicationCz",
+			"owningSide": {
+				"type": "ManyHasOne",
+				"name": "person",
+				"target": "Person",
+				"joiningColumn": {
+					"columnName": "person_id",
+					"onDelete": "set null"
+				},
+				"nullable": true,
+				"inversedBy": "applications"
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "applications",
+				"target": "ApplicationCz",
+				"ownedBy": "person"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "ApplicationFr",
+			"owningSide": {
+				"type": "OneHasOne",
+				"name": "person",
+				"target": "Person",
+				"joiningColumn": {
+					"columnName": "person_id",
+					"onDelete": "restrict"
+				},
+				"nullable": true,
+				"inversedBy": "applicationsFr"
+			},
+			"inverseSide": {
+				"type": "OneHasOne",
+				"name": "applicationsFr",
+				"target": "ApplicationFr",
+				"ownedBy": "person",
+				"nullable": true
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "BuddyPair",
+			"owningSide": {
+				"type": "OneHasOne",
+				"name": "czechStudent",
+				"target": "Person",
+				"joiningColumn": {
+					"columnName": "czech_student_id",
+					"onDelete": "set null"
+				},
+				"nullable": true,
+				"inversedBy": "czechBuddyPair"
+			},
+			"inverseSide": {
+				"type": "OneHasOne",
+				"name": "czechBuddyPair",
+				"target": "BuddyPair",
+				"ownedBy": "czechStudent",
+				"nullable": true
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "BuddyPair",
+			"owningSide": {
+				"type": "OneHasOne",
+				"name": "internationalStudent",
+				"target": "Person",
+				"joiningColumn": {
+					"columnName": "international_student_id",
+					"onDelete": "set null"
+				},
+				"nullable": true,
+				"inversedBy": "internationalBuddyPair"
+			},
+			"inverseSide": {
+				"type": "OneHasOne",
+				"name": "internationalBuddyPair",
+				"target": "BuddyPair",
+				"ownedBy": "internationalStudent",
+				"nullable": true
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "Event",
+			"owningSide": {
+				"type": "ManyHasMany",
+				"name": "participants",
+				"target": "Person",
+				"joiningTable": {
+					"tableName": "event_participants",
+					"joiningColumn": {
+						"columnName": "event_id",
+						"onDelete": "cascade"
+					},
+					"inverseJoiningColumn": {
+						"columnName": "person_id",
+						"onDelete": "cascade"
+					},
+					"eventLog": {
+						"enabled": true
+					}
+				},
+				"inversedBy": "participatedEvents"
+			},
+			"inverseSide": {
+				"type": "ManyHasMany",
+				"name": "participatedEvents",
+				"target": "Event",
+				"ownedBy": "participants"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "Event",
+			"owningSide": {
+				"type": "OneHasOne",
+				"name": "contactPerson",
+				"target": "Person",
+				"joiningColumn": {
+					"columnName": "contact_person_id",
+					"onDelete": "restrict"
+				},
+				"nullable": true,
+				"inversedBy": "organizedEvents"
+			},
+			"inverseSide": {
+				"type": "OneHasOne",
+				"name": "organizedEvents",
+				"target": "Event",
+				"ownedBy": "contactPerson",
+				"nullable": true
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "N2nHour",
+			"owningSide": {
+				"type": "ManyHasMany",
+				"name": "person",
+				"target": "Person",
+				"joiningTable": {
+					"tableName": "n2n_hour_person",
+					"joiningColumn": {
+						"columnName": "n2n_hour_id",
+						"onDelete": "cascade"
+					},
+					"inverseJoiningColumn": {
+						"columnName": "person_id",
+						"onDelete": "cascade"
+					},
+					"eventLog": {
+						"enabled": true
+					}
+				},
+				"inversedBy": "n2nHours"
+			},
+			"inverseSide": {
+				"type": "ManyHasMany",
+				"name": "n2nHours",
+				"target": "N2nHour",
+				"ownedBy": "person"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "Person",
+			"owningSide": {
+				"type": "ManyHasOne",
+				"name": "university",
+				"target": "University",
+				"joiningColumn": {
+					"columnName": "university_id",
+					"onDelete": "set null"
+				},
+				"nullable": true,
+				"inversedBy": "users"
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "users",
+				"target": "Person",
+				"ownedBy": "university"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "Person",
+			"owningSide": {
+				"type": "ManyHasOne",
+				"name": "faculty",
+				"target": "Faculty",
+				"joiningColumn": {
+					"columnName": "faculty_id",
+					"onDelete": "set null"
+				},
+				"nullable": true,
+				"inversedBy": "users"
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "users",
+				"target": "Person",
+				"ownedBy": "faculty"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "Person",
+			"owningSide": {
+				"type": "ManyHasOne",
+				"name": "country",
+				"target": "Country",
+				"joiningColumn": {
+					"columnName": "country_id",
+					"onDelete": "set null"
+				},
+				"nullable": true,
+				"inversedBy": "users"
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "users",
+				"target": "Person",
+				"ownedBy": "country"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "Person",
+			"owningSide": {
+				"type": "ManyHasOne",
+				"name": "profilePicture",
+				"target": "Image",
+				"joiningColumn": {
+					"columnName": "profile_picture_id",
+					"onDelete": "restrict"
+				},
+				"nullable": true,
+				"inversedBy": "userProfilePicture"
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "userProfilePicture",
+				"target": "Person",
+				"ownedBy": "profilePicture"
+			}
+		},
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/stages",
+					"value": "*"
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/Country/operations/create/users",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/Country/operations/read/users",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/University/operations/create/users",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/University/operations/read/users",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/Event/operations/read/participants",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/Event/operations/read/contactPerson",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/BuddyPair/operations/read/czechStudent",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/BuddyPair/operations/read/internationalStudent",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/stages",
+					"value": "*"
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Event/operations/create/participants",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Event/operations/create/contactPerson",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Event/operations/update/participants",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Event/operations/update/contactPerson",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Event/operations/read/participants",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Event/operations/read/contactPerson",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/BuddyPair/operations/create/czechStudent",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/BuddyPair/operations/create/internationalStudent",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/BuddyPair/operations/update/czechStudent",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/BuddyPair/operations/update/internationalStudent",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/BuddyPair/operations/read/czechStudent",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/BuddyPair/operations/read/internationalStudent",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/ApplicationCz/operations/create/person",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/ApplicationCz/operations/update/person",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/ApplicationCz/operations/read/person",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/University/operations/create/users",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/University/operations/update/users",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/University/operations/read/users",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Faculty/operations/create/users",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Faculty/operations/update/users",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Faculty/operations/read/users",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Country/operations/create/users",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Country/operations/update/users",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Country/operations/read/users",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/public/stages",
+					"value": "*"
+				},
+				{
+					"op": "add",
+					"path": "/roles/public/entities/Event/operations/read/participants",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/public/entities/Event/operations/read/contactPerson",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/public/entities/University/operations/read/users",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/public/entities/Faculty/operations/read/users",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/public/entities/Country/operations/read/users",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/stages",
+					"value": "*"
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/ApplicationCz/operations/create/person",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/ApplicationCz/operations/update/person",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/ApplicationCz/operations/read/person",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/Event/operations/read/participants",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/Event/operations/read/contactPerson",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechStudent/stages",
+					"value": "*"
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechStudent/entities/BuddyPair/operations/read/czechStudent",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechStudent/entities/BuddyPair/operations/read/internationalStudent",
+					"value": true
+				}
+			]
+		}
+	]
+}

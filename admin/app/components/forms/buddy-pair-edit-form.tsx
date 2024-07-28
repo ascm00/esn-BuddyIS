@@ -15,7 +15,7 @@ export const BuddyPairEditForm = Component(() => <FormLayout>
 			<CheckboxField field="active" label="Active" />
 			<InputField field="firstName" label="First name" required />
 		</>}
-		options="User"
+		options="Person"
 	>
 		<Field field="firstName" />
 	</SelectField>
@@ -32,7 +32,7 @@ export const BuddyPairEditForm = Component(() => <FormLayout>
 			<CheckboxField field="active" label="Active" />
 			<InputField field="firstName" label="First name" required />
 		</>}
-		options="User"
+		options="Person"
 	>
 		<Field field="firstName" />
 	</SelectField>

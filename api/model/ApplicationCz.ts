@@ -1,9 +1,9 @@
 import { c } from '@contember/schema-definition'
 import { esnMemberRole, czechBuddyRole } from './acl'
 import { applicationStatus, applicationCzResult, preferredSex } from './enum'
-import { User } from './User'
 import { Semester } from './Semester'
 import { Country } from './Country'
+import { Person } from './Person'
 
 
 @c.Allow(esnMemberRole, {
@@ -20,7 +20,7 @@ import { Country } from './Country'
 export class ApplicationCz {
 	createdAt = c.dateTimeColumn().notNull().default('now')
 	points = c.intColumn()
-	user = c.manyHasOne(User, 'applications').setNullOnDelete()
+	person = c.manyHasOne(Person, 'applications').setNullOnDelete()
 	semester = c.manyHasOne(Semester, 'applications').setNullOnDelete()
 	motivation = c.stringColumn()
 	status = c.enumColumn(applicationStatus)

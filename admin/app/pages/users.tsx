@@ -20,16 +20,11 @@ export default () => {
 						<Slots.Actions>
 						<Link to="personCreate">
 								<Button>
-									Create person
-								</Button>
-							</Link>
-							<Link to="userCreate">
-								<Button>
 									Create user
 								</Button>
 							</Link>
 						</Slots.Actions>
-						<DataGrid entities="User">
+						<DataGrid entities="Person">
 							<DataGridToolbar>
 								<DataGridQueryFilter />
 							</DataGridToolbar>

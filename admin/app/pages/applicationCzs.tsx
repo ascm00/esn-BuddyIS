@@ -61,8 +61,8 @@ export default () => {
 										header="Preferred sex"
 										options={{ man: 'man', woman: 'woman', dontCare: 'dontCare' }}
 									/>
-									<DataGridHasOneColumn field="user" header="User">
-										<Field field="id" />
+									<DataGridHasOneColumn field="person" header="User">
+										<Field field="firstName" /> <Field field="surname" />
 									</DataGridHasOneColumn>
 									<DataGridEnumColumn field="result" header="Result" options={{ accepted: 'accepted', declined: 'declined' }} />
 								</DataGridTable>

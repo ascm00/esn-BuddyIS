@@ -16,7 +16,7 @@ export const N2nHourEditForm = Component(() => <FormLayout>
 	>
 		<Field field="name" />
 	</SelectField>
-	<MultiSelectField field="user" options="User" label="User">
+	<MultiSelectField field="person" options="Person" label="User">
 		<Field field="firstName" />
 	</MultiSelectField>
 </FormLayout>)
