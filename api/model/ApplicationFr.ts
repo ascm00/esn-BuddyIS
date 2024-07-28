@@ -2,34 +2,34 @@ import { c } from '@contember/schema-definition'
 import { internationalStudentRole, esnMemberRole, czechStudentRole } from './acl'
 import { applicationFrStatus, rating, preferredSex } from './enum'
 import { Semester } from './Semester'
-import { User } from './User'
 import { Language } from './Language'
 import { Hobby } from './Hobby'
 import { Sport } from './Sport'
 import { Limitations } from './Limitations'
+import { Person } from './Person'
 
 
 @c.Allow(internationalStudentRole, {
-	read: ['createdAt', 'semester', 'user', 'status', 'language', 'hobbies', 'rating', 'rBuddy', 'rParty', 'rTravel', 'rSport', 'preferredBuddySex', 'emailForInformation', 'sport'],
-	create: ['createdAt', 'semester', 'user', 'status', 'language', 'hobbies', 'rating', 'rBuddy', 'rParty', 'rTravel', 'rSport', 'preferredBuddySex', 'emailForInformation', 'sport'],
-	update: ['createdAt', 'semester', 'user', 'status', 'language', 'hobbies', 'rating', 'rBuddy', 'rParty', 'rTravel', 'rSport', 'preferredBuddySex', 'emailForInformation', 'sport'],
+	read: ['createdAt', 'semester', 'status', 'language', 'hobbies', 'rating', 'rBuddy', 'rParty', 'rTravel', 'rSport', 'preferredBuddySex', 'emailForInformation', 'sport'],
+	create: ['createdAt', 'semester', 'status', 'language', 'hobbies', 'rating', 'rBuddy', 'rParty', 'rTravel', 'rSport', 'preferredBuddySex', 'emailForInformation', 'sport'],
+	update: ['createdAt', 'semester', 'status', 'language', 'hobbies', 'rating', 'rBuddy', 'rParty', 'rTravel', 'rSport', 'preferredBuddySex', 'emailForInformation', 'sport'],
 	delete: true,
 })
 @c.Allow(esnMemberRole, {
-	read: ['createdAt', 'semester', 'user', 'status', 'language', 'hobbies', 'rating', 'rBuddy', 'rParty', 'rTravel', 'rSport', 'preferredBuddySex', 'emailForInformation', 'sport'],
-	create: ['createdAt', 'semester', 'user', 'status', 'language', 'hobbies', 'rating', 'rBuddy', 'rParty', 'rTravel', 'rSport', 'preferredBuddySex', 'emailForInformation', 'sport'],
-	update: ['createdAt', 'semester', 'user', 'status', 'language', 'hobbies', 'rating', 'rBuddy', 'rParty', 'rTravel', 'rSport', 'preferredBuddySex', 'emailForInformation', 'sport'],
+	read: ['createdAt', 'semester', 'status', 'language', 'hobbies', 'rating', 'rBuddy', 'rParty', 'rTravel', 'rSport', 'preferredBuddySex', 'emailForInformation', 'sport'],
+	create: ['createdAt', 'semester', 'status', 'language', 'hobbies', 'rating', 'rBuddy', 'rParty', 'rTravel', 'rSport', 'preferredBuddySex', 'emailForInformation', 'sport'],
+	update: ['createdAt', 'semester', 'status', 'language', 'hobbies', 'rating', 'rBuddy', 'rParty', 'rTravel', 'rSport', 'preferredBuddySex', 'emailForInformation', 'sport'],
 	delete: true,
 })
 @c.Allow(czechStudentRole, {
-	read: ['createdAt', 'semester', 'user', 'status', 'language', 'hobbies', 'rating', 'rBuddy', 'rParty', 'rTravel', 'rSport', 'preferredBuddySex', 'emailForInformation', 'sport'],
-	create: ['createdAt', 'semester', 'user', 'status', 'language', 'hobbies', 'rating', 'rBuddy', 'rParty', 'rTravel', 'rSport', 'preferredBuddySex', 'emailForInformation', 'sport'],
-	update: ['createdAt', 'semester', 'user', 'status', 'language', 'hobbies', 'rating', 'rBuddy', 'rParty', 'rTravel', 'rSport', 'preferredBuddySex', 'emailForInformation', 'sport'],
+	read: ['createdAt', 'semester', 'status', 'language', 'hobbies', 'rating', 'rBuddy', 'rParty', 'rTravel', 'rSport', 'preferredBuddySex', 'emailForInformation', 'sport'],
+	create: ['createdAt', 'semester', 'status', 'language', 'hobbies', 'rating', 'rBuddy', 'rParty', 'rTravel', 'rSport', 'preferredBuddySex', 'emailForInformation', 'sport'],
+	update: ['createdAt', 'semester', 'status', 'language', 'hobbies', 'rating', 'rBuddy', 'rParty', 'rTravel', 'rSport', 'preferredBuddySex', 'emailForInformation', 'sport'],
 })
 export class ApplicationFr {
 	createdAt = c.dateTimeColumn().notNull().default('now')
 	semester = c.manyHasOne(Semester, 'applicationsFr').setNullOnDelete()
-	user = c.oneHasOne(User, 'applicationsFr')
+	person = c.oneHasOne(Person, 'applicationsFr')
 	status = c.enumColumn(applicationFrStatus)
 	language = c.manyHasOne(Language, 'applicationsFr').setNullOnDelete()
 	hobbies = c.manyHasMany(Hobby, 'applicationsFr')

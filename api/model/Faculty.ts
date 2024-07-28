@@ -1,6 +1,6 @@
 import { c } from '@contember/schema-definition'
 import { esnMemberRole, publicRole } from './acl'
-import { User } from './User'
+import { Person } from './Person'
 
 
 @c.Allow(esnMemberRole, {
@@ -14,6 +14,6 @@ import { User } from './User'
 })
 export class Faculty {
 	createdAt = c.dateTimeColumn().notNull().default('now')
-	users = c.oneHasMany(User, 'faculty')
+	users = c.oneHasMany(Person, 'faculty')
 	name = c.stringColumn().notNull()
 }

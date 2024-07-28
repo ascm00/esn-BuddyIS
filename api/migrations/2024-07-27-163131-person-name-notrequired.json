@@ -1,0 +1,35 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "updateColumnDefinition",
+			"entityName": "Person",
+			"fieldName": "registrationDate",
+			"definition": {
+				"columnType": "timestamptz",
+				"nullable": true,
+				"type": "DateTime"
+			}
+		},
+		{
+			"modification": "updateColumnDefinition",
+			"entityName": "Person",
+			"fieldName": "surname",
+			"definition": {
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "updateColumnDefinition",
+			"entityName": "Person",
+			"fieldName": "firstName",
+			"definition": {
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		}
+	]
+}

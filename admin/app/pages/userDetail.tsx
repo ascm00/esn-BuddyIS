@@ -17,9 +17,9 @@ export default () => {
 					<Slots.Back>
 						<BackButton />
 					</Slots.Back>
-					<EntitySubTree entity="User(id=$id)" isCreating={false}>
+					<EntitySubTree entity="Person(id=$id)" isCreating={false}>
 						<Slots.Actions>
-							<Link to="userEdit(id: $entity.id)">
+							<Link to="personEdit(id: $entity.id)">
 								<Button>
 									Edit user
 								</Button>
@@ -107,7 +107,7 @@ export default () => {
 								</Button>
 							</Link>
 						</Slots.Actions>
-						<DataGrid entities="ApplicationCz[user.id = $id]">
+						<DataGrid entities="ApplicationCz[person.id = $id]">
 							<DataGridToolbar>
 								<DataGridQueryFilter />
 							</DataGridToolbar>

@@ -1,10 +1,10 @@
 import { c } from '@contember/schema-definition'
 import { internationalStudentRole, esnMemberRole, publicRole, czechBuddyRole } from './acl'
 import { eventStatus } from './enum'
-import { User } from './User'
 import { Section } from './Section'
 import { Semester } from './Semester'
 import { Image } from './Image'
+import { Person } from './Person'
 
 
 @c.Allow(internationalStudentRole, {
@@ -30,7 +30,7 @@ export class Event {
 	endDate = c.dateTimeColumn().notNull()
 	capacity = c.intColumn()
 	fee = c.doubleColumn()
-	participants = c.manyHasMany(User, 'participatedEvents')
+	participants = c.manyHasMany(Person, 'participatedEvents')
 	place = c.stringColumn()
 	whatToBring = c.stringColumn()
 	whatsappLink = c.stringColumn()
@@ -40,7 +40,7 @@ export class Event {
 	section = c.manyHasOne(Section, 'events').setNullOnDelete()
 	meetingPoint = c.stringColumn()
 	status = c.enumColumn(eventStatus)
-	contactPerson = c.oneHasOne(User, 'organizedEvents')
+	contactPerson = c.oneHasOne(Person, 'organizedEvents')
 	semester = c.manyHasOne(Semester, 'events').setNullOnDelete()
 	private = c.boolColumn()
 	picture = c.manyHasOne(Image, 'eventPicture')

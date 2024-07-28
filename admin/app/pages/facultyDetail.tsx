@@ -51,7 +51,7 @@ export default () => {
 								</Button>
 							</Link>
 						</Slots.Actions>
-						<DataGrid entities="User[faculty.id = $id]">
+						<DataGrid entities="Person[faculty.id = $id]">
 							<DataGridToolbar>
 								<DataGridQueryFilter />
 							</DataGridToolbar>

@@ -14,7 +14,7 @@ export default () => {
 						<BackButton />
 					</Slots.Back>
 					<EntitySubTree entity="Person" isCreating>
-						<RedirectOnPersist to="personDetail(id: $entity.id)" />
+						<RedirectOnPersist to="userDetail(id: $entity.id)" />
 						<PersonForm />
 					</EntitySubTree>
 				</div>

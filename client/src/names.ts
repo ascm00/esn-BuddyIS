@@ -13,9 +13,9 @@ export const ContemberClientNames: SchemaNames = {
         "points": {
           "type": "column"
         },
-        "user": {
+        "person": {
           "type": "one",
-          "entity": "User"
+          "entity": "Person"
         },
         "semester": {
           "type": "one",
@@ -77,9 +77,9 @@ export const ContemberClientNames: SchemaNames = {
           "type": "one",
           "entity": "Semester"
         },
-        "user": {
+        "person": {
           "type": "one",
-          "entity": "User"
+          "entity": "Person"
         },
         "status": {
           "type": "column"
@@ -146,11 +146,11 @@ export const ContemberClientNames: SchemaNames = {
         },
         "czechStudent": {
           "type": "one",
-          "entity": "User"
+          "entity": "Person"
         },
         "internationalStudent": {
           "type": "one",
-          "entity": "User"
+          "entity": "Person"
         },
         "note": {
           "type": "column"
@@ -231,7 +231,7 @@ export const ContemberClientNames: SchemaNames = {
         },
         "users": {
           "type": "many",
-          "entity": "User"
+          "entity": "Person"
         },
         "universities": {
           "type": "many",
@@ -280,7 +280,7 @@ export const ContemberClientNames: SchemaNames = {
         },
         "participants": {
           "type": "many",
-          "entity": "User"
+          "entity": "Person"
         },
         "place": {
           "type": "column"
@@ -312,7 +312,7 @@ export const ContemberClientNames: SchemaNames = {
         },
         "contactPerson": {
           "type": "one",
-          "entity": "User"
+          "entity": "Person"
         },
         "semester": {
           "type": "one",
@@ -357,7 +357,7 @@ export const ContemberClientNames: SchemaNames = {
         },
         "users": {
           "type": "many",
-          "entity": "User"
+          "entity": "Person"
         },
         "name": {
           "type": "column"
@@ -419,7 +419,7 @@ export const ContemberClientNames: SchemaNames = {
         },
         "userProfilePicture": {
           "type": "many",
-          "entity": "User"
+          "entity": "Person"
         },
         "eventPicture": {
           "type": "many",
@@ -531,9 +531,9 @@ export const ContemberClientNames: SchemaNames = {
           "type": "one",
           "entity": "N2nParty"
         },
-        "user": {
+        "person": {
           "type": "many",
-          "entity": "User"
+          "entity": "Person"
         }
       },
       "scalars": [
@@ -591,22 +591,94 @@ export const ContemberClientNames: SchemaNames = {
         "createdAt": {
           "type": "column"
         },
-        "userUndefined": {
-          "type": "one",
-          "entity": "User"
-        },
         "personId": {
           "type": "column"
         },
         "tenantPerson": {
           "type": "one",
           "entity": "TenantPerson"
+        },
+        "registrationDate": {
+          "type": "column"
+        },
+        "lastLoginDate": {
+          "type": "column"
+        },
+        "phoneNumber": {
+          "type": "column"
+        },
+        "university": {
+          "type": "one",
+          "entity": "University"
+        },
+        "esnCardId": {
+          "type": "column"
+        },
+        "surname": {
+          "type": "column"
+        },
+        "xname": {
+          "type": "column"
+        },
+        "active": {
+          "type": "column"
+        },
+        "faculty": {
+          "type": "one",
+          "entity": "Faculty"
+        },
+        "country": {
+          "type": "one",
+          "entity": "Country"
+        },
+        "firstName": {
+          "type": "column"
+        },
+        "participatedEvents": {
+          "type": "many",
+          "entity": "Event"
+        },
+        "organizedEvents": {
+          "type": "one",
+          "entity": "Event"
+        },
+        "czechBuddyPair": {
+          "type": "one",
+          "entity": "BuddyPair"
+        },
+        "internationalBuddyPair": {
+          "type": "one",
+          "entity": "BuddyPair"
+        },
+        "applications": {
+          "type": "many",
+          "entity": "ApplicationCz"
+        },
+        "applicationsFr": {
+          "type": "one",
+          "entity": "ApplicationFr"
+        },
+        "n2nHours": {
+          "type": "many",
+          "entity": "N2nHour"
+        },
+        "profilePicture": {
+          "type": "one",
+          "entity": "Image"
         }
       },
       "scalars": [
         "id",
         "createdAt",
-        "personId"
+        "personId",
+        "registrationDate",
+        "lastLoginDate",
+        "phoneNumber",
+        "esnCardId",
+        "surname",
+        "xname",
+        "active",
+        "firstName"
       ]
     },
     "Section": {
@@ -760,7 +832,7 @@ export const ContemberClientNames: SchemaNames = {
         },
         "users": {
           "type": "many",
-          "entity": "User"
+          "entity": "Person"
         },
         "name": {
           "type": "column"
@@ -774,101 +846,6 @@ export const ContemberClientNames: SchemaNames = {
         "id",
         "createdAt",
         "name"
-      ]
-    },
-    "User": {
-      "name": "User",
-      "fields": {
-        "id": {
-          "type": "column"
-        },
-        "createdAt": {
-          "type": "column"
-        },
-        "registrationDate": {
-          "type": "column"
-        },
-        "lastLoginDate": {
-          "type": "column"
-        },
-        "phoneNumber": {
-          "type": "column"
-        },
-        "target": {
-          "type": "one",
-          "entity": "Person"
-        },
-        "university": {
-          "type": "one",
-          "entity": "University"
-        },
-        "esnCardId": {
-          "type": "column"
-        },
-        "surname": {
-          "type": "column"
-        },
-        "xname": {
-          "type": "column"
-        },
-        "active": {
-          "type": "column"
-        },
-        "faculty": {
-          "type": "one",
-          "entity": "Faculty"
-        },
-        "country": {
-          "type": "one",
-          "entity": "Country"
-        },
-        "firstName": {
-          "type": "column"
-        },
-        "participatedEvents": {
-          "type": "many",
-          "entity": "Event"
-        },
-        "organizedEvents": {
-          "type": "one",
-          "entity": "Event"
-        },
-        "czechBuddyPair": {
-          "type": "one",
-          "entity": "BuddyPair"
-        },
-        "internationalBuddyPair": {
-          "type": "one",
-          "entity": "BuddyPair"
-        },
-        "applications": {
-          "type": "many",
-          "entity": "ApplicationCz"
-        },
-        "applicationsFr": {
-          "type": "one",
-          "entity": "ApplicationFr"
-        },
-        "n2nHours": {
-          "type": "many",
-          "entity": "N2nHour"
-        },
-        "profilePicture": {
-          "type": "one",
-          "entity": "Image"
-        }
-      },
-      "scalars": [
-        "id",
-        "createdAt",
-        "registrationDate",
-        "lastLoginDate",
-        "phoneNumber",
-        "esnCardId",
-        "surname",
-        "xname",
-        "active",
-        "firstName"
       ]
     }
   }
