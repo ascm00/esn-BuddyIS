@@ -1,3 +1,5 @@
+import {InitialUserForm} from '@app/components/initialUserForm'
+import { Binding } from '@app/lib/binding'
 import './index.css'
 import { dict } from '@app/lib/dict'
 import { LoginFormFields, PasswordResetRequestFormFields } from '@app/lib/tenant'
@@ -7,7 +9,7 @@ import { AnchorButton, Button } from '@app/lib/ui/button'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@app/lib/ui/card'
 import { Loader } from '@app/lib/ui/loader'
 import { Overlay } from '@app/lib/ui/overlay'
-import { Pages, useIdentity } from '@contember/interface'
+import { Pages, useIdentity, useField, Component, HasOne, Field, useEntity } from '@contember/interface'
 import { ContemberClient } from '@contember/react-client'
 import { createErrorHandler } from '@contember/react-devbar'
 import {
@@ -25,6 +27,8 @@ import { Link, RoutingProvider, useCurrentRequest, useRedirect } from '@contembe
 import { MailIcon } from 'lucide-react'
 import { useEffect } from 'react'
 import { createRoot } from 'react-dom/client'
+import PersonCreate from '@app/pages/personCreate'
+import { useProjectSlug } from '@contember/admin'
 
 const errorHandler = createErrorHandler((dom, react, onRecoverableError) => createRoot(dom, { onRecoverableError }).render(react))
 
@@ -95,24 +99,28 @@ const Login = () => {
 	)
 }
 
-const LoggedIn = () => {
-	const identity = useIdentity()
-	useEffect(() => {
-		setTimeout(() => {
-			window.location.href = appUrl
-		}, 500)
-	}, [])
+const LoggedIn = Component(
+	() => {
+		const identity = useIdentity()
+		const projectSlug = useProjectSlug() || '';
+		useEffect(() => {
+			setTimeout(() => {
+				window.location.href = appUrl
+			}, 500)
+		}, [])
 
-	return (
-		<Card className="w-96 relative">
-			<CardHeader>
-				<CardTitle className="text-2xl">Logged in </CardTitle>
-				<CardDescription>as {identity?.person?.email ?? 'unknown'}</CardDescription>
-			</CardHeader>
-			<Loader position="static" />
-		</Card>
-	)
-}
+		return (
+			
+			<Card className="w-96 relative">
+				<CardHeader>
+					<CardTitle className="text-2xl">Logged in </CardTitle>
+					<CardDescription>as {identity?.person?.email ?? 'unknown'}</CardDescription>
+				</CardHeader>
+				<Loader position="static" />
+			</Card>
+		)
+	}
+)
 
 const IndexPage = () => {
 	return (
@@ -236,10 +244,10 @@ const Layout = ({ children }: { children?: React.ReactNode }) => (
 		<div className="bg-gray-700 text-white p-4 flex items-center justify-center">
 			<div className="w-full max-w-md">
 				<div className="text-center text-2xl">Welcome to your app</div>
-				{/*<p className="mt-8 text-center text-gray-300">*/}
+				{/*<p className="mt-8 text-center text-gray-300">
 				{/*	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, sem eget ultricies ultricies, sapien urna tristique eros, ac*/}
 				{/*	tincidunt felis lacus nec nunc.*/}
-				{/*</p>*/}
+				{/*</p>*/}			
 			</div>
 		</div>
 	</div>

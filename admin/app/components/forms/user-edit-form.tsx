@@ -3,7 +3,10 @@ import { DefaultRepeater, RepeaterItemActions, RepeaterRemoveItemButton } from '
 import { Component, Field } from '@contember/interface'
 
 export const UserEditForm = Component(() => <FormLayout>
-	<InputField field="lastLoginDate" label="Last login date" />
+	<InputField field="firstName" label="First name" required />
+	<InputField field="surname" label="Surname" required />
+	<InputField field="xname" label="Xname" />
+	<InputField field="esnCardId" label="Esn card id" />
 	<InputField field="phoneNumber" label="Phone number" />
 	<SelectField
 		field="university"
@@ -15,10 +18,7 @@ export const UserEditForm = Component(() => <FormLayout>
 	>
 		<Field field="name" />
 	</SelectField>
-	<InputField field="esnCardId" label="Esn card id" />
-	<InputField field="surname" label="Surname" required />
-	<InputField field="xname" label="Xname" />
-	<CheckboxField field="active" label="Active" />
+	{/* <CheckboxField field="active" label="Active" /> */}
 	<SelectField
 		field="faculty"
 		label="Faculty"
@@ -39,8 +39,7 @@ export const UserEditForm = Component(() => <FormLayout>
 	>
 		<Field field="name" />
 	</SelectField>
-	<InputField field="firstName" label="First name" required />
-	<DefaultRepeater field="applications" orderBy="createdAt" title="Applications">
+	{/* <DefaultRepeater field="applications" orderBy="createdAt" title="Applications">
 		<RepeaterItemActions>
 			<RepeaterRemoveItemButton />
 		</RepeaterItemActions>
@@ -59,7 +58,7 @@ export const UserEditForm = Component(() => <FormLayout>
 		<RadioEnumField
 			field="preferredSex"
 			label="Preferred sex"
-			options={{ man: 'man', woman: 'woman', dontCare: 'dontCare' }}
+			options={{ man: 'Man', woman: 'Woman', dontCare: 'Don\'t care' }}
 		/>
-	</DefaultRepeater>
+	</DefaultRepeater> */}
 </FormLayout>)

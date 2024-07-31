@@ -6,7 +6,7 @@ import { SlotTargets } from './slots'
 import { Button } from '../ui/button'
 import { LogoutTrigger } from '@contember/react-identity'
 import { dict } from '../dict'
-import { useCurrentRequest } from '@contember/interface'
+import { If, useCurrentRequest } from '@contember/interface'
 
 const LayoutBodyUI = uic('div', { baseClass: 'bg-gray-50 h-full min-h-screen relative py-4 pl-[calc(100vw-100%)]' })
 const LayoutMaxWidthUI = uic('div', {
@@ -106,10 +106,14 @@ export const LayoutComponent = ({ children, ...rest }: PropsWithChildren<{}>) =>
 						<div className={'p-4 flex gap-2'}>
 							<SlotTargets.Logo />
 						</div>
-
-						<div className="px-4">
+						{(request?.pageName !== 'initialUserPage') && (request?.pageName !== 'initialLoginPage') && (
+							<div className="px-4">
+								<SlotTargets.Navigation />
+							</div>
+						)}
+						{/* <div className="px-4">
 							<SlotTargets.Navigation />
-						</div>
+						</div> */}
 
 						<div className={'mt-auto rounded-bl py-2 px-2 border-t'}>
 							<LogoutTrigger>
