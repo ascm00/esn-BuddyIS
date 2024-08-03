@@ -1,0 +1,16 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "createColumn",
+			"entityName": "Event",
+			"field": {
+				"name": "allowRegistrationWithoutPayment",
+				"columnName": "allow_registration_without_payment",
+				"columnType": "boolean",
+				"nullable": true,
+				"type": "Bool"
+			}
+		}
+	]
+}

@@ -24,133 +24,113 @@ export default () => {
 								</Button>
 							</Link>
 						</Slots.Actions>
-						<TableWrapper className="bg-gray-50/50 max-w-lg border rounded-md">
-							<Table>
-								<TableBody>
-									<TableRow>
-										<TableCell>
-											Name
-										</TableCell>
-										<TableCell className="font-semibold">
-											<Field field="name" />
-										</TableCell>
-									</TableRow>
-									<TableRow>
-										<TableCell>
-											Description
-										</TableCell>
-										<TableCell className="font-semibold">
-											<Field field="description" />
-										</TableCell>
-									</TableRow>
-									<TableRow>
-										<TableCell>
-											Start date
-										</TableCell>
-										<TableCell className="font-semibold">
-											<Field field="startDate" />
-										</TableCell>
-									</TableRow>
-									<TableRow>
-										<TableCell>
-											End date
-										</TableCell>
-										<TableCell className="font-semibold">
-											<Field field="endDate" />
-										</TableCell>
-									</TableRow>
-									<TableRow>
-										<TableCell>
-											Capacity
-										</TableCell>
-										<TableCell className="font-semibold">
-											<Field field="capacity" />
-										</TableCell>
-									</TableRow>
-									<TableRow>
-										<TableCell>
-											Fee
-										</TableCell>
-										<TableCell className="font-semibold">
-											<Field field="fee" />
-										</TableCell>
-									</TableRow>
-									<TableRow>
-										<TableCell>
-											Place
-										</TableCell>
-										<TableCell className="font-semibold">
-											<Field field="place" />
-										</TableCell>
-									</TableRow>
-									<TableRow>
-										<TableCell>
-											What to bring
-										</TableCell>
-										<TableCell className="font-semibold">
-											<Field field="whatToBring" />
-										</TableCell>
-									</TableRow>
-									<TableRow>
-										<TableCell>
-											Whatsapp link
-										</TableCell>
-										<TableCell className="font-semibold">
-											<Field field="whatsappLink" />
-										</TableCell>
-									</TableRow>
-									<TableRow>
-										<TableCell>
-											Registration start date
-										</TableCell>
-										<TableCell className="font-semibold">
-											<Field field="registrationStartDate" />
-										</TableCell>
-									</TableRow>
-									<TableRow>
-										<TableCell>
-											Registration end date
-										</TableCell>
-										<TableCell className="font-semibold">
-											<Field field="registrationEndDate" />
-										</TableCell>
-									</TableRow>
-									<TableRow>
-										<TableCell>
-											Waiting list
-										</TableCell>
-										<TableCell className="font-semibold">
-											<Field field="waitingList" />
-										</TableCell>
-									</TableRow>
-									<TableRow>
-										<TableCell>
-											Meeting point
-										</TableCell>
-										<TableCell className="font-semibold">
-											<Field field="meetingPoint" />
-										</TableCell>
-									</TableRow>
-									<TableRow>
-										<TableCell>
-											Status
-										</TableCell>
-										<TableCell className="font-semibold">
-											<Field field="status" />
-										</TableCell>
-									</TableRow>
-									<TableRow>
-										<TableCell>
-											Private
-										</TableCell>
-										<TableCell className="font-semibold">
-											<Field field="private" />
-										</TableCell>
-									</TableRow>
-									<div data-field="picture" data-label="Picture" />
-								</TableBody>
-							</Table>
-						</TableWrapper>
+						<div className="flex gap-8 flex-col md:flex-row">
+							<div className="w-full gap-8 flex flex-col">
+							<TableWrapper className="bg-gray-50/50 max-w-lg border rounded-md">
+								<Table>
+									<TableBody>
+										<TableRow>
+											<TableCell>
+												Name
+											</TableCell>
+											<TableCell className="text-2xl font-semibold">
+												<Field field="name" />
+											</TableCell>
+										</TableRow>
+										<TableRow>
+											<TableCell>
+												Start date
+											</TableCell>
+											<TableCell className="font-semibold">
+												<Field field="startDate" />
+											</TableCell>
+										</TableRow>
+										<TableRow>
+											<TableCell>
+												End date
+											</TableCell>
+											<TableCell className="font-semibold">
+												<Field field="endDate" />
+											</TableCell>
+										</TableRow>
+										<TableRow>
+											<TableCell>
+												Place
+											</TableCell>
+											<TableCell className="font-semibold">
+												<Field field="place" />
+											</TableCell>
+										</TableRow>
+										<TableRow>
+											<TableCell>
+												Meeting point (if different from place)
+											</TableCell>
+											<TableCell className="font-semibold">
+												<Field field="meetingPoint" />
+											</TableCell>
+										</TableRow>
+										<TableRow>
+											<TableCell>
+												Entrance fee
+											</TableCell>
+											<TableCell className="font-semibold">
+												<Field field="fee" />
+											</TableCell>
+										</TableRow>
+										<TableRow>
+											<TableCell>
+												What to bring
+											</TableCell>
+											<TableCell className="font-semibold">
+												<Field field="whatToBring" />
+											</TableCell>
+										</TableRow>
+										<TableRow>
+											<TableCell>
+												Whatsapp link
+											</TableCell>
+											<TableCell className="font-semibold">
+												<Field field="whatsappLink" />
+											</TableCell>
+										</TableRow>
+										<TableRow>
+											<TableCell>
+												Capacity
+											</TableCell>
+											<TableCell className="font-semibold">
+												<Field field="capacity" />
+											</TableCell>
+										</TableRow>
+										<TableRow>
+											<TableCell>
+												Status
+											</TableCell>
+											<TableCell className="font-semibold">
+												<Field field="status" />
+											</TableCell>
+										</TableRow>
+									</TableBody>
+								</Table>
+							</TableWrapper>
+							</div>
+
+							<div className="w-full flex flex-col gap-4">
+								<TableWrapper className="bg-gray-50/50 h-fit border rounded-md">
+									<Table>
+										<TableRow>
+											<TableCell>
+												Description
+											</TableCell>
+										</TableRow>
+										<TableRow>
+											<TableCell className="font-semibold">
+													<Field field="description" />
+											</TableCell>
+										</TableRow>
+									</Table>
+								</TableWrapper>
+							</div>
+						</div>
 					</EntitySubTree>
 				</div>
 			</Binding>
