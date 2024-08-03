@@ -1,15 +1,16 @@
 import { Menu, MenuItem } from '@app/lib/ui/menu'
 import { Component } from '@contember/interface'
-import { Activity, Book, BookOpen, Building, Calendar, CalendarPlus, CheckSquare, Dot, File, FileText, Globe, Heart, Layout, MessageSquare, PartyPopper, Settings, UserPlus, Users } from 'lucide-react'
+import { Activity, Book, BookOpen, Building, Calendar, CalendarDays, CalendarPlus, CheckSquare, Dot, File, FileText, Globe, Heart, Layout, MessageSquare, PartyPopper, Settings, UserPlus, Users } from 'lucide-react'
 
 export const Navigation = Component(() => <Menu>
-	<MenuItem label="Upcoming Events" icon={<Calendar />} to="events" />
+	<MenuItem label="Upcoming Events" icon={<CalendarDays />} to="events" />
+	<MenuItem label="Events calendar" icon={<Calendar />} to="calendar" />
 	<MenuItem label="Buddy" icon={<CheckSquare />} to="buddyTasks" />
 	<MenuItem label="Events" icon={<Calendar />} to="events" />
 	<MenuItem label="N2N" icon={<PartyPopper />} to="n2nParties" />
 	<MenuItem label="Users" icon={<Users />} to="users" />
 
-	
+
 	{/* <MenuItem label="Settings" icon={<Settings />}>
 		<MenuItem label="Universities" icon={<Building />} to="universities" />
 		<MenuItem label="N2N Clubs" to="clubs" />
