@@ -8,7 +8,6 @@ import { EntitySubTree, identityEnvironmentExtension, RedirectOnPersist, useIden
 
 
 export default () => {
-
 		const identity = useIdentity()
         const personId = identity?.person?.id
 

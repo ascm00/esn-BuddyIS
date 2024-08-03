@@ -41,8 +41,13 @@ export const InitialUserForm = Component(
 		const universityName = currentUser.getField<string>('university.name').value;
 		const facultyName = currentUser.getField<string>('faculty.name').value;
 		const countryName = currentUser.getField<string>('country.name').value;
-        console.log(surname)
-		if(!surname || !xname || !phoneNumber || !esnCardId || !firstName || !universityName || !facultyName || !countryName) {
+		console.log(currentUser)
+
+		if(!currentUser){
+			return (
+				window.location.href = '/app/events'	
+			)
+		} else if (!surname || !xname || !phoneNumber || !esnCardId || !firstName || !universityName || !facultyName || !countryName) {
 			return (
 				window.location.href = '/app/initial-login-page'
 			)

@@ -180,6 +180,7 @@ export type Event <OverRelation extends string | never = never> = {
 		meetingPoint: string | null
 		status: eventStatus | null
 		private: boolean | null
+		allowRegistrationWithoutPayment: boolean | null
 	}
 	hasOne: {
 		section: Section

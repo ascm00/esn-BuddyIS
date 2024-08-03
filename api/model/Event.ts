@@ -43,5 +43,6 @@ export class Event {
 	contactPerson = c.oneHasOne(Person, 'organizedEvents')
 	semester = c.manyHasOne(Semester, 'events').setNullOnDelete()
 	private = c.boolColumn()
+	allowRegistrationWithoutPayment = c.boolColumn()
 	picture = c.manyHasOne(Image, 'eventPicture')
 }

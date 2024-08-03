@@ -321,6 +321,9 @@ export const ContemberClientNames: SchemaNames = {
         "private": {
           "type": "column"
         },
+        "allowRegistrationWithoutPayment": {
+          "type": "column"
+        },
         "picture": {
           "type": "one",
           "entity": "Image"
@@ -343,7 +346,8 @@ export const ContemberClientNames: SchemaNames = {
         "waitingList",
         "meetingPoint",
         "status",
-        "private"
+        "private",
+        "allowRegistrationWithoutPayment"
       ]
     },
     "Faculty": {
