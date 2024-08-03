@@ -148,9 +148,9 @@ export default () => {
 									</Table>
 								</TableWrapper>
 								<div className='flex gap-6 flex-col md:flex-row'>
-									<Button>Register & pay</Button>
+									<Button>Register & Pay</Button>
 									<If condition="[allowRegistrationWithoutPayment=true]">
-										<Button>Register without payment</Button>
+										<Button>Register Without Payment</Button>
 									</If>
 									<Todo>Make the buttons functional. Comgate integration</Todo>
 								</div>
