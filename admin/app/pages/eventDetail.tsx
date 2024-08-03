@@ -4,6 +4,7 @@ import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
 import { Table, TableBody, TableCell, TableRow, TableWrapper } from '@app/lib/ui/table'
 import { EntitySubTree, Field, Link } from '@contember/interface'
+import { formatDateTime } from '@app/lib/utils/formatting'
 
 export default () => {
 	return (
@@ -39,18 +40,34 @@ export default () => {
 										</TableRow>
 										<TableRow>
 											<TableCell>
-												Start date
+												Event from
 											</TableCell>
 											<TableCell className="font-semibold">
-												<Field field="startDate" />
+												<Field field="startDate" format={formatDateTime} />
 											</TableCell>
 										</TableRow>
 										<TableRow>
 											<TableCell>
-												End date
+												Event to
 											</TableCell>
 											<TableCell className="font-semibold">
-												<Field field="endDate" />
+												<Field field="endDate" format={formatDateTime} />
+											</TableCell>
+										</TableRow>
+										<TableRow>
+											<TableCell>
+												Registration starts
+											</TableCell>
+											<TableCell className="font-semibold">
+												<Field field="registrationStartDate" format={formatDateTime} />
+											</TableCell>
+										</TableRow>
+										<TableRow>
+											<TableCell>
+												Registration ends
+											</TableCell>
+											<TableCell className="font-semibold">
+												<Field field="registrationEndDate" format={formatDateTime} />
 											</TableCell>
 										</TableRow>
 										<TableRow>

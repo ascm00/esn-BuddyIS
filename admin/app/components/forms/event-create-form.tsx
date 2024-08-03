@@ -3,6 +3,7 @@ import { identityEnvironmentExtension } from '@contember/admin'
 import { ImageField } from '@app/lib/plugins/image/ImageField'
 import { Component, Field } from '@contember/interface'
 import { ConnectUser } from '../ConnectUser'
+import { Todo } from '@app/lib/dev'
 
 export const EventCreateForm = Component(() => <FormLayout>
 	<div>
@@ -60,7 +61,7 @@ export const EventCreateForm = Component(() => <FormLayout>
 		<h2 className="text-2xl font-semibold">Participants info</h2>
 		<hr className="my-2 border-gray-200" />
 	</div>
-	{/* Potřeba udělat možnosti pro koho je event: např Czech Buddies, všichni */}
-	<CheckboxField field="allowRegistrationWithoutPayment" label="Allow registration without payment" />
+	<CheckboxField field="allowRegistrationWithoutPayment" label="Allow registration without payment" defaultValue="false"/>
 	<h2 className="text-base font-semibold">Who can register:</h2>
+	<Todo>Potřeba udělat možnosti pro koho je event: např Czech Buddies, všichni. Budou checkboxy pro jednotlivé možnosti</Todo>
 </FormLayout>)
