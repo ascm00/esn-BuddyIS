@@ -1,0 +1,16 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "createColumn",
+			"entityName": "Person",
+			"field": {
+				"name": "emailForInfo",
+				"columnName": "email_for_info",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		}
+	]
+}

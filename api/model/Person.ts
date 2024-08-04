@@ -19,6 +19,7 @@ export class Person {
 	lastLoginDate = c.dateTimeColumn()
 	phoneNumber = c.stringColumn()
 	university = c.manyHasOne(University, 'users').setNullOnDelete()
+	emailForInfo = c.stringColumn()
 	esnCardId = c.stringColumn()
 	surname = c.stringColumn()
 	xname = c.stringColumn()
