@@ -3,11 +3,12 @@ import { BackButton } from '@app/lib/buttons'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
 import { Table, TableBody, TableCell, TableRow, TableWrapper } from '@app/lib/ui/table'
-import { EntitySubTree, Field, HasOne, If, Link } from '@contember/interface'
+import { EntitySubTree, Field, HasOne, HasRole, If, Link } from '@contember/interface'
 import { formatDateTime } from '@app/lib/utils/formatting'
 import { Todo } from '@app/lib/dev'
 import { RichTextRendererField } from '@app/lib/plugins/rich-text/renderer/RichTextRendererField'
 import { renderElement, renderLeaf } from '@app/lib/plugins/rich-text/renderer/renderers'
+import { DataGrid, DataGridColumn, DataGridLoader, DataGridQueryFilter, DataGridTable, DataGridToolbar } from '@app/lib/datagrid'
 
 export default () => {
 	return (
@@ -157,10 +158,33 @@ export default () => {
 									<If condition="[allowRegistrationWithoutPayment=true]">
 										<Button>Register Without Payment</Button>
 									</If>
-									<Todo>Make the buttons functional. Comgate integration. Naformátovat text</Todo>
 								</div>
+								<Todo>Make the buttons functional. Comgate integration. Naformátovat text</Todo>
 							</div>
 						</div>
+						<HasRole role={roles => roles.has('admin') || roles.has('esnMemberRole')}>
+							<div className="flex flex-col gap-4">
+								<div className="flex justify-between">
+									<div className="text-xl font-bold">Participants</div>
+								</div>
+								<DataGrid entities="Person[participatedEvents.id = $id]" filteringStateStorage={'session'}>
+									<DataGridToolbar>
+										<DataGridQueryFilter />
+									</DataGridToolbar>
+									<DataGridLoader>
+										<DataGridTable>
+											<DataGridColumn>
+												<div className="flex gap-4">
+													<Link to="userDetail(id: $entity.id)">
+														<Button>Detail</Button>
+													</Link>
+												</div>
+											</DataGridColumn>
+										</DataGridTable>
+									</DataGridLoader>
+								</DataGrid>
+							</div>
+						</HasRole>
 					</EntitySubTree>
 				</div>
 			</Binding>
