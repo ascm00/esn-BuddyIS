@@ -61,7 +61,7 @@ const EventCard = Component(() => (
 		</CardHeader>
 		<CardContent>
             
-            <div className='max-w-[70%] mx-auto'>
+            <div className='max-w-[70%] mx-auto pb-4'>
                 <ImageFieldView width={100} height={100}/>
             </div>
 			<div className={'prose'}>
@@ -69,7 +69,7 @@ const EventCard = Component(() => (
 			</div>
 		</CardContent>
 		<CardFooter>
-			<div className={'flex flex-col gap-6 w-full'}>
+			{/* <div className={'flex flex-col gap-6 w-full'}>
 				<div>
 					<div>
 						What to bring:{' '}
@@ -79,7 +79,7 @@ const EventCard = Component(() => (
 					</div>
 				</div>
 
-			</div>
+			</div> */}
 		</CardFooter>
 	</Card>
 ))
