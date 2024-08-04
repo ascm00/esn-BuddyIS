@@ -665,6 +665,9 @@ export const ContemberClientNames: SchemaNames = {
           "type": "one",
           "entity": "University"
         },
+        "emailForInfo": {
+          "type": "column"
+        },
         "esnCardId": {
           "type": "column"
         },
@@ -728,6 +731,7 @@ export const ContemberClientNames: SchemaNames = {
         "registrationDate",
         "lastLoginDate",
         "phoneNumber",
+        "emailForInfo",
         "esnCardId",
         "surname",
         "xname",

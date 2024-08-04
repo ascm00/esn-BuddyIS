@@ -423,6 +423,7 @@ export type Person <OverRelation extends string | never = never> = {
 		registrationDate: string | null
 		lastLoginDate: string | null
 		phoneNumber: string | null
+		emailForInfo: string | null
 		esnCardId: string | null
 		surname: string | null
 		xname: string | null
