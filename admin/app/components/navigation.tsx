@@ -1,12 +1,14 @@
 import { Menu, MenuItem } from '@app/lib/ui/menu'
-import { Component } from '@contember/interface'
-import { Activity, Book, BookOpen, Building, Calendar, CalendarDays, CalendarPlus, CheckSquare, Dot, File, FileText, Globe, Heart, Layout, MessageSquare, PartyPopper, Settings, UserPlus, Users } from 'lucide-react'
+import { Component, HasRole } from '@contember/interface'
+import { Activity, Book, BookOpen, Building, Calendar, CalendarDays, CalendarPlus, CheckSquare, Dot, File, FileText, Globe, Heart, Home, Layout, MessageSquare, PartyPopper, Settings, UserPlus, Users } from 'lucide-react'
 
 export const Navigation = Component(() => <Menu>
-	<MenuItem label="Upcoming Events" icon={<CalendarDays />} to="events" />
+	<MenuItem label="Home" icon={<Home />} to="eventFeed" />
 	<MenuItem label="Events calendar" icon={<Calendar />} to="calendar" />
+	<HasRole role={roles => roles.has('admin') || roles.has('esnMemberRole')}>
+		<MenuItem label="Events" icon={<Calendar />} to="events" />
+	</HasRole>
 	<MenuItem label="Buddy" icon={<CheckSquare />} to="buddyTasks" />
-	<MenuItem label="Events" icon={<Calendar />} to="events" />
 	<MenuItem label="N2N" icon={<PartyPopper />} to="n2nParties" />
 	<MenuItem label="Users" icon={<Users />} to="users" />
 

@@ -54,7 +54,7 @@ export const EventCreateForm = Component(() => <FormLayout>
 		<p className="text-xs text-gray-500">Choose a section that organizes this event</p>
 	</div>
 	<InputField field="capacity" label="Capacity *" required />
-	<InputField field="waitingList" label="Waiting list" defaultValue="0" required/>
+	<InputField field="waitingList" label="Waiting list"/>
 	<InputField field="fee" label="Entrance fee (CZK) *" required/>
 	<InputField field="registrationStartDate" label="Registration start datetime *" />
 	<InputField field="registrationEndDate" label="Registration end date *" />
@@ -63,7 +63,7 @@ export const EventCreateForm = Component(() => <FormLayout>
 		<h2 className="text-2xl font-semibold">Participants info</h2>
 		<hr className="my-2 border-gray-200" />
 	</div>
-	<CheckboxField field="allowRegistrationWithoutPayment" label="Allow registration without payment" defaultValue="false"/>
+	<CheckboxField field="allowRegistrationWithoutPayment" label="Allow registration without payment"/>
 	<h2 className="text-base font-semibold">Who can register:</h2>
 	<Todo>Potřeba udělat možnosti pro koho je event: např Czech Buddies, všichni. Budou checkboxy pro jednotlivé možnosti</Todo>
 </FormLayout>)
