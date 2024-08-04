@@ -7804,6 +7804,7 @@ __metadata:
   resolution: "root-workspace-0b6124@workspace:."
   dependencies:
     "@biomejs/biome": "npm:^1.7.1"
+    "@buddy-is/client": "workspace:^"
     "@contember/admin": "npm:^1.2.10"
     "@contember/client-content": "npm:2.0.0-alpha.5"
     "@contember/client-content-generator": "npm:2.0.0-alpha.5"

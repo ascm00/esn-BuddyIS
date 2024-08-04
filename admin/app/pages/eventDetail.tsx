@@ -3,9 +3,11 @@ import { BackButton } from '@app/lib/buttons'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
 import { Table, TableBody, TableCell, TableRow, TableWrapper } from '@app/lib/ui/table'
-import { EntitySubTree, Field, If, Link } from '@contember/interface'
+import { EntitySubTree, Field, HasOne, If, Link } from '@contember/interface'
 import { formatDateTime } from '@app/lib/utils/formatting'
 import { Todo } from '@app/lib/dev'
+import { RichTextRendererField } from '@app/lib/plugins/rich-text/renderer/RichTextRendererField'
+import { renderElement, renderLeaf } from '@app/lib/plugins/rich-text/renderer/renderers'
 
 export default () => {
 	return (
@@ -142,7 +144,10 @@ export default () => {
 										</TableRow>
 										<TableRow>
 											<TableCell className="font-semibold">
-													<Field field="description" />
+												{/* <HasOne field="description">
+													<Field field="data" />
+												</HasOne> */}
+												<RichTextRendererField sourceField={'description.data'} renderElement={renderElement} renderLeaf={renderLeaf} />
 											</TableCell>
 										</TableRow>
 									</Table>
@@ -152,7 +157,7 @@ export default () => {
 									<If condition="[allowRegistrationWithoutPayment=true]">
 										<Button>Register Without Payment</Button>
 									</If>
-									<Todo>Make the buttons functional. Comgate integration</Todo>
+									<Todo>Make the buttons functional. Comgate integration. Naformátovat text</Todo>
 								</div>
 							</div>
 						</div>

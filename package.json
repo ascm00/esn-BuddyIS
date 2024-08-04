@@ -29,6 +29,7 @@
     "vite-tsconfig-paths": "^4.3.1"
   },
   "dependencies": {
+    "@buddy-is/client": "workspace:^",
     "@contember/admin": "^1.2.10",
     "@contember/schema": "1.4.0-rc.3",
     "@contember/schema-definition": "1.4.0-rc.3",
