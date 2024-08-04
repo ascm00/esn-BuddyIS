@@ -1,0 +1,114 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "removeField",
+			"entityName": "Event",
+			"fieldName": "description"
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "Content",
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "content",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"columnType": "uuid",
+						"nullable": false,
+						"type": "Uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				}
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Content",
+			"field": {
+				"name": "createdAt",
+				"columnName": "created_at",
+				"columnType": "timestamptz",
+				"nullable": false,
+				"type": "DateTime",
+				"default": "now"
+			},
+			"fillValue": "now"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Content",
+			"field": {
+				"name": "json",
+				"columnName": "json",
+				"columnType": "jsonb",
+				"nullable": true,
+				"type": "Json"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "Event",
+			"owningSide": {
+				"type": "OneHasOne",
+				"name": "description",
+				"target": "Content",
+				"joiningColumn": {
+					"columnName": "description_id",
+					"onDelete": "restrict"
+				},
+				"nullable": true,
+				"inversedBy": "eventDescription"
+			},
+			"inverseSide": {
+				"type": "OneHasOne",
+				"name": "eventDescription",
+				"target": "Event",
+				"ownedBy": "description",
+				"nullable": true
+			}
+		},
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/Event/operations/read/description",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Event/operations/create/description",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Event/operations/update/description",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Event/operations/read/description",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/public/entities/Event/operations/read/description",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/Event/operations/read/description",
+					"value": true
+				}
+			]
+		}
+	]
+}

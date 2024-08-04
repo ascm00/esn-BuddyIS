@@ -5,6 +5,7 @@ import { Section } from './Section'
 import { Semester } from './Semester'
 import { Image } from './Image'
 import { Person } from './Person'
+import { Content } from './Content'
 
 
 @c.Allow(internationalStudentRole, {
@@ -25,7 +26,7 @@ import { Person } from './Person'
 export class Event {
 	createdAt = c.dateTimeColumn().notNull().default('now')
 	name = c.stringColumn().notNull()
-	description = c.stringColumn()
+	description = c.oneHasOne(Content, 'eventDescription')
 	startDate = c.dateTimeColumn().notNull()
 	endDate = c.dateTimeColumn().notNull()
 	capacity = c.intColumn()
