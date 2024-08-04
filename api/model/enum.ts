@@ -6,3 +6,4 @@ export const applicationStatus = c.createEnum('enabled', 'disabled', 'cancelled'
 export const preferredSex = c.createEnum('man', 'woman', 'dontCare')
 export const rating = c.createEnum('one', 'three', 'four', 'five', 'two')
 export const applicationCzResult = c.createEnum('accepted', 'declined')
+export const contentReferenceTypeEnum = c.createEnum('example')

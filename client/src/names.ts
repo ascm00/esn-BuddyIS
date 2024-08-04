@@ -220,6 +220,56 @@ export const ContemberClientNames: SchemaNames = {
         "name"
       ]
     },
+    "Content": {
+      "name": "Content",
+      "fields": {
+        "id": {
+          "type": "column"
+        },
+        "createdAt": {
+          "type": "column"
+        },
+        "data": {
+          "type": "column"
+        },
+        "references": {
+          "type": "many",
+          "entity": "ContentReference"
+        },
+        "eventDescription": {
+          "type": "one",
+          "entity": "Event"
+        }
+      },
+      "scalars": [
+        "id",
+        "createdAt",
+        "data"
+      ]
+    },
+    "ContentReference": {
+      "name": "ContentReference",
+      "fields": {
+        "id": {
+          "type": "column"
+        },
+        "createdAt": {
+          "type": "column"
+        },
+        "type": {
+          "type": "column"
+        },
+        "content": {
+          "type": "one",
+          "entity": "Content"
+        }
+      },
+      "scalars": [
+        "id",
+        "createdAt",
+        "type"
+      ]
+    },
     "Country": {
       "name": "Country",
       "fields": {
@@ -264,7 +314,8 @@ export const ContemberClientNames: SchemaNames = {
           "type": "column"
         },
         "description": {
-          "type": "column"
+          "type": "one",
+          "entity": "Content"
         },
         "startDate": {
           "type": "column"
@@ -333,7 +384,6 @@ export const ContemberClientNames: SchemaNames = {
         "id",
         "createdAt",
         "name",
-        "description",
         "startDate",
         "endDate",
         "capacity",

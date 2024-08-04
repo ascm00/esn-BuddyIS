@@ -1,6 +1,7 @@
 import type { applicationCzResult } from './enums'
 import type { applicationFrStatus } from './enums'
 import type { applicationStatus } from './enums'
+import type { contentReferenceTypeEnum } from './enums'
 import type { eventStatus } from './enums'
 import type { preferredSex } from './enums'
 import type { rating } from './enums'
@@ -128,6 +129,43 @@ export type Club <OverRelation extends string | never = never> = {
 		partiesByHours: { entity: N2nParty; by: {hours: N2nHour['unique']}  }
 	}
 }
+export type Content <OverRelation extends string | never = never> = {
+	name: 'Content'
+	unique:
+		| Omit<{ id: string}, OverRelation>
+		| Omit<{ references: ContentReference['unique']}, OverRelation>
+		| Omit<{ eventDescription: Event['unique']}, OverRelation>
+	columns: {
+		id: string
+		createdAt: string
+		data: JSONValue | null
+	}
+	hasOne: {
+		eventDescription: Event
+	}
+	hasMany: {
+		references: ContentReference<'content'>
+	}
+	hasManyBy: {
+	}
+}
+export type ContentReference <OverRelation extends string | never = never> = {
+	name: 'ContentReference'
+	unique:
+		| Omit<{ id: string}, OverRelation>
+	columns: {
+		id: string
+		createdAt: string
+		type: contentReferenceTypeEnum | null
+	}
+	hasOne: {
+		content: Content
+	}
+	hasMany: {
+	}
+	hasManyBy: {
+	}
+}
 export type Country <OverRelation extends string | never = never> = {
 	name: 'Country'
 	unique:
@@ -161,12 +199,12 @@ export type Event <OverRelation extends string | never = never> = {
 	name: 'Event'
 	unique:
 		| Omit<{ id: string}, OverRelation>
+		| Omit<{ description: Content['unique']}, OverRelation>
 		| Omit<{ contactPerson: Person['unique']}, OverRelation>
 	columns: {
 		id: string
 		createdAt: string
 		name: string
-		description: string | null
 		startDate: string
 		endDate: string
 		capacity: number | null
@@ -183,6 +221,7 @@ export type Event <OverRelation extends string | never = never> = {
 		allowRegistrationWithoutPayment: boolean | null
 	}
 	hasOne: {
+		description: Content
 		section: Section
 		contactPerson: Person
 		semester: Semester
@@ -264,6 +303,7 @@ export type Image <OverRelation extends string | never = never> = {
 		userProfilePictureByInternationalBuddyPair: { entity: Person; by: {internationalBuddyPair: BuddyPair['unique']}  }
 		userProfilePictureByApplications: { entity: Person; by: {applications: ApplicationCz['unique']}  }
 		userProfilePictureByApplicationsFr: { entity: Person; by: {applicationsFr: ApplicationFr['unique']}  }
+		eventPictureByDescription: { entity: Event; by: {description: Content['unique']}  }
 		eventPictureByContactPerson: { entity: Event; by: {contactPerson: Person['unique']}  }
 	}
 }
@@ -425,6 +465,7 @@ export type Section <OverRelation extends string | never = never> = {
 		events: Event<'section'>
 	}
 	hasManyBy: {
+		eventsByDescription: { entity: Event; by: {description: Content['unique']}  }
 		eventsByContactPerson: { entity: Event; by: {contactPerson: Person['unique']}  }
 	}
 }
@@ -452,6 +493,7 @@ export type Semester <OverRelation extends string | never = never> = {
 		parties: N2nParty<'semester'>
 	}
 	hasManyBy: {
+		eventsByDescription: { entity: Event; by: {description: Content['unique']}  }
 		eventsByContactPerson: { entity: Event; by: {contactPerson: Person['unique']}  }
 		applicationsFrByPerson: { entity: ApplicationFr; by: {person: Person['unique']}  }
 		applicationsFrByLimitations: { entity: ApplicationFr; by: {limitations: Limitations['unique']}  }
@@ -531,6 +573,8 @@ export type ContemberClientEntities = {
 	BuddyPair: BuddyPair
 	BuddyTask: BuddyTask
 	Club: Club
+	Content: Content
+	ContentReference: ContentReference
 	Country: Country
 	Event: Event
 	Faculty: Faculty

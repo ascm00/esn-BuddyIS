@@ -9,6 +9,8 @@ export type applicationStatus =
 	 | "enabled"
 	 | "disabled"
 	 | "cancelled"
+export type contentReferenceTypeEnum = 
+	 | "example"
 export type eventStatus = 
 	 | "open"
 	 | "cancelled"
