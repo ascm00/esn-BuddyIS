@@ -35,6 +35,7 @@
     "@contember/schema-definition": "1.4.0-rc.3",
     "@contember/schema-utils": "1.4.0-rc.3",
     "@radix-ui/react-radio-group": "^1.2.0",
+    "clsx": "^2.1.1",
     "downshift": "^8.3.1",
     "luxon": "^3.4.4",
     "react-big-calendar": "^1.13.1",

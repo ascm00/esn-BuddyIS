@@ -5466,7 +5466,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"clsx@npm:^2.0.0":
+"clsx@npm:^2.0.0, clsx@npm:^2.1.1":
   version: 2.1.1
   resolution: "clsx@npm:2.1.1"
   checksum: 10/cdfb57fa6c7649bbff98d9028c2f0de2f91c86f551179541cf784b1cfdc1562dcb951955f46d54d930a3879931a980e32a46b598acaea274728dbe068deca919
@@ -7815,6 +7815,7 @@ __metadata:
     "@radix-ui/react-radio-group": "npm:^1.2.0"
     "@types/luxon": "npm:^3"
     "@types/react-big-calendar": "npm:^1"
+    clsx: "npm:^2.1.1"
     downshift: "npm:^8.3.1"
     luxon: "npm:^3.4.4"
     react-big-calendar: "npm:^1.13.1"
