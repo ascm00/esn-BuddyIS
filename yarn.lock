@@ -541,6 +541,7 @@ __metadata:
     "@vitejs/plugin-react": "npm:^4.2.1"
     autoprefixer: "npm:^10"
     class-variance-authority: "npm:^0.7.0"
+    clsx: "npm:^1.2.1"
     lucide-react: "npm:^0.377.0"
     postcss: "npm:^8"
     qrcode-generator: "npm:^1.4.4"
