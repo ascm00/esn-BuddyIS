@@ -74,10 +74,10 @@ export const EventEditForm = Component(() => <FormLayout>
 	<InputField field="registrationEndDate" label="Registration end date *" />
 
 	<div className='pt-4'>
-		<h2 className="text-2xl font-semibold">Participants info</h2>
+		<h2 className="text-2xl font-semibold">Participants</h2>
 		<hr className="my-2 border-gray-200" />
 	</div>
-	<CheckboxField field="allowRegistrationWithoutPayment" label="Allow registration without payment"/>
+	<TextareaField field="refundPolicy" label="Refund policy" />
 	<h2 className="text-base font-semibold">Who can register:</h2>
 	<Todo>Potřeba udělat možnosti pro koho je event: např Czech Buddies, všichni. Budou checkboxy pro jednotlivé možnosti</Todo>
 </FormLayout>)
