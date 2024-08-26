@@ -56,7 +56,6 @@ export const CreateEntityModalButton = Component<CreateEntityModalButtonProps>(
 						button
 					) : (
 						<Button className="flex gap-1.5 px-4">
-							<PlusCircle className="w-4" />
 							{buttonLabel || 'Create'}
 						</Button>
 					)}
@@ -72,10 +71,10 @@ export const CreateEntityModalButton = Component<CreateEntityModalButtonProps>(
 							{createEntityForm}
 							{(redirectOnPersistTo || refreshOnPersist) && <RedirectOnPersist to={redirectOnPersistTo ?? req} />}
 							<AlertDialogFooter>
-								<AlertDialogCancel>Cancel</AlertDialogCancel>
+								<AlertDialogCancel>Delete</AlertDialogCancel>
 								<FeedbackTrigger>
 									<PersistTrigger>
-										<AlertDialogAction>{saveButtonLabel ?? 'Create'}</AlertDialogAction>
+										<AlertDialogAction>{saveButtonLabel ?? 'Add'}</AlertDialogAction>
 									</PersistTrigger>
 								</FeedbackTrigger>
 							</AlertDialogFooter>
