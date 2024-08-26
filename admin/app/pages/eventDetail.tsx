@@ -9,6 +9,8 @@ import { Todo } from '@app/lib/dev'
 import { RichTextRendererField } from '@app/lib/plugins/rich-text/renderer/RichTextRendererField'
 import { renderElement, renderLeaf } from '@app/lib/plugins/rich-text/renderer/renderers'
 import { DataGrid, DataGridColumn, DataGridLoader, DataGridQueryFilter, DataGridTable, DataGridToolbar } from '@app/lib/datagrid'
+import { CreateEntityModalButton } from '@app/lib/buttons/createEntityModalButtons'
+import { RegistrationCreateForm } from '@app/components/forms/registration-create-form'
 
 export default () => {
 	return (
@@ -154,10 +156,18 @@ export default () => {
 									</Table>
 								</TableWrapper>
 								<div className='flex gap-6 flex-col md:flex-row'>
-									<Button>Register & Pay</Button>
-									<If condition="[allowRegistrationWithoutPayment=true]">
-										<Button>Register Without Payment</Button>
-									</If>
+									<CreateEntityModalButton
+										entityName="EventRegistration"
+										buttonLabel="Register & Pay"
+										saveButtonLabel="Continue to payment"
+										refreshOnPersist
+										createEntityForm={
+											<>
+												<RegistrationCreateForm />
+											</>
+										}
+										dialogProps={{ className: 'overflow-y-auto max-h-screen' }}
+									/>
 								</div>
 								<Todo>Make the buttons functional. Comgate integration. Naformátovat text</Todo>
 							</div>
@@ -167,7 +177,8 @@ export default () => {
 								<div className="flex justify-between">
 									<div className="text-xl font-bold">Participants</div>
 								</div>
-								<DataGrid entities="Person[participatedEvents.id = $id]" filteringStateStorage={'session'}>
+								<Todo>add participants data grid - eventRegistration with information about participants</Todo>
+								{/* <DataGrid entities="Person[participatedEvents.id = $id]" filteringStateStorage={'session'}>
 									<DataGridToolbar>
 										<DataGridQueryFilter />
 									</DataGridToolbar>
@@ -182,7 +193,7 @@ export default () => {
 											</DataGridColumn>
 										</DataGridTable>
 									</DataGridLoader>
-								</DataGrid>
+								</DataGrid> */}
 							</div>
 						</HasRole>
 					</EntitySubTree>

@@ -1,6 +1,29 @@
 import { SchemaNames } from '@contember/client-content'
 export const ContemberClientNames: SchemaNames = {
   "entities": {
+    "Allergy": {
+      "name": "Allergy",
+      "fields": {
+        "id": {
+          "type": "column"
+        },
+        "createdAt": {
+          "type": "column"
+        },
+        "name": {
+          "type": "column"
+        },
+        "registrations": {
+          "type": "many",
+          "entity": "EventRegistration"
+        }
+      },
+      "scalars": [
+        "id",
+        "createdAt",
+        "name"
+      ]
+    },
     "ApplicationCz": {
       "name": "ApplicationCz",
       "fields": {
@@ -301,6 +324,29 @@ export const ContemberClientNames: SchemaNames = {
         "name"
       ]
     },
+    "DietaryRestrictions": {
+      "name": "DietaryRestrictions",
+      "fields": {
+        "id": {
+          "type": "column"
+        },
+        "createdAt": {
+          "type": "column"
+        },
+        "name": {
+          "type": "column"
+        },
+        "registrations": {
+          "type": "many",
+          "entity": "EventRegistration"
+        }
+      },
+      "scalars": [
+        "id",
+        "createdAt",
+        "name"
+      ]
+    },
     "Event": {
       "name": "Event",
       "fields": {
@@ -323,15 +369,27 @@ export const ContemberClientNames: SchemaNames = {
         "endDate": {
           "type": "column"
         },
+        "refundPolicy": {
+          "type": "column"
+        },
+        "mandatoryESNcard": {
+          "type": "column"
+        },
+        "dietaryRestrictions": {
+          "type": "column"
+        },
+        "allergies": {
+          "type": "column"
+        },
         "capacity": {
           "type": "column"
         },
         "fee": {
           "type": "column"
         },
-        "participants": {
+        "registrations": {
           "type": "many",
-          "entity": "Person"
+          "entity": "EventRegistration"
         },
         "place": {
           "type": "column"
@@ -386,6 +444,10 @@ export const ContemberClientNames: SchemaNames = {
         "name",
         "startDate",
         "endDate",
+        "refundPolicy",
+        "mandatoryESNcard",
+        "dietaryRestrictions",
+        "allergies",
         "capacity",
         "fee",
         "place",
@@ -398,6 +460,45 @@ export const ContemberClientNames: SchemaNames = {
         "status",
         "private",
         "allowRegistrationWithoutPayment"
+      ]
+    },
+    "EventRegistration": {
+      "name": "EventRegistration",
+      "fields": {
+        "id": {
+          "type": "column"
+        },
+        "createdAt": {
+          "type": "column"
+        },
+        "paid": {
+          "type": "column"
+        },
+        "note": {
+          "type": "column"
+        },
+        "event": {
+          "type": "one",
+          "entity": "Event"
+        },
+        "person": {
+          "type": "one",
+          "entity": "Person"
+        },
+        "allergies": {
+          "type": "many",
+          "entity": "Allergy"
+        },
+        "dietaryRestrictions": {
+          "type": "many",
+          "entity": "DietaryRestrictions"
+        }
+      },
+      "scalars": [
+        "id",
+        "createdAt",
+        "paid",
+        "note"
       ]
     },
     "Faculty": {
@@ -691,10 +792,6 @@ export const ContemberClientNames: SchemaNames = {
         "firstName": {
           "type": "column"
         },
-        "participatedEvents": {
-          "type": "many",
-          "entity": "Event"
-        },
         "organizedEvents": {
           "type": "one",
           "entity": "Event"
@@ -722,6 +819,10 @@ export const ContemberClientNames: SchemaNames = {
         "profilePicture": {
           "type": "one",
           "entity": "Image"
+        },
+        "registrations": {
+          "type": "many",
+          "entity": "EventRegistration"
         }
       },
       "scalars": [

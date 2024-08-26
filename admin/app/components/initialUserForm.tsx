@@ -4,6 +4,7 @@ import {
 	Field,
 	HasOne,
 	identityEnvironmentExtension,
+	RedirectOnPersist,
 	StaticRender,
 	useEntity,
 	useEntityBeforePersist,
@@ -27,6 +28,7 @@ import { PersistButton, useProjectSlug } from '@contember/admin';
 import PersonCreate from '@app/pages/personCreate';
 import { UserEditForm } from './forms/user-edit-form';
 import { Toast } from '@app/lib/toast';
+import InitialLoginPage from '@app/pages/initialLoginPage';
 
 
 export const InitialUserForm = Component(
@@ -41,7 +43,6 @@ export const InitialUserForm = Component(
 		const universityName = currentUser.getField<string>('university.name').value;
 		const facultyName = currentUser.getField<string>('faculty.name').value;
 		const countryName = currentUser.getField<string>('country.name').value;
-		console.log(currentUser)
 
 		if(!currentUser){
 			return (
@@ -50,10 +51,11 @@ export const InitialUserForm = Component(
 		} else if (!surname || !xname || !phoneNumber || !esnCardId || !firstName || !universityName || !facultyName || !countryName) {
 			return (
 				window.location.href = '/app/initial-login-page'
+				// <InitialLoginPage />
 			)
 		} else {
 			return (
-				window.location.href = '/app/events'	
+				window.location.href = '/app/events'
 			)
 		}
 	},
