@@ -11,6 +11,7 @@ import { renderElement, renderLeaf } from '@app/lib/plugins/rich-text/renderer/r
 import { DataGrid, DataGridColumn, DataGridLoader, DataGridQueryFilter, DataGridTable, DataGridToolbar } from '@app/lib/datagrid'
 import { CreateEntityModalButton } from '@app/lib/buttons/createEntityModalButtons'
 import { RegistrationCreateForm } from '@app/components/forms/registration-create-form'
+import { DollarSign } from 'lucide-react'
 
 export default () => {
 	return (
@@ -42,6 +43,14 @@ export default () => {
 											</TableCell>
 											<TableCell className="text-2xl font-semibold">
 												<Field field="name" />
+											</TableCell>
+										</TableRow>
+										<TableRow>
+											<TableCell>
+												Contact person
+											</TableCell>
+											<TableCell className="font-semibold">
+												<Field field="contactPerson.firstName" /> {' '} <Field field="contactPerson.surname" /> <br></br> <Field field="contactPerson.tenantPerson.email" /> <br></br> <Field field="contactPerson.phoneNumber" />
 											</TableCell>
 										</TableRow>
 										<TableRow>
@@ -138,6 +147,20 @@ export default () => {
 							</div>
 
 							<div className="w-full flex flex-col gap-4">
+							<TableWrapper className="bg-gray-50/50 h-fit border rounded-md">
+									<Table>
+										<TableRow>
+											<TableCell>
+												Refund policy
+											</TableCell>
+										</TableRow>
+										<TableRow>
+											<TableCell className="font-semibold">
+												<Field field={'refundPolicy'} />
+											</TableCell>
+										</TableRow>
+									</Table>
+								</TableWrapper>
 								<TableWrapper className="bg-gray-50/50 h-fit border rounded-md">
 									<Table>
 										<TableRow>
