@@ -11,6 +11,23 @@ export type JSONValue = JSONPrimitive | JSONObject | JSONArray
 export type JSONObject = { readonly [K in string]?: JSONValue }
 export type JSONArray = readonly JSONValue[]
 
+export type Allergy <OverRelation extends string | never = never> = {
+	name: 'Allergy'
+	unique:
+		| Omit<{ id: string}, OverRelation>
+	columns: {
+		id: string
+		createdAt: string
+		name: string | null
+	}
+	hasOne: {
+	}
+	hasMany: {
+		registrations: EventRegistration
+	}
+	hasManyBy: {
+	}
+}
 export type ApplicationCz <OverRelation extends string | never = never> = {
 	name: 'ApplicationCz'
 	unique:
@@ -192,7 +209,25 @@ export type Country <OverRelation extends string | never = never> = {
 		usersByInternationalBuddyPair: { entity: Person; by: {internationalBuddyPair: BuddyPair['unique']}  }
 		usersByApplications: { entity: Person; by: {applications: ApplicationCz['unique']}  }
 		usersByApplicationsFr: { entity: Person; by: {applicationsFr: ApplicationFr['unique']}  }
+		usersByRegistrations: { entity: Person; by: {registrations: EventRegistration['unique']}  }
 		universitiesByUsers: { entity: University; by: {users: Person['unique']}  }
+	}
+}
+export type DietaryRestrictions <OverRelation extends string | never = never> = {
+	name: 'DietaryRestrictions'
+	unique:
+		| Omit<{ id: string}, OverRelation>
+	columns: {
+		id: string
+		createdAt: string
+		name: string | null
+	}
+	hasOne: {
+	}
+	hasMany: {
+		registrations: EventRegistration
+	}
+	hasManyBy: {
 	}
 }
 export type Event <OverRelation extends string | never = never> = {
@@ -200,6 +235,7 @@ export type Event <OverRelation extends string | never = never> = {
 	unique:
 		| Omit<{ id: string}, OverRelation>
 		| Omit<{ description: Content['unique']}, OverRelation>
+		| Omit<{ registrations: EventRegistration['unique']}, OverRelation>
 		| Omit<{ contactPerson: Person['unique']}, OverRelation>
 	columns: {
 		id: string
@@ -207,6 +243,10 @@ export type Event <OverRelation extends string | never = never> = {
 		name: string
 		startDate: string
 		endDate: string
+		refundPolicy: string | null
+		mandatoryESNcard: boolean | null
+		dietaryRestrictions: boolean | null
+		allergies: boolean | null
 		capacity: number | null
 		fee: number | null
 		place: string | null
@@ -228,7 +268,28 @@ export type Event <OverRelation extends string | never = never> = {
 		picture: Image
 	}
 	hasMany: {
-		participants: Person
+		registrations: EventRegistration<'event'>
+	}
+	hasManyBy: {
+	}
+}
+export type EventRegistration <OverRelation extends string | never = never> = {
+	name: 'EventRegistration'
+	unique:
+		| Omit<{ id: string}, OverRelation>
+	columns: {
+		id: string
+		createdAt: string
+		paid: boolean | null
+		note: string | null
+	}
+	hasOne: {
+		event: Event
+		person: Person
+	}
+	hasMany: {
+		allergies: Allergy
+		dietaryRestrictions: DietaryRestrictions
 	}
 	hasManyBy: {
 	}
@@ -255,6 +316,7 @@ export type Faculty <OverRelation extends string | never = never> = {
 		usersByInternationalBuddyPair: { entity: Person; by: {internationalBuddyPair: BuddyPair['unique']}  }
 		usersByApplications: { entity: Person; by: {applications: ApplicationCz['unique']}  }
 		usersByApplicationsFr: { entity: Person; by: {applicationsFr: ApplicationFr['unique']}  }
+		usersByRegistrations: { entity: Person; by: {registrations: EventRegistration['unique']}  }
 	}
 }
 export type Hobby <OverRelation extends string | never = never> = {
@@ -303,7 +365,9 @@ export type Image <OverRelation extends string | never = never> = {
 		userProfilePictureByInternationalBuddyPair: { entity: Person; by: {internationalBuddyPair: BuddyPair['unique']}  }
 		userProfilePictureByApplications: { entity: Person; by: {applications: ApplicationCz['unique']}  }
 		userProfilePictureByApplicationsFr: { entity: Person; by: {applicationsFr: ApplicationFr['unique']}  }
+		userProfilePictureByRegistrations: { entity: Person; by: {registrations: EventRegistration['unique']}  }
 		eventPictureByDescription: { entity: Event; by: {description: Content['unique']}  }
+		eventPictureByRegistrations: { entity: Event; by: {registrations: EventRegistration['unique']}  }
 		eventPictureByContactPerson: { entity: Event; by: {contactPerson: Person['unique']}  }
 	}
 }
@@ -416,6 +480,7 @@ export type Person <OverRelation extends string | never = never> = {
 		| Omit<{ internationalBuddyPair: BuddyPair['unique']}, OverRelation>
 		| Omit<{ applications: ApplicationCz['unique']}, OverRelation>
 		| Omit<{ applicationsFr: ApplicationFr['unique']}, OverRelation>
+		| Omit<{ registrations: EventRegistration['unique']}, OverRelation>
 	columns: {
 		id: string
 		createdAt: string
@@ -442,9 +507,9 @@ export type Person <OverRelation extends string | never = never> = {
 		profilePicture: Image
 	}
 	hasMany: {
-		participatedEvents: Event
 		applications: ApplicationCz<'person'>
 		n2nHours: N2nHour
+		registrations: EventRegistration<'person'>
 	}
 	hasManyBy: {
 	}
@@ -467,6 +532,7 @@ export type Section <OverRelation extends string | never = never> = {
 	}
 	hasManyBy: {
 		eventsByDescription: { entity: Event; by: {description: Content['unique']}  }
+		eventsByRegistrations: { entity: Event; by: {registrations: EventRegistration['unique']}  }
 		eventsByContactPerson: { entity: Event; by: {contactPerson: Person['unique']}  }
 	}
 }
@@ -495,6 +561,7 @@ export type Semester <OverRelation extends string | never = never> = {
 	}
 	hasManyBy: {
 		eventsByDescription: { entity: Event; by: {description: Content['unique']}  }
+		eventsByRegistrations: { entity: Event; by: {registrations: EventRegistration['unique']}  }
 		eventsByContactPerson: { entity: Event; by: {contactPerson: Person['unique']}  }
 		applicationsFrByPerson: { entity: ApplicationFr; by: {person: Person['unique']}  }
 		applicationsFrByLimitations: { entity: ApplicationFr; by: {limitations: Limitations['unique']}  }
@@ -565,10 +632,12 @@ export type University <OverRelation extends string | never = never> = {
 		usersByInternationalBuddyPair: { entity: Person; by: {internationalBuddyPair: BuddyPair['unique']}  }
 		usersByApplications: { entity: Person; by: {applications: ApplicationCz['unique']}  }
 		usersByApplicationsFr: { entity: Person; by: {applicationsFr: ApplicationFr['unique']}  }
+		usersByRegistrations: { entity: Person; by: {registrations: EventRegistration['unique']}  }
 	}
 }
 
 export type ContemberClientEntities = {
+	Allergy: Allergy
 	ApplicationCz: ApplicationCz
 	ApplicationFr: ApplicationFr
 	BuddyPair: BuddyPair
@@ -577,7 +646,9 @@ export type ContemberClientEntities = {
 	Content: Content
 	ContentReference: ContentReference
 	Country: Country
+	DietaryRestrictions: DietaryRestrictions
 	Event: Event
+	EventRegistration: EventRegistration
 	Faculty: Faculty
 	Hobby: Hobby
 	Image: Image

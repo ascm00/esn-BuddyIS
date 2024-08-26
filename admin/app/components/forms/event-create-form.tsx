@@ -27,6 +27,10 @@ export const EventCreateForm = Component(() => <FormLayout>
 	{/* <ConnectUser field='contactPerson'>
 		<Field field={'firstName'} /> {' '} <Field field={'surname'} />
 	</ConnectUser> */}
+	<div className='pb-3'>
+		<CheckboxField field="mandatoryESNcard" label="ESN Card mandatory" defaultValue={true}/>
+		<p className="text-xs text-gray-500">Is ESN Card mandatory for this event?</p>
+	</div>
 	<ImageField
 		label="Picture"
 		baseField="picture"
@@ -38,6 +42,18 @@ export const EventCreateForm = Component(() => <FormLayout>
 		fileSizeField="meta.fileSize"
 		lastModifiedField="meta.lastModified"
 	/>
+	<div className='pt-4'>
+		<h2 className="text-2xl font-semibold">Limitations</h2>
+		<hr className="my-2 border-gray-200" />
+	</div>
+	<div className='pb-3'>
+		<CheckboxField field="dietaryRestrictions" label="Dietary restrictions" defaultValue={false}/>
+		<p className="text-xs text-gray-500">Should the students fill dietary restrictions on registration?</p>
+	</div>
+	<div className='pb-3'>
+		<CheckboxField field="allergies" label="Allergies" defaultValue={false}/>
+		<p className="text-xs text-gray-500">Should the students fill allergies on registration?</p>
+	</div>
 
 	<div className='pt-4'>
 		<h2 className="text-2xl font-semibold">Registration info</h2>

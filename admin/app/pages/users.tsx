@@ -49,6 +49,9 @@ export default () => {
 									<DataGridHasOneColumn field="university" header="University">
 										<Field field="name" />
 									</DataGridHasOneColumn>
+									<DataGridHasOneColumn field="tenantPerson" header="Role">
+										<Field field="roles" />
+									</DataGridHasOneColumn>
 									<DataGridTextColumn field="esnCardId" header="Esn card id" />
 									<DataGridTextColumn field="surname" header="Surname" />
 									<DataGridTextColumn field="xname" header="Xname" />

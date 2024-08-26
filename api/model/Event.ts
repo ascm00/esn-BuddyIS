@@ -6,22 +6,23 @@ import { Semester } from './Semester'
 import { Image } from './Image'
 import { Person } from './Person'
 import { Content } from './Content'
+import { EventRegistration } from './EventRegistration'
 
 
 @c.Allow(internationalStudentRole, {
-	read: ['createdAt', 'name', 'description', 'startDate', 'endDate', 'capacity', 'fee', 'participants', 'place', 'whatToBring', 'whatsappLink', 'registrationStartDate', 'registrationEndDate', 'waitingList', 'section', 'meetingPoint', 'status', 'contactPerson', 'semester', 'private'],
+	read: ['createdAt', 'name', 'description', 'startDate', 'endDate', 'capacity', 'fee', 'place', 'whatToBring', 'whatsappLink', 'registrationStartDate', 'registrationEndDate', 'waitingList', 'section', 'meetingPoint', 'status', 'contactPerson', 'semester', 'private'],
 })
 @c.Allow(esnMemberRole, {
-	read: ['createdAt', 'name', 'description', 'startDate', 'endDate', 'capacity', 'fee', 'participants', 'place', 'whatToBring', 'whatsappLink', 'registrationStartDate', 'registrationEndDate', 'waitingList', 'section', 'meetingPoint', 'status', 'contactPerson', 'semester', 'private'],
-	create: ['createdAt', 'name', 'description', 'startDate', 'endDate', 'capacity', 'fee', 'participants', 'place', 'whatToBring', 'whatsappLink', 'registrationStartDate', 'registrationEndDate', 'waitingList', 'section', 'meetingPoint', 'status', 'contactPerson', 'semester', 'private'],
-	update: ['createdAt', 'name', 'description', 'startDate', 'endDate', 'capacity', 'fee', 'participants', 'place', 'whatToBring', 'whatsappLink', 'registrationStartDate', 'registrationEndDate', 'waitingList', 'section', 'meetingPoint', 'status', 'contactPerson', 'semester', 'private'],
+	read: ['createdAt', 'name', 'description', 'startDate', 'endDate', 'capacity', 'fee', 'place', 'whatToBring', 'whatsappLink', 'registrationStartDate', 'registrationEndDate', 'waitingList', 'section', 'meetingPoint', 'status', 'contactPerson', 'semester', 'private'],
+	create: ['createdAt', 'name', 'description', 'startDate', 'endDate', 'capacity', 'fee', 'place', 'whatToBring', 'whatsappLink', 'registrationStartDate', 'registrationEndDate', 'waitingList', 'section', 'meetingPoint', 'status', 'contactPerson', 'semester', 'private'],
+	update: ['createdAt', 'name', 'description', 'startDate', 'endDate', 'capacity', 'fee', 'place', 'whatToBring', 'whatsappLink', 'registrationStartDate', 'registrationEndDate', 'waitingList', 'section', 'meetingPoint', 'status', 'contactPerson', 'semester', 'private'],
 	delete: true,
 })
 @c.Allow(publicRole, {
-	read: ['createdAt', 'name', 'description', 'startDate', 'endDate', 'capacity', 'fee', 'participants', 'place', 'whatToBring', 'whatsappLink', 'registrationStartDate', 'registrationEndDate', 'waitingList', 'section', 'meetingPoint', 'status', 'contactPerson', 'semester', 'private'],
+	read: ['createdAt', 'name', 'description', 'startDate', 'endDate', 'capacity', 'fee', 'place', 'whatToBring', 'whatsappLink', 'registrationStartDate', 'registrationEndDate', 'waitingList', 'section', 'meetingPoint', 'status', 'contactPerson', 'semester', 'private'],
 })
 @c.Allow(czechBuddyRole, {
-	read: ['createdAt', 'name', 'description', 'startDate', 'endDate', 'capacity', 'fee', 'participants', 'place', 'whatToBring', 'whatsappLink', 'registrationStartDate', 'registrationEndDate', 'waitingList', 'section', 'meetingPoint', 'status', 'contactPerson', 'semester', 'private'],
+	read: ['createdAt', 'name', 'description', 'startDate', 'endDate', 'capacity', 'fee', 'place', 'whatToBring', 'whatsappLink', 'registrationStartDate', 'registrationEndDate', 'waitingList', 'section', 'meetingPoint', 'status', 'contactPerson', 'semester', 'private'],
 })
 export class Event {
 	createdAt = c.dateTimeColumn().notNull().default('now')
@@ -29,9 +30,16 @@ export class Event {
 	description = c.oneHasOne(Content, 'eventDescription')
 	startDate = c.dateTimeColumn().notNull()
 	endDate = c.dateTimeColumn().notNull()
+	refundPolicy = c.stringColumn()
+	mandatoryESNcard = c.boolColumn()
+	dietaryRestrictions = c.boolColumn()
+	allergies = c.boolColumn()
 	capacity = c.intColumn()
 	fee = c.doubleColumn()
-	participants = c.manyHasMany(Person, 'participatedEvents')
+
+
+	registrations = c.oneHasMany(EventRegistration, 'event')
+	
 	place = c.stringColumn()
 	whatToBring = c.stringColumn()
 	whatsappLink = c.stringColumn()

@@ -1,3 +1,4 @@
+import { Todo } from '@app/lib/dev'
 import { CheckboxField, FormLayout, InputField, RadioEnumField, SelectField, TextareaField } from '@app/lib/form'
 import { ImageField } from '@app/lib/plugins/image/ImageField'
 import { BlockEditorField } from '@app/lib/plugins/rich-text/editor'
@@ -10,11 +11,12 @@ export const EventEditForm = Component(() => <FormLayout>
 		<hr className="my-2 border-gray-200" />
 	</div>
 	<InputField field="name" label="Name *" required />
+	{/* <TextareaField field="description" label="Description" /> */}
 	<BlockEditorField field="description.data" referencesField="description.references" label="Description" />
 	<InputField field="startDate" label="Start datetime *" required />
 	<InputField field="endDate" label="End datetime *" required />
 	<InputField field="place" label="Place *" required/>
-	<InputField field="meetingPoint" label="Meeting point (if different from the place)"/>
+	<InputField field="meetingPoint" label="Meeting point"/>
 	<InputField field="whatToBring" label="What to bring" />
 	<InputField field="whatsappLink" label="Whatsapp link" />
 	<SelectField field={'contactPerson'} label="Contact person" options={'Person'}>
@@ -23,6 +25,10 @@ export const EventEditForm = Component(() => <FormLayout>
 	{/* <ConnectUser field='contactPerson'>
 		<Field field={'firstName'} /> {' '} <Field field={'surname'} />
 	</ConnectUser> */}
+	<div className='pb-3'>
+		<CheckboxField field="mandatoryESNcard" label="ESN Card mandatory" defaultValue={true}/>
+		<p className="text-xs text-gray-500">Is ESN Card mandatory for this event?</p>
+	</div>
 	<ImageField
 		label="Picture"
 		baseField="picture"
@@ -34,6 +40,18 @@ export const EventEditForm = Component(() => <FormLayout>
 		fileSizeField="meta.fileSize"
 		lastModifiedField="meta.lastModified"
 	/>
+	<div className='pt-4'>
+		<h2 className="text-2xl font-semibold">Limitations</h2>
+		<hr className="my-2 border-gray-200" />
+	</div>
+	<div className='pb-3'>
+		<CheckboxField field="dietaryRestrictions" label="Dietary restrictions" defaultValue={false}/>
+		<p className="text-xs text-gray-500">Should the students fill dietary restrictions on registration?</p>
+	</div>
+	<div className='pb-3'>
+		<CheckboxField field="allergies" label="Allergies" defaultValue={false}/>
+		<p className="text-xs text-gray-500">Should the students fill allergies on registration?</p>
+	</div>
 
 	<div className='pt-4'>
 		<h2 className="text-2xl font-semibold">Registration info</h2>
@@ -59,7 +77,7 @@ export const EventEditForm = Component(() => <FormLayout>
 		<h2 className="text-2xl font-semibold">Participants info</h2>
 		<hr className="my-2 border-gray-200" />
 	</div>
-	{/* Potřeba udělat možnosti pro koho je event: např Czech Buddies, všichni */}
-	<CheckboxField field="allowRegistrationWithoutPayment" label="Allow registration without payment" />
+	<CheckboxField field="allowRegistrationWithoutPayment" label="Allow registration without payment"/>
 	<h2 className="text-base font-semibold">Who can register:</h2>
+	<Todo>Potřeba udělat možnosti pro koho je event: např Czech Buddies, všichni. Budou checkboxy pro jednotlivé možnosti</Todo>
 </FormLayout>)

@@ -57,12 +57,11 @@ export const CreateEntityModalButton = Component<CreateEntityModalButtonProps>(
 					) : (
 						<Button className="flex gap-1.5 px-4">
 							<PlusCircle className="w-4" />
-							{buttonLabel || 'Vytvořit'}
+							{buttonLabel || 'Create'}
 						</Button>
 					)}
 				</AlertDialogTrigger>
 				<AlertDialogContent {...dialogProps}>
-					{buttonLabel && <AlertDialogHeader>{buttonLabel}</AlertDialogHeader>}
 					<Binding>
 						<EntitySubTree
 							entity={entityName}
@@ -73,10 +72,10 @@ export const CreateEntityModalButton = Component<CreateEntityModalButtonProps>(
 							{createEntityForm}
 							{(redirectOnPersistTo || refreshOnPersist) && <RedirectOnPersist to={redirectOnPersistTo ?? req} />}
 							<AlertDialogFooter>
-								<AlertDialogCancel>Zrušit</AlertDialogCancel>
+								<AlertDialogCancel>Cancel</AlertDialogCancel>
 								<FeedbackTrigger>
 									<PersistTrigger>
-										<AlertDialogAction>{saveButtonLabel ?? 'Přidat'}</AlertDialogAction>
+										<AlertDialogAction>{saveButtonLabel ?? 'Create'}</AlertDialogAction>
 									</PersistTrigger>
 								</FeedbackTrigger>
 							</AlertDialogFooter>

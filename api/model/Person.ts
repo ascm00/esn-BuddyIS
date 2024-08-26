@@ -9,6 +9,7 @@ import { Event } from './Event'
 import { Country } from './Country'
 import { Faculty } from './Faculty'
 import { University } from './University'
+import { EventRegistration } from './EventRegistration'
 
 export class Person {
 	createdAt = c.dateTimeColumn().notNull().default('now')
@@ -27,7 +28,6 @@ export class Person {
 	faculty = c.manyHasOne(Faculty, 'users').setNullOnDelete()
 	country = c.manyHasOne(Country, 'users').setNullOnDelete()
 	firstName = c.stringColumn()
-	participatedEvents = c.manyHasManyInverse(Event, 'participants')
 	organizedEvents = c.oneHasOneInverse(Event, 'contactPerson')
 	czechBuddyPair = c.oneHasOneInverse(BuddyPair, 'czechStudent')
 	internationalBuddyPair = c.oneHasOneInverse(BuddyPair, 'internationalStudent')
@@ -35,4 +35,6 @@ export class Person {
 	applicationsFr = c.oneHasOneInverse(ApplicationFr, 'person')
 	n2nHours = c.manyHasManyInverse(N2nHour, 'person')
 	profilePicture = c.manyHasOne(Image, 'userProfilePicture')
+
+	registrations = c.oneHasMany(EventRegistration, 'person')
 }

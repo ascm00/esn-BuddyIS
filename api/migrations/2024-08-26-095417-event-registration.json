@@ -1,0 +1,308 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "removeField",
+			"entityName": "Event",
+			"fieldName": "participants"
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "Allergy",
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "allergy",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"columnType": "uuid",
+						"nullable": false,
+						"type": "Uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				}
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "DietaryRestrictions",
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "dietary_restrictions",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"columnType": "uuid",
+						"nullable": false,
+						"type": "Uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				}
+			}
+		},
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "EventRegistration",
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "event_registration",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"columnType": "uuid",
+						"nullable": false,
+						"type": "Uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				}
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Allergy",
+			"field": {
+				"name": "createdAt",
+				"columnName": "created_at",
+				"columnType": "timestamptz",
+				"nullable": false,
+				"type": "DateTime",
+				"default": "now"
+			},
+			"fillValue": "now"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Allergy",
+			"field": {
+				"name": "name",
+				"columnName": "name",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "DietaryRestrictions",
+			"field": {
+				"name": "createdAt",
+				"columnName": "created_at",
+				"columnType": "timestamptz",
+				"nullable": false,
+				"type": "DateTime",
+				"default": "now"
+			},
+			"fillValue": "now"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "DietaryRestrictions",
+			"field": {
+				"name": "name",
+				"columnName": "name",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Event",
+			"field": {
+				"name": "refundPolicy",
+				"columnName": "refund_policy",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Event",
+			"field": {
+				"name": "mandatoryESNcard",
+				"columnName": "mandatory_esncard",
+				"columnType": "boolean",
+				"nullable": true,
+				"type": "Bool"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Event",
+			"field": {
+				"name": "dietaryRestrictions",
+				"columnName": "dietary_restrictions",
+				"columnType": "boolean",
+				"nullable": true,
+				"type": "Bool"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Event",
+			"field": {
+				"name": "allergies",
+				"columnName": "allergies",
+				"columnType": "boolean",
+				"nullable": true,
+				"type": "Bool"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "EventRegistration",
+			"field": {
+				"name": "createdAt",
+				"columnName": "created_at",
+				"columnType": "timestamptz",
+				"nullable": false,
+				"type": "DateTime",
+				"default": "now"
+			},
+			"fillValue": "now"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "EventRegistration",
+			"field": {
+				"name": "paid",
+				"columnName": "paid",
+				"columnType": "boolean",
+				"nullable": true,
+				"type": "Bool"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "EventRegistration",
+			"field": {
+				"name": "note",
+				"columnName": "note",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "EventRegistration",
+			"owningSide": {
+				"type": "ManyHasOne",
+				"name": "event",
+				"target": "Event",
+				"joiningColumn": {
+					"columnName": "event_id",
+					"onDelete": "restrict"
+				},
+				"nullable": true,
+				"inversedBy": "registrations"
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "registrations",
+				"target": "EventRegistration",
+				"ownedBy": "event"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "EventRegistration",
+			"owningSide": {
+				"type": "ManyHasOne",
+				"name": "person",
+				"target": "Person",
+				"joiningColumn": {
+					"columnName": "person_id",
+					"onDelete": "restrict"
+				},
+				"nullable": true,
+				"inversedBy": "registrations"
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "registrations",
+				"target": "EventRegistration",
+				"ownedBy": "person"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "EventRegistration",
+			"owningSide": {
+				"type": "ManyHasMany",
+				"name": "allergies",
+				"target": "Allergy",
+				"joiningTable": {
+					"tableName": "event_registration_allergies",
+					"joiningColumn": {
+						"columnName": "event_registration_id",
+						"onDelete": "cascade"
+					},
+					"inverseJoiningColumn": {
+						"columnName": "allergy_id",
+						"onDelete": "cascade"
+					},
+					"eventLog": {
+						"enabled": true
+					}
+				},
+				"inversedBy": "registrations"
+			},
+			"inverseSide": {
+				"type": "ManyHasMany",
+				"name": "registrations",
+				"target": "EventRegistration",
+				"ownedBy": "allergies"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "EventRegistration",
+			"owningSide": {
+				"type": "ManyHasMany",
+				"name": "dietaryRestrictions",
+				"target": "DietaryRestrictions",
+				"joiningTable": {
+					"tableName": "event_registration_dietary_restrictions",
+					"joiningColumn": {
+						"columnName": "event_registration_id",
+						"onDelete": "cascade"
+					},
+					"inverseJoiningColumn": {
+						"columnName": "dietary_restrictions_id",
+						"onDelete": "cascade"
+					},
+					"eventLog": {
+						"enabled": true
+					}
+				},
+				"inversedBy": "registrations"
+			},
+			"inverseSide": {
+				"type": "ManyHasMany",
+				"name": "registrations",
+				"target": "EventRegistration",
+				"ownedBy": "dietaryRestrictions"
+			}
+		}
+	]
+}
