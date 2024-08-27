@@ -1,10 +1,10 @@
 import { Binding } from '@app/lib/binding'
 import { BackButton } from '@app/lib/buttons'
-import { DataGrid, DataGridColumn, DataGridEnumColumn, DataGridLoader, DataGridNumberColumn, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
+import { DataGrid, DataGridColumn, DataGridDateColumn, DataGridEnumColumn, DataGridHasManyFilter, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridNumberColumn, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
 import { Table, TableBody, TableCell, TableRow, TableWrapper } from '@app/lib/ui/table'
-import { EntitySubTree, Field, Link } from '@contember/interface'
+import { EntitySubTree, Field, HasRole, Link } from '@contember/interface'
 
 export default () => {
 	return (
@@ -30,6 +30,22 @@ export default () => {
 								<TableBody>
 									<TableRow>
 										<TableCell>
+											First name
+										</TableCell>
+										<TableCell className="font-semibold">
+											<Field field="firstName" />
+										</TableCell>
+									</TableRow>
+									<TableRow>
+										<TableCell>
+											Surname
+										</TableCell>
+										<TableCell className="font-semibold">
+											<Field field="surname" />
+										</TableCell>
+									</TableRow>
+									{/* <TableRow>
+										<TableCell>
 											Registration date
 										</TableCell>
 										<TableCell className="font-semibold">
@@ -43,6 +59,22 @@ export default () => {
 										<TableCell className="font-semibold">
 											<Field field="lastLoginDate" />
 										</TableCell>
+									</TableRow> */}
+									<TableRow>
+										<TableCell>
+											Xname
+										</TableCell>
+										<TableCell className="font-semibold">
+											<Field field="xname" />
+										</TableCell>
+									</TableRow>
+									<TableRow>
+										<TableCell>
+											Email
+										</TableCell>
+										<TableCell className="font-semibold">
+											<Field field="tenantPerson.email" />
+										</TableCell>
 									</TableRow>
 									<TableRow>
 										<TableCell>
@@ -54,7 +86,7 @@ export default () => {
 									</TableRow>
 									<TableRow>
 										<TableCell>
-											Esn card id
+											Esn Card ID
 										</TableCell>
 										<TableCell className="font-semibold">
 											<Field field="esnCardId" />
@@ -62,93 +94,70 @@ export default () => {
 									</TableRow>
 									<TableRow>
 										<TableCell>
-											Surname
+											Country
 										</TableCell>
 										<TableCell className="font-semibold">
-											<Field field="surname" />
+											<Field field="country.name" />
 										</TableCell>
 									</TableRow>
 									<TableRow>
 										<TableCell>
-											Xname
+											Home country
 										</TableCell>
 										<TableCell className="font-semibold">
-											<Field field="xname" />
+											<Field field="country.name" />
 										</TableCell>
 									</TableRow>
 									<TableRow>
 										<TableCell>
-											Active
+											Home university
 										</TableCell>
 										<TableCell className="font-semibold">
-											<Field field="active" />
+											<Field field="university.name" />
 										</TableCell>
 									</TableRow>
 									<TableRow>
 										<TableCell>
-											First name
+											Faculty at VSE
 										</TableCell>
 										<TableCell className="font-semibold">
-											<Field field="firstName" />
+											<Field field="faculty.name" />
 										</TableCell>
 									</TableRow>
 								</TableBody>
 							</Table>
 						</TableWrapper>
 					</EntitySubTree>
-					<div className="flex flex-col gap-4">
-						<div className="text-lg font-bold">
-							Application cz
-						</div>
-						<Slots.Actions>
-							<Link to="applicationCzCreate">
-								<Button>
-									Create application cz
-								</Button>
-							</Link>
-						</Slots.Actions>
-						<DataGrid entities="ApplicationCz[person.id = $id]">
-							<DataGridToolbar>
-								<DataGridQueryFilter />
-							</DataGridToolbar>
-							<DataGridLoader>
-								<DataGridTable>
-									<DataGridColumn>
-										<div className="flex gap-4">
-											<Link to="applicationCzDetail(id: $entity.id)">
-												<a>
-													Detail
-												</a>
-											</Link>
-											<Link to="applicationCzEdit(id: $entity.id)">
-												<a>
-													Edit
-												</a>
-											</Link>
-										</div>
-									</DataGridColumn>
-									<DataGridNumberColumn field="points" header="Point" />
-									<DataGridTextColumn field="motivation" header="Motivation" />
-									<DataGridEnumColumn
-										field="status"
-										header="Status"
-										options={{ enabled: 'enabled', disabled: 'disabled', cancelled: 'cancelled' }}
-									/>
-									<DataGridEnumColumn field="result" header="Result" options={{ accepted: 'accepted', declined: 'declined' }} />
-									<DataGridNumberColumn field="rBuddy" header="R buddy" />
-									<DataGridNumberColumn field="rParty" header="R party" />
-									<DataGridNumberColumn field="rTravel" header="R travel" />
-									<DataGridNumberColumn field="rSport" header="R sport" />
-									<DataGridEnumColumn
-										field="preferredSex"
-										header="Preferred sex"
-										options={{ man: 'man', woman: 'woman', dontCare: 'dontCare' }}
-									/>
-								</DataGridTable>
-							</DataGridLoader>
-							<DataGridPagination />
-						</DataGrid>
-					</div>
+					<HasRole role={roles => roles.has('admin') || roles.has('esnMemberRole')}>
+							<div className="flex flex-col gap-4">
+								<div className="flex justify-between">
+									<div className="text-xl font-bold">Event registrations</div>
+								</div>
+								<DataGrid entities="EventRegistration[person.id = $id]" filteringStateStorage={'session'}>
+									<DataGridToolbar>
+										<DataGridQueryFilter />
+										<DataGridHasOneFilter field="person" label="User">
+											<Field field="firstName" /> {' '} <Field field="surname" />
+										</DataGridHasOneFilter>
+										<DataGridHasManyFilter field="allergies" label="Allergies">
+											<Field field="name" />
+										</DataGridHasManyFilter>
+										<DataGridHasManyFilter field="dietaryRestrictions" label="Dietary Restrictions">
+											<Field field="name" />
+										</DataGridHasManyFilter>
+									</DataGridToolbar>
+									<DataGridLoader>
+										<DataGridTable>
+											<DataGridTextColumn field="event.name" header="Name" />
+											<DataGridTextColumn field="event.place" header="Place" />
+											<DataGridDateColumn field="event.startDate" header="Event From" />
+											<DataGridDateColumn field="event.endDate" header="Event To" />
+											<DataGridTextColumn field="note" header="Note" />
+										</DataGridTable>
+									</DataGridLoader>
+								</DataGrid>
+							</div>
+						</HasRole>
 				</div>
 			</Binding>
 		</>

@@ -1,3 +1,4 @@
+import { PersonForm } from '@app/components/forms/personForm'
 import { UserEditForm } from '@app/components/forms/user-edit-form'
 import { Binding, PersistButton } from '@app/lib/binding'
 import { BackButton } from '@app/lib/buttons'
@@ -15,11 +16,11 @@ export default () => {
 					<Slots.Back>
 						<BackButton />
 					</Slots.Back>
-					<EntitySubTree entity="User(id=$id)" isCreating={false}>
+					<EntitySubTree entity="Person(id=$id)" isCreating={false}>
 						<Slots.Actions>
 							<PersistButton />
 						</Slots.Actions>
-						<UserEditForm />
+						<PersonForm />
 					</EntitySubTree>
 				</div>
 			</Binding>
