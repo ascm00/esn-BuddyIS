@@ -249,6 +249,7 @@ export type Event <OverRelation extends string | never = never> = {
 		allergies: boolean | null
 		capacity: number | null
 		fee: number | null
+		registeredCount: number | null
 		place: string | null
 		whatToBring: string | null
 		whatsappLink: string | null

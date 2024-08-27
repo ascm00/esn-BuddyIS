@@ -3,7 +3,7 @@ import { BackButton } from '@app/lib/buttons'
 import { DataGrid, DataGridColumn, DataGridDateColumn, DataGridEnumColumn, DataGridLoader, DataGridNumberColumn, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
-import { Link } from '@contember/interface'
+import { Field, Link } from '@contember/interface'
 
 export default () => {
 	return (
@@ -48,17 +48,14 @@ export default () => {
 									<DataGridTextColumn field="place" header="Place" />
 									{/* Capacity musí být kolik zbývá volných míst z kolika */}
 									<DataGridNumberColumn field="capacity" header="Capacity" />
-									<DataGridNumberColumn field="fee" header="Entrance fee" />
+									<DataGridNumberColumn field="fee" header="Entrance fee">
+										<Field field="fee" /> {' CZK'}
+									</DataGridNumberColumn>
 									<DataGridDateColumn field="startDate" header="Event starts" />
 									<DataGridDateColumn field="endDate" header="Event ends" />
 									<DataGridDateColumn field="registrationStartDate" header="Registration starts" />
 									<DataGridDateColumn field="registrationEndDate" header="Registration ends" />
 									<DataGridTextColumn field="whatsappLink" header="Whatsapp link" />
-									<DataGridEnumColumn
-										field="status"
-										header="Status"
-										options={{ open: 'Open', cancelled: 'Cancelled', hidden: 'Hidden' }}
-									/>
 								</DataGridTable>
 							</DataGridLoader>
 							<DataGridPagination />

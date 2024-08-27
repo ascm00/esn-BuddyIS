@@ -1,7 +1,7 @@
 import { CheckboxField, FormLayout, InputField, MultiSelectField, RadioEnumField, SelectField, TextareaField } from '@app/lib/form'
 import { identityEnvironmentExtension } from '@contember/admin'
 import { ImageField } from '@app/lib/plugins/image/ImageField'
-import { Component, EntitySubTree, Field, HasMany, HasOne, HasRole, useEntity, useEntitySubTree, useIdentity } from '@contember/interface'
+import { Component, EntitySubTree, Field, HasMany, HasOne, HasRole, useEntity, useEntitySubTree, useIdentity, useEntityBeforePersist } from '@contember/interface'
 import { ConnectUser } from '../ConnectUser'
 import { Todo } from '@app/lib/dev'
 import { identity$ } from '@contember/graphql-client-tenant'
@@ -19,8 +19,15 @@ export const RegistrationCreateForm = Component(
     const allergies = currentEvent.getField('allergies').value ?? undefined
     const dietaryRestrictions = currentEvent.getField('dietaryRestrictions').value ?? undefined
     const mandatoryESNcard = currentEvent.getField('name').value ?? undefined
-    
+    const registeredCount = currentEvent.getField('registeredCount').value ?? undefined
 
+    // This should be after processing the payment
+    useEntityBeforePersist(() => {
+        if(typeof registeredCount === 'number'){
+            let updatedCount = registeredCount + 1
+            currentEvent.updateValues({registeredCount: updatedCount})
+        }
+    })
     
     return (    
         <FormLayout>
@@ -73,12 +80,14 @@ export const RegistrationCreateForm = Component(
                 <Field field="dietaryRestrictions" />
                 <Field field="allergies" />
                 <Field field="mandatoryESNcard" />
+                <Field field="registeredCount" />
             </EntitySubTree>
             <HasOne field="event">
                 <Field field="name" />
                 <Field field="dietaryRestrictions" />
                 <Field field="allergies" />
                 <Field field="mandatoryESNcard" />
+                <Field field="registeredCount" />
             </HasOne>
             <HasOne field="person">
                 {/* <Field field="esnCardId" /> */}

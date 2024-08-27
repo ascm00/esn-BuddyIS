@@ -1,0 +1,23 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "removeField",
+			"entityName": "Event",
+			"fieldName": "registered"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Event",
+			"field": {
+				"name": "registeredCount",
+				"columnName": "registered_count",
+				"columnType": "integer",
+				"nullable": true,
+				"type": "Integer",
+				"default": 0
+			},
+			"fillValue": 0
+		}
+	]
+}

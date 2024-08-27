@@ -36,9 +36,8 @@ export class Event {
 	allergies = c.boolColumn()
 	capacity = c.intColumn()
 	fee = c.doubleColumn()
-
-
 	registrations = c.oneHasMany(EventRegistration, 'event')
+	registeredCount = c.intColumn().default(0)
 	
 	place = c.stringColumn()
 	whatToBring = c.stringColumn()

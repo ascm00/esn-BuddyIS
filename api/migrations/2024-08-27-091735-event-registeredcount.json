@@ -1,0 +1,16 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "createColumn",
+			"entityName": "Event",
+			"field": {
+				"name": "registered",
+				"columnName": "registered",
+				"columnType": "integer",
+				"nullable": true,
+				"type": "Integer"
+			}
+		}
+	]
+}
