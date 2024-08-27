@@ -71,7 +71,7 @@ export const CreateEntityModalButton = Component<CreateEntityModalButtonProps>(
 							{createEntityForm}
 							{(redirectOnPersistTo || refreshOnPersist) && <RedirectOnPersist to={redirectOnPersistTo ?? req} />}
 							<AlertDialogFooter>
-								<AlertDialogCancel>Delete</AlertDialogCancel>
+								<AlertDialogCancel>Cancel</AlertDialogCancel>
 								<FeedbackTrigger>
 									<PersistTrigger>
 										<AlertDialogAction>{saveButtonLabel ?? 'Add'}</AlertDialogAction>

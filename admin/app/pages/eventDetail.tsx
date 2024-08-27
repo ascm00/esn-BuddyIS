@@ -8,7 +8,7 @@ import { formatDateTime } from '@app/lib/utils/formatting'
 import { Todo } from '@app/lib/dev'
 import { RichTextRendererField } from '@app/lib/plugins/rich-text/renderer/RichTextRendererField'
 import { renderElement, renderLeaf } from '@app/lib/plugins/rich-text/renderer/renderers'
-import { DataGrid, DataGridColumn, DataGridLoader, DataGridQueryFilter, DataGridTable, DataGridToolbar } from '@app/lib/datagrid'
+import { DataGrid, DataGridColumn, DataGridHasManyColumn, DataGridHasManyFilter, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridTextFilter, DataGridToolbar } from '@app/lib/datagrid'
 import { CreateEntityModalButton } from '@app/lib/buttons/createEntityModalButtons'
 import { RegistrationCreateForm } from '@app/components/forms/registration-create-form'
 import { DollarSign } from 'lucide-react'
@@ -201,9 +201,18 @@ export default () => {
 									<div className="text-xl font-bold">Participants</div>
 								</div>
 								<Todo>add participants data grid - eventRegistration with information about participants</Todo>
-								{/* <DataGrid entities="Person[participatedEvents.id = $id]" filteringStateStorage={'session'}>
+								<DataGrid entities="EventRegistration[event.id = $id]" filteringStateStorage={'session'}>
 									<DataGridToolbar>
 										<DataGridQueryFilter />
+										<DataGridHasOneFilter field="person" label="User">
+											<Field field="firstName" /> {' '} <Field field="surname" />
+										</DataGridHasOneFilter>
+										<DataGridHasManyFilter field="allergies" label="Allergies">
+											<Field field="name" />
+										</DataGridHasManyFilter>
+										<DataGridHasManyFilter field="dietaryRestrictions" label="Dietary Restrictions">
+											<Field field="name" />
+										</DataGridHasManyFilter>
 									</DataGridToolbar>
 									<DataGridLoader>
 										<DataGridTable>
@@ -214,9 +223,21 @@ export default () => {
 													</Link>
 												</div>
 											</DataGridColumn>
+											<DataGridHasOneColumn field="person" header="Person">
+												<Field field="firstName" /> {' '} <Field field="surname" />
+											</DataGridHasOneColumn>
+											<DataGridTextColumn field="person.phoneNumber" header="Phone number" />
+											<DataGridTextColumn field="person.tenantPerson.email" header="Email" />
+											<DataGridHasManyColumn field="allergies" header="Allergies">
+												<Field field="name" />
+											</DataGridHasManyColumn>
+											<DataGridHasManyColumn field="dietaryRestrictions" header="Dietary Restrictions">
+												<Field field="name" />
+											</DataGridHasManyColumn>
+											<DataGridTextColumn field="note" header="Note" />
 										</DataGridTable>
 									</DataGridLoader>
-								</DataGrid> */}
+								</DataGrid>
 							</div>
 						</HasRole>
 					</EntitySubTree>
