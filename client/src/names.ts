@@ -391,6 +391,9 @@ export const ContemberClientNames: SchemaNames = {
           "type": "many",
           "entity": "EventRegistration"
         },
+        "registeredCount": {
+          "type": "column"
+        },
         "place": {
           "type": "column"
         },
@@ -450,6 +453,7 @@ export const ContemberClientNames: SchemaNames = {
         "allergies",
         "capacity",
         "fee",
+        "registeredCount",
         "place",
         "whatToBring",
         "whatsappLink",
