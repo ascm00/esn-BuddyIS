@@ -1,6 +1,6 @@
 import { Binding } from '@app/lib/binding'
 import { BackButton } from '@app/lib/buttons'
-import { DataGrid, DataGridBooleanColumn, DataGridColumn, DataGridDateColumn, DataGridHasOneColumn, DataGridLoader, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
+import { DataGrid, DataGridBooleanColumn, DataGridColumn, DataGridDateColumn, DataGridEnumFilter, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
 import { Field, Link } from '@contember/interface'
@@ -27,39 +27,46 @@ export default () => {
 						<DataGrid entities="Person">
 							<DataGridToolbar>
 								<DataGridQueryFilter />
+								<DataGridHasOneFilter field="country" label="Country">
+									<Field field="name" />
+								</DataGridHasOneFilter>
+								<DataGridHasOneFilter field="university" label="University">
+									<Field field="name" />
+								</DataGridHasOneFilter>
 							</DataGridToolbar>
 							<DataGridLoader>
 								<DataGridTable>
 									<DataGridColumn>
 										<div className="flex gap-4">
 											<Link to="userDetail(id: $entity.id)">
-												<a>
+												<Button>
 													Detail
-												</a>
+												</Button>
 											</Link>
 											<Link to="userEdit(id: $entity.id)">
-												<a>
+												<Button>
 													Edit
-												</a>
+												</Button>
 											</Link>
 										</div>
 									</DataGridColumn>
-									<DataGridDateColumn field="lastLoginDate" header="Last login date" />
+									<DataGridTextColumn field="firstName" header="First name" />
+									<DataGridTextColumn field="surname" header="Surname" />
 									<DataGridTextColumn field="phoneNumber" header="Phone number" />
-									<DataGridHasOneColumn field="university" header="University">
+									<DataGridHasOneColumn field="tenantPerson" header="Email">
+										<Field field="email" />
+									</DataGridHasOneColumn>
+									<DataGridHasOneColumn field="university" header="Home university">
+										<Field field="name" />
+									</DataGridHasOneColumn>
+									<DataGridTextColumn field="esnCardId" header="Esn card id" />
+									<DataGridTextColumn field="xname" header="Xname" />
+									<DataGridHasOneColumn field="country" header="Home country">
 										<Field field="name" />
 									</DataGridHasOneColumn>
 									<DataGridHasOneColumn field="tenantPerson" header="Role">
 										<Field field="roles" />
 									</DataGridHasOneColumn>
-									<DataGridTextColumn field="esnCardId" header="Esn card id" />
-									<DataGridTextColumn field="surname" header="Surname" />
-									<DataGridTextColumn field="xname" header="Xname" />
-									<DataGridBooleanColumn field="active" header="Active" />
-									<DataGridHasOneColumn field="country" header="Country">
-										<Field field="name" />
-									</DataGridHasOneColumn>
-									<DataGridTextColumn field="firstName" header="First name" />
 								</DataGridTable>
 							</DataGridLoader>
 							<DataGridPagination />
