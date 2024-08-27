@@ -223,11 +223,13 @@ export default () => {
 													</Link>
 												</div>
 											</DataGridColumn>
-											<DataGridHasOneColumn field="person" header="Person">
+											<DataGridHasOneColumn field="person" header="Name">
 												<Field field="firstName" /> {' '} <Field field="surname" />
 											</DataGridHasOneColumn>
+											<DataGridTextColumn field="person.xname" header="Xname" />
 											<DataGridTextColumn field="person.phoneNumber" header="Phone number" />
 											<DataGridTextColumn field="person.tenantPerson.email" header="Email" />
+											<DataGridTextColumn field="person.esnCardId" header="ESN Card ID" />
 											<DataGridHasManyColumn field="allergies" header="Allergies">
 												<Field field="name" />
 											</DataGridHasManyColumn>
