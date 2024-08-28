@@ -1,0 +1,23 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "removeField",
+			"entityName": "EventRegistration",
+			"fieldName": "isWatingList"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "EventRegistration",
+			"field": {
+				"name": "isWaitingList",
+				"columnName": "is_waiting_list",
+				"columnType": "boolean",
+				"nullable": true,
+				"type": "Bool",
+				"default": false
+			},
+			"fillValue": false
+		}
+	]
+}

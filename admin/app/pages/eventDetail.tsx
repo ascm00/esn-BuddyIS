@@ -1,17 +1,19 @@
-import { Binding } from '@app/lib/binding'
+import { Binding, DeleteEntityDialog } from '@app/lib/binding'
 import { BackButton } from '@app/lib/buttons'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
 import { Table, TableBody, TableCell, TableRow, TableWrapper } from '@app/lib/ui/table'
-import { Component, EntitySubTree, Field, HasMany, HasOne, HasRole, If, Link, useEntity, useIdentity } from '@contember/interface'
+import { Component, DeleteEntityTrigger, EntitySubTree, Field, HasMany, HasOne, HasRole, If, Link, useEntity, useIdentity } from '@contember/interface'
 import { formatDateTime } from '@app/lib/utils/formatting'
 import { Todo } from '@app/lib/dev'
 import { RichTextRendererField } from '@app/lib/plugins/rich-text/renderer/RichTextRendererField'
 import { renderElement, renderLeaf } from '@app/lib/plugins/rich-text/renderer/renderers'
-import { DataGrid, DataGridColumn, DataGridHasManyColumn, DataGridHasManyFilter, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridTextFilter, DataGridToolbar } from '@app/lib/datagrid'
+import { DataGrid, DataGridActionColumn, DataGridColumn, DataGridDateColumn, DataGridHasManyColumn, DataGridHasManyFilter, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridTextFilter, DataGridToolbar } from '@app/lib/datagrid'
 import { CreateEntityModalButton } from '@app/lib/buttons/createEntityModalButtons'
 import { RegistrationCreateForm } from '@app/components/forms/registration-create-form'
-import { DollarSign } from 'lucide-react'
+import { Delete, DollarSign, Trash, TrashIcon } from 'lucide-react'
+import { DeleteEntityModalButton } from '@app/lib/buttons/deleteEntityModalButton'
+import { PersistButton } from '@contember/admin'
 
 const RegistrationNow = Component( () => {
 	const identity = useIdentity()
@@ -55,7 +57,7 @@ const RegistrationNow = Component( () => {
 	if (registered()) {
 		return (
 			<div className='bg-blue-200 p-4 rounded-md'>
-				<div className='text-500'>You are already registered for this event. If you want to cancel your registration, contact us.</div>
+				<div className='text-500'>You are already registered for this event. If you want to cancel your registration, contact us via email.</div>
 			</div>
 		)
 	} else {
@@ -103,6 +105,7 @@ const RegistrationNow = Component( () => {
 					)
 				}
 			} else if (isOnWaitingList) {
+
 				return (
 					<>
 						<div className='bg-blue-200 p-4 rounded-md'>
@@ -116,7 +119,7 @@ const RegistrationNow = Component( () => {
 								refreshOnPersist
 								createEntityForm={
 								<>
-									<RegistrationCreateForm />
+									<RegistrationCreateForm isOnWaitingList={true}/>
 								</>
 								}
 								dialogProps={{ className: 'overflow-y-auto max-h-screen' }}
@@ -153,6 +156,69 @@ const RegistrationNow = Component( () => {
 	</HasMany>
 	</>
 ))
+
+const DeleteRegistration = Component(
+	() => {
+
+	const entity = useEntity()
+	const identity = useIdentity()
+	const contactPersonId = entity.getField('event.contactPerson.id').value ?? undefined
+
+	const isOwner = () => {
+		if(identity?.person?.id) {
+			if(contactPersonId === identity.person.id) {
+				return true
+			}
+		}
+		return false
+	}
+
+	if(isOwner()) {
+		return (
+				<DeleteEntityModalButton 
+				message="Do you really want to cancel this registration?"
+				cancelTo={'events'}
+				afterPersistTo={'events'}
+				>
+					<Button variant="destructive">
+						<Trash />
+					</Button>
+				</DeleteEntityModalButton>
+				// <DeleteEntityDialog
+				// 		trigger={<div className=''>
+				// 					<TrashIcon className="w-4" />
+				// 				</div>
+				// 		}
+				// />
+		)
+	} else {
+		return (
+			<HasRole role="admin">
+				<DeleteEntityModalButton 
+				message="Do you really want to cancel this registration?"
+				cancelTo={'events'}
+				afterPersistTo={'events'}
+				>
+					<Button variant="destructive">
+						<Trash />
+					</Button>
+				</DeleteEntityModalButton>
+			</HasRole>
+			// <DeleteEntityDialog
+			// 		trigger={<div className=''>
+			// 					<TrashIcon className="w-4" />
+			// 				</div>
+			// 		}
+			// />
+	)
+	}
+	}, () => (
+		<>
+		<Field field={'event.id'} />
+		<Field field={'event.contactPerson.id'} />
+		</>
+	)
+)
 
 export default () => {
 	return (
@@ -327,9 +393,9 @@ export default () => {
 						<HasRole role={roles => roles.has('admin') || roles.has('esnMemberRole')}>
 							<div className="flex flex-col gap-4">
 								<div className="flex justify-between">
-									<div className="text-xl font-bold">Participants</div>
+									<div className="text-xl font-bold">Registered users</div>
 								</div>
-								<DataGrid entities="EventRegistration[event.id = $id]" filteringStateStorage={'session'}>
+								<DataGrid entities="EventRegistration[(isWaitingList != true) && (event.id = $id)]" filteringStateStorage={'session'}>
 									<DataGridToolbar>
 										<DataGridQueryFilter />
 										<DataGridHasOneFilter field="person" label="User">
@@ -344,15 +410,60 @@ export default () => {
 									</DataGridToolbar>
 									<DataGridLoader>
 										<DataGridTable>
-											<DataGridColumn>
-												<div className="flex gap-4">
-													<Link to="userDetail(id: $entity.id)">
-														<Button>Detail</Button>
-													</Link>
-												</div>
-											</DataGridColumn>
+											<DataGridActionColumn>
+												<DeleteRegistration />
+											</DataGridActionColumn>
 											<DataGridHasOneColumn field="person" header="Name">
-												<Field field="firstName" /> {' '} <Field field="surname" />
+												<Link to="userDetail(id: $entity.id)">
+													<a>
+														<Field field="firstName" /> {' '} <Field field="surname" />
+													</a>
+												</Link>
+											</DataGridHasOneColumn>
+											<DataGridTextColumn field="person.tenantPerson.email" header="Email" />
+											<DataGridTextColumn field="person.phoneNumber" header="Phone number" />
+											<DataGridTextColumn field="person.xname" header="Xname" />
+											<DataGridTextColumn field="person.esnCardId" header="ESN Card ID" />
+											<DataGridHasManyColumn field="allergies" header="Allergies">
+												<Field field="name" />
+											</DataGridHasManyColumn>
+											<DataGridHasManyColumn field="dietaryRestrictions" header="Dietary Restrictions">
+												<Field field="name" />
+											</DataGridHasManyColumn>
+											<DataGridTextColumn field="note" header="Note" />
+										</DataGridTable>
+									</DataGridLoader>
+								</DataGrid>
+							</div>
+							<div className="flex flex-col gap-4">
+								<div className="flex justify-between">
+									<div className="text-xl font-bold">Waiting list</div>
+								</div>
+								<DataGrid entities="EventRegistration[isWaitingList = true && event.id = $id]" filteringStateStorage={'session'}>
+									<DataGridToolbar>
+										<DataGridQueryFilter />
+										<DataGridHasOneFilter field="person" label="User">
+											<Field field="firstName" /> {' '} <Field field="surname" />
+										</DataGridHasOneFilter>
+										<DataGridHasManyFilter field="allergies" label="Allergies">
+											<Field field="name" />
+										</DataGridHasManyFilter>
+										<DataGridHasManyFilter field="dietaryRestrictions" label="Dietary Restrictions">
+											<Field field="name" />
+										</DataGridHasManyFilter>
+									</DataGridToolbar>
+									<DataGridLoader>
+										<DataGridTable>
+											<DataGridActionColumn>
+												<DeleteRegistration />
+											</DataGridActionColumn>
+											<DataGridTextColumn field="createdAt" header="Registered At" />
+											<DataGridHasOneColumn field="person" header="Name">
+												<Link to="userDetail(id: $entity.id)">
+													<a>
+														<Field field="firstName" /> {' '} <Field field="surname" />
+													</a>
+												</Link>
 											</DataGridHasOneColumn>
 											<DataGridTextColumn field="person.tenantPerson.email" header="Email" />
 											<DataGridTextColumn field="person.phoneNumber" header="Phone number" />

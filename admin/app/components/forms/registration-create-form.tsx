@@ -1,24 +1,33 @@
 import { CheckboxField, FormLayout, InputField, MultiSelectField, RadioEnumField, SelectField, TextareaField } from '@app/lib/form'
-import { identityEnvironmentExtension } from '@contember/admin'
+import { Environment, TextInput } from '@contember/admin'
 import { ImageField } from '@app/lib/plugins/image/ImageField'
-import { Component, EntitySubTree, Field, HasMany, HasOne, HasRole, useEntity, useEntitySubTree, useIdentity, useEntityBeforePersist } from '@contember/interface'
+import { Component, EntitySubTree, Field, HasMany, HasOne, HasRole, useEntity, useEntitySubTree, useIdentity, useEntityBeforePersist, EnvironmentExtensionProvider, identityEnvironmentExtension } from '@contember/interface'
 import { ConnectUser } from '../ConnectUser'
 import { Todo } from '@app/lib/dev'
 import { identity$ } from '@contember/graphql-client-tenant'
+import { ConnectEntity } from '../ConnectEntity'
+import Input from 'postcss/lib/input'
 
-export const RegistrationCreateForm = Component(
-    () => {
+interface RegistrationCreateFormProps {
+    isOnWaitingList?: boolean 
+}
 
+export const RegistrationCreateForm = Component<RegistrationCreateFormProps>(
+    ({isOnWaitingList}) => {
     const entity = useEntity()
 
+    //connect to current event and logged in user
+    const me = useEntitySubTree('me')
     const currentEvent = useEntitySubTree('currentEvent')
     entity.connectEntityAtField('event', currentEvent)
+    entity.connectEntityAtField('person', me)
 
-    const event = entity.getEntity('event')
-    const person = entity.getEntity('person')
+    // check if the user has ESN card filled on his profile and if its mandatory for this event
+    const myEsnCardId = me.getField('esnCardId').value ?? undefined
+    const mandatoryESNcard = currentEvent.getField('mandatoryESNcard').value ?? undefined
+
     const allergies = currentEvent.getField('allergies').value ?? undefined
     const dietaryRestrictions = currentEvent.getField('dietaryRestrictions').value ?? undefined
-    const mandatoryESNcard = currentEvent.getField('name').value ?? undefined
     const registeredCount = currentEvent.getField('registeredCount').value ?? undefined
 
     // This should be after processing the payment
@@ -26,6 +35,9 @@ export const RegistrationCreateForm = Component(
         if(typeof registeredCount === 'number'){
             let updatedCount = registeredCount + 1
             currentEvent.updateValues({registeredCount: updatedCount})
+            if(isOnWaitingList){
+                entity.updateValues({isWaitingList: true})
+            }
         }
     })
     
@@ -42,15 +54,14 @@ export const RegistrationCreateForm = Component(
                     <Field field={'firstName'} /> {' '} <Field field={'surname'} />
                 </SelectField>
             </HasRole>
-            {/* <ConnectUser field='person'>
-                <Field field={'firstName'} /> {' '} <Field field={'surname'} />
-            </ConnectUser> */}
-
-            {/* { (mandatoryESNcard && !esnCardId ) &&
+            
+            { mandatoryESNcard &&
             <div className='pb-3'>
-                <InputField field="event.mandatoryESNcard" label="ESN Card Number" />
-                <p className="text-xs text-gray-500">Please fill your ESN Card Number</p>
-            </div>} */}
+                <HasOne field={'person'}>
+                    <InputField field="esnCardId" label="ESN Card Number *" required />
+                </HasOne>
+                <p className="text-xs text-gray-500">Please fill your ESN Card Number. You cannot register without filling it.</p>
+            </div>}
 
             { dietaryRestrictions &&
             <div className='pb-3'>
@@ -73,8 +84,23 @@ export const RegistrationCreateForm = Component(
             </div>
         </FormLayout>)
     },
-    () => (
+    (_, env) => (
         <>
+            <EntitySubTree
+                entity={`Person(tenantPerson.id='${env.getExtension(identityEnvironmentExtension).identity?.person?.id}')`}
+                alias="me"
+            >
+                <Field field="firstName" />
+                <Field field="surname" />
+                <Field field="esnCardId" />
+                <Field field="id" />
+            </EntitySubTree>
+            <HasOne field="person">
+                <Field field="firstName" />
+                <Field field="surname" />
+                <Field field="esnCardId" />
+                <Field field="id" />
+            </HasOne>
             <EntitySubTree entity={'Event(id=$id)'} alias={'currentEvent'}>
                 <Field field="name" />
                 <Field field="dietaryRestrictions" />
@@ -93,6 +119,8 @@ export const RegistrationCreateForm = Component(
                 {/* <Field field="esnCardId" /> */}
                 <Field field="firstName" />
                 <Field field="surname" />
+                <Field field="esnCardId" />
+                <Field field="id" />
             </HasOne>
             <HasMany field="dietaryRestrictions">
                 <Field field="name" />
@@ -101,6 +129,7 @@ export const RegistrationCreateForm = Component(
                 <Field field="name" />
             </HasMany>
             <Field field="note" />
+            <Field field="isWaitingList" />
         </>
     )
 )

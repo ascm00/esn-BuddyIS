@@ -1,0 +1,18 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "createColumn",
+			"entityName": "EventRegistration",
+			"field": {
+				"name": "isWatingList",
+				"columnName": "is_wating_list",
+				"columnType": "boolean",
+				"nullable": true,
+				"type": "Bool",
+				"default": false
+			},
+			"fillValue": false
+		}
+	]
+}
