@@ -9,6 +9,7 @@ export class EventRegistration {
     paid = c.boolColumn()
     note = c.stringColumn()
     event = c.manyHasOne(Event, 'registrations')
+    isWaitingList = c.boolColumn().default(false)
     
     person = c.manyHasOne(Person, 'registrations')
     allergies = c.manyHasMany(Allergy, 'registrations')

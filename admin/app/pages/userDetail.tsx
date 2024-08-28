@@ -148,6 +148,13 @@ export default () => {
 									</DataGridToolbar>
 									<DataGridLoader>
 										<DataGridTable>
+											<DataGridColumn>
+												<div className="flex gap-4">
+													<Link to="eventDetail(id: $entity.event.id)">
+														<Button>Detail</Button>
+													</Link>
+												</div>
+											</DataGridColumn>
 											<DataGridTextColumn field="event.name" header="Name" />
 											<DataGridTextColumn field="event.place" header="Place" />
 											<DataGridDateColumn field="event.startDate" header="Event From" />

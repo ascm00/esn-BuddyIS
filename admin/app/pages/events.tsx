@@ -3,7 +3,7 @@ import { BackButton } from '@app/lib/buttons'
 import { DataGrid, DataGridColumn, DataGridDateColumn, DataGridEnumColumn, DataGridLoader, DataGridNumberColumn, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
-import { Field, Link } from '@contember/interface'
+import { Component, Field, HasRole, Link, useEntity, useIdentity } from '@contember/interface'
 
 export default () => {
 	return (
@@ -37,17 +37,20 @@ export default () => {
 													Detail
 												</Button>
 											</Link>
-											<Link to="eventEdit(id: $entity.id)">
-												<Button>
-													Edit
-												</Button>
-											</Link>
+											<HasRole role={'admin'}>
+												<Link to="eventEdit(id: $entity.id)">
+													<Button>
+														Edit
+													</Button>
+												</Link>
+											</HasRole>
 										</div>
 									</DataGridColumn>
 									<DataGridTextColumn field="name" header="Name" />
 									<DataGridTextColumn field="place" header="Place" />
 									{/* Capacity musí být kolik zbývá volných míst z kolika */}
 									<DataGridNumberColumn field="capacity" header="Capacity" />
+									<DataGridNumberColumn field="registeredCount" header="Registered" />
 									<DataGridNumberColumn field="fee" header="Entrance fee">
 										<Field field="fee" /> {' CZK'}
 									</DataGridNumberColumn>

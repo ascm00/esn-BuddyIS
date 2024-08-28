@@ -485,6 +485,9 @@ export const ContemberClientNames: SchemaNames = {
           "type": "one",
           "entity": "Event"
         },
+        "isWaitingList": {
+          "type": "column"
+        },
         "person": {
           "type": "one",
           "entity": "Person"
@@ -502,7 +505,8 @@ export const ContemberClientNames: SchemaNames = {
         "id",
         "createdAt",
         "paid",
-        "note"
+        "note",
+        "isWaitingList"
       ]
     },
     "Faculty": {
