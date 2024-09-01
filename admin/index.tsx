@@ -41,6 +41,7 @@ const rootEl = document.body.appendChild(document.createElement('div'))
 
 const hasTokenFromEnv = import.meta.env.VITE_CONTEMBER_ADMIN_SESSION_TOKEN !== '__SESSION_TOKEN__'
 const appUrl = '/app/'
+const createAccount = '/create-account/'
 
 const Login = () => {
 	const showToast = useShowToast()
@@ -75,6 +76,9 @@ const Login = () => {
 								Continue as default user
 							</AnchorButton>
 						)}
+						<AnchorButton href={createAccount} size="lg" className="w-full" variant="secondary">
+								Create account
+						</AnchorButton>
 						<LoginForm>
 							<form className="grid gap-4">
 								<LoginFormFields />
@@ -241,9 +245,9 @@ const PasswordResetRequestSuccessPage = () => (
 const Layout = ({ children }: { children?: React.ReactNode }) => (
 	<div className="grid md:grid-cols-2 min-h-screen ">
 		<div className="bg-gray-100 p-4 flex items-center justify-center">{children}</div>
-		<div className="bg-gray-700 text-white p-4 flex items-center justify-center">
+		<div className="bg-sky-400 text-white p-4 flex items-center justify-center">
 			<div className="w-full max-w-md">
-				<div className="text-center text-2xl">Welcome to your app</div>
+				<div className="text-center text-2xl">Welcome to Buddy IS</div>
 				{/*<p className="mt-8 text-center text-gray-300">
 				{/*	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, sem eget ultricies ultricies, sapien urna tristique eros, ac*/}
 				{/*	tincidunt felis lacus nec nunc.*/}
