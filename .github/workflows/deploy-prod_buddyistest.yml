@@ -155,11 +155,18 @@ jobs:
       - name: Install dependencies
         run: yarn install --immutable
 
-      - name: Compile TypeScript
-        run: yarn run build
-
       - name: Build and deploy Contember to production
         run: yarn run deploy ${{ secrets.CONTEMBER_DEPLOY_DSN }} --yes
+
+      - name: Zip artifact for deployment
+        run: zip -r release.zip .
+
+      - name: Upload artifact for deployment job
+        uses: actions/upload-artifact@v4
+        with:
+          name: node-app
+          path: release.zip
+
 
   deploy:
     runs-on: ubuntu-latest
@@ -170,6 +177,14 @@ jobs:
       id-token: write # This is required for requesting the JWT
 
     steps:
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v4
+        with:
+          name: node-app
+
+      - name: Unzip artifact for deployment
+        run: unzip release.zip
+
       - name: Login to Azure
         uses: azure/login@v2
         with:
