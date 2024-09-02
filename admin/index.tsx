@@ -41,7 +41,7 @@ const rootEl = document.body.appendChild(document.createElement('div'))
 
 const hasTokenFromEnv = import.meta.env.VITE_CONTEMBER_ADMIN_SESSION_TOKEN !== '__SESSION_TOKEN__'
 const appUrl = '/app/'
-const createAccount = '/create-account/'
+const createAccount = '/app/person-create'
 
 const Login = () => {
 	const showToast = useShowToast()
