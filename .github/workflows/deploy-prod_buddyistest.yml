@@ -155,6 +155,9 @@ jobs:
       - name: Install dependencies
         run: yarn install --immutable
 
+      - name: Compile TypeScript
+        run: yarn run build
+
       - name: Build and deploy Contember to production
         run: yarn run deploy ${{ secrets.CONTEMBER_DEPLOY_DSN }} --yes
 
