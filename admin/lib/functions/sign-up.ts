@@ -17,7 +17,7 @@ interface InvitationResult {
 	}
 }
 
-export async function onRequestPost(email: string, firstname: string, surname: string, xname: string, phoneNumber: string, env: Env){
+export async function onRequestPost(email: string, firstname: string, surname: string, xname: string, phoneNumber: string, role: string, env: Env){
 	// const formData = await request.formData()
 	// const data: Record<string, any> = {}
 
@@ -45,7 +45,7 @@ export async function onRequestPost(email: string, firstname: string, surname: s
 			email: email,
 			projectSlug: env.VITE_CONTEMBER_ADMIN_PROJECT_NAME,
 			name: `${firstname} ${surname}`,
-			memberships: [{ role: 'internationalStudent', variables: [] }],
+			memberships: [{ role: role, variables: [] }],
 			options: { method: 'RESET_PASSWORD', mailVariant: 'client' },
 		},
 	})
