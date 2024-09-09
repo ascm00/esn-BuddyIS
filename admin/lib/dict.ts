@@ -122,6 +122,14 @@ export const dict = {
 		empty: 'No items.',
 		addItem: 'Add item',
 	},
+	register: {
+		title: 'Registration',
+		finishedTitle: 'Registration Completed',
+		finishedText: 'We have sent you a welcome email, please complete the registration by clicking the link in it.',
+		submit: 'Register',
+		submitting: 'Registering...',
+		alreadyRegistered: 'I am already registered and want to log in.',
+	},
 	outdatedApplication: {
 		title: 'An updated version is available',
 		description: 'To access the latest features and improvements, kindly refresh your browser.',

@@ -4949,6 +4949,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/escape-html@npm:^1":
+  version: 1.0.4
+  resolution: "@types/escape-html@npm:1.0.4"
+  checksum: 10/61c1409df141268bdb2b40e511614193a9f2d3fed224788a14454ba9504787efa01bbd083826f163a6d33a97815b71e161ce1bdf6b77dd7b3569f3a885ad7722
+  languageName: node
+  linkType: hard
+
 "@types/estree@npm:1.0.5":
   version: 1.0.5
   resolution: "@types/estree@npm:1.0.5"
@@ -5609,6 +5616,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"date-fns@npm:^3.6.0":
+  version: 3.6.0
+  resolution: "date-fns@npm:3.6.0"
+  checksum: 10/cac35c58926a3b5d577082ff2b253612ec1c79eb6754fddef46b6a8e826501ea2cb346ecbd211205f1ba382ddd1f9d8c3f00bf433ad63cc3063454d294e3a6b8
+  languageName: node
+  linkType: hard
+
 "dayjs@npm:^1.11.7":
   version: 1.11.12
   resolution: "dayjs@npm:1.11.12"
@@ -5911,6 +5925,13 @@ __metadata:
   version: 3.1.1
   resolution: "escalade@npm:3.1.1"
   checksum: 10/afa618e73362576b63f6ca83c975456621095a1ed42ff068174e3f5cea48afc422814dda548c96e6ebb5333e7265140c7292abcc81bbd6ccb1757d50d3a4e182
+  languageName: node
+  linkType: hard
+
+"escape-html@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "escape-html@npm:1.0.3"
+  checksum: 10/6213ca9ae00d0ab8bccb6d8d4e0a98e76237b2410302cf7df70aaa6591d509a2a37ce8998008cbecae8fc8ffaadf3fb0229535e6a145f3ce0b211d060decbb24
   languageName: node
   linkType: hard
 
@@ -7814,10 +7835,13 @@ __metadata:
     "@contember/schema-definition": "npm:1.4.0-rc.3"
     "@contember/schema-utils": "npm:1.4.0-rc.3"
     "@radix-ui/react-radio-group": "npm:^1.2.0"
+    "@types/escape-html": "npm:^1"
     "@types/luxon": "npm:^3"
     "@types/react-big-calendar": "npm:^1"
     clsx: "npm:^2.1.1"
+    date-fns: "npm:^3.6.0"
     downshift: "npm:^8.3.1"
+    escape-html: "npm:^1.0.3"
     luxon: "npm:^3.4.4"
     react-big-calendar: "npm:^1.13.1"
     react-collapsible: "npm:^2.10.0"

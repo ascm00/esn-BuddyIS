@@ -15,9 +15,13 @@
 			"@app/lib/*": [
 				"./lib/*"
 			],
+			"@app/lib/functions/*": [
+				"./lib/functions/*"
+			],
 			"@app/lib/plugins/*": [
 				"./lib/plugins/*"
-			]
+			],
+
 		}
 	}
 }
