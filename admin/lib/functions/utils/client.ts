@@ -23,7 +23,7 @@ export async function contentClient<T>(env: Env, query: {
 			return response
 		}
 
-		return await response.json<{ data: T }>()
+		return await response.json()
 
 	} catch (error) {
 		console.error(error)
