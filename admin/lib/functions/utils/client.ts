@@ -36,15 +36,12 @@ export const tenantClient = (env: Env, query: { query: string, variables?: Recor
 	//has to be changed for microsoft azure production
 	if(env.VITE_CONTEMBER_ADMIN_API_BASE_URL === '/_api') {
 		url = new URL('https://esn-buddy-is.eu.contember.cloud/_api')
-		console.log('url', url.toString())
 	} else {
 		url = new URL(env.VITE_CONTEMBER_ADMIN_API_BASE_URL)
-		console.log('url', url.toString())
 	}
 	url.pathname = '/tenant'
-	console.log('url', url.toString())
 
-	return fetch(url.toString(), {
+	return fetch('https://esn-buddy-is.eu.contember.cloud/_api/tenant', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
