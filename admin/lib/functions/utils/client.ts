@@ -6,7 +6,13 @@ export async function contentClient<T>(env: Env, query: {
 	variables?: Record<string, any>
 }, token?: string) {
 	try {
-		const url = new URL(env.VITE_CONTEMBER_ADMIN_API_BASE_URL)
+		let url: URL
+		//has to be changed for microsoft azure production
+		if(env.VITE_CONTEMBER_ADMIN_API_BASE_URL === '/_api') {
+			url = new URL('https://esn-buddy-is.eu.contember.cloud/_api')
+		} else {
+			url = new URL(env.VITE_CONTEMBER_ADMIN_API_BASE_URL)
+		}
 		url.pathname = `/content/${env.VITE_CONTEMBER_ADMIN_PROJECT_NAME}/live`
 
 		const response = await fetch(url.toString(), {
