@@ -41,7 +41,7 @@ export const tenantClient = (env: Env, query: { query: string, variables?: Recor
 	}
 	url.pathname = '/tenant'
 
-	return fetch('https://esn-buddy-is.eu.contember.cloud/_api/tenant', {
+	return fetch(url.toString(), {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
