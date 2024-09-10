@@ -46,7 +46,7 @@ export async function onRequestPost(email: string, firstname: string, surname: s
 			projectSlug: env.VITE_CONTEMBER_ADMIN_PROJECT_NAME,
 			name: `${firstname} ${surname}`,
 			memberships: [{ role: env.role, variables: [] }],
-			options: { method: 'RESET_PASSWORD', mailVariant: 'client' },
+			options: { method: 'RESET_PASSWORD'},
 		},
 	})
 
