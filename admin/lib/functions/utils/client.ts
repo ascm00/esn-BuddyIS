@@ -35,7 +35,7 @@ export const tenantClient = (env: Env, query: { query: string, variables?: Recor
 	console.log(env.VITE_CONTEMBER_ADMIN_API_BASE_URL)
 	const url = new URL(env.VITE_CONTEMBER_ADMIN_API_BASE_URL)
 	url.pathname = '/tenant'
-	console.log(url.toString())
+	console.log('url', url.toString())
 
 	return fetch(url.toString(), {
 		method: 'POST',
