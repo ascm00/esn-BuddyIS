@@ -222,15 +222,14 @@ const registrationForeignPage = () => {
 				stage={config.stage}
 			>
 				<RegistrationForm
-				role="internationalStudent"
 				VITE_CONTEMBER_ADMIN_API_BASE_URL={config.apiBaseUrl}
 				VITE_CONTEMBER_ADMIN_INVITE_TOKEN={config.adminInviteToken}
 				VITE_CONTEMBER_ADMIN_LOGIN_TOKEN={config.loginToken}
 				VITE_CONTEMBER_ADMIN_PROJECT_NAME={config.projectName}
-				VITE_CONTEMBER_PUBLIC_TOKEN={config.publicToken}/>
+				VITE_CONTEMBER_PUBLIC_TOKEN={config.publicToken}
+				role={'internationalStudent'}/>
 			</RegisterEntryPoint>
 		);
-
  }
 
  const registrationLocalPage = () => {
@@ -243,12 +242,13 @@ const registrationForeignPage = () => {
 			stage={config.stage}
 		>
 			<RegistrationForm
-			role="czechBuddy"
 			VITE_CONTEMBER_ADMIN_API_BASE_URL={config.apiBaseUrl}
 			VITE_CONTEMBER_ADMIN_INVITE_TOKEN={config.adminInviteToken}
 			VITE_CONTEMBER_ADMIN_LOGIN_TOKEN={config.loginToken}
 			VITE_CONTEMBER_ADMIN_PROJECT_NAME={config.projectName}
-			VITE_CONTEMBER_PUBLIC_TOKEN={config.publicToken}/>
+			VITE_CONTEMBER_PUBLIC_TOKEN={config.publicToken}
+			role={'czechBuddy'}
+			/>
 		</RegisterEntryPoint>
 	);
 

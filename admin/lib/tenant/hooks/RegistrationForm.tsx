@@ -2,7 +2,7 @@ import { onRequestPost } from "@app/lib/functions/sign-up";
 import { useState } from "react";
 import { Env } from "@app/lib/functions/types";
 
-export const RegistrationForm = (role: any, env : Env) => {
+export const RegistrationForm = (env : Env) => {
 	const [firstName, setFirstName] = useState('');
 	const [surname, setSurname] = useState('');
 	const [email, setEmail] = useState('');
@@ -13,14 +13,14 @@ export const RegistrationForm = (role: any, env : Env) => {
 		event.preventDefault();
 	
 		try {
-			const response = await onRequestPost(email, firstName, surname, xname, phoneNumber, role, env)
+			const response = await onRequestPost(email, firstName, surname, xname, phoneNumber, env)
 			console.log(response)
 
 	
 			if (response.ok) {
 				// User created successfully
 				console.log('User created successfully');
-				window.location.href = '/';
+				window.location.href = "/";
 				alert('User created successfully. Check your email to set your password.');
 			} else {
 				// Error creating user

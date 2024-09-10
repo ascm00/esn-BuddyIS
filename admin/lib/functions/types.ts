@@ -4,4 +4,5 @@ export interface Env {
 	VITE_CONTEMBER_ADMIN_LOGIN_TOKEN: string
 	VITE_CONTEMBER_ADMIN_PROJECT_NAME: string
 	VITE_CONTEMBER_PUBLIC_TOKEN: string
+	role: string
 }

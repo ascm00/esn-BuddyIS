@@ -1,3 +1,4 @@
+import config from '../../../config'
 import { Env } from '../types'
 
 export async function contentClient<T>(env: Env, query: {
@@ -31,6 +32,7 @@ export async function contentClient<T>(env: Env, query: {
 }
 
 export const tenantClient = (env: Env, query: { query: string, variables?: Record<string, any> }, token?: string) => {
+	console.log(env.VITE_CONTEMBER_ADMIN_API_BASE_URL)
 	const url = new URL(env.VITE_CONTEMBER_ADMIN_API_BASE_URL)
 	url.pathname = '/tenant'
 

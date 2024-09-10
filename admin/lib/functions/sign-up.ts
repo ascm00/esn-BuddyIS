@@ -17,7 +17,7 @@ interface InvitationResult {
 	}
 }
 
-export async function onRequestPost(email: string, firstname: string, surname: string, xname: string, phoneNumber: string, role: string, env: Env){
+export async function onRequestPost(email: string, firstname: string, surname: string, xname: string, phoneNumber: string, env: Env){
 	// const formData = await request.formData()
 	// const data: Record<string, any> = {}
 
@@ -38,6 +38,11 @@ export async function onRequestPost(email: string, firstname: string, surname: s
 	if (!email || !firstname || !surname || !xname || !phoneNumber) {
 		return new Response('Invalid data', { status: 400 })
 	}
+	console.log(env.VITE_CONTEMBER_ADMIN_API_BASE_URL)
+	console.log(env.VITE_CONTEMBER_ADMIN_INVITE_TOKEN)
+	console.log(env.VITE_CONTEMBER_ADMIN_LOGIN_TOKEN)
+	console.log(env.VITE_CONTEMBER_ADMIN_PROJECT_NAME)
+	console.log(env.VITE_CONTEMBER_PUBLIC_TOKEN)
 
 	const invitationResult = await tenantClient(env, {
 		query: inviteQuery,
@@ -45,7 +50,7 @@ export async function onRequestPost(email: string, firstname: string, surname: s
 			email: email,
 			projectSlug: env.VITE_CONTEMBER_ADMIN_PROJECT_NAME,
 			name: `${firstname} ${surname}`,
-			memberships: [{ role: role, variables: [] }],
+			memberships: [{ role: env.role, variables: [] }],
 			options: { method: 'RESET_PASSWORD', mailVariant: 'client' },
 		},
 	})
