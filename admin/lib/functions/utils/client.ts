@@ -45,8 +45,8 @@ export const tenantClient = (env: Env, query: { query: string, variables?: Recor
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
-			Authorization: `Bearer ${token ?? env.VITE_CONTEMBER_ADMIN_INVITE_TOKEN}`,
-			// Authorization: `Bearer 0000000000000000000000000000000000000000`
+			// Authorization: `Bearer ${token ?? env.VITE_CONTEMBER_ADMIN_INVITE_TOKEN}`,
+			Authorization: `Bearer REMOVED_TOKEN`
 		},
 		body: JSON.stringify(query),
 	})
