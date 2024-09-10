@@ -32,10 +32,14 @@ export async function contentClient<T>(env: Env, query: {
 }
 
 export const tenantClient = (env: Env, query: { query: string, variables?: Record<string, any> }, token?: string) => {
-	console.log(env.VITE_CONTEMBER_ADMIN_API_BASE_URL)
-	const url = new URL(env.VITE_CONTEMBER_ADMIN_API_BASE_URL)
+	let url = new URL(env.VITE_CONTEMBER_ADMIN_API_BASE_URL)
+	//has to be changed for microsoft azure production
+	if(env.VITE_CONTEMBER_ADMIN_API_BASE_URL === '/_api') {
+		url = new URL('https://esn-buddy-is.eu.contember.cloud/_api')
+	} else {
+		url = new URL(env.VITE_CONTEMBER_ADMIN_API_BASE_URL)
+	}
 	url.pathname = '/tenant'
-	console.log('url', url.toString())
 
 	return fetch(url.toString(), {
 		method: 'POST',

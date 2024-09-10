@@ -38,11 +38,6 @@ export async function onRequestPost(email: string, firstname: string, surname: s
 	if (!email || !firstname || !surname || !xname || !phoneNumber) {
 		return new Response('Invalid data', { status: 400 })
 	}
-	console.log(env.VITE_CONTEMBER_ADMIN_API_BASE_URL)
-	console.log(env.VITE_CONTEMBER_ADMIN_INVITE_TOKEN)
-	console.log(env.VITE_CONTEMBER_ADMIN_LOGIN_TOKEN)
-	console.log(env.VITE_CONTEMBER_ADMIN_PROJECT_NAME)
-	console.log(env.VITE_CONTEMBER_PUBLIC_TOKEN)
 
 	const invitationResult = await tenantClient(env, {
 		query: inviteQuery,
