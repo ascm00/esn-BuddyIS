@@ -1,29 +1,26 @@
-import { GQLVariable, InviteMethod, MembershipInput, useSingleTenantMutation } from '@contember/admin'
+import * as TenantApi from '@contember/graphql-client-tenant'
+import { useTenantApi } from '@contember/react-client-tenant'
+import { useCallback } from 'react'
 
-const UPDATE_PROJECT_MEMBER_MUTATION = `
-updateProjectMember(
-	identityId: $identityId,
-	projectSlug: $projectSlug,
-	memberships: $memberships,
-) {
-	ok
-	error {
-		code
-	}
-}
-`
 
-const updateProjectMemberVariables = {
-	projectSlug: GQLVariable.Required(GQLVariable.String),
-	identityId: GQLVariable.Required(GQLVariable.String),
-	memberships: GQLVariable.Required(GQLVariable.List(MembershipInput)),
-}
+
+const ProjectMemberFetcher = TenantApi.updateProjectMemberResponse$
+	.ok
+	.error(TenantApi.updateProjectMemberError$.developerMessage)
+
 
 export type InviteErrorCodes = 'PROJECT_NOT_FOUND'
 
 export const useUpdateProjectMember = () => {
-	return useSingleTenantMutation<{ isNew: boolean; person: { id: string; identity: { id: string } } }, InviteErrorCodes, typeof updateProjectMemberVariables>(
-		UPDATE_PROJECT_MEMBER_MUTATION,
-		updateProjectMemberVariables,
-	)
+	const api = useTenantApi()
+
+	return useCallback(async (variables: {
+		identityId: string
+		projectSlug: string
+		memberships: TenantApi.MembershipInput[]
+	}) => {
+		return (await api(TenantApi.mutation$.updateProjectMember(ProjectMemberFetcher), {
+			variables,
+		})).updateProjectMember
+	}, [api])
 }

@@ -3,7 +3,7 @@ import { BackButton } from '@app/lib/buttons'
 import { DataGrid, DataGridBooleanColumn, DataGridColumn, DataGridDateColumn, DataGridEnumFilter, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
-import { Field, Link } from '@contember/interface'
+import { Field, HasRole, Link } from '@contember/interface'
 
 export default () => {
 	return (
@@ -43,11 +43,13 @@ export default () => {
 													Detail
 												</Button>
 											</Link>
-											<Link to="userEdit(id: $entity.id)">
-												<Button>
-													Edit
-												</Button>
-											</Link>
+											<HasRole role={roles => roles.has('admin') || roles.has('esnMemberRole')}>
+												<Link to="userEdit(id: $entity.id)">
+													<Button>
+														Edit
+													</Button>
+												</Link>
+											</HasRole>
 										</div>
 									</DataGridColumn>
 									<DataGridTextColumn field="firstName" header="First name" />

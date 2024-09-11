@@ -44,13 +44,6 @@ export default () => {
 						<div className="text-lg font-bold">
 							User
 						</div>
-						<Slots.Actions>
-							<Link to="userCreate">
-								<Button>
-									Create user
-								</Button>
-							</Link>
-						</Slots.Actions>
 						<DataGrid entities="Person[country.id = $id]">
 							<DataGridToolbar>
 								<DataGridQueryFilter />

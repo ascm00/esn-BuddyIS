@@ -12,7 +12,7 @@ import {useChangeEmail} from "@app/lib/tenant/hooks/useChangeEmail";
 import {useInviteUser} from "@app/lib/tenant/hooks/useInviteUser";
 import {useUpdateProjectMemberPerson} from "@app/lib/tenant/hooks/useUpdateProjectMemberPerson";
 import {usePersistWithFeedback} from "@app/lib/binding";
-import {FormLabelUI, InputField} from "@app/lib/form";
+import {FormLabelUI, InputField, SelectField} from "@app/lib/form";
 import {Input} from "@app/lib/ui/input";
 import {Label} from "@app/lib/ui/label";
 import {Button} from "@app/lib/ui/button";
@@ -88,25 +88,80 @@ export const PersonInvite = Component(
 
 				<FormLabelUI>Role</FormLabelUI>
 				<RadioGroup defaultValue={role} value={role} onValueChange={setRole} disabled={roles.has('employee') || roles.has('manager')}>
-					{/* <div className="flex items-center space-x-2">
-						<RadioGroupItem value="internationalStudent" id="option-one" />
-						<Label htmlFor="option-one">internationalStudent</Label>
+				<div className="flex items-center space-x-2">
+						<RadioGroupItem value="admin" id="option-one" />
+						<Label htmlFor="option-one">Admin</Label>
 					</div>
                     <div className="flex items-center space-x-2">
-						<RadioGroupItem value="esnMemberRole" id="option-one" />
-						<Label htmlFor="option-one">esnMember</Label>
+						<RadioGroupItem value="esnMemberRole" id="option-two" />
+						<Label htmlFor="option-two">ESN Member</Label>
 					</div>
                     <div className="flex items-center space-x-2">
-						<RadioGroupItem value="czechBuddy" id="option-one" />
-						<Label htmlFor="option-one">czechBuddy</Label>
-					</div> */}
+						<RadioGroupItem value="czechBuddy" id="option-three" />
+						<Label htmlFor="option-three">Czech Buddy</Label>
+					</div>
 					<div className="flex items-center space-x-2">
-						<RadioGroupItem value="admin" id="option-two" />
-						<Label htmlFor="option-two">Admin</Label>
+						<RadioGroupItem value="internationalStudent" id="option-four" />
+						<Label htmlFor="option-four">International student</Label>
 					</div>
 				</RadioGroup>
+				<div className='pb-2'>
+					<InputField field="firstName" label="First Name *" required />
+				</div>
+				<div className='pb-2'>
+					<InputField field="surname" label="Surname *" required />
+				</div>
+				<div className='pb-2'>
+					<InputField field="xname" label="Xname *" required/>
+					<p className="text-xs text-gray-500">Xname is the first part of your VŠE email address before @.</p>
+					<p className="text-xs text-gray-500">For example <strong>novp</strong>@vse.cz</p>
+				</div>
+				<div className='pb-2'>
+					<InputField field="esnCardId" label="ESN Card ID (not required until you get one)"/>
+					<p className="text-xs text-gray-500">You have to add your <strong>ESN Card ID</strong>, when you get one. It will be required for the sign up for the events.</p>
+				</div>
+				<div className='pb-2'>
+					<InputField field="phoneNumber" label="Phone Number *" required/>
+				</div>
+				<div className='pb-2'>
+					<SelectField
+						field="country"
+						label="Home Country *"
+						createNewForm={<>
+							<InputField field="name" label="Name" required />
+						</>}
+						options="Country"
+					>
+						<Field field="name" />
+					</SelectField>
+				</div>
+				<div className='pb-2'>
+					<SelectField
+						field="university"
+						label="Home University *"
+						createNewForm={<>
+							<InputField field="name" label="Name" required />
+						</>}
+						options="University"
+					>
+						<Field field="name" />
+					</SelectField>
+				</div>
+				{/* <CheckboxField field="active" label="Active" /> */}
+				<div className='pb-2'>
+					<SelectField
+						field="faculty"
+						label="Faculty at VSE (not required)"
+						createNewForm={<>
+							<InputField field="name" label="Name" required />
+						</>}
+						options="Faculty"
+					>
+						<Field field="name" />
+					</SelectField>
+				</div>
 				<Slots.Actions>
-					<Button onClick={() => persist()}>Uložit</Button>
+					<Button onClick={() => persist()}>Save data</Button>
 				</Slots.Actions>
 			</div>
 		)
@@ -119,6 +174,15 @@ export const PersonInvite = Component(
 				<Field field="email" />
 				<Field field="identityId" />
 			</HasOne>
+			<Field field="personId" />
+			<Field field="firstName" />
+			<Field field="surname" />
+			<Field field="xname" />
+			<Field field="esnCardId" />
+			<Field field="phoneNumber" />
+			<Field field="country.name" />
+			<Field field="university.name" />
+			<Field field="faculty.name" />
 		</>
 	),
 	'PersonInvite',

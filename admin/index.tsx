@@ -322,7 +322,9 @@ const Layout = ({ children }: { children?: React.ReactNode }) => (
 		<div className="bg-white p-4 flex items-center justify-center">{children}</div>
 		<div className="bg-gray-200 text-black p-4 flex items-center justify-center">
 			<div className="w-full max-w-md mx-auto">
-				<img src="/esn-logo.png"/>
+				<img src="/esn-logo.png" className='pb-10'/>
+				<h1 className='pb-3 pt-3'>Our sponsor</h1>
+				<img src="/ceska_sporitelna_logo.png"/>
 				{/* <div className="text-center text-2xl">Welcome to Buddy IS</div> */}
 				{/*<p className="mt-8 text-center text-gray-300">
 				{/*	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec auctor, sem eget ultricies ultricies, sapien urna tristique eros, ac*/}

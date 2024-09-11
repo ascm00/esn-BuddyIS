@@ -1,8 +1,8 @@
-import { useShowToast } from '@app/lib//toast'
 import { useProjectSlug } from '@contember/react-client'
 import { useCallback } from 'react'
 import { MultiValue } from 'react-select'
 import { useUpdateProjectMember } from './useUpdateProjectMember'
+import { useShowToast } from '@app/lib/toast/toaster'
 
 export const useUpdateProjectMemberPerson = (identityId: string | null, memberships: MultiValue<{
 	label: string
@@ -26,10 +26,9 @@ export const useUpdateProjectMemberPerson = (identityId: string | null, membersh
 			})),
 		})
 
-		if (!result.ok) {
-			toast(`Unable to update member: ${result.error.developerMessage}`, {
+		if (!result?.ok) {
+			toast(`Unable to update member: \${result.error.developerMessage}`, {
 				type: 'error',
-				dismiss: 5000,
 			})
 			return
 		}

@@ -18,13 +18,15 @@ export default () => {
 						<BackButton />
 					</Slots.Back>
 					<EntitySubTree entity="Person(id=$id)" isCreating={false}>
-						<Slots.Actions>
-							<Link to="personEdit(id: $entity.id)">
-								<Button>
-									Edit user
-								</Button>
-							</Link>
-						</Slots.Actions>
+						<HasRole role={roles => roles.has('admin') || roles.has('esnMemberRole')}>
+							<Slots.Actions>
+								<Link to="personEdit(id: $entity.id)">
+									<Button>
+										Edit user
+									</Button>
+								</Link>
+							</Slots.Actions>
+						</HasRole>
 						<TableWrapper className="bg-gray-50/50 max-w-lg border rounded-md">
 							<Table>
 								<TableBody>
