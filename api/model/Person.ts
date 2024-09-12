@@ -10,6 +10,7 @@ import { Country } from './Country'
 import { Faculty } from './Faculty'
 import { University } from './University'
 import { EventRegistration } from './EventRegistration'
+import { StudyProgram } from './StudyProgram'
 
 export class Person {
 	createdAt = c.dateTimeColumn().notNull().default('now')
@@ -26,6 +27,7 @@ export class Person {
 	xname = c.stringColumn()
 	active = c.boolColumn()
 	faculty = c.manyHasOne(Faculty, 'users').setNullOnDelete()
+	studyProgram = c.manyHasOne(StudyProgram, 'users').setNullOnDelete()
 	country = c.manyHasOne(Country, 'users').setNullOnDelete()
 	firstName = c.stringColumn()
 	organizedEvents = c.oneHasOneInverse(Event, 'contactPerson')

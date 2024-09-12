@@ -501,6 +501,7 @@ export type Person <OverRelation extends string | never = never> = {
 		tenantPerson: TenantPerson
 		university: University
 		faculty: Faculty
+		studyProgram: StudyProgram
 		country: Country
 		organizedEvents: Event
 		czechBuddyPair: BuddyPair
@@ -587,6 +588,31 @@ export type Sport <OverRelation extends string | never = never> = {
 	hasManyBy: {
 	}
 }
+export type StudyProgram <OverRelation extends string | never = never> = {
+	name: 'StudyProgram'
+	unique:
+		| Omit<{ id: string}, OverRelation>
+		| Omit<{ users: Person['unique']}, OverRelation>
+	columns: {
+		id: string
+		createdAt: string
+		name: string
+	}
+	hasOne: {
+	}
+	hasMany: {
+		users: Person<'studyProgram'>
+	}
+	hasManyBy: {
+		usersByTenantPerson: { entity: Person; by: {tenantPerson: TenantPerson['unique']}  }
+		usersByOrganizedEvents: { entity: Person; by: {organizedEvents: Event['unique']}  }
+		usersByCzechBuddyPair: { entity: Person; by: {czechBuddyPair: BuddyPair['unique']}  }
+		usersByInternationalBuddyPair: { entity: Person; by: {internationalBuddyPair: BuddyPair['unique']}  }
+		usersByApplications: { entity: Person; by: {applications: ApplicationCz['unique']}  }
+		usersByApplicationsFr: { entity: Person; by: {applicationsFr: ApplicationFr['unique']}  }
+		usersByRegistrations: { entity: Person; by: {registrations: EventRegistration['unique']}  }
+	}
+}
 export type TenantPerson <OverRelation extends string | never = never> = {
 	name: 'TenantPerson'
 	unique:
@@ -663,6 +689,7 @@ export type ContemberClientEntities = {
 	Section: Section
 	Semester: Semester
 	Sport: Sport
+	StudyProgram: StudyProgram
 	TenantPerson: TenantPerson
 	University: University
 }

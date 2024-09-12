@@ -793,6 +793,10 @@ export const ContemberClientNames: SchemaNames = {
           "type": "one",
           "entity": "Faculty"
         },
+        "studyProgram": {
+          "type": "one",
+          "entity": "StudyProgram"
+        },
         "country": {
           "type": "one",
           "entity": "Country"
@@ -933,6 +937,29 @@ export const ContemberClientNames: SchemaNames = {
         "applicationsFr": {
           "type": "many",
           "entity": "ApplicationFr"
+        }
+      },
+      "scalars": [
+        "id",
+        "createdAt",
+        "name"
+      ]
+    },
+    "StudyProgram": {
+      "name": "StudyProgram",
+      "fields": {
+        "id": {
+          "type": "column"
+        },
+        "createdAt": {
+          "type": "column"
+        },
+        "users": {
+          "type": "many",
+          "entity": "Person"
+        },
+        "name": {
+          "type": "column"
         }
       },
       "scalars": [

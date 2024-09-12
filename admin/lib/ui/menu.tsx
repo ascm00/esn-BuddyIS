@@ -8,6 +8,10 @@ export const MenuItemUI = uic('a', {
 	baseClass: 'flex justify-start py-2.5 px-2.5 w-full gap-2 rounded text-sm items-center transition-all duration-200',
 })
 
+export const MenuButtonUI = uic('a', {
+	baseClass: 'flex justify-center py-2.5 px-2.5 w-full gap-2 rounded text-sm items-center transition-all duration-200 bg-blue-500 text-white',
+})
+
 export const MenuItemIconUI = uic('span', {
 	baseClass: 'w-4 text-gray-400 inline-flex items-center justify-center',
 })
@@ -100,4 +104,48 @@ export const MenuItem = ({ icon, label, to, subItems, lvl, role, children }: Men
 			)}
 		</div>
 	)
+}
+
+export const MenuButton = ({ icon, label, to, subItems, lvl, role, children }: MenuItem) => {
+	const projectRoles = useProjectUserRoles()
+	const menu = useMenuContext()
+	lvl ??= menu?.level ?? 0
+	if (role && !(typeof role === 'string' ? projectRoles.has(role) : role(projectRoles))) {
+		return null
+	}
+
+	return (
+		<div>
+			{to ? (
+				<Link to={to}>
+					<MenuButtonUI className={'hover:bg-blue-600 cursor-pointer'}>
+						{/* <MenuItemIconUI>{icon}</MenuItemIconUI> */}
+						<span className={lvl === 0 ? 'font-medium' : ''}>{label}</span>
+					</MenuButtonUI>
+				</Link>
+			) : (
+				<MenuButtonUI>
+					{/* <MenuItemIconUI>{icon}</MenuItemIconUI> */}
+					<span className={lvl === 0 ? 'font-medium' : ''}>{label}</span>
+				</MenuButtonUI>
+			)}
+			{subItems && (
+				<MenuSubMenuUI>
+					<MenuList items={subItems} lvl={lvl + 1}/>
+				</MenuSubMenuUI>
+			)}
+
+			{children && (
+				<MenuSubMenuUI>
+					<MenuContext.Provider value={{ level: lvl + 1 }}>
+						{children}
+					</MenuContext.Provider>
+				</MenuSubMenuUI>
+			)}
+		</div>
+	)
+}
+
+export const MenuDivider = () => {
+	return <div className={'border-t border-gray-300 my-2'} />
 }
