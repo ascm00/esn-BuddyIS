@@ -1,5 +1,5 @@
 import { c } from '@contember/schema-definition'
-import { internationalStudentRole, esnMemberRole, czechStudentRole } from './acl'
+import { internationalStudentRole, esnMemberRole, coordinatorRole } from './acl'
 import { BuddyTask } from './BuddyTask'
 import { Person } from './Person'
 
@@ -13,7 +13,7 @@ import { Person } from './Person'
 	update: true,
 	delete: true,
 })
-@c.Allow(czechStudentRole, {
+@c.Allow(coordinatorRole, {
 	read: true,
 })
 export class BuddyPair {

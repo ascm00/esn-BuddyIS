@@ -1,0 +1,105 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "remove",
+					"path": "/roles/czechStudent"
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator",
+					"value": {
+						"stages": "*",
+						"entities": {
+							"ApplicationFr": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"semester": true,
+										"status": true,
+										"language": true,
+										"hobbies": true,
+										"rating": true,
+										"rBuddy": true,
+										"rParty": true,
+										"rTravel": true,
+										"rSport": true,
+										"preferredBuddySex": true,
+										"emailForInformation": true,
+										"sport": true
+									},
+									"create": {
+										"createdAt": true,
+										"semester": true,
+										"status": true,
+										"language": true,
+										"hobbies": true,
+										"rating": true,
+										"rBuddy": true,
+										"rParty": true,
+										"rTravel": true,
+										"rSport": true,
+										"preferredBuddySex": true,
+										"emailForInformation": true,
+										"sport": true
+									},
+									"update": {
+										"createdAt": true,
+										"semester": true,
+										"status": true,
+										"language": true,
+										"hobbies": true,
+										"rating": true,
+										"rBuddy": true,
+										"rParty": true,
+										"rTravel": true,
+										"rSport": true,
+										"preferredBuddySex": true,
+										"emailForInformation": true,
+										"sport": true
+									}
+								}
+							},
+							"BuddyPair": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"czechStudent": true,
+										"internationalStudent": true,
+										"note": true,
+										"tasks": true
+									}
+								}
+							},
+							"BuddyTask": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"description": true,
+										"buddyPair": true,
+										"done": true,
+										"confirmed": true
+									},
+									"update": {
+										"createdAt": true,
+										"description": true,
+										"buddyPair": true,
+										"done": true,
+										"confirmed": true
+									}
+								}
+							}
+						},
+						"variables": {}
+					}
+				}
+			]
+		}
+	]
+}

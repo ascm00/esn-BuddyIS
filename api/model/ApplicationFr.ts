@@ -1,5 +1,5 @@
 import { c } from '@contember/schema-definition'
-import { internationalStudentRole, esnMemberRole, czechStudentRole } from './acl'
+import { internationalStudentRole, esnMemberRole, coordinatorRole } from './acl'
 import { applicationFrStatus, rating, preferredSex } from './enum'
 import { Semester } from './Semester'
 import { Language } from './Language'
@@ -21,7 +21,7 @@ import { Person } from './Person'
 	update: ['createdAt', 'semester', 'status', 'language', 'hobbies', 'rating', 'rBuddy', 'rParty', 'rTravel', 'rSport', 'preferredBuddySex', 'emailForInformation', 'sport'],
 	delete: true,
 })
-@c.Allow(czechStudentRole, {
+@c.Allow(coordinatorRole, {
 	read: ['createdAt', 'semester', 'status', 'language', 'hobbies', 'rating', 'rBuddy', 'rParty', 'rTravel', 'rSport', 'preferredBuddySex', 'emailForInformation', 'sport'],
 	create: ['createdAt', 'semester', 'status', 'language', 'hobbies', 'rating', 'rBuddy', 'rParty', 'rTravel', 'rSport', 'preferredBuddySex', 'emailForInformation', 'sport'],
 	update: ['createdAt', 'semester', 'status', 'language', 'hobbies', 'rating', 'rBuddy', 'rParty', 'rTravel', 'rSport', 'preferredBuddySex', 'emailForInformation', 'sport'],

@@ -1,7 +1,7 @@
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@app/lib/ui/collapsible'
 import { Menu, MenuButton, MenuDivider, MenuItem } from '@app/lib/ui/menu'
 import { Component, HasRole } from '@contember/interface'
-import { Activity, AlertCircle, Book, BookOpen, Building, Calendar, CalendarDays, CalendarPlus, CheckSquare, Clock, Dot, File, FileText, Globe, GraduationCap, Grid, Heart, Home, Layout, MapPin, MessageSquare, PartyPopper, Settings, UserPlus, Users, UtensilsCrossed } from 'lucide-react'
+import { Activity, AlertCircle, Book, BookOpen, Building, Calendar, CalendarDays, CalendarPlus, CheckSquare, Clock, Dot, File, FileText, Globe, GraduationCap, Grid, Handshake, Heart, Home, Layout, MapPin, MessageSquare, PartyPopper, Settings, User, UserCheck, UserPlus, Users, UtensilsCrossed } from 'lucide-react'
 
 export const Navigation = Component(() => <Menu>
 	<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('czechBuddy')}>
@@ -21,11 +21,32 @@ export const Navigation = Component(() => <Menu>
 	</HasRole>
 	<MenuItem label="Buddy" icon={<CheckSquare />} to="buddyTasks" />
 	<MenuItem label="N2N" icon={<PartyPopper />} to="n2nParties" />
+	<MenuItem label="Profile" icon={<User />} to="" />
 	<HasRole role={roles => roles.has('admin') || roles.has('esnMember')}>
 		<MenuItem label="Users" icon={<Users />} to="users" />
 	</HasRole>
+
+	<HasRole role={roles => roles.has('admin') || roles.has('coordinator')}>
+		<MenuDivider />
+		
+		<MenuItem label="CZ Applications" icon={<Handshake />} to="applicationCzs" />
+		<MenuItem label="FR Applications" icon={<Handshake />} to="applicationFrs" />
+		<Collapsible>
+				<CollapsibleTrigger>Coordinating</CollapsibleTrigger>
+				<CollapsibleContent>
+					
+				</CollapsibleContent>
+		</Collapsible>
+		<Collapsible>
+				<CollapsibleTrigger>Coupling</CollapsibleTrigger>
+				<CollapsibleContent>
+					
+				</CollapsibleContent>
+		</Collapsible>
+	</HasRole>
+	
 	<HasRole role={roles => roles.has('admin')}>
-	<MenuDivider />
+		<MenuDivider />
 		{/* <MenuItem label="Settings" icon={<Settings />}>
 			<MenuItem label="Semester" icon={<Clock />} to="semesters" />
 			<MenuItem label="Study Programs" icon={<GraduationCap />} to="studyPrograms" />
