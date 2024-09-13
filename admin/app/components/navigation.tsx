@@ -1,3 +1,4 @@
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@app/lib/ui/collapsible'
 import { Menu, MenuButton, MenuDivider, MenuItem } from '@app/lib/ui/menu'
 import { Component, HasRole } from '@contember/interface'
 import { Activity, AlertCircle, Book, BookOpen, Building, Calendar, CalendarDays, CalendarPlus, CheckSquare, Clock, Dot, File, FileText, Globe, GraduationCap, Grid, Heart, Home, Layout, MapPin, MessageSquare, PartyPopper, Settings, UserPlus, Users, UtensilsCrossed } from 'lucide-react'
@@ -25,7 +26,7 @@ export const Navigation = Component(() => <Menu>
 	</HasRole>
 	<HasRole role={roles => roles.has('admin')}>
 	<MenuDivider />
-		<MenuItem label="Settings" icon={<Settings />}>
+		{/* <MenuItem label="Settings" icon={<Settings />}>
 			<MenuItem label="Semester" icon={<Clock />} to="semesters" />
 			<MenuItem label="Study Programs" icon={<GraduationCap />} to="studyPrograms" />
 			<MenuItem label="Partner universities" icon={<Building />} to="universities" />
@@ -33,13 +34,26 @@ export const Navigation = Component(() => <Menu>
 			<MenuItem label="Sections" icon={<Grid />} to="sections" />
 			<MenuItem label="Countries" icon={<MapPin />} to="countries" />
 			<MenuItem label="Dietary Restrictions" icon={<UtensilsCrossed />} to="" />
-			<MenuItem label="Allergies" icon={<AlertCircle />} to="" />
+			<MenuItem label="Allergies" icon={<AlertCircle />} to="" /> */}
 			{/* <MenuItem label="Languages" icon={<MessageSquare />} to="languages" />
 			<MenuItem label="Hobbies" icon={<Heart />} to="hobbies" />
 			<MenuItem label="N2N Clubs" to="clubs" /> 
 			<MenuItem label="Limitations" to="limitations" />
 			<MenuItem label="Sports" icon={<Activity />} to="sports" /> */}
-		</MenuItem>
+		{/* </MenuItem> */}
+		<Collapsible>
+				<CollapsibleTrigger>Settings</CollapsibleTrigger>
+				<CollapsibleContent>
+					<MenuItem label="Semester" icon={<Clock />} to="semesters" />
+					<MenuItem label="Study Programs" icon={<GraduationCap />} to="studyPrograms" />
+					<MenuItem label="Partner universities" icon={<Building />} to="universities" />
+					<MenuItem label="Faculties at VSE" icon={<BookOpen />} to="faculties" />
+					<MenuItem label="Sections" icon={<Grid />} to="sections" />
+					<MenuItem label="Countries" icon={<MapPin />} to="countries" />
+					<MenuItem label="Dietary Restrictions" icon={<UtensilsCrossed />} to="" />
+					<MenuItem label="Allergies" icon={<AlertCircle />} to="" />
+				</CollapsibleContent>
+		</Collapsible>
 	</HasRole>
 
 	{/* <MenuItem label="Applications" icon={<FileText />}>

@@ -35,6 +35,7 @@
     "@contember/schema": "1.4.0-rc.3",
     "@contember/schema-definition": "1.4.0-rc.3",
     "@contember/schema-utils": "1.4.0-rc.3",
+    "@radix-ui/react-collapsible": "^1.1.0",
     "@radix-ui/react-radio-group": "^1.2.0",
     "clsx": "^2.1.1",
     "date-fns": "^3.6.0",

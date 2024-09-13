@@ -2273,6 +2273,32 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@radix-ui/react-collapsible@npm:^1.1.0":
+  version: 1.1.0
+  resolution: "@radix-ui/react-collapsible@npm:1.1.0"
+  dependencies:
+    "@radix-ui/primitive": "npm:1.1.0"
+    "@radix-ui/react-compose-refs": "npm:1.1.0"
+    "@radix-ui/react-context": "npm:1.1.0"
+    "@radix-ui/react-id": "npm:1.1.0"
+    "@radix-ui/react-presence": "npm:1.1.0"
+    "@radix-ui/react-primitive": "npm:2.0.0"
+    "@radix-ui/react-use-controllable-state": "npm:1.1.0"
+    "@radix-ui/react-use-layout-effect": "npm:1.1.0"
+  peerDependencies:
+    "@types/react": "*"
+    "@types/react-dom": "*"
+    react: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+    react-dom: ^16.8 || ^17.0 || ^18.0 || ^19.0 || ^19.0.0-rc
+  peerDependenciesMeta:
+    "@types/react":
+      optional: true
+    "@types/react-dom":
+      optional: true
+  checksum: 10/298ef49d487bf2f7530554f4eb549bbe315ccf294c6ec67516725a77ceb556af8ba242d1c22ac2c26a7ffd98c58525014b9ce3927504723bab48d044770abf8f
+  languageName: node
+  linkType: hard
+
 "@radix-ui/react-collection@npm:1.0.3":
   version: 1.0.3
   resolution: "@radix-ui/react-collection@npm:1.0.3"
@@ -7834,6 +7860,7 @@ __metadata:
     "@contember/schema": "npm:1.4.0-rc.3"
     "@contember/schema-definition": "npm:1.4.0-rc.3"
     "@contember/schema-utils": "npm:1.4.0-rc.3"
+    "@radix-ui/react-collapsible": "npm:^1.1.0"
     "@radix-ui/react-radio-group": "npm:^1.2.0"
     "@types/escape-html": "npm:^1"
     "@types/luxon": "npm:^3"
