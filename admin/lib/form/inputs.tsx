@@ -75,11 +75,12 @@ export type RadioEnumFieldProps =
 	& Omit<FormContainerProps, 'children'>
 	& {
 		options: Record<string, ReactNode>
+		required?: boolean
 		orientation?: 'horizontal' | 'vertical'
 		inputProps?: Omit<React.InputHTMLAttributes<HTMLInputElement>, 'defaultValue'>
 	}
 
-export const RadioEnumField = Component<RadioEnumFieldProps>(({ field, label, description, options, inputProps, orientation, defaultValue, isNonbearing  }) => {
+export const RadioEnumField = Component<RadioEnumFieldProps>(({ field, label, description, options, inputProps, required, orientation, defaultValue, isNonbearing  }) => {
 	return (
 		<FormFieldScope field={field}>
 			<FormContainer description={description} label={label}>
@@ -87,7 +88,7 @@ export const RadioEnumField = Component<RadioEnumFieldProps>(({ field, label, de
 					{Object.entries(options).map(([value, label]) => (
 						<FormLabelUI className="flex gap-2 items-center font-normal" key={value}>
 							<FormRadioInput field={field} value={value} defaultValue={defaultValue} isNonbearing={isNonbearing}>
-								<RadioInput {...inputProps} />
+								<RadioInput required={required} {...inputProps} />
 							</FormRadioInput>
 							{label}
 						</FormLabelUI>

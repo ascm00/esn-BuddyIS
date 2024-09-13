@@ -137,7 +137,7 @@ export default () => {
 													Detail
 												</a>
 											</Link>
-											<Link to="applicationCzEdit(id: $entity.id)">
+											<Link to="applicationCzCreate(id: $entity.id)">
 												<a>
 													Edit
 												</a>

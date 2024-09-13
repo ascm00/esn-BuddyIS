@@ -1,0 +1,25 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "createEnum",
+			"enumName": "sex",
+			"values": [
+				"man",
+				"woman",
+				"other"
+			]
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Person",
+			"field": {
+				"name": "gender",
+				"columnName": "gender",
+				"columnType": "sex",
+				"nullable": true,
+				"type": "Enum"
+			}
+		}
+	]
+}

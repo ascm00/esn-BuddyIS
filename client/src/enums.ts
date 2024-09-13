@@ -25,3 +25,7 @@ export type rating =
 	 | "four"
 	 | "five"
 	 | "two"
+export type sex = 
+	 | "man"
+	 | "woman"
+	 | "other"

@@ -10,7 +10,7 @@ export default () => {
 			<Binding>
 				<div className="flex flex-col gap-12">
 					<Slots.Title>
-						Application cz create
+						Local student - Application for buddy
 					</Slots.Title>
 					<Slots.Back>
 						<BackButton />
@@ -18,7 +18,7 @@ export default () => {
 					<EntitySubTree entity="ApplicationCz" isCreating>
 						<RedirectOnPersist to="applicationCzDetail(id: $entity.id)" />
 						<Slots.Actions>
-							<PersistButton />
+							<PersistButton label="Apply for buddy"/>
 						</Slots.Actions>
 						<ApplicationCzCreateForm />
 					</EntitySubTree>

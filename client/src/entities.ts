@@ -5,6 +5,7 @@ import type { contentReferenceTypeEnum } from './enums'
 import type { eventStatus } from './enums'
 import type { preferredSex } from './enums'
 import type { rating } from './enums'
+import type { sex } from './enums'
 
 export type JSONPrimitive = string | number | boolean | null
 export type JSONValue = JSONPrimitive | JSONObject | JSONArray
@@ -487,6 +488,7 @@ export type Person <OverRelation extends string | never = never> = {
 		id: string
 		createdAt: string
 		personId: string
+		gender: sex | null
 		registrationDate: string | null
 		lastLoginDate: string | null
 		phoneNumber: string | null

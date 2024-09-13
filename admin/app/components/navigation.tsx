@@ -1,6 +1,6 @@
 import { Menu, MenuButton, MenuDivider, MenuItem } from '@app/lib/ui/menu'
 import { Component, HasRole } from '@contember/interface'
-import { Activity, Book, BookOpen, Building, Calendar, CalendarDays, CalendarPlus, CheckSquare, Clock, Dot, File, FileText, Globe, GraduationCap, Grid, Heart, Home, Layout, MapPin, MessageSquare, PartyPopper, Settings, UserPlus, Users } from 'lucide-react'
+import { Activity, AlertCircle, Book, BookOpen, Building, Calendar, CalendarDays, CalendarPlus, CheckSquare, Clock, Dot, File, FileText, Globe, GraduationCap, Grid, Heart, Home, Layout, MapPin, MessageSquare, PartyPopper, Settings, UserPlus, Users, UtensilsCrossed } from 'lucide-react'
 
 export const Navigation = Component(() => <Menu>
 	<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('czechBuddy')}>
@@ -20,16 +20,20 @@ export const Navigation = Component(() => <Menu>
 	</HasRole>
 	<MenuItem label="Buddy" icon={<CheckSquare />} to="buddyTasks" />
 	<MenuItem label="N2N" icon={<PartyPopper />} to="n2nParties" />
-	<MenuItem label="Users" icon={<Users />} to="users" />
+	<HasRole role={roles => roles.has('admin') || roles.has('esnMember')}>
+		<MenuItem label="Users" icon={<Users />} to="users" />
+	</HasRole>
 	<HasRole role={roles => roles.has('admin')}>
 	<MenuDivider />
 		<MenuItem label="Settings" icon={<Settings />}>
-			<MenuItem label="Study Programs" icon={<GraduationCap />} to="studyPrograms" />
 			<MenuItem label="Semester" icon={<Clock />} to="semesters" />
+			<MenuItem label="Study Programs" icon={<GraduationCap />} to="studyPrograms" />
 			<MenuItem label="Partner universities" icon={<Building />} to="universities" />
 			<MenuItem label="Faculties at VSE" icon={<BookOpen />} to="faculties" />
 			<MenuItem label="Sections" icon={<Grid />} to="sections" />
 			<MenuItem label="Countries" icon={<MapPin />} to="countries" />
+			<MenuItem label="Dietary Restrictions" icon={<UtensilsCrossed />} to="" />
+			<MenuItem label="Allergies" icon={<AlertCircle />} to="" />
 			{/* <MenuItem label="Languages" icon={<MessageSquare />} to="languages" />
 			<MenuItem label="Hobbies" icon={<Heart />} to="hobbies" />
 			<MenuItem label="N2N Clubs" to="clubs" /> 

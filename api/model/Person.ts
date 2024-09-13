@@ -11,12 +11,13 @@ import { Faculty } from './Faculty'
 import { University } from './University'
 import { EventRegistration } from './EventRegistration'
 import { StudyProgram } from './StudyProgram'
+import { sex } from './enum'
 
 export class Person {
 	createdAt = c.dateTimeColumn().notNull().default('now')
 	personId = c.uuidColumn().notNull()
 	tenantPerson = c.oneHasOneInverse(TenantPerson, 'person')
-
+	gender = c.enumColumn(sex)
 	registrationDate = c.dateTimeColumn()
 	lastLoginDate = c.dateTimeColumn()
 	phoneNumber = c.stringColumn()
