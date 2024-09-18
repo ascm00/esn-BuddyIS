@@ -1,6 +1,6 @@
 import { Binding } from '@app/lib/binding'
 import { BackButton } from '@app/lib/buttons'
-import { DataGrid, DataGridColumn, DataGridHasOneColumn, DataGridLoader, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
+import { DataGrid, DataGridBooleanColumn, DataGridColumn, DataGridHasOneColumn, DataGridLoader, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
 import { Field, Link } from '@contember/interface'
@@ -33,24 +33,22 @@ export default () => {
 									<DataGridColumn>
 										<div className="flex gap-4">
 											<Link to="buddyPairDetail(id: $entity.id)">
-												<a>
+												<Button>
 													Detail
-												</a>
-											</Link>
-											<Link to="buddyPairEdit(id: $entity.id)">
-												<a>
-													Edit
-												</a>
+												</Button>
 											</Link>
 										</div>
 									</DataGridColumn>
+									<DataGridHasOneColumn field="coordinator" header="Coordinator">
+										<Field field="firstName" /> {' '} <Field field="surname" />
+									</DataGridHasOneColumn>
 									<DataGridHasOneColumn field="czechStudent" header="Czech student">
-										<Field field="id" />
+										<Field field="firstName" /> {' '} <Field field="surname" />
 									</DataGridHasOneColumn>
 									<DataGridHasOneColumn field="internationalStudent" header="International student">
-										<Field field="id" />
+										<Field field="firstName" /> {' '} <Field field="surname" />
 									</DataGridHasOneColumn>
-									<DataGridTextColumn field="note" header="Note" />
+									<DataGridBooleanColumn field="tenPoints" header="10 points" />
 								</DataGridTable>
 							</DataGridLoader>
 							<DataGridPagination />

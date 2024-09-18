@@ -12,6 +12,7 @@ import { University } from './University'
 import { EventRegistration } from './EventRegistration'
 import { StudyProgram } from './StudyProgram'
 import { sex } from './enum'
+import { Note } from './Note'
 
 export class Person {
 	createdAt = c.dateTimeColumn().notNull().default('now')
@@ -38,6 +39,8 @@ export class Person {
 	applicationsFr = c.oneHasOneInverse(ApplicationFr, 'person')
 	n2nHours = c.manyHasManyInverse(N2nHour, 'person')
 	profilePicture = c.manyHasOne(Image, 'userProfilePicture')
+	coordinatingBuddyPairs = c.oneHasMany(BuddyPair, 'coordinator')
 
 	registrations = c.oneHasMany(EventRegistration, 'person')
+	notes = c.oneHasMany(Note, 'author')
 }

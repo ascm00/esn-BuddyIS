@@ -1,0 +1,107 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "removeField",
+			"entityName": "Note",
+			"fieldName": "name"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Note",
+			"field": {
+				"name": "content",
+				"columnName": "content",
+				"columnType": "text",
+				"nullable": false,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "Note",
+			"owningSide": {
+				"type": "ManyHasOne",
+				"name": "author",
+				"target": "Person",
+				"joiningColumn": {
+					"columnName": "author_id",
+					"onDelete": "restrict"
+				},
+				"nullable": true,
+				"inversedBy": "notes"
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "notes",
+				"target": "Note",
+				"ownedBy": "author"
+			}
+		},
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/Note/operations/create/content",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/Note/operations/create/author",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/Note/operations/read/content",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/Note/operations/read/author",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Note/operations/create/content",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Note/operations/create/author",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Note/operations/update/content",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Note/operations/update/author",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Note/operations/read/content",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Note/operations/read/author",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/public/entities/Note/operations/read/content",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/public/entities/Note/operations/read/author",
+					"value": true
+				}
+			]
+		}
+	]
+}

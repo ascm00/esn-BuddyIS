@@ -1,0 +1,131 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "createColumn",
+			"entityName": "BuddyPair",
+			"field": {
+				"name": "tenPoints",
+				"columnName": "ten_points",
+				"columnType": "boolean",
+				"nullable": false,
+				"type": "Bool",
+				"default": false
+			},
+			"fillValue": false
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "BuddyPair",
+			"field": {
+				"name": "arrival",
+				"columnName": "arrival",
+				"columnType": "date",
+				"nullable": true,
+				"type": "Date"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "BuddyPair",
+			"owningSide": {
+				"type": "OneHasOne",
+				"name": "picture",
+				"target": "Image",
+				"joiningColumn": {
+					"columnName": "picture_id",
+					"onDelete": "restrict"
+				},
+				"nullable": true,
+				"inversedBy": "buddyPair"
+			},
+			"inverseSide": {
+				"type": "OneHasOne",
+				"name": "buddyPair",
+				"target": "BuddyPair",
+				"ownedBy": "picture",
+				"nullable": true
+			}
+		},
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/BuddyPair/operations/read/tenPoints",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/BuddyPair/operations/read/picture",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/BuddyPair/operations/read/arrival",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/BuddyPair/operations/create/tenPoints",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/BuddyPair/operations/create/picture",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/BuddyPair/operations/create/arrival",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/BuddyPair/operations/update/tenPoints",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/BuddyPair/operations/update/picture",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/BuddyPair/operations/update/arrival",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/BuddyPair/operations/read/tenPoints",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/BuddyPair/operations/read/picture",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/BuddyPair/operations/read/arrival",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/BuddyPair/operations/read/tenPoints",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/BuddyPair/operations/read/picture",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/BuddyPair/operations/read/arrival",
+					"value": true
+				}
+			]
+		}
+	]
+}

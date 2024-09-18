@@ -167,6 +167,10 @@ export const ContemberClientNames: SchemaNames = {
         "createdAt": {
           "type": "column"
         },
+        "coordinator": {
+          "type": "one",
+          "entity": "Person"
+        },
         "czechStudent": {
           "type": "one",
           "entity": "Person"
@@ -175,18 +179,30 @@ export const ContemberClientNames: SchemaNames = {
           "type": "one",
           "entity": "Person"
         },
-        "note": {
-          "type": "column"
+        "notes": {
+          "type": "many",
+          "entity": "Note"
         },
         "tasks": {
           "type": "many",
           "entity": "BuddyTask"
+        },
+        "tenPoints": {
+          "type": "column"
+        },
+        "picture": {
+          "type": "one",
+          "entity": "Image"
+        },
+        "arrival": {
+          "type": "column"
         }
       },
       "scalars": [
         "id",
         "createdAt",
-        "note"
+        "tenPoints",
+        "arrival"
       ]
     },
     "BuddyTask": {
@@ -587,6 +603,10 @@ export const ContemberClientNames: SchemaNames = {
         "eventPicture": {
           "type": "many",
           "entity": "Event"
+        },
+        "buddyPair": {
+          "type": "one",
+          "entity": "BuddyPair"
         }
       },
       "scalars": [
@@ -745,6 +765,33 @@ export const ContemberClientNames: SchemaNames = {
         "open"
       ]
     },
+    "Note": {
+      "name": "Note",
+      "fields": {
+        "id": {
+          "type": "column"
+        },
+        "createdAt": {
+          "type": "column"
+        },
+        "buddyPair": {
+          "type": "one",
+          "entity": "BuddyPair"
+        },
+        "content": {
+          "type": "column"
+        },
+        "author": {
+          "type": "one",
+          "entity": "Person"
+        }
+      },
+      "scalars": [
+        "id",
+        "createdAt",
+        "content"
+      ]
+    },
     "Person": {
       "name": "Person",
       "fields": {
@@ -835,9 +882,17 @@ export const ContemberClientNames: SchemaNames = {
           "type": "one",
           "entity": "Image"
         },
+        "coordinatingBuddyPairs": {
+          "type": "many",
+          "entity": "BuddyPair"
+        },
         "registrations": {
           "type": "many",
           "entity": "EventRegistration"
+        },
+        "notes": {
+          "type": "many",
+          "entity": "Note"
         }
       },
       "scalars": [

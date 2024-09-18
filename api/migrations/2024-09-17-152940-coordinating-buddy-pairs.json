@@ -1,0 +1,56 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "createRelation",
+			"entityName": "BuddyPair",
+			"owningSide": {
+				"type": "ManyHasOne",
+				"name": "coordinator",
+				"target": "Person",
+				"joiningColumn": {
+					"columnName": "coordinator_id",
+					"onDelete": "set null"
+				},
+				"nullable": true,
+				"inversedBy": "coordinatingBuddyPairs"
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "coordinatingBuddyPairs",
+				"target": "BuddyPair",
+				"ownedBy": "coordinator"
+			}
+		},
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/BuddyPair/operations/read/coordinator",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/BuddyPair/operations/create/coordinator",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/BuddyPair/operations/update/coordinator",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/BuddyPair/operations/read/coordinator",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/BuddyPair/operations/read/coordinator",
+					"value": true
+				}
+			]
+		}
+	]
+}

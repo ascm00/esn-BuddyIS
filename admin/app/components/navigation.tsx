@@ -34,7 +34,7 @@ export const Navigation = Component(() => <Menu>
 		<Collapsible>
 				<CollapsibleTrigger>Coordinating</CollapsibleTrigger>
 				<CollapsibleContent>
-					
+					<MenuItem label="Buddy pairs" icon={<Users />} to="buddyPairs" />					
 				</CollapsibleContent>
 		</Collapsible>
 		<Collapsible>

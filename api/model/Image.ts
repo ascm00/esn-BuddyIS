@@ -2,6 +2,7 @@ import { c } from '@contember/schema-definition'
 import { ImageMetadata } from './ImageMetadata'
 import { Event } from './Event'
 import { Person } from './Person'
+import { BuddyPair } from './BuddyPair'
 
 export class Image {
 	createdAt = c.dateTimeColumn().notNull().default('now')
@@ -12,4 +13,5 @@ export class Image {
 	meta = c.oneHasOne(ImageMetadata, 'image')
 	userProfilePicture = c.oneHasMany(Person, 'profilePicture')
 	eventPicture = c.oneHasMany(Event, 'picture')
+	buddyPair = c.oneHasOneInverse(BuddyPair, 'picture')
 }
