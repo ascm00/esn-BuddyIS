@@ -10,12 +10,15 @@ import { Button } from '@app/lib/ui/button'
 import { Table, TableBody, TableCell, TableRow, TableWrapper } from '@app/lib/ui/table'
 import { TextareaAutosize } from '@app/lib/ui/textarea'
 import { ImageFieldView } from '@app/components/fieldViews/ImageFieldView'
-import { Component, EntitySubTree, Field, HasMany, HasOne, HasRole, identityEnvironmentExtension, Link, useEntity, useEntitySubTree } from '@contember/interface'
+import { Component, EntityListSubTree, EntitySubTree, Field, HasMany, HasOne, HasRole, identityEnvironmentExtension, Link, useEntity, useEntitySubTree, useIdentity } from '@contember/interface'
 import { useCallback, useState } from 'react'
 
 export default () => {
 
 	//Musím checknout zda mám v aktuálním semestru buddyho, následně zobrazit stránku jeho/její buddy paru
+	const myId = useIdentity()?.person?.id
+	console.log(myId)
+
 
 	return (
 		<>
@@ -27,129 +30,201 @@ export default () => {
 					<Slots.Back>
 						<BackButton />
 					</Slots.Back>
-					<EntitySubTree entity="BuddyPair(id=$id)" isCreating={false}>
-						<div className="flex gap-8 flex-col md:flex-row">
-							<div className="w-full gap-8 flex flex-col">
-							<TableWrapper className="bg-gray-50/50 max-w-lg border rounded-md">
-								<Table>
-									<TableBody>
-										<TableRow>
-											<TableCell className="text-2xl font-bold">
-												Coordinator
-											</TableCell>
-										</TableRow>
-										<TableRow>
-											<TableCell>
-												Name
-											</TableCell>
-											<TableCell className="text-2xl font-semibold">
-												<Field field="coordinator.firstName" /> {' '} <Field field="coordinator.surname" />
-											</TableCell>
-										</TableRow>
-										<TableRow>
-											<TableCell>
-												Email
-											</TableCell>
-											<TableCell className="text-2xl font-semibold">
-												<Field field="coordinator.tenantPerson.email" />
-											</TableCell>
-										</TableRow>
-										<TableRow>
-											<TableCell>
-												Phone number
-											</TableCell>
-											<TableCell className="text-2xl font-semibold">
-												<Field field="coordinator.phoneNumber" /> {' '} <Field field="coordinator.surname" />
-											</TableCell>
-										</TableRow>
-									</TableBody>
-								</Table>
-							</TableWrapper>
-							<p className="text-2xl font-bold">You & your buddy</p>
-							<div>
-								<ImageField baseField={'picture'} urlField={'url'} />
-								<PersistButton label="Save picture" />
-							</div>
-							</div>
 
-							<div className="w-full gap-8 flex flex-col">
-								<TableWrapper className="bg-gray-50/50 max-w-lg border rounded-md">
-									<Table>
-									<TableBody>
-										<TableRow>
-											<TableCell className="text-2xl font-bold">
-												Your buddy
-											</TableCell>
-										</TableRow>
-										<TableRow>
-										<TableCell>
-											Name
-										</TableCell>
-										<TableCell className="text-2xl font-semibold">
-											<Field field="internationalStudent.firstName" /> {' '} <Field field="internationalStudent.surname" />
-										</TableCell>
-										</TableRow>
-										<TableRow>
-										<TableCell>
-											Email
-										</TableCell>
-										<TableCell className="font-semibold">
-											<Field field="internationalStudent.tenantPerson.email" />
-										</TableCell>
-										</TableRow>
-										<TableRow>
-										<TableCell>
-											Phone number
-										</TableCell>
-										<TableCell className="font-semibold">
-											<Field field="internationalStudent.phoneNumber" />
-										</TableCell>
-										</TableRow>
-										<TableRow>
-										<TableCell>
-											Nationality
-										</TableCell>
-										<TableCell className="font-semibold">
-											<Field field="internationalStudent.country.name" />
-										</TableCell>
-										</TableRow>
-									</TableBody>
-									</Table>
-								</TableWrapper>
-
-								<div className="flex flex-col gap-4">
-									<div className="text-lg font-bold">
-										Tasks
+					{/* Czech buddy view */}
+					<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('czechBuddy')}>
+						<EntitySubTree entity={`BuddyPair(czechStudent.tenantPerson.id='${myId}')`} isCreating={false}>
+							<div className="flex gap-8 flex-col md:flex-row">
+								<div className="w-full gap-8 flex flex-col">
+									<TableWrapper className="bg-gray-50/50 max-w-lg border rounded-md">
+										<Table>
+											<TableBody>
+												<TableRow>
+													<TableCell className="text-2xl font-bold">
+														Coordinator
+													</TableCell>
+												</TableRow>
+												<TableRow>
+													<TableCell>
+														Name
+													</TableCell>
+													<TableCell className="text-2xl font-semibold">
+														<Field field="coordinator.firstName" /> {' '} <Field field="coordinator.surname" />
+													</TableCell>
+												</TableRow>
+												<TableRow>
+													<TableCell>
+														Email
+													</TableCell>
+													<TableCell className="text-2xl font-semibold">
+														<Field field="coordinator.tenantPerson.email" />
+													</TableCell>
+												</TableRow>
+												<TableRow>
+													<TableCell>
+														Phone number
+													</TableCell>
+													<TableCell className="text-2xl font-semibold">
+														<Field field="coordinator.phoneNumber" /> {' '} <Field field="coordinator.surname" />
+													</TableCell>
+												</TableRow>
+											</TableBody>
+										</Table>
+									</TableWrapper>
+									<p className="text-2xl font-bold">You & your buddy</p>
+									<div>
+										<ImageField baseField={'picture'} urlField={'url'} />
+										<PersistButton label="Save picture" />
 									</div>
-									<DataGrid entities="BuddyTask[buddyPair.id = $id]">
-										<DataGridLoader>
-											<DataGridTable>
-												<DataGridColumn>
-													<div className="flex gap-4">
-														<Link to="buddyTaskDetail(id: $entity.id)">
-															<a>
-																Detail
-															</a>
-														</Link>
-														<Link to="buddyTaskEdit(id: $entity.id)">
-															<a>
-																Edit
-															</a>
-														</Link>
-													</div>
-												</DataGridColumn>
-												<DataGridTextColumn field="description" header="Description" />
-												<DataGridBooleanColumn field="done" header="Done" />
-												<DataGridBooleanColumn field="confirmed" header="Confirmed" />
-											</DataGridTable>
-										</DataGridLoader>
-									</DataGrid>
-								</div>
+									</div>
+
+									<div className="w-full gap-8 flex flex-col">
+										<TableWrapper className="bg-gray-50/50 max-w-lg border rounded-md">
+											<Table>
+												<TableBody>
+													<TableRow>
+														<TableCell className="text-2xl font-bold">
+														Your buddy
+													</TableCell>
+													</TableRow>
+													<TableRow>
+														<TableCell>
+															Name
+														</TableCell>
+														<TableCell className="text-2xl font-semibold">
+															<Field field="internationalStudent.firstName" /> {' '} <Field field="internationalStudent.surname" />
+														</TableCell>
+													</TableRow>
+													<TableRow>
+														<TableCell>
+															Email
+														</TableCell>
+														<TableCell className="font-semibold">
+															<Field field="internationalStudent.tenantPerson.email" />
+														</TableCell>
+														</TableRow>
+													<TableRow>
+														<TableCell>
+															Phone number
+														</TableCell>
+														<TableCell className="font-semibold">
+															<Field field="internationalStudent.phoneNumber" />
+														</TableCell>
+													</TableRow>
+													<TableRow>
+														<TableCell>
+															Nationality
+														</TableCell>
+														<TableCell className="font-semibold">
+															<Field field="internationalStudent.country.name" />
+														</TableCell>
+													</TableRow>
+												</TableBody>
+											</Table>
+										</TableWrapper>
+									</div>
 							</div>
+						</EntitySubTree>
+					</HasRole>
+					{/* End of Czech buddy view */}
 
+					{/* International student view */}
+					<HasRole role={'internationalStudent'}>
+						<EntitySubTree entity={`BuddyPair(internationalStudent.tenantPerson.id='${myId}')`} isCreating={false}>
+							<div className="flex gap-8 flex-col md:flex-row">
+								<div className="w-full gap-8 flex flex-col">
+									<TableWrapper className="bg-gray-50/50 max-w-lg border rounded-md">
+										<Table>
+											<TableBody>
+												<TableRow>
+													<TableCell className="text-2xl font-bold">
+														Coordinator
+													</TableCell>
+												</TableRow>
+												<TableRow>
+													<TableCell>
+														Name
+													</TableCell>
+													<TableCell className="text-2xl font-semibold">
+														<Field field="coordinator.firstName" /> {' '} <Field field="coordinator.surname" />
+													</TableCell>
+												</TableRow>
+												<TableRow>
+													<TableCell>
+														Email
+													</TableCell>
+													<TableCell className="text-2xl font-semibold">
+														<Field field="coordinator.tenantPerson.email" />
+													</TableCell>
+												</TableRow>
+												<TableRow>
+													<TableCell>
+														Phone number
+													</TableCell>
+													<TableCell className="text-2xl font-semibold">
+														<Field field="coordinator.phoneNumber" /> {' '} <Field field="coordinator.surname" />
+													</TableCell>
+												</TableRow>
+											</TableBody>
+										</Table>
+									</TableWrapper>
+									<p className="text-2xl font-bold">You & your buddy</p>
+									<div>
+										<ImageField baseField={'picture'} urlField={'url'} />
+										<PersistButton label="Save picture" />
+									</div>
+									</div>
 
-						</div>
-					</EntitySubTree>
+									<div className="w-full gap-8 flex flex-col">
+										<TableWrapper className="bg-gray-50/50 max-w-lg border rounded-md">
+											<Table>
+												<TableBody>
+													<TableRow>
+														<TableCell className="text-2xl font-bold">
+														Your buddy
+													</TableCell>
+													</TableRow>
+													<TableRow>
+														<TableCell>
+															Name
+														</TableCell>
+														<TableCell className="text-2xl font-semibold">
+															<Field field="czechStudent.firstName" /> {' '} <Field field="internationalStudent.surname" />
+														</TableCell>
+													</TableRow>
+													<TableRow>
+														<TableCell>
+															Email
+														</TableCell>
+														<TableCell className="font-semibold">
+															<Field field="czechStudent.tenantPerson.email" />
+														</TableCell>
+														</TableRow>
+													<TableRow>
+														<TableCell>
+															Phone number
+														</TableCell>
+														<TableCell className="font-semibold">
+															<Field field="czechStudent.phoneNumber" />
+														</TableCell>
+													</TableRow>
+													<TableRow>
+														<TableCell>
+															Nationality
+														</TableCell>
+														<TableCell className="font-semibold">
+															<Field field="czechStudent.country.name" />
+														</TableCell>
+													</TableRow>
+												</TableBody>
+											</Table>
+										</TableWrapper>
+									</div>
+								</div>
+						</EntitySubTree>
+					</HasRole>
+					{/* End of International student view */}
+
 				</div>
 			</Binding>
 		</>

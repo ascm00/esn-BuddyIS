@@ -17,7 +17,7 @@ export const BuddyPairEditForm = Component(() => <FormLayout>
 		</>}
 		options="Person"
 	>
-		<Field field="firstName" />
+		<Field field="firstName" /> {' '} <Field field="surname" />  {' ('} <Field field="tenantPerson.email" /> {')'}
 	</SelectField>
 	<SelectField
 		field="internationalStudent"
@@ -34,7 +34,6 @@ export const BuddyPairEditForm = Component(() => <FormLayout>
 		</>}
 		options="Person"
 	>
-		<Field field="firstName" />
+		<Field field="firstName" /> {' '} <Field field="surname" />  {' ('} <Field field="tenantPerson.email" /> {')'}
 	</SelectField>
-	<InputField field="note" label="Note" />
 </FormLayout>)

@@ -78,13 +78,13 @@ const ShowCurrentSemester = Component(
 }, () => (
 		<>
 			<Binding>
-			<EntityListSubTree
-			entities="Semester[isCurrent=true]"
-			alias={'currentSemester'}
-			>
-				<Field field={'isCurrent'} />
-				<Field field={'name'} />
-			</EntityListSubTree>
+				<EntityListSubTree
+				entities="Semester[isCurrent=true]"
+				alias={'currentSemester'}
+				>
+					<Field field={'isCurrent'} />
+					<Field field={'name'} />
+				</EntityListSubTree>
 			</Binding>
 		</>
 	)

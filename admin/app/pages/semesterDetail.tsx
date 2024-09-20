@@ -95,12 +95,12 @@ const TurnOffCurrent = Component(
 }, () => (
 		<>
 			<Binding>
-			<EntityListSubTree
-			entities="Semester[isCurrent=true]"
-			alias={'currentSemester'}
-			>
-				<Field field={'isCurrent'} />
-			</EntityListSubTree>
+				<EntityListSubTree
+				entities="Semester[isCurrent=true]"
+				alias={'currentSemester'}
+				>
+					<Field field={'isCurrent'} />
+				</EntityListSubTree>
 			</Binding>
 		</>
 	)

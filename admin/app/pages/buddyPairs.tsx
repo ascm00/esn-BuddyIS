@@ -1,6 +1,6 @@
 import { Binding } from '@app/lib/binding'
 import { BackButton } from '@app/lib/buttons'
-import { DataGrid, DataGridBooleanColumn, DataGridColumn, DataGridHasOneColumn, DataGridLoader, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
+import { DataGrid, DataGridBooleanColumn, DataGridColumn, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
 import { Field, Link } from '@contember/interface'
@@ -27,6 +27,9 @@ export default () => {
 						<DataGrid entities="BuddyPair">
 							<DataGridToolbar>
 								<DataGridQueryFilter />
+								<DataGridHasOneFilter field="coordinator" label="Coordinator">
+									<Field field="firstName" /> {' '} <Field field="surname" />
+								</DataGridHasOneFilter>
 							</DataGridToolbar>
 							<DataGridLoader>
 								<DataGridTable>
@@ -40,13 +43,13 @@ export default () => {
 										</div>
 									</DataGridColumn>
 									<DataGridHasOneColumn field="coordinator" header="Coordinator">
-										<Field field="firstName" /> {' '} <Field field="surname" />
+										<Field field="firstName" /> {' '} <Field field="surname" /> {' ('} <Field field="xname" /> {') '}
 									</DataGridHasOneColumn>
 									<DataGridHasOneColumn field="czechStudent" header="Czech student">
-										<Field field="firstName" /> {' '} <Field field="surname" />
+										<Field field="firstName" /> {' '} <Field field="surname" /> {' ('} <Field field="xname" /> {') '}
 									</DataGridHasOneColumn>
 									<DataGridHasOneColumn field="internationalStudent" header="International student">
-										<Field field="firstName" /> {' '} <Field field="surname" />
+										<Field field="firstName" /> {' '} <Field field="surname" /> {' ('} <Field field="xname" /> {') '}
 									</DataGridHasOneColumn>
 									<DataGridBooleanColumn field="tenPoints" header="10 points" />
 								</DataGridTable>
