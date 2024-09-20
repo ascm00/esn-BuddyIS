@@ -13,6 +13,7 @@ import { N2nParty } from './N2nParty'
 @c.Allow(publicRole, {
 	read: true,
 })
+
 export class Semester {
 	createdAt = c.dateTimeColumn().notNull().default('now')
 	events = c.oneHasMany(Event, 'semester')
@@ -22,4 +23,5 @@ export class Semester {
 	applications = c.oneHasMany(ApplicationCz, 'semester')
 	applicationsFr = c.oneHasMany(ApplicationFr, 'semester')
 	parties = c.oneHasMany(N2nParty, 'semester')
+	isCurrent = c.boolColumn().notNull().default(false)
 }

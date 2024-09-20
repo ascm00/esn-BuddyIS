@@ -1,0 +1,70 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "createEntity",
+			"entity": {
+				"name": "CurrentSemester",
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "current_semester",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"columnType": "uuid",
+						"nullable": false,
+						"type": "Uuid"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				}
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "CurrentSemester",
+			"owningSide": {
+				"type": "OneHasOne",
+				"name": "semester",
+				"target": "Semester",
+				"joiningColumn": {
+					"columnName": "semester_id",
+					"onDelete": "restrict"
+				},
+				"nullable": false,
+				"inversedBy": "currentSemester"
+			},
+			"inverseSide": {
+				"type": "OneHasOne",
+				"name": "currentSemester",
+				"target": "CurrentSemester",
+				"ownedBy": "semester",
+				"nullable": false
+			}
+		},
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Semester/operations/update/currentSemester",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Semester/operations/read/currentSemester",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/public/entities/Semester/operations/read/currentSemester",
+					"value": true
+				}
+			]
+		}
+	]
+}

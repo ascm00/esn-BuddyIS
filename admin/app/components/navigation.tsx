@@ -19,7 +19,7 @@ export const Navigation = Component(() => <Menu>
 	<HasRole role={roles => roles.has('admin') || roles.has('esnMemberRole')}>
 		<MenuItem label="Events" icon={<Calendar />} to="events" />
 	</HasRole>
-	<MenuItem label="Buddy" icon={<CheckSquare />} to="buddyTasks" />
+	<MenuItem label="Buddy" icon={<CheckSquare />} to="myBuddy" />
 	<MenuItem label="N2N" icon={<PartyPopper />} to="n2nParties" />
 	<MenuItem label="Profile" icon={<User />} to="" />
 	<HasRole role={roles => roles.has('admin') || roles.has('esnMember')}>

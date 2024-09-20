@@ -1,0 +1,42 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "removeEntity",
+			"entityName": "CurrentSemester"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Semester",
+			"field": {
+				"name": "isCurrent",
+				"columnName": "is_current",
+				"columnType": "boolean",
+				"nullable": false,
+				"type": "Bool",
+				"default": false
+			},
+			"fillValue": false
+		},
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Semester/operations/update/isCurrent",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Semester/operations/read/isCurrent",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/public/entities/Semester/operations/read/isCurrent",
+					"value": true
+				}
+			]
+		}
+	]
+}

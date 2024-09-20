@@ -971,6 +971,9 @@ export const ContemberClientNames: SchemaNames = {
         "parties": {
           "type": "many",
           "entity": "N2nParty"
+        },
+        "isCurrent": {
+          "type": "column"
         }
       },
       "scalars": [
@@ -978,7 +981,8 @@ export const ContemberClientNames: SchemaNames = {
         "createdAt",
         "name",
         "startDate",
-        "endDate"
+        "endDate",
+        "isCurrent"
       ]
     },
     "Sport": {

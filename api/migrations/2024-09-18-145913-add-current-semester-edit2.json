@@ -1,0 +1,10 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "makeRelationNullable",
+			"entityName": "CurrentSemester",
+			"fieldName": "semester"
+		}
+	]
+}
