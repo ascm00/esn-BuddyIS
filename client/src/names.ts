@@ -179,6 +179,10 @@ export const ContemberClientNames: SchemaNames = {
           "type": "one",
           "entity": "Person"
         },
+        "semester": {
+          "type": "one",
+          "entity": "Semester"
+        },
         "notes": {
           "type": "many",
           "entity": "Note"
@@ -967,6 +971,10 @@ export const ContemberClientNames: SchemaNames = {
         "applicationsFr": {
           "type": "many",
           "entity": "ApplicationFr"
+        },
+        "buddyPairs": {
+          "type": "many",
+          "entity": "BuddyPair"
         },
         "parties": {
           "type": "many",

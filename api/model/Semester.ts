@@ -4,6 +4,7 @@ import { Event } from './Event'
 import { ApplicationCz } from './ApplicationCz'
 import { ApplicationFr } from './ApplicationFr'
 import { N2nParty } from './N2nParty'
+import { BuddyPair } from './BuddyPair'
 
 
 @c.Allow(esnMemberRole, {
@@ -22,6 +23,7 @@ export class Semester {
 	endDate = c.dateTimeColumn().notNull()
 	applications = c.oneHasMany(ApplicationCz, 'semester')
 	applicationsFr = c.oneHasMany(ApplicationFr, 'semester')
+	buddyPairs = c.oneHasMany(BuddyPair, 'semester')
 	parties = c.oneHasMany(N2nParty, 'semester')
 	isCurrent = c.boolColumn().notNull().default(false)
 }

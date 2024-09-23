@@ -4,6 +4,7 @@ import { BuddyTask } from './BuddyTask'
 import { Person } from './Person'
 import { Note } from './Note'
 import { Image } from './Image'
+import { Semester } from './Semester'
 
 
 @c.Allow(internationalStudentRole, {
@@ -23,6 +24,7 @@ export class BuddyPair {
 	coordinator = c.manyHasOne(Person, 'coordinatingBuddyPairs').setNullOnDelete()
 	czechStudent = c.oneHasOne(Person, 'czechBuddyPair').setNullOnDelete()
 	internationalStudent = c.oneHasOne(Person, 'internationalBuddyPair').setNullOnDelete()
+	semester = c.manyHasOne(Semester, 'buddyPairs').notNull()
 	notes = c.oneHasMany(Note, 'buddyPair')
 	tasks = c.oneHasMany(BuddyTask, 'buddyPair')
 	tenPoints = c.boolColumn().notNull().default(false)

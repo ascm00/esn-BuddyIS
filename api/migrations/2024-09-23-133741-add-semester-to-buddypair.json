@@ -1,0 +1,71 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "createRelation",
+			"entityName": "BuddyPair",
+			"owningSide": {
+				"type": "ManyHasOne",
+				"name": "semester",
+				"target": "Semester",
+				"joiningColumn": {
+					"columnName": "semester_id",
+					"onDelete": "restrict"
+				},
+				"nullable": false,
+				"inversedBy": "buddyPairs"
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "buddyPairs",
+				"target": "BuddyPair",
+				"ownedBy": "semester"
+			}
+		},
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/BuddyPair/operations/read/semester",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/BuddyPair/operations/create/semester",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/BuddyPair/operations/update/semester",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/BuddyPair/operations/read/semester",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Semester/operations/update/buddyPairs",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Semester/operations/read/buddyPairs",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/public/entities/Semester/operations/read/buddyPairs",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/BuddyPair/operations/read/semester",
+					"value": true
+				}
+			]
+		}
+	]
+}

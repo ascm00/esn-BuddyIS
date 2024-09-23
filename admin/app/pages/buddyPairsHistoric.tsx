@@ -11,7 +11,7 @@ export default () => {
 			<Binding>
 				<div className="flex flex-col gap-12">
 					<Slots.Title>
-						Current semester buddy pairs
+						Historic buddy pairs
 					</Slots.Title>
 					<Slots.Back>
 						<BackButton />
@@ -24,7 +24,7 @@ export default () => {
 								</Button>
 							</Link>
 						</Slots.Actions>
-						<DataGrid entities="BuddyPair[semester.isCurrent=true]">
+						<DataGrid entities="BuddyPair[semester.isCurrent=false]">
 							<DataGridToolbar>
 								<DataGridQueryFilter />
 								<DataGridHasOneFilter field="coordinator" label="Coordinator">

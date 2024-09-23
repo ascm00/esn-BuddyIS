@@ -106,6 +106,7 @@ export type BuddyPair <OverRelation extends string | never = never> = {
 		coordinator: Person
 		czechStudent: Person
 		internationalStudent: Person
+		semester: Semester
 		picture: Image
 	}
 	hasMany: {
@@ -589,6 +590,7 @@ export type Semester <OverRelation extends string | never = never> = {
 		| Omit<{ events: Event['unique']}, OverRelation>
 		| Omit<{ applications: ApplicationCz['unique']}, OverRelation>
 		| Omit<{ applicationsFr: ApplicationFr['unique']}, OverRelation>
+		| Omit<{ buddyPairs: BuddyPair['unique']}, OverRelation>
 		| Omit<{ parties: N2nParty['unique']}, OverRelation>
 	columns: {
 		id: string
@@ -604,6 +606,7 @@ export type Semester <OverRelation extends string | never = never> = {
 		events: Event<'semester'>
 		applications: ApplicationCz<'semester'>
 		applicationsFr: ApplicationFr<'semester'>
+		buddyPairs: BuddyPair<'semester'>
 		parties: N2nParty<'semester'>
 	}
 	hasManyBy: {
@@ -612,6 +615,11 @@ export type Semester <OverRelation extends string | never = never> = {
 		eventsByContactPerson: { entity: Event; by: {contactPerson: Person['unique']}  }
 		applicationsFrByPerson: { entity: ApplicationFr; by: {person: Person['unique']}  }
 		applicationsFrByLimitations: { entity: ApplicationFr; by: {limitations: Limitations['unique']}  }
+		buddyPairsByCzechStudent: { entity: BuddyPair; by: {czechStudent: Person['unique']}  }
+		buddyPairsByInternationalStudent: { entity: BuddyPair; by: {internationalStudent: Person['unique']}  }
+		buddyPairsByNotes: { entity: BuddyPair; by: {notes: Note['unique']}  }
+		buddyPairsByTasks: { entity: BuddyPair; by: {tasks: BuddyTask['unique']}  }
+		buddyPairsByPicture: { entity: BuddyPair; by: {picture: Image['unique']}  }
 		partiesByHours: { entity: N2nParty; by: {hours: N2nHour['unique']}  }
 	}
 }

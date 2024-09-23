@@ -1,10 +1,17 @@
 import { CheckboxField, FormLayout, InputField, SelectField } from '@app/lib/form'
-import { Component, Field, HasMany, HasOne, useEntity, useEntityBeforePersist } from '@contember/interface'
+import { Component, EntityListSubTree, Field, HasMany, HasOne, useEntity, useEntityBeforePersist, useEntityListSubTree } from '@contember/interface'
 
 export const BuddyPairCreateForm = Component(
 	
 	() => {
 		const entity = useEntity()
+
+		//connects pair to the current semester
+		const semesterList = useEntityListSubTree('currentSemester')
+		for (const semester of semesterList) {
+			entity.connectEntityAtField('semester', semester)
+			break
+		}
 
 		useEntityBeforePersist(() => {
 
@@ -80,6 +87,14 @@ export const BuddyPairCreateForm = Component(
 		<Field field="surname" />
 		<Field field="tenantPerson.email" />
 	</HasOne>
+	<EntityListSubTree
+		entities="Semester[isCurrent=true]"
+		alias={'currentSemester'}
+	>
+		<Field field={'isCurrent'} />
+	</EntityListSubTree>
+	<HasOne field="semester" />
+
 	</>
 )
 )
