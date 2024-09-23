@@ -71,10 +71,13 @@ export default () => {
 											</TableBody>
 										</Table>
 									</TableWrapper>
-									<p className="text-2xl font-bold">You & your buddy</p>
 									<div>
+										<p className="text-2xl font-bold">You & your buddy</p>
+										<p className="text-xs text-gray-500">Please upload picture of you & your buddy</p>
 										<ImageField baseField={'picture'} urlField={'url'} />
-										<PersistButton label="Save picture" />
+										<div className='pl-6'>
+											<PersistButton label="Save picture"/>
+										</div>
 									</div>
 									</div>
 

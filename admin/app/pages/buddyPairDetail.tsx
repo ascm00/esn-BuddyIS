@@ -46,7 +46,7 @@ export default () => {
 											<TableCell>
 												Name
 											</TableCell>
-											<TableCell className="text-2xl font-semibold">
+											<TableCell className="font-semibold">
 												<Field field="czechStudent.firstName" /> {' '} <Field field="czechStudent.surname" />
 											</TableCell>
 										</TableRow>
@@ -89,7 +89,7 @@ export default () => {
 											<TableCell>
 												Name
 											</TableCell>
-											<TableCell className="text-2xl font-semibold">
+											<TableCell className="font-semibold">
 												<Field field="coordinator.firstName" /> {' '} <Field field="coordinator.surname" />
 											</TableCell>
 										</TableRow>
@@ -97,7 +97,7 @@ export default () => {
 											<TableCell>
 												Email
 											</TableCell>
-											<TableCell className="text-2xl font-semibold">
+											<TableCell className="font-semibold">
 												<Field field="coordinator.tenantPerson.email" />
 											</TableCell>
 										</TableRow>
@@ -105,8 +105,8 @@ export default () => {
 											<TableCell>
 												Phone number
 											</TableCell>
-											<TableCell className="text-2xl font-semibold">
-												<Field field="coordinator.phoneNumber" /> {' '} <Field field="coordinator.surname" />
+											<TableCell className="font-semibold">
+												<Field field="coordinator.phoneNumber" />
 											</TableCell>
 										</TableRow>
 									</TableBody>
@@ -167,7 +167,7 @@ export default () => {
 										<TableCell>
 											Name
 										</TableCell>
-										<TableCell className="text-2xl font-semibold">
+										<TableCell className="font-semibold">
 											<Field field="internationalStudent.firstName" /> {' '} <Field field="internationalStudent.surname" />
 										</TableCell>
 										</TableRow>
@@ -211,11 +211,6 @@ export default () => {
 											<DataGridTable>
 												<DataGridColumn>
 													<div className="flex gap-4">
-														<Link to="buddyTaskDetail(id: $entity.id)">
-															<a>
-																Detail
-															</a>
-														</Link>
 														<Link to="buddyTaskEdit(id: $entity.id)">
 															<a>
 																Edit
