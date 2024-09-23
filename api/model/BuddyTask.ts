@@ -26,6 +26,6 @@ export class BuddyTask {
 	createdAt = c.dateTimeColumn().notNull().default('now')
 	description = c.stringColumn().notNull()
 	buddyPair = c.manyHasOne(BuddyPair, 'tasks').cascadeOnDelete()
-	done = c.boolColumn().notNull()
-	confirmed = c.boolColumn()
+	done = c.boolColumn().notNull().default(false)
+	confirmed = c.boolColumn().default(false)
 }

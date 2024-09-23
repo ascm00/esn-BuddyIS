@@ -1,4 +1,4 @@
-import { BuddyPairEditForm } from '@app/components/forms/buddy-pair-edit-form'
+import { BuddyPairCreateForm } from '@app/components/forms/buddy-pair-create-form'
 import { Binding, PersistButton } from '@app/lib/binding'
 import { BackButton } from '@app/lib/buttons'
 import { Slots } from '@app/lib/layout'
@@ -19,7 +19,7 @@ export default () => {
 						<Slots.Actions>
 							<PersistButton />
 						</Slots.Actions>
-						<BuddyPairEditForm />
+						<BuddyPairCreateForm />
 					</EntitySubTree>
 				</div>
 			</Binding>

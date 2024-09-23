@@ -1,0 +1,27 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "updateColumnDefinition",
+			"entityName": "BuddyTask",
+			"fieldName": "done",
+			"definition": {
+				"columnType": "boolean",
+				"nullable": false,
+				"type": "Bool",
+				"default": false
+			}
+		},
+		{
+			"modification": "updateColumnDefinition",
+			"entityName": "BuddyTask",
+			"fieldName": "confirmed",
+			"definition": {
+				"columnType": "boolean",
+				"nullable": true,
+				"type": "Bool",
+				"default": false
+			}
+		}
+	]
+}

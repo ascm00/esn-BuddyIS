@@ -10,7 +10,7 @@ import { Button } from '@app/lib/ui/button'
 import { Table, TableBody, TableCell, TableRow, TableWrapper } from '@app/lib/ui/table'
 import { TextareaAutosize } from '@app/lib/ui/textarea'
 import { ImageFieldView } from '@app/components/fieldViews/ImageFieldView'
-import { Component, EntityListSubTree, EntitySubTree, Field, HasMany, HasOne, HasRole, identityEnvironmentExtension, Link, useEntity, useEntitySubTree, useIdentity } from '@contember/interface'
+import { Component, EntityListSubTree, EntitySubTree, Field, HasMany, HasOne, HasRole, identityEnvironmentExtension, If, Link, useEntity, useEntitySubTree, useIdentity } from '@contember/interface'
 import { useCallback, useState } from 'react'
 
 export default () => {
@@ -48,7 +48,7 @@ export default () => {
 													<TableCell>
 														Name
 													</TableCell>
-													<TableCell className="text-2xl font-semibold">
+													<TableCell className="font-semibold">
 														<Field field="coordinator.firstName" /> {' '} <Field field="coordinator.surname" />
 													</TableCell>
 												</TableRow>
@@ -56,7 +56,7 @@ export default () => {
 													<TableCell>
 														Email
 													</TableCell>
-													<TableCell className="text-2xl font-semibold">
+													<TableCell className="font-semibold">
 														<Field field="coordinator.tenantPerson.email" />
 													</TableCell>
 												</TableRow>
@@ -64,7 +64,7 @@ export default () => {
 													<TableCell>
 														Phone number
 													</TableCell>
-													<TableCell className="text-2xl font-semibold">
+													<TableCell className="font-semibold">
 														<Field field="coordinator.phoneNumber" /> {' '} <Field field="coordinator.surname" />
 													</TableCell>
 												</TableRow>
@@ -91,7 +91,7 @@ export default () => {
 														<TableCell>
 															Name
 														</TableCell>
-														<TableCell className="text-2xl font-semibold">
+														<TableCell className="font-semibold">
 															<Field field="internationalStudent.firstName" /> {' '} <Field field="internationalStudent.surname" />
 														</TableCell>
 													</TableRow>
@@ -122,6 +122,8 @@ export default () => {
 												</TableBody>
 											</Table>
 										</TableWrapper>
+										<CzechStudentTasks />
+
 									</div>
 							</div>
 						</EntitySubTree>
@@ -145,7 +147,7 @@ export default () => {
 													<TableCell>
 														Name
 													</TableCell>
-													<TableCell className="text-2xl font-semibold">
+													<TableCell className="font-semibold">
 														<Field field="coordinator.firstName" /> {' '} <Field field="coordinator.surname" />
 													</TableCell>
 												</TableRow>
@@ -153,7 +155,7 @@ export default () => {
 													<TableCell>
 														Email
 													</TableCell>
-													<TableCell className="text-2xl font-semibold">
+													<TableCell className="font-semibold">
 														<Field field="coordinator.tenantPerson.email" />
 													</TableCell>
 												</TableRow>
@@ -161,8 +163,8 @@ export default () => {
 													<TableCell>
 														Phone number
 													</TableCell>
-													<TableCell className="text-2xl font-semibold">
-														<Field field="coordinator.phoneNumber" /> {' '} <Field field="coordinator.surname" />
+													<TableCell className="font-semibold">
+														<Field field="coordinator.phoneNumber" />
 													</TableCell>
 												</TableRow>
 											</TableBody>
@@ -219,6 +221,8 @@ export default () => {
 												</TableBody>
 											</Table>
 										</TableWrapper>
+
+										<InternationalStudentTasks />
 									</div>
 								</div>
 						</EntitySubTree>
@@ -230,3 +234,76 @@ export default () => {
 		</>
 	)
 }
+
+const CzechStudentTasks = Component(
+	() => {
+		const entityId = useEntity().id
+
+		return (
+			<div className="flex flex-col gap-4">
+				<div className="text-lg font-bold">
+					Tasks
+				</div>
+					<DataGrid entities={`BuddyTask[buddyPair.id='${entityId}']`}>
+						<DataGridLoader>
+							<DataGridTable>
+								<DataGridTextColumn field="description" header="Description" />
+								{/* <DataGridBooleanColumn field="done" header="Done" /> */}
+								<DataGridColumn header="Done">
+									<PersistCheckbox field="done" />
+								</DataGridColumn>
+								<DataGridBooleanColumn field="confirmed" header="Confirmed" >
+								</DataGridBooleanColumn>
+							</DataGridTable>
+						</DataGridLoader>
+					</DataGrid>
+				</div>
+		)
+	}, () => (
+		<>
+			<Field field="id" />
+			<HasMany field="tasks">
+				<Field field="id" />
+				<Field field="description" />
+				<Field field="done" />
+				<Field field="confirmed" />
+			</HasMany>
+		</>
+	)
+)
+
+const InternationalStudentTasks = Component(
+	() => {
+		const entityId = useEntity().id
+
+		return (
+			<div className="flex flex-col gap-4">
+				<div className="text-lg font-bold">
+					Tasks
+				</div>
+					<DataGrid entities={`BuddyTask[buddyPair.id='${entityId}']`}>
+						<DataGridLoader>
+							<DataGridTable>
+								<DataGridTextColumn field="description" header="Description" />
+								{/* <DataGridBooleanColumn field="done" header="Done" /> */}
+								<DataGridBooleanColumn field="done" header="Done" />
+								<DataGridColumn header="Confirmed">
+									<PersistCheckbox field="confirmed" />
+								</DataGridColumn>
+							</DataGridTable>
+						</DataGridLoader>
+					</DataGrid>
+				</div>
+		)
+	}, () => (
+		<>
+			<Field field="id" />
+			<HasMany field="tasks">
+				<Field field="id" />
+				<Field field="description" />
+				<Field field="done" />
+				<Field field="confirmed" />
+			</HasMany>
+		</>
+	)
+)
