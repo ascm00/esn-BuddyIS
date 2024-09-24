@@ -1,3 +1,4 @@
+import { ApplicationFrCreateForm } from '@app/components/forms/application-fr-create-form'
 import { ApplicationFrEditForm } from '@app/components/forms/application-fr-edit-form'
 import { Binding, PersistButton } from '@app/lib/binding'
 import { BackButton } from '@app/lib/buttons'
@@ -10,7 +11,7 @@ export default () => {
 			<Binding>
 				<div className="flex flex-col gap-12">
 					<Slots.Title>
-						Application fr edit
+						Application FR edit
 					</Slots.Title>
 					<Slots.Back>
 						<BackButton />

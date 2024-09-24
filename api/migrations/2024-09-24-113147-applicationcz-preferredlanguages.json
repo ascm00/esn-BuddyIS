@@ -1,0 +1,100 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "createRelation",
+			"entityName": "ApplicationCz",
+			"owningSide": {
+				"type": "ManyHasMany",
+				"name": "preferredLanguages",
+				"target": "Language",
+				"joiningTable": {
+					"tableName": "application_cz_preferred_languages",
+					"joiningColumn": {
+						"columnName": "application_cz_id",
+						"onDelete": "cascade"
+					},
+					"inverseJoiningColumn": {
+						"columnName": "language_id",
+						"onDelete": "cascade"
+					},
+					"eventLog": {
+						"enabled": true
+					}
+				},
+				"inversedBy": "applicationsCz"
+			},
+			"inverseSide": {
+				"type": "ManyHasMany",
+				"name": "applicationsCz",
+				"target": "ApplicationCz",
+				"ownedBy": "preferredLanguages"
+			}
+		},
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/Language/operations/create/applicationsCz",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/Language/operations/read/applicationsCz",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/ApplicationCz/operations/create/preferredLanguages",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/ApplicationCz/operations/update/preferredLanguages",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/ApplicationCz/operations/read/preferredLanguages",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Language/operations/create/applicationsCz",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Language/operations/update/applicationsCz",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Language/operations/read/applicationsCz",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/public/entities/Language/operations/read/applicationsCz",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/ApplicationCz/operations/create/preferredLanguages",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/ApplicationCz/operations/update/preferredLanguages",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/ApplicationCz/operations/read/preferredLanguages",
+					"value": true
+				}
+			]
+		}
+	]
+}

@@ -1,6 +1,8 @@
 import { c } from '@contember/schema-definition'
 import { internationalStudentRole, esnMemberRole, publicRole } from './acl'
 import { ApplicationFr } from './ApplicationFr'
+import { Person } from './Person'
+import { ApplicationCz } from './ApplicationCz'
 
 
 @c.Allow(internationalStudentRole, {
@@ -18,6 +20,7 @@ import { ApplicationFr } from './ApplicationFr'
 })
 export class Language {
 	createdAt = c.dateTimeColumn().notNull().default('now')
-	applicationsFr = c.oneHasMany(ApplicationFr, 'language')
 	name = c.stringColumn().notNull()
+	person = c.manyHasManyInverse(Person, 'languages')
+	applicationsCz = c.manyHasManyInverse(ApplicationCz, 'preferredLanguages')
 }

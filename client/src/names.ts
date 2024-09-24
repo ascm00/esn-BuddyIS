@@ -47,6 +47,9 @@ export const ContemberClientNames: SchemaNames = {
         "motivation": {
           "type": "column"
         },
+        "howManyBuddies": {
+          "type": "column"
+        },
         "status": {
           "type": "column"
         },
@@ -56,6 +59,10 @@ export const ContemberClientNames: SchemaNames = {
         "preferredCountry": {
           "type": "one",
           "entity": "Country"
+        },
+        "preferredLanguages": {
+          "type": "many",
+          "entity": "Language"
         },
         "rBuddy": {
           "type": "column"
@@ -78,6 +85,7 @@ export const ContemberClientNames: SchemaNames = {
         "createdAt",
         "points",
         "motivation",
+        "howManyBuddies",
         "status",
         "result",
         "rBuddy",
@@ -106,10 +114,6 @@ export const ContemberClientNames: SchemaNames = {
         },
         "status": {
           "type": "column"
-        },
-        "language": {
-          "type": "one",
-          "entity": "Language"
         },
         "hobbies": {
           "type": "many",
@@ -666,12 +670,16 @@ export const ContemberClientNames: SchemaNames = {
         "createdAt": {
           "type": "column"
         },
-        "applicationsFr": {
-          "type": "many",
-          "entity": "ApplicationFr"
-        },
         "name": {
           "type": "column"
+        },
+        "person": {
+          "type": "many",
+          "entity": "Person"
+        },
+        "applicationsCz": {
+          "type": "many",
+          "entity": "ApplicationCz"
         }
       },
       "scalars": [
@@ -897,6 +905,10 @@ export const ContemberClientNames: SchemaNames = {
         "notes": {
           "type": "many",
           "entity": "Note"
+        },
+        "languages": {
+          "type": "many",
+          "entity": "Language"
         }
       },
       "scalars": [

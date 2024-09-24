@@ -1,0 +1,56 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "removeField",
+			"entityName": "ApplicationCz",
+			"fieldName": "howMannyBuddies"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ApplicationCz",
+			"field": {
+				"name": "howManyBuddies",
+				"columnName": "how_many_buddies",
+				"columnType": "integer",
+				"nullable": true,
+				"type": "Integer"
+			}
+		},
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/ApplicationCz/operations/create/howManyBuddies",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/ApplicationCz/operations/update/howManyBuddies",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/ApplicationCz/operations/read/howManyBuddies",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/ApplicationCz/operations/create/howManyBuddies",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/ApplicationCz/operations/update/howManyBuddies",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/ApplicationCz/operations/read/howManyBuddies",
+					"value": true
+				}
+			]
+		}
+	]
+}

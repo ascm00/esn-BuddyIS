@@ -29,66 +29,42 @@ export default () => {
 								<TableBody>
 									<TableRow>
 										<TableCell>
-											Status
+											Name
 										</TableCell>
 										<TableCell className="font-semibold">
-											<Field field="status" />
+											<Field field="person.firstName" /> {' '} <Field field="person.surname" />
 										</TableCell>
 									</TableRow>
 									<TableRow>
 										<TableCell>
-											Rating
+											Study program
 										</TableCell>
 										<TableCell className="font-semibold">
-											<Field field="rating" />
+											<Field field="person.studyProgram.name" />
 										</TableCell>
 									</TableRow>
 									<TableRow>
 										<TableCell>
-											R buddy
+											Semester
 										</TableCell>
 										<TableCell className="font-semibold">
-											<Field field="rBuddy" />
+											<Field field="semester.name" />
 										</TableCell>
 									</TableRow>
 									<TableRow>
 										<TableCell>
-											R party
+											Home Country
 										</TableCell>
 										<TableCell className="font-semibold">
-											<Field field="rParty" />
+											<Field field="person.country.name" />
 										</TableCell>
 									</TableRow>
 									<TableRow>
 										<TableCell>
-											R travel
-										</TableCell>
-										<TableCell className="font-semibold">
-											<Field field="rTravel" />
-										</TableCell>
-									</TableRow>
-									<TableRow>
-										<TableCell>
-											R sport
-										</TableCell>
-										<TableCell className="font-semibold">
-											<Field field="rSport" />
-										</TableCell>
-									</TableRow>
-									<TableRow>
-										<TableCell>
-											Preferred buddy sex
+											Preferred buddy gender
 										</TableCell>
 										<TableCell className="font-semibold">
 											<Field field="preferredBuddySex" />
-										</TableCell>
-									</TableRow>
-									<TableRow>
-										<TableCell>
-											Email for information
-										</TableCell>
-										<TableCell className="font-semibold">
-											<Field field="emailForInformation" />
 										</TableCell>
 									</TableRow>
 								</TableBody>

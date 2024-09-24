@@ -4,14 +4,9 @@ import { formatDateTime } from '@app/lib/formatting'
 import { formatDate } from '@app/lib/utils/formatting'
 import { Component, EntitySubTree, Field, HasMany, HasOne, identityEnvironmentExtension, useEntity, useEntitySubTree } from '@contember/interface'
 
-export const ApplicationCzCreateForm = Component(
+export const ApplicationCzEditForm = Component(
 	() => {
-
-		const entity = useEntity()
-		const me = useEntitySubTree('me')
-		entity.connectEntityAtField('person', me)
 		const now = new Date().toISOString()
-		console.log(now)
 	
 	return (<FormLayout>
 	<Todo>Semestr by měla aplikace znát automaticky a měl by se k přihlášce automaticky přiřadit. Potřeba checkovat, jestli už se na buddyho daný semestr hlásil</Todo>
@@ -67,49 +62,5 @@ export const ApplicationCzCreateForm = Component(
 		/>
 	</div>
 	</FormLayout>)
-}, (_, env) => (
-	<>
-		<EntitySubTree
-				entity={`Person(tenantPerson.id='${env.getExtension(identityEnvironmentExtension).identity?.person?.id}')`}
-				alias="me"
-			>
-				<Field field="gender" />
-				<HasOne field="studyProgram">
-					<Field field="name" />
-				</HasOne>
-				<HasOne field="university">
-					<Field field="name" />
-				</HasOne>
-				<HasOne field="faculty">
-					<Field field="name" />
-				</HasOne>
-			</EntitySubTree>
-			<HasOne field="person">
-				<Field field="gender" />
-				<HasOne field="studyProgram">
-					<Field field="name" />
-				</HasOne>
-				<HasOne field="university">
-					<Field field="name" />
-				</HasOne>
-				<HasOne field="faculty">
-					<Field field="name" />
-				</HasOne>
-			</HasOne>
-			<Field field={'motivation'} />
-			<HasOne field={'preferredCountry'}>
-				<Field field={'name'} />
-			</HasOne>
-			<Field field={'preferredSex'} />
-			<Field field={'howManyBuddies'} />
-			<HasMany field={'preferredLanguages'}>
-				<Field field={'name'} />
-			</HasMany>
-		<HasOne field="semester">
-			<Field field="name" />
-			<Field field="openForCzechBuddyRegistrationsDate" />
-			<Field field="closeBuddyRegistrations" />
-		</HasOne>
-	</>
-)
+}
 )

@@ -3,7 +3,7 @@ import { BackButton } from '@app/lib/buttons'
 import { DataGrid, DataGridColumn, DataGridEnumColumn, DataGridHasOneColumn, DataGridLoader, DataGridNumberColumn, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridToolbar } from '@app/lib/datagrid'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
-import { Field, Link } from '@contember/interface'
+import { Field, HasRole, Link } from '@contember/interface'
 
 export default () => {
 	return (
@@ -30,20 +30,17 @@ export default () => {
 							</DataGridToolbar>
 							<DataGridLoader>
 								<DataGridTable>
-									<DataGridColumn>
-										<div className="flex gap-4">
-											<Link to="applicationCzDetail(id: $entity.id)">
-												<a>
-													Detail
-												</a>
-											</Link>
-											<Link to="applicationCzCreate(id: $entity.id)">
-												<a>
-													Edit
-												</a>
-											</Link>
-										</div>
-									</DataGridColumn>
+									<HasRole role={roles => roles.has('admin') || roles.has('coordinator')}>
+										<DataGridColumn>
+											<div className="flex gap-4">
+												<Link to="applicationCzEdit(id: $entity.id)">
+													<Button>
+														Edit
+													</Button>
+												</Link>
+											</div>
+										</DataGridColumn>
+									</HasRole>
 									<DataGridNumberColumn field="points" header="Point" />
 									<DataGridHasOneColumn field="semester" header="Semester">
 										<Field field="name" />

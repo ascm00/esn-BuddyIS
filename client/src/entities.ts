@@ -38,6 +38,7 @@ export type ApplicationCz <OverRelation extends string | never = never> = {
 		createdAt: string
 		points: number | null
 		motivation: string | null
+		howManyBuddies: number | null
 		status: applicationStatus | null
 		result: applicationCzResult | null
 		rBuddy: number | null
@@ -52,6 +53,7 @@ export type ApplicationCz <OverRelation extends string | never = never> = {
 		preferredCountry: Country
 	}
 	hasMany: {
+		preferredLanguages: Language
 	}
 	hasManyBy: {
 	}
@@ -77,7 +79,6 @@ export type ApplicationFr <OverRelation extends string | never = never> = {
 	hasOne: {
 		semester: Semester
 		person: Person
-		language: Language
 		limitations: Limitations
 	}
 	hasMany: {
@@ -414,7 +415,6 @@ export type Language <OverRelation extends string | never = never> = {
 	name: 'Language'
 	unique:
 		| Omit<{ id: string}, OverRelation>
-		| Omit<{ applicationsFr: ApplicationFr['unique']}, OverRelation>
 	columns: {
 		id: string
 		createdAt: string
@@ -423,11 +423,10 @@ export type Language <OverRelation extends string | never = never> = {
 	hasOne: {
 	}
 	hasMany: {
-		applicationsFr: ApplicationFr<'language'>
+		person: Person
+		applicationsCz: ApplicationCz
 	}
 	hasManyBy: {
-		applicationsFrByPerson: { entity: ApplicationFr; by: {person: Person['unique']}  }
-		applicationsFrByLimitations: { entity: ApplicationFr; by: {limitations: Limitations['unique']}  }
 	}
 }
 export type Limitations <OverRelation extends string | never = never> = {
@@ -552,6 +551,7 @@ export type Person <OverRelation extends string | never = never> = {
 		coordinatingBuddyPairs: BuddyPair<'coordinator'>
 		registrations: EventRegistration<'person'>
 		notes: Note<'author'>
+		languages: Language
 	}
 	hasManyBy: {
 		coordinatingBuddyPairsByCzechStudent: { entity: BuddyPair; by: {czechStudent: Person['unique']}  }

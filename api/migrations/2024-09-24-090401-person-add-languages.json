@@ -1,0 +1,75 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "removeField",
+			"entityName": "ApplicationFr",
+			"fieldName": "language"
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "Person",
+			"owningSide": {
+				"type": "ManyHasMany",
+				"name": "languages",
+				"target": "Language",
+				"joiningTable": {
+					"tableName": "person_languages",
+					"joiningColumn": {
+						"columnName": "person_id",
+						"onDelete": "cascade"
+					},
+					"inverseJoiningColumn": {
+						"columnName": "language_id",
+						"onDelete": "cascade"
+					},
+					"eventLog": {
+						"enabled": true
+					}
+				},
+				"inversedBy": "person"
+			},
+			"inverseSide": {
+				"type": "ManyHasMany",
+				"name": "person",
+				"target": "Person",
+				"ownedBy": "languages"
+			}
+		},
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/Language/operations/create/person",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/Language/operations/read/person",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Language/operations/create/person",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Language/operations/update/person",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Language/operations/read/person",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/public/entities/Language/operations/read/person",
+					"value": true
+				}
+			]
+		}
+	]
+}

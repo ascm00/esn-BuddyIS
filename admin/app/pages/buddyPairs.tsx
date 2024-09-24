@@ -1,6 +1,6 @@
 import { Binding } from '@app/lib/binding'
 import { BackButton } from '@app/lib/buttons'
-import { DataGrid, DataGridBooleanColumn, DataGridColumn, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
+import { DataGrid, DataGridBooleanColumn, DataGridBooleanFilter, DataGridColumn, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
 import { Field, Link } from '@contember/interface'
@@ -18,6 +18,11 @@ export default () => {
 					</Slots.Back>
 					<>
 						<Slots.Actions>
+						<Link to="buddyPairsHistoric">
+								<Button>
+									All semesters buddy pairs
+								</Button>
+							</Link>
 							<Link to="buddyPairCreate">
 								<Button>
 									Create buddy pair
@@ -30,6 +35,7 @@ export default () => {
 								<DataGridHasOneFilter field="coordinator" label="Coordinator">
 									<Field field="firstName" /> {' '} <Field field="surname" />
 								</DataGridHasOneFilter>
+								<DataGridBooleanFilter field="tenPoints" label="10 points" />
 							</DataGridToolbar>
 							<DataGridLoader>
 								<DataGridTable>
@@ -45,8 +51,14 @@ export default () => {
 									<DataGridHasOneColumn field="coordinator" header="Coordinator">
 										<Field field="firstName" /> {' '} <Field field="surname" /> {' ('} <Field field="xname" /> {') '}
 									</DataGridHasOneColumn>
-									<DataGridHasOneColumn field="czechStudent" header="Czech student">
-										<Field field="firstName" /> {' '} <Field field="surname" /> {' ('} <Field field="xname" /> {') '}
+									<DataGridHasOneColumn field="czechStudent" header="Czech student first name">
+										<Field field="firstName" />
+									</DataGridHasOneColumn>
+									<DataGridHasOneColumn field="czechStudent" header="Czech student surname">
+										<Field field="surname" />
+									</DataGridHasOneColumn>
+									<DataGridHasOneColumn field="czechStudent" header="Czech student xname">
+										<Field field="xname" />
 									</DataGridHasOneColumn>
 									<DataGridHasOneColumn field="internationalStudent" header="International student">
 										<Field field="firstName" /> {' '} <Field field="surname" /> {' ('} <Field field="xname" /> {') '}

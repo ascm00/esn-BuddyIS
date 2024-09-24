@@ -11,27 +11,25 @@ export default () => {
 			<Binding>
 				<div className="flex flex-col gap-12">
 					<Slots.Title>
-						Current semester - Foreign applications
+						All semesters - Foreign applications
 					</Slots.Title>
 					<Slots.Back>
 						<BackButton />
 					</Slots.Back>
 					<>
 						<Slots.Actions>
-							<Link to="applicationFrsAll">
-								<Button>
-									All semesters applications
-								</Button>
-							</Link>
 							<Link to="applicationFrCreate">
 								<Button>
 									Create application FR
 								</Button>
 							</Link>
 						</Slots.Actions>
-						<DataGrid entities="ApplicationFr[semester.isCurrent=true]">
+						<DataGrid entities="ApplicationFr">
 							<DataGridToolbar>
 								<DataGridQueryFilter />
+								<DataGridHasOneFilter field="semester" label="Semester">
+									<Field field="name" />
+								</DataGridHasOneFilter>
 								<DataGridHasOneFilter field={'person.studyProgram'} label={'Study program'}>
 									<Field field={'name'} />
 								</DataGridHasOneFilter>

@@ -1,6 +1,6 @@
 import { Binding } from '@app/lib/binding'
 import { BackButton } from '@app/lib/buttons'
-import { DataGrid, DataGridBooleanColumn, DataGridColumn, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
+import { DataGrid, DataGridBooleanColumn, DataGridBooleanFilter, DataGridColumn, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
 import { Field, Link } from '@contember/interface'
@@ -24,12 +24,16 @@ export default () => {
 								</Button>
 							</Link>
 						</Slots.Actions>
-						<DataGrid entities="BuddyPair[semester.isCurrent=false]">
+						<DataGrid entities="BuddyPair">
 							<DataGridToolbar>
 								<DataGridQueryFilter />
+								<DataGridHasOneFilter field="semester" label="Semester">
+									<Field field="name" />
+								</DataGridHasOneFilter>
 								<DataGridHasOneFilter field="coordinator" label="Coordinator">
 									<Field field="firstName" /> {' '} <Field field="surname" />
 								</DataGridHasOneFilter>
+								<DataGridBooleanFilter field="tenPoints" label="10 points" />
 							</DataGridToolbar>
 							<DataGridLoader>
 								<DataGridTable>

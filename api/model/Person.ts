@@ -13,6 +13,7 @@ import { EventRegistration } from './EventRegistration'
 import { StudyProgram } from './StudyProgram'
 import { sex } from './enum'
 import { Note } from './Note'
+import { Language } from './Language'
 
 export class Person {
 	createdAt = c.dateTimeColumn().notNull().default('now')
@@ -43,4 +44,5 @@ export class Person {
 
 	registrations = c.oneHasMany(EventRegistration, 'person')
 	notes = c.oneHasMany(Note, 'author')
+	languages = c.manyHasMany(Language, 'person')
 }

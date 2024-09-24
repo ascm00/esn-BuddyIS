@@ -1,7 +1,7 @@
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@app/lib/ui/collapsible'
 import { Menu, MenuButton, MenuDivider, MenuItem } from '@app/lib/ui/menu'
 import { Component, HasRole } from '@contember/interface'
-import { Activity, AlertCircle, Book, BookOpen, Building, Calendar, CalendarDays, CalendarPlus, CheckSquare, Clock, Dot, File, FileText, Globe, GraduationCap, Grid, Handshake, Heart, Home, Layout, MapPin, MessageSquare, PartyPopper, Settings, User, UserCheck, UserPlus, Users, UtensilsCrossed } from 'lucide-react'
+import { Activity, AlertCircle, Book, BookOpen, Building, Calendar, CalendarDays, CalendarPlus, CheckSquare, Clock, Dot, File, FileText, Globe, GraduationCap, Grid, Handshake, Heart, Home, LanguagesIcon, Layout, MapPin, MessageSquare, PartyPopper, Settings, User, UserCheck, UserPlus, Users, UtensilsCrossed } from 'lucide-react'
 
 export const Navigation = Component(() => <Menu>
 	<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('czechBuddy')}>
@@ -34,8 +34,7 @@ export const Navigation = Component(() => <Menu>
 		<Collapsible>
 				<CollapsibleTrigger>Coordinating</CollapsibleTrigger>
 				<CollapsibleContent>
-					<MenuItem label="Buddy pairs" icon={<Users />} to="buddyPairs" />
-					<MenuItem label="Buddy pairs historic" icon={<Users />} to="buddyPairsHistoric" />					
+					<MenuItem label="Buddy pairs" icon={<Users />} to="buddyPairs" />				
 				</CollapsibleContent>
 		</Collapsible>
 		<Collapsible>
@@ -72,6 +71,7 @@ export const Navigation = Component(() => <Menu>
 					<MenuItem label="Faculties at VSE" icon={<BookOpen />} to="faculties" />
 					<MenuItem label="Sections" icon={<Grid />} to="sections" />
 					<MenuItem label="Countries" icon={<MapPin />} to="countries" />
+					<MenuItem label="Languages" icon={<LanguagesIcon />} to="languages" />
 					<MenuItem label="Dietary Restrictions" icon={<UtensilsCrossed />} to="" />
 					<MenuItem label="Allergies" icon={<AlertCircle />} to="" />
 				</CollapsibleContent>
