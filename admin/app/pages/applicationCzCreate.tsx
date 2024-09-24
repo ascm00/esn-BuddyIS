@@ -17,9 +17,6 @@ export default () => {
 					</Slots.Back>
 					<EntitySubTree entity="ApplicationCz" isCreating>
 						<RedirectOnPersist to="applicationCzDetail(id: $entity.id)" />
-						<Slots.Actions>
-							<PersistButton label="Apply for buddy"/>
-						</Slots.Actions>
 						<ApplicationCzCreateForm />
 					</EntitySubTree>
 				</div>
