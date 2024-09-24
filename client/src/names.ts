@@ -982,6 +982,12 @@ export const ContemberClientNames: SchemaNames = {
         },
         "isCurrent": {
           "type": "column"
+        },
+        "openForCzechBuddyRegistrationsDate": {
+          "type": "column"
+        },
+        "closeBuddyRegistrations": {
+          "type": "column"
         }
       },
       "scalars": [
@@ -990,7 +996,9 @@ export const ContemberClientNames: SchemaNames = {
         "name",
         "startDate",
         "endDate",
-        "isCurrent"
+        "isCurrent",
+        "openForCzechBuddyRegistrationsDate",
+        "closeBuddyRegistrations"
       ]
     },
     "Sport": {

@@ -599,6 +599,8 @@ export type Semester <OverRelation extends string | never = never> = {
 		startDate: string
 		endDate: string
 		isCurrent: boolean
+		openForCzechBuddyRegistrationsDate: string
+		closeBuddyRegistrations: string
 	}
 	hasOne: {
 	}

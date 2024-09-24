@@ -1,5 +1,7 @@
 import { Todo } from '@app/lib/dev'
 import { FormLayout, InputField, RadioEnumField, SelectField, TextareaField } from '@app/lib/form'
+import { formatDateTime } from '@app/lib/formatting'
+import { formatDate } from '@app/lib/utils/formatting'
 import { Component, EntitySubTree, Field, HasOne, identityEnvironmentExtension, useEntity, useEntitySubTree } from '@contember/interface'
 
 export const ApplicationCzCreateForm = Component(
@@ -8,21 +10,20 @@ export const ApplicationCzCreateForm = Component(
 		const entity = useEntity()
 		const me = useEntitySubTree('me')
 		entity.connectEntityAtField('person', me)
+		const now = new Date().toISOString()
+		console.log(now)
 	
 	return (<FormLayout>
 	<Todo>Semestr by měla aplikace znát automaticky a měl by se k přihlášce automaticky přiřadit. Potřeba checkovat, jestli už se na buddyho daný semestr hlásil</Todo>
-	{/* <SelectField
+	<SelectField
 		field="semester"
 		label="Semester"
-		createNewForm={<>
-			<InputField field="name" label="Name" required />
-			<InputField field="startDate" label="Start date" required />
-			<InputField field="endDate" label="End date" required />
-		</>}
-		options="Semester"
+		options={`Semester[openForCzechBuddyRegistrationsDate <= "${now}" && closeBuddyRegistrations >= "${now}"]`}
 	>
-		<Field field="name" />
-	</SelectField> */}
+		<Field field="name" /> {' ('}
+		<Field field={'openForCzechBuddyRegistrationsDate'} format={formatDate}/> {' - '}
+		<Field field={'closeBuddyRegistrations'} format={formatDate} /> {')'}
+	</SelectField>
 	<div>
 		<h2 className="text-xl font-semibold">Information about you</h2>
 		<hr className="my-2 border-gray-200" />
@@ -107,6 +108,11 @@ export const ApplicationCzCreateForm = Component(
 				<Field field={'name'} />
 			</HasOne>
 			<Field field={'preferredSex'} />
+		<HasOne field="semester">
+			<Field field="name" />
+			<Field field="openForCzechBuddyRegistrationsDate" />
+			<Field field="closeBuddyRegistrations" />
+		</HasOne>
 	</>
 )
 )

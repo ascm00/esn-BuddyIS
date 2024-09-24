@@ -1,0 +1,10 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "removeField",
+			"entityName": "Semester",
+			"fieldName": "openForCzechBuddyRegistrations"
+		}
+	]
+}

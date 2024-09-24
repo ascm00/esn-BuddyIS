@@ -26,4 +26,6 @@ export class Semester {
 	buddyPairs = c.oneHasMany(BuddyPair, 'semester')
 	parties = c.oneHasMany(N2nParty, 'semester')
 	isCurrent = c.boolColumn().notNull().default(false)
+	openForCzechBuddyRegistrationsDate = c.dateTimeColumn().notNull()
+	closeBuddyRegistrations = c.dateTimeColumn().notNull()
 }

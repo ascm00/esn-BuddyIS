@@ -50,6 +50,8 @@ export default () => {
 									<DataGridTextColumn field="name" header="Name" />
 									<DataGridDateColumn field="startDate" header="Start date" />
 									<DataGridDateColumn field="endDate" header="End date" />
+									<DataGridDateColumn field='openForCzechBuddyRegistrationsDate' header="Open Czech buddies registration" />
+									<DataGridDateColumn field='closeBuddyRegistrations' header="Close buddy Registration" />
 								</DataGridTable>
 							</DataGridLoader>
 							<DataGridPagination />
@@ -73,7 +75,9 @@ const ShowCurrentSemester = Component(
 			currentSemester = entity?.getField('name')?.value?.toString()
 		}
 
-		return ( <h1 className='text-2xl font-bold'>Current semester: {currentSemester}</h1> )
+		return ( <div>
+			<h1 className='text-2xl font-bold'>Current semester: {currentSemester}</h1> 
+			</div>)
 
 }, () => (
 		<>

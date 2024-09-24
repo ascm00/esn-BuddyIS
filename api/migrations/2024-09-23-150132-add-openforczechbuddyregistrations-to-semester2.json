@@ -1,0 +1,62 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "createColumn",
+			"entityName": "Semester",
+			"field": {
+				"name": "openForCzechBuddyRegistrationsDate",
+				"columnName": "open_for_czech_buddy_registrations_date",
+				"columnType": "timestamptz",
+				"nullable": false,
+				"type": "DateTime"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Semester",
+			"field": {
+				"name": "closeBuddyRegistrations",
+				"columnName": "close_buddy_registrations",
+				"columnType": "timestamptz",
+				"nullable": false,
+				"type": "DateTime"
+			}
+		},
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Semester/operations/update/openForCzechBuddyRegistrationsDate",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Semester/operations/update/closeBuddyRegistrations",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Semester/operations/read/openForCzechBuddyRegistrationsDate",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Semester/operations/read/closeBuddyRegistrations",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/public/entities/Semester/operations/read/openForCzechBuddyRegistrationsDate",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/public/entities/Semester/operations/read/closeBuddyRegistrations",
+					"value": true
+				}
+			]
+		}
+	]
+}

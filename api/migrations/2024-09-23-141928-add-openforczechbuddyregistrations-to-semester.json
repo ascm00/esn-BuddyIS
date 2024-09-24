@@ -1,0 +1,38 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "createColumn",
+			"entityName": "Semester",
+			"field": {
+				"name": "openForCzechBuddyRegistrations",
+				"columnName": "open_for_czech_buddy_registrations",
+				"columnType": "boolean",
+				"nullable": false,
+				"type": "Bool",
+				"default": false
+			},
+			"fillValue": false
+		},
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Semester/operations/update/openForCzechBuddyRegistrations",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Semester/operations/read/openForCzechBuddyRegistrations",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/public/entities/Semester/operations/read/openForCzechBuddyRegistrations",
+					"value": true
+				}
+			]
+		}
+	]
+}

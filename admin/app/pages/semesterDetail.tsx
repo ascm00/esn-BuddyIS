@@ -61,6 +61,22 @@ export default () => {
 									</TableRow>
 									<TableRow>
 										<TableCell>
+											Open Czech Buddies Registration
+										</TableCell>
+										<TableCell className="font-semibold">
+											<Field field="openForCzechBuddyRegistrationsDate" format={formatDateTime} />
+										</TableCell>
+									</TableRow>
+									<TableRow>
+										<TableCell>
+											Close Czech Buddies Registration
+										</TableCell>
+										<TableCell className="font-semibold">
+											<Field field="closeBuddyRegistrations" format={formatDateTime} />
+										</TableCell>
+									</TableRow>
+									<TableRow>
+										<TableCell>
 											Current semester
 										</TableCell>
 										<TableCell className="font-semibold">

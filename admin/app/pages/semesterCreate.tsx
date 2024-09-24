@@ -1,4 +1,4 @@
-import { SemesterCreateForm } from '@app/components/forms/semester-create-form'
+import { SemesterForm } from '@app/components/forms/semester-create-form'
 import { Binding, PersistButton } from '@app/lib/binding'
 import { BackButton } from '@app/lib/buttons'
 import { Slots } from '@app/lib/layout'
@@ -20,7 +20,7 @@ export default () => {
 						<Slots.Actions>
 							<PersistButton />
 						</Slots.Actions>
-						<SemesterCreateForm />
+						<SemesterForm />
 					</EntitySubTree>
 				</div>
 			</Binding>
