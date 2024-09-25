@@ -14,6 +14,8 @@ export const ApplicationCzCreateForm = Component(
 		entity.connectEntityAtField('person', me)
 		const now = new Date().toISOString()
 
+
+		//checks if user already applied for buddy this semester. It changes dynamically based on select field - semester
 		let applied = false
 		const semester = entity.getField('semester.name').value ?? undefined
 		const currentUserApplicationsList = useEntityListSubTree('currentUserApplicationsCz')
@@ -23,8 +25,23 @@ export const ApplicationCzCreateForm = Component(
 				break
 			}
 		}
+
+		//check if applications are open for any semester. If not, user can't apply for buddy
+		let closed = true
+		const semestersList = useEntityListSubTree('allSemesters')
+		for (const semester of semestersList) {
+			let openForCzechBuddyRegistrationsDate = semester.getField('openForCzechBuddyRegistrationsDate').value
+			let closeBuddyRegistrations = semester.getField('closeBuddyRegistrations').value
+			if ((openForCzechBuddyRegistrationsDate && closeBuddyRegistrations) && (openForCzechBuddyRegistrationsDate <= now && closeBuddyRegistrations >= now)) {
+				closed = false
+				break
+			}
+		}
 	
-		if (applied) {
+		if(closed){
+			return (<div className='bg-blue-200 p-4 rounded-md'><div className='text-500'>Sorry, applications are closed now.</div></div>)
+		}
+		else if (applied) {
 			return (<div className='bg-blue-200 p-4 rounded-md'><div className='text-500'>Sorry, you can only apply for buddy once. You already applied this semester.</div></div>)
 		} else {
 			return (<FormLayout>
@@ -89,6 +106,14 @@ export const ApplicationCzCreateForm = Component(
 		}
 }, (_, env) => (
 	<>
+		<EntityListSubTree
+				entities={`Semester`}
+				alias={'allSemesters'}
+		>
+			<Field field="name" />
+			<Field field="openForCzechBuddyRegistrationsDate" />
+			<Field field="closeBuddyRegistrations" />
+		</EntityListSubTree>
 		<EntityListSubTree
 				entities={`ApplicationCz[person.tenantPerson.id='${env.getExtension(identityEnvironmentExtension).identity?.person?.id}']`}
 				alias={'currentUserApplicationsCz'}
