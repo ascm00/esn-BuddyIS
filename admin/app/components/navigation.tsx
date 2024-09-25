@@ -19,7 +19,12 @@ export const Navigation = Component(() => <Menu>
 	<HasRole role={roles => roles.has('admin') || roles.has('esnMemberRole')}>
 		<MenuItem label="Events" icon={<Calendar />} to="events" />
 	</HasRole>
-	<MenuItem label="Buddy" icon={<CheckSquare />} to="myBuddy" />
+	<HasRole role={roles => roles.has('admin') || roles.has('esnMemberRole') || roles.has('czechStudent') || roles.has('coordinator')}>
+		<MenuItem label="Buddy" icon={<CheckSquare />} to="myBuddyCz" />
+	</HasRole>
+	<HasRole role="internationalStudent">
+		<MenuItem label="Buddy" icon={<CheckSquare />} to="myBuddy" />
+	</HasRole>
 	<MenuItem label="N2N" icon={<PartyPopper />} to="n2nParties" />
 	<MenuItem label="Profile" icon={<User />} to="" />
 	<HasRole role={roles => roles.has('admin') || roles.has('esnMember')}>
@@ -34,7 +39,10 @@ export const Navigation = Component(() => <Menu>
 		<Collapsible>
 				<CollapsibleTrigger>Coordinating</CollapsibleTrigger>
 				<CollapsibleContent>
-					<MenuItem label="Buddy pairs" icon={<Users />} to="buddyPairs" />				
+					<HasRole role={roles => roles.has('admin')}>
+						<MenuItem label="All buddy pairs" icon={<Users />} to="buddyPairs" />
+					</HasRole>
+					<MenuItem label="My buddy pairs" icon={<Users />} to="myBuddyPairs" />		
 				</CollapsibleContent>
 		</Collapsible>
 		<Collapsible>

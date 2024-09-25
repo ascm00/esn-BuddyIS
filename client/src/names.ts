@@ -871,7 +871,7 @@ export const ContemberClientNames: SchemaNames = {
           "entity": "Event"
         },
         "czechBuddyPair": {
-          "type": "one",
+          "type": "many",
           "entity": "BuddyPair"
         },
         "internationalBuddyPair": {

@@ -12,7 +12,7 @@ export const ApplicationFrEditForm = Component(
 		
 	return (<FormLayout>
 
-		<Todo>Semestr by měla aplikace znát automaticky a měl by se k přihlášce automaticky přiřadit. Potřeba checkovat, jestli už se na buddyho daný semestr hlásil. Nejde removenout jazyk. Select fieldy musí být mandatory.</Todo>
+		<Todo>Semestr by měla aplikace znát automaticky a měl by se k přihlášce automaticky přiřadit. Potřeba checkovat, jestli už se na buddyho daný semestr hlásil. - Done Nejde removenout jazyk. Select fieldy musí být mandatory.</Todo>
 		{/* <SelectField
 			field="semester"
 			label="Semester"

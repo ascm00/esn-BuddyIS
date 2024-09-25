@@ -1,6 +1,6 @@
 import { Binding } from '@app/lib/binding'
 import { BackButton } from '@app/lib/buttons'
-import { DataGrid, DataGridColumn, DataGridEnumColumn, DataGridHasOneColumn, DataGridLoader, DataGridNumberColumn, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridToolbar } from '@app/lib/datagrid'
+import { DataGrid, DataGridColumn, DataGridEnumColumn, DataGridHasManyColumn, DataGridHasOneColumn, DataGridLoader, DataGridNumberColumn, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
 import { Field, HasRole, Link } from '@contember/interface'
@@ -11,20 +11,25 @@ export default () => {
 			<Binding>
 				<div className="flex flex-col gap-12">
 					<Slots.Title>
-						Application czs
+						Current semester - Czech applications
 					</Slots.Title>
 					<Slots.Back>
 						<BackButton />
 					</Slots.Back>
 					<>
 						<Slots.Actions>
+						<Link to="applicationCzsAll">
+								<Button>
+									All semesters applications
+								</Button>
+							</Link>
 							<Link to="applicationCzCreate">
 								<Button>
 									Create application cz
 								</Button>
 							</Link>
 						</Slots.Actions>
-						<DataGrid entities="ApplicationCz">
+						<DataGrid entities="ApplicationCz[semester.isCurrent=true]">
 							<DataGridToolbar>
 								<DataGridQueryFilter />
 							</DataGridToolbar>
@@ -41,27 +46,22 @@ export default () => {
 											</div>
 										</DataGridColumn>
 									</HasRole>
-									<DataGridNumberColumn field="points" header="Point" />
-									<DataGridHasOneColumn field="semester" header="Semester">
-										<Field field="name" />
+									<DataGridHasOneColumn field="person" header="Name" >
+										<Field field="firstName" /> {' '} <Field field="surname" /> {' ('} <Field field="xname" /> {') '}
 									</DataGridHasOneColumn>
-									<DataGridEnumColumn
-										field="status"
-										header="Status"
-										options={{ enabled: 'enabled', disabled: 'disabled', cancelled: 'cancelled' }}
-									/>
-									<DataGridHasOneColumn field="preferredCountry" header="Preferred country">
+									<DataGridTextColumn field="person.studyProgram.name" header="Study program" />
+									<DataGridHasManyColumn field="person.languages" header="Languages spoken">
 										<Field field="name" />
-									</DataGridHasOneColumn>
+									</DataGridHasManyColumn>
+									<DataGridHasManyColumn field="preferredLanguages" header="Preferred languages">
+										<Field field="name" />
+									</DataGridHasManyColumn>
 									<DataGridEnumColumn
 										field="preferredSex"
-										header="Preferred sex"
+										header="Preferred gender"
 										options={{ man: 'man', woman: 'woman', dontCare: 'dontCare' }}
 									/>
-									<DataGridHasOneColumn field="person" header="User">
-										<Field field="firstName" /> <Field field="surname" />
-									</DataGridHasOneColumn>
-									<DataGridEnumColumn field="result" header="Result" options={{ accepted: 'accepted', declined: 'declined' }} />
+									{/* <DataGridEnumColumn field="result" header="Result" options={{ accepted: 'accepted', declined: 'declined' }} /> */}
 								</DataGridTable>
 							</DataGridLoader>
 							<DataGridPagination />

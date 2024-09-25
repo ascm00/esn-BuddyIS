@@ -92,7 +92,6 @@ export type BuddyPair <OverRelation extends string | never = never> = {
 	name: 'BuddyPair'
 	unique:
 		| Omit<{ id: string}, OverRelation>
-		| Omit<{ czechStudent: Person['unique']}, OverRelation>
 		| Omit<{ internationalStudent: Person['unique']}, OverRelation>
 		| Omit<{ notes: Note['unique']}, OverRelation>
 		| Omit<{ tasks: BuddyTask['unique']}, OverRelation>
@@ -540,12 +539,12 @@ export type Person <OverRelation extends string | never = never> = {
 		studyProgram: StudyProgram
 		country: Country
 		organizedEvents: Event
-		czechBuddyPair: BuddyPair
 		internationalBuddyPair: BuddyPair
 		applicationsFr: ApplicationFr
 		profilePicture: Image
 	}
 	hasMany: {
+		czechBuddyPair: BuddyPair<'czechStudent'>
 		applications: ApplicationCz<'person'>
 		n2nHours: N2nHour
 		coordinatingBuddyPairs: BuddyPair<'coordinator'>
@@ -554,7 +553,10 @@ export type Person <OverRelation extends string | never = never> = {
 		languages: Language
 	}
 	hasManyBy: {
-		coordinatingBuddyPairsByCzechStudent: { entity: BuddyPair; by: {czechStudent: Person['unique']}  }
+		czechBuddyPairByInternationalStudent: { entity: BuddyPair; by: {internationalStudent: Person['unique']}  }
+		czechBuddyPairByNotes: { entity: BuddyPair; by: {notes: Note['unique']}  }
+		czechBuddyPairByTasks: { entity: BuddyPair; by: {tasks: BuddyTask['unique']}  }
+		czechBuddyPairByPicture: { entity: BuddyPair; by: {picture: Image['unique']}  }
 		coordinatingBuddyPairsByInternationalStudent: { entity: BuddyPair; by: {internationalStudent: Person['unique']}  }
 		coordinatingBuddyPairsByNotes: { entity: BuddyPair; by: {notes: Note['unique']}  }
 		coordinatingBuddyPairsByTasks: { entity: BuddyPair; by: {tasks: BuddyTask['unique']}  }
@@ -617,7 +619,6 @@ export type Semester <OverRelation extends string | never = never> = {
 		eventsByContactPerson: { entity: Event; by: {contactPerson: Person['unique']}  }
 		applicationsFrByPerson: { entity: ApplicationFr; by: {person: Person['unique']}  }
 		applicationsFrByLimitations: { entity: ApplicationFr; by: {limitations: Limitations['unique']}  }
-		buddyPairsByCzechStudent: { entity: BuddyPair; by: {czechStudent: Person['unique']}  }
 		buddyPairsByInternationalStudent: { entity: BuddyPair; by: {internationalStudent: Person['unique']}  }
 		buddyPairsByNotes: { entity: BuddyPair; by: {notes: Note['unique']}  }
 		buddyPairsByTasks: { entity: BuddyPair; by: {tasks: BuddyTask['unique']}  }

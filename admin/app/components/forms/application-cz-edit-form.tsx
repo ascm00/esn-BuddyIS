@@ -2,14 +2,14 @@ import { Todo } from '@app/lib/dev'
 import { FormLayout, InputField, MultiSelectField, RadioEnumField, SelectField, TextareaField } from '@app/lib/form'
 import { formatDateTime } from '@app/lib/formatting'
 import { formatDate } from '@app/lib/utils/formatting'
-import { Component, EntitySubTree, Field, HasMany, HasOne, identityEnvironmentExtension, useEntity, useEntitySubTree } from '@contember/interface'
+import { Component, Field, HasMany, HasOne, identityEnvironmentExtension, useEntity, useEntitySubTree } from '@contember/interface'
 
 export const ApplicationCzEditForm = Component(
 	() => {
 		const now = new Date().toISOString()
 	
 	return (<FormLayout>
-	<Todo>Semestr by měla aplikace znát automaticky a měl by se k přihlášce automaticky přiřadit. Potřeba checkovat, jestli už se na buddyho daný semestr hlásil</Todo>
+	{/* <Todo>Semestr by měla aplikace znát automaticky a měl by se k přihlášce automaticky přiřadit. Potřeba checkovat, jestli už se na buddyho daný semestr hlásil - Done</Todo> */}
 	<SelectField
 		field="semester"
 		label="Semester *"

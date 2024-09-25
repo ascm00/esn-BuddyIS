@@ -198,9 +198,6 @@ export default () => {
 									</TableBody>
 									</Table>
 								</TableWrapper>
-								<div className="bg-gray-50/50 h-fit border rounded-md p-4">
-									<AddNoteArea />
-								</div>
 
 								<div className="flex flex-col gap-4">
 									<div className="text-lg font-bold">
@@ -224,6 +221,10 @@ export default () => {
 											</DataGridTable>
 										</DataGridLoader>
 									</DataGrid>
+								</div>
+
+								<div className="bg-gray-50/50 h-fit border rounded-md p-4">
+									<AddNoteArea />
 								</div>
 							</div>
 

@@ -22,7 +22,7 @@ import { Semester } from './Semester'
 export class BuddyPair {
 	createdAt = c.dateTimeColumn().notNull().default('now')
 	coordinator = c.manyHasOne(Person, 'coordinatingBuddyPairs').setNullOnDelete()
-	czechStudent = c.oneHasOne(Person, 'czechBuddyPair').setNullOnDelete()
+	czechStudent = c.manyHasOne(Person, 'czechBuddyPair').setNullOnDelete()
 	internationalStudent = c.oneHasOne(Person, 'internationalBuddyPair').setNullOnDelete()
 	semester = c.manyHasOne(Semester, 'buddyPairs').notNull()
 	notes = c.oneHasMany(Note, 'buddyPair')

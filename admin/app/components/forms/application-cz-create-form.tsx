@@ -31,7 +31,7 @@ export const ApplicationCzCreateForm = Component(
 				<Slots.Actions>
 					<PersistButton label="Apply for buddy"/>
 				</Slots.Actions>
-				<Todo>Semestr by měla aplikace znát automaticky a měl by se k přihlášce automaticky přiřadit. Potřeba checkovat, jestli už se na buddyho daný semestr hlásil</Todo>
+				{/* <Todo>Semestr by měla aplikace znát automaticky a měl by se k přihlášce automaticky přiřadit. Potřeba checkovat, jestli už se na buddyho daný semestr hlásil - Done</Todo> */}
 				<SelectField
 					field="semester"
 					label="Semester *"

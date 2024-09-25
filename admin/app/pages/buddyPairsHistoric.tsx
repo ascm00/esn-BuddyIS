@@ -46,6 +46,9 @@ export default () => {
 											</Link>
 										</div>
 									</DataGridColumn>
+									<DataGridHasOneColumn field="semester" header="Semester">
+										<Field field="name" />
+									</DataGridHasOneColumn>
 									<DataGridHasOneColumn field="coordinator" header="Coordinator">
 										<Field field="firstName" /> {' '} <Field field="surname" /> {' ('} <Field field="xname" /> {') '}
 									</DataGridHasOneColumn>

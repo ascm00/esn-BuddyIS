@@ -28,7 +28,7 @@ export const ApplicationFrCreateForm = Component(
 		<Slots.Actions>
 			<PersistButton />
 		</Slots.Actions>
-		<Todo>Semestr by měla aplikace znát automaticky a měl by se k přihlášce automaticky přiřadit. Potřeba checkovat, jestli už se na buddyho daný semestr hlásil. Nejde removenout jazyk. Select fieldy musí být mandatory.</Todo>
+		<Todo>Semestr by měla aplikace znát automaticky a měl by se k přihlášce automaticky přiřadit. Potřeba checkovat, jestli už se na buddyho daný semestr hlásil. - done. Nejde removenout jazyk. Select fieldy musí být mandatory.</Todo>
 		{/* <SelectField
 			field="semester"
 			label="Semester"
