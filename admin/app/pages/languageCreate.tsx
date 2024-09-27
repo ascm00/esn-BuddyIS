@@ -16,7 +16,7 @@ export default () => {
 						<BackButton />
 					</Slots.Back>
 					<EntitySubTree entity="Language" isCreating>
-						<RedirectOnPersist to="languageDetail(id: $entity.id)" />
+						<RedirectOnPersist to="languages" />
 						<Slots.Actions>
 							<PersistButton />
 						</Slots.Actions>
