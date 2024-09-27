@@ -14,8 +14,6 @@ export default () => {
 
 		return (
 			<>
-				{/* Originally was for creating a user profile who logged to the system for the first time */}
-				{/* <InitialUserPage /> */} 
 				<EventFeed />
 			</>
 		)

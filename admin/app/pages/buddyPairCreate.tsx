@@ -18,7 +18,7 @@ export default () => {
 					<EntitySubTree entity="BuddyPair" isCreating>
 						<RedirectOnPersist to="buddyPairDetail(id: $entity.id)" />
 						<Slots.Actions>
-							<PersistButton />
+							<PersistButton label="Create buddy pair" />
 						</Slots.Actions>
 						<BuddyPairCreateForm />
 					</EntitySubTree>

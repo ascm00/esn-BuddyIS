@@ -1,3 +1,4 @@
+import { Navigation } from '@app/components/navigation'
 import { Binding } from '@app/lib/binding'
 import { BackButton } from '@app/lib/buttons'
 import { DataGrid, DataGridColumn, DataGridEnumColumn, DataGridHasManyColumn, DataGridHasOneColumn, DataGridLoader, DataGridNumberColumn, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
@@ -25,7 +26,7 @@ export default () => {
 							</Link>
 							<Link to="applicationCzCreate">
 								<Button>
-									Create application cz
+									Create application CZ
 								</Button>
 							</Link>
 						</Slots.Actions>

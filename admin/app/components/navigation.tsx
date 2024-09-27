@@ -1,9 +1,26 @@
+import { Binding } from '@app/lib/binding'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@app/lib/ui/collapsible'
 import { Menu, MenuButton, MenuDivider, MenuItem } from '@app/lib/ui/menu'
-import { Component, HasRole } from '@contember/interface'
-import { Activity, AlertCircle, Book, BookOpen, Building, Calendar, CalendarDays, CalendarPlus, CheckSquare, Clock, Dot, File, FileText, Globe, GraduationCap, Grid, Handshake, Heart, Home, LanguagesIcon, Layout, MapPin, MessageSquare, PartyPopper, Settings, User, UserCheck, UserPlus, Users, UtensilsCrossed } from 'lucide-react'
+import { Component, EntityListSubTree, Field, HasRole, useEntityListSubTree } from '@contember/interface'
+import { Activity, AlertCircle, Book, BookOpen, Building, Calendar, CalendarDays, CalendarPlus, CheckSquare, Clock, Cpu, Dot, File, FileText, GitBranch, Globe, GraduationCap, Grid, Handshake, Heart, Home, LanguagesIcon, Layout, Link2, MapPin, MessageSquare, PartyPopper, Settings, Shuffle, Smile, User, UserCheck, UserPlus, Users, Users2, UtensilsCrossed } from 'lucide-react'
 
-export const Navigation = Component(() => <Menu>
+export const Navigation = Component(
+	() => {
+
+	//check if applications are open for any semester. If not, user can't apply for buddy
+	// let closed = true
+	// const now = new Date().toISOString()
+	// const semestersList = useEntityListSubTree('allSemesters')
+	// for (const semester of semestersList) {
+	// 	let openForCzechBuddyRegistrationsDate = semester.getField('openForCzechBuddyRegistrationsDate').value
+	// 	let closeBuddyRegistrations = semester.getField('closeBuddyRegistrations').value
+	// 	if ((openForCzechBuddyRegistrationsDate && closeBuddyRegistrations) && (openForCzechBuddyRegistrationsDate <= now && closeBuddyRegistrations >= now)) {
+	// 		closed = false
+	// 		break
+	// 	}
+	// }
+
+	return (<Menu>
 	<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('czechBuddy')}>
 		<div className='-mt-4 pb-2'>
 			<MenuButton label="Apply for buddy" to="applicationCzCreate" />
@@ -42,15 +59,18 @@ export const Navigation = Component(() => <Menu>
 					<HasRole role={roles => roles.has('admin')}>
 						<MenuItem label="All buddy pairs" icon={<Users />} to="buddyPairs" />
 					</HasRole>
-					<MenuItem label="My buddy pairs" icon={<Users />} to="myBuddyPairs" />		
+					<MenuItem label="My buddy pairs" icon={<Users2 />} to="myBuddyPairs" />		
 				</CollapsibleContent>
 		</Collapsible>
-		<Collapsible>
+		<HasRole role={roles => roles.has('admin')}>
+			<Collapsible>
 				<CollapsibleTrigger>Coupling</CollapsibleTrigger>
 				<CollapsibleContent>
-					
+					<MenuItem label="Manual pairing" icon={<Shuffle />} to="buddyPairCreate" />
+					<MenuItem label="Automatic pairing" icon={<Cpu />} to="buddyPairCreate" />
 				</CollapsibleContent>
-		</Collapsible>
+			</Collapsible>
+		</HasRole>
 	</HasRole>
 	
 	<HasRole role={roles => roles.has('admin')}>
@@ -96,3 +116,21 @@ export const Navigation = Component(() => <Menu>
 		<MenuItem label="Tasks" icon={<CheckSquare />} to="buddyTasks" />
 	</MenuItem> */}
 </Menu>)
+}
+// }, () => (
+// 	<>
+// 	<Binding>
+// 		<>
+// 			<EntityListSubTree
+// 				entities={`Semester`}
+// 				alias={'allSemesters'}
+// 			>
+// 				<Field field="name" />
+// 				<Field field="openForCzechBuddyRegistrationsDate" />
+// 				<Field field="closeBuddyRegistrations" />
+// 			</EntityListSubTree>
+// 		</>
+// 	</Binding>
+// 	</>
+// )
+)
