@@ -67,7 +67,7 @@ export const Navigation = Component(
 				<CollapsibleTrigger>Coupling</CollapsibleTrigger>
 				<CollapsibleContent>
 					<MenuItem label="Manual pairing" icon={<Shuffle />} to="buddyPairCreate" />
-					<MenuItem label="Automatic pairing" icon={<Cpu />} to="buddyPairCreate" />
+					<MenuItem label="Automatic pairing" icon={<Cpu />} to="automaticPairing" />
 				</CollapsibleContent>
 			</Collapsible>
 		</HasRole>
