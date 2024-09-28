@@ -19,8 +19,8 @@ export const useRemoveProjectMemberPerson = (identityId: string | null) => {
 			memberships: [],
 		})
 
-		if (!result.ok) {
-			toast(`Unable to update member: ${result.error.developerMessage}`, {
+		if (result && !result.ok) {
+			toast(`Unable to update member: ${result?.error?.developerMessage}`, {
 				type: 'error',
 				dismiss: 5000,
 			})
