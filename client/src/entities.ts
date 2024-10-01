@@ -67,7 +67,7 @@ export type ApplicationFr <OverRelation extends string | never = never> = {
 	columns: {
 		id: string
 		createdAt: string
-		status: applicationFrStatus | null
+		status: applicationStatus | null
 		rating: rating | null
 		rBuddy: number | null
 		rParty: number | null

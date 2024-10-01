@@ -112,7 +112,7 @@ const preparePreferencesForCzech = (czechStudents: Array<EntityAccessor>, intern
     </>
   * @returns {pairs, unpairedCzechStudents} Object with buddy pairs and list of unpaired czech students
  */
-export const galeShapleyCzechFirst = (czechStudents: Array<EntityAccessor>,internationalStudents: Array<EntityAccessor>
+export const galeShapleyCzechFirst = async(czechStudents: Array<EntityAccessor>,internationalStudents: Array<EntityAccessor>
 ) => {
   const pairs = new Map<EntityAccessor, EntityAccessor>() // Maping czech and foreign students
   const czechStudentAssignments = new Map<EntityAccessor, number>() // Number of assignments for each czech student
@@ -128,7 +128,7 @@ export const galeShapleyCzechFirst = (czechStudents: Array<EntityAccessor>,inter
   }
 
   // Prepare preferences for Czech students
-  const czechPreferences = preparePreferencesForCzech(czechStudents, internationalStudents)
+  const czechPreferences = await preparePreferencesForCzech(czechStudents, internationalStudents)
 
   // List of free international students
   let freeInternationalStudents = [...internationalStudents]
@@ -178,3 +178,13 @@ export const galeShapleyCzechFirst = (czechStudents: Array<EntityAccessor>,inter
 
   return { pairs, unpairedCzechStudents }
 }
+
+export const buddyPairTasks = [
+  'Pick-up',
+  'Accomodation',
+  'First shopping',
+  'Foreign police',
+  'Registration in school',
+  'Tour de school',
+  'Public transport pass'
+  ] 

@@ -1,0 +1,36 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "updateColumnDefinition",
+			"entityName": "ApplicationCz",
+			"fieldName": "status",
+			"definition": {
+				"columnType": "applicationStatus",
+				"nullable": true,
+				"type": "Enum",
+				"default": "toBePaired"
+			}
+		},
+		{
+			"modification": "updateColumnDefinition",
+			"entityName": "ApplicationFr",
+			"fieldName": "status",
+			"definition": {
+				"columnType": "applicationStatus",
+				"nullable": true,
+				"type": "Enum",
+				"default": "toBePaired"
+			}
+		},
+		{
+			"modification": "updateEnum",
+			"enumName": "applicationStatus",
+			"values": [
+				"toBePaired",
+				"paired",
+				"notPaired"
+			]
+		}
+	]
+}

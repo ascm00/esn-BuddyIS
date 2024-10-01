@@ -25,7 +25,7 @@ export class ApplicationCz {
 	semester = c.manyHasOne(Semester, 'applications').setNullOnDelete()
 	motivation = c.stringColumn()
 	howManyBuddies = c.intColumn()
-	status = c.enumColumn(applicationStatus)
+	status = c.enumColumn(applicationStatus).default('toBePaired')
 	result = c.enumColumn(applicationCzResult)
 	preferredCountry = c.manyHasOne(Country, 'preferredApplicationsCz').setNullOnDelete()
 	preferredLanguages = c.manyHasMany(Language, 'applicationsCz')

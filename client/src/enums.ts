@@ -6,9 +6,9 @@ export type applicationFrStatus =
 	 | "disabled"
 	 | "cancelled"
 export type applicationStatus = 
-	 | "enabled"
-	 | "disabled"
-	 | "cancelled"
+	 | "toBePaired"
+	 | "paired"
+	 | "notPaired"
 export type contentReferenceTypeEnum = 
 	 | "example"
 export type eventStatus = 

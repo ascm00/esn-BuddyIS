@@ -1,6 +1,6 @@
 import { c } from '@contember/schema-definition'
 import { internationalStudentRole, esnMemberRole, coordinatorRole } from './acl'
-import { applicationFrStatus, rating, preferredSex } from './enum'
+import { applicationFrStatus, rating, preferredSex, applicationStatus } from './enum'
 import { Semester } from './Semester'
 import { Language } from './Language'
 import { Hobby } from './Hobby'
@@ -30,7 +30,7 @@ export class ApplicationFr {
 	createdAt = c.dateTimeColumn().notNull().default('now')
 	semester = c.manyHasOne(Semester, 'applicationsFr').setNullOnDelete()
 	person = c.oneHasOne(Person, 'applicationsFr')
-	status = c.enumColumn(applicationFrStatus)
+	status = c.enumColumn(applicationStatus).default('toBePaired')
 	hobbies = c.manyHasMany(Hobby, 'applicationsFr')
 	rating = c.enumColumn(rating)
 	rBuddy = c.intColumn()
