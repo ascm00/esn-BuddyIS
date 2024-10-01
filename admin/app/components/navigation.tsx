@@ -31,43 +31,43 @@ export const Navigation = Component(
 			<MenuButton label="Apply for buddy" to="applicationFrCreate" />
 		</div>
 	</HasRole>
-	<MenuItem label="Home" icon={<Home />} to="eventFeed" />
-	<MenuItem label="Events calendar" icon={<Calendar />} to="calendar" />
+	<MenuItem label="Home" icon={<Home className='text-blue-500' />} to="eventFeed" />
+	<MenuItem label="Events calendar" icon={<Calendar className='text-blue-500' />} to="calendar" />
 	<HasRole role={roles => roles.has('admin') || roles.has('esnMemberRole')}>
-		<MenuItem label="Events" icon={<Calendar />} to="events" />
+		<MenuItem label="Events" icon={<Calendar className='text-blue-500' />} to="events" />
 	</HasRole>
 	<HasRole role={roles => roles.has('admin') || roles.has('esnMemberRole') || roles.has('czechStudent') || roles.has('coordinator')}>
-		<MenuItem label="Buddy" icon={<CheckSquare />} to="myBuddyCz" />
+		<MenuItem label="Buddy" icon={<CheckSquare className='text-blue-500' />} to="myBuddyCz" />
 	</HasRole>
 	<HasRole role="internationalStudent">
-		<MenuItem label="Buddy" icon={<CheckSquare />} to="myBuddy" />
+		<MenuItem label="Buddy" icon={<CheckSquare className='text-blue-500' />} to="myBuddy" />
 	</HasRole>
-	<MenuItem label="N2N" icon={<PartyPopper />} to="n2nParties" />
-	<MenuItem label="Profile" icon={<User />} to="" />
+	<MenuItem label="N2N" icon={<PartyPopper className='text-blue-500' />} to="n2nParties" />
+	<MenuItem label="Profile" icon={<User className='text-blue-500' />} to="" />
 	<HasRole role={roles => roles.has('admin') || roles.has('esnMember')}>
-		<MenuItem label="Users" icon={<Users />} to="users" />
+		<MenuItem label="Users" icon={<Users className='text-blue-500' />} to="users" />
 	</HasRole>
 
 	<HasRole role={roles => roles.has('admin') || roles.has('coordinator')}>
 		<MenuDivider />
 		
-		<MenuItem label="CZ Applications" icon={<Handshake />} to="applicationCzs" />
-		<MenuItem label="FR Applications" icon={<Handshake />} to="applicationFrs" />
+		<MenuItem label="CZ Applications" icon={<Handshake className='text-blue-500' />} to="applicationCzs" />
+		<MenuItem label="FR Applications" icon={<Handshake className='text-blue-500' />} to="applicationFrs" />
 		<Collapsible>
 				<CollapsibleTrigger>Coordinating</CollapsibleTrigger>
 				<CollapsibleContent>
 					<HasRole role={roles => roles.has('admin')}>
-						<MenuItem label="All buddy pairs" icon={<Users />} to="buddyPairs" />
+						<MenuItem label="All buddy pairs" icon={<Users className='text-blue-500' />} to="buddyPairs" />
 					</HasRole>
-					<MenuItem label="My buddy pairs" icon={<Users2 />} to="myBuddyPairs" />		
+					<MenuItem label="My buddy pairs" icon={<Users2 className='text-blue-500' />} to="myBuddyPairs" />		
 				</CollapsibleContent>
 		</Collapsible>
 		<HasRole role={roles => roles.has('admin')}>
 			<Collapsible>
 				<CollapsibleTrigger>Coupling</CollapsibleTrigger>
 				<CollapsibleContent>
-					<MenuItem label="Manual pairing" icon={<Shuffle />} to="buddyPairCreate" />
-					<MenuItem label="Automatic pairing" icon={<Cpu />} to="automaticPairing" />
+					<MenuItem label="Manual pairing" icon={<Shuffle className='text-blue-500' />} to="buddyPairCreate" />
+					<MenuItem label="Automatic pairing" icon={<Cpu className='text-blue-500' />} to="automaticPairing" />
 				</CollapsibleContent>
 			</Collapsible>
 		</HasRole>
@@ -75,45 +75,45 @@ export const Navigation = Component(
 	
 	<HasRole role={roles => roles.has('admin')}>
 		<MenuDivider />
-		{/* <MenuItem label="Settings" icon={<Settings />}>
-			<MenuItem label="Semester" icon={<Clock />} to="semesters" />
-			<MenuItem label="Study Programs" icon={<GraduationCap />} to="studyPrograms" />
-			<MenuItem label="Partner universities" icon={<Building />} to="universities" />
-			<MenuItem label="Faculties at VSE" icon={<BookOpen />} to="faculties" />
-			<MenuItem label="Sections" icon={<Grid />} to="sections" />
-			<MenuItem label="Countries" icon={<MapPin />} to="countries" />
-			<MenuItem label="Dietary Restrictions" icon={<UtensilsCrossed />} to="" />
-			<MenuItem label="Allergies" icon={<AlertCircle />} to="" /> */}
-			{/* <MenuItem label="Languages" icon={<MessageSquare />} to="languages" />
-			<MenuItem label="Hobbies" icon={<Heart />} to="hobbies" />
+		{/* <MenuItem label="Settings" icon={<Settings className='text-blue-500' />}>
+			<MenuItem label="Semester" icon={<Clock className='text-blue-500' />} to="semesters" />
+			<MenuItem label="Study Programs" icon={<GraduationCap className='text-blue-500' />} to="studyPrograms" />
+			<MenuItem label="Partner universities" icon={<Building className='text-blue-500' />} to="universities" />
+			<MenuItem label="Faculties at VSE" icon={<BookOpen className='text-blue-500' />} to="faculties" />
+			<MenuItem label="Sections" icon={<Grid className='text-blue-500' />} to="sections" />
+			<MenuItem label="Countries" icon={<MapPin className='text-blue-500' />} to="countries" />
+			<MenuItem label="Dietary Restrictions" icon={<UtensilsCrossed className='text-blue-500' />} to="" />
+			<MenuItem label="Allergies" icon={<AlertCircle className='text-blue-500' />} to="" /> */}
+			{/* <MenuItem label="Languages" icon={<MessageSquare className='text-blue-500' />} to="languages" />
+			<MenuItem label="Hobbies" icon={<Heart className='text-blue-500' />} to="hobbies" />
 			<MenuItem label="N2N Clubs" to="clubs" /> 
 			<MenuItem label="Limitations" to="limitations" />
-			<MenuItem label="Sports" icon={<Activity />} to="sports" /> */}
+			<MenuItem label="Sports" icon={<Activity className='text-blue-500' />} to="sports" /> */}
 		{/* </MenuItem> */}
 		<Collapsible>
 				<CollapsibleTrigger>Settings</CollapsibleTrigger>
 				<CollapsibleContent>
-					<MenuItem label="Semester" icon={<Clock />} to="semesters" />
-					<MenuItem label="Study Programs" icon={<GraduationCap />} to="studyPrograms" />
-					<MenuItem label="Partner universities" icon={<Building />} to="universities" />
-					<MenuItem label="Faculties at VSE" icon={<BookOpen />} to="faculties" />
-					<MenuItem label="Sections" icon={<Grid />} to="sections" />
-					<MenuItem label="Countries" icon={<MapPin />} to="countries" />
-					<MenuItem label="Languages" icon={<LanguagesIcon />} to="languages" />
-					<MenuItem label="Dietary Restrictions" icon={<UtensilsCrossed />} to="" />
-					<MenuItem label="Allergies" icon={<AlertCircle />} to="" />
+					<MenuItem label="Semester" icon={<Clock className='text-blue-500' />} to="semesters" />
+					<MenuItem label="Study Programs" icon={<GraduationCap className='text-blue-500' />} to="studyPrograms" />
+					<MenuItem label="Partner universities" icon={<Building className='text-blue-500' />} to="universities" />
+					<MenuItem label="Faculties at VSE" icon={<BookOpen className='text-blue-500' />} to="faculties" />
+					<MenuItem label="Sections" icon={<Grid className='text-blue-500' />} to="sections" />
+					<MenuItem label="Countries" icon={<MapPin className='text-blue-500' />} to="countries" />
+					<MenuItem label="Languages" icon={<LanguagesIcon className='text-blue-500' />} to="languages" />
+					<MenuItem label="Dietary Restrictions" icon={<UtensilsCrossed className='text-blue-500' />} to="" />
+					<MenuItem label="Allergies" icon={<AlertCircle className='text-blue-500' />} to="" />
 				</CollapsibleContent>
 		</Collapsible>
 	</HasRole>
 
-	{/* <MenuItem label="Applications" icon={<FileText />}>
-		<MenuItem label="Czech applications" icon={<File />} to="applicationCzs" />
-		<MenuItem label="Foreign applications" icon={<File />} to="applicationFrs" />
+	{/* <MenuItem label="Applications" icon={<FileText className='text-blue-500' />}>
+		<MenuItem label="Czech applications" icon={<File className='text-blue-500' />} to="applicationCzs" />
+		<MenuItem label="Foreign applications" icon={<File className='text-blue-500' />} to="applicationFrs" />
 	</MenuItem>
-	<MenuItem label="Buddy program" icon={<Dot />}>
-		<MenuItem label="Buddy pairs" icon={<Users />} to="buddyPairs" />
-		<MenuItem label="Create pair" icon={<UserPlus />} to="buddyPairCreate" />
-		<MenuItem label="Tasks" icon={<CheckSquare />} to="buddyTasks" />
+	<MenuItem label="Buddy program" icon={<Dot className='text-blue-500' />}>
+		<MenuItem label="Buddy pairs" icon={<Users className='text-blue-500' />} to="buddyPairs" />
+		<MenuItem label="Create pair" icon={<UserPlus className='text-blue-500' />} to="buddyPairCreate" />
+		<MenuItem label="Tasks" icon={<CheckSquare className='text-blue-500' />} to="buddyTasks" />
 	</MenuItem> */}
 </Menu>)
 }

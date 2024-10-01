@@ -8,7 +8,7 @@ import { PaintbrushIcon } from 'lucide-react'
 import { string } from 'slate'
 import { galeShapleyCzechFirst } from '../../pairing/buddyPairing'
 import { buddyPairTasks } from '../../pairing/buddyPairing'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 export default () => {
     
@@ -33,7 +33,6 @@ export default () => {
 
 const AutomaticPairing = Component(
     () => {
-
         const currentSemesterCzApplications = Array.from(useEntityListSubTree('currentSemesterCzApplications'))
         const currentSemesterFrApplications = Array.from(useEntityListSubTree('currentSemesterFrApplications'))
         const persist = usePersist()
@@ -42,18 +41,15 @@ const AutomaticPairing = Component(
         const [pairingEnded, setPairingEnded] = useState(false)
         const [pairingStarted, setPairingStarted] = useState(false)
         const [message, setMessage] = useState('Pairing has started...')
+        const [displayedMessages, setDisplayedMessages] = useState<string[]>([]) 
         const buddyPairs = useEntityListSubTree('buddyPairs')
 
-        // assigns current semester to currentSemester variable. I need to get currentSemester from the static render
         const semesterList = useEntityListSubTree('currentSemester')
         let currentSemester : EntityAccessor
         for (const semester of semesterList) {
             currentSemester = semester
             break
         }
-
-
-        //const pairs = galeShapleyInternationalFirst(currentSemesterCzApplications, currentSemesterFrApplications)
 
         const pair = async () => {
             setIsPairing(true)
@@ -69,12 +65,10 @@ const AutomaticPairing = Component(
                         internationalStudentApplication.getField('status').updateValue('paired')
 
                         buddyPairs.createNewEntity(accessor => {
-                            // Connect the czech and international student to the buddy pair
                             accessor().connectEntityAtField('czechStudent', czechStudentApplication.getEntity('person'))
                             accessor().connectEntityAtField('internationalStudent', internationalStudentApplication.getEntity('person'))
                             accessor().connectEntityAtField('semester', currentSemester)
     
-                            // Create all tasks for the buddy pair
                             for (const task of buddyPairTasks) {
                                 accessor().getEntityList('tasks').createNewEntity(taskAccessor => {
                                     taskAccessor().getField('description').updateValue(task)
@@ -82,14 +76,15 @@ const AutomaticPairing = Component(
                             }
                         })
 
-                        setMessage(message => message + '\n' + czechStudentApplication.getField('person.firstName').value + ' ' + czechStudentApplication.getField('person.surname').value + ' - ' + internationalStudentApplication.getField('person.firstName').value + ' ' + internationalStudentApplication.getField('person.surname').value)
+                        const logMessage = `${czechStudentApplication.getField('person.firstName').value} ${czechStudentApplication.getField('person.surname').value} - ${internationalStudentApplication.getField('person.firstName').value} ${internationalStudentApplication.getField('person.surname').value}`
+                        setMessage(message => message + '\n' + logMessage)
 
                     } else {
                         console.log('Error in automatic pairing')
                     }
                 })
 
-                setMessage(message => message + '\n' + 'Pairing is finished. Thank you for your patience. Click "Save buddy pairs" to save the results.')
+                setMessage(message => message + '\n' + 'Pairing is finished. Click "Save buddy pairs" to save the results.')
     
             } catch (error) {
                 setMessage('Error occurred during pairing.')
@@ -99,46 +94,98 @@ const AutomaticPairing = Component(
                 setPairingEnded(true)
             }
         }
-        // pairs.forEach((czechStudent, internationalStudent) => {
-        //     if (czechStudent && internationalStudent) {
-        //         console.log(czechStudent.getField('person.firstName').value, czechStudent.getField('person.surname').value + ' - ' + internationalStudent.getField('person.firstName').value, internationalStudent.getField('person.surname').value)
-        //     } else {
-        //         console.log('Error in automatic pairing')
-        //     }
-        // })
-        
 
+        // Gradually display messages
+        useEffect(() => {
+            if (pairingStarted) {
+                const messageArray = message.split('\n')
+                let index = 0
+
+                const interval = setInterval(() => {
+                    if (index < messageArray.length) {
+                        setDisplayedMessages(prevMessages => [...prevMessages, messageArray[index]])
+                        index++
+                    } else {
+                        clearInterval(interval)
+                    }
+                }, 20)
+
+                return () => clearInterval(interval)
+            }
+        }, [message, pairingStarted])
+
+        const terminalStyles = {
+            backgroundColor: '#000000',
+            color: '#00FF00',
+            fontFamily: '"Courier New", Courier, monospace',
+            padding: '20px',
+            borderRadius: '8px',
+            boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.5)',
+            width: '100%'
+        }
+
+        const lineStyles: React.CSSProperties = {
+            fontFamily: '"Courier New", Courier, monospace',
+            whiteSpace: 'pre',
+            padding: '2px 0'
+        }
+
+        const cursorStyles: React.CSSProperties = {
+            display: 'inline-block',
+            width: '8px',
+            height: '20px',  // Přidaná výška kurzoru, aby byl viditelný
+            backgroundColor: '#00FF00',
+            marginLeft: '2px',
+            animation: 'blink 1s step-end infinite'
+        }
 
         return (
-            <HasRole role="admin">
-                {!pairingStarted &&
-                    <Slots.Actions>
-                        <Button onClick={pair} disabled={isPairing}>
-                            Start automatic pairing
-                        </Button>
-                    </Slots.Actions>
-                }
-                {pairingEnded &&
-                    <div>
-                        <Slots.Actions>
-                            <RedirectOnPersist to={'buddyPairs'} />
-                            <PersistButton label="Save buddy pairs" />
-                        </Slots.Actions>
-                    </div>
-                }
-                {(message && message !== 'Pairing has started...') && 
-                    <div className="bg-black p-6 rounded-lg shadow-lg w-full">
-                    <h2 className="text-xl font-semibold mb-4 text-green-500 font-mono">Terminal Log</h2>
-                    <div className="space-y-2">
-                      {message.split('\n').map((line, index) => (
-                        <div key={index} className="p-2 text-green-500 font-mono">
-                          <span>&gt; {line}</span>
+            <>
+                <style>
+                    {`
+                        @keyframes blink {
+                            0%, 100% { opacity: 1; }
+                            50% { opacity: 0; }
+                        }
+                    `}
+                </style>
+
+                <HasRole role="admin">
+                    <div style={terminalStyles}>
+                        <h2 style={{ color: '#00FF00', fontFamily: '"Courier New", Courier, monospace' }}>Buddy pairing logs</h2>
+                        <div className="space-y-2">
+                            {displayedMessages.length > 0 ? (
+                                displayedMessages.map((line, index) => (
+                                    <div key={index} style={lineStyles}>
+                                        <span>&gt; {line}</span>
+                                    </div>
+                                ))
+                            ) : (
+                                <div style={lineStyles}>
+                                    <span>&gt; Waiting for pairing to start...</span>
+                                </div>
+                            )}
                         </div>
-                      ))}
+                        <div style={cursorStyles}></div>
                     </div>
-                  </div>           
-                }
-            </HasRole>
+                    
+                    {!pairingStarted &&
+                        <Slots.Actions>
+                            <Button onClick={pair} disabled={isPairing}>
+                                Start automatic pairing
+                            </Button>
+                        </Slots.Actions>
+                    }
+                    {pairingEnded &&
+                        <div>
+                            <Slots.Actions>
+                                <RedirectOnPersist to={'buddyPairs'} />
+                                <PersistButton label="Save buddy pairs" />
+                            </Slots.Actions>
+                        </div>
+                    }
+                </HasRole>
+            </>
         )
     }, () => (
         <>
@@ -191,8 +238,3 @@ const AutomaticPairing = Component(
         </>
     )
 )
-  
-  
-
-
-
