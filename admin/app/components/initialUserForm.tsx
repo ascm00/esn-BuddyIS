@@ -42,7 +42,7 @@ export const InitialUserForm = Component(
 		const firstName = currentUser.getField<string>('firstName').value;
 		const universityName = currentUser.getField<string>('university.name').value;
 		const facultyName = currentUser.getField<string>('faculty.name').value;
-		const countryName = currentUser.getField<string>('country.name').value;
+		const countryName = currentUser.getField<string>('countryOfUniversity.name').value;
 
 		if(!currentUser){
 			return (
@@ -78,7 +78,7 @@ export const InitialUserForm = Component(
 					<HasOne field={'faculty'}>
 						<Field field={'name'}/>
 					</HasOne>
-					<HasOne field={'country'}>
+					<HasOne field={'countryOfUniversity'}>
 						<Field field={'name'}/>
 					</HasOne>
 				</EntitySubTree>

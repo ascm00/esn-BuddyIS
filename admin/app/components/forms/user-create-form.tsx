@@ -19,8 +19,8 @@ export const UserCreateForm = Component(() => <FormLayout>
 		<Field field="name" />
 	</SelectField>
 	<SelectField
-		field="country"
-		label="Country"
+		field="countryOfUniversity"
+		label="Home University Country"
 		createNewForm={<>
 			<InputField field="name" label="Name" required />
 		</>}

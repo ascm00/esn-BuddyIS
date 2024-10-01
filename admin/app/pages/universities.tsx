@@ -45,7 +45,7 @@ export default () => {
 										</div>
 									</DataGridColumn>
 									<DataGridTextColumn field="name" header="Name" />
-									<DataGridHasOneColumn field="country" header="Country">
+									<DataGridHasOneColumn field="countryOfUniversity" header="Home university country">
 										<Field field="name" />
 									</DataGridHasOneColumn>
 								</DataGridTable>

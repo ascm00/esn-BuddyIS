@@ -50,6 +50,13 @@ export const ApplicationCzEditForm = Component(
 	<div className='flex flex-col space-y-4'>
 		{/* <TextareaField field="motivation" label="Motivation" /> */}
 		<InputField field="howManyBuddies" label="Number of buddies *" description="How many buddies could you take care of at most?" required />
+		<SelectField
+			field="preferredCountry"
+			label="Preferred country of your buddy *"
+			options="Country"
+		>
+			<Field field="name" />
+		</SelectField>
 		<MultiSelectField field="preferredLanguages" label="Preferred languages of your buddy *">
 			<Field field="name" />
 		</MultiSelectField>

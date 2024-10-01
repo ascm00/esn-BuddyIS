@@ -859,7 +859,7 @@ export const ContemberClientNames: SchemaNames = {
           "type": "one",
           "entity": "StudyProgram"
         },
-        "country": {
+        "countryOfUniversity": {
           "type": "one",
           "entity": "Country"
         },

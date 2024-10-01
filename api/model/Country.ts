@@ -20,7 +20,7 @@ import { Person } from './Person'
 })
 export class Country {
 	createdAt = c.dateTimeColumn().notNull().default('now')
-	users = c.oneHasMany(Person, 'country')
+	users = c.oneHasMany(Person, 'countryOfUniversity')
 	universities = c.oneHasMany(University, 'country')
 	name = c.stringColumn().notNull()
 	preferredApplicationsCz = c.oneHasMany(ApplicationCz, 'preferredCountry')

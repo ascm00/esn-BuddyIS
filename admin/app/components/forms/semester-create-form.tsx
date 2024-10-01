@@ -6,6 +6,6 @@ export const SemesterForm = Component(() => <FormLayout>
 	<InputField field="name" label="Name" required />
 	<InputField field="startDate" label="Start date" required />
 	<InputField field="endDate" label="End date" required />
-	<InputField field="openForCzechBuddyRegistrationsDate" label="Open Czech Buddies Registration" required />
-	<InputField field="closeBuddyRegistrations" label="Close Czech Buddies Registration" required />
+	<InputField field="openForCzechBuddyRegistrationsDate" label="Open Buddies Registration" required />
+	<InputField field="closeBuddyRegistrations" label="Close Buddies Registration" required />
 </FormLayout>)

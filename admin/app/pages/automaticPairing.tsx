@@ -70,11 +70,13 @@ const AutomaticPairing = Component(
                     <Field field={'name'} />
                 </HasMany>
                 <Field field={'preferredSex'} />
+                <Field field={'preferredCountry.name'} />
                 <Field field={'howManyBuddies'} />
             </EntityListSubTree>
             <EntityListSubTree entities={'ApplicationFr[semester.isCurrent=true]'} alias={'currentSemesterFrApplications'}>
                 <HasOne field={'person'}>
                     <Field field={'gender'} />
+                    <Field field={'countryOfUniversity.name'} />
                     <Field field={'firstName'} />
                     <Field field={'surname'} />
                     <HasOne field={'studyProgram'}>

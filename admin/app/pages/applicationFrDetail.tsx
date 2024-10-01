@@ -53,10 +53,10 @@ export default () => {
 									</TableRow>
 									<TableRow>
 										<TableCell>
-											Home Country
+											Home University Country
 										</TableCell>
 										<TableCell className="font-semibold">
-											<Field field="person.country.name" />
+											<Field field="person.countryOfUniversity.name" />
 										</TableCell>
 									</TableRow>
 									<TableRow>

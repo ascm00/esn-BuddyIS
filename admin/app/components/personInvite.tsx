@@ -125,8 +125,8 @@ export const PersonInvite = Component(
 				</div>
 				<div className='pb-2'>
 					<SelectField
-						field="country"
-						label="Home Country *"
+						field="countryOfUniversity"
+						label="Home university country *"
 						createNewForm={<>
 							<InputField field="name" label="Name" required />
 						</>}
@@ -180,7 +180,7 @@ export const PersonInvite = Component(
 			<Field field="xname" />
 			<Field field="esnCardId" />
 			<Field field="phoneNumber" />
-			<Field field="country.name" />
+			<Field field="countryOfUniversity.name" />
 			<Field field="university.name" />
 			<Field field="faculty.name" />
 		</>

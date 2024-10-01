@@ -27,7 +27,7 @@ export default () => {
 						<DataGrid entities="Person">
 							<DataGridToolbar>
 								<DataGridQueryFilter />
-								<DataGridHasOneFilter field="country" label="Country">
+								<DataGridHasOneFilter field="countryOfUniversity" label="Home university country">
 									<Field field="name" />
 								</DataGridHasOneFilter>
 								<DataGridHasOneFilter field="university" label="University">
@@ -63,7 +63,7 @@ export default () => {
 									</DataGridHasOneColumn>
 									<DataGridTextColumn field="esnCardId" header="Esn card id" />
 									<DataGridTextColumn field="xname" header="Xname" />
-									<DataGridHasOneColumn field="country" header="Home country">
+									<DataGridHasOneColumn field="countryOfUniversity" header="Country of home university">
 										<Field field="name" />
 									</DataGridHasOneColumn>
 									<DataGridHasOneColumn field="tenantPerson" header="Role">

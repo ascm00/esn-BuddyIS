@@ -28,6 +28,24 @@ const preparePreferencesForCzech = (czechStudents: Array<EntityAccessor>, intern
                 // if (aLanguagesShared > bLanguagesShared) return -1
                 // if (aLanguagesShared < bLanguagesShared) return 1
 
+                // Second criteria: international student gender preference
+                if (!(a.getField('preferredBuddySex').value === 'dontCare' || b.getField('preferredBuddySex').value === 'dontCare')) {
+                  if (a.getField('preferredBuddySex').value === student.getField('person.gender').value && b.getField('preferredBuddySex').value !== student.getField('person.gender').value) return -1
+                  if (a.getField('preferredBuddySex').value !== student.getField('person.gender').value && b.getField('preferredBuddySex').value === student.getField('person.gender').value) return 1
+                }
+
+                // Third criteria: czech student gender preference
+                if (student.getField('preferredSex').value !== 'dontCare') {
+                  if (a.getField('person.gender').value === student.getField('preferredSex').value && b.getField('person.gender').value !== student.getField('preferredSex').value) return -1
+                  if (a.getField('person.gender').value !== student.getField('preferredSex').value && b.getField('person.gender').value === student.getField('preferredSex').value) return 1
+                }
+
+                // Fourth criteria: common country of university
+                if (a.getField('person.countryOfUniversity.name').value === student.getField('preferredCountry.name').value && b.getField('person.countryOfUniversity.name').value !== student.getField('preferredCountry.name').value) return -1
+                if (a.getField('person.countryOfUniversity.name').value !== student.getField('preferredCountry.name').value && b.getField('person.countryOfUniversity.name').value === student.getField('preferredCountry.name').value) return 1
+              
+
+                // Fifth criteria: common languages
                 const countSharedLanguages = (internationalStudent: EntityAccessor) => {
                     const intStudentLanguages = Array.from(internationalStudent.getEntityList('person.languages')).map(lang => lang.getField('name').value)
                     
@@ -45,14 +63,6 @@ const preparePreferencesForCzech = (czechStudents: Array<EntityAccessor>, intern
                 
                 if (aShared > bShared) return -1
                 if (aShared < bShared) return 1
-
-                // Third criteria: czech student gender preference
-                if (a.getField('person.gender').value === student.getField('preferredSex').value && b.getField('person.gender').value !== student.getField('preferredSex').value) return -1
-                if (a.getField('person.gender').value !== student.getField('preferredSex').value && b.getField('person.gender').value === student.getField('preferredSex').value) return 1
-
-                // Fourth criteria: international student gender preference
-                if (a.getField('preferredBuddySex').value === student.getField('person.gender').value && b.getField('preferredBuddySex').value !== student.getField('person.gender').value) return -1
-                if (a.getField('preferredBuddySex').value !== student.getField('person.gender').value && b.getField('preferredBuddySex').value === student.getField('person.gender').value) return 1
 
                 return 0
             })
@@ -100,7 +110,7 @@ const preparePreferencesForCzech = (czechStudents: Array<EntityAccessor>, intern
               <Field field={'preferredBuddySex'} />     
           </EntityListSubTree>
     </>
-  * @returns Object with buddy pairs and list of unpaired czech students
+  * @returns {pairs, unpairedCzechStudents} Object with buddy pairs and list of unpaired czech students
  */
 export const galeShapleyCzechFirst = (czechStudents: Array<EntityAccessor>,internationalStudents: Array<EntityAccessor>
 ) => {

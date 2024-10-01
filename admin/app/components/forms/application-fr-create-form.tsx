@@ -6,6 +6,7 @@ import { ConnectUser } from '../ConnectUser'
 import { ConnectEntity } from '../ConnectEntity'
 import { Slots } from '@app/lib/layout'
 import { PersistButton } from '@app/lib/binding'
+import { formatDate } from '@app/lib/formatting'
 
 
 export const ApplicationFrCreateForm = Component(
@@ -40,18 +41,17 @@ export const ApplicationFrCreateForm = Component(
 				<PersistButton />
 			</Slots.Actions>
 			<Todo>Semestr by měla aplikace znát automaticky a měl by se k přihlášce automaticky přiřadit. Potřeba checkovat, jestli už se na buddyho daný semestr hlásil. - done. Nejde removenout jazyk. Select fieldy musí být mandatory.</Todo>
-			{/* <SelectField
-				field="semester"
-				label="Semester"
-				createNewForm={<>
-					<InputField field="name" label="Name" required />
-					<InputField field="startDate" label="Start date" required />
-					<InputField field="endDate" label="End date" required />
-				</>}
-				options="Semester"
+			<SelectField
+					field="semester"
+					label="Semester *"
+					options={`Semester[openForCzechBuddyRegistrationsDate <= "${now}" && closeBuddyRegistrations >= "${now}"]`}
 			>
 				<Field field="name" />
-			</SelectField> */}
+				<div className='invisible'>
+					<Field field={'openForCzechBuddyRegistrationsDate'} format={formatDate}/>
+					<Field field={'closeBuddyRegistrations'} format={formatDate} />
+				</div>
+			</SelectField>
 			<div>
 				<h2 className="text-xl font-semibold">Information about you</h2>
 				<hr className="my-2 border-gray-200" />
@@ -71,7 +71,7 @@ export const ApplicationFrCreateForm = Component(
 						<SelectField field={'university'} label="Home university" options={'University'} description="If you are coming to VŠE as an exchange student. Please choose the university you're coming from. Otherwise leave it blank.">
 							<Field field={'name'} />
 						</SelectField>
-						<SelectField field={'country'} label="Home country" options={'Country'}>
+						<SelectField field={'countryOfUniversity'} label="Home university country" options={'Country'} description="Country where you attend university">
 							<Field field={'name'} />
 						</SelectField>
 						<SelectField field={'faculty'} label="Faculty at VSE" options={'Faculty'}>
@@ -128,7 +128,7 @@ export const ApplicationFrCreateForm = Component(
 				<HasOne field="faculty">
 					<Field field="name" />
 				</HasOne>
-				<HasOne field="country">
+				<HasOne field="countryOfUniversity">
 					<Field field="name" />
 				</HasOne>
 				<HasMany field="languages">
@@ -146,7 +146,7 @@ export const ApplicationFrCreateForm = Component(
 				<HasOne field="faculty">
 					<Field field="name" />
 				</HasOne>
-				<HasOne field="country">
+				<HasOne field="countryOfUniversity">
 					<Field field="name" />
 				</HasOne>
 				<HasMany field="languages">

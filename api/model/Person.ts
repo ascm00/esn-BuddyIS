@@ -31,7 +31,7 @@ export class Person {
 	active = c.boolColumn()
 	faculty = c.manyHasOne(Faculty, 'users').setNullOnDelete()
 	studyProgram = c.manyHasOne(StudyProgram, 'users').setNullOnDelete()
-	country = c.manyHasOne(Country, 'users').setNullOnDelete()
+	countryOfUniversity = c.manyHasOne(Country, 'users').setNullOnDelete()
 	firstName = c.stringColumn()
 	organizedEvents = c.oneHasOneInverse(Event, 'contactPerson')
 	czechBuddyPair = c.oneHasMany(BuddyPair, 'czechStudent')

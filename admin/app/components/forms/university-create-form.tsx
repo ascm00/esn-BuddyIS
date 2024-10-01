@@ -4,8 +4,8 @@ import { Component, Field } from '@contember/interface'
 export const UniversityCreateForm = Component(() => <FormLayout>
 	<InputField field="name" label="Name" required />
 	<SelectField
-		field="country"
-		label="Country"
+		field="countryOfUniversity"
+		label="Country of university"
 		createNewForm={<>
 			<InputField field="name" label="Name" required />
 		</>}

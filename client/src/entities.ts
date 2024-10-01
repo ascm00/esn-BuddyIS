@@ -206,7 +206,7 @@ export type Country <OverRelation extends string | never = never> = {
 	hasOne: {
 	}
 	hasMany: {
-		users: Person<'country'>
+		users: Person<'countryOfUniversity'>
 		universities: University<'country'>
 		preferredApplicationsCz: ApplicationCz<'preferredCountry'>
 	}
@@ -537,7 +537,7 @@ export type Person <OverRelation extends string | never = never> = {
 		university: University
 		faculty: Faculty
 		studyProgram: StudyProgram
-		country: Country
+		countryOfUniversity: Country
 		organizedEvents: Event
 		internationalBuddyPair: BuddyPair
 		applicationsFr: ApplicationFr

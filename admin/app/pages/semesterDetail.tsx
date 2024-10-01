@@ -61,7 +61,7 @@ export default () => {
 									</TableRow>
 									<TableRow>
 										<TableCell>
-											Open Czech Buddies Registration
+											Open Buddies Registration
 										</TableCell>
 										<TableCell className="font-semibold">
 											<Field field="openForCzechBuddyRegistrationsDate" format={formatDateTime} />
@@ -69,7 +69,7 @@ export default () => {
 									</TableRow>
 									<TableRow>
 										<TableCell>
-											Close Czech Buddies Registration
+											Close Buddies Registration
 										</TableCell>
 										<TableCell className="font-semibold">
 											<Field field="closeBuddyRegistrations" format={formatDateTime} />

@@ -107,10 +107,10 @@ export default () => {
 													</TableRow>
 													<TableRow>
 														<TableCell>
-															Nationality
+															Home university country
 														</TableCell>
 														<TableCell className="font-semibold">
-															<Field field="internationalStudent.country.name" />
+															<Field field="internationalStudent.countryOfUniversity.name" />
 														</TableCell>
 													</TableRow>
 												</TableBody>

@@ -130,8 +130,8 @@ export const UserEditForm = Component(
 		</div>
 		<div className='pb-2'>
 			<SelectField
-				field="country"
-				label="Home Country *"
+				field="countryOfUniversity"
+				label="Home university Country *"
 				createNewForm={<>
 					<InputField field="name" label="Name" required />
 				</>}

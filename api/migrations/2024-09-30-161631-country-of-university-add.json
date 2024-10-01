@@ -1,0 +1,66 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "removeField",
+			"entityName": "Person",
+			"fieldName": "country"
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "Person",
+			"owningSide": {
+				"type": "ManyHasOne",
+				"name": "countryOfUniversity",
+				"target": "Country",
+				"joiningColumn": {
+					"columnName": "country_of_university_id",
+					"onDelete": "set null"
+				},
+				"nullable": true,
+				"inversedBy": "users"
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "users",
+				"target": "Person",
+				"ownedBy": "countryOfUniversity"
+			}
+		},
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/Country/operations/create/users",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/Country/operations/read/users",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Country/operations/create/users",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Country/operations/update/users",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Country/operations/read/users",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/public/entities/Country/operations/read/users",
+					"value": true
+				}
+			]
+		}
+	]
+}

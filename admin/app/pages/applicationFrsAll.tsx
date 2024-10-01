@@ -54,7 +54,7 @@ export default () => {
 										<Field field="firstName" /> {' '} <Field field="surname" />
 									</DataGridHasOneColumn>
 									<DataGridTextColumn field="person.studyProgram.name" header="Study program" />
-									<DataGridTextColumn field="person.country.name" header="Home country" />
+									<DataGridTextColumn field="person.countryOfUniversity.name" header="Home university country" />
 									<DataGridHasManyColumn field="person.languages" header="Languages spoken">
 										<Field field="name" />
 									</DataGridHasManyColumn>
