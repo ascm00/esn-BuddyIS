@@ -1,10 +1,10 @@
 import { Binding } from '@app/lib/binding'
 import { BackButton } from '@app/lib/buttons'
-import { DataGrid, DataGridBooleanColumn, DataGridColumn, DataGridDateColumn, DataGridLoader, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
+import { DataGrid, DataGridBooleanColumn, DataGridColumn, DataGridDateColumn, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
 import { Table, TableBody, TableCell, TableRow, TableWrapper } from '@app/lib/ui/table'
-import { EntitySubTree, Field, Link } from '@contember/interface'
+import { EntitySubTree, Field, HasRole, Link } from '@contember/interface'
 
 export default () => {
 	return (
@@ -42,34 +42,53 @@ export default () => {
 					</EntitySubTree>
 					<div className="flex flex-col gap-4">
 						<div className="text-lg font-bold">
-							User
+							Users
 						</div>
 						<DataGrid entities="Person[faculty.id = $id]">
-							<DataGridToolbar>
+						<DataGridToolbar>
 								<DataGridQueryFilter />
+								<DataGridHasOneFilter field="countryOfUniversity" label="Home university country">
+									<Field field="name" />
+								</DataGridHasOneFilter>
+								<DataGridHasOneFilter field="university" label="University">
+									<Field field="name" />
+								</DataGridHasOneFilter>
 							</DataGridToolbar>
 							<DataGridLoader>
 								<DataGridTable>
 									<DataGridColumn>
 										<div className="flex gap-4">
 											<Link to="userDetail(id: $entity.id)">
-												<a>
+												<Button>
 													Detail
-												</a>
+												</Button>
 											</Link>
-											<Link to="userEdit(id: $entity.id)">
-												<a>
-													Edit
-												</a>
-											</Link>
+											<HasRole role={roles => roles.has('admin') || roles.has('esnMemberRole')}>
+												<Link to="userEdit(id: $entity.id)">
+													<Button>
+														Edit
+													</Button>
+												</Link>
+											</HasRole>
 										</div>
 									</DataGridColumn>
-									<DataGridDateColumn field="lastLoginDate" header="Last login date" />
-									<DataGridTextColumn field="phoneNumber" header="Phone number" />
-									<DataGridTextColumn field="surname" header="Surname" />
-									<DataGridTextColumn field="xname" header="Xname" />
-									<DataGridBooleanColumn field="active" header="Active" />
 									<DataGridTextColumn field="firstName" header="First name" />
+									<DataGridTextColumn field="surname" header="Surname" />
+									<DataGridTextColumn field="phoneNumber" header="Phone number" />
+									<DataGridHasOneColumn field="tenantPerson" header="Email">
+										<Field field="email" />
+									</DataGridHasOneColumn>
+									<DataGridHasOneColumn field="university" header="Home university">
+										<Field field="name" />
+									</DataGridHasOneColumn>
+									<DataGridTextColumn field="esnCardId" header="Esn card id" />
+									<DataGridTextColumn field="xname" header="Xname" />
+									<DataGridHasOneColumn field="countryOfUniversity" header="Country of home university">
+										<Field field="name" />
+									</DataGridHasOneColumn>
+									<DataGridHasOneColumn field="tenantPerson" header="Role">
+										<Field field="roles" />
+									</DataGridHasOneColumn>
 								</DataGridTable>
 							</DataGridLoader>
 							<DataGridPagination />

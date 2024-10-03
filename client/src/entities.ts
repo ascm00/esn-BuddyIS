@@ -159,14 +159,12 @@ export type Content <OverRelation extends string | never = never> = {
 	unique:
 		| Omit<{ id: string}, OverRelation>
 		| Omit<{ references: ContentReference['unique']}, OverRelation>
-		| Omit<{ eventDescription: Event['unique']}, OverRelation>
 	columns: {
 		id: string
 		createdAt: string
 		data: JSONValue | null
 	}
 	hasOne: {
-		eventDescription: Event
 	}
 	hasMany: {
 		references: ContentReference<'content'>
@@ -244,13 +242,13 @@ export type Event <OverRelation extends string | never = never> = {
 	name: 'Event'
 	unique:
 		| Omit<{ id: string}, OverRelation>
-		| Omit<{ description: Content['unique']}, OverRelation>
 		| Omit<{ registrations: EventRegistration['unique']}, OverRelation>
 		| Omit<{ contactPerson: Person['unique']}, OverRelation>
 	columns: {
 		id: string
 		createdAt: string
 		name: string
+		description: string | null
 		startDate: string
 		endDate: string
 		refundPolicy: string | null
@@ -272,7 +270,6 @@ export type Event <OverRelation extends string | never = never> = {
 		allowRegistrationWithoutPayment: boolean | null
 	}
 	hasOne: {
-		description: Content
 		section: Section
 		contactPerson: Person
 		semester: Semester
@@ -384,7 +381,6 @@ export type Image <OverRelation extends string | never = never> = {
 		userProfilePictureByCoordinatingBuddyPairs: { entity: Person; by: {coordinatingBuddyPairs: BuddyPair['unique']}  }
 		userProfilePictureByRegistrations: { entity: Person; by: {registrations: EventRegistration['unique']}  }
 		userProfilePictureByNotes: { entity: Person; by: {notes: Note['unique']}  }
-		eventPictureByDescription: { entity: Event; by: {description: Content['unique']}  }
 		eventPictureByRegistrations: { entity: Event; by: {registrations: EventRegistration['unique']}  }
 		eventPictureByContactPerson: { entity: Event; by: {contactPerson: Person['unique']}  }
 	}
@@ -580,7 +576,6 @@ export type Section <OverRelation extends string | never = never> = {
 		events: Event<'section'>
 	}
 	hasManyBy: {
-		eventsByDescription: { entity: Event; by: {description: Content['unique']}  }
 		eventsByRegistrations: { entity: Event; by: {registrations: EventRegistration['unique']}  }
 		eventsByContactPerson: { entity: Event; by: {contactPerson: Person['unique']}  }
 	}
@@ -614,7 +609,6 @@ export type Semester <OverRelation extends string | never = never> = {
 		parties: N2nParty<'semester'>
 	}
 	hasManyBy: {
-		eventsByDescription: { entity: Event; by: {description: Content['unique']}  }
 		eventsByRegistrations: { entity: Event; by: {registrations: EventRegistration['unique']}  }
 		eventsByContactPerson: { entity: Event; by: {contactPerson: Person['unique']}  }
 		applicationsFrByPerson: { entity: ApplicationFr; by: {person: Person['unique']}  }

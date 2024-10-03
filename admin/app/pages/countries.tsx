@@ -32,25 +32,14 @@ export default () => {
 								<DataGridTable>
 									<DataGridColumn>
 										<div className="flex gap-4">
-											<Link to="countryDetail(id: $entity.id)">
-												<a>
-													Detail
-												</a>
-											</Link>
 											<Link to="countryEdit(id: $entity.id)">
-												<a>
+												<Button>
 													Edit
-												</a>
+												</Button>
 											</Link>
 										</div>
 									</DataGridColumn>
-									<DataGridHasManyColumn field="universities" header="Universities">
-										<Field field="name" />
-									</DataGridHasManyColumn>
 									<DataGridTextColumn field="name" header="Name" />
-									<DataGridHasManyColumn field="preferredApplicationsCz" header="Preferred applications czs">
-										<Field field="id" />
-									</DataGridHasManyColumn>
 								</DataGridTable>
 							</DataGridLoader>
 							<DataGridPagination />

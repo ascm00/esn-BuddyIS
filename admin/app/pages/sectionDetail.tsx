@@ -48,56 +48,6 @@ export default () => {
 							</Table>
 						</TableWrapper>
 					</EntitySubTree>
-					<div className="flex flex-col gap-4">
-						<div className="text-lg font-bold">
-							Event
-						</div>
-						<Slots.Actions>
-							<Link to="eventCreate">
-								<Button>
-									Create event
-								</Button>
-							</Link>
-						</Slots.Actions>
-						<DataGrid entities="Event[section.id = $id]">
-							<DataGridToolbar>
-								<DataGridQueryFilter />
-							</DataGridToolbar>
-							<DataGridLoader>
-								<DataGridTable>
-									<DataGridColumn>
-										<div className="flex gap-4">
-											<Link to="eventDetail(id: $entity.id)">
-												<a>
-													Detail
-												</a>
-											</Link>
-											<Link to="eventEdit(id: $entity.id)">
-												<a>
-													Edit
-												</a>
-											</Link>
-										</div>
-									</DataGridColumn>
-									<DataGridTextColumn field="name" header="Name" />
-									<DataGridDateColumn field="startDate" header="Start date" />
-									<DataGridDateColumn field="endDate" header="End date" />
-									<DataGridNumberColumn field="capacity" header="Capacity" />
-									<DataGridNumberColumn field="fee" header="Fee" />
-									<DataGridTextColumn field="place" header="Place" />
-									<DataGridTextColumn field="whatsappLink" header="Whatsapp link" />
-									<DataGridDateColumn field="registrationStartDate" header="Registration start date" />
-									<DataGridDateColumn field="registrationEndDate" header="Registration end date" />
-									<DataGridEnumColumn
-										field="status"
-										header="Status"
-										options={{ open: 'open', cancelled: 'cancelled', hidden: 'hidden' }}
-									/>
-								</DataGridTable>
-							</DataGridLoader>
-							<DataGridPagination />
-						</DataGrid>
-					</div>
 				</div>
 			</Binding>
 		</>

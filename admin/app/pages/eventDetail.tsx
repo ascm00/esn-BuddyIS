@@ -381,7 +381,7 @@ export default () => {
 												{/* <HasOne field="description">
 													<Field field="data" />
 												</HasOne> */}
-												<RichTextRendererField sourceField={'description.data'} renderElement={renderElement} renderLeaf={renderLeaf} />
+												<Field field="description" />
 											</TableCell>
 										</TableRow>
 									</Table>

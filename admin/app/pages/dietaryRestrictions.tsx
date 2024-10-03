@@ -11,34 +11,35 @@ export default () => {
 			<Binding>
 				<div className="flex flex-col gap-12">
 					<Slots.Title>
-						Sections
+						Dietary restrictions
 					</Slots.Title>
 					<Slots.Back>
 						<BackButton />
 					</Slots.Back>
 					<>
 						<Slots.Actions>
-							<Link to="sectionCreate">
+							<Link to="dietaryRestrictionCreate">
 								<Button>
-									Create section
+									Create dietary restrictions
 								</Button>
 							</Link>
 						</Slots.Actions>
-						<DataGrid entities="Section">
+						<DataGrid entities="DietaryRestrictions">
 							<DataGridToolbar>
 								<DataGridQueryFilter />
 							</DataGridToolbar>
 							<DataGridLoader>
 								<DataGridTable>
 									<DataGridColumn>
-											<Link to="sectionEdit(id: $entity.id)">
+										<div className="flex gap-4">
+											<Link to="dietaryRestrictionEdit(id: $entity.id)">
 												<Button>
 													Edit
 												</Button>
 											</Link>
+										</div>
 									</DataGridColumn>
 									<DataGridTextColumn field="name" header="Name" />
-									<DataGridTextColumn field="description" header="Description" />
 								</DataGridTable>
 							</DataGridLoader>
 							<DataGridPagination />

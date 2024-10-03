@@ -15,6 +15,7 @@ import { ImageField } from '@app/lib/form'
 import { ImageFieldView } from '@app/components/fieldViews/ImageFieldView'
 
 export default () => {
+
 	return (
 		<>
             <Binding>
@@ -27,7 +28,7 @@ export default () => {
 								</DataGridFeed>
 							</DataGridLoader>
 
-							<DataGridPagination />
+							{/* <DataGridPagination /> */}
 						</DataGrid>
 					</>
 				</div>
@@ -37,49 +38,60 @@ export default () => {
 }
 
 const EventCard = Component(() => (
-	<Card>
-		<CardHeader>
-			<div className={'flex flex-col justify-between items-center'}>
-                <div className="text-2xl font-semibold">
-                    <Field field="name" />
-                </div>
-				<div>
-					<div className={'text-xs'}>
-						<Field<string> field={'startDate'} format={formatDateTime} />
-                        {' - '}<Field<string> field={'endDate'} format={formatDateTime} />
-					</div>
-				</div>
-				<div className={'flex gap-1 items-center'}>
-					<div>
-						<FieldView
-							field={'createdAt'}
-							render={({ value }) => (value ? null : <div className={'bg-neutral-200 px-4 rounded-full text-neutral-500 text-sm'}>draft</div>)}
-						/>
-					</div>
-				</div>
+	<Card className='max-w-[82%] mx-auto bg-white shadow-md rounded-lg'>
+	  {/* <CardHeader className='border-b border-gray-200'>
+		<div className='flex flex-col justify-between items-start py-4'>
+		  <div className="text-2xl font-semibold text-gray-800">
+			<Field field="name" />
+		  </div>
+		</div>
+	  </CardHeader> */}
+  
+	  <CardContent className='py-4 px-6'>
+		<div className='flex flex-row justify-between items-center py-4 border-b border-gray-200'>
+			<div className="text-2xl font-semibold text-gray-800">
+				<Field field="name" />
 			</div>
-		</CardHeader>
-		<CardContent>
-            
-            <div className='max-w-[70%] mx-auto pb-4'>
-                <ImageFieldView width={100} height={100}/>
-            </div>
-			<div className={'prose'}>
-				<RichTextRendererField sourceField={'description.data'} renderElement={renderElement} renderLeaf={renderLeaf} />
+			<div>
+				<Link to="eventDetail(id: $entity.id)">
+					<Button className=''>
+						Detail
+					</Button>
+				</Link>
 			</div>
-		</CardContent>
-		<CardFooter>
-			{/* <div className={'flex flex-col gap-6 w-full'}>
-				<div>
-					<div>
-						What to bring:{' '}
-						<pre className={'font-bold whitespace-pre-wrap'}>
-							<Field field="whatToBring" />
-						</pre>
-					</div>
-				</div>
-
-			</div> */}
-		</CardFooter>
+		</div>
+		<p className='text-lg text-gray-600'>
+		  <strong>📅 Start</strong> <Field field='startDate' format={formatDateTime} />
+		</p>
+		<p className='text-lg text-gray-600'>
+		  <strong>🏁 End</strong> <Field field='endDate' format={formatDateTime} />
+		</p>
+		<p className='text-lg text-gray-600'>
+		  <strong>📍 Where?</strong> <Field field='place' />
+		</p>
+		<p className='text-lg text-gray-600'>
+		  <strong>🎒 What to bring?</strong> <Field field='whatToBring' />
+		</p>
+		<p className='text-lg text-gray-600'>
+		  <strong>💰 Price</strong> <Field field='fee' /> {' CZK'}
+		</p>
+		{/* <p className='text-lg text-gray-600'>
+		  <strong>🔗 WhatsApp Group Link:</strong>
+		</p> */}
+		<div className='prose mt-4 mb-4'>
+		  <Field field='description' />
+		</div>
+		<div className='max-w-full mt-4 rounded-lg overflow-hidden'>
+		  <ImageFieldView width={300} height={200} />
+		</div>
+	  </CardContent>
+  
+	  <CardFooter className='bg-gray-50 border-t border-gray-200 py-4 px-6'>
+		<p className='text-sm text-bold text-gray-500'>
+		  	<strong>Contact person</strong>
+			{' '} <Field field='contactPerson.firstName' /> {' '} <Field field='contactPerson.surname' />
+		</p>
+	  </CardFooter>
 	</Card>
-))
+  ));
+  

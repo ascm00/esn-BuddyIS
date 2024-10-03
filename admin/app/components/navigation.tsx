@@ -100,21 +100,12 @@ export const Navigation = Component(
 					<MenuItem label="Sections" icon={<Grid className='text-blue-500' />} to="sections" />
 					<MenuItem label="Countries" icon={<MapPin className='text-blue-500' />} to="countries" />
 					<MenuItem label="Languages" icon={<LanguagesIcon className='text-blue-500' />} to="languages" />
-					<MenuItem label="Dietary Restrictions" icon={<UtensilsCrossed className='text-blue-500' />} to="" />
-					<MenuItem label="Allergies" icon={<AlertCircle className='text-blue-500' />} to="" />
+					<MenuItem label="Dietary Restrictions" icon={<UtensilsCrossed className='text-blue-500' />} to="dietaryRestrictions" />
+					<MenuItem label="Allergies" icon={<AlertCircle className='text-blue-500' />} to="allergies" />
 				</CollapsibleContent>
 		</Collapsible>
 	</HasRole>
 
-	{/* <MenuItem label="Applications" icon={<FileText className='text-blue-500' />}>
-		<MenuItem label="Czech applications" icon={<File className='text-blue-500' />} to="applicationCzs" />
-		<MenuItem label="Foreign applications" icon={<File className='text-blue-500' />} to="applicationFrs" />
-	</MenuItem>
-	<MenuItem label="Buddy program" icon={<Dot className='text-blue-500' />}>
-		<MenuItem label="Buddy pairs" icon={<Users className='text-blue-500' />} to="buddyPairs" />
-		<MenuItem label="Create pair" icon={<UserPlus className='text-blue-500' />} to="buddyPairCreate" />
-		<MenuItem label="Tasks" icon={<CheckSquare className='text-blue-500' />} to="buddyTasks" />
-	</MenuItem> */}
 </Menu>)
 }
 // }, () => (

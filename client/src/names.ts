@@ -282,10 +282,6 @@ export const ContemberClientNames: SchemaNames = {
         "references": {
           "type": "many",
           "entity": "ContentReference"
-        },
-        "eventDescription": {
-          "type": "one",
-          "entity": "Event"
         }
       },
       "scalars": [
@@ -384,8 +380,7 @@ export const ContemberClientNames: SchemaNames = {
           "type": "column"
         },
         "description": {
-          "type": "one",
-          "entity": "Content"
+          "type": "column"
         },
         "startDate": {
           "type": "column"
@@ -469,6 +464,7 @@ export const ContemberClientNames: SchemaNames = {
         "id",
         "createdAt",
         "name",
+        "description",
         "startDate",
         "endDate",
         "refundPolicy",

@@ -1,0 +1,61 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "removeField",
+			"entityName": "Content",
+			"fieldName": "eventDescription"
+		},
+		{
+			"modification": "removeField",
+			"entityName": "Event",
+			"fieldName": "description"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Event",
+			"field": {
+				"name": "description",
+				"columnName": "description",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/Event/operations/read/description",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Event/operations/create/description",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Event/operations/update/description",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Event/operations/read/description",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/public/entities/Event/operations/read/description",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/Event/operations/read/description",
+					"value": true
+				}
+			]
+		}
+	]
+}

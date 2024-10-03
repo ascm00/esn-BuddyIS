@@ -33,9 +33,9 @@ export default () => {
 									<DataGridColumn>
 										<div className="flex gap-4">
 											<Link to="languageEdit(id: $entity.id)">
-												<a>
+												<Button>
 													Edit
-												</a>
+												</Button>
 											</Link>
 										</div>
 									</DataGridColumn>

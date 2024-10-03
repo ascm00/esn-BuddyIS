@@ -6,5 +6,4 @@ export class Content {
 	createdAt = c.dateTimeColumn().notNull().default('now')
 	data = c.jsonColumn()
     references = c.oneHasMany(ContentReference, 'content')
-	eventDescription = c.oneHasOneInverse(Event, 'description')
 }

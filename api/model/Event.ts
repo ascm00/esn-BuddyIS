@@ -27,7 +27,7 @@ import { EventRegistration } from './EventRegistration'
 export class Event {
 	createdAt = c.dateTimeColumn().notNull().default('now')
 	name = c.stringColumn().notNull()
-	description = c.oneHasOne(Content, 'eventDescription')
+	description = c.stringColumn()
 	startDate = c.dateTimeColumn().notNull()
 	endDate = c.dateTimeColumn().notNull()
 	refundPolicy = c.stringColumn()
