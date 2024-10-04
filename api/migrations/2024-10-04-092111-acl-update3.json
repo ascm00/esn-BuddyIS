@@ -1,0 +1,24 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/Faculty",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"createdAt": true,
+								"users": true,
+								"name": true
+							}
+						}
+					}
+				}
+			]
+		}
+	]
+}
