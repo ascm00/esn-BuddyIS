@@ -29,110 +29,7 @@ export default () => {
 					<Slots.Back>
 						<BackButton />
 					</Slots.Back>
-
-					{/* Czech buddy view */}
-					{/* <HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('czechBuddy')}>
-						<EntitySubTree entity={`BuddyPair(czechStudent.tenantPerson.id='${myId}')`} isCreating={false}>
-							<div className="flex gap-8 flex-col md:flex-row">
-								<div className="w-full gap-8 flex flex-col">
-									<TableWrapper className="bg-gray-50/50 max-w-lg border rounded-md">
-										<Table>
-											<TableBody>
-												<TableRow>
-													<TableCell className="text-2xl font-bold">
-														Coordinator
-													</TableCell>
-												</TableRow>
-												<TableRow>
-													<TableCell>
-														Name
-													</TableCell>
-													<TableCell className="font-semibold">
-														<Field field="coordinator.firstName" /> {' '} <Field field="coordinator.surname" />
-													</TableCell>
-												</TableRow>
-												<TableRow>
-													<TableCell>
-														Email
-													</TableCell>
-													<TableCell className="font-semibold">
-														<Field field="coordinator.tenantPerson.email" />
-													</TableCell>
-												</TableRow>
-												<TableRow>
-													<TableCell>
-														Phone number
-													</TableCell>
-													<TableCell className="font-semibold">
-														<Field field="coordinator.phoneNumber" /> {' '} <Field field="coordinator.surname" />
-													</TableCell>
-												</TableRow>
-											</TableBody>
-										</Table>
-									</TableWrapper>
-									<div>
-										<p className="text-2xl font-bold">You & your buddy</p>
-										<p className="text-xs text-gray-500">Please upload picture of you & your buddy</p>
-										<ImageField baseField={'picture'} urlField={'url'} />
-										<div className='pl-6'>
-											<PersistButton label="Save picture"/>
-										</div>
-									</div>
-									</div>
-
-									<div className="w-full gap-8 flex flex-col">
-										<TableWrapper className="bg-gray-50/50 max-w-lg border rounded-md">
-											<Table>
-												<TableBody>
-													<TableRow>
-														<TableCell className="text-2xl font-bold">
-														Your buddy
-													</TableCell>
-													</TableRow>
-													<TableRow>
-														<TableCell>
-															Name
-														</TableCell>
-														<TableCell className="font-semibold">
-															<Field field="internationalStudent.firstName" /> {' '} <Field field="internationalStudent.surname" />
-														</TableCell>
-													</TableRow>
-													<TableRow>
-														<TableCell>
-															Email
-														</TableCell>
-														<TableCell className="font-semibold">
-															<Field field="internationalStudent.tenantPerson.email" />
-														</TableCell>
-														</TableRow>
-													<TableRow>
-														<TableCell>
-															Phone number
-														</TableCell>
-														<TableCell className="font-semibold">
-															<Field field="internationalStudent.phoneNumber" />
-														</TableCell>
-													</TableRow>
-													<TableRow>
-														<TableCell>
-															Nationality
-														</TableCell>
-														<TableCell className="font-semibold">
-															<Field field="internationalStudent.country.name" />
-														</TableCell>
-													</TableRow>
-												</TableBody>
-											</Table>
-										</TableWrapper>
-										<CzechStudentTasks />
-
-									</div>
-							</div>
-						</EntitySubTree>
-					</HasRole> */}
 					<MoreBuddiesView />
-					{/* End of Czech buddy view */}
-
 				</div>
 			</Binding>
 		</>
@@ -188,8 +85,6 @@ const MoreBuddiesView = Component(
 			numberOfBuddies++
 			buddyPairID = buddyPair.getField('id').value
 		}
-
-		console.log(buddyPairID)
 
 		if(numberOfBuddies === 0){
 			return (<div className='bg-blue-200 p-4 rounded-md'>

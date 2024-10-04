@@ -47,7 +47,7 @@ export const EventsCalendar = Component<{ entities?: string }>(
 
 		const events: Event[] = buddyEvents.map((buddyEvent, index) => ({
 			id: index,
-			title: `${roles.has('employee') ? buddyEvent.getField('client.name').value : `${buddyEvent.getField('name').value}`}`,
+			title: `${buddyEvent.getField('name').value}`,
 			start: new Date(buddyEvent.getField<string>('startDate').value!),
 			end: new Date(buddyEvent.getField<string>('endDate').value!),
 		}))
@@ -80,7 +80,7 @@ export const EventsCalendar = Component<{ entities?: string }>(
                         </div>
                     </Slots.Actions>
                 </HasRole>
-                <HasRole role="czechBuddy">
+                <HasRole role="esnMember">
                 <Slots.Actions>
                         <div className="flex gap-2 items-center">
                             <CreateEntityModalButton

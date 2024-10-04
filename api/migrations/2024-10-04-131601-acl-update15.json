@@ -1,0 +1,24 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/BuddyPair/operations/create",
+					"value": {
+						"picture": "czechStudent_personId_personI"
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/BuddyPair/operations/create",
+					"value": {
+						"picture": "internationalStudent_personId"
+					}
+				}
+			]
+		}
+	]
+}

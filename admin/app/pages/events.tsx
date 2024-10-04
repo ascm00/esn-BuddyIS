@@ -17,13 +17,15 @@ export default () => {
 						<BackButton />
 					</Slots.Back>
 					<>
-						<Slots.Actions>
-							<Link to="eventCreate">
-								<Button>
-									Create event
-								</Button>
-							</Link>
-						</Slots.Actions>
+						<HasRole role={roles => roles.has('admin') || roles.has('esnMemberRole') || roles.has('coordinator')}>
+							<Slots.Actions>
+								<Link to="eventCreate">
+									<Button>
+										Create event
+									</Button>
+								</Link>
+							</Slots.Actions>
+						</HasRole>
 						<DataGrid entities="Event">
 							<DataGridToolbar>
 								<DataGridQueryFilter />

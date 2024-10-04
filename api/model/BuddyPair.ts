@@ -10,10 +10,14 @@ import { Semester } from './Semester'
 @c.Allow(internationalStudentRole, {
 	when: {internationalStudent: {personId: internationalStudentId}},
 	read: true,
+	update: true,
+	create: true,
 })
 @c.Allow(czechBuddyRole, {
 	when: {czechStudent: {personId: czechBuddyId}},
 	read: true,
+	update: true,
+	create: true,
 })
 @c.Allow(esnMemberRole, {
 	read: true,

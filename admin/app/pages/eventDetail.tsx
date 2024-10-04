@@ -232,13 +232,15 @@ export default () => {
 						<BackButton />
 					</Slots.Back>
 					<EntitySubTree entity="Event(id=$id)" isCreating={false}>
-						<Slots.Actions>
-							<Link to="eventEdit(id: $entity.id)">
-								<Button>
-									Edit event
-								</Button>
-							</Link>
-						</Slots.Actions>
+						<HasRole role={roles => roles.has('admin') || roles.has('esnMemberRole') || roles.has('czechStudent') || roles.has('coordinator')}>
+							<Slots.Actions>
+								<Link to="eventEdit(id: $entity.id)">
+									<Button>
+										Edit event
+									</Button>
+								</Link>
+							</Slots.Actions>
+						</HasRole>
 						<div className="flex gap-8 flex-col md:flex-row">
 							<div className="w-full gap-8 flex flex-col">
 							<TableWrapper className="bg-gray-50/50 max-w-lg border rounded-md">

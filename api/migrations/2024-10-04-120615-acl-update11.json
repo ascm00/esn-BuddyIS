@@ -1,0 +1,42 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/BuddyPair/operations/update",
+					"value": {
+						"createdAt": "czechStudent_personId_personI",
+						"coordinator": "czechStudent_personId_personI",
+						"czechStudent": "czechStudent_personId_personI",
+						"internationalStudent": "czechStudent_personId_personI",
+						"semester": "czechStudent_personId_personI",
+						"notes": "czechStudent_personId_personI",
+						"tasks": "czechStudent_personId_personI",
+						"tenPoints": "czechStudent_personId_personI",
+						"picture": "czechStudent_personId_personI",
+						"arrival": "czechStudent_personId_personI"
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/BuddyPair/operations/update",
+					"value": {
+						"createdAt": "internationalStudent_personId",
+						"coordinator": "internationalStudent_personId",
+						"czechStudent": "internationalStudent_personId",
+						"internationalStudent": "internationalStudent_personId",
+						"semester": "internationalStudent_personId",
+						"notes": "internationalStudent_personId",
+						"tasks": "internationalStudent_personId",
+						"tenPoints": "internationalStudent_personId",
+						"picture": "internationalStudent_personId",
+						"arrival": "internationalStudent_personId"
+					}
+				}
+			]
+		}
+	]
+}

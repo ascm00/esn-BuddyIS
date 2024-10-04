@@ -1,11 +1,11 @@
 import { c } from '@contember/schema-definition'
-import { internationalStudentRole, esnMemberRole, ozsRole } from './acl'
+import { internationalStudentRole, esnMemberRole, ozsRole, czechBuddyRole } from './acl'
 import { University } from './University'
 import { ApplicationCz } from './ApplicationCz'
 import { Person } from './Person'
 
 
-@c.Allow(internationalStudentRole, {
+@c.Allow([internationalStudentRole, czechBuddyRole], {
 	read: true,
 	create: true,
 })

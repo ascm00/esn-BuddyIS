@@ -34,7 +34,7 @@ export const Navigation = Component(
 	<MenuItem label="Home" icon={<Home className='text-blue-500' />} to="eventFeed" />
 	<MenuItem label="Events calendar" icon={<Calendar className='text-blue-500' />} to="calendar" />
 	<MenuItem label="All events" icon={<Calendar className='text-blue-500' />} to="events" />
-	<HasRole role={roles => roles.has('admin') || roles.has('esnMemberRole') || roles.has('czechStudent') || roles.has('coordinator')}>
+	<HasRole role={roles => roles.has('admin') || roles.has('esnMemberRole') || roles.has('czechBuddy') || roles.has('coordinator')}>
 		<MenuItem label="Buddy" icon={<CheckSquare className='text-blue-500' />} to="myBuddyCz" />
 	</HasRole>
 	<HasRole role="internationalStudent">

@@ -1,0 +1,100 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/entities/TenantPerson/operations/read/createdAt",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/entities/TenantPerson/operations/read/identityId",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/entities/TenantPerson/operations/read/email",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/entities/TenantPerson/operations/read/name",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/entities/TenantPerson/operations/read/otpUri",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/entities/TenantPerson/operations/read/otpActivatedAt",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/entities/TenantPerson/operations/read/idpOnly",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/entities/TenantPerson/operations/read/roles",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/entities/TenantPerson/operations/read/person",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/TenantPerson/operations/read/createdAt",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/TenantPerson/operations/read/identityId",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/TenantPerson/operations/read/email",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/TenantPerson/operations/read/name",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/TenantPerson/operations/read/otpUri",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/TenantPerson/operations/read/otpActivatedAt",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/TenantPerson/operations/read/idpOnly",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/TenantPerson/operations/read/roles",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/TenantPerson/operations/read/person",
+					"value": true
+				}
+			]
+		}
+	]
+}

@@ -87,7 +87,7 @@ export const PersonInvite = Component(
 				</div>
 
 				<FormLabelUI>Role</FormLabelUI>
-				<RadioGroup defaultValue={role} value={role} onValueChange={setRole} disabled={roles.has('employee') || roles.has('manager')}>
+				<RadioGroup defaultValue={role} value={role} onValueChange={setRole} disabled={roles.has('esnMemberRole') || roles.has('czechBuddy') || roles.has('internationalStudent') || roles.has('ozsRole')}>
 				<div className="flex items-center space-x-2">
 						<RadioGroupItem value="admin" id="option-one" />
 						<Label htmlFor="option-one">Admin</Label>
@@ -103,6 +103,10 @@ export const PersonInvite = Component(
 					<div className="flex items-center space-x-2">
 						<RadioGroupItem value="internationalStudent" id="option-four" />
 						<Label htmlFor="option-four">International student</Label>
+					</div>
+					<div className="flex items-center space-x-2">
+						<RadioGroupItem value="ozsRole" id="option-five" />
+						<Label htmlFor="option-five">OZS member</Label>
 					</div>
 				</RadioGroup>
 				<div className='pb-2'>

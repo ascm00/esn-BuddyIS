@@ -23,14 +23,15 @@ import { coordinatorRole, czechBuddyId, czechBuddyRole, esnMemberRole, internati
 	update: true,
 	delete: true,
 })
+@c.Allow([internationalStudentRole, czechBuddyRole], {
+	read: true,
+})
 @c.Allow([internationalStudentRole], {
 	when: {identityId: internationalStudentId},
-	read: true,
 	update: true,
 })
 @c.Allow([czechBuddyRole], {
 	when: {identityId: czechBuddyId},
-	read: true,
 	update: true,
 })
 @c.Allow(ozsRole, {read: true,})

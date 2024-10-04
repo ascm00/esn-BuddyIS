@@ -1,0 +1,100 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/BuddyPair/operations/create/createdAt",
+					"value": "czechStudent_personId_personI"
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/BuddyPair/operations/create/coordinator",
+					"value": "czechStudent_personId_personI"
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/BuddyPair/operations/create/czechStudent",
+					"value": "czechStudent_personId_personI"
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/BuddyPair/operations/create/internationalStudent",
+					"value": "czechStudent_personId_personI"
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/BuddyPair/operations/create/semester",
+					"value": "czechStudent_personId_personI"
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/BuddyPair/operations/create/notes",
+					"value": "czechStudent_personId_personI"
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/BuddyPair/operations/create/tasks",
+					"value": "czechStudent_personId_personI"
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/BuddyPair/operations/create/tenPoints",
+					"value": "czechStudent_personId_personI"
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/BuddyPair/operations/create/arrival",
+					"value": "czechStudent_personId_personI"
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/BuddyPair/operations/create/createdAt",
+					"value": "internationalStudent_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/BuddyPair/operations/create/coordinator",
+					"value": "internationalStudent_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/BuddyPair/operations/create/czechStudent",
+					"value": "internationalStudent_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/BuddyPair/operations/create/internationalStudent",
+					"value": "internationalStudent_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/BuddyPair/operations/create/semester",
+					"value": "internationalStudent_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/BuddyPair/operations/create/notes",
+					"value": "internationalStudent_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/BuddyPair/operations/create/tasks",
+					"value": "internationalStudent_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/BuddyPair/operations/create/tenPoints",
+					"value": "internationalStudent_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/BuddyPair/operations/create/arrival",
+					"value": "internationalStudent_personId"
+				}
+			]
+		}
+	]
+}

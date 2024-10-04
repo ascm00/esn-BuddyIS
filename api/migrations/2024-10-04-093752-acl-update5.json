@@ -1,0 +1,64 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "remove",
+					"path": "/roles/internationalStudent/entities/BuddyPair/predicates/internationalStudent_personId"
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/BuddyPair/operations/read/createdAt",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/BuddyPair/operations/read/coordinator",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/BuddyPair/operations/read/czechStudent",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/BuddyPair/operations/read/internationalStudent",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/BuddyPair/operations/read/semester",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/BuddyPair/operations/read/notes",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/BuddyPair/operations/read/tasks",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/BuddyPair/operations/read/tenPoints",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/BuddyPair/operations/read/picture",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/BuddyPair/operations/read/arrival",
+					"value": true
+				}
+			]
+		}
+	]
+}

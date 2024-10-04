@@ -1,0 +1,71 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/BuddyTask/predicates/buddyPair_internationalStuden",
+					"value": {
+						"buddyPair": {
+							"internationalStudent": {
+								"personId": "personId"
+							}
+						}
+					}
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/BuddyTask/operations/read/createdAt",
+					"value": "buddyPair_internationalStuden"
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/BuddyTask/operations/read/description",
+					"value": "buddyPair_internationalStuden"
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/BuddyTask/operations/read/buddyPair",
+					"value": "buddyPair_internationalStuden"
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/BuddyTask/operations/read/done",
+					"value": "buddyPair_internationalStuden"
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/BuddyTask/operations/read/confirmed",
+					"value": "buddyPair_internationalStuden"
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/BuddyTask/operations/update/createdAt",
+					"value": "buddyPair_internationalStuden"
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/BuddyTask/operations/update/description",
+					"value": "buddyPair_internationalStuden"
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/BuddyTask/operations/update/buddyPair",
+					"value": "buddyPair_internationalStuden"
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/BuddyTask/operations/update/done",
+					"value": "buddyPair_internationalStuden"
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/BuddyTask/operations/update/confirmed",
+					"value": "buddyPair_internationalStuden"
+				}
+			]
+		}
+	]
+}

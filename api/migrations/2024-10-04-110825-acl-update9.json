@@ -1,0 +1,290 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/entities/Person/operations/read/createdAt",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/entities/Person/operations/read/personId",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/entities/Person/operations/read/tenantPerson",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/entities/Person/operations/read/gender",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/entities/Person/operations/read/registrationDate",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/entities/Person/operations/read/lastLoginDate",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/entities/Person/operations/read/phoneNumber",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/entities/Person/operations/read/university",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/entities/Person/operations/read/emailForInfo",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/entities/Person/operations/read/esnCardId",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/entities/Person/operations/read/surname",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/entities/Person/operations/read/xname",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/entities/Person/operations/read/active",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/entities/Person/operations/read/faculty",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/entities/Person/operations/read/studyProgram",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/entities/Person/operations/read/countryOfUniversity",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/entities/Person/operations/read/firstName",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/entities/Person/operations/read/organizedEvents",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/entities/Person/operations/read/czechBuddyPair",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/entities/Person/operations/read/internationalBuddyPair",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/entities/Person/operations/read/applications",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/entities/Person/operations/read/applicationsFr",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/entities/Person/operations/read/n2nHours",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/entities/Person/operations/read/profilePicture",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/entities/Person/operations/read/coordinatingBuddyPairs",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/entities/Person/operations/read/registrations",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/entities/Person/operations/read/notes",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/entities/Person/operations/read/languages",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/Person/operations/read/createdAt",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/Person/operations/read/personId",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/Person/operations/read/tenantPerson",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/Person/operations/read/gender",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/Person/operations/read/registrationDate",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/Person/operations/read/lastLoginDate",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/Person/operations/read/phoneNumber",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/Person/operations/read/university",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/Person/operations/read/emailForInfo",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/Person/operations/read/esnCardId",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/Person/operations/read/surname",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/Person/operations/read/xname",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/Person/operations/read/active",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/Person/operations/read/faculty",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/Person/operations/read/studyProgram",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/Person/operations/read/countryOfUniversity",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/Person/operations/read/firstName",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/Person/operations/read/organizedEvents",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/Person/operations/read/czechBuddyPair",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/Person/operations/read/internationalBuddyPair",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/Person/operations/read/applications",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/Person/operations/read/applicationsFr",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/Person/operations/read/n2nHours",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/Person/operations/read/profilePicture",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/Person/operations/read/coordinatingBuddyPairs",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/Person/operations/read/registrations",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/Person/operations/read/notes",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/Person/operations/read/languages",
+					"value": true
+				}
+			]
+		}
+	]
+}

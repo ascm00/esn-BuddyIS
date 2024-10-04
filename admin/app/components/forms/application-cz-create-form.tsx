@@ -89,7 +89,7 @@ export const ApplicationCzCreateForm = Component(
 					<hr className="my-2 border-gray-200" />
 				</div>
 				<div className='flex flex-col space-y-4'>
-					{/* <TextareaField field="motivation" label="Motivation" /> */}
+					<TextareaField field="motivation" label="Motivation" />
 					<InputField field="howManyBuddies" label="Number of buddies *" description="How many buddies could you take care of at most?" required />
 					<SelectField
 						field="preferredCountry"

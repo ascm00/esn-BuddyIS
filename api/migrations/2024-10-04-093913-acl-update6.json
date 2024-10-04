@@ -1,0 +1,69 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/BuddyPair/predicates/internationalStudent_personId",
+					"value": {
+						"internationalStudent": {
+							"personId": "personId"
+						}
+					}
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/BuddyPair/operations/read/createdAt",
+					"value": "internationalStudent_personId"
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/BuddyPair/operations/read/coordinator",
+					"value": "internationalStudent_personId"
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/BuddyPair/operations/read/czechStudent",
+					"value": "internationalStudent_personId"
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/BuddyPair/operations/read/internationalStudent",
+					"value": "internationalStudent_personId"
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/BuddyPair/operations/read/semester",
+					"value": "internationalStudent_personId"
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/BuddyPair/operations/read/notes",
+					"value": "internationalStudent_personId"
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/BuddyPair/operations/read/tasks",
+					"value": "internationalStudent_personId"
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/BuddyPair/operations/read/tenPoints",
+					"value": "internationalStudent_personId"
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/BuddyPair/operations/read/picture",
+					"value": "internationalStudent_personId"
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/BuddyPair/operations/read/arrival",
+					"value": "internationalStudent_personId"
+				}
+			]
+		}
+	]
+}

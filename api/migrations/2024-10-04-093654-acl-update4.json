@@ -1,0 +1,64 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "remove",
+					"path": "/roles/internationalStudent/entities/BuddyTask/predicates/buddyPair_internationalStuden"
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/BuddyTask/operations/read/createdAt",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/BuddyTask/operations/read/description",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/BuddyTask/operations/read/buddyPair",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/BuddyTask/operations/read/done",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/BuddyTask/operations/read/confirmed",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/BuddyTask/operations/update/createdAt",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/BuddyTask/operations/update/description",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/BuddyTask/operations/update/buddyPair",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/BuddyTask/operations/update/done",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/BuddyTask/operations/update/confirmed",
+					"value": true
+				}
+			]
+		}
+	]
+}

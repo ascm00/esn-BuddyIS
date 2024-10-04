@@ -53,14 +53,14 @@ export const BuddyPairCreateForm = Component(
 				<SelectField
 					field="czechStudent"
 					label="Czech student"
-					options={`Person[tenantPerson.roles='coordinator' || tenantPerson.roles='admin' || tenantPerson.roles='czechStudent']`}
+					options={`Person[tenantPerson.roles='coordinator' || tenantPerson.roles='admin' || tenantPerson.roles='czechBuddy']`}
 				>
 					<Field field="firstName" /> {' '} <Field field="surname" />  {' ('} <Field field="tenantPerson.email" /> {')'}
 				</SelectField>
 				<SelectField
 					field="internationalStudent"
 					label="International student"
-					options={`Person[buddytenantPerson.roles='internationalStudent']`}
+					options={`Person[tenantPerson.roles='internationalStudent']`}
 				>
 					<Field field="firstName" /> {' '} <Field field="surname" />  {' ('} <Field field="tenantPerson.email" /> {')'}
 				</SelectField>
