@@ -1,5 +1,5 @@
 import { c } from '@contember/schema-definition'
-import { esnMemberRole, czechBuddyRole } from './acl'
+import { esnMemberRole, czechBuddyRole, coordinatorRole, czechBuddyId } from './acl'
 import { applicationStatus, applicationCzResult, preferredSex } from './enum'
 import { Semester } from './Semester'
 import { Country } from './Country'
@@ -13,7 +13,14 @@ import { Language } from './Language'
 	update: true,
 	delete: true,
 })
+@c.Allow(coordinatorRole, {
+	read: true,
+	create: true,
+	update: true,
+	delete: true,
+})
 @c.Allow(czechBuddyRole, {
+	when: {person: {personId: czechBuddyId}},
 	read: true,
 	create: true,
 	update: true,
@@ -29,9 +36,5 @@ export class ApplicationCz {
 	result = c.enumColumn(applicationCzResult)
 	preferredCountry = c.manyHasOne(Country, 'preferredApplicationsCz').setNullOnDelete()
 	preferredLanguages = c.manyHasMany(Language, 'applicationsCz')
-	rBuddy = c.intColumn()
-	rParty = c.intColumn()
-	rTravel = c.intColumn()
-	rSport = c.intColumn()
 	preferredSex = c.enumColumn(preferredSex)
 }

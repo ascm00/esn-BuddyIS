@@ -33,14 +33,12 @@ export const Navigation = Component(
 	</HasRole>
 	<MenuItem label="Home" icon={<Home className='text-blue-500' />} to="eventFeed" />
 	<MenuItem label="Events calendar" icon={<Calendar className='text-blue-500' />} to="calendar" />
-	<HasRole role={roles => roles.has('admin') || roles.has('esnMemberRole')}>
-		<MenuItem label="Events" icon={<Calendar className='text-blue-500' />} to="events" />
-	</HasRole>
+	<MenuItem label="All events" icon={<Calendar className='text-blue-500' />} to="events" />
 	<HasRole role={roles => roles.has('admin') || roles.has('esnMemberRole') || roles.has('czechStudent') || roles.has('coordinator')}>
 		<MenuItem label="Buddy" icon={<CheckSquare className='text-blue-500' />} to="myBuddyCz" />
 	</HasRole>
 	<HasRole role="internationalStudent">
-		<MenuItem label="Buddy" icon={<CheckSquare className='text-blue-500' />} to="myBuddy" />
+		<MenuItem label="My buddy" icon={<CheckSquare className='text-blue-500' />} to="myBuddy" />
 	</HasRole>
 	<MenuItem label="N2N" icon={<PartyPopper className='text-blue-500' />} to="n2nParties" />
 	<MenuItem label="Profile" icon={<User className='text-blue-500' />} to="" />

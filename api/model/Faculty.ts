@@ -1,15 +1,16 @@
 import { c } from '@contember/schema-definition'
-import { esnMemberRole, publicRole } from './acl'
+import { coordinatorRole, czechBuddyRole, esnMemberRole, internationalStudentRole } from './acl'
 import { Person } from './Person'
 
 
-@c.Allow(esnMemberRole, {
+@c.Allow([esnMemberRole, coordinatorRole], {
 	read: true,
 	create: true,
 	update: true,
 	delete: true,
 })
-@c.Allow(publicRole, {
+
+@c.Allow([internationalStudentRole, czechBuddyRole], {
 	read: true,
 })
 export class Faculty {

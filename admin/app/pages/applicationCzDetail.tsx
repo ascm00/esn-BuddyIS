@@ -61,38 +61,6 @@ export default () => {
 									</TableRow>
 									<TableRow>
 										<TableCell>
-											R buddy
-										</TableCell>
-										<TableCell className="font-semibold">
-											<Field field="rBuddy" />
-										</TableCell>
-									</TableRow>
-									<TableRow>
-										<TableCell>
-											R party
-										</TableCell>
-										<TableCell className="font-semibold">
-											<Field field="rParty" />
-										</TableCell>
-									</TableRow>
-									<TableRow>
-										<TableCell>
-											R travel
-										</TableCell>
-										<TableCell className="font-semibold">
-											<Field field="rTravel" />
-										</TableCell>
-									</TableRow>
-									<TableRow>
-										<TableCell>
-											R sport
-										</TableCell>
-										<TableCell className="font-semibold">
-											<Field field="rSport" />
-										</TableCell>
-									</TableRow>
-									<TableRow>
-										<TableCell>
 											Preferred sex
 										</TableCell>
 										<TableCell className="font-semibold">

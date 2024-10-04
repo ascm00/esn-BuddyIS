@@ -64,18 +64,6 @@ export const ContemberClientNames: SchemaNames = {
           "type": "many",
           "entity": "Language"
         },
-        "rBuddy": {
-          "type": "column"
-        },
-        "rParty": {
-          "type": "column"
-        },
-        "rTravel": {
-          "type": "column"
-        },
-        "rSport": {
-          "type": "column"
-        },
         "preferredSex": {
           "type": "column"
         }
@@ -88,10 +76,6 @@ export const ContemberClientNames: SchemaNames = {
         "howManyBuddies",
         "status",
         "result",
-        "rBuddy",
-        "rParty",
-        "rTravel",
-        "rSport",
         "preferredSex"
       ]
     },
@@ -122,18 +106,6 @@ export const ContemberClientNames: SchemaNames = {
         "rating": {
           "type": "column"
         },
-        "rBuddy": {
-          "type": "column"
-        },
-        "rParty": {
-          "type": "column"
-        },
-        "rTravel": {
-          "type": "column"
-        },
-        "rSport": {
-          "type": "column"
-        },
         "preferredBuddySex": {
           "type": "column"
         },
@@ -154,10 +126,6 @@ export const ContemberClientNames: SchemaNames = {
         "createdAt",
         "status",
         "rating",
-        "rBuddy",
-        "rParty",
-        "rTravel",
-        "rSport",
         "preferredBuddySex",
         "emailForInformation"
       ]

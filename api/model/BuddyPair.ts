@@ -1,5 +1,5 @@
 import { c } from '@contember/schema-definition'
-import { internationalStudentRole, esnMemberRole, coordinatorRole } from './acl'
+import { internationalStudentRole, esnMemberRole, coordinatorRole, czechBuddyRole, internationalStudentId, czechBuddyId } from './acl'
 import { BuddyTask } from './BuddyTask'
 import { Person } from './Person'
 import { Note } from './Note'
@@ -8,6 +8,11 @@ import { Semester } from './Semester'
 
 
 @c.Allow(internationalStudentRole, {
+	when: {internationalStudent: {personId: internationalStudentId}},
+	read: true,
+})
+@c.Allow(czechBuddyRole, {
+	when: {czechStudent: {personId: czechBuddyId}},
 	read: true,
 })
 @c.Allow(esnMemberRole, {
@@ -18,6 +23,9 @@ import { Semester } from './Semester'
 })
 @c.Allow(coordinatorRole, {
 	read: true,
+	create: true,
+	update: true,
+	delete: true,
 })
 export class BuddyPair {
 	createdAt = c.dateTimeColumn().notNull().default('now')

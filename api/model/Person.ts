@@ -14,7 +14,25 @@ import { StudyProgram } from './StudyProgram'
 import { sex } from './enum'
 import { Note } from './Note'
 import { Language } from './Language'
+import { coordinatorRole, czechBuddyId, czechBuddyRole, esnMemberRole, internationalStudentId, internationalStudentRole, ozsRole } from './acl'
 
+@c.Allow([esnMemberRole, coordinatorRole], {
+	read: true,
+	create: true,
+	update: true,
+	delete: true,
+})
+@c.Allow([internationalStudentRole], {
+	when: {personId: internationalStudentId},
+	read: true,
+	update: true,
+})
+@c.Allow([czechBuddyRole], {
+	when: {personId: czechBuddyId},
+	read: true,
+	update: true,
+})
+@c.Allow(ozsRole, {read: true,})
 export class Person {
 	createdAt = c.dateTimeColumn().notNull().default('now')
 	personId = c.uuidColumn().notNull()

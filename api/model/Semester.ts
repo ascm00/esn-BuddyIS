@@ -1,5 +1,5 @@
 import { c } from '@contember/schema-definition'
-import { esnMemberRole, publicRole } from './acl'
+import { coordinatorRole, czechBuddyRole, esnMemberRole, internationalStudentRole, ozsRole } from './acl'
 import { Event } from './Event'
 import { ApplicationCz } from './ApplicationCz'
 import { ApplicationFr } from './ApplicationFr'
@@ -7,11 +7,11 @@ import { N2nParty } from './N2nParty'
 import { BuddyPair } from './BuddyPair'
 
 
-@c.Allow(esnMemberRole, {
+@c.Allow([esnMemberRole, coordinatorRole], {
 	read: true,
-	update: true,
 })
-@c.Allow(publicRole, {
+
+@c.Allow([ozsRole, internationalStudentRole, czechBuddyRole], {
 	read: true,
 })
 

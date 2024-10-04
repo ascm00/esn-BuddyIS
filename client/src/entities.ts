@@ -41,10 +41,6 @@ export type ApplicationCz <OverRelation extends string | never = never> = {
 		howManyBuddies: number | null
 		status: applicationStatus | null
 		result: applicationCzResult | null
-		rBuddy: number | null
-		rParty: number | null
-		rTravel: number | null
-		rSport: number | null
 		preferredSex: preferredSex | null
 	}
 	hasOne: {
@@ -69,10 +65,6 @@ export type ApplicationFr <OverRelation extends string | never = never> = {
 		createdAt: string
 		status: applicationStatus | null
 		rating: rating | null
-		rBuddy: number | null
-		rParty: number | null
-		rTravel: number | null
-		rSport: number | null
 		preferredBuddySex: preferredSex | null
 		emailForInformation: string | null
 	}

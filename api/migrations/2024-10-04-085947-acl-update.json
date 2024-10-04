@@ -1,0 +1,2398 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "removeField",
+			"entityName": "ApplicationCz",
+			"fieldName": "rBuddy"
+		},
+		{
+			"modification": "removeField",
+			"entityName": "ApplicationCz",
+			"fieldName": "rParty"
+		},
+		{
+			"modification": "removeField",
+			"entityName": "ApplicationCz",
+			"fieldName": "rTravel"
+		},
+		{
+			"modification": "removeField",
+			"entityName": "ApplicationCz",
+			"fieldName": "rSport"
+		},
+		{
+			"modification": "removeField",
+			"entityName": "ApplicationFr",
+			"fieldName": "rBuddy"
+		},
+		{
+			"modification": "removeField",
+			"entityName": "ApplicationFr",
+			"fieldName": "rParty"
+		},
+		{
+			"modification": "removeField",
+			"entityName": "ApplicationFr",
+			"fieldName": "rTravel"
+		},
+		{
+			"modification": "removeField",
+			"entityName": "ApplicationFr",
+			"fieldName": "rSport"
+		},
+		{
+			"modification": "updateAclSchema",
+			"schema": {
+				"roles": {
+					"coordinator": {
+						"stages": "*",
+						"entities": {
+							"ApplicationCz": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"points": true,
+										"person": true,
+										"semester": true,
+										"motivation": true,
+										"howManyBuddies": true,
+										"status": true,
+										"result": true,
+										"preferredCountry": true,
+										"preferredLanguages": true,
+										"preferredSex": true
+									},
+									"create": {
+										"createdAt": true,
+										"points": true,
+										"person": true,
+										"semester": true,
+										"motivation": true,
+										"howManyBuddies": true,
+										"status": true,
+										"result": true,
+										"preferredCountry": true,
+										"preferredLanguages": true,
+										"preferredSex": true
+									},
+									"update": {
+										"createdAt": true,
+										"points": true,
+										"person": true,
+										"semester": true,
+										"motivation": true,
+										"howManyBuddies": true,
+										"status": true,
+										"result": true,
+										"preferredCountry": true,
+										"preferredLanguages": true,
+										"preferredSex": true
+									},
+									"delete": true
+								}
+							},
+							"ApplicationFr": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"semester": true,
+										"person": true,
+										"status": true,
+										"hobbies": true,
+										"rating": true,
+										"preferredBuddySex": true,
+										"emailForInformation": true,
+										"sport": true,
+										"limitations": true
+									},
+									"create": {
+										"createdAt": true,
+										"semester": true,
+										"person": true,
+										"status": true,
+										"hobbies": true,
+										"rating": true,
+										"preferredBuddySex": true,
+										"emailForInformation": true,
+										"sport": true,
+										"limitations": true
+									},
+									"update": {
+										"createdAt": true,
+										"semester": true,
+										"person": true,
+										"status": true,
+										"hobbies": true,
+										"rating": true,
+										"preferredBuddySex": true,
+										"emailForInformation": true,
+										"sport": true,
+										"limitations": true
+									},
+									"delete": true
+								}
+							},
+							"BuddyPair": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"coordinator": true,
+										"czechStudent": true,
+										"internationalStudent": true,
+										"semester": true,
+										"notes": true,
+										"tasks": true,
+										"tenPoints": true,
+										"picture": true,
+										"arrival": true
+									},
+									"create": {
+										"createdAt": true,
+										"coordinator": true,
+										"czechStudent": true,
+										"internationalStudent": true,
+										"semester": true,
+										"notes": true,
+										"tasks": true,
+										"tenPoints": true,
+										"picture": true,
+										"arrival": true
+									},
+									"update": {
+										"createdAt": true,
+										"coordinator": true,
+										"czechStudent": true,
+										"internationalStudent": true,
+										"semester": true,
+										"notes": true,
+										"tasks": true,
+										"tenPoints": true,
+										"picture": true,
+										"arrival": true
+									},
+									"delete": true
+								}
+							},
+							"BuddyTask": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"description": true,
+										"buddyPair": true,
+										"done": true,
+										"confirmed": true
+									},
+									"create": {
+										"createdAt": true,
+										"description": true,
+										"buddyPair": true,
+										"done": true,
+										"confirmed": true
+									},
+									"update": {
+										"createdAt": true,
+										"description": true,
+										"buddyPair": true,
+										"done": true,
+										"confirmed": true
+									},
+									"delete": true
+								}
+							},
+							"Event": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"name": true,
+										"description": true,
+										"startDate": true,
+										"endDate": true,
+										"refundPolicy": true,
+										"mandatoryESNcard": true,
+										"dietaryRestrictions": true,
+										"allergies": true,
+										"capacity": true,
+										"fee": true,
+										"registrations": true,
+										"registeredCount": true,
+										"place": true,
+										"whatToBring": true,
+										"whatsappLink": true,
+										"registrationStartDate": true,
+										"registrationEndDate": true,
+										"waitingList": true,
+										"section": true,
+										"meetingPoint": true,
+										"status": true,
+										"contactPerson": true,
+										"semester": true,
+										"private": true,
+										"allowRegistrationWithoutPayment": true,
+										"picture": true
+									},
+									"create": {
+										"createdAt": true,
+										"name": true,
+										"description": true,
+										"startDate": true,
+										"endDate": true,
+										"refundPolicy": true,
+										"mandatoryESNcard": true,
+										"dietaryRestrictions": true,
+										"allergies": true,
+										"capacity": true,
+										"fee": true,
+										"registrations": true,
+										"registeredCount": true,
+										"place": true,
+										"whatToBring": true,
+										"whatsappLink": true,
+										"registrationStartDate": true,
+										"registrationEndDate": true,
+										"waitingList": true,
+										"section": true,
+										"meetingPoint": true,
+										"status": true,
+										"contactPerson": true,
+										"semester": true,
+										"private": true,
+										"allowRegistrationWithoutPayment": true,
+										"picture": true
+									},
+									"update": {
+										"createdAt": true,
+										"name": true,
+										"description": true,
+										"startDate": true,
+										"endDate": true,
+										"refundPolicy": true,
+										"mandatoryESNcard": true,
+										"dietaryRestrictions": true,
+										"allergies": true,
+										"capacity": true,
+										"fee": true,
+										"registrations": true,
+										"registeredCount": true,
+										"place": true,
+										"whatToBring": true,
+										"whatsappLink": true,
+										"registrationStartDate": true,
+										"registrationEndDate": true,
+										"waitingList": true,
+										"section": true,
+										"meetingPoint": true,
+										"status": true,
+										"contactPerson": true,
+										"semester": true,
+										"private": true,
+										"allowRegistrationWithoutPayment": true,
+										"picture": true
+									},
+									"delete": true
+								}
+							},
+							"EventRegistration": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"paid": true,
+										"note": true,
+										"event": true,
+										"isWaitingList": true,
+										"person": true,
+										"allergies": true,
+										"dietaryRestrictions": true
+									},
+									"create": {
+										"createdAt": true,
+										"paid": true,
+										"note": true,
+										"event": true,
+										"isWaitingList": true,
+										"person": true,
+										"allergies": true,
+										"dietaryRestrictions": true
+									},
+									"update": {
+										"createdAt": true,
+										"paid": true,
+										"note": true,
+										"event": true,
+										"isWaitingList": true,
+										"person": true,
+										"allergies": true,
+										"dietaryRestrictions": true
+									},
+									"delete": true
+								}
+							},
+							"Faculty": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"users": true,
+										"name": true
+									},
+									"create": {
+										"createdAt": true,
+										"users": true,
+										"name": true
+									},
+									"update": {
+										"createdAt": true,
+										"users": true,
+										"name": true
+									},
+									"delete": true
+								}
+							},
+							"Hobby": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"applicationsFr": true,
+										"name": true
+									},
+									"create": {
+										"createdAt": true,
+										"applicationsFr": true,
+										"name": true
+									},
+									"update": {
+										"createdAt": true,
+										"applicationsFr": true,
+										"name": true
+									},
+									"delete": true
+								}
+							},
+							"Language": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"name": true,
+										"person": true,
+										"applicationsCz": true
+									},
+									"create": {
+										"createdAt": true,
+										"name": true,
+										"person": true,
+										"applicationsCz": true
+									},
+									"update": {
+										"createdAt": true,
+										"name": true,
+										"person": true,
+										"applicationsCz": true
+									}
+								}
+							},
+							"Limitations": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"applicationFr": true
+									},
+									"create": {
+										"createdAt": true,
+										"applicationFr": true
+									},
+									"update": {
+										"createdAt": true,
+										"applicationFr": true
+									}
+								}
+							},
+							"N2nHour": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"from": true,
+										"to": true,
+										"party": true,
+										"person": true
+									},
+									"create": {
+										"createdAt": true,
+										"from": true,
+										"to": true,
+										"party": true,
+										"person": true
+									},
+									"update": {
+										"createdAt": true,
+										"from": true,
+										"to": true,
+										"party": true,
+										"person": true
+									},
+									"delete": true
+								}
+							},
+							"N2nParty": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"name": true,
+										"date": true,
+										"open": true,
+										"semester": true,
+										"club": true,
+										"hours": true
+									},
+									"create": {
+										"createdAt": true,
+										"name": true,
+										"date": true,
+										"open": true,
+										"semester": true,
+										"club": true,
+										"hours": true
+									},
+									"update": {
+										"createdAt": true,
+										"name": true,
+										"date": true,
+										"open": true,
+										"semester": true,
+										"club": true,
+										"hours": true
+									},
+									"delete": true
+								}
+							},
+							"Note": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"buddyPair": true,
+										"content": true,
+										"author": true
+									},
+									"create": {
+										"createdAt": true,
+										"buddyPair": true,
+										"content": true,
+										"author": true
+									},
+									"update": {
+										"createdAt": true,
+										"buddyPair": true,
+										"content": true,
+										"author": true
+									},
+									"delete": true
+								}
+							},
+							"Person": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"personId": true,
+										"tenantPerson": true,
+										"gender": true,
+										"registrationDate": true,
+										"lastLoginDate": true,
+										"phoneNumber": true,
+										"university": true,
+										"emailForInfo": true,
+										"esnCardId": true,
+										"surname": true,
+										"xname": true,
+										"active": true,
+										"faculty": true,
+										"studyProgram": true,
+										"countryOfUniversity": true,
+										"firstName": true,
+										"organizedEvents": true,
+										"czechBuddyPair": true,
+										"internationalBuddyPair": true,
+										"applications": true,
+										"applicationsFr": true,
+										"n2nHours": true,
+										"profilePicture": true,
+										"coordinatingBuddyPairs": true,
+										"registrations": true,
+										"notes": true,
+										"languages": true
+									},
+									"create": {
+										"createdAt": true,
+										"personId": true,
+										"tenantPerson": true,
+										"gender": true,
+										"registrationDate": true,
+										"lastLoginDate": true,
+										"phoneNumber": true,
+										"university": true,
+										"emailForInfo": true,
+										"esnCardId": true,
+										"surname": true,
+										"xname": true,
+										"active": true,
+										"faculty": true,
+										"studyProgram": true,
+										"countryOfUniversity": true,
+										"firstName": true,
+										"organizedEvents": true,
+										"czechBuddyPair": true,
+										"internationalBuddyPair": true,
+										"applications": true,
+										"applicationsFr": true,
+										"n2nHours": true,
+										"profilePicture": true,
+										"coordinatingBuddyPairs": true,
+										"registrations": true,
+										"notes": true,
+										"languages": true
+									},
+									"update": {
+										"createdAt": true,
+										"personId": true,
+										"tenantPerson": true,
+										"gender": true,
+										"registrationDate": true,
+										"lastLoginDate": true,
+										"phoneNumber": true,
+										"university": true,
+										"emailForInfo": true,
+										"esnCardId": true,
+										"surname": true,
+										"xname": true,
+										"active": true,
+										"faculty": true,
+										"studyProgram": true,
+										"countryOfUniversity": true,
+										"firstName": true,
+										"organizedEvents": true,
+										"czechBuddyPair": true,
+										"internationalBuddyPair": true,
+										"applications": true,
+										"applicationsFr": true,
+										"n2nHours": true,
+										"profilePicture": true,
+										"coordinatingBuddyPairs": true,
+										"registrations": true,
+										"notes": true,
+										"languages": true
+									},
+									"delete": true
+								}
+							},
+							"Section": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"events": true,
+										"name": true,
+										"description": true
+									},
+									"create": {
+										"createdAt": true,
+										"events": true,
+										"name": true,
+										"description": true
+									},
+									"update": {
+										"createdAt": true,
+										"events": true,
+										"name": true,
+										"description": true
+									}
+								}
+							},
+							"Semester": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"events": true,
+										"name": true,
+										"startDate": true,
+										"endDate": true,
+										"applications": true,
+										"applicationsFr": true,
+										"buddyPairs": true,
+										"parties": true,
+										"isCurrent": true,
+										"openForCzechBuddyRegistrationsDate": true,
+										"closeBuddyRegistrations": true
+									}
+								}
+							},
+							"Sport": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"name": true,
+										"applicationsFr": true
+									},
+									"create": {
+										"createdAt": true,
+										"name": true,
+										"applicationsFr": true
+									},
+									"update": {
+										"createdAt": true,
+										"name": true,
+										"applicationsFr": true
+									}
+								}
+							},
+							"StudyProgram": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"users": true,
+										"name": true
+									},
+									"create": {
+										"createdAt": true,
+										"users": true,
+										"name": true
+									},
+									"update": {
+										"createdAt": true,
+										"users": true,
+										"name": true
+									}
+								}
+							},
+							"University": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"users": true,
+										"name": true,
+										"country": true
+									},
+									"create": {
+										"createdAt": true,
+										"users": true,
+										"name": true,
+										"country": true
+									},
+									"update": {
+										"createdAt": true,
+										"users": true,
+										"name": true,
+										"country": true
+									}
+								}
+							}
+						},
+						"variables": {}
+					},
+					"czechBuddy": {
+						"stages": "*",
+						"entities": {
+							"ApplicationCz": {
+								"predicates": {
+									"person_personId_personId": {
+										"person": {
+											"personId": "personId"
+										}
+									}
+								},
+								"operations": {
+									"read": {
+										"createdAt": "person_personId_personId",
+										"points": "person_personId_personId",
+										"person": "person_personId_personId",
+										"semester": "person_personId_personId",
+										"motivation": "person_personId_personId",
+										"howManyBuddies": "person_personId_personId",
+										"status": "person_personId_personId",
+										"result": "person_personId_personId",
+										"preferredCountry": "person_personId_personId",
+										"preferredLanguages": "person_personId_personId",
+										"preferredSex": "person_personId_personId"
+									},
+									"create": {
+										"createdAt": "person_personId_personId",
+										"points": "person_personId_personId",
+										"person": "person_personId_personId",
+										"semester": "person_personId_personId",
+										"motivation": "person_personId_personId",
+										"howManyBuddies": "person_personId_personId",
+										"status": "person_personId_personId",
+										"result": "person_personId_personId",
+										"preferredCountry": "person_personId_personId",
+										"preferredLanguages": "person_personId_personId",
+										"preferredSex": "person_personId_personId"
+									},
+									"update": {
+										"createdAt": "person_personId_personId",
+										"points": "person_personId_personId",
+										"person": "person_personId_personId",
+										"semester": "person_personId_personId",
+										"motivation": "person_personId_personId",
+										"howManyBuddies": "person_personId_personId",
+										"status": "person_personId_personId",
+										"result": "person_personId_personId",
+										"preferredCountry": "person_personId_personId",
+										"preferredLanguages": "person_personId_personId",
+										"preferredSex": "person_personId_personId"
+									}
+								}
+							},
+							"BuddyPair": {
+								"predicates": {
+									"czechStudent_personId_personI": {
+										"czechStudent": {
+											"personId": "personId"
+										}
+									}
+								},
+								"operations": {
+									"read": {
+										"createdAt": "czechStudent_personId_personI",
+										"coordinator": "czechStudent_personId_personI",
+										"czechStudent": "czechStudent_personId_personI",
+										"internationalStudent": "czechStudent_personId_personI",
+										"semester": "czechStudent_personId_personI",
+										"notes": "czechStudent_personId_personI",
+										"tasks": "czechStudent_personId_personI",
+										"tenPoints": "czechStudent_personId_personI",
+										"picture": "czechStudent_personId_personI",
+										"arrival": "czechStudent_personId_personI"
+									}
+								}
+							},
+							"BuddyTask": {
+								"predicates": {
+									"buddyPair_czechStudent_person": {
+										"buddyPair": {
+											"czechStudent": {
+												"personId": "personId"
+											}
+										}
+									}
+								},
+								"operations": {
+									"read": {
+										"createdAt": "buddyPair_czechStudent_person",
+										"description": "buddyPair_czechStudent_person",
+										"buddyPair": "buddyPair_czechStudent_person",
+										"done": "buddyPair_czechStudent_person",
+										"confirmed": "buddyPair_czechStudent_person"
+									},
+									"update": {
+										"createdAt": "buddyPair_czechStudent_person",
+										"description": "buddyPair_czechStudent_person",
+										"buddyPair": "buddyPair_czechStudent_person",
+										"done": "buddyPair_czechStudent_person",
+										"confirmed": "buddyPair_czechStudent_person"
+									}
+								}
+							},
+							"Event": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"name": true,
+										"description": true,
+										"startDate": true,
+										"endDate": true,
+										"refundPolicy": true,
+										"mandatoryESNcard": true,
+										"dietaryRestrictions": true,
+										"allergies": true,
+										"capacity": true,
+										"fee": true,
+										"registrations": true,
+										"registeredCount": true,
+										"place": true,
+										"whatToBring": true,
+										"whatsappLink": true,
+										"registrationStartDate": true,
+										"registrationEndDate": true,
+										"waitingList": true,
+										"section": true,
+										"meetingPoint": true,
+										"status": true,
+										"contactPerson": true,
+										"semester": true,
+										"private": true,
+										"allowRegistrationWithoutPayment": true,
+										"picture": true
+									}
+								}
+							},
+							"EventRegistration": {
+								"predicates": {
+									"person_personId_personId": {
+										"person": {
+											"personId": "personId"
+										}
+									}
+								},
+								"operations": {
+									"read": {
+										"createdAt": "person_personId_personId",
+										"paid": "person_personId_personId",
+										"note": "person_personId_personId",
+										"event": "person_personId_personId",
+										"isWaitingList": "person_personId_personId",
+										"person": "person_personId_personId",
+										"allergies": "person_personId_personId",
+										"dietaryRestrictions": "person_personId_personId"
+									},
+									"create": {
+										"createdAt": "person_personId_personId",
+										"paid": "person_personId_personId",
+										"note": "person_personId_personId",
+										"event": "person_personId_personId",
+										"isWaitingList": "person_personId_personId",
+										"person": "person_personId_personId",
+										"allergies": "person_personId_personId",
+										"dietaryRestrictions": "person_personId_personId"
+									}
+								}
+							},
+							"Faculty": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"users": true,
+										"name": true
+									}
+								}
+							},
+							"Hobby": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"applicationsFr": true,
+										"name": true
+									}
+								}
+							},
+							"Language": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"name": true,
+										"person": true,
+										"applicationsCz": true
+									}
+								}
+							},
+							"Limitations": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"applicationFr": true
+									}
+								}
+							},
+							"N2nHour": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"from": true,
+										"to": true,
+										"party": true,
+										"person": true
+									}
+								}
+							},
+							"N2nParty": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"name": true,
+										"date": true,
+										"open": true,
+										"semester": true,
+										"club": true,
+										"hours": true
+									}
+								}
+							},
+							"Note": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"buddyPair": true,
+										"content": true,
+										"author": true
+									},
+									"create": {
+										"createdAt": true,
+										"buddyPair": true,
+										"content": true,
+										"author": true
+									}
+								}
+							},
+							"Person": {
+								"predicates": {
+									"personId_personId": {
+										"personId": "personId"
+									}
+								},
+								"operations": {
+									"read": {
+										"createdAt": "personId_personId",
+										"personId": "personId_personId",
+										"tenantPerson": "personId_personId",
+										"gender": "personId_personId",
+										"registrationDate": "personId_personId",
+										"lastLoginDate": "personId_personId",
+										"phoneNumber": "personId_personId",
+										"university": "personId_personId",
+										"emailForInfo": "personId_personId",
+										"esnCardId": "personId_personId",
+										"surname": "personId_personId",
+										"xname": "personId_personId",
+										"active": "personId_personId",
+										"faculty": "personId_personId",
+										"studyProgram": "personId_personId",
+										"countryOfUniversity": "personId_personId",
+										"firstName": "personId_personId",
+										"organizedEvents": "personId_personId",
+										"czechBuddyPair": "personId_personId",
+										"internationalBuddyPair": "personId_personId",
+										"applications": "personId_personId",
+										"applicationsFr": "personId_personId",
+										"n2nHours": "personId_personId",
+										"profilePicture": "personId_personId",
+										"coordinatingBuddyPairs": "personId_personId",
+										"registrations": "personId_personId",
+										"notes": "personId_personId",
+										"languages": "personId_personId"
+									},
+									"update": {
+										"createdAt": "personId_personId",
+										"personId": "personId_personId",
+										"tenantPerson": "personId_personId",
+										"gender": "personId_personId",
+										"registrationDate": "personId_personId",
+										"lastLoginDate": "personId_personId",
+										"phoneNumber": "personId_personId",
+										"university": "personId_personId",
+										"emailForInfo": "personId_personId",
+										"esnCardId": "personId_personId",
+										"surname": "personId_personId",
+										"xname": "personId_personId",
+										"active": "personId_personId",
+										"faculty": "personId_personId",
+										"studyProgram": "personId_personId",
+										"countryOfUniversity": "personId_personId",
+										"firstName": "personId_personId",
+										"organizedEvents": "personId_personId",
+										"czechBuddyPair": "personId_personId",
+										"internationalBuddyPair": "personId_personId",
+										"applications": "personId_personId",
+										"applicationsFr": "personId_personId",
+										"n2nHours": "personId_personId",
+										"profilePicture": "personId_personId",
+										"coordinatingBuddyPairs": "personId_personId",
+										"registrations": "personId_personId",
+										"notes": "personId_personId",
+										"languages": "personId_personId"
+									}
+								}
+							},
+							"Section": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"events": true,
+										"name": true,
+										"description": true
+									}
+								}
+							},
+							"Semester": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"events": true,
+										"name": true,
+										"startDate": true,
+										"endDate": true,
+										"applications": true,
+										"applicationsFr": true,
+										"buddyPairs": true,
+										"parties": true,
+										"isCurrent": true,
+										"openForCzechBuddyRegistrationsDate": true,
+										"closeBuddyRegistrations": true
+									}
+								}
+							},
+							"Sport": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"name": true,
+										"applicationsFr": true
+									}
+								}
+							},
+							"StudyProgram": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"users": true,
+										"name": true
+									}
+								}
+							}
+						},
+						"variables": {
+							"personId": {
+								"type": "predefined",
+								"value": "personID"
+							}
+						}
+					},
+					"esnMember": {
+						"stages": "*",
+						"entities": {
+							"ApplicationCz": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"points": true,
+										"person": true,
+										"semester": true,
+										"motivation": true,
+										"howManyBuddies": true,
+										"status": true,
+										"result": true,
+										"preferredCountry": true,
+										"preferredLanguages": true,
+										"preferredSex": true
+									},
+									"create": {
+										"createdAt": true,
+										"points": true,
+										"person": true,
+										"semester": true,
+										"motivation": true,
+										"howManyBuddies": true,
+										"status": true,
+										"result": true,
+										"preferredCountry": true,
+										"preferredLanguages": true,
+										"preferredSex": true
+									},
+									"update": {
+										"createdAt": true,
+										"points": true,
+										"person": true,
+										"semester": true,
+										"motivation": true,
+										"howManyBuddies": true,
+										"status": true,
+										"result": true,
+										"preferredCountry": true,
+										"preferredLanguages": true,
+										"preferredSex": true
+									},
+									"delete": true
+								}
+							},
+							"ApplicationFr": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"semester": true,
+										"person": true,
+										"status": true,
+										"hobbies": true,
+										"rating": true,
+										"preferredBuddySex": true,
+										"emailForInformation": true,
+										"sport": true,
+										"limitations": true
+									},
+									"create": {
+										"createdAt": true,
+										"semester": true,
+										"person": true,
+										"status": true,
+										"hobbies": true,
+										"rating": true,
+										"preferredBuddySex": true,
+										"emailForInformation": true,
+										"sport": true,
+										"limitations": true
+									},
+									"update": {
+										"createdAt": true,
+										"semester": true,
+										"person": true,
+										"status": true,
+										"hobbies": true,
+										"rating": true,
+										"preferredBuddySex": true,
+										"emailForInformation": true,
+										"sport": true,
+										"limitations": true
+									},
+									"delete": true
+								}
+							},
+							"BuddyPair": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"coordinator": true,
+										"czechStudent": true,
+										"internationalStudent": true,
+										"semester": true,
+										"notes": true,
+										"tasks": true,
+										"tenPoints": true,
+										"picture": true,
+										"arrival": true
+									},
+									"create": {
+										"createdAt": true,
+										"coordinator": true,
+										"czechStudent": true,
+										"internationalStudent": true,
+										"semester": true,
+										"notes": true,
+										"tasks": true,
+										"tenPoints": true,
+										"picture": true,
+										"arrival": true
+									},
+									"update": {
+										"createdAt": true,
+										"coordinator": true,
+										"czechStudent": true,
+										"internationalStudent": true,
+										"semester": true,
+										"notes": true,
+										"tasks": true,
+										"tenPoints": true,
+										"picture": true,
+										"arrival": true
+									},
+									"delete": true
+								}
+							},
+							"BuddyTask": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"description": true,
+										"buddyPair": true,
+										"done": true,
+										"confirmed": true
+									},
+									"create": {
+										"createdAt": true,
+										"description": true,
+										"buddyPair": true,
+										"done": true,
+										"confirmed": true
+									}
+								}
+							},
+							"Country": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"users": true,
+										"universities": true,
+										"name": true,
+										"preferredApplicationsCz": true
+									},
+									"create": {
+										"createdAt": true,
+										"users": true,
+										"universities": true,
+										"name": true,
+										"preferredApplicationsCz": true
+									},
+									"update": {
+										"createdAt": true,
+										"users": true,
+										"universities": true,
+										"name": true,
+										"preferredApplicationsCz": true
+									},
+									"delete": true
+								}
+							},
+							"Event": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"name": true,
+										"description": true,
+										"startDate": true,
+										"endDate": true,
+										"refundPolicy": true,
+										"mandatoryESNcard": true,
+										"dietaryRestrictions": true,
+										"allergies": true,
+										"capacity": true,
+										"fee": true,
+										"registrations": true,
+										"registeredCount": true,
+										"place": true,
+										"whatToBring": true,
+										"whatsappLink": true,
+										"registrationStartDate": true,
+										"registrationEndDate": true,
+										"waitingList": true,
+										"section": true,
+										"meetingPoint": true,
+										"status": true,
+										"contactPerson": true,
+										"semester": true,
+										"private": true,
+										"allowRegistrationWithoutPayment": true,
+										"picture": true
+									},
+									"create": {
+										"createdAt": true,
+										"name": true,
+										"description": true,
+										"startDate": true,
+										"endDate": true,
+										"refundPolicy": true,
+										"mandatoryESNcard": true,
+										"dietaryRestrictions": true,
+										"allergies": true,
+										"capacity": true,
+										"fee": true,
+										"registrations": true,
+										"registeredCount": true,
+										"place": true,
+										"whatToBring": true,
+										"whatsappLink": true,
+										"registrationStartDate": true,
+										"registrationEndDate": true,
+										"waitingList": true,
+										"section": true,
+										"meetingPoint": true,
+										"status": true,
+										"contactPerson": true,
+										"semester": true,
+										"private": true,
+										"allowRegistrationWithoutPayment": true,
+										"picture": true
+									},
+									"update": {
+										"createdAt": true,
+										"name": true,
+										"description": true,
+										"startDate": true,
+										"endDate": true,
+										"refundPolicy": true,
+										"mandatoryESNcard": true,
+										"dietaryRestrictions": true,
+										"allergies": true,
+										"capacity": true,
+										"fee": true,
+										"registrations": true,
+										"registeredCount": true,
+										"place": true,
+										"whatToBring": true,
+										"whatsappLink": true,
+										"registrationStartDate": true,
+										"registrationEndDate": true,
+										"waitingList": true,
+										"section": true,
+										"meetingPoint": true,
+										"status": true,
+										"contactPerson": true,
+										"semester": true,
+										"private": true,
+										"allowRegistrationWithoutPayment": true,
+										"picture": true
+									},
+									"delete": true
+								}
+							},
+							"EventRegistration": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"paid": true,
+										"note": true,
+										"event": true,
+										"isWaitingList": true,
+										"person": true,
+										"allergies": true,
+										"dietaryRestrictions": true
+									},
+									"create": {
+										"createdAt": true,
+										"paid": true,
+										"note": true,
+										"event": true,
+										"isWaitingList": true,
+										"person": true,
+										"allergies": true,
+										"dietaryRestrictions": true
+									},
+									"update": {
+										"createdAt": true,
+										"paid": true,
+										"note": true,
+										"event": true,
+										"isWaitingList": true,
+										"person": true,
+										"allergies": true,
+										"dietaryRestrictions": true
+									},
+									"delete": true
+								}
+							},
+							"Faculty": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"users": true,
+										"name": true
+									},
+									"create": {
+										"createdAt": true,
+										"users": true,
+										"name": true
+									},
+									"update": {
+										"createdAt": true,
+										"users": true,
+										"name": true
+									},
+									"delete": true
+								}
+							},
+							"Hobby": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"applicationsFr": true,
+										"name": true
+									},
+									"create": {
+										"createdAt": true,
+										"applicationsFr": true,
+										"name": true
+									},
+									"update": {
+										"createdAt": true,
+										"applicationsFr": true,
+										"name": true
+									},
+									"delete": true
+								}
+							},
+							"Language": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"name": true,
+										"person": true,
+										"applicationsCz": true
+									},
+									"create": {
+										"createdAt": true,
+										"name": true,
+										"person": true,
+										"applicationsCz": true
+									},
+									"update": {
+										"createdAt": true,
+										"name": true,
+										"person": true,
+										"applicationsCz": true
+									}
+								}
+							},
+							"Limitations": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"applicationFr": true
+									},
+									"create": {
+										"createdAt": true,
+										"applicationFr": true
+									},
+									"update": {
+										"createdAt": true,
+										"applicationFr": true
+									}
+								}
+							},
+							"N2nHour": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"from": true,
+										"to": true,
+										"party": true,
+										"person": true
+									},
+									"create": {
+										"createdAt": true,
+										"from": true,
+										"to": true,
+										"party": true,
+										"person": true
+									},
+									"update": {
+										"createdAt": true,
+										"from": true,
+										"to": true,
+										"party": true,
+										"person": true
+									},
+									"delete": true
+								}
+							},
+							"N2nParty": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"name": true,
+										"date": true,
+										"open": true,
+										"semester": true,
+										"club": true,
+										"hours": true
+									},
+									"create": {
+										"createdAt": true,
+										"name": true,
+										"date": true,
+										"open": true,
+										"semester": true,
+										"club": true,
+										"hours": true
+									},
+									"update": {
+										"createdAt": true,
+										"name": true,
+										"date": true,
+										"open": true,
+										"semester": true,
+										"club": true,
+										"hours": true
+									},
+									"delete": true
+								}
+							},
+							"Note": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"buddyPair": true,
+										"content": true,
+										"author": true
+									},
+									"create": {
+										"createdAt": true,
+										"buddyPair": true,
+										"content": true,
+										"author": true
+									},
+									"update": {
+										"createdAt": true,
+										"buddyPair": true,
+										"content": true,
+										"author": true
+									},
+									"delete": true
+								}
+							},
+							"Person": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"personId": true,
+										"tenantPerson": true,
+										"gender": true,
+										"registrationDate": true,
+										"lastLoginDate": true,
+										"phoneNumber": true,
+										"university": true,
+										"emailForInfo": true,
+										"esnCardId": true,
+										"surname": true,
+										"xname": true,
+										"active": true,
+										"faculty": true,
+										"studyProgram": true,
+										"countryOfUniversity": true,
+										"firstName": true,
+										"organizedEvents": true,
+										"czechBuddyPair": true,
+										"internationalBuddyPair": true,
+										"applications": true,
+										"applicationsFr": true,
+										"n2nHours": true,
+										"profilePicture": true,
+										"coordinatingBuddyPairs": true,
+										"registrations": true,
+										"notes": true,
+										"languages": true
+									},
+									"create": {
+										"createdAt": true,
+										"personId": true,
+										"tenantPerson": true,
+										"gender": true,
+										"registrationDate": true,
+										"lastLoginDate": true,
+										"phoneNumber": true,
+										"university": true,
+										"emailForInfo": true,
+										"esnCardId": true,
+										"surname": true,
+										"xname": true,
+										"active": true,
+										"faculty": true,
+										"studyProgram": true,
+										"countryOfUniversity": true,
+										"firstName": true,
+										"organizedEvents": true,
+										"czechBuddyPair": true,
+										"internationalBuddyPair": true,
+										"applications": true,
+										"applicationsFr": true,
+										"n2nHours": true,
+										"profilePicture": true,
+										"coordinatingBuddyPairs": true,
+										"registrations": true,
+										"notes": true,
+										"languages": true
+									},
+									"update": {
+										"createdAt": true,
+										"personId": true,
+										"tenantPerson": true,
+										"gender": true,
+										"registrationDate": true,
+										"lastLoginDate": true,
+										"phoneNumber": true,
+										"university": true,
+										"emailForInfo": true,
+										"esnCardId": true,
+										"surname": true,
+										"xname": true,
+										"active": true,
+										"faculty": true,
+										"studyProgram": true,
+										"countryOfUniversity": true,
+										"firstName": true,
+										"organizedEvents": true,
+										"czechBuddyPair": true,
+										"internationalBuddyPair": true,
+										"applications": true,
+										"applicationsFr": true,
+										"n2nHours": true,
+										"profilePicture": true,
+										"coordinatingBuddyPairs": true,
+										"registrations": true,
+										"notes": true,
+										"languages": true
+									},
+									"delete": true
+								}
+							},
+							"Section": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"events": true,
+										"name": true,
+										"description": true
+									},
+									"create": {
+										"createdAt": true,
+										"events": true,
+										"name": true,
+										"description": true
+									},
+									"update": {
+										"createdAt": true,
+										"events": true,
+										"name": true,
+										"description": true
+									}
+								}
+							},
+							"Semester": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"events": true,
+										"name": true,
+										"startDate": true,
+										"endDate": true,
+										"applications": true,
+										"applicationsFr": true,
+										"buddyPairs": true,
+										"parties": true,
+										"isCurrent": true,
+										"openForCzechBuddyRegistrationsDate": true,
+										"closeBuddyRegistrations": true
+									}
+								}
+							},
+							"Sport": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"name": true,
+										"applicationsFr": true
+									},
+									"create": {
+										"createdAt": true,
+										"name": true,
+										"applicationsFr": true
+									},
+									"update": {
+										"createdAt": true,
+										"name": true,
+										"applicationsFr": true
+									}
+								}
+							},
+							"StudyProgram": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"users": true,
+										"name": true
+									},
+									"create": {
+										"createdAt": true,
+										"users": true,
+										"name": true
+									},
+									"update": {
+										"createdAt": true,
+										"users": true,
+										"name": true
+									}
+								}
+							},
+							"University": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"users": true,
+										"name": true,
+										"country": true
+									},
+									"create": {
+										"createdAt": true,
+										"users": true,
+										"name": true,
+										"country": true
+									},
+									"update": {
+										"createdAt": true,
+										"users": true,
+										"name": true,
+										"country": true
+									}
+								}
+							}
+						},
+						"variables": {
+							"personId": {
+								"type": "predefined",
+								"value": "personID"
+							}
+						}
+					},
+					"internationalStudent": {
+						"stages": "*",
+						"entities": {
+							"ApplicationFr": {
+								"predicates": {
+									"person_personId_personId": {
+										"person": {
+											"personId": "personId"
+										}
+									}
+								},
+								"operations": {
+									"read": {
+										"createdAt": "person_personId_personId",
+										"semester": "person_personId_personId",
+										"person": "person_personId_personId",
+										"status": "person_personId_personId",
+										"hobbies": "person_personId_personId",
+										"rating": "person_personId_personId",
+										"preferredBuddySex": "person_personId_personId",
+										"emailForInformation": "person_personId_personId",
+										"sport": "person_personId_personId",
+										"limitations": "person_personId_personId"
+									},
+									"create": {
+										"createdAt": "person_personId_personId",
+										"semester": "person_personId_personId",
+										"person": "person_personId_personId",
+										"status": "person_personId_personId",
+										"hobbies": "person_personId_personId",
+										"rating": "person_personId_personId",
+										"preferredBuddySex": "person_personId_personId",
+										"emailForInformation": "person_personId_personId",
+										"sport": "person_personId_personId",
+										"limitations": "person_personId_personId"
+									},
+									"update": {
+										"createdAt": "person_personId_personId",
+										"semester": "person_personId_personId",
+										"person": "person_personId_personId",
+										"status": "person_personId_personId",
+										"hobbies": "person_personId_personId",
+										"rating": "person_personId_personId",
+										"preferredBuddySex": "person_personId_personId",
+										"emailForInformation": "person_personId_personId",
+										"sport": "person_personId_personId",
+										"limitations": "person_personId_personId"
+									}
+								}
+							},
+							"BuddyPair": {
+								"predicates": {
+									"internationalStudent_personId": {
+										"internationalStudent": {
+											"personId": "personId"
+										}
+									}
+								},
+								"operations": {
+									"read": {
+										"createdAt": "internationalStudent_personId",
+										"coordinator": "internationalStudent_personId",
+										"czechStudent": "internationalStudent_personId",
+										"internationalStudent": "internationalStudent_personId",
+										"semester": "internationalStudent_personId",
+										"notes": "internationalStudent_personId",
+										"tasks": "internationalStudent_personId",
+										"tenPoints": "internationalStudent_personId",
+										"picture": "internationalStudent_personId",
+										"arrival": "internationalStudent_personId"
+									}
+								}
+							},
+							"BuddyTask": {
+								"predicates": {
+									"buddyPair_internationalStuden": {
+										"buddyPair": {
+											"internationalStudent": {
+												"personId": "personId"
+											}
+										}
+									}
+								},
+								"operations": {
+									"read": {
+										"createdAt": "buddyPair_internationalStuden",
+										"description": "buddyPair_internationalStuden",
+										"buddyPair": "buddyPair_internationalStuden",
+										"done": "buddyPair_internationalStuden",
+										"confirmed": "buddyPair_internationalStuden"
+									},
+									"update": {
+										"createdAt": "buddyPair_internationalStuden",
+										"description": "buddyPair_internationalStuden",
+										"buddyPair": "buddyPair_internationalStuden",
+										"done": "buddyPair_internationalStuden",
+										"confirmed": "buddyPair_internationalStuden"
+									}
+								}
+							},
+							"Country": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"users": true,
+										"universities": true,
+										"name": true,
+										"preferredApplicationsCz": true
+									},
+									"create": {
+										"createdAt": true,
+										"users": true,
+										"universities": true,
+										"name": true,
+										"preferredApplicationsCz": true
+									}
+								}
+							},
+							"Event": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"name": true,
+										"description": true,
+										"startDate": true,
+										"endDate": true,
+										"refundPolicy": true,
+										"mandatoryESNcard": true,
+										"dietaryRestrictions": true,
+										"allergies": true,
+										"capacity": true,
+										"fee": true,
+										"registrations": true,
+										"registeredCount": true,
+										"place": true,
+										"whatToBring": true,
+										"whatsappLink": true,
+										"registrationStartDate": true,
+										"registrationEndDate": true,
+										"waitingList": true,
+										"section": true,
+										"meetingPoint": true,
+										"status": true,
+										"contactPerson": true,
+										"semester": true,
+										"private": true,
+										"allowRegistrationWithoutPayment": true,
+										"picture": true
+									}
+								}
+							},
+							"EventRegistration": {
+								"predicates": {
+									"person_personId_personId": {
+										"person": {
+											"personId": "personId"
+										}
+									}
+								},
+								"operations": {
+									"read": {
+										"createdAt": "person_personId_personId",
+										"paid": "person_personId_personId",
+										"note": "person_personId_personId",
+										"event": "person_personId_personId",
+										"isWaitingList": "person_personId_personId",
+										"person": "person_personId_personId",
+										"allergies": "person_personId_personId",
+										"dietaryRestrictions": "person_personId_personId"
+									},
+									"create": {
+										"createdAt": "person_personId_personId",
+										"paid": "person_personId_personId",
+										"note": "person_personId_personId",
+										"event": "person_personId_personId",
+										"isWaitingList": "person_personId_personId",
+										"person": "person_personId_personId",
+										"allergies": "person_personId_personId",
+										"dietaryRestrictions": "person_personId_personId"
+									}
+								}
+							},
+							"Faculty": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"users": true,
+										"name": true
+									}
+								}
+							},
+							"Hobby": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"applicationsFr": true,
+										"name": true
+									}
+								}
+							},
+							"Language": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"name": true,
+										"person": true,
+										"applicationsCz": true
+									}
+								}
+							},
+							"Limitations": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"applicationFr": true
+									}
+								}
+							},
+							"N2nHour": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"from": true,
+										"to": true,
+										"party": true,
+										"person": true
+									}
+								}
+							},
+							"N2nParty": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"name": true,
+										"date": true,
+										"open": true,
+										"semester": true,
+										"club": true,
+										"hours": true
+									}
+								}
+							},
+							"Note": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"buddyPair": true,
+										"content": true,
+										"author": true
+									},
+									"create": {
+										"createdAt": true,
+										"buddyPair": true,
+										"content": true,
+										"author": true
+									}
+								}
+							},
+							"Person": {
+								"predicates": {
+									"personId_personId": {
+										"personId": "personId"
+									}
+								},
+								"operations": {
+									"read": {
+										"createdAt": "personId_personId",
+										"personId": "personId_personId",
+										"tenantPerson": "personId_personId",
+										"gender": "personId_personId",
+										"registrationDate": "personId_personId",
+										"lastLoginDate": "personId_personId",
+										"phoneNumber": "personId_personId",
+										"university": "personId_personId",
+										"emailForInfo": "personId_personId",
+										"esnCardId": "personId_personId",
+										"surname": "personId_personId",
+										"xname": "personId_personId",
+										"active": "personId_personId",
+										"faculty": "personId_personId",
+										"studyProgram": "personId_personId",
+										"countryOfUniversity": "personId_personId",
+										"firstName": "personId_personId",
+										"organizedEvents": "personId_personId",
+										"czechBuddyPair": "personId_personId",
+										"internationalBuddyPair": "personId_personId",
+										"applications": "personId_personId",
+										"applicationsFr": "personId_personId",
+										"n2nHours": "personId_personId",
+										"profilePicture": "personId_personId",
+										"coordinatingBuddyPairs": "personId_personId",
+										"registrations": "personId_personId",
+										"notes": "personId_personId",
+										"languages": "personId_personId"
+									},
+									"update": {
+										"createdAt": "personId_personId",
+										"personId": "personId_personId",
+										"tenantPerson": "personId_personId",
+										"gender": "personId_personId",
+										"registrationDate": "personId_personId",
+										"lastLoginDate": "personId_personId",
+										"phoneNumber": "personId_personId",
+										"university": "personId_personId",
+										"emailForInfo": "personId_personId",
+										"esnCardId": "personId_personId",
+										"surname": "personId_personId",
+										"xname": "personId_personId",
+										"active": "personId_personId",
+										"faculty": "personId_personId",
+										"studyProgram": "personId_personId",
+										"countryOfUniversity": "personId_personId",
+										"firstName": "personId_personId",
+										"organizedEvents": "personId_personId",
+										"czechBuddyPair": "personId_personId",
+										"internationalBuddyPair": "personId_personId",
+										"applications": "personId_personId",
+										"applicationsFr": "personId_personId",
+										"n2nHours": "personId_personId",
+										"profilePicture": "personId_personId",
+										"coordinatingBuddyPairs": "personId_personId",
+										"registrations": "personId_personId",
+										"notes": "personId_personId",
+										"languages": "personId_personId"
+									}
+								}
+							},
+							"Section": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"events": true,
+										"name": true,
+										"description": true
+									}
+								}
+							},
+							"Semester": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"events": true,
+										"name": true,
+										"startDate": true,
+										"endDate": true,
+										"applications": true,
+										"applicationsFr": true,
+										"buddyPairs": true,
+										"parties": true,
+										"isCurrent": true,
+										"openForCzechBuddyRegistrationsDate": true,
+										"closeBuddyRegistrations": true
+									}
+								}
+							},
+							"Sport": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"name": true,
+										"applicationsFr": true
+									}
+								}
+							},
+							"StudyProgram": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"users": true,
+										"name": true
+									}
+								}
+							},
+							"University": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"users": true,
+										"name": true,
+										"country": true
+									},
+									"create": {
+										"createdAt": true,
+										"users": true,
+										"name": true,
+										"country": true
+									}
+								}
+							}
+						},
+						"variables": {
+							"personId": {
+								"type": "predefined",
+								"value": "personID"
+							}
+						}
+					},
+					"ozsRole": {
+						"stages": "*",
+						"entities": {
+							"BuddyTask": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"description": true,
+										"buddyPair": true,
+										"done": true,
+										"confirmed": true
+									},
+									"create": {
+										"createdAt": true,
+										"description": true,
+										"buddyPair": true,
+										"done": true,
+										"confirmed": true
+									}
+								}
+							},
+							"Country": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"users": true,
+										"universities": true,
+										"name": true,
+										"preferredApplicationsCz": true
+									}
+								}
+							},
+							"Event": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"name": true,
+										"description": true,
+										"startDate": true,
+										"endDate": true,
+										"refundPolicy": true,
+										"mandatoryESNcard": true,
+										"dietaryRestrictions": true,
+										"allergies": true,
+										"capacity": true,
+										"fee": true,
+										"registrations": true,
+										"registeredCount": true,
+										"place": true,
+										"whatToBring": true,
+										"whatsappLink": true,
+										"registrationStartDate": true,
+										"registrationEndDate": true,
+										"waitingList": true,
+										"section": true,
+										"meetingPoint": true,
+										"status": true,
+										"contactPerson": true,
+										"semester": true,
+										"private": true,
+										"allowRegistrationWithoutPayment": true,
+										"picture": true
+									}
+								}
+							},
+							"Hobby": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"applicationsFr": true,
+										"name": true
+									}
+								}
+							},
+							"Language": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"name": true,
+										"person": true,
+										"applicationsCz": true
+									}
+								}
+							},
+							"N2nParty": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"name": true,
+										"date": true,
+										"open": true,
+										"semester": true,
+										"club": true,
+										"hours": true
+									}
+								}
+							},
+							"Note": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"buddyPair": true,
+										"content": true,
+										"author": true
+									}
+								}
+							},
+							"Person": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"personId": true,
+										"tenantPerson": true,
+										"gender": true,
+										"registrationDate": true,
+										"lastLoginDate": true,
+										"phoneNumber": true,
+										"university": true,
+										"emailForInfo": true,
+										"esnCardId": true,
+										"surname": true,
+										"xname": true,
+										"active": true,
+										"faculty": true,
+										"studyProgram": true,
+										"countryOfUniversity": true,
+										"firstName": true,
+										"organizedEvents": true,
+										"czechBuddyPair": true,
+										"internationalBuddyPair": true,
+										"applications": true,
+										"applicationsFr": true,
+										"n2nHours": true,
+										"profilePicture": true,
+										"coordinatingBuddyPairs": true,
+										"registrations": true,
+										"notes": true,
+										"languages": true
+									}
+								}
+							},
+							"Semester": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"events": true,
+										"name": true,
+										"startDate": true,
+										"endDate": true,
+										"applications": true,
+										"applicationsFr": true,
+										"buddyPairs": true,
+										"parties": true,
+										"isCurrent": true,
+										"openForCzechBuddyRegistrationsDate": true,
+										"closeBuddyRegistrations": true
+									}
+								}
+							},
+							"Sport": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"name": true,
+										"applicationsFr": true
+									}
+								}
+							},
+							"StudyProgram": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"users": true,
+										"name": true
+									},
+									"create": {
+										"createdAt": true,
+										"users": true,
+										"name": true
+									},
+									"update": {
+										"createdAt": true,
+										"users": true,
+										"name": true
+									}
+								}
+							},
+							"University": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"users": true,
+										"name": true,
+										"country": true
+									}
+								}
+							}
+						},
+						"variables": {
+							"personId": {
+								"type": "predefined",
+								"value": "personID"
+							}
+						}
+					}
+				}
+			}
+		}
+	]
+}

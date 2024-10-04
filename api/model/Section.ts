@@ -1,9 +1,15 @@
 import { c } from '@contember/schema-definition'
-import { esnMemberRole } from './acl'
+import { coordinatorRole, czechBuddyRole, esnMemberRole, internationalStudentRole } from './acl'
 import { Event } from './Event'
 
 
-@c.Allow(esnMemberRole, {
+@c.Allow([esnMemberRole, coordinatorRole], {
+	read: true,
+	create: true,
+	update: true,
+})
+
+@c.Allow([internationalStudentRole, czechBuddyRole], {
 	read: true,
 })
 export class Section {

@@ -1,5 +1,5 @@
 import { c } from '@contember/schema-definition'
-import { internationalStudentRole, esnMemberRole, publicRole, czechBuddyRole } from './acl'
+import { internationalStudentRole, esnMemberRole, ozsRole, czechBuddyRole, coordinatorRole } from './acl'
 import { eventStatus } from './enum'
 import { Section } from './Section'
 import { Semester } from './Semester'
@@ -9,20 +9,20 @@ import { Content } from './Content'
 import { EventRegistration } from './EventRegistration'
 
 
-@c.Allow(internationalStudentRole, {
-	read: ['createdAt', 'name', 'description', 'startDate', 'endDate', 'capacity', 'fee', 'place', 'whatToBring', 'whatsappLink', 'registrationStartDate', 'registrationEndDate', 'waitingList', 'section', 'meetingPoint', 'status', 'contactPerson', 'semester', 'private'],
+@c.Allow([internationalStudentRole, ozsRole, czechBuddyRole], {
+	read: true,
 })
 @c.Allow(esnMemberRole, {
-	read: ['createdAt', 'name', 'description', 'startDate', 'endDate', 'capacity', 'fee', 'place', 'whatToBring', 'whatsappLink', 'registrationStartDate', 'registrationEndDate', 'waitingList', 'section', 'meetingPoint', 'status', 'contactPerson', 'semester', 'private'],
-	create: ['createdAt', 'name', 'description', 'startDate', 'endDate', 'capacity', 'fee', 'place', 'whatToBring', 'whatsappLink', 'registrationStartDate', 'registrationEndDate', 'waitingList', 'section', 'meetingPoint', 'status', 'contactPerson', 'semester', 'private'],
-	update: ['createdAt', 'name', 'description', 'startDate', 'endDate', 'capacity', 'fee', 'place', 'whatToBring', 'whatsappLink', 'registrationStartDate', 'registrationEndDate', 'waitingList', 'section', 'meetingPoint', 'status', 'contactPerson', 'semester', 'private'],
+	read: true,
+	create: true,
+	update: true ,
 	delete: true,
 })
-@c.Allow(publicRole, {
-	read: ['createdAt', 'name', 'description', 'startDate', 'endDate', 'capacity', 'fee', 'place', 'whatToBring', 'whatsappLink', 'registrationStartDate', 'registrationEndDate', 'waitingList', 'section', 'meetingPoint', 'status', 'contactPerson', 'semester', 'private'],
-})
-@c.Allow(czechBuddyRole, {
-	read: ['createdAt', 'name', 'description', 'startDate', 'endDate', 'capacity', 'fee', 'place', 'whatToBring', 'whatsappLink', 'registrationStartDate', 'registrationEndDate', 'waitingList', 'section', 'meetingPoint', 'status', 'contactPerson', 'semester', 'private'],
+@c.Allow(coordinatorRole, {
+	read: true,
+	create: true,
+	update: true ,
+	delete: true,
 })
 export class Event {
 	createdAt = c.dateTimeColumn().notNull().default('now')

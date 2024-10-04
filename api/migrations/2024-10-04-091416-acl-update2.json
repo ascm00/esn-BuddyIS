@@ -1,0 +1,847 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/Allergy",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"createdAt": true,
+								"name": true,
+								"registrations": true
+							},
+							"create": {
+								"createdAt": true,
+								"name": true,
+								"registrations": true
+							},
+							"update": {
+								"createdAt": true,
+								"name": true,
+								"registrations": true
+							},
+							"delete": true
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/Club",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"createdAt": true,
+								"parties": true,
+								"name": true
+							},
+							"create": {
+								"createdAt": true,
+								"parties": true,
+								"name": true
+							},
+							"update": {
+								"createdAt": true,
+								"parties": true,
+								"name": true
+							},
+							"delete": true
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/DietaryRestrictions",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"createdAt": true,
+								"name": true,
+								"registrations": true
+							},
+							"create": {
+								"createdAt": true,
+								"name": true,
+								"registrations": true
+							},
+							"update": {
+								"createdAt": true,
+								"name": true,
+								"registrations": true
+							},
+							"delete": true
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/Image",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"createdAt": true,
+								"url": true,
+								"width": true,
+								"height": true,
+								"alt": true,
+								"meta": true,
+								"userProfilePicture": true,
+								"eventPicture": true,
+								"buddyPair": true
+							},
+							"create": {
+								"createdAt": true,
+								"url": true,
+								"width": true,
+								"height": true,
+								"alt": true,
+								"meta": true,
+								"userProfilePicture": true,
+								"eventPicture": true,
+								"buddyPair": true
+							},
+							"update": {
+								"createdAt": true,
+								"url": true,
+								"width": true,
+								"height": true,
+								"alt": true,
+								"meta": true,
+								"userProfilePicture": true,
+								"eventPicture": true,
+								"buddyPair": true
+							},
+							"delete": true
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/ImageMetadata",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"createdAt": true,
+								"image": true,
+								"fileName": true,
+								"lastModified": true,
+								"fileSize": true,
+								"fileType": true
+							},
+							"create": {
+								"createdAt": true,
+								"image": true,
+								"fileName": true,
+								"lastModified": true,
+								"fileSize": true,
+								"fileType": true
+							},
+							"update": {
+								"createdAt": true,
+								"image": true,
+								"fileName": true,
+								"lastModified": true,
+								"fileSize": true,
+								"fileType": true
+							},
+							"delete": true
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/TenantPerson",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"createdAt": true,
+								"identityId": true,
+								"email": true,
+								"name": true,
+								"otpUri": true,
+								"otpActivatedAt": true,
+								"idpOnly": true,
+								"roles": true,
+								"person": true
+							},
+							"create": {
+								"createdAt": true,
+								"identityId": true,
+								"email": true,
+								"name": true,
+								"otpUri": true,
+								"otpActivatedAt": true,
+								"idpOnly": true,
+								"roles": true,
+								"person": true
+							},
+							"update": {
+								"createdAt": true,
+								"identityId": true,
+								"email": true,
+								"name": true,
+								"otpUri": true,
+								"otpActivatedAt": true,
+								"idpOnly": true,
+								"roles": true,
+								"person": true
+							},
+							"delete": true
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/Allergy",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"createdAt": true,
+								"name": true,
+								"registrations": true
+							}
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/Club",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"createdAt": true,
+								"parties": true,
+								"name": true
+							}
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/DietaryRestrictions",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"createdAt": true,
+								"name": true,
+								"registrations": true
+							}
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/Image",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"createdAt": true,
+								"url": true,
+								"width": true,
+								"height": true,
+								"alt": true,
+								"meta": true,
+								"userProfilePicture": true,
+								"eventPicture": true,
+								"buddyPair": true
+							},
+							"create": {
+								"createdAt": true,
+								"url": true,
+								"width": true,
+								"height": true,
+								"alt": true,
+								"meta": true,
+								"userProfilePicture": true,
+								"eventPicture": true,
+								"buddyPair": true
+							},
+							"update": {
+								"createdAt": true,
+								"url": true,
+								"width": true,
+								"height": true,
+								"alt": true,
+								"meta": true,
+								"userProfilePicture": true,
+								"eventPicture": true,
+								"buddyPair": true
+							},
+							"delete": true
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/ImageMetadata",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"createdAt": true,
+								"image": true,
+								"fileName": true,
+								"lastModified": true,
+								"fileSize": true,
+								"fileType": true
+							},
+							"create": {
+								"createdAt": true,
+								"image": true,
+								"fileName": true,
+								"lastModified": true,
+								"fileSize": true,
+								"fileType": true
+							},
+							"update": {
+								"createdAt": true,
+								"image": true,
+								"fileName": true,
+								"lastModified": true,
+								"fileSize": true,
+								"fileType": true
+							},
+							"delete": true
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/TenantPerson",
+					"value": {
+						"predicates": {
+							"identityId_personId": {
+								"identityId": "personId"
+							}
+						},
+						"operations": {
+							"read": {
+								"createdAt": "identityId_personId",
+								"identityId": "identityId_personId",
+								"email": "identityId_personId",
+								"name": "identityId_personId",
+								"otpUri": "identityId_personId",
+								"otpActivatedAt": "identityId_personId",
+								"idpOnly": "identityId_personId",
+								"roles": "identityId_personId",
+								"person": "identityId_personId"
+							},
+							"update": {
+								"createdAt": "identityId_personId",
+								"identityId": "identityId_personId",
+								"email": "identityId_personId",
+								"name": "identityId_personId",
+								"otpUri": "identityId_personId",
+								"otpActivatedAt": "identityId_personId",
+								"idpOnly": "identityId_personId",
+								"roles": "identityId_personId",
+								"person": "identityId_personId"
+							}
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Allergy",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"createdAt": true,
+								"name": true,
+								"registrations": true
+							},
+							"create": {
+								"createdAt": true,
+								"name": true,
+								"registrations": true
+							},
+							"update": {
+								"createdAt": true,
+								"name": true,
+								"registrations": true
+							},
+							"delete": true
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Club",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"createdAt": true,
+								"parties": true,
+								"name": true
+							},
+							"create": {
+								"createdAt": true,
+								"parties": true,
+								"name": true
+							},
+							"update": {
+								"createdAt": true,
+								"parties": true,
+								"name": true
+							},
+							"delete": true
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/DietaryRestrictions",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"createdAt": true,
+								"name": true,
+								"registrations": true
+							},
+							"create": {
+								"createdAt": true,
+								"name": true,
+								"registrations": true
+							},
+							"update": {
+								"createdAt": true,
+								"name": true,
+								"registrations": true
+							},
+							"delete": true
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Image",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"createdAt": true,
+								"url": true,
+								"width": true,
+								"height": true,
+								"alt": true,
+								"meta": true,
+								"userProfilePicture": true,
+								"eventPicture": true,
+								"buddyPair": true
+							},
+							"create": {
+								"createdAt": true,
+								"url": true,
+								"width": true,
+								"height": true,
+								"alt": true,
+								"meta": true,
+								"userProfilePicture": true,
+								"eventPicture": true,
+								"buddyPair": true
+							},
+							"update": {
+								"createdAt": true,
+								"url": true,
+								"width": true,
+								"height": true,
+								"alt": true,
+								"meta": true,
+								"userProfilePicture": true,
+								"eventPicture": true,
+								"buddyPair": true
+							},
+							"delete": true
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/ImageMetadata",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"createdAt": true,
+								"image": true,
+								"fileName": true,
+								"lastModified": true,
+								"fileSize": true,
+								"fileType": true
+							},
+							"create": {
+								"createdAt": true,
+								"image": true,
+								"fileName": true,
+								"lastModified": true,
+								"fileSize": true,
+								"fileType": true
+							},
+							"update": {
+								"createdAt": true,
+								"image": true,
+								"fileName": true,
+								"lastModified": true,
+								"fileSize": true,
+								"fileType": true
+							},
+							"delete": true
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/TenantPerson",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"createdAt": true,
+								"identityId": true,
+								"email": true,
+								"name": true,
+								"otpUri": true,
+								"otpActivatedAt": true,
+								"idpOnly": true,
+								"roles": true,
+								"person": true
+							},
+							"create": {
+								"createdAt": true,
+								"identityId": true,
+								"email": true,
+								"name": true,
+								"otpUri": true,
+								"otpActivatedAt": true,
+								"idpOnly": true,
+								"roles": true,
+								"person": true
+							},
+							"update": {
+								"createdAt": true,
+								"identityId": true,
+								"email": true,
+								"name": true,
+								"otpUri": true,
+								"otpActivatedAt": true,
+								"idpOnly": true,
+								"roles": true,
+								"person": true
+							},
+							"delete": true
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/Allergy",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"createdAt": true,
+								"name": true,
+								"registrations": true
+							}
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/Club",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"createdAt": true,
+								"parties": true,
+								"name": true
+							}
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/DietaryRestrictions",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"createdAt": true,
+								"name": true,
+								"registrations": true
+							}
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/Image",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"createdAt": true,
+								"url": true,
+								"width": true,
+								"height": true,
+								"alt": true,
+								"meta": true,
+								"userProfilePicture": true,
+								"eventPicture": true,
+								"buddyPair": true
+							},
+							"create": {
+								"createdAt": true,
+								"url": true,
+								"width": true,
+								"height": true,
+								"alt": true,
+								"meta": true,
+								"userProfilePicture": true,
+								"eventPicture": true,
+								"buddyPair": true
+							},
+							"update": {
+								"createdAt": true,
+								"url": true,
+								"width": true,
+								"height": true,
+								"alt": true,
+								"meta": true,
+								"userProfilePicture": true,
+								"eventPicture": true,
+								"buddyPair": true
+							},
+							"delete": true
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/ImageMetadata",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"createdAt": true,
+								"image": true,
+								"fileName": true,
+								"lastModified": true,
+								"fileSize": true,
+								"fileType": true
+							},
+							"create": {
+								"createdAt": true,
+								"image": true,
+								"fileName": true,
+								"lastModified": true,
+								"fileSize": true,
+								"fileType": true
+							},
+							"update": {
+								"createdAt": true,
+								"image": true,
+								"fileName": true,
+								"lastModified": true,
+								"fileSize": true,
+								"fileType": true
+							},
+							"delete": true
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/TenantPerson",
+					"value": {
+						"predicates": {
+							"identityId_personId": {
+								"identityId": "personId"
+							}
+						},
+						"operations": {
+							"read": {
+								"createdAt": "identityId_personId",
+								"identityId": "identityId_personId",
+								"email": "identityId_personId",
+								"name": "identityId_personId",
+								"otpUri": "identityId_personId",
+								"otpActivatedAt": "identityId_personId",
+								"idpOnly": "identityId_personId",
+								"roles": "identityId_personId",
+								"person": "identityId_personId"
+							},
+							"update": {
+								"createdAt": "identityId_personId",
+								"identityId": "identityId_personId",
+								"email": "identityId_personId",
+								"name": "identityId_personId",
+								"otpUri": "identityId_personId",
+								"otpActivatedAt": "identityId_personId",
+								"idpOnly": "identityId_personId",
+								"roles": "identityId_personId",
+								"person": "identityId_personId"
+							}
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/Allergy",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"createdAt": true,
+								"name": true,
+								"registrations": true
+							}
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/Club",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"createdAt": true,
+								"parties": true,
+								"name": true
+							}
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/DietaryRestrictions",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"createdAt": true,
+								"name": true,
+								"registrations": true
+							}
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/Image",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"createdAt": true,
+								"url": true,
+								"width": true,
+								"height": true,
+								"alt": true,
+								"meta": true,
+								"userProfilePicture": true,
+								"eventPicture": true,
+								"buddyPair": true
+							},
+							"create": {
+								"createdAt": true,
+								"url": true,
+								"width": true,
+								"height": true,
+								"alt": true,
+								"meta": true,
+								"userProfilePicture": true,
+								"eventPicture": true,
+								"buddyPair": true
+							},
+							"update": {
+								"createdAt": true,
+								"url": true,
+								"width": true,
+								"height": true,
+								"alt": true,
+								"meta": true,
+								"userProfilePicture": true,
+								"eventPicture": true,
+								"buddyPair": true
+							},
+							"delete": true
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/ImageMetadata",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"createdAt": true,
+								"image": true,
+								"fileName": true,
+								"lastModified": true,
+								"fileSize": true,
+								"fileType": true
+							},
+							"create": {
+								"createdAt": true,
+								"image": true,
+								"fileName": true,
+								"lastModified": true,
+								"fileSize": true,
+								"fileType": true
+							},
+							"update": {
+								"createdAt": true,
+								"image": true,
+								"fileName": true,
+								"lastModified": true,
+								"fileSize": true,
+								"fileType": true
+							},
+							"delete": true
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/TenantPerson",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"createdAt": true,
+								"identityId": true,
+								"email": true,
+								"name": true,
+								"otpUri": true,
+								"otpActivatedAt": true,
+								"idpOnly": true,
+								"roles": true,
+								"person": true
+							}
+						}
+					}
+				}
+			]
+		}
+	]
+}

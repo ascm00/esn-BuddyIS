@@ -1,26 +1,27 @@
 import { c } from '@contember/schema-definition'
-import { internationalStudentRole, esnMemberRole, czechBuddyRole, coordinatorRole } from './acl'
+import { internationalStudentRole, esnMemberRole, czechBuddyRole, coordinatorRole, internationalStudentId, czechBuddyId, ozsRole } from './acl'
 import { BuddyPair } from './BuddyPair'
 
 
 @c.Allow(internationalStudentRole, {
+	when: {buddyPair: {internationalStudent: {personId: internationalStudentId}}},
 	read: true,
 	update: true,
 })
-@c.Allow(esnMemberRole, {
+@c.Allow(czechBuddyRole, {
+	when: {buddyPair: {czechStudent: {personId: czechBuddyId}}},
+	read: true,
+	update: true,
+})
+@c.Allow([esnMemberRole, ozsRole], {
+	read: true,
+	create: true,
+})
+@c.Allow(coordinatorRole, {
 	read: true,
 	create: true,
 	update: true,
 	delete: true,
-})
-@c.Allow(czechBuddyRole, {
-	read: true,
-	create: true,
-	update: true,
-})
-@c.Allow(coordinatorRole, {
-	read: true,
-	update: true,
 })
 export class BuddyTask {
 	createdAt = c.dateTimeColumn().notNull().default('now')

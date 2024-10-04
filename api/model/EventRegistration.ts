@@ -3,7 +3,30 @@ import { Event } from './Event'
 import { Allergy } from './Allergy'
 import { DietaryRestrictions } from './DietaryRestrictions'
 import { Person } from './Person'
+import { coordinatorRole, czechBuddyId, czechBuddyRole, esnMemberRole, internationalStudentId, internationalStudentRole } from './acl'
 
+@c.Allow(esnMemberRole, {
+	read: true,
+	create: true,
+	update: true ,
+	delete: true,
+})
+@c.Allow(coordinatorRole, {
+	read: true,
+	create: true,
+	update: true ,
+	delete: true,
+})
+@c.Allow(internationalStudentRole, {
+	when: {person: {personId: internationalStudentId}},
+	read: true,
+	create: true,
+})
+@c.Allow(czechBuddyRole, {
+	when: {person: {personId: czechBuddyId}},
+	read: true,
+	create: true,
+})
 export class EventRegistration {
 	createdAt = c.dateTimeColumn().notNull().default('now')
     paid = c.boolColumn()

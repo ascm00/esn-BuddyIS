@@ -1,21 +1,17 @@
 import { c } from '@contember/schema-definition'
-import { internationalStudentRole, esnMemberRole, publicRole } from './acl'
+import { internationalStudentRole, esnMemberRole, coordinatorRole, czechBuddyRole, ozsRole } from './acl'
 import { ApplicationFr } from './ApplicationFr'
 import { Person } from './Person'
 import { ApplicationCz } from './ApplicationCz'
 
 
-@c.Allow(internationalStudentRole, {
-	read: true,
-	create: true,
-})
-@c.Allow(esnMemberRole, {
+@c.Allow([esnMemberRole, coordinatorRole], {
 	read: true,
 	create: true,
 	update: true,
-	delete: true,
 })
-@c.Allow(publicRole, {
+
+@c.Allow([internationalStudentRole, czechBuddyRole, ozsRole], {
 	read: true,
 })
 export class Language {

@@ -1,5 +1,6 @@
 import { c } from '@contember/schema-definition'
 import { Person } from './Person'
+import { coordinatorRole, czechBuddyId, czechBuddyRole, esnMemberRole, internationalStudentId, internationalStudentRole, ozsRole } from './acl'
 
 @c.View(`
 	SELECT
@@ -16,6 +17,23 @@ import { Person } from './Person'
 	WHERE tenant_person.id IS NOT NULL
 	GROUP BY tenant_person.id, content_person.id
 `)
+@c.Allow([esnMemberRole, coordinatorRole], {
+	read: true,
+	create: true,
+	update: true,
+	delete: true,
+})
+@c.Allow([internationalStudentRole], {
+	when: {identityId: internationalStudentId},
+	read: true,
+	update: true,
+})
+@c.Allow([czechBuddyRole], {
+	when: {identityId: czechBuddyId},
+	read: true,
+	update: true,
+})
+@c.Allow(ozsRole, {read: true,})
 export class TenantPerson {
 	createdAt = c.dateTimeColumn().notNull().default('now')
 	identityId = c.uuidColumn().notNull()
