@@ -1,5 +1,5 @@
 import { c } from '@contember/schema-definition'
-import { internationalStudentRole, esnMemberRole, coordinatorRole, internationalStudentId } from './acl'
+import { internationalStudentRole, esnMemberRole, coordinatorRole, internationalStudentId, ozsRole } from './acl'
 import { applicationFrStatus, rating, preferredSex, applicationStatus } from './enum'
 import { Semester } from './Semester'
 import { Language } from './Language'
@@ -27,6 +27,7 @@ import { Person } from './Person'
 	create: true,
 	update: true,
 })
+@c.Allow(ozsRole, {read: true})
 export class ApplicationFr {
 	createdAt = c.dateTimeColumn().notNull().default('now')
 	semester = c.manyHasOne(Semester, 'applicationsFr').setNullOnDelete()

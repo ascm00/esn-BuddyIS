@@ -1,5 +1,5 @@
 import { c } from '@contember/schema-definition'
-import { internationalStudentRole, esnMemberRole, ozsRole, czechBuddyRole } from './acl'
+import { internationalStudentRole, esnMemberRole, ozsRole, czechBuddyRole, coordinatorRole } from './acl'
 import { University } from './University'
 import { ApplicationCz } from './ApplicationCz'
 import { Person } from './Person'
@@ -9,7 +9,7 @@ import { Person } from './Person'
 	read: true,
 	create: true,
 })
-@c.Allow(esnMemberRole, {
+@c.Allow([esnMemberRole, coordinatorRole], {
 	read: true,
 	create: true,
 	update: true,

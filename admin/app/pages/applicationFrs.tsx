@@ -23,11 +23,11 @@ export default () => {
 									All semesters applications
 								</Button>
 							</Link>
-							<Link to="applicationFrCreate">
+							{/* <Link to="applicationFrCreate">
 								<Button>
 									Create application FR
 								</Button>
-							</Link>
+							</Link> */}
 						</Slots.Actions>
 						<DataGrid entities="ApplicationFr[semester.isCurrent=true]">
 							<DataGridToolbar>

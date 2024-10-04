@@ -4,7 +4,7 @@ import { FormLayout, InputField, MultiSelectField, RadioEnumField, SelectField, 
 import { formatDateTime } from '@app/lib/formatting'
 import { Slots } from '@app/lib/layout'
 import { formatDate } from '@app/lib/utils/formatting'
-import { Component, EntityListSubTree, EntitySubTree, Field, HasMany, HasOne, identityEnvironmentExtension, If, useEntity, useEntityListSubTree, useEntitySubTree } from '@contember/interface'
+import { Component, EntityListSubTree, EntitySubTree, Field, HasMany, HasOne, HasRole, identityEnvironmentExtension, If, useEntity, useEntityListSubTree, useEntitySubTree } from '@contember/interface'
 
 export const ApplicationCzCreateForm = Component(
 	() => {

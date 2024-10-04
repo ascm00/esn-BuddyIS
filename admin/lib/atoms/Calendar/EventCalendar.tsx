@@ -80,7 +80,7 @@ export const EventsCalendar = Component<{ entities?: string }>(
                         </div>
                     </Slots.Actions>
                 </HasRole>
-                <HasRole role="esnMember">
+                <HasRole role={roles => roles.has('esnMember') || roles.has('coordinator')}>
                 <Slots.Actions>
                         <div className="flex gap-2 items-center">
                             <CreateEntityModalButton

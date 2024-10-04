@@ -1,9 +1,10 @@
 import { useEffect } from 'react'
-import { useProjectUserRoles, useRedirect } from '@contember/interface'
+import { HasRole, useProjectUserRoles, useRedirect } from '@contember/interface'
 import { Binding } from '@app/lib/binding'
 import { InitialUserForm } from '@app/components/initialUserForm'
 import InitialUserPage from './initialUserPage'
 import EventFeed from './eventFeed'
+import BuddyPairs from './buddyPairs'
 
 export default () => {
 	const redirect = useRedirect()
@@ -14,7 +15,12 @@ export default () => {
 
 		return (
 			<>
-				<EventFeed />
+				<HasRole role={'ozsRole'}>
+					<BuddyPairs />
+				</HasRole>
+				<HasRole role={roles => roles.has('admin') || roles.has('coordinator') || roles.has('internationalStudent') || roles.has('czechBuddy') || roles.has('esnMember')}>
+					<EventFeed />
+				</HasRole>
 			</>
 		)
 }

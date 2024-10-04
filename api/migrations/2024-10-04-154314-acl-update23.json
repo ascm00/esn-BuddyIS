@@ -1,0 +1,31 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/BuddyPair",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"createdAt": true,
+								"coordinator": true,
+								"czechStudent": true,
+								"internationalStudent": true,
+								"semester": true,
+								"notes": true,
+								"tasks": true,
+								"tenPoints": true,
+								"picture": true,
+								"arrival": true
+							}
+						}
+					}
+				}
+			]
+		}
+	]
+}

@@ -99,7 +99,7 @@ const MoreBuddiesView = Component(
 		} else if(numberOfBuddies === 1){
 			return (
 				<Binding>
-					<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('czechBuddy')}>
+					<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('czechBuddy') || roles.has('coordinator')}>
 					<EntitySubTree entity={`BuddyPair(id = '${buddyPairID}')`} isCreating={false}>
 						<div className="flex gap-8 flex-col md:flex-row">
 							<div className="w-full gap-8 flex flex-col">

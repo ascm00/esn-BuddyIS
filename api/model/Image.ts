@@ -11,7 +11,6 @@ import { coordinatorRole, czechBuddyRole, esnMemberRole, internationalStudentRol
 	update: true,
 	delete: true,
 })
-
 export class Image {
 	createdAt = c.dateTimeColumn().notNull().default('now')
 	url = c.stringColumn().notNull()

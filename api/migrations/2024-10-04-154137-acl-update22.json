@@ -1,0 +1,53 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/ApplicationCz",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"createdAt": true,
+								"points": true,
+								"person": true,
+								"semester": true,
+								"motivation": true,
+								"howManyBuddies": true,
+								"status": true,
+								"result": true,
+								"preferredCountry": true,
+								"preferredLanguages": true,
+								"preferredSex": true
+							}
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/ApplicationFr",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"createdAt": true,
+								"semester": true,
+								"person": true,
+								"status": true,
+								"hobbies": true,
+								"rating": true,
+								"preferredBuddySex": true,
+								"emailForInformation": true,
+								"sport": true,
+								"limitations": true
+							}
+						}
+					}
+				}
+			]
+		}
+	]
+}

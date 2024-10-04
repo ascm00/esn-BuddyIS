@@ -1,5 +1,5 @@
 import { c } from '@contember/schema-definition'
-import { internationalStudentRole, esnMemberRole, coordinatorRole, czechBuddyRole, internationalStudentId, czechBuddyId } from './acl'
+import { internationalStudentRole, esnMemberRole, coordinatorRole, czechBuddyRole, internationalStudentId, czechBuddyId, ozsRole } from './acl'
 import { BuddyTask } from './BuddyTask'
 import { Person } from './Person'
 import { Note } from './Note'
@@ -31,6 +31,7 @@ import { Semester } from './Semester'
 	update: true,
 	delete: true,
 })
+@c.Allow(ozsRole, {read: true, update: true, create: true})
 export class BuddyPair {
 	createdAt = c.dateTimeColumn().notNull().default('now')
 	coordinator = c.manyHasOne(Person, 'coordinatingBuddyPairs').setNullOnDelete()

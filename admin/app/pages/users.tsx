@@ -18,11 +18,13 @@ export default () => {
 					</Slots.Back>
 					<>
 						<Slots.Actions>
-						<Link to="personCreate">
-								<Button>
-									Create user
-								</Button>
-							</Link>
+							<HasRole role={roles => roles.has('admin') || roles.has('coordinator')}>
+								<Link to="personCreate">
+										<Button>
+											Create user
+										</Button>
+								</Link>
+							</HasRole>
 						</Slots.Actions>
 						<DataGrid entities="Person">
 							<DataGridToolbar>
@@ -43,7 +45,7 @@ export default () => {
 													Detail
 												</Button>
 											</Link>
-											<HasRole role={roles => roles.has('admin') || roles.has('esnMemberRole')}>
+											<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('coordinator')}>
 												<Link to="userEdit(id: $entity.id)">
 													<Button>
 														Edit

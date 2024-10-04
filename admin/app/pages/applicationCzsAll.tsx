@@ -17,13 +17,13 @@ export default () => {
 						<BackButton />
 					</Slots.Back>
 					<>
-						<Slots.Actions>
+						{/* <Slots.Actions>
 							<Link to="applicationCzCreate">
 								<Button>
 									Create application cz
 								</Button>
 							</Link>
-						</Slots.Actions>
+						</Slots.Actions> */}
 						<DataGrid entities="ApplicationCz">
 							<DataGridToolbar>
 								<DataGridQueryFilter />

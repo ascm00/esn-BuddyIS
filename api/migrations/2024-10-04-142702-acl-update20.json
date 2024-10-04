@@ -1,0 +1,260 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/Content",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"createdAt": true,
+								"data": true,
+								"references": true
+							},
+							"create": {
+								"createdAt": true,
+								"data": true,
+								"references": true
+							},
+							"update": {
+								"createdAt": true,
+								"data": true,
+								"references": true
+							},
+							"delete": true
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/ContentReference",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"createdAt": true,
+								"type": true,
+								"content": true
+							},
+							"create": {
+								"createdAt": true,
+								"type": true,
+								"content": true
+							},
+							"update": {
+								"createdAt": true,
+								"type": true,
+								"content": true
+							},
+							"delete": true
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/Content",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"createdAt": true,
+								"data": true,
+								"references": true
+							},
+							"create": {
+								"createdAt": true,
+								"data": true,
+								"references": true
+							},
+							"update": {
+								"createdAt": true,
+								"data": true,
+								"references": true
+							},
+							"delete": true
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/ContentReference",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"createdAt": true,
+								"type": true,
+								"content": true
+							},
+							"create": {
+								"createdAt": true,
+								"type": true,
+								"content": true
+							},
+							"update": {
+								"createdAt": true,
+								"type": true,
+								"content": true
+							},
+							"delete": true
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Content",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"createdAt": true,
+								"data": true,
+								"references": true
+							},
+							"create": {
+								"createdAt": true,
+								"data": true,
+								"references": true
+							},
+							"update": {
+								"createdAt": true,
+								"data": true,
+								"references": true
+							},
+							"delete": true
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/ContentReference",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"createdAt": true,
+								"type": true,
+								"content": true
+							},
+							"create": {
+								"createdAt": true,
+								"type": true,
+								"content": true
+							},
+							"update": {
+								"createdAt": true,
+								"type": true,
+								"content": true
+							},
+							"delete": true
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/Content",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"createdAt": true,
+								"data": true,
+								"references": true
+							},
+							"create": {
+								"createdAt": true,
+								"data": true,
+								"references": true
+							},
+							"update": {
+								"createdAt": true,
+								"data": true,
+								"references": true
+							},
+							"delete": true
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/ContentReference",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"createdAt": true,
+								"type": true,
+								"content": true
+							},
+							"create": {
+								"createdAt": true,
+								"type": true,
+								"content": true
+							},
+							"update": {
+								"createdAt": true,
+								"type": true,
+								"content": true
+							},
+							"delete": true
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/Content",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"createdAt": true,
+								"data": true,
+								"references": true
+							},
+							"create": {
+								"createdAt": true,
+								"data": true,
+								"references": true
+							},
+							"update": {
+								"createdAt": true,
+								"data": true,
+								"references": true
+							},
+							"delete": true
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/ContentReference",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"createdAt": true,
+								"type": true,
+								"content": true
+							},
+							"create": {
+								"createdAt": true,
+								"type": true,
+								"content": true
+							},
+							"update": {
+								"createdAt": true,
+								"type": true,
+								"content": true
+							},
+							"delete": true
+						}
+					}
+				}
+			]
+		}
+	]
+}

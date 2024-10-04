@@ -1,0 +1,57 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/Country",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"createdAt": true,
+								"users": true,
+								"universities": true,
+								"name": true,
+								"preferredApplicationsCz": true
+							},
+							"create": {
+								"createdAt": true,
+								"users": true,
+								"universities": true,
+								"name": true,
+								"preferredApplicationsCz": true
+							},
+							"update": {
+								"createdAt": true,
+								"users": true,
+								"universities": true,
+								"name": true,
+								"preferredApplicationsCz": true
+							},
+							"delete": true
+						}
+					}
+				},
+				{
+					"op": "remove",
+					"path": "/roles/coordinator/entities/Person/operations/delete"
+				},
+				{
+					"op": "remove",
+					"path": "/roles/coordinator/entities/TenantPerson/operations/delete"
+				},
+				{
+					"op": "remove",
+					"path": "/roles/esnMember/entities/Person/operations/delete"
+				},
+				{
+					"op": "remove",
+					"path": "/roles/esnMember/entities/TenantPerson/operations/delete"
+				}
+			]
+		}
+	]
+}

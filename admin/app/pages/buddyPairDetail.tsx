@@ -26,11 +26,13 @@ export default () => {
 					</Slots.Back>
 					<EntitySubTree entity="BuddyPair(id=$id)" isCreating={false}>
 						<Slots.Actions>
-							<Link to="buddyPairEdit(id: $entity.id)">
-								<Button>
-									Edit buddy pair
-								</Button>
-							</Link>
+							<HasRole role={roles => roles.has('admin') || roles.has('coordinator')}>
+								<Link to="buddyPairEdit(id: $entity.id)">
+									<Button>
+										Edit buddy pair
+									</Button>
+								</Link>
+							</HasRole>
 						</Slots.Actions>
 						<div className="flex gap-8 flex-col md:flex-row">
 							<div className="w-full gap-8 flex flex-col">
@@ -208,11 +210,13 @@ export default () => {
 											<DataGridTable>
 												<DataGridColumn>
 													<div className="flex gap-4">
-														<Link to="buddyTaskEdit(id: $entity.id)">
-															<a>
-																Edit
-															</a>
-														</Link>
+														<HasRole role={roles => roles.has('admin') || roles.has('coordinator')}>
+															<Link to="buddyTaskEdit(id: $entity.id)">
+																<a>
+																	Edit
+																</a>
+															</Link>
+														</HasRole>
 													</div>
 												</DataGridColumn>
 												<DataGridTextColumn field="description" header="Description" />

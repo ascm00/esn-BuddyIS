@@ -21,7 +21,7 @@ export const Navigation = Component(
 	// }
 
 	return (<Menu>
-	<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('czechBuddy')}>
+	<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('czechBuddy') || roles.has('coordinator')}>
 		<div className='-mt-4 pb-2'>
 			<MenuButton label="Apply for buddy" to="applicationCzCreate" />
 		</div>
@@ -31,24 +31,27 @@ export const Navigation = Component(
 			<MenuButton label="Apply for buddy" to="applicationFrCreate" />
 		</div>
 	</HasRole>
-	<MenuItem label="Home" icon={<Home className='text-blue-500' />} to="eventFeed" />
-	<MenuItem label="Events calendar" icon={<Calendar className='text-blue-500' />} to="calendar" />
-	<MenuItem label="All events" icon={<Calendar className='text-blue-500' />} to="events" />
-	<HasRole role={roles => roles.has('admin') || roles.has('esnMemberRole') || roles.has('czechBuddy') || roles.has('coordinator')}>
+	<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('czechBuddy') || roles.has('coordinator') || roles.has('internationalStudent')}>
+		<MenuItem label="Home" icon={<Home className='text-blue-500' />} to="eventFeed" />
+		<MenuItem label="Events calendar" icon={<Calendar className='text-blue-500' />} to="calendar" />
+		<MenuItem label="All events" icon={<Calendar className='text-blue-500' />} to="events" />
+	</HasRole>
+	<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('czechBuddy') || roles.has('coordinator')}>
 		<MenuItem label="Buddy" icon={<CheckSquare className='text-blue-500' />} to="myBuddyCz" />
 	</HasRole>
 	<HasRole role="internationalStudent">
 		<MenuItem label="My buddy" icon={<CheckSquare className='text-blue-500' />} to="myBuddy" />
 	</HasRole>
-	<MenuItem label="N2N" icon={<PartyPopper className='text-blue-500' />} to="n2nParties" />
-	<MenuItem label="Profile" icon={<User className='text-blue-500' />} to="" />
+	<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('czechBuddy') || roles.has('coordinator') || roles.has('internationalStudent')}>
+		<MenuItem label="N2N" icon={<PartyPopper className='text-blue-500' />} to="n2nParties" />
+		<MenuItem label="Profile" icon={<User className='text-blue-500' />} to="" />
+	</HasRole>
 	<HasRole role={roles => roles.has('admin') || roles.has('esnMember')}>
 		<MenuItem label="Users" icon={<Users className='text-blue-500' />} to="users" />
 	</HasRole>
 
 	<HasRole role={roles => roles.has('admin') || roles.has('coordinator')}>
 		<MenuDivider />
-		
 		<MenuItem label="CZ Applications" icon={<Handshake className='text-blue-500' />} to="applicationCzs" />
 		<MenuItem label="FR Applications" icon={<Handshake className='text-blue-500' />} to="applicationFrs" />
 		<Collapsible>
@@ -69,6 +72,12 @@ export const Navigation = Component(
 				</CollapsibleContent>
 			</Collapsible>
 		</HasRole>
+	</HasRole>
+
+	<HasRole role="ozsRole">
+		<MenuItem label="CZ Applications" icon={<Handshake className='text-blue-500' />} to="applicationCzs" />
+		<MenuItem label="FR Applications" icon={<Handshake className='text-blue-500' />} to="applicationFrs" />
+		<MenuItem label="All buddy pairs" icon={<Users className='text-blue-500' />} to="buddyPairs" />
 	</HasRole>
 	
 	<HasRole role={roles => roles.has('admin')}>

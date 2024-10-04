@@ -1,5 +1,5 @@
 import { c } from '@contember/schema-definition'
-import { esnMemberRole, czechBuddyRole, coordinatorRole, czechBuddyId } from './acl'
+import { esnMemberRole, czechBuddyRole, coordinatorRole, czechBuddyId, ozsRole } from './acl'
 import { applicationStatus, applicationCzResult, preferredSex } from './enum'
 import { Semester } from './Semester'
 import { Country } from './Country'
@@ -25,6 +25,7 @@ import { Language } from './Language'
 	create: true,
 	update: true,
 })
+@c.Allow(ozsRole, {read: true})
 export class ApplicationCz {
 	createdAt = c.dateTimeColumn().notNull().default('now')
 	points = c.intColumn()

@@ -16,6 +16,8 @@ import { Person } from './Person'
 })
 @c.Allow(ozsRole, {
 	read: true,
+	create: true,
+	update: true,
 })
 export class Note {
 	createdAt = c.dateTimeColumn().notNull().default('now')

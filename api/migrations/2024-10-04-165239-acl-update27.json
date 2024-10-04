@@ -1,0 +1,20 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/Note/operations/update",
+					"value": {
+						"createdAt": true,
+						"buddyPair": true,
+						"content": true,
+						"author": true
+					}
+				}
+			]
+		}
+	]
+}

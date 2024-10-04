@@ -19,16 +19,18 @@ export default () => {
 					</Slots.Back>
 					<>
 						<Slots.Actions>
-						<Link to="applicationCzsAll">
+						<HasRole role={roles => roles.has('admin') || roles.has('coordinator') || roles.has('ozsRole')}>
+							<Link to="applicationCzsAll">
 								<Button>
 									All semesters applications
 								</Button>
 							</Link>
-							<Link to="applicationCzCreate">
+							{/* <Link to="applicationCzAdminCreate">
 								<Button>
 									Create application CZ
 								</Button>
-							</Link>
+							</Link> */}
+						</HasRole>
 						</Slots.Actions>
 						<DataGrid entities="ApplicationCz[semester.isCurrent=true]">
 							<DataGridToolbar>

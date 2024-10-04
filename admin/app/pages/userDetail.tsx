@@ -18,7 +18,7 @@ export default () => {
 						<BackButton />
 					</Slots.Back>
 					<EntitySubTree entity="Person(id=$id)" isCreating={false}>
-						<HasRole role={roles => roles.has('admin') || roles.has('esnMemberRole')}>
+						<HasRole role={roles => roles.has('admin') || roles.has('esnMemberRole') || roles.has('coordinator')}>
 							<Slots.Actions>
 								<Link to="personEdit(id: $entity.id)">
 									<Button>
@@ -96,18 +96,10 @@ export default () => {
 									</TableRow>
 									<TableRow>
 										<TableCell>
-											Country
+											Home university country
 										</TableCell>
 										<TableCell className="font-semibold">
-											<Field field="country.name" />
-										</TableCell>
-									</TableRow>
-									<TableRow>
-										<TableCell>
-											Home country
-										</TableCell>
-										<TableCell className="font-semibold">
-											<Field field="country.name" />
+											<Field field="countryOfUniversity.name" />
 										</TableCell>
 									</TableRow>
 									<TableRow>
