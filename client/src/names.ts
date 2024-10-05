@@ -426,6 +426,15 @@ export const ContemberClientNames: SchemaNames = {
         "picture": {
           "type": "one",
           "entity": "Image"
+        },
+        "isForInternationalStudents": {
+          "type": "column"
+        },
+        "isForCzechBuddies": {
+          "type": "column"
+        },
+        "isForESNmembers": {
+          "type": "column"
         }
       },
       "scalars": [
@@ -451,7 +460,10 @@ export const ContemberClientNames: SchemaNames = {
         "meetingPoint",
         "status",
         "private",
-        "allowRegistrationWithoutPayment"
+        "allowRegistrationWithoutPayment",
+        "isForInternationalStudents",
+        "isForCzechBuddies",
+        "isForESNmembers"
       ]
     },
     "EventRegistration": {

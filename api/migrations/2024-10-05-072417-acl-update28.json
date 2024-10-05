@@ -1,0 +1,60 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/coordinator/s3",
+					"value": {
+						"**": {
+							"upload": true,
+							"read": true
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/s3",
+					"value": {
+						"**": {
+							"upload": true,
+							"read": true
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/s3",
+					"value": {
+						"**": {
+							"upload": true,
+							"read": true
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/s3",
+					"value": {
+						"**": {
+							"upload": true,
+							"read": true
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/s3",
+					"value": {
+						"**": {
+							"upload": true,
+							"read": true
+						}
+					}
+				}
+			]
+		}
+	]
+}

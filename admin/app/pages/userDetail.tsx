@@ -122,7 +122,7 @@ export default () => {
 							</Table>
 						</TableWrapper>
 					</EntitySubTree>
-					<HasRole role={roles => roles.has('admin') || roles.has('esnMemberRole')}>
+					<HasRole role={roles => roles.has('admin') || roles.has('esnMemberRole') || roles.has('coordinator')}>
 							<div className="flex flex-col gap-4">
 								<div className="flex justify-between">
 									<div className="text-xl font-bold">Event registrations</div>

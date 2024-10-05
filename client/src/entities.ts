@@ -260,6 +260,9 @@ export type Event <OverRelation extends string | never = never> = {
 		status: eventStatus | null
 		private: boolean | null
 		allowRegistrationWithoutPayment: boolean | null
+		isForInternationalStudents: boolean | null
+		isForCzechBuddies: boolean | null
+		isForESNmembers: boolean | null
 	}
 	hasOne: {
 		section: Section

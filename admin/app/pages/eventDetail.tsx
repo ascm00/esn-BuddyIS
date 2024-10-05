@@ -24,6 +24,8 @@ const RegistrationNow = Component( () => {
 	const registrationEndDateValueString = entity.getField('registrationEndDate').value?.toString()
 	const formattedRegistrationEndDate = registrationEndDateValueString && new Date(registrationEndDateValueString).toLocaleString()
 	const registrationEndDateValue = registrationEndDateValueString && new Date(registrationEndDateValueString)
+	const eventStartDateValue = entity.getField('startDate').value?.toString()
+	const eventStartDate = eventStartDateValue && new Date(eventStartDateValue)
 	
 	const registrationList = entity.getEntityList('registrations') ?? undefined
 
@@ -37,6 +39,7 @@ const RegistrationNow = Component( () => {
 	
 	// Checks if the registration is open
 	const registrationNow = (registrationStartDateValue && registrationEndDateValue) && ((registrationStartDateValue < new Date()) && (registrationEndDateValue > new Date()))
+	const eventAlreadyHappened = eventStartDate && (eventStartDate < new Date())
 
 	// checks if the event is full
 	const isNotFull = (typeof registeredCount === 'number' && typeof capacity === 'number') && (registeredCount < capacity)
@@ -54,7 +57,13 @@ const RegistrationNow = Component( () => {
 		return false
 	}
 
-	if (registered()) {
+	if (eventAlreadyHappened) {
+		return (
+			<div className='bg-blue-200 p-4 rounded-md'>
+				<div className='text-500'>This event has already happened.</div>
+			</div>
+		)
+	} else if (registered()) {
 		return (
 			<div className='bg-blue-200 p-4 rounded-md'>
 				<div className='text-500'>You are already registered for this event. If you want to cancel your registration, contact us via email.</div>
@@ -135,6 +144,7 @@ const RegistrationNow = Component( () => {
 				)
 			}
 		} else {
+
 			return (
 				<div className='bg-blue-200 p-4 rounded-md'>
 					<div className='text-500'>Registration for this event is not open now. It is open from {formattedRegistrationStartDate} to {formattedRegistrationEndDate}.</div>
@@ -147,6 +157,7 @@ const RegistrationNow = Component( () => {
 	<>
 	<Field field="registrationStartDate" />
 	<Field field="registrationEndDate" />
+	<Field field="startDate" />
 	<Field field="capacity" />
 	<Field field="registeredCount" />
 	<Field field="waitingList" />
@@ -232,7 +243,7 @@ export default () => {
 						<BackButton />
 					</Slots.Back>
 					<EntitySubTree entity="Event(id=$id)" isCreating={false}>
-						<HasRole role={roles => roles.has('admin') || roles.has('esnMemberRole') || roles.has('czechStudent') || roles.has('coordinator')}>
+						<HasRole role={roles => roles.has('admin') || roles.has('esnMemberRole') || roles.has('coordinator')}>
 							<Slots.Actions>
 								<Link to="eventEdit(id: $entity.id)">
 									<Button>
@@ -342,14 +353,6 @@ export default () => {
 												<Field field="capacity" />
 											</TableCell>
 										</TableRow>
-										{/* <TableRow>
-											<TableCell>
-												Status
-											</TableCell>
-											<TableCell className="font-semibold">
-												<Field field="status" />
-											</TableCell>
-										</TableRow> */}
 									</TableBody>
 								</Table>
 							</TableWrapper>
@@ -392,7 +395,7 @@ export default () => {
 								<Todo>Make the buttons functional. Comgate integration. Naformátovat text</Todo>
 							</div>
 						</div>
-						<HasRole role={roles => roles.has('admin') || roles.has('esnMemberRole')}>
+						<HasRole role={roles => roles.has('admin') || roles.has('esnMemberRole') || roles.has('coordinator')}>
 							<div className="flex flex-col gap-4">
 								<div className="flex justify-between">
 									<div className="text-xl font-bold">Registered users</div>

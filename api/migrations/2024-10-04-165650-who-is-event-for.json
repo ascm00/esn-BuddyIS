@@ -1,0 +1,184 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "createColumn",
+			"entityName": "Event",
+			"field": {
+				"name": "isForInternationalStudents",
+				"columnName": "is_for_international_students",
+				"columnType": "boolean",
+				"nullable": true,
+				"type": "Bool",
+				"default": false
+			},
+			"fillValue": false
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Event",
+			"field": {
+				"name": "isForCzechBuddies",
+				"columnName": "is_for_czech_buddies",
+				"columnType": "boolean",
+				"nullable": true,
+				"type": "Bool",
+				"default": false
+			},
+			"fillValue": false
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Event",
+			"field": {
+				"name": "isForESNmembers",
+				"columnName": "is_for_esnmembers",
+				"columnType": "boolean",
+				"nullable": true,
+				"type": "Bool",
+				"default": false
+			},
+			"fillValue": false
+		},
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/Event/operations/read/isForInternationalStudents",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/Event/operations/read/isForCzechBuddies",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/Event/operations/read/isForESNmembers",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/Event/operations/create/isForInternationalStudents",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/Event/operations/create/isForCzechBuddies",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/Event/operations/create/isForESNmembers",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/Event/operations/update/isForInternationalStudents",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/Event/operations/update/isForCzechBuddies",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/Event/operations/update/isForESNmembers",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/Event/operations/read/isForInternationalStudents",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/Event/operations/read/isForCzechBuddies",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/Event/operations/read/isForESNmembers",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Event/operations/read/isForInternationalStudents",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Event/operations/read/isForCzechBuddies",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Event/operations/read/isForESNmembers",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Event/operations/create/isForInternationalStudents",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Event/operations/create/isForCzechBuddies",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Event/operations/create/isForESNmembers",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Event/operations/update/isForInternationalStudents",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Event/operations/update/isForCzechBuddies",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Event/operations/update/isForESNmembers",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/Event/operations/read/isForInternationalStudents",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/Event/operations/read/isForCzechBuddies",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/Event/operations/read/isForESNmembers",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/Event/operations/read/isForInternationalStudents",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/Event/operations/read/isForCzechBuddies",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/Event/operations/read/isForESNmembers",
+					"value": true
+				}
+			]
+		}
+	]
+}

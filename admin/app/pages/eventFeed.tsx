@@ -16,20 +16,40 @@ import { ImageFieldView } from '@app/components/fieldViews/ImageFieldView'
 
 export default () => {
 
+	const now = new Date().toISOString()
+
 	return (
 		<>
             <Binding>
 				<div className="flex flex-col gap-12">
 					<>
-						<DataGrid entities={`Event`} initialSorting={{ createdAt: 'desc' }}>
-							<DataGridLoader>
-								<DataGridFeed>
-									<EventCard />
-								</DataGridFeed>
-							</DataGridLoader>
-
-							{/* <DataGridPagination /> */}
-						</DataGrid>
+						<HasRole role={roles => roles.has('admin') || roles.has('esnMemberRole') || roles.has('coordinator')}>
+							<DataGrid entities={`Event[startDate > "${now}"]`} initialSorting={{ startDate: 'asc' }}>
+								<DataGridLoader>
+									<DataGridFeed>
+										<EventCard />
+									</DataGridFeed>
+								</DataGridLoader>
+							</DataGrid>
+						</HasRole>
+						<HasRole role="internationalStudent">
+							<DataGrid entities={`Event[isForInternationalStudents=true && startDate > "${now}"]`} initialSorting={{ startDate: 'asc' }}>
+								<DataGridLoader>
+									<DataGridFeed>
+										<EventCard />
+									</DataGridFeed>
+								</DataGridLoader>
+							</DataGrid>
+						</HasRole>
+						<HasRole role="czechBuddy">
+							<DataGrid entities={`Event[isForCzechBuddies=true && startDate > "${now}"]`} initialSorting={{ startDate: 'asc' }}>
+								<DataGridLoader>
+									<DataGridFeed>
+										<EventCard />
+									</DataGridFeed>
+								</DataGridLoader>
+							</DataGrid>
+						</HasRole>
 					</>
 				</div>
 			</Binding>

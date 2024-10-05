@@ -53,4 +53,9 @@ export class Event {
 	private = c.boolColumn()
 	allowRegistrationWithoutPayment = c.boolColumn()
 	picture = c.manyHasOne(Image, 'eventPicture')
+
+	isForInternationalStudents = c.boolColumn().default(false)
+	isForCzechBuddies= c.boolColumn().default(false)
+	isForESNmembers = c.boolColumn().default(false)
+
 }
