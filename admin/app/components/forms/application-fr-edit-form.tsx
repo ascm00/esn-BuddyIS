@@ -44,7 +44,7 @@ export const ApplicationFrEditForm = Component(
 					<SelectField field={'university'} label="Home university" options={'University'} description="If you are coming to VŠE as an exchange student. Please choose the university you're coming from. Otherwise leave it blank.">
 						<Field field={'name'} />
 					</SelectField>
-					<SelectField field={'countryOfUniversity'} label="Home university country" options={'Country'} description="Country where you attend university">
+					<SelectField field={'countryOfUniversity'} label="Home university country" options={'Country'} description="Country where you attend university.">
 						<Field field={'name'} />
 					</SelectField>
 					<SelectField field={'faculty'} label="Faculty at VSE" options={'Faculty'}>

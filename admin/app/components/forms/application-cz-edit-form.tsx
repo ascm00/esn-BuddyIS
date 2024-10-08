@@ -52,7 +52,7 @@ export const ApplicationCzEditForm = Component(
 		<InputField field="howManyBuddies" label="Number of buddies *" description="How many buddies could you take care of at most?" required />
 		<SelectField
 			field="preferredCountry"
-			label="Preferred country of your buddy *"
+			label="Preferred university country of your buddy *"
 			options="Country"
 		>
 			<Field field="name" />

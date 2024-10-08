@@ -46,22 +46,6 @@ export default () => {
 											<Field field="surname" />
 										</TableCell>
 									</TableRow>
-									{/* <TableRow>
-										<TableCell>
-											Registration date
-										</TableCell>
-										<TableCell className="font-semibold">
-											<Field field="registrationDate" />
-										</TableCell>
-									</TableRow>
-									<TableRow>
-										<TableCell>
-											Last login date
-										</TableCell>
-										<TableCell className="font-semibold">
-											<Field field="lastLoginDate" />
-										</TableCell>
-									</TableRow> */}
 									<TableRow>
 										<TableCell>
 											Xname

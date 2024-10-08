@@ -18,7 +18,6 @@ export default () => {
 						<BackButton />
 					</Slots.Back>
 					<EntitySubTree entity="Person(id=$id)" isCreating={false}>
-						{/* <UserEditForm /> */}
 						<PersonForm />
 					</EntitySubTree>
 				</div>

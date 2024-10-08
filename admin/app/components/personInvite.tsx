@@ -2,6 +2,7 @@ import {
 	Component,
 	Field,
 	HasOne,
+	HasRole,
 	useEntityBeforePersist,
 	useField,
 	useIdentity,
@@ -12,7 +13,7 @@ import {useChangeEmail} from "@app/lib/tenant/hooks/useChangeEmail";
 import {useInviteUser} from "@app/lib/tenant/hooks/useInviteUser";
 import {useUpdateProjectMemberPerson} from "@app/lib/tenant/hooks/useUpdateProjectMemberPerson";
 import {usePersistWithFeedback} from "@app/lib/binding";
-import {FormLabelUI, InputField, SelectField} from "@app/lib/form";
+import {FormLabelUI, ImageField, InputField, SelectField} from "@app/lib/form";
 import {Input} from "@app/lib/ui/input";
 import {Label} from "@app/lib/ui/label";
 import {Button} from "@app/lib/ui/button";
@@ -71,8 +72,6 @@ export const PersonInvite = Component(
 
 		return (
 			<div className={'flex flex-col gap-4'}>
-				{/* <InputField field="name" label="Jméno" required /> */}
-
 				<div className={'max-w-md'}>
 					<FormLabelUI>Email</FormLabelUI>
 					<Input
@@ -85,34 +84,35 @@ export const PersonInvite = Component(
 						disabled={!canChangeEmail}
 					/>
 				</div>
-
+				<HasRole role={roles => roles.has('admin')}>
 				<FormLabelUI>Role</FormLabelUI>
-				<RadioGroup defaultValue={role} value={role} onValueChange={setRole} disabled={roles.has('esnMember') || roles.has('czechBuddy') || roles.has('internationalStudent') || roles.has('ozsRole')}>
-				<div className="flex items-center space-x-2">
-						<RadioGroupItem value="admin" id="option-one" />
-						<Label htmlFor="option-one">Admin</Label>
-					</div>
-                    <div className="flex items-center space-x-2">
-						<RadioGroupItem value="esnMember" id="option-two" />
-						<Label htmlFor="option-two">ESN Member</Label>
-					</div>
-                    <div className="flex items-center space-x-2">
-						<RadioGroupItem value="czechBuddy" id="option-three" />
-						<Label htmlFor="option-three">Czech Buddy</Label>
-					</div>
+					<RadioGroup defaultValue={role} value={role} onValueChange={setRole} disabled={roles.has('esnMember') || roles.has('czechBuddy') || roles.has('internationalStudent') || roles.has('ozsRole')}>
 					<div className="flex items-center space-x-2">
-						<RadioGroupItem value="internationalStudent" id="option-four" />
-						<Label htmlFor="option-four">International student</Label>
-					</div>
-					<div className="flex items-center space-x-2">
-						<RadioGroupItem value="ozsRole" id="option-five" />
-						<Label htmlFor="option-five">OZS member</Label>
-					</div>
-					<div className="flex items-center space-x-2">
-						<RadioGroupItem value="coordinator" id="option-six" />
-						<Label htmlFor="option-six">Buddy coordinator</Label>
-					</div>
-				</RadioGroup>
+							<RadioGroupItem value="admin" id="option-one" />
+							<Label htmlFor="option-one">Admin</Label>
+						</div>
+						<div className="flex items-center space-x-2">
+							<RadioGroupItem value="esnMember" id="option-two" />
+							<Label htmlFor="option-two">ESN Member</Label>
+						</div>
+						<div className="flex items-center space-x-2">
+							<RadioGroupItem value="czechBuddy" id="option-three" />
+							<Label htmlFor="option-three">Czech Buddy</Label>
+						</div>
+						<div className="flex items-center space-x-2">
+							<RadioGroupItem value="internationalStudent" id="option-four" />
+							<Label htmlFor="option-four">International student</Label>
+						</div>
+						<div className="flex items-center space-x-2">
+							<RadioGroupItem value="ozsRole" id="option-five" />
+							<Label htmlFor="option-five">OZS member</Label>
+						</div>
+						<div className="flex items-center space-x-2">
+							<RadioGroupItem value="coordinator" id="option-six" />
+							<Label htmlFor="option-six">Buddy coordinator</Label>
+						</div>
+					</RadioGroup>
+				</HasRole>
 				<div className='pb-2'>
 					<InputField field="firstName" label="First Name *" required />
 				</div>
@@ -124,6 +124,7 @@ export const PersonInvite = Component(
 					<p className="text-xs text-gray-500">Xname is the first part of your VŠE email address before @.</p>
 					<p className="text-xs text-gray-500">For example <strong>novp</strong>@vse.cz</p>
 				</div>
+				<ImageField baseField={'profilePicture'} urlField={'url'} />
 				<div className='pb-2'>
 					<InputField field="esnCardId" label="ESN Card ID (not required until you get one)"/>
 					<p className="text-xs text-gray-500">You have to add your <strong>ESN Card ID</strong>, when you get one. It will be required for the sign up for the events.</p>
@@ -184,6 +185,9 @@ export const PersonInvite = Component(
 			</HasOne>
 			<Field field="personId" />
 			<Field field="firstName" />
+			<HasOne field={'profilePicture'}>
+				<Field field={'url'} />
+			</HasOne>
 			<Field field="surname" />
 			<Field field="xname" />
 			<Field field="esnCardId" />

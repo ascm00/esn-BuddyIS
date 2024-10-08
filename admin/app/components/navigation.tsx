@@ -44,7 +44,7 @@ export const Navigation = Component(
 	</HasRole>
 	<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('czechBuddy') || roles.has('coordinator') || roles.has('internationalStudent')}>
 		<MenuItem label="N2N" icon={<PartyPopper className='text-blue-500' />} to="n2nParties" />
-		<MenuItem label="Profile" icon={<User className='text-blue-500' />} to="" />
+		<MenuItem label="Profile" icon={<User className='text-blue-500' />} to="profile" />
 	</HasRole>
 	<HasRole role={roles => roles.has('admin') || roles.has('esnMember')}>
 		<MenuItem label="Users" icon={<Users className='text-blue-500' />} to="users" />

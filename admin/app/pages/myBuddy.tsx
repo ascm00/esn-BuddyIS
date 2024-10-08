@@ -97,7 +97,7 @@ const BuddyView = Component(
 									<ImageField baseField={'picture'} urlField={'url'} />
 									<PersistButton label="Save picture" />
 								</div>
-								</div>
+							</div>
 
 								<div className="w-full gap-8 flex flex-col">
 									<TableWrapper className="bg-gray-50/50 max-w-lg border rounded-md">
