@@ -3,7 +3,7 @@ import { BackButton } from '@app/lib/buttons'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
 import { Table, TableBody, TableCell, TableRow, TableWrapper } from '@app/lib/ui/table'
-import { Component, DeleteEntityTrigger, EntitySubTree, Field, HasMany, HasOne, HasRole, If, Link, useEntity, useIdentity } from '@contember/interface'
+import { Component, DeleteEntityTrigger, EntitySubTree, Field, HasMany, HasOne, HasRole, If, Link, useEntity, useIdentity, useProjectUserRoles } from '@contember/interface'
 import { formatDateTime } from '@app/lib/utils/formatting'
 import { Todo } from '@app/lib/dev'
 import { RichTextRendererField } from '@app/lib/plugins/rich-text/renderer/RichTextRendererField'
@@ -57,6 +57,22 @@ const RegistrationNow = Component( () => {
 		return false
 	}
 
+	// Checks if the user is allowed to register for the event
+	let notForMe = false
+	const isForCzechBuddies = entity.getField('isForCzechBuddies').value ?? false
+	const isForESNmembers = entity.getField('isForESNmembers').value ?? false
+	const isForInternationalStudents = entity.getField('isForInternationalStudents').value ?? false
+	const roles = useProjectUserRoles()
+	roles.forEach(role => {
+		if(role === 'czechBuddy') {
+			notForMe = !isForCzechBuddies
+		} else if(role === 'esnMember') {
+			notForMe = !isForESNmembers
+		} else if(role === 'internationalStudent') {
+			notForMe = !isForInternationalStudents
+		}
+	})
+
 	if (eventAlreadyHappened) {
 		return (
 			<div className='bg-blue-200 p-4 rounded-md'>
@@ -70,7 +86,14 @@ const RegistrationNow = Component( () => {
 			</div>
 		)
 	} else {
-		if (registrationNow) {
+		if(notForMe) {
+			return (
+				<div className='bg-blue-200 p-4 rounded-md'>
+					<div className='text-500'>Unfortunately this event is not for your user role.</div>
+				</div>
+			)
+		}
+		else if (registrationNow) {
 			if (isNotFull) {
 				if(isPaid) {
 					return (
@@ -156,6 +179,9 @@ const RegistrationNow = Component( () => {
 }, () => (
 	<>
 	<Field field="registrationStartDate" />
+	<Field field="isForCzechBuddies" />
+	<Field field="isForInternationalStudents" />
+	<Field field="isForESNmembers" />
 	<Field field="registrationEndDate" />
 	<Field field="startDate" />
 	<Field field="capacity" />
