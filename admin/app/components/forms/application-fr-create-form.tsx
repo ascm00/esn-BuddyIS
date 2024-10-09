@@ -105,6 +105,7 @@ export const ApplicationFrCreateForm = Component(
 				entities="Semester[isCurrent=true]"
 				alias={'currentSemester'}
 			>
+				<Field field="name" />
 				<Field field="id" />
 				<Field field="openForCzechBuddyRegistrationsDate" />
 				<Field field="closeBuddyRegistrations" />
@@ -113,7 +114,12 @@ export const ApplicationFrCreateForm = Component(
 				entity={`ApplicationFr(person.tenantPerson.id='${env.getExtension(identityEnvironmentExtension).identity?.person?.id}')`}
 				alias={'currentUserApplicationsFr'}
 			></EntitySubTree>
-			<HasOne field="semester" />
+			<HasOne field="semester">
+				<Field field={'name'} />
+				<Field field="id" />
+				<Field field="openForCzechBuddyRegistrationsDate" />
+				<Field field="closeBuddyRegistrations" />
+			</HasOne>
 			<EntitySubTree
 				entity={`Person(tenantPerson.id='${env.getExtension(identityEnvironmentExtension).identity?.person?.id}')`}
 				alias="me"
