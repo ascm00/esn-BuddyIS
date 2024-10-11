@@ -128,13 +128,12 @@ export const createPayment = async (registration: EntityAccessor) => {
 	const id = registration.getField('id').value?.toString() ?? ''
 	console.log(id)
 	console.log(price)
-	const redirect = useRedirect()
 
 
     try {
         const response = await fetch('https://payments.comgate.cz/v1.0/create', {
             method: 'POST',
-			mode: 'no-cors',
+			// mode: 'no-cors',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
                 'Accept': 'application/json',
@@ -159,7 +158,7 @@ export const createPayment = async (registration: EntityAccessor) => {
 
         if (response.ok) {
             const result = await response.json() as ComgateCreatePaymentResult
-			redirect(result.redirect ?? '')
+			// redirect(result.redirect ?? '')
 
             console.log('Platební brána úspěšně vytvořena:', result);
         } else {
