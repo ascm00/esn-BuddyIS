@@ -1,12 +1,13 @@
 import { CheckboxField, FormLayout, InputField, MultiSelectField, RadioEnumField, SelectField, TextareaField } from '@app/lib/form'
 import { Environment, TextInput } from '@contember/admin'
 import { ImageField } from '@app/lib/plugins/image/ImageField'
-import { Component, EntitySubTree, Field, HasMany, HasOne, HasRole, useEntity, useEntitySubTree, useIdentity, useEntityBeforePersist, EnvironmentExtensionProvider, identityEnvironmentExtension } from '@contember/interface'
+import { Component, EntitySubTree, Field, HasMany, HasOne, HasRole, useEntity, useEntitySubTree, useIdentity, useEntityBeforePersist, EnvironmentExtensionProvider, identityEnvironmentExtension, usePersist, useEntityPersistSuccess } from '@contember/interface'
 import { ConnectUser } from '../ConnectUser'
 import { Todo } from '@app/lib/dev'
 import { identity$ } from '@contember/graphql-client-tenant'
 import { ConnectEntity } from '../ConnectEntity'
 import Input from 'postcss/lib/input'
+import { createPayment } from '@app/lib/comgate/comgate'
 
 interface RegistrationCreateFormProps {
     isOnWaitingList?: boolean 
@@ -30,15 +31,24 @@ export const RegistrationCreateForm = Component<RegistrationCreateFormProps>(
     const dietaryRestrictions = currentEvent.getField('dietaryRestrictions').value ?? undefined
     const registeredCount = currentEvent.getField('registeredCount').value ?? undefined
 
+
     // This should be after processing the payment
     useEntityBeforePersist(() => {
         if(typeof registeredCount === 'number'){
             let updatedCount = registeredCount + 1
             currentEvent.updateValues({registeredCount: updatedCount})
+
             if(isOnWaitingList){
                 entity.updateValues({isWaitingList: true})
             }
         }
+    })
+
+    useEntityPersistSuccess(() => {
+        console.log(entity)
+        console.log(entity.getField('id').value)
+        const data = createPayment(entity)
+        console.log(data)
     })
     
     return (    
@@ -86,6 +96,7 @@ export const RegistrationCreateForm = Component<RegistrationCreateFormProps>(
     },
     (_, env) => (
         <>
+            <Field field={'id'} />
             <EntitySubTree
                 entity={`Person(tenantPerson.id='${env.getExtension(identityEnvironmentExtension).identity?.person?.id}')`}
                 alias="me"
@@ -94,15 +105,13 @@ export const RegistrationCreateForm = Component<RegistrationCreateFormProps>(
                 <Field field="surname" />
                 <Field field="esnCardId" />
                 <Field field="id" />
+                <HasOne field="tenantPerson">
+                    <Field field="email" />
+                </HasOne>
             </EntitySubTree>
-            <HasOne field="person">
-                <Field field="firstName" />
-                <Field field="surname" />
-                <Field field="esnCardId" />
-                <Field field="id" />
-            </HasOne>
             <EntitySubTree entity={'Event(id=$id)'} alias={'currentEvent'}>
                 <Field field="name" />
+                <Field field="fee" />
                 <Field field="dietaryRestrictions" />
                 <Field field="allergies" />
                 <Field field="mandatoryESNcard" />
@@ -110,6 +119,7 @@ export const RegistrationCreateForm = Component<RegistrationCreateFormProps>(
             </EntitySubTree>
             <HasOne field="event">
                 <Field field="name" />
+                <Field field="fee" />
                 <Field field="dietaryRestrictions" />
                 <Field field="allergies" />
                 <Field field="mandatoryESNcard" />
@@ -121,6 +131,9 @@ export const RegistrationCreateForm = Component<RegistrationCreateFormProps>(
                 <Field field="surname" />
                 <Field field="esnCardId" />
                 <Field field="id" />
+                <HasOne field="tenantPerson">
+                    <Field field="email" />
+                </HasOne>
             </HasOne>
             <HasMany field="dietaryRestrictions">
                 <Field field="name" />

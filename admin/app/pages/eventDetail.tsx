@@ -103,7 +103,7 @@ const RegistrationNow = Component( () => {
 								<CreateEntityModalButton
 									entityName="EventRegistration"
 									buttonLabel="Register & Pay"
-									saveButtonLabel="Continue to payment"
+									saveButtonLabel={`Pay ${fee} CZK`}
 									refreshOnPersist
 									createEntityForm={
 									<>
