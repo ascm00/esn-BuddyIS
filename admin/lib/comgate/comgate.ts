@@ -5,7 +5,7 @@
 // 	redirect?: string;
 // };
 
-import { EntityAccessor, Environment } from "@contember/interface";
+import { EntityAccessor, Environment, useRedirect } from "@contember/interface";
 
 // export const createPayment = async () => {
 // 	// pro testování - třeba pak dát do .env
@@ -128,11 +128,13 @@ export const createPayment = async (registration: EntityAccessor) => {
 	const id = registration.getField('id').value?.toString() ?? ''
 	console.log(id)
 	console.log(price)
+	const redirect = useRedirect()
 
 
     try {
         const response = await fetch('https://payments.comgate.cz/v1.0/create', {
             method: 'POST',
+			mode: 'no-cors',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
                 'Accept': 'application/json',
@@ -156,13 +158,12 @@ export const createPayment = async (registration: EntityAccessor) => {
 		console.log(response);
 
         if (response.ok) {
-            // const result = await response.json();
-			const parsedBody = await response.text() as unknown as ComgateCreatePaymentResult
-			if (parsedBody.code === '0') {
-				// const createPayment = await client.mutate(Content.queryBuilder.create('Payment', { data: { status: 'pending', isPartial: false, transactionId: parsedBody.transId, amount: order.totalPrice!, order: { connect: { id: order.id } }, url: parsedBody.redirect } }))
-				return parsedBody
-			}
-			return undefined
+            const result = await response.json() as ComgateCreatePaymentResult
+			redirect(result.redirect ?? '')
+
+            console.log('Platební brána úspěšně vytvořena:', result);
+        } else {
+            console.error('Chyba při vytváření platby:', response.statusText);
         }
     } catch (error) {
         console.error('Chyba při vytváření platby:', error);
