@@ -117,8 +117,8 @@ export type ComgateCreatePaymentResult = {
 }
 
 export const createPayment = async (registration: EntityAccessor) => {
-    const merchantId = import.meta.env.MERCHANT_ID
-    const secret = import.meta.env.MERCHANT_SECRET
+    const merchantId = 'REMOVED_TOKEN'
+    const secret = 'REMOVED_TOKEN'
     const price = registration.getEntity('event').getField<number>('fee').value ?? 0
 	const email = registration.getEntity('person.tenantPerson').getField<string>('email').value ?? ''
 	const firstName = registration.getEntity('person').getField<string>('firstName').value ?? ''
