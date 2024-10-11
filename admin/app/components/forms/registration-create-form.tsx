@@ -1,7 +1,7 @@
 import { CheckboxField, FormLayout, InputField, MultiSelectField, RadioEnumField, SelectField, TextareaField } from '@app/lib/form'
 import { Environment, TextInput } from '@contember/admin'
 import { ImageField } from '@app/lib/plugins/image/ImageField'
-import { Component, EntitySubTree, Field, HasMany, HasOne, HasRole, useEntity, useEntitySubTree, useIdentity, useEntityBeforePersist, EnvironmentExtensionProvider, identityEnvironmentExtension, usePersist, useEntityPersistSuccess } from '@contember/interface'
+import { Component, EntitySubTree, Field, HasMany, HasOne, HasRole, useEntity, useEntitySubTree, useIdentity, useEntityBeforePersist, EnvironmentExtensionProvider, identityEnvironmentExtension, usePersist, useEntityPersistSuccess, useRedirect } from '@contember/interface'
 import { ConnectUser } from '../ConnectUser'
 import { Todo } from '@app/lib/dev'
 import { identity$ } from '@contember/graphql-client-tenant'
@@ -16,6 +16,7 @@ interface RegistrationCreateFormProps {
 export const RegistrationCreateForm = Component<RegistrationCreateFormProps>(
     ({isOnWaitingList}) => {
     const entity = useEntity()
+    const redirect = useRedirect()
 
     //connect to current event and logged in user
     const me = useEntitySubTree('me')

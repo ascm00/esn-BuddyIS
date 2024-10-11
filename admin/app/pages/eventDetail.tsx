@@ -102,8 +102,8 @@ const RegistrationNow = Component( () => {
 							<div className='flex gap-6 flex-col md:flex-row'>
 								<CreateEntityModalButton
 									entityName="EventRegistration"
-									buttonLabel="Register & Pay"
-									saveButtonLabel={`Pay ${fee} CZK`}
+									buttonLabel={`Pay ${fee} CZK`}
+									saveButtonLabel="Continue to payment"
 									refreshOnPersist
 									createEntityForm={
 									<>

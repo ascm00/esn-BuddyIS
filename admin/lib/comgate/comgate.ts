@@ -154,13 +154,14 @@ export const createPayment = async (registration: EntityAccessor) => {
             }),
         });
 
-		console.log(response);
+		console.log('response:',response)
 
         if (response.ok) {
             const result = await response.json() as ComgateCreatePaymentResult
 			// redirect(result.redirect ?? '')
 
             console.log('Platební brána úspěšně vytvořena:', result);
+			
         } else {
             console.error('Chyba při vytváření platby:', response.statusText);
         }
