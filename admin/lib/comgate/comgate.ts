@@ -133,7 +133,7 @@ export const createPayment = async (registration: EntityAccessor) => {
     try {
         const response = await fetch('https://payments.comgate.cz/v1.0/create', {
             method: 'POST',
-			mode: 'no-cors',
+			// mode: 'no-cors',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
                 'Accept': 'application/json',
