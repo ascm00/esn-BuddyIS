@@ -52,8 +52,8 @@ export const Navigation = Component(
 
 	<HasRole role={roles => roles.has('admin') || roles.has('coordinator')}>
 		<MenuDivider />
-		<MenuItem label="CZ Applications" icon={<Handshake className='text-blue-500' />} to="applicationCzs" />
-		<MenuItem label="FR Applications" icon={<Handshake className='text-blue-500' />} to="applicationFrs" />
+		<MenuItem label="Local applications" icon={<Handshake className='text-blue-500' />} to="applicationCzs" />
+		<MenuItem label="Foreign applications" icon={<Handshake className='text-blue-500' />} to="applicationFrs" />
 		<Collapsible>
 				<CollapsibleTrigger>Coordinating</CollapsibleTrigger>
 				<CollapsibleContent>
@@ -75,8 +75,8 @@ export const Navigation = Component(
 	</HasRole>
 
 	<HasRole role="ozsRole">
-		<MenuItem label="CZ Applications" icon={<Handshake className='text-blue-500' />} to="applicationCzs" />
-		<MenuItem label="FR Applications" icon={<Handshake className='text-blue-500' />} to="applicationFrs" />
+		<MenuItem label="Local applications" icon={<Handshake className='text-blue-500' />} to="applicationCzs" />
+		<MenuItem label="Foreign applications" icon={<Handshake className='text-blue-500' />} to="applicationFrs" />
 		<MenuItem label="All buddy pairs" icon={<Users className='text-blue-500' />} to="buddyPairs" />
 	</HasRole>
 	

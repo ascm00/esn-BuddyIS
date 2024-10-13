@@ -453,7 +453,7 @@ export default () => {
 											</DataGridHasOneColumn>
 											<DataGridTextColumn field="person.tenantPerson.email" header="Email" />
 											<DataGridTextColumn field="person.phoneNumber" header="Phone number" />
-											<DataGridTextColumn field="person.xname" header="Xname" />
+											<DataGridTextColumn field="person.xname" header="inSIS username" />
 											<DataGridTextColumn field="person.esnCardId" header="ESN Card ID" />
 											<DataGridHasManyColumn field="allergies" header="Allergies">
 												<Field field="name" />
@@ -498,7 +498,7 @@ export default () => {
 											</DataGridHasOneColumn>
 											<DataGridTextColumn field="person.tenantPerson.email" header="Email" />
 											<DataGridTextColumn field="person.phoneNumber" header="Phone number" />
-											<DataGridTextColumn field="person.xname" header="Xname" />
+											<DataGridTextColumn field="person.xname" header="inSIS username" />
 											<DataGridTextColumn field="person.esnCardId" header="ESN Card ID" />
 											<DataGridHasManyColumn field="allergies" header="Allergies">
 												<Field field="name" />

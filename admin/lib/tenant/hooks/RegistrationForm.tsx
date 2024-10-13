@@ -86,11 +86,11 @@ export const RegistrationForm = (env : Env) => {
 	  
 			<div className="mb-4 relative">
 			  <label className="block text-gray-700 text-sm font-bold mb-2">
-				Xname:
+			  	inSIS username:
 				<span className="ml-2 text-gray-500 cursor-pointer relative">
 				  ?
 				  <span className="absolute left-0 w-48 p-2 bg-gray-200 text-gray-800 text-xs rounded-md shadow-lg opacity-0 transition-opacity duration-300 hover:opacity-100 z-10">
-					<p className="text-xs">Xname is the first part of your VŠE email address before @.</p>
+					<p className="text-xs">inSIS username is the first part of your VŠE email address before @.</p>
 					<p className="text-xs">For example <strong>novp</strong>@vse.cz</p>
 				  </span>
 				</span>

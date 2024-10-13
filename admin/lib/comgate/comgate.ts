@@ -6,6 +6,7 @@
 // };
 
 import { EntityAccessor, Environment, useRedirect } from "@contember/interface";
+import axios from "axios";
 
 // export const createPayment = async () => {
 // 	// pro testování - třeba pak dát do .env
@@ -63,24 +64,22 @@ import { EntityAccessor, Environment, useRedirect } from "@contember/interface";
 // export const createPayment = async () => {
 // 	// pro testování - potřeba pak dát do .env
 // 	const merchantId = 'REMOVED_TOKEN';
-// 	const price = '1';
+// 	const price = '100';
 // 	const orderNumber = '1';
 // 	const orderId = '8778767';
 
 // 	try {
-// 		const response = await fetch('https://payments.comgate.cz/v2.0/payment.json', {
+// 		const response = await fetch('https://payments.comgate.cz/v2.0/paymentRedirect/merchant/REMOVED_TOKEN', {
 // 			method: 'POST',
 // 			mode: 'no-cors',
 // 			headers: {
-// 				'Content-Type': 'application/x-www-form-urlencoded',
+// 				'Content-Type': 'application/json',
 // 				'charset': 'utf-8',
-// 				'accpet': 'application/x-www-form-urlencoded',
 // 				'Authorization': 'Basic REMOVED_TOKEN',
 				
 // 			},
 // 			body: new URLSearchParams({
 // 				preauth: 'true',
-// 				merchant: merchantId,
 // 				test: 'true',
 // 				price: price,
 // 				curr: 'CZK',
@@ -135,8 +134,8 @@ export const createPayment = async (registration: EntityAccessor) => {
             method: 'POST',
 			// mode: 'no-cors',
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'Accept': 'application/json',
+                'Content-Type':'application/x-www-form-urlencoded',
+    			'Accept':'application/x-www-form-urlencoded',
             },
             body: new URLSearchParams({
 				merchant: merchantId,
@@ -149,7 +148,7 @@ export const createPayment = async (registration: EntityAccessor) => {
                 fullName: name, // Jméno zákazníka
                 email: email,
                 lang: 'en',
-                prepareOnly: 'true',
+                prepareOnly: 'false',
                 secret: secret,
             }),
         });

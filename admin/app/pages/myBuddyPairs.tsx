@@ -37,17 +37,17 @@ export default () => {
 											</Link>
 										</div>
 									</DataGridColumn>
-									<DataGridHasOneColumn field="czechStudent" header="Czech student first name">
+									<DataGridHasOneColumn field="czechStudent" header="Local buddy first name">
 										<Field field="firstName" />
 									</DataGridHasOneColumn>
-									<DataGridHasOneColumn field="czechStudent" header="Czech student surname">
+									<DataGridHasOneColumn field="czechStudent" header="Local buddy surname">
 										<Field field="surname" />
 									</DataGridHasOneColumn>
-									<DataGridHasOneColumn field="czechStudent" header="Czech student xname">
+									<DataGridHasOneColumn field="czechStudent" header="Local buddy inSIS username">
 										<Field field="xname" />
 									</DataGridHasOneColumn>
-									<DataGridHasOneColumn field="internationalStudent" header="International student">
-										<Field field="firstName" /> {' '} <Field field="surname" /> {' ('} <Field field="xname" /> {') '}
+									<DataGridHasOneColumn field="internationalStudent" header="Foreign buddy">
+										<Field field="firstName" /> {' '} <Field field="surname" /> {' ('} <Field field="" /> {') '}
 									</DataGridHasOneColumn>
 									<DataGridBooleanColumn field="tenPoints" header="10 points" />
 								</DataGridTable>

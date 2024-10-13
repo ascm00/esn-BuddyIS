@@ -38,9 +38,9 @@ export const ApplicationCzEditForm = Component(
 		<SelectField field={'university'} label="University *" options={'University'} description="Your home university">
 			<Field field={'name'} />
 		</SelectField>
-		<SelectField field={'faculty'} label="Faculty at VSE" options={'Faculty'}>
+		{/* <SelectField field={'faculty'} label="Faculty at VSE" options={'Faculty'}>
 			<Field field={'name'} />
-		</SelectField>
+		</SelectField> */}
 		</div>
 	</HasOne>
 	<div>

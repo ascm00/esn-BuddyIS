@@ -52,10 +52,10 @@ export default () => {
 									<DataGridHasOneColumn field="coordinator" header="Coordinator">
 										<Field field="firstName" /> {' '} <Field field="surname" /> {' ('} <Field field="xname" /> {') '}
 									</DataGridHasOneColumn>
-									<DataGridHasOneColumn field="czechStudent" header="Czech student">
+									<DataGridHasOneColumn field="czechStudent" header="Local buddy">
 										<Field field="firstName" /> {' '} <Field field="surname" /> {' ('} <Field field="xname" /> {') '}
 									</DataGridHasOneColumn>
-									<DataGridHasOneColumn field="internationalStudent" header="International student">
+									<DataGridHasOneColumn field="internationalStudent" header="Foreign buddy">
 										<Field field="firstName" /> {' '} <Field field="surname" /> {' ('} <Field field="xname" /> {') '}
 									</DataGridHasOneColumn>
 									<DataGridBooleanColumn field="tenPoints" header="10 points" />

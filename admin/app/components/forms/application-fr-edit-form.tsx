@@ -9,10 +9,8 @@ import { ConnectEntity } from '../ConnectEntity'
 export const ApplicationFrEditForm = Component(
 	() => {
 
-		
 	return (<FormLayout>
 
-		<Todo>Semestr by měla aplikace znát automaticky a měl by se k přihlášce automaticky přiřadit. Potřeba checkovat, jestli už se na buddyho daný semestr hlásil. - Done Nejde removenout jazyk. Select fieldy musí být mandatory.</Todo>
 		{/* <SelectField
 			field="semester"
 			label="Semester"
@@ -47,9 +45,9 @@ export const ApplicationFrEditForm = Component(
 					<SelectField field={'countryOfUniversity'} label="Home university country" options={'Country'} description="Country where you attend university.">
 						<Field field={'name'} />
 					</SelectField>
-					<SelectField field={'faculty'} label="Faculty at VSE" options={'Faculty'}>
+					{/* <SelectField field={'faculty'} label="Faculty at VSE" options={'Faculty'}>
 						<Field field={'name'} />
-					</SelectField>
+					</SelectField> */}
 					<MultiSelectField field="languages" label="Languages spoken *">
 						<Field field="name" />
 					</MultiSelectField>

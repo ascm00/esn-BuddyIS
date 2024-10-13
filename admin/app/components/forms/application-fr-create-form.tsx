@@ -74,9 +74,9 @@ export const ApplicationFrCreateForm = Component(
 						<SelectField field={'countryOfUniversity'} label="Home university country" options={'Country'} description="Country where you attend university.">
 							<Field field={'name'} />
 						</SelectField>
-						<SelectField field={'faculty'} label="Faculty at VSE" options={'Faculty'}>
+						{/* <SelectField field={'faculty'} label="Faculty at VSE" options={'Faculty'}>
 							<Field field={'name'} />
-						</SelectField>
+						</SelectField> */}
 						<MultiSelectField field="languages" label="Languages spoken *">
 							<Field field="name" />
 						</MultiSelectField>

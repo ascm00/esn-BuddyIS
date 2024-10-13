@@ -5,7 +5,7 @@ import { Component, Field } from '@contember/interface'
 export const UserCreateForm = Component(() => <FormLayout>
 	<InputField field="firstName" label="First name" required />
 	<InputField field="surname" label="Surname" required />
-	<InputField field="xname" label="Xname" />
+	<InputField field="xname" label="inSIS username" />
 	<InputField field="esnCardId" label="Esn card number" />
 	<InputField field="phoneNumber" label="Phone number" />
 	<SelectField

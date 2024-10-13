@@ -97,11 +97,11 @@ export const PersonInvite = Component(
 						</div>
 						<div className="flex items-center space-x-2">
 							<RadioGroupItem value="czechBuddy" id="option-three" />
-							<Label htmlFor="option-three">Czech Buddy</Label>
+							<Label htmlFor="option-three">Local Buddy</Label>
 						</div>
 						<div className="flex items-center space-x-2">
 							<RadioGroupItem value="internationalStudent" id="option-four" />
-							<Label htmlFor="option-four">International student</Label>
+							<Label htmlFor="option-four">Foreign student</Label>
 						</div>
 						<div className="flex items-center space-x-2">
 							<RadioGroupItem value="ozsRole" id="option-five" />
@@ -120,8 +120,8 @@ export const PersonInvite = Component(
 					<InputField field="surname" label="Surname *" required />
 				</div>
 				<div className='pb-2'>
-					<InputField field="xname" label="Xname *" required/>
-					<p className="text-xs text-gray-500">Xname is the first part of your VŠE email address before @.</p>
+					<InputField field="xname" label="inSIS username *" required/>
+					<p className="text-xs text-gray-500">inSIS username is the first part of your VŠE email address before @.</p>
 					<p className="text-xs text-gray-500">For example <strong>novp</strong>@vse.cz</p>
 				</div>
 				<ImageField baseField={'profilePicture'} urlField={'url'} />
