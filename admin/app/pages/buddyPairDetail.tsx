@@ -10,8 +10,9 @@ import { Button } from '@app/lib/ui/button'
 import { Table, TableBody, TableCell, TableRow, TableWrapper } from '@app/lib/ui/table'
 import { TextareaAutosize } from '@app/lib/ui/textarea'
 import { ImageFieldView } from '@app/components/fieldViews/ImageFieldView'
-import { Component, EntitySubTree, Field, HasMany, HasOne, HasRole, identityEnvironmentExtension, Link, useEntity, useEntitySubTree } from '@contember/interface'
+import { Component, EntityAccessor, EntitySubTree, Field, HasMany, HasOne, HasRole, identityEnvironmentExtension, Link, useEntity, useEntitySubTree } from '@contember/interface'
 import { useCallback, useState } from 'react'
+import { DeleteEntityModalButton } from '@app/lib/buttons/deleteEntityModalButton'
 
 export default () => {
 	return (
@@ -27,6 +28,16 @@ export default () => {
 					<EntitySubTree entity="BuddyPair(id=$id)" isCreating={false}>
 						<Slots.Actions>
 							<HasRole role={roles => roles.has('admin') || roles.has('coordinator')}>
+								<DeleteEntityModalButton 
+									message="Do you really want to unpair?"
+									deleteMessage="Unpair"
+									cancelTo={'buddyPairs'}
+									afterPersistTo={'buddyPairs'}
+								>
+									<Button variant={'destructive'}>
+										Unpair
+									</Button>
+								</DeleteEntityModalButton>
 								<Link to="buddyPairEdit(id: $entity.id)">
 									<Button>
 										Edit buddy pair

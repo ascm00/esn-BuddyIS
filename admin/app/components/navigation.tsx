@@ -69,6 +69,7 @@ export const Navigation = Component(
 				<CollapsibleContent>
 					<MenuItem label="Manual pairing" icon={<Shuffle className='text-blue-500' />} to="buddyPairCreate" />
 					<MenuItem label="Automatic pairing" icon={<Cpu className='text-blue-500' />} to="automaticPairing" />
+					<MenuItem label="Automatic coordinator assignment" icon={<Cpu className='text-blue-500' />} to="automaticCoordinatorAssignment" />
 				</CollapsibleContent>
 			</Collapsible>
 		</HasRole>

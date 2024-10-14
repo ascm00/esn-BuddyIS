@@ -14,12 +14,13 @@ import {RoutingLinkTarget} from "@contember/react-routing";
 
 interface DeleteEntityProps {
     message: string
+    deleteMessage?: string 
     children: React.ReactNode
     cancelTo: RoutingLinkTarget,
     afterPersistTo?: RoutingLinkTarget
 }
 
-export const DeleteEntityModalButton = Component<DeleteEntityProps>(({message, children, cancelTo, afterPersistTo}) => {
+export const DeleteEntityModalButton = Component<DeleteEntityProps>(({message, deleteMessage, children, cancelTo, afterPersistTo}) => {
     const redirect = useRedirect()
 
     return (
@@ -31,13 +32,13 @@ export const DeleteEntityModalButton = Component<DeleteEntityProps>(({message, c
                 {message}
                 <AlertDialogFooter>
                     <Link to={cancelTo}>
-                        <AlertDialogCancel>Zrušit</AlertDialogCancel>
+                        <AlertDialogCancel>Cancel</AlertDialogCancel>
                     </Link>
                     <FeedbackTrigger>
                         <DeleteEntityTrigger immediatePersist onPersistSuccess={ () => afterPersistTo ? redirect(afterPersistTo) : null}>
                             <AlertDialogAction asChild>
                                 <Button variant="destructive">
-                                    Smazat
+                                    {deleteMessage || 'Delete'}
                                 </Button>
                             </AlertDialogAction>
                         </DeleteEntityTrigger>

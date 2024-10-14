@@ -52,7 +52,8 @@ export const RegistrationCreateForm = Component<RegistrationCreateFormProps>(
         console.log(data)
     })
     
-    return (    
+    return (
+        <>
         <FormLayout>
             <div>
                 <h2 className="text-2xl font-semibold">Registration</h2>
@@ -93,7 +94,8 @@ export const RegistrationCreateForm = Component<RegistrationCreateFormProps>(
                 <TextareaField field="note" label="Note" />
                 <p className="text-xs text-gray-500">Any additional notes to organizers. For example some limitations. Write "NO" if you don't have any.</p>
             </div>
-        </FormLayout>)
+        </FormLayout>
+        </>)
     },
     (_, env) => (
         <>
