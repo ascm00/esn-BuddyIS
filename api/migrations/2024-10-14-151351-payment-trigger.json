@@ -1,0 +1,29 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "createTarget",
+			"target": {
+				"type": "webhook",
+				"name": "create-payment_target",
+				"url": "{{workerBaseUrl}}/comgate-webhook",
+				"headers": {
+					"Authorization": "Bearer {{workerSecretKey}}",
+					"Content-Type": "application/json"
+				}
+			}
+		},
+		{
+			"modification": "createTrigger",
+			"trigger": {
+				"type": "basic",
+				"name": "create-payment",
+				"entity": "EventRegistration",
+				"create": true,
+				"delete": false,
+				"update": false,
+				"target": "create-payment_target"
+			}
+		}
+	]
+}

@@ -15,6 +15,10 @@ export type eventStatus =
 	 | "open"
 	 | "cancelled"
 	 | "hidden"
+export type payment = 
+	 | "paid"
+	 | "pending"
+	 | "cancelled"
 export type preferredSex = 
 	 | "man"
 	 | "woman"

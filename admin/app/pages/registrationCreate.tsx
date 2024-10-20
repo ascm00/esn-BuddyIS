@@ -1,4 +1,5 @@
 import { EventCreateForm } from '@app/components/forms/event-create-form'
+import { RegistrationCreateForm } from '@app/components/forms/registration-create-form'
 import { Binding, PersistButton } from '@app/lib/binding'
 import { BackButton } from '@app/lib/buttons'
 import { Slots } from '@app/lib/layout'
@@ -16,11 +17,10 @@ export default () => {
 						<BackButton />
 					</Slots.Back>
 					<EntitySubTree entity="EventRegistration" isCreating>
-						<RedirectOnPersist to="eventDetail(id: $entity.id)" />
 						<Slots.Actions>
 							<PersistButton />
 						</Slots.Actions>
-						<EventCreateForm />
+						<RegistrationCreateForm />
 					</EntitySubTree>
 				</div>
 			</Binding>

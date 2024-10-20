@@ -3,6 +3,7 @@ import type { applicationFrStatus } from './enums'
 import type { applicationStatus } from './enums'
 import type { contentReferenceTypeEnum } from './enums'
 import type { eventStatus } from './enums'
+import type { payment } from './enums'
 import type { preferredSex } from './enums'
 import type { rating } from './enums'
 import type { sex } from './enums'
@@ -274,16 +275,19 @@ export type Event <OverRelation extends string | never = never> = {
 		registrations: EventRegistration<'event'>
 	}
 	hasManyBy: {
+		registrationsByPaymentId: { entity: EventRegistration; by: {paymentId: string}  }
 	}
 }
 export type EventRegistration <OverRelation extends string | never = never> = {
 	name: 'EventRegistration'
 	unique:
 		| Omit<{ id: string}, OverRelation>
+		| Omit<{ paymentId: string}, OverRelation>
 	columns: {
 		id: string
 		createdAt: string
-		paid: boolean | null
+		payment: payment | null
+		paymentId: string | null
 		note: string | null
 		isWaitingList: boolean | null
 	}
@@ -552,6 +556,7 @@ export type Person <OverRelation extends string | never = never> = {
 		coordinatingBuddyPairsByNotes: { entity: BuddyPair; by: {notes: Note['unique']}  }
 		coordinatingBuddyPairsByTasks: { entity: BuddyPair; by: {tasks: BuddyTask['unique']}  }
 		coordinatingBuddyPairsByPicture: { entity: BuddyPair; by: {picture: Image['unique']}  }
+		registrationsByPaymentId: { entity: EventRegistration; by: {paymentId: string}  }
 	}
 }
 export type Section <OverRelation extends string | never = never> = {

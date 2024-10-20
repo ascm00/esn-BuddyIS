@@ -1,0 +1,80 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "createColumn",
+			"entityName": "EventRegistration",
+			"field": {
+				"name": "paymentId",
+				"columnName": "payment_id",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createUniqueConstraint",
+			"entityName": "EventRegistration",
+			"unique": {
+				"fields": [
+					"paymentId"
+				]
+			}
+		},
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/EventRegistration/operations/create/paymentId",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/EventRegistration/operations/update/paymentId",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/EventRegistration/operations/read/paymentId",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/EventRegistration/operations/create/paymentId",
+					"value": "person_personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/EventRegistration/operations/read/paymentId",
+					"value": "person_personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/EventRegistration/operations/create/paymentId",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/EventRegistration/operations/update/paymentId",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/EventRegistration/operations/read/paymentId",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/EventRegistration/operations/create/paymentId",
+					"value": "person_personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/EventRegistration/operations/read/paymentId",
+					"value": "person_personId_personId"
+				}
+			]
+		}
+	]
+}

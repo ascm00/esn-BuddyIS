@@ -475,7 +475,10 @@ export const ContemberClientNames: SchemaNames = {
         "createdAt": {
           "type": "column"
         },
-        "paid": {
+        "payment": {
+          "type": "column"
+        },
+        "paymentId": {
           "type": "column"
         },
         "note": {
@@ -504,7 +507,8 @@ export const ContemberClientNames: SchemaNames = {
       "scalars": [
         "id",
         "createdAt",
-        "paid",
+        "payment",
+        "paymentId",
         "note",
         "isWaitingList"
       ]

@@ -4,6 +4,7 @@ import { Allergy } from './Allergy'
 import { DietaryRestrictions } from './DietaryRestrictions'
 import { Person } from './Person'
 import { coordinatorRole, czechBuddyId, czechBuddyRole, esnMemberRole, internationalStudentId, internationalStudentRole } from './acl'
+import { payment } from './enum'
 
 @c.Allow(esnMemberRole, {
 	read: true,
@@ -29,7 +30,8 @@ import { coordinatorRole, czechBuddyId, czechBuddyRole, esnMemberRole, internati
 })
 export class EventRegistration {
 	createdAt = c.dateTimeColumn().notNull().default('now')
-    paid = c.boolColumn()
+    payment = c.enumColumn(payment).default('pending')
+	paymentId = c.stringColumn().unique()
     note = c.stringColumn()
     event = c.manyHasOne(Event, 'registrations')
     isWaitingList = c.boolColumn().default(false)

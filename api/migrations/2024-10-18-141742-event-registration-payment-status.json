@@ -1,0 +1,85 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "removeField",
+			"entityName": "EventRegistration",
+			"fieldName": "paid"
+		},
+		{
+			"modification": "createEnum",
+			"enumName": "payment",
+			"values": [
+				"paid",
+				"pending",
+				"cancelled"
+			]
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "EventRegistration",
+			"field": {
+				"name": "payment",
+				"columnName": "payment",
+				"columnType": "payment",
+				"nullable": true,
+				"type": "Enum"
+			}
+		},
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/EventRegistration/operations/create/payment",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/EventRegistration/operations/update/payment",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/EventRegistration/operations/read/payment",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/EventRegistration/operations/create/payment",
+					"value": "person_personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/EventRegistration/operations/read/payment",
+					"value": "person_personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/EventRegistration/operations/create/payment",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/EventRegistration/operations/update/payment",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/EventRegistration/operations/read/payment",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/EventRegistration/operations/create/payment",
+					"value": "person_personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/EventRegistration/operations/read/payment",
+					"value": "person_personId_personId"
+				}
+			]
+		}
+	]
+}

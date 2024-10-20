@@ -7,7 +7,8 @@ import { Todo } from '@app/lib/dev'
 import { identity$ } from '@contember/graphql-client-tenant'
 import { ConnectEntity } from '../ConnectEntity'
 import Input from 'postcss/lib/input'
-import { createPayment } from '@app/lib/comgate/comgate'
+import { createPayment } from '@app/lib/payment/comgate'
+import { Button } from '@app/lib/ui/button'
 
 interface RegistrationCreateFormProps {
     isOnWaitingList?: boolean 
@@ -45,11 +46,9 @@ export const RegistrationCreateForm = Component<RegistrationCreateFormProps>(
         }
     })
 
+
     useEntityPersistSuccess(() => {
-        console.log(entity)
-        console.log(entity.getField('id').value)
         const data = createPayment(entity)
-        console.log(data)
     })
     
     return (
@@ -105,6 +104,7 @@ export const RegistrationCreateForm = Component<RegistrationCreateFormProps>(
                 alias="me"
             >
                 <Field field="firstName" />
+                <Field field="phoneNumber" />
                 <Field field="surname" />
                 <Field field="esnCardId" />
                 <Field field="id" />
@@ -132,6 +132,7 @@ export const RegistrationCreateForm = Component<RegistrationCreateFormProps>(
                 {/* <Field field="esnCardId" /> */}
                 <Field field="firstName" />
                 <Field field="surname" />
+                <Field field="phoneNumber" />
                 <Field field="esnCardId" />
                 <Field field="id" />
                 <HasOne field="tenantPerson">

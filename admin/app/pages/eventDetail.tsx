@@ -309,7 +309,7 @@ export default () => {
 										</TableRow>
 										<TableRow>
 											<TableCell>
-												Event to
+												Event ends
 											</TableCell>
 											<TableCell className="font-semibold">
 												<Field field="endDate" format={formatDateTime} />

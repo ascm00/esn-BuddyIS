@@ -1,0 +1,13 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "removeTrigger",
+			"name": "create-payment"
+		},
+		{
+			"modification": "removeTarget",
+			"name": "create-payment_target"
+		}
+	]
+}

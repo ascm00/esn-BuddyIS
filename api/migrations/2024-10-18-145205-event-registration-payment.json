@@ -1,0 +1,16 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "updateColumnDefinition",
+			"entityName": "EventRegistration",
+			"fieldName": "payment",
+			"definition": {
+				"columnType": "payment",
+				"nullable": true,
+				"type": "Enum",
+				"default": "pending"
+			}
+		}
+	]
+}
