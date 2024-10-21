@@ -1,6 +1,6 @@
 import { Binding } from '@app/lib/binding'
 import { BackButton } from '@app/lib/buttons'
-import { DataGrid, DataGridBooleanColumn, DataGridColumn, DataGridDateColumn, DataGridHasManyColumn, DataGridHasOneColumn, DataGridLoader, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
+import { DataGrid, DataGridBooleanColumn, DataGridColumn, DataGridDateColumn, DataGridHasManyColumn, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
 import { Field, HasRole, Link } from '@contember/interface'
@@ -19,11 +19,6 @@ export default () => {
 					<>
 						<Slots.Actions>
 							<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('coordinator')}>
-								<Link to="n2nPartiesAllSemesters">
-									<Button>
-										All semesters N2N parties
-									</Button>
-								</Link>
 								<Link to="n2nPartyCreate">
 									<Button>
 										Create N2N party
@@ -31,9 +26,12 @@ export default () => {
 								</Link>
 							</HasRole>
 						</Slots.Actions>
-						<DataGrid entities="N2nParty[semester.isCurrent=true]">
+						<DataGrid entities="N2nParty">
 							<DataGridToolbar>
 								<DataGridQueryFilter />
+								<DataGridHasOneFilter field="semester" label="Semester" options={'Semester'}>
+									<Field field="name" />
+								</DataGridHasOneFilter>
 							</DataGridToolbar>
 							<DataGridLoader>
 								<DataGridTable>

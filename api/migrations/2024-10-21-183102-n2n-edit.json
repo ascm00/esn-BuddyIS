@@ -1,0 +1,323 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "removeEntity",
+			"entityName": "Club"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "N2nParty",
+			"field": {
+				"name": "description",
+				"columnName": "description",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "N2nParty",
+			"field": {
+				"name": "link",
+				"columnName": "link",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "N2nParty",
+			"field": {
+				"name": "club",
+				"columnName": "club",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "N2nParty",
+			"owningSide": {
+				"type": "ManyHasOne",
+				"name": "picture",
+				"target": "Image",
+				"joiningColumn": {
+					"columnName": "picture_id",
+					"onDelete": "restrict"
+				},
+				"nullable": true,
+				"inversedBy": "partyPicture"
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "partyPicture",
+				"target": "N2nParty",
+				"ownedBy": "picture"
+			}
+		},
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/N2nParty/operations/create/description",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/N2nParty/operations/create/picture",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/N2nParty/operations/create/link",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/N2nParty/operations/create/club",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/N2nParty/operations/update/description",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/N2nParty/operations/update/picture",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/N2nParty/operations/update/link",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/N2nParty/operations/update/club",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/N2nParty/operations/read/description",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/N2nParty/operations/read/picture",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/N2nParty/operations/read/link",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/N2nParty/operations/read/club",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/Image/operations/create/partyPicture",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/Image/operations/update/partyPicture",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/Image/operations/read/partyPicture",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/N2nParty/operations/read/description",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/N2nParty/operations/read/picture",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/N2nParty/operations/read/link",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/N2nParty/operations/read/club",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/Image/operations/create/partyPicture",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/Image/operations/update/partyPicture",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/Image/operations/read/partyPicture",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/N2nParty/operations/create/description",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/N2nParty/operations/create/picture",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/N2nParty/operations/create/link",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/N2nParty/operations/create/club",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/N2nParty/operations/update/description",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/N2nParty/operations/update/picture",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/N2nParty/operations/update/link",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/N2nParty/operations/update/club",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/N2nParty/operations/read/description",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/N2nParty/operations/read/picture",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/N2nParty/operations/read/link",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/N2nParty/operations/read/club",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Image/operations/create/partyPicture",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Image/operations/update/partyPicture",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Image/operations/read/partyPicture",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/N2nParty/operations/read/description",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/N2nParty/operations/read/picture",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/N2nParty/operations/read/link",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/N2nParty/operations/read/club",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/Image/operations/create/partyPicture",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/Image/operations/update/partyPicture",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/Image/operations/read/partyPicture",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/N2nParty/operations/read/description",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/N2nParty/operations/read/picture",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/N2nParty/operations/read/link",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/N2nParty/operations/read/club",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/Image/operations/create/partyPicture",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/Image/operations/update/partyPicture",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/Image/operations/read/partyPicture",
+					"value": true
+				}
+			]
+		}
+	]
+}

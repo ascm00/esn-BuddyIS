@@ -3,17 +3,19 @@ import { BackButton } from '@app/lib/buttons'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
 import { Table, TableBody, TableCell, TableRow, TableWrapper } from '@app/lib/ui/table'
-import { Component, DeleteEntityTrigger, EntitySubTree, Field, HasMany, HasOne, HasRole, If, Link, useEntity, useIdentity, useProjectUserRoles } from '@contember/interface'
+import { Component, DeleteEntityTrigger, EntitySubTree, Environment, Field, HasMany, HasOne, HasRole, If, Link, useEntity, useIdentity, useProjectUserRoles } from '@contember/interface'
 import { formatDateTime } from '@app/lib/utils/formatting'
 import { Todo } from '@app/lib/dev'
 import { RichTextRendererField } from '@app/lib/plugins/rich-text/renderer/RichTextRendererField'
 import { renderElement, renderLeaf } from '@app/lib/plugins/rich-text/renderer/renderers'
-import { DataGrid, DataGridActionColumn, DataGridColumn, DataGridDateColumn, DataGridEnumColumn, DataGridHasManyColumn, DataGridHasManyFilter, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridTextFilter, DataGridToolbar } from '@app/lib/datagrid'
+import { DataGrid, DataGridActionColumn, DataGridColumn, DataGridDateColumn, DataGridEnumColumn, DataGridHasManyColumn, DataGridHasManyFilter, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridNumberColumn, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridTextFilter, DataGridToolbar } from '@app/lib/datagrid'
 import { CreateEntityModalButton } from '@app/lib/buttons/createEntityModalButtons'
 import { RegistrationCreateForm } from '@app/components/forms/registration-create-form'
 import { Delete, DollarSign, Trash, TrashIcon } from 'lucide-react'
 import { DeleteEntityModalButton } from '@app/lib/buttons/deleteEntityModalButton'
 import { PersistButton } from '@contember/admin'
+import config from '../../config'
+import { Env } from '@app/lib/functions/types'
 
 const RegistrationNow = Component( () => {
 	const identity = useIdentity()
@@ -27,6 +29,9 @@ const RegistrationNow = Component( () => {
 	const registrationEndDateValue = registrationEndDateValueString && new Date(registrationEndDateValueString)
 	const eventStartDateValue = entity.getField('startDate').value?.toString()
 	const eventStartDate = eventStartDateValue && new Date(eventStartDateValue)
+	
+	console.log(config.appUrl)
+	console.log(config.apiBaseUrl)
 	
 	const registrationList = entity.getEntityList('registrations') ?? undefined
 
@@ -458,6 +463,7 @@ export default () => {
 												</Link>
 											</DataGridHasOneColumn>
 											<DataGridEnumColumn field="payment" header="Payment" options={{ paid: 'Paid', cancelled: 'Cancelled', pending: 'Pending' }}/>
+											<DataGridNumberColumn field="paymentId" header="Payment ID" />
 											<DataGridTextColumn field="person.tenantPerson.email" header="Email" />
 											<DataGridTextColumn field="person.phoneNumber" header="Phone number" />
 											<DataGridTextColumn field="person.xname" header="inSIS username" />

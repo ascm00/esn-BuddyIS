@@ -20,8 +20,13 @@ export default () => {
 						<BackButton />
 					</Slots.Back>
 					<>
-						<HasRole role={roles => roles.has('admin') || roles.has('esnMemberRole') || roles.has('coordinator')}>
+						<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('coordinator')}>
 							<Slots.Actions>
+								<Link to="eventsAllSemesters">
+									<Button>
+										All semesters events
+									</Button>
+								</Link>
 								<Link to="eventCreate">
 									<Button>
 										Create event
@@ -41,8 +46,8 @@ const PersonalizedDataGrid = Component(
 	() => {
 		return(
 			<>
-			<HasRole role={roles => roles.has('admin') || roles.has('coordinator') || roles.has('coordinator')}>
-				<DataGrid entities="Event">
+			<HasRole role={roles => roles.has('admin') || roles.has('coordinator') || roles.has('esnMember')}>
+				<DataGrid entities="Event[semester.isCurrent=true]">
 					<DataGridToolbar>
 						<DataGridQueryFilter />
 					</DataGridToolbar>
@@ -83,7 +88,7 @@ const PersonalizedDataGrid = Component(
 				</DataGrid>
 			</HasRole>
 			<HasRole role={roles => roles.has('czechBuddy')}>
-				<DataGrid entities="Event[isForCzechBuddies=true]">
+				<DataGrid entities="Event[semester.isCurrent=true && isForCzechBuddies=true]">
 					<DataGridToolbar>
 						<DataGridQueryFilter />
 					</DataGridToolbar>
@@ -124,7 +129,7 @@ const PersonalizedDataGrid = Component(
 				</DataGrid>
 			</HasRole>
 			<HasRole role={roles => roles.has('internationalStudent')}>
-				<DataGrid entities="Event[isForInternationalStudents=true]">
+				<DataGrid entities="Event[semester.isCurrent=true && isForInternationalStudents=true]">
 					<DataGridToolbar>
 						<DataGridQueryFilter />
 					</DataGridToolbar>

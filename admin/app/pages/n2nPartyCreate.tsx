@@ -1,4 +1,4 @@
-import { N2nPartyCreateForm } from '@app/components/forms/n2n-party-create-form'
+import { N2nPartyForm } from '@app/components/forms/n2n-party-form'
 import { Binding, PersistButton } from '@app/lib/binding'
 import { BackButton } from '@app/lib/buttons'
 import { Slots } from '@app/lib/layout'
@@ -20,7 +20,7 @@ export default () => {
 						<Slots.Actions>
 							<PersistButton />
 						</Slots.Actions>
-						<N2nPartyCreateForm />
+						<N2nPartyForm />
 					</EntitySubTree>
 				</div>
 			</Binding>

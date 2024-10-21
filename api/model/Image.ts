@@ -4,6 +4,7 @@ import { Event } from './Event'
 import { Person } from './Person'
 import { BuddyPair } from './BuddyPair'
 import { coordinatorRole, czechBuddyRole, esnMemberRole, internationalStudentRole, ozsRole } from './acl'
+import { N2nParty } from './N2nParty'
 
 @c.Allow([esnMemberRole, coordinatorRole, ozsRole, internationalStudentRole, czechBuddyRole], {
 	read: true,
@@ -20,5 +21,6 @@ export class Image {
 	meta = c.oneHasOne(ImageMetadata, 'image')
 	userProfilePicture = c.oneHasMany(Person, 'profilePicture')
 	eventPicture = c.oneHasMany(Event, 'picture')
+	partyPicture = c.oneHasMany(N2nParty, 'picture')
 	buddyPair = c.oneHasOneInverse(BuddyPair, 'picture')
 }

@@ -212,29 +212,6 @@ export const ContemberClientNames: SchemaNames = {
         "confirmed"
       ]
     },
-    "Club": {
-      "name": "Club",
-      "fields": {
-        "id": {
-          "type": "column"
-        },
-        "createdAt": {
-          "type": "column"
-        },
-        "parties": {
-          "type": "many",
-          "entity": "N2nParty"
-        },
-        "name": {
-          "type": "column"
-        }
-      },
-      "scalars": [
-        "id",
-        "createdAt",
-        "name"
-      ]
-    },
     "Content": {
       "name": "Content",
       "fields": {
@@ -592,6 +569,10 @@ export const ContemberClientNames: SchemaNames = {
           "type": "many",
           "entity": "Event"
         },
+        "partyPicture": {
+          "type": "many",
+          "entity": "N2nParty"
+        },
         "buddyPair": {
           "type": "one",
           "entity": "BuddyPair"
@@ -730,10 +711,20 @@ export const ContemberClientNames: SchemaNames = {
         "name": {
           "type": "column"
         },
+        "description": {
+          "type": "column"
+        },
+        "picture": {
+          "type": "one",
+          "entity": "Image"
+        },
         "date": {
           "type": "column"
         },
         "open": {
+          "type": "column"
+        },
+        "link": {
           "type": "column"
         },
         "semester": {
@@ -741,8 +732,7 @@ export const ContemberClientNames: SchemaNames = {
           "entity": "Semester"
         },
         "club": {
-          "type": "one",
-          "entity": "Club"
+          "type": "column"
         },
         "hours": {
           "type": "many",
@@ -753,8 +743,11 @@ export const ContemberClientNames: SchemaNames = {
         "id",
         "createdAt",
         "name",
+        "description",
         "date",
-        "open"
+        "open",
+        "link",
+        "club"
       ]
     },
     "Note": {

@@ -3,6 +3,7 @@ export interface Env {
 	VITE_CONTEMBER_ADMIN_INVITE_TOKEN: string
 	VITE_CONTEMBER_ADMIN_LOGIN_TOKEN: string
 	BASE_URL: string
+	APP_URL?: string
 	VITE_CONTEMBER_ADMIN_PROJECT_NAME: string
 	VITE_CONTEMBER_PUBLIC_TOKEN: string
 	role: string

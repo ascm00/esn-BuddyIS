@@ -128,25 +128,6 @@ export type BuddyTask <OverRelation extends string | never = never> = {
 	hasManyBy: {
 	}
 }
-export type Club <OverRelation extends string | never = never> = {
-	name: 'Club'
-	unique:
-		| Omit<{ id: string}, OverRelation>
-		| Omit<{ parties: N2nParty['unique']}, OverRelation>
-	columns: {
-		id: string
-		createdAt: string
-		name: string
-	}
-	hasOne: {
-	}
-	hasMany: {
-		parties: N2nParty<'club'>
-	}
-	hasManyBy: {
-		partiesByHours: { entity: N2nParty; by: {hours: N2nHour['unique']}  }
-	}
-}
 export type Content <OverRelation extends string | never = never> = {
 	name: 'Content'
 	unique:
@@ -353,6 +334,7 @@ export type Image <OverRelation extends string | never = never> = {
 		| Omit<{ meta: ImageMetadata['unique']}, OverRelation>
 		| Omit<{ userProfilePicture: Person['unique']}, OverRelation>
 		| Omit<{ eventPicture: Event['unique']}, OverRelation>
+		| Omit<{ partyPicture: N2nParty['unique']}, OverRelation>
 		| Omit<{ buddyPair: BuddyPair['unique']}, OverRelation>
 	columns: {
 		id: string
@@ -369,6 +351,7 @@ export type Image <OverRelation extends string | never = never> = {
 	hasMany: {
 		userProfilePicture: Person<'profilePicture'>
 		eventPicture: Event<'picture'>
+		partyPicture: N2nParty<'picture'>
 	}
 	hasManyBy: {
 		userProfilePictureByTenantPerson: { entity: Person; by: {tenantPerson: TenantPerson['unique']}  }
@@ -382,6 +365,7 @@ export type Image <OverRelation extends string | never = never> = {
 		userProfilePictureByNotes: { entity: Person; by: {notes: Note['unique']}  }
 		eventPictureByRegistrations: { entity: Event; by: {registrations: EventRegistration['unique']}  }
 		eventPictureByContactPerson: { entity: Event; by: {contactPerson: Person['unique']}  }
+		partyPictureByHours: { entity: N2nParty; by: {hours: N2nHour['unique']}  }
 	}
 }
 export type ImageMetadata <OverRelation extends string | never = never> = {
@@ -468,12 +452,15 @@ export type N2nParty <OverRelation extends string | never = never> = {
 		id: string
 		createdAt: string
 		name: string
+		description: string | null
 		date: string
 		open: boolean | null
+		link: string | null
+		club: string | null
 	}
 	hasOne: {
+		picture: Image
 		semester: Semester
-		club: Club
 	}
 	hasMany: {
 		hours: N2nHour<'party'>
@@ -723,7 +710,6 @@ export type ContemberClientEntities = {
 	ApplicationFr: ApplicationFr
 	BuddyPair: BuddyPair
 	BuddyTask: BuddyTask
-	Club: Club
 	Content: Content
 	ContentReference: ContentReference
 	Country: Country

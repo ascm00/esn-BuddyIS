@@ -1,8 +1,8 @@
 import { c } from '@contember/schema-definition'
 import { Semester } from './Semester'
-import { Club } from './Club'
 import { N2nHour } from './N2nHour'
 import { coordinatorRole, czechBuddyRole, esnMemberRole, internationalStudentRole, ozsRole } from './acl'
+import { Image } from './Image'
 
 @c.Allow([esnMemberRole, coordinatorRole], {
 	read: true,
@@ -16,9 +16,12 @@ import { coordinatorRole, czechBuddyRole, esnMemberRole, internationalStudentRol
 export class N2nParty {
 	createdAt = c.dateTimeColumn().notNull().default('now')
 	name = c.stringColumn().notNull()
+	description = c.stringColumn()
+	picture = c.manyHasOne(Image, 'partyPicture')
 	date = c.dateTimeColumn().notNull()
 	open = c.boolColumn()
+	link = c.stringColumn()
 	semester = c.manyHasOne(Semester, 'parties').setNullOnDelete()
-	club = c.manyHasOne(Club, 'parties').setNullOnDelete()
+	club = c.stringColumn()
 	hours = c.oneHasMany(N2nHour, 'party')
 }

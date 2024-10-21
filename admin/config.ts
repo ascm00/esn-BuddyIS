@@ -6,9 +6,11 @@ const sessionToken = import.meta.env.VITE_CONTEMBER_ADMIN_SESSION_TOKEN
 const publicToken = import.meta.env.VITE_CONTEMBER_PUBLIC_TOKEN
 const adminWebUrl = import.meta.env.VITE_CONTEMBER_ADMIN_WEB_URL
 const loginToken = import.meta.env.VITE_CONTEMBER_ADMIN_LOGIN_TOKEN
+const appUrl = import.meta.env.APP_URL
 
 export default {
     apiBaseUrl,
+    appUrl,
     publicToken,
     adminInviteToken,
     projectName,

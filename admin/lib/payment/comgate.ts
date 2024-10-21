@@ -11,9 +11,11 @@ export type ComgateCreatePaymentResult = {
 
 export const createPayment = async (registration: EntityAccessor) => {
 
-  const url_paid = 'http://localhost:1480/app/registration-payment-successful?id=' + registration.getField('event.id').value?.toString()
-  const url_cancelled = 'http://localhost:1480/app/registration-payment-unsuccessful?id=' + registration.getField('event.id').value?.toString()
-  const url_pending = 'http://localhost:1480/app/registration-payment-pending?id=' + registration.getField('event.id').value?.toString()
+  console.log(import.meta.env.BASE_URL)
+
+  const url_paid = import.meta.env.BASE_URL + '/app/registration-payment-successful?id=' + registration.getField('event.id').value?.toString()
+  const url_cancelled = import.meta.env.BASE_URL + '/registration-payment-unsuccessful?id=' + registration.getField('event.id').value?.toString()
+  const url_pending = import.meta.env.BASE_URL + '/registration-payment-pending?id=' + registration.getField('event.id').value?.toString()
   const price1 = registration.getEntity('event').getField<number>('fee').value
   let price : number = 0
   if(price1){
