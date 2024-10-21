@@ -1,5 +1,7 @@
+import { StudyProgramForm } from '@app/components/forms/study-program-form'
 import { Binding } from '@app/lib/binding'
 import { BackButton } from '@app/lib/buttons'
+import { CurrentEntityLazyModalEdit } from '@app/lib/buttons/modalEdit'
 import { DataGrid, DataGridBooleanColumn, DataGridColumn, DataGridDateColumn, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
@@ -19,11 +21,16 @@ export default () => {
 					</Slots.Back>
 					<EntitySubTree entity="StudyProgram(id=$id)" isCreating={false}>
 						<Slots.Actions>
-							<Link to="studyProgramEdit(id: $entity.id)">
-								<Button>
-									Edit Study program
-								</Button>
-							</Link>
+							<CurrentEntityLazyModalEdit
+								dialogProps={{ className: 'overflow-y-auto max-h-screen' }}
+								buttonContent={
+									<span className="flex items-center">
+										Edit study program
+									</span>
+								}
+							>
+								<StudyProgramForm />
+							</CurrentEntityLazyModalEdit>
 						</Slots.Actions>
 						<TableWrapper className="bg-gray-50/50 max-w-lg border rounded-md">
 							<Table>

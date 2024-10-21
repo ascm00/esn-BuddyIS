@@ -1,5 +1,9 @@
+import { FacultyCreateForm } from '@app/components/forms/faculty-create-form'
+import { FacultyEditForm } from '@app/components/forms/faculty-edit-form'
 import { Binding } from '@app/lib/binding'
 import { BackButton } from '@app/lib/buttons'
+import { CreateEntityModalButton } from '@app/lib/buttons/createEntityModalButtons'
+import { CurrentEntityLazyModalEdit } from '@app/lib/buttons/modalEdit'
 import { DataGrid, DataGridColumn, DataGridLoader, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
@@ -18,11 +22,18 @@ export default () => {
 					</Slots.Back>
 					<>
 						<Slots.Actions>
-							<Link to="facultyCreate">
-								<Button>
-									Create faculty
-								</Button>
-							</Link>
+							<CreateEntityModalButton
+								entityName="Faculty"
+								buttonLabel="Create faculty"
+								saveButtonLabel="Save data"
+								refreshOnPersist
+								createEntityForm={
+								<>
+									<FacultyCreateForm />
+								</>
+								}
+								dialogProps={{ className: 'overflow-y-auto max-h-screen' }}
+							/>
 						</Slots.Actions>
 						<DataGrid entities="Faculty">
 							<DataGridToolbar>
@@ -33,15 +44,20 @@ export default () => {
 									<DataGridColumn>
 										<div className="flex gap-4">
 											<Link to="facultyDetail(id: $entity.id)">
-												<a>
+												<Button>
 													Detail
-												</a>
+												</Button>
 											</Link>
-											<Link to="facultyEdit(id: $entity.id)">
-												<a>
-													Edit
-												</a>
-											</Link>
+											<CurrentEntityLazyModalEdit
+												dialogProps={{ className: 'overflow-y-auto max-h-screen' }}
+												buttonContent={
+													<span className="flex items-center">
+														Edit
+													</span>
+												}
+											>
+												<FacultyEditForm />
+											</CurrentEntityLazyModalEdit>
 										</div>
 									</DataGridColumn>
 									<DataGridTextColumn field="name" header="Name" />

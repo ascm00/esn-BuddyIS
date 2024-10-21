@@ -1,5 +1,7 @@
+import { FacultyEditForm } from '@app/components/forms/faculty-edit-form'
 import { Binding } from '@app/lib/binding'
 import { BackButton } from '@app/lib/buttons'
+import { CurrentEntityLazyModalEdit } from '@app/lib/buttons/modalEdit'
 import { DataGrid, DataGridBooleanColumn, DataGridColumn, DataGridDateColumn, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
@@ -19,11 +21,16 @@ export default () => {
 					</Slots.Back>
 					<EntitySubTree entity="Faculty(id=$id)" isCreating={false}>
 						<Slots.Actions>
-							<Link to="facultyEdit(id: $entity.id)">
-								<Button>
+						<CurrentEntityLazyModalEdit
+							dialogProps={{ className: 'overflow-y-auto max-h-screen' }}
+							buttonContent={
+								<span className="flex items-center">
 									Edit faculty
-								</Button>
-							</Link>
+								</span>
+							}
+						>
+							<FacultyEditForm />
+						</CurrentEntityLazyModalEdit>
 						</Slots.Actions>
 						<TableWrapper className="bg-gray-50/50 max-w-lg border rounded-md">
 							<Table>
