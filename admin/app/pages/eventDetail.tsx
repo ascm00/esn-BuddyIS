@@ -8,7 +8,7 @@ import { formatDateTime } from '@app/lib/utils/formatting'
 import { Todo } from '@app/lib/dev'
 import { RichTextRendererField } from '@app/lib/plugins/rich-text/renderer/RichTextRendererField'
 import { renderElement, renderLeaf } from '@app/lib/plugins/rich-text/renderer/renderers'
-import { DataGrid, DataGridActionColumn, DataGridColumn, DataGridDateColumn, DataGridHasManyColumn, DataGridHasManyFilter, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridTextFilter, DataGridToolbar } from '@app/lib/datagrid'
+import { DataGrid, DataGridActionColumn, DataGridColumn, DataGridDateColumn, DataGridEnumColumn, DataGridHasManyColumn, DataGridHasManyFilter, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridTextFilter, DataGridToolbar } from '@app/lib/datagrid'
 import { CreateEntityModalButton } from '@app/lib/buttons/createEntityModalButtons'
 import { RegistrationCreateForm } from '@app/components/forms/registration-create-form'
 import { Delete, DollarSign, Trash, TrashIcon } from 'lucide-react'
@@ -18,6 +18,7 @@ import { PersistButton } from '@contember/admin'
 const RegistrationNow = Component( () => {
 	const identity = useIdentity()
 	const entity = useEntity()
+	const eventId = entity.getField('id').value
 	const registrationStartDateValueString = entity.getField('registrationStartDate').value?.toString()
 	const formattedRegistrationStartDate = registrationStartDateValueString && new Date(registrationStartDateValueString).toLocaleString()
 	const registrationStartDateValue = registrationStartDateValueString && new Date(registrationStartDateValueString)
@@ -100,7 +101,7 @@ const RegistrationNow = Component( () => {
 						//if event is not full and is paid
 						<>
 							<div className='flex gap-6 flex-col md:flex-row'>
-								<CreateEntityModalButton
+								{/* <CreateEntityModalButton
 									entityName="EventRegistration"
 									buttonLabel={`Pay ${fee} CZK`}
 									saveButtonLabel={`Pay ${fee} CZK`}
@@ -111,7 +112,12 @@ const RegistrationNow = Component( () => {
 									</>
 									}
 									dialogProps={{ className: 'overflow-y-auto max-h-screen' }}
-								/>
+								/> */}
+									<Link to={"registrationPayCreate(id: $entity.id)"}>
+										<Button>
+											Register & Pay
+										</Button>
+									</Link>
 							</div> 
 						</>
 					)
@@ -151,7 +157,7 @@ const RegistrationNow = Component( () => {
 								refreshOnPersist
 								createEntityForm={
 								<>
-									<RegistrationCreateForm isOnWaitingList={true}/>
+									<RegistrationCreateForm isOnWaitingList={true} />
 								</>
 								}
 								dialogProps={{ className: 'overflow-y-auto max-h-screen' }}
@@ -451,6 +457,7 @@ export default () => {
 													</a>
 												</Link>
 											</DataGridHasOneColumn>
+											<DataGridEnumColumn field="payment" header="Payment" options={{ paid: 'Paid', cancelled: 'Cancelled', pending: 'Pending' }}/>
 											<DataGridTextColumn field="person.tenantPerson.email" header="Email" />
 											<DataGridTextColumn field="person.phoneNumber" header="Phone number" />
 											<DataGridTextColumn field="person.xname" header="inSIS username" />

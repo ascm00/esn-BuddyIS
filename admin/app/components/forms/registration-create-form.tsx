@@ -9,15 +9,16 @@ import { ConnectEntity } from '../ConnectEntity'
 import Input from 'postcss/lib/input'
 import { createPayment } from '@app/lib/payment/comgate'
 import { Button } from '@app/lib/ui/button'
+import React from 'react'
 
 interface RegistrationCreateFormProps {
-    isOnWaitingList?: boolean 
+    isOnWaitingList?: boolean
+    isPaid?: boolean
 }
 
 export const RegistrationCreateForm = Component<RegistrationCreateFormProps>(
-    ({isOnWaitingList}) => {
+    ({isOnWaitingList, isPaid}) => {
     const entity = useEntity()
-    const redirect = useRedirect()
 
     //connect to current event and logged in user
     const me = useEntitySubTree('me')
@@ -47,17 +48,19 @@ export const RegistrationCreateForm = Component<RegistrationCreateFormProps>(
     })
 
 
-    useEntityPersistSuccess(() => {
-        const data = createPayment(entity)
+    useEntityPersistSuccess(async() => {
+        await createPayment(entity)
     })
     
     return (
         <>
         <FormLayout>
+            {!isPaid &&
             <div>
                 <h2 className="text-2xl font-semibold">Registration</h2>
                 <hr className="my-2 border-gray-200" />
             </div>
+            }
             <Field field="event.dietaryRestrictions" />
 
             <HasRole role={roles => roles.has('admin') || roles.has('esnMemberRole') || roles.has('coordinator')}>
