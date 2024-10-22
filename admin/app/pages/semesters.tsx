@@ -1,6 +1,9 @@
+import { SemesterForm } from '@app/components/forms/semester-create-form'
 import { PersistCheckbox } from '@app/components/PersistCheckbox'
 import { Binding, PersistButton } from '@app/lib/binding'
 import { BackButton } from '@app/lib/buttons'
+import { CreateEntityModalButton } from '@app/lib/buttons/createEntityModalButtons'
+import { CurrentEntityLazyModalEdit } from '@app/lib/buttons/modalEdit'
 import { DataGrid, DataGridColumn, DataGridDateColumn, DataGridHasManyColumn, DataGridLoader, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
 import { CheckboxField, SelectField } from '@app/lib/form'
 import { Slots } from '@app/lib/layout'
@@ -20,11 +23,18 @@ export default () => {
 					</Slots.Back>
 					<>
 						<Slots.Actions>
-							<Link to="semesterCreate">
-								<Button>
-									Create semester
-								</Button>
-							</Link>
+							<CreateEntityModalButton
+									entityName="Semester"
+									buttonLabel="Create semester"
+									saveButtonLabel="Save data"
+									refreshOnPersist
+									createEntityForm={
+									<>
+										<SemesterForm />
+									</>
+									}
+									dialogProps={{ className: 'overflow-y-auto max-h-screen' }}
+							/>
 						</Slots.Actions>
 						<ShowCurrentSemester />
 						<DataGrid entities="Semester">
@@ -40,11 +50,16 @@ export default () => {
 													Set current
 												</Button>
 											</Link>
-											<Link to="semesterEdit(id: $entity.id)">
-												<Button>
-													Edit
-												</Button>
-											</Link>
+											<CurrentEntityLazyModalEdit
+												dialogProps={{ className: 'overflow-y-auto max-h-screen' }}
+												buttonContent={
+													<span className="flex items-center">
+														Edit
+													</span>
+												}
+											>
+												<SemesterForm />
+											</CurrentEntityLazyModalEdit>
 										</div>
 									</DataGridColumn>
 									<DataGridTextColumn field="name" header="Name" />

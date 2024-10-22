@@ -105,7 +105,7 @@ export const Navigation = Component(
 					<MenuItem label="Study Programs" icon={<GraduationCap className='text-blue-500' />} to="studyPrograms" />
 					<MenuItem label="Partner universities" icon={<Building className='text-blue-500' />} to="universities" />
 					<MenuItem label="Faculties at VSE" icon={<BookOpen className='text-blue-500' />} to="faculties" />
-					<MenuItem label="Sections" icon={<Grid className='text-blue-500' />} to="sections" />
+					<MenuItem label="Processes" icon={<Grid className='text-blue-500' />} to="sections" />
 					<MenuItem label="Countries" icon={<MapPin className='text-blue-500' />} to="countries" />
 					<MenuItem label="Languages" icon={<LanguagesIcon className='text-blue-500' />} to="languages" />
 					<MenuItem label="Dietary Restrictions" icon={<UtensilsCrossed className='text-blue-500' />} to="dietaryRestrictions" />

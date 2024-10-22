@@ -1,5 +1,8 @@
+import { N2nPartyForm } from '@app/components/forms/n2n-party-form'
 import { Binding } from '@app/lib/binding'
 import { BackButton } from '@app/lib/buttons'
+import { CreateEntityModalButton } from '@app/lib/buttons/createEntityModalButtons'
+import { CurrentEntityLazyModalEdit } from '@app/lib/buttons/modalEdit'
 import { DataGrid, DataGridBooleanColumn, DataGridColumn, DataGridDateColumn, DataGridHasManyColumn, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
@@ -19,11 +22,18 @@ export default () => {
 					<>
 						<Slots.Actions>
 							<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('coordinator')}>
-								<Link to="n2nPartyCreate">
-									<Button>
-										Create N2N party
-									</Button>
-								</Link>
+								<CreateEntityModalButton
+									entityName="N2nParty"
+									buttonLabel="Create N2N party"
+									saveButtonLabel="Save data"
+									refreshOnPersist
+									createEntityForm={
+									<>
+										<N2nPartyForm />
+									</>
+									}
+									dialogProps={{ className: 'overflow-y-auto max-h-screen' }}
+								/>
 							</HasRole>
 						</Slots.Actions>
 						<DataGrid entities="N2nParty">
@@ -38,15 +48,20 @@ export default () => {
 									<DataGridColumn>
 										<div className="flex gap-4">
 											<Link to="n2nPartyDetail(id: $entity.id)">
-												<a>
+												<Button>
 													Detail
-												</a>
+												</Button>
 											</Link>
-											<Link to="n2nPartyEdit(id: $entity.id)">
-												<a>
-													Edit
-												</a>
-											</Link>
+											<CurrentEntityLazyModalEdit
+												dialogProps={{ className: 'overflow-y-auto max-h-screen' }}
+												buttonContent={
+													<span className="flex items-center">
+														Edit
+													</span>
+												}
+											>
+												<N2nPartyForm />
+											</CurrentEntityLazyModalEdit>
 										</div>
 									</DataGridColumn>
 									<DataGridTextColumn field="name" header="Name" />

@@ -10,6 +10,8 @@ import { Table, TableBody, TableCell, TableRow, TableWrapper } from '@app/lib/ui
 import { PersistButton } from '@app/lib/binding'
 
 import { Component, EntityList, EntityListSubTree, EntitySubTree, Field, Link, PersistTrigger, useEntity, useEntityBeforePersist, useEntityList, useEntityListSubTree, useEntitySubTree } from '@contember/interface'
+import { CurrentEntityLazyModalEdit } from '@app/lib/buttons/modalEdit'
+import { SemesterForm } from '@app/components/forms/semester-create-form'
 
 export default () => {
 	return (
@@ -25,11 +27,16 @@ export default () => {
 					<EntitySubTree entity="Semester(id=$id)" isCreating={false}>
 						<TurnOffCurrent />
 						<Slots.Actions>
-							<Link to="semesterEdit(id: $entity.id)">
-								<Button>
-									Edit semester
-								</Button>
-							</Link>
+							<CurrentEntityLazyModalEdit
+								dialogProps={{ className: 'overflow-y-auto max-h-screen' }}
+								buttonContent={
+									<span className="flex items-center">
+										Edit semester
+									</span>
+								}
+							>
+								<SemesterForm />
+							</CurrentEntityLazyModalEdit>
 							<PersistButton label="Save current semester" />
 						</Slots.Actions>
 						<TableWrapper className="bg-gray-50/50 max-w-lg border rounded-md">

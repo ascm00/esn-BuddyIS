@@ -13,6 +13,8 @@ import { ImageFieldView } from '@app/components/fieldViews/ImageFieldView'
 import { Component, EntityAccessor, EntitySubTree, Field, HasMany, HasOne, HasRole, identityEnvironmentExtension, Link, useEntity, useEntitySubTree } from '@contember/interface'
 import { useCallback, useState } from 'react'
 import { DeleteEntityModalButton } from '@app/lib/buttons/deleteEntityModalButton'
+import { CurrentEntityLazyModalEdit } from '@app/lib/buttons/modalEdit'
+import { BuddyPairEditForm } from '@app/components/forms/buddy-pair-edit-form'
 
 export default () => {
 	return (
@@ -38,11 +40,16 @@ export default () => {
 										Unpair
 									</Button>
 								</DeleteEntityModalButton>
-								<Link to="buddyPairEdit(id: $entity.id)">
-									<Button>
-										Edit buddy pair
-									</Button>
-								</Link>
+								<CurrentEntityLazyModalEdit
+									dialogProps={{ className: 'overflow-y-auto max-h-screen' }}
+									buttonContent={
+										<span className="flex items-center">
+											Edit buddy pair
+										</span>
+									}
+								>
+									<BuddyPairEditForm />
+								</CurrentEntityLazyModalEdit>
 							</HasRole>
 						</Slots.Actions>
 						<div className="flex gap-8 flex-col md:flex-row">

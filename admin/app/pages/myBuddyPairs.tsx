@@ -19,9 +19,7 @@ export default () => {
 					<Slots.Back>
 						<BackButton />
 					</Slots.Back>
-					<>
-						{/* <DataGrid entities="BuddyPair[semester.isCurrent=true]"> */}
-						<DataGrid entities={`BuddyPair[coordinator.tenantPerson.id = '${personId}' && semester.isCurrent=true]`}>
+						<DataGrid entities={`BuddyPair[coordinator.tenantPerson.id='${personId}' && semester.isCurrent=true]`}>
 							<DataGridToolbar>
 								<DataGridQueryFilter />
 								<DataGridBooleanFilter field="tenPoints" label="10 points" />
@@ -47,14 +45,13 @@ export default () => {
 										<Field field="xname" />
 									</DataGridHasOneColumn>
 									<DataGridHasOneColumn field="internationalStudent" header="Foreign buddy">
-										<Field field="firstName" /> {' '} <Field field="surname" /> {' ('} <Field field="" /> {') '}
+										<Field field="firstName" /> {' '} <Field field="surname" /> {' ('} <Field field="xname" /> {') '}
 									</DataGridHasOneColumn>
 									<DataGridBooleanColumn field="tenPoints" header="10 points" />
 								</DataGridTable>
 							</DataGridLoader>
 							<DataGridPagination />
 						</DataGrid>
-					</>
 				</div>
 			</Binding>
 		</>

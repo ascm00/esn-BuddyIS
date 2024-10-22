@@ -1,5 +1,7 @@
+import { BuddyPairCreateForm } from '@app/components/forms/buddy-pair-create-form'
 import { Binding } from '@app/lib/binding'
 import { BackButton } from '@app/lib/buttons'
+import { CreateEntityModalButton } from '@app/lib/buttons/createEntityModalButtons'
 import { DataGrid, DataGridBooleanColumn, DataGridBooleanFilter, DataGridColumn, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
@@ -18,11 +20,18 @@ export default () => {
 					</Slots.Back>
 					<>
 						<Slots.Actions>
-							<Link to="buddyPairCreate">
-								<Button>
-									Create buddy pair
-								</Button>
-							</Link>
+							<CreateEntityModalButton
+								entityName="BuddyPair"
+								buttonLabel="Create buddy pair"
+								saveButtonLabel="Save data"
+								refreshOnPersist
+								createEntityForm={
+								<>
+									<BuddyPairCreateForm />
+								</>
+								}
+								dialogProps={{ className: 'overflow-y-auto max-h-screen' }}
+							/>
 						</Slots.Actions>
 						<DataGrid entities="BuddyPair">
 							<DataGridToolbar>
