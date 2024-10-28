@@ -1,4 +1,3 @@
-import { EventContext } from '@cloudflare/workers-types'
 import createUserQuery from './gql/createUser'
 import inviteQuery from './gql/invite'
 import { Env } from './types'
