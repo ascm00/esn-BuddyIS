@@ -94,7 +94,6 @@ export const Navigation = Component(
 			<MenuItem label="Allergies" icon={<AlertCircle className='text-blue-500' />} to="" /> */}
 			{/* <MenuItem label="Languages" icon={<MessageSquare className='text-blue-500' />} to="languages" />
 			<MenuItem label="Hobbies" icon={<Heart className='text-blue-500' />} to="hobbies" />
-			<MenuItem label="N2N Clubs" to="clubs" /> 
 			<MenuItem label="Limitations" to="limitations" />
 			<MenuItem label="Sports" icon={<Activity className='text-blue-500' />} to="sports" /> */}
 		{/* </MenuItem> */}

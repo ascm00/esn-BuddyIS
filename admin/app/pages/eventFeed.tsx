@@ -50,6 +50,13 @@ export default () => {
 								</DataGridLoader>
 							</DataGrid>
 						</HasRole>
+						<DataGrid entities={`N2nParty[date > "${now}"]`} initialSorting={{ date: 'asc' }}>
+							<DataGridLoader>
+								<DataGridFeed>
+									<PartyCard />
+								</DataGridFeed>
+							</DataGridLoader>
+						</DataGrid>
 					</>
 				</div>
 			</Binding>
@@ -59,13 +66,6 @@ export default () => {
 
 const EventCard = Component(() => (
 	<Card className='max-w-[82%] mx-auto bg-white shadow-md rounded-lg'>
-	  {/* <CardHeader className='border-b border-gray-200'>
-		<div className='flex flex-col justify-between items-start py-4'>
-		  <div className="text-2xl font-semibold text-gray-800">
-			<Field field="name" />
-		  </div>
-		</div>
-	  </CardHeader> */}
   
 	  <CardContent className='py-4 px-6'>
 		<div className='flex flex-row justify-between items-center py-4 border-b border-gray-200'>
@@ -113,5 +113,41 @@ const EventCard = Component(() => (
 		</p>
 	  </CardFooter>
 	</Card>
-  ));
+  ))
+
+  const PartyCard = Component(() => (
+	<Card className='max-w-[82%] mx-auto bg-white shadow-md rounded-lg'>
+  
+	  <CardContent className='py-4 px-6'>
+		<div className='flex flex-row justify-between items-center py-4 border-b border-gray-200'>
+			<div className="text-2xl font-semibold text-gray-800">
+				<Field field="name" />
+			</div>
+			<div>
+				<Link to="n2nPartyDetail(id: $entity.id)">
+					<Button>
+						Detail
+					</Button>
+				</Link>
+			</div>
+		</div>
+		<p className='text-lg text-gray-600'>
+		  <strong>📅 Start</strong> <Field field='date' format={formatDateTime} />
+		</p>
+		<p className='text-lg text-gray-600'>
+		  <strong>📍 Club</strong> <Field field='club' />
+		</p>
+		{/* <p className='text-lg text-gray-600'>
+		  <strong>🔗 BOOM Events Link:</strong>
+		</p> */}
+		<div className='prose mt-4 mb-4'>
+		  <Field field='description' />
+		</div>
+		<div className='max-w-full mt-4 rounded-lg overflow-hidden'>
+		  <ImageFieldView width={300} height={200} />
+		</div>
+	  </CardContent>
+  
+	</Card>
+  ))
   
