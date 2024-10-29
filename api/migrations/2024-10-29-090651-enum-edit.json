@@ -1,0 +1,15 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "updateEnum",
+			"enumName": "payment",
+			"values": [
+				"paid",
+				"pending",
+				"cancelled",
+				"unpaid"
+			]
+		}
+	]
+}

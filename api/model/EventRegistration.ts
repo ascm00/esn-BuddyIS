@@ -35,7 +35,7 @@ export class EventRegistration {
     note = c.stringColumn()
     event = c.manyHasOne(Event, 'registrations')
     isWaitingList = c.boolColumn().default(false)
-    
+	personWhoMadeRegistration = c.manyHasOne(Person, 'registrationMadeByPerson')
     person = c.manyHasOne(Person, 'registrations')
     allergies = c.manyHasMany(Allergy, 'registrations')
     dietaryRestrictions = c.manyHasMany(DietaryRestrictions, 'registrations')

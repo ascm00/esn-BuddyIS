@@ -19,6 +19,7 @@ export type payment =
 	 | "paid"
 	 | "pending"
 	 | "cancelled"
+	 | "unpaid"
 export type preferredSex = 
 	 | "man"
 	 | "woman"

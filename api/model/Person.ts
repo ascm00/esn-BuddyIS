@@ -59,6 +59,7 @@ export class Person {
 	n2nHours = c.manyHasManyInverse(N2nHour, 'person')
 	profilePicture = c.manyHasOne(Image, 'userProfilePicture')
 	coordinatingBuddyPairs = c.oneHasMany(BuddyPair, 'coordinator')
+	registrationMadeByPerson = c.oneHasMany(EventRegistration, 'personWhoMadeRegistration')
 
 	registrations = c.oneHasMany(EventRegistration, 'person')
 	notes = c.oneHasMany(Note, 'author')

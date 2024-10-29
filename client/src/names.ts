@@ -468,6 +468,10 @@ export const ContemberClientNames: SchemaNames = {
         "isWaitingList": {
           "type": "column"
         },
+        "personWhoMadeRegistration": {
+          "type": "one",
+          "entity": "Person"
+        },
         "person": {
           "type": "one",
           "entity": "Person"
@@ -870,6 +874,10 @@ export const ContemberClientNames: SchemaNames = {
         "coordinatingBuddyPairs": {
           "type": "many",
           "entity": "BuddyPair"
+        },
+        "registrationMadeByPerson": {
+          "type": "many",
+          "entity": "EventRegistration"
         },
         "registrations": {
           "type": "many",

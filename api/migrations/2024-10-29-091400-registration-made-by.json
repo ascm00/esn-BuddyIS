@@ -1,0 +1,136 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "createRelation",
+			"entityName": "EventRegistration",
+			"owningSide": {
+				"type": "ManyHasOne",
+				"name": "personWhoMadeRegistration",
+				"target": "Person",
+				"joiningColumn": {
+					"columnName": "person_who_made_registration_id",
+					"onDelete": "restrict"
+				},
+				"nullable": true,
+				"inversedBy": "registrationMadeByPerson"
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "registrationMadeByPerson",
+				"target": "EventRegistration",
+				"ownedBy": "personWhoMadeRegistration"
+			}
+		},
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/EventRegistration/operations/create/personWhoMadeRegistration",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/EventRegistration/operations/update/personWhoMadeRegistration",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/EventRegistration/operations/read/personWhoMadeRegistration",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/Person/operations/create/registrationMadeByPerson",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/Person/operations/update/registrationMadeByPerson",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/Person/operations/read/registrationMadeByPerson",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/EventRegistration/operations/create/personWhoMadeRegistration",
+					"value": "person_personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/EventRegistration/operations/read/personWhoMadeRegistration",
+					"value": "person_personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/Person/operations/update/registrationMadeByPerson",
+					"value": "personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/Person/operations/read/registrationMadeByPerson",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/EventRegistration/operations/create/personWhoMadeRegistration",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/EventRegistration/operations/update/personWhoMadeRegistration",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/EventRegistration/operations/read/personWhoMadeRegistration",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Person/operations/create/registrationMadeByPerson",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Person/operations/update/registrationMadeByPerson",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Person/operations/read/registrationMadeByPerson",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/EventRegistration/operations/create/personWhoMadeRegistration",
+					"value": "person_personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/EventRegistration/operations/read/personWhoMadeRegistration",
+					"value": "person_personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/Person/operations/update/registrationMadeByPerson",
+					"value": "personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/Person/operations/read/registrationMadeByPerson",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/Person/operations/read/registrationMadeByPerson",
+					"value": true
+				}
+			]
+		}
+	]
+}

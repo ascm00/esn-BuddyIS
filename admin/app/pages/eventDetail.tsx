@@ -10,7 +10,7 @@ import { RichTextRendererField } from '@app/lib/plugins/rich-text/renderer/RichT
 import { renderElement, renderLeaf } from '@app/lib/plugins/rich-text/renderer/renderers'
 import { DataGrid, DataGridActionColumn, DataGridColumn, DataGridDateColumn, DataGridEnumColumn, DataGridHasManyColumn, DataGridHasManyFilter, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridNumberColumn, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridTextFilter, DataGridToolbar } from '@app/lib/datagrid'
 import { CreateEntityModalButton } from '@app/lib/buttons/createEntityModalButtons'
-import { RegistrationCreateForm } from '@app/components/forms/registration-create-form'
+import { RegistrationAdminCreateForm, RegistrationCreateForm } from '@app/components/forms/registration-create-form'
 import { Delete, DollarSign, Trash, TrashIcon } from 'lucide-react'
 import { DeleteEntityModalButton } from '@app/lib/buttons/deleteEntityModalButton'
 import { PersistButton } from '@contember/admin'
@@ -106,18 +106,6 @@ const RegistrationNow = Component( () => {
 						//if event is not full and is paid
 						<>
 							<div className='flex gap-6 flex-col md:flex-row'>
-								{/* <CreateEntityModalButton
-									entityName="EventRegistration"
-									buttonLabel={`Pay ${fee} CZK`}
-									saveButtonLabel={`Pay ${fee} CZK`}
-									refreshOnPersist
-									createEntityForm={
-									<>
-										<RegistrationCreateForm />
-									</>
-									}
-									dialogProps={{ className: 'overflow-y-auto max-h-screen' }}
-								/> */}
 									<Link to={"registrationPayCreate(id: $entity.id)"}>
 										<Button>
 											Register & Pay
@@ -205,68 +193,84 @@ const RegistrationNow = Component( () => {
 	</>
 ))
 
-const DeleteRegistration = Component(
+
+const RegistrationAdminCreate = Component(
 	() => {
+		const entity = useEntity()
+		const fee = entity.getField('fee').value ?? undefined
+		const isPaid = typeof fee === 'number' && (fee > 0)
 
-	const entity = useEntity()
-	const identity = useIdentity()
-	const contactPersonId = entity.getField('event.contactPerson.id').value ?? undefined
+		const eventStartDateValue = entity.getField('startDate').value?.toString()
+		const eventStartDate = eventStartDateValue && new Date(eventStartDateValue)
 
-	const isOwner = () => {
-		if(identity?.person?.id) {
-			if(contactPersonId === identity.person.id) {
-				return true
+		const registeredCount = entity.getField('registeredCount').value ?? undefined
+		const capacity = entity.getField('capacity').value ?? undefined
+		const waitingList = entity.getField('waitingList').value ?? 0
+
+		const isNotFull = (typeof registeredCount === 'number' && typeof capacity === 'number') && (registeredCount < capacity)
+		const isOnWaitingList = (typeof registeredCount === 'number' && typeof capacity === 'number' && typeof waitingList === 'number') && (registeredCount >= capacity && registeredCount < capacity + waitingList)
+
+
+		if (eventStartDate && eventStartDate < new Date()) {
+			return null
+		} else if (isNotFull){
+			if (isPaid) {
+				return (
+					<CreateEntityModalButton
+						entityName="EventRegistration"
+						buttonLabel="Register user"
+						saveButtonLabel="Register user"
+						refreshOnPersist
+						createEntityForm={
+						<>
+							<RegistrationAdminCreateForm isPaid={true} />
+						</>
+						}
+						dialogProps={{ className: 'overflow-y-auto max-h-screen' }}
+					/>
+				)
+			} else {
+				return (
+					<CreateEntityModalButton
+						entityName="EventRegistration"
+						buttonLabel="Refister user"
+						saveButtonLabel="Register user"
+						refreshOnPersist
+						createEntityForm={
+						<>
+							<RegistrationAdminCreateForm isPaid={false} />
+						</>
+						}
+						dialogProps={{ className: 'overflow-y-auto max-h-screen' }}
+					/>
+				)
 			}
-		}
-		return false
-	}
 
-	if(isOwner()) {
-		return (
-				<DeleteEntityModalButton 
-				message="Do you really want to cancel this registration?"
-				cancelTo={'events'}
-				afterPersistTo={'events'}
-				>
-					<Button variant="destructive">
-						<Trash />
-					</Button>
-				</DeleteEntityModalButton>
-				// <DeleteEntityDialog
-				// 		trigger={<div className=''>
-				// 					<TrashIcon className="w-4" />
-				// 				</div>
-				// 		}
-				// />
-		)
-	} else {
-		return (
-			<HasRole role="admin">
-				<DeleteEntityModalButton 
-				message="Do you really want to cancel this registration?"
-				cancelTo={'events'}
-				afterPersistTo={'events'}
-				>
-					<Button variant="destructive">
-						<Trash />
-					</Button>
-				</DeleteEntityModalButton>
-			</HasRole>
-			// <DeleteEntityDialog
-			// 		trigger={<div className=''>
-			// 					<TrashIcon className="w-4" />
-			// 				</div>
-			// 		}
-			// />
-	)
-	}
+		} else if (isOnWaitingList) {
+			return (
+				<CreateEntityModalButton
+					entityName="EventRegistration"
+					buttonLabel="Register user"
+					saveButtonLabel="Register user"
+					refreshOnPersist
+					createEntityForm={
+					<>
+						<RegistrationAdminCreateForm isPaid={false} isOnWaitingList={true} />
+					</>
+					}
+					dialogProps={{ className: 'overflow-y-auto max-h-screen' }}
+				/>
+			)
+		}
 	}, () => (
 		<>
-		<Field field={'event.id'} />
-		<Field field={'event.contactPerson.id'} />
+			<Field field="fee" />
+			<Field field="startDate" />
+			<Field field="registeredCount" />
+			<Field field="capacity" />
+			<Field field="waitingList" />
 		</>
-	)
-)
+	))
 
 export default () => {
 	return (
@@ -282,6 +286,7 @@ export default () => {
 					<EntitySubTree entity="Event(id=$id)" isCreating={false}>
 						<HasRole role={roles => roles.has('admin') || roles.has('esnMemberRole') || roles.has('coordinator')}>
 							<Slots.Actions>
+								<RegistrationAdminCreate />
 								<Link to="eventEdit(id: $entity.id)">
 									<Button>
 										Edit event
@@ -410,7 +415,6 @@ export default () => {
 										</TableRow>
 									</Table>
 								</TableWrapper>
-								<Todo>We have to set default refund policy, which will be added to database as default when user doesn't enter anything. Or put it in form as default value</Todo>
 								<TableWrapper className="bg-gray-50/50 h-fit border rounded-md">
 									<Table>
 										<TableRow>
@@ -429,7 +433,6 @@ export default () => {
 									</Table>
 								</TableWrapper>
 								<RegistrationNow />
-								<Todo>Make the buttons functional. Comgate integration. Naformátovat text</Todo>
 							</div>
 						</div>
 						<HasRole role={roles => roles.has('admin') || roles.has('esnMemberRole') || roles.has('coordinator')}>
@@ -452,9 +455,13 @@ export default () => {
 									</DataGridToolbar>
 									<DataGridLoader>
 										<DataGridTable>
-											<DataGridActionColumn>
-												<DeleteRegistration />
-											</DataGridActionColumn>
+											<DataGridColumn>
+												<div className="flex gap-4">
+													<Link to="registrationDetail(id: $entity.id)">
+														<Button>Detail</Button>
+													</Link>
+												</div>
+											</DataGridColumn>
 											<DataGridHasOneColumn field="person" header="Name">
 												<Link to="userDetail(id: $entity.id)">
 													<a>
@@ -475,6 +482,9 @@ export default () => {
 												<Field field="name" />
 											</DataGridHasManyColumn>
 											<DataGridTextColumn field="note" header="Note" />
+											<DataGridHasOneColumn field="personWhoMadeRegistration" header="Manually registered by">
+												<Field field="firstName" /> {' '} <Field field="surname" />
+											</DataGridHasOneColumn>
 										</DataGridTable>
 									</DataGridLoader>
 								</DataGrid>
@@ -498,10 +508,14 @@ export default () => {
 									</DataGridToolbar>
 									<DataGridLoader>
 										<DataGridTable>
-											<DataGridActionColumn>
-												<DeleteRegistration />
-											</DataGridActionColumn>
-											<DataGridTextColumn field="createdAt" header="Registered At" />
+											<DataGridColumn>
+												<div className="flex gap-4">
+													<Link to="registrationDetail(id: $entity.id)">
+														<Button>Detail</Button>
+													</Link>
+												</div>
+											</DataGridColumn>
+											<DataGridDateColumn field="createdAt" header="Registered At" children={<Field field="createdAt" format={formatDateTime} />}/>
 											<DataGridHasOneColumn field="person" header="Name">
 												<Link to="userDetail(id: $entity.id)">
 													<a>
