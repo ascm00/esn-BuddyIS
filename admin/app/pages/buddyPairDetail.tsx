@@ -41,6 +41,7 @@ export default () => {
 									</Button>
 								</DeleteEntityModalButton>
 								<CurrentEntityLazyModalEdit
+									redirectOnSuccess={'buddyPairDetail(id: $entity.id)'}
 									dialogProps={{ className: 'overflow-y-auto max-h-screen' }}
 									buttonContent={
 										<span className="flex items-center">
