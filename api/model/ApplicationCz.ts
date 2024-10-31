@@ -33,6 +33,7 @@ export class ApplicationCz {
 	semester = c.manyHasOne(Semester, 'applications').setNullOnDelete()
 	motivation = c.stringColumn()
 	howManyBuddies = c.intColumn()
+	howManyBuddiesAssigned = c.intColumn().default(0)
 	status = c.enumColumn(applicationStatus).default('toBePaired')
 	result = c.enumColumn(applicationCzResult)
 	preferredCountry = c.manyHasOne(Country, 'preferredApplicationsCz').setNullOnDelete()

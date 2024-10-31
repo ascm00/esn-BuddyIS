@@ -1,5 +1,6 @@
-import {Component, DeleteEntityTrigger, Link, useRedirect} from "@contember/interface";
+import {Component, DeleteEntityTrigger, DeleteEntityTriggerProps, EntityAccessor, Link, useEntity, useEntityBeforePersist, useMutationState, usePersist, useRedirect} from "@contember/interface";
 import * as React from "react";
+import { Slot } from "@radix-ui/react-slot";
 import {
     AlertDialog,
     AlertDialogAction,
@@ -11,6 +12,7 @@ import {
 import {Button} from "@app/lib/ui/button";
 import {FeedbackTrigger} from "@app/lib/binding";
 import {RoutingLinkTarget} from "@contember/react-routing";
+import { ComponentType, useCallback } from "react";
 
 interface DeleteEntityProps {
     message: string
@@ -19,6 +21,8 @@ interface DeleteEntityProps {
     cancelTo: RoutingLinkTarget,
     afterPersistTo?: RoutingLinkTarget
 }
+
+const SlotButton = Slot as ComponentType<React.ButtonHTMLAttributes<HTMLButtonElement>>
 
 export const DeleteEntityModalButton = Component<DeleteEntityProps>(({message, deleteMessage, children, cancelTo, afterPersistTo}) => {
     const redirect = useRedirect()

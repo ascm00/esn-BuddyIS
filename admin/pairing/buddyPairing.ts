@@ -15,18 +15,17 @@ const preparePreferencesForCzech = (czechStudents: Array<EntityAccessor>, intern
             .filter(s => s !== student)
             .sort((a, b) => {
                 // First criteria: study program
-                if (a.getField('person.studyProgram.name').value === student.getField('person.studyProgram.name').value &&
-                    b.getField('person.studyProgram.name').value !== student.getField('person.studyProgram.name').value) return -1
-                if (b.getField('person.studyProgram.name').value === student.getField('person.studyProgram.name').value &&
-                    a.getField('person.studyProgram.name').value !== student.getField('person.studyProgram.name').value) return 1
-
-                // Second criteria: shared languages
-                // const aLanguagesShared = Array.from(a.getEntityList('person.languages')).filter(lang =>
-                //     Array.from(student.getEntityList('preferredLanguages')).includes(lang)).length
-                // const bLanguagesShared = Array.from(b.getEntityList('person.languages')).filter(lang =>
-                //     Array.from(student.getEntityList('preferredLanguages')).includes(lang)).length
-                // if (aLanguagesShared > bLanguagesShared) return -1
-                // if (aLanguagesShared < bLanguagesShared) return 1
+                if (student.getField('person.studyProgram.name').value === 'Czech program') {
+                    if (a.getField('person.studyProgram.name').value === 'Exchange program' &&
+                        b.getField('person.studyProgram.name').value !== 'Exchange program') return -1
+                    if (b.getField('person.studyProgram.name').value === 'Exchange program' &&
+                        a.getField('person.studyProgram.name').value !== 'Exchange program') return 1
+                } else {
+                    if (a.getField('person.studyProgram.name').value === student.getField('person.studyProgram.name').value &&
+                        b.getField('person.studyProgram.name').value !== student.getField('person.studyProgram.name').value) return -1
+                    if (b.getField('person.studyProgram.name').value === student.getField('person.studyProgram.name').value &&
+                        a.getField('person.studyProgram.name').value !== student.getField('person.studyProgram.name').value) return 1
+                }
 
                 // Second criteria: international student gender preference
                 if (!(a.getField('preferredBuddySex').value === 'dontCare' || b.getField('preferredBuddySex').value === 'dontCare')) {
@@ -144,7 +143,19 @@ export const galeShapleyCzechFirst = async(czechStudents: Array<EntityAccessor>,
     })
 
     if (availableCzechStudents.length === 0) {
-      // No Czech student is available in this round
+      console.warn('No available czech students. Terminating the pairing process.')
+      break
+    }
+
+    // Seřadíme dostupné české studenty podle počtu již přiřazených buddies
+    availableCzechStudents.sort((a, b) => {
+      const aAssigned = getAssignedBuddiesCount(a)
+      const bAssigned = getAssignedBuddiesCount(b)
+      return aAssigned - bAssigned
+    })
+
+    if (availableCzechStudents.length === 0) {
+      // Žádný český student není dostupný v tomto kole
       round++
       continue
     }
@@ -177,6 +188,12 @@ export const galeShapleyCzechFirst = async(czechStudents: Array<EntityAccessor>,
   })
 
   return { pairs, unpairedCzechStudents }
+}
+
+// Přidáme funkci pro získání počtu již přiřazených buddies
+const getAssignedBuddiesCount = (student: EntityAccessor): number => {
+  const value = student.getField('howManyBuddiesAssigned').value
+  return typeof value === 'number' ? value : parseInt(value as string, 10) || 0
 }
 
 export const buddyPairTasks = [

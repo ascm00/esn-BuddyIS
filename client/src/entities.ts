@@ -40,6 +40,7 @@ export type ApplicationCz <OverRelation extends string | never = never> = {
 		points: number | null
 		motivation: string | null
 		howManyBuddies: number | null
+		howManyBuddiesAssigned: number | null
 		status: applicationStatus | null
 		result: applicationCzResult | null
 		preferredSex: preferredSex | null

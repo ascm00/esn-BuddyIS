@@ -10,7 +10,7 @@ import { Button } from '@app/lib/ui/button'
 import { Table, TableBody, TableCell, TableRow, TableWrapper } from '@app/lib/ui/table'
 import { TextareaAutosize } from '@app/lib/ui/textarea'
 import { ImageFieldView } from '@app/components/fieldViews/ImageFieldView'
-import { Component, EntityAccessor, EntitySubTree, Field, HasMany, HasOne, HasRole, identityEnvironmentExtension, Link, useEntity, useEntitySubTree } from '@contember/interface'
+import { Component, EntityAccessor, EntitySubTree, Field, HasMany, HasOne, HasRole, identityEnvironmentExtension, Link, useEntity, useEntityBeforePersist, useEntityPersistSuccess, useEntitySubTree } from '@contember/interface'
 import { useCallback, useState } from 'react'
 import { DeleteEntityModalButton } from '@app/lib/buttons/deleteEntityModalButton'
 import { CurrentEntityLazyModalEdit } from '@app/lib/buttons/modalEdit'
@@ -30,16 +30,7 @@ export default () => {
 					<EntitySubTree entity="BuddyPair(id=$id)" isCreating={false}>
 						<Slots.Actions>
 							<HasRole role={roles => roles.has('admin') || roles.has('coordinator')}>
-								<DeleteEntityModalButton 
-									message="Do you really want to unpair?"
-									deleteMessage="Unpair"
-									cancelTo={'buddyPairs'}
-									afterPersistTo={'buddyPairs'}
-								>
-									<Button variant={'destructive'}>
-										Unpair
-									</Button>
-								</DeleteEntityModalButton>
+								<UnpairButton />
 								<CurrentEntityLazyModalEdit
 									redirectOnSuccess={'buddyPairDetail(id: $entity.id)'}
 									dialogProps={{ className: 'overflow-y-auto max-h-screen' }}
@@ -278,6 +269,61 @@ export default () => {
 		</>
 	)
 }
+
+const UnpairButton = Component(() => {
+
+	const czechStudent = useEntitySubTree('czechStudent')
+	const internationalStudent = useEntitySubTree('internationalStudent')
+
+	useEntityBeforePersist(() => {
+		internationalStudent.getField('applicationsFr.status').updateValue('toBePaired')
+		Array.from(czechStudent.getEntityList('applications')).forEach(application => {
+			if(application.getEntity('semester').getField('isCurrent').value === true) {
+				application.getField('status').updateValue('toBePaired')
+				let howManyBuddiesAssigned = application.getField<number>('howManyBuddiesAssigned').value ?? 1 // default value is 1 because we are unpairing
+				howManyBuddiesAssigned = howManyBuddiesAssigned - 1
+				application.getField('howManyBuddiesAssigned').updateValue(howManyBuddiesAssigned)
+			}
+		})
+	})
+
+	return (
+		<DeleteEntityModalButton 
+			message="Do you really want to unpair?"
+			deleteMessage="Unpair"
+			cancelTo={'buddyPairs'}
+			afterPersistTo={'buddyPairs'}
+		>
+			<Button variant={'destructive'}>
+				Unpair
+			</Button>
+		</DeleteEntityModalButton>
+
+	)
+}, () => (
+	<>
+		<EntitySubTree entity="Person(czechBuddyPair.id = $id)" alias={'czechStudent'}>
+			<HasMany field="applications">
+				<HasOne field="semester">
+					<Field field="isCurrent" />
+				</HasOne>
+				<Field field="status" />
+				<Field field="howManyBuddies" />
+				<Field field="howManyBuddiesAssigned" />
+			</HasMany>
+		</EntitySubTree>
+		<EntitySubTree entity="Person(internationalBuddyPair.id = $id)" alias={'internationalStudent'}>
+			<HasOne field="applicationsFr">
+				<HasOne field="semester">
+					<Field field="isCurrent" />
+				</HasOne>
+				<Field field="status" />
+			</HasOne>
+		</EntitySubTree>
+
+	</>
+))
+
 
 const AddNoteArea = Component(
 	() => {

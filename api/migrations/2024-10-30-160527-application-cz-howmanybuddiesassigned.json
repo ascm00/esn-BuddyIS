@@ -1,0 +1,73 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "createColumn",
+			"entityName": "ApplicationCz",
+			"field": {
+				"name": "howManyBuddiesAssigned",
+				"columnName": "how_many_buddies_assigned",
+				"columnType": "integer",
+				"nullable": true,
+				"type": "Integer",
+				"default": 0
+			},
+			"fillValue": 0
+		},
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/ApplicationCz/operations/create/howManyBuddiesAssigned",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/ApplicationCz/operations/update/howManyBuddiesAssigned",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/ApplicationCz/operations/read/howManyBuddiesAssigned",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/ApplicationCz/operations/create/howManyBuddiesAssigned",
+					"value": "person_personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/ApplicationCz/operations/update/howManyBuddiesAssigned",
+					"value": "person_personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/ApplicationCz/operations/read/howManyBuddiesAssigned",
+					"value": "person_personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/ApplicationCz/operations/create/howManyBuddiesAssigned",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/ApplicationCz/operations/update/howManyBuddiesAssigned",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/ApplicationCz/operations/read/howManyBuddiesAssigned",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/ApplicationCz/operations/read/howManyBuddiesAssigned",
+					"value": true
+				}
+			]
+		}
+	]
+}

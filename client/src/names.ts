@@ -50,6 +50,9 @@ export const ContemberClientNames: SchemaNames = {
         "howManyBuddies": {
           "type": "column"
         },
+        "howManyBuddiesAssigned": {
+          "type": "column"
+        },
         "status": {
           "type": "column"
         },
@@ -74,6 +77,7 @@ export const ContemberClientNames: SchemaNames = {
         "points",
         "motivation",
         "howManyBuddies",
+        "howManyBuddiesAssigned",
         "status",
         "result",
         "preferredSex"

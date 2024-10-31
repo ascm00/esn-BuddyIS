@@ -56,12 +56,24 @@ const AutomaticPairing = Component(
             setPairingStarted(true)
     
             try {
+                console.log(currentSemesterCzApplications)
+                console.log(currentSemesterFrApplications)
                 const { pairs, unpairedCzechStudents } = await galeShapleyCzechFirst(currentSemesterCzApplications, currentSemesterFrApplications)
+                console.log(pairs)
     
                 pairs.forEach((czechStudentApplication, internationalStudentApplication) => {
                     if (czechStudentApplication && internationalStudentApplication) {
 
-                        czechStudentApplication.getField('status').updateValue('paired')
+
+                        const howManyBuddiesAssigned = czechStudentApplication.getField<number>('howManyBuddiesAssigned').value ?? 0
+                        const howManyBuddies = czechStudentApplication.getField<number>('howManyBuddies').value ?? 0
+
+                        czechStudentApplication.updateValues({howManyBuddiesAssigned: howManyBuddiesAssigned + 1})
+
+                        if((howManyBuddiesAssigned + 1) >= howManyBuddies) {
+                            czechStudentApplication.getField('status').updateValue('paired')
+                        }
+
                         internationalStudentApplication.getField('status').updateValue('paired')
 
                         buddyPairs.createNewEntity(accessor => {
@@ -218,6 +230,7 @@ const AutomaticPairing = Component(
                 <Field field={'preferredSex'} />
                 <Field field={'preferredCountry.name'} />
                 <Field field={'howManyBuddies'} />
+                <Field field={'howManyBuddiesAssigned'} />
             </EntityListSubTree>
             <EntityListSubTree entities={'ApplicationFr[status="toBePaired" && semester.isCurrent=true]'} alias={'currentSemesterFrApplications'}>
                 <Field field={'status'} />
