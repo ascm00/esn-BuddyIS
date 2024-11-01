@@ -292,6 +292,18 @@ export default () => {
 										Edit event
 									</Button>
 								</Link>
+								<HasRole role="admin">
+									<DeleteEntityModalButton 
+										message="Do you really want to delete?"
+										deleteMessage="Delete"
+										cancelTo={'events'}
+										afterPersistTo={'events'}
+									>
+										<Button variant={'destructive'}>
+											<TrashIcon />
+										</Button>
+									</DeleteEntityModalButton>
+								</HasRole>
 							</Slots.Actions>
 						</HasRole>
 						<div className="flex gap-8 flex-col md:flex-row">

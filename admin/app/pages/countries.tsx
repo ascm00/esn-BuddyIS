@@ -3,11 +3,13 @@ import { CountryEditForm } from '@app/components/forms/country-edit-form'
 import { Binding } from '@app/lib/binding'
 import { BackButton } from '@app/lib/buttons'
 import { CreateEntityModalButton } from '@app/lib/buttons/createEntityModalButtons'
+import { DeleteEntityModalButton } from '@app/lib/buttons/deleteEntityModalButton'
 import { CurrentEntityLazyModalEdit } from '@app/lib/buttons/modalEdit'
 import { DataGrid, DataGridColumn, DataGridHasManyColumn, DataGridLoader, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
-import { Field, Link } from '@contember/interface'
+import { Field, HasRole, Link } from '@contember/interface'
+import { TrashIcon } from 'lucide-react'
 
 export default () => {
 	return (
@@ -41,6 +43,7 @@ export default () => {
 							</DataGridToolbar>
 							<DataGridLoader>
 								<DataGridTable>
+								<HasRole role="admin">
 									<DataGridColumn>
 										<div className="flex gap-4">
 											<CurrentEntityLazyModalEdit
@@ -53,8 +56,19 @@ export default () => {
 											>
 												<CountryEditForm />
 											</CurrentEntityLazyModalEdit>
+											<DeleteEntityModalButton 
+												message="Do you really want to delete?"
+												deleteMessage="Delete"
+												cancelTo={'countries'}
+												afterPersistTo={'countries'}
+											>
+												<Button variant={'destructive'}>
+													<TrashIcon />
+												</Button>
+											</DeleteEntityModalButton>
 										</div>
-									</DataGridColumn>
+										</DataGridColumn>
+									</HasRole>
 									<DataGridTextColumn field="name" header="Name" />
 								</DataGridTable>
 							</DataGridLoader>

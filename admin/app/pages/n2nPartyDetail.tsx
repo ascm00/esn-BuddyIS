@@ -1,6 +1,7 @@
 import { N2nPartyForm } from '@app/components/forms/n2n-party-form'
 import { Binding } from '@app/lib/binding'
 import { BackButton } from '@app/lib/buttons'
+import { DeleteEntityModalButton } from '@app/lib/buttons/deleteEntityModalButton'
 import { CurrentEntityLazyModalEdit } from '@app/lib/buttons/modalEdit'
 import { DataGrid, DataGridColumn, DataGridDateColumn, DataGridLoader, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridToolbar } from '@app/lib/datagrid'
 import { formatDateTime } from '@app/lib/formatting'
@@ -8,6 +9,7 @@ import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
 import { Table, TableBody, TableCell, TableRow, TableWrapper } from '@app/lib/ui/table'
 import { EntitySubTree, Field, HasRole, Link } from '@contember/interface'
+import { TrashIcon } from 'lucide-react'
 
 export default () => {
 	return (
@@ -31,7 +33,19 @@ export default () => {
 							}
 						>
 							<N2nPartyForm />
-						</CurrentEntityLazyModalEdit>
+							</CurrentEntityLazyModalEdit>
+							<HasRole role="admin">
+								<DeleteEntityModalButton 
+									message="Do you really want to delete?"
+									deleteMessage="Delete"
+									cancelTo={'n2nParties'}
+									afterPersistTo={'n2nParties'}
+								>
+									<Button variant={'destructive'}>
+										<TrashIcon />
+									</Button>
+								</DeleteEntityModalButton>
+							</HasRole>
 						</Slots.Actions>
 						<TableWrapper className="bg-gray-50/50 max-w-lg border rounded-md">
 							<Table>
@@ -62,11 +76,12 @@ export default () => {
 								N2N hours
 							</div>
 							<Slots.Actions>
-								<Link to="n2nHourCreate">
+								{/* <Link to="n2nHourCreate">
 									<Button>
-										Create n2n hour
+										Create N2N hour
 									</Button>
-								</Link>
+								</Link> */}
+	
 							</Slots.Actions>
 							<DataGrid entities="N2nHour[party.id = $id]">
 								<DataGridToolbar>
