@@ -11,7 +11,7 @@ export default () => {
 			<Binding>
 				<div className="flex flex-col gap-12">
 					<Slots.Title>
-						Application fr detail
+						Application created successfully!
 					</Slots.Title>
 					<Slots.Back>
 						<BackButton />
@@ -20,7 +20,7 @@ export default () => {
 						<Slots.Actions>
 							<Link to="applicationFrEdit(id: $entity.id)">
 								<Button>
-									Edit application fr
+									Edit application
 								</Button>
 							</Link>
 						</Slots.Actions>
@@ -37,18 +37,18 @@ export default () => {
 									</TableRow>
 									<TableRow>
 										<TableCell>
-											Study program
-										</TableCell>
-										<TableCell className="font-semibold">
-											<Field field="person.studyProgram.name" />
-										</TableCell>
-									</TableRow>
-									<TableRow>
-										<TableCell>
 											Semester
 										</TableCell>
 										<TableCell className="font-semibold">
 											<Field field="semester.name" />
+										</TableCell>
+									</TableRow>
+									<TableRow>
+										<TableCell>
+											Study program
+										</TableCell>
+										<TableCell className="font-semibold">
+											<Field field="person.studyProgram.name" />
 										</TableCell>
 									</TableRow>
 									<TableRow>

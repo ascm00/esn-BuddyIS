@@ -11,7 +11,7 @@ export default () => {
 			<Binding>
 				<div className="flex flex-col gap-12">
 					<Slots.Title>
-						Application cz detail
+						Application created successfully!
 					</Slots.Title>
 					<Slots.Back>
 						<BackButton />
@@ -20,7 +20,7 @@ export default () => {
 						<Slots.Actions>
 							<Link to="applicationCzCreate(id: $entity.id)">
 								<Button>
-									Edit application cz
+									Edit application
 								</Button>
 							</Link>
 						</Slots.Actions>
@@ -29,10 +29,18 @@ export default () => {
 								<TableBody>
 									<TableRow>
 										<TableCell>
-											Point
+											Name
 										</TableCell>
 										<TableCell className="font-semibold">
-											<Field field="points" />
+											<Field field="person.firstName" /> {' '} <Field field="person.surname" />
+										</TableCell>
+									</TableRow>
+									<TableRow>
+										<TableCell>
+											Semester
+										</TableCell>
+										<TableCell className="font-semibold">
+											<Field field="semester.name" />
 										</TableCell>
 									</TableRow>
 									<TableRow>
@@ -45,26 +53,26 @@ export default () => {
 									</TableRow>
 									<TableRow>
 										<TableCell>
-											Status
-										</TableCell>
-										<TableCell className="font-semibold">
-											<Field field="status" />
-										</TableCell>
-									</TableRow>
-									<TableRow>
-										<TableCell>
-											Result
-										</TableCell>
-										<TableCell className="font-semibold">
-											<Field field="result" />
-										</TableCell>
-									</TableRow>
-									<TableRow>
-										<TableCell>
-											Preferred sex
+											Preferred buddy gender
 										</TableCell>
 										<TableCell className="font-semibold">
 											<Field field="preferredSex" />
+										</TableCell>
+									</TableRow>
+									<TableRow>
+										<TableCell>
+											Preferred country of university
+										</TableCell>
+										<TableCell className="font-semibold">
+											<Field field="preferredSex" />
+										</TableCell>
+									</TableRow>
+									<TableRow>
+										<TableCell>
+											How many buddies you want to have
+										</TableCell>
+										<TableCell className="font-semibold">
+											<Field field="howManyBuddies" />
 										</TableCell>
 									</TableRow>
 								</TableBody>
