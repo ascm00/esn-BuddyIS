@@ -41,7 +41,7 @@ export default () => {
 									<DataGridHasOneColumn field="czechStudent" header="Local buddy surname">
 										<Field field="surname" />
 									</DataGridHasOneColumn>
-									<DataGridHasOneColumn field="czechStudent" header="Local buddy inSIS username">
+									<DataGridHasOneColumn field="czechStudent" header="Local buddy InSIS username">
 										<Field field="xname" />
 									</DataGridHasOneColumn>
 									<DataGridHasOneColumn field="internationalStudent" header="Foreign buddy">

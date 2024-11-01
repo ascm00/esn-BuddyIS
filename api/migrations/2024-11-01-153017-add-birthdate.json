@@ -1,0 +1,76 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "createColumn",
+			"entityName": "Person",
+			"field": {
+				"name": "birthdate",
+				"columnName": "birthdate",
+				"columnType": "date",
+				"nullable": true,
+				"type": "Date"
+			}
+		},
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/Person/operations/create/birthdate",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/Person/operations/update/birthdate",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/Person/operations/read/birthdate",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/Person/operations/update/birthdate",
+					"value": "personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/Person/operations/read/birthdate",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Person/operations/create/birthdate",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Person/operations/update/birthdate",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Person/operations/read/birthdate",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/Person/operations/update/birthdate",
+					"value": "personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/Person/operations/read/birthdate",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/Person/operations/read/birthdate",
+					"value": true
+				}
+			]
+		}
+	]
+}

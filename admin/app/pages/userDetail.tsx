@@ -48,7 +48,7 @@ export default () => {
 									</TableRow>
 									<TableRow>
 										<TableCell>
-											inSIS username
+											InSIS username
 										</TableCell>
 										<TableCell className="font-semibold">
 											<Field field="xname" />

@@ -36,6 +36,7 @@ import { coordinatorRole, czechBuddyId, czechBuddyRole, esnMemberRole, internati
 export class Person {
 	createdAt = c.dateTimeColumn().notNull().default('now')
 	personId = c.uuidColumn().notNull()
+	birthdate = c.dateColumn()
 	tenantPerson = c.oneHasOneInverse(TenantPerson, 'person')
 	gender = c.enumColumn(sex)
 	registrationDate = c.dateTimeColumn()

@@ -509,6 +509,7 @@ export type Person <OverRelation extends string | never = never> = {
 		id: string
 		createdAt: string
 		personId: string
+		birthdate: string | null
 		gender: sex | null
 		registrationDate: string | null
 		lastLoginDate: string | null

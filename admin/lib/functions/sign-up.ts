@@ -16,7 +16,7 @@ interface InvitationResult {
 	}
 }
 
-export async function onRequestPost(email: string, firstname: string, surname: string, xname: string, phoneNumber: string, env: Env){
+export async function onRequestPost(email: string, firstname: string, surname: string, xname: string, phoneNumber: string, birthdate: string, env: Env){
 	// const formData = await request.formData()
 	// const data: Record<string, any> = {}
 
@@ -34,7 +34,7 @@ export async function onRequestPost(email: string, firstname: string, surname: s
 	// 	}
 	// }
 
-	if (!email || !firstname || !surname || !xname || !phoneNumber) {
+	if (!email || !firstname || !surname || !xname || !birthdate) {
 		return new Response('Invalid data', { status: 400 })
 	}
 
@@ -71,6 +71,7 @@ export async function onRequestPost(email: string, firstname: string, surname: s
 			surname: surname,
 			xname: xname,
 			phoneNumber: phoneNumber,
+			birthdate: birthdate,
 			//email: email,
 		}
 

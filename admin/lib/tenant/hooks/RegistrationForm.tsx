@@ -1,6 +1,9 @@
 import { onRequestPost } from "@app/lib/functions/sign-up";
 import { useState } from "react";
 import { Env } from "@app/lib/functions/types";
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@app/lib/ui/card"
+import PhoneInput from 'react-phone-input-2';
+import 'react-phone-input-2/lib/style.css';
 
 export const RegistrationForm = (env : Env) => {
 	const [firstName, setFirstName] = useState('');
@@ -8,12 +11,13 @@ export const RegistrationForm = (env : Env) => {
 	const [email, setEmail] = useState('');
 	const [xname, setXname] = useState('');
 	const [phoneNumber, setPhoneNumber] = useState('');
+	const [birthdate, setBirthdate] = useState('');
 
 	const handleSubmit = async (event: React.FormEvent) => {
 		event.preventDefault();
 	
 		try {
-			const response = await onRequestPost(email, firstName, surname, xname, phoneNumber, env)
+			const response = await onRequestPost(email, firstName, surname, xname, phoneNumber, birthdate, env)
 			console.log(response)
 
 	
@@ -34,105 +38,106 @@ export const RegistrationForm = (env : Env) => {
 	};
 
 	return (
-		<div className="w-full max-w-2xl ml-0 p-6 bg-white shadow-md rounded-md">
-		  <h1 className="text-2xl font-bold text-left text-gray-800 mb-6">
-			Register to Buddy IS
-		  </h1>
-		  <form onSubmit={handleSubmit} className="w-full">
-			<div className="mb-4 relative">
-			  <label className="block text-gray-700 text-sm font-bold mb-2">
-				First Name:
-			  </label>
-			  <input 
-				type="text" 
-				value={firstName} 
-				onChange={(event) => setFirstName(event.target.value)} 
-				className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-				required
-			  />
-			</div>
-	  
-			<div className="mb-4 relative">
-			  <label className="block text-gray-700 text-sm font-bold mb-2">
-				Surname:
-			  </label>
-			  <input 
-				type="text" 
-				value={surname} 
-				onChange={(event) => setSurname(event.target.value)} 
-				className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-				required
-			  />
-			</div>
-	  
-			<div className="mb-4 relative">
-			  <label className="block text-gray-700 text-sm font-bold mb-2">
-				Email:
-				<span className="ml-2 text-gray-500 cursor-pointer relative">
-				  ?
-				  <span className="absolute left-0 w-48 p-2 bg-gray-200 text-gray-800 text-xs rounded-md shadow-lg opacity-0 transition-opacity duration-300 hover:opacity-100 z-10">
-					<p className="text-xs">Fill the email address for getting the information about our events. Please add one that you check regularly. 🙏</p>
-				  </span>
-				</span>
-			  </label>
-			  <input 
-				type="email" 
-				value={email} 
-				onChange={(event) => setEmail(event.target.value)} 
-				className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-				required
-			  />
-			</div>
-	  
-			<div className="mb-4 relative">
-			  <label className="block text-gray-700 text-sm font-bold mb-2">
-			  	inSIS username:
-				<span className="ml-2 text-gray-500 cursor-pointer relative">
-				  ?
-				  <span className="absolute left-0 w-48 p-2 bg-gray-200 text-gray-800 text-xs rounded-md shadow-lg opacity-0 transition-opacity duration-300 hover:opacity-100 z-10">
-					<p className="text-xs">inSIS username is the first part of your VŠE email address before @.</p>
-					<p className="text-xs">For example <strong>novp</strong>@vse.cz</p>
-				  </span>
-				</span>
-			  </label>
-			  <input 
-				type="text" 
-				value={xname} 
-				onChange={(event) => setXname(event.target.value)} 
-				className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-				required
-			  />
-			</div>
-	  
-			<div className="mb-4 relative">
-			  <label className="block text-gray-700 text-sm font-bold mb-2">
-				Phone Number:
-				<span className="ml-2 text-gray-500 cursor-pointer relative">
-				  ?
-				  <span className="absolute left-0 w-48 p-2 bg-gray-200 text-gray-800 text-xs rounded-md shadow-lg opacity-0 transition-opacity duration-300 hover:opacity-100 z-10">
-					Provide your phone number.
-				  </span>
-				</span>
-			  </label>
-			  <input 
-				type="text" 
-				value={phoneNumber} 
-				onChange={(event) => setPhoneNumber(event.target.value)} 
-				className="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-				required
-			  />
-			</div>
-	  
-			<button 
-			  type="submit" 
-			  className="w-full bg-blue-500 text-white font-bold py-3 px-4 rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-			>
-			  Create User
-			</button>
-		  </form>
-		</div>
-	  );
-	  
-	  
-	  
+		<Card className="w-96 relative">
+			<CardHeader className="pb-1">
+				<CardTitle className="text-2xl">Register to Buddy IS</CardTitle>
+			</CardHeader>
+			<CardContent>
+				<style>{`
+					.custom-phone-input .form-control {
+						width: 100%;
+						padding: 0.5rem 1rem;
+						padding-left: 3rem;
+						border: 1px solid #d1d5db; /* odpovídá border-gray-300 */
+						border-radius: 0.375rem; /* odpovídá rounded-md */
+						outline: none;
+						box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5); /* odpovídá focus:ring-2 focus:ring-blue-500 */
+					}
+				`}</style>
+				<form onSubmit={handleSubmit} className="w-full">
+					<div className="mb-4 relative">
+						<label className="block text-gray-700 text-sm font-bold mb-2">
+							First Name *
+						</label>
+						<input
+							type="text" 
+							value={firstName} 
+							onChange={(event) => setFirstName(event.target.value)} 
+							className="w-full px-4 py-1.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+							required
+						/>
+					</div>
+					<div className="mb-4 relative">
+						<label className="block text-gray-700 text-sm font-bold mb-2">
+							Surname *
+						</label>
+						<input 
+							type="text" 
+							value={surname} 
+							onChange={(event) => setSurname(event.target.value)} 
+							className="w-full px-4 py-1.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+							required
+						/>
+					</div>
+					<div className="mb-4 relative">
+						<label className="block text-gray-700 text-sm font-bold mb-2">
+							Phone Number
+						</label>
+						<PhoneInput
+							country={'cz'}
+							value={phoneNumber}
+							onChange={setPhoneNumber}
+							containerClass="custom-phone-input relative"
+							buttonClass="bg-white"
+							dropdownClass="bg-white"
+						/>
+						<p className="text-xs text-gray-500 pt-1 mb-4">Please add your number on WhatsApp.</p>
+					</div>
+					<div className="mb-4 relative">
+						<label className="block text-gray-700 text-sm font-bold mb-2">
+							Birthdate *
+						</label>
+						<input 
+							type="date"
+							value={birthdate} 
+							onChange={(event) => setBirthdate(event.target.value)} 
+							className="w-full px-4 py-1.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+							required
+						/>
+					</div>
+					<div className="mb-4 relative">
+						<label className="block text-gray-700 text-sm font-bold mb-2">
+							Email *
+						</label>
+						<input 
+							type="email" 
+							value={email} 
+							onChange={(event) => setEmail(event.target.value)} 
+							className="w-full px-4 py-1.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+							required
+						/>
+					</div>
+					<div className="mb-4 relative">
+						<label className="block text-gray-700 text-sm font-bold mb-2">
+							InSIS username *
+						</label>
+						<input 
+							type="text" 
+							value={xname} 
+							onChange={(event) => setXname(event.target.value)} 
+							className="w-full px-4 py-1.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+							required
+						/>
+						<p className="text-xs text-gray-500 pt-1">InSIS username is the first part of your VŠE email address before @. For example <strong>novp04</strong>@vse.cz</p>
+					</div>
+					<button 
+						type="submit" 
+						className="w-full bg-primary text-primary-foreground shadow hover:bg-primary/90 font-bold py-3 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+					>
+						Create User
+					</button>
+				</form>
+			</CardContent>
+		</Card>
+	);
 };

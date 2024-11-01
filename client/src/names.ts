@@ -797,6 +797,9 @@ export const ContemberClientNames: SchemaNames = {
         "personId": {
           "type": "column"
         },
+        "birthdate": {
+          "type": "column"
+        },
         "tenantPerson": {
           "type": "one",
           "entity": "TenantPerson"
@@ -900,6 +903,7 @@ export const ContemberClientNames: SchemaNames = {
         "id",
         "createdAt",
         "personId",
+        "birthdate",
         "gender",
         "registrationDate",
         "lastLoginDate",

@@ -89,7 +89,7 @@ export default () => {
 										<Field field="name" />
 									</DataGridHasOneColumn>
 									<DataGridTextColumn field="esnCardId" header="Esn card id" />
-									<DataGridTextColumn field="xname" header="inSIS username" />
+									<DataGridTextColumn field="xname" header="InSIS username" />
 									<DataGridHasOneColumn field="countryOfUniversity" header="Country of home university">
 										<Field field="name" />
 									</DataGridHasOneColumn>

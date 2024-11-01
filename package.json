@@ -45,6 +45,7 @@
     "luxon": "^3.4.4",
     "react-big-calendar": "^1.13.1",
     "react-collapsible": "^2.10.0",
+    "react-phone-input-2": "^2.15.1",
     "wrangler": "^3.80.4"
   },
   "workspaces": [

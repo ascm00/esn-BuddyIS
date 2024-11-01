@@ -5482,7 +5482,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"classnames@npm:^2.2":
+"classnames@npm:^2.2, classnames@npm:^2.2.6":
   version: 2.5.1
   resolution: "classnames@npm:2.5.1"
   checksum: 10/58eb394e8817021b153bb6e7d782cfb667e4ab390cb2e9dac2fc7c6b979d1cc2b2a733093955fc5c94aa79ef5c8c89f11ab77780894509be6afbb91dddd79d15
@@ -6675,10 +6675,38 @@ __metadata:
   languageName: node
   linkType: hard
 
+"lodash.debounce@npm:^4.0.8":
+  version: 4.0.8
+  resolution: "lodash.debounce@npm:4.0.8"
+  checksum: 10/cd0b2819786e6e80cb9f5cda26b1a8fc073daaf04e48d4cb462fa4663ec9adb3a5387aa22d7129e48eed1afa05b482e2a6b79bfc99b86886364449500cbb00fd
+  languageName: node
+  linkType: hard
+
 "lodash.deburr@npm:^4.1.0":
   version: 4.1.0
   resolution: "lodash.deburr@npm:4.1.0"
   checksum: 10/165ce8f8a051360f98ce977f12bd645fe3faf3cc2452aa36f5a8849e3e69463e2252ff952ed6b7cc33c8f608fcbe56e7d13baf524818da95cb53849d366b62be
+  languageName: node
+  linkType: hard
+
+"lodash.memoize@npm:^4.1.2":
+  version: 4.1.2
+  resolution: "lodash.memoize@npm:4.1.2"
+  checksum: 10/192b2168f310c86f303580b53acf81ab029761b9bd9caa9506a019ffea5f3363ea98d7e39e7e11e6b9917066c9d36a09a11f6fe16f812326390d8f3a54a1a6da
+  languageName: node
+  linkType: hard
+
+"lodash.reduce@npm:^4.6.0":
+  version: 4.6.0
+  resolution: "lodash.reduce@npm:4.6.0"
+  checksum: 10/1cfefb3dd1a71a567526b6a3ea5127ce52312e60a24e7cc141236927429dc2cb6f196a814e880a74382a7a0931b63986e3f7ec3d0fd373d9247adc017101fc75
+  languageName: node
+  linkType: hard
+
+"lodash.startswith@npm:^4.2.1":
+  version: 4.2.1
+  resolution: "lodash.startswith@npm:4.2.1"
+  checksum: 10/a89ef56880a2c9f904fbf820708a8d848a7bc737519235c413b708fbff75f137e5cfd553e98dc023ca676374ebb38a81078b02fb6b20fb71525c905a15e6a046
   languageName: node
   linkType: hard
 
@@ -7590,6 +7618,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-phone-input-2@npm:^2.15.1":
+  version: 2.15.1
+  resolution: "react-phone-input-2@npm:2.15.1"
+  dependencies:
+    classnames: "npm:^2.2.6"
+    lodash.debounce: "npm:^4.0.8"
+    lodash.memoize: "npm:^4.1.2"
+    lodash.reduce: "npm:^4.6.0"
+    lodash.startswith: "npm:^4.2.1"
+    prop-types: "npm:^15.7.2"
+  peerDependencies:
+    react: ^16.12.0 || ^17.0.0 || ^18.0.0 || ^19.0.0 || ^20.0.0 || ^21.0.0
+    react-dom: ^16.12.0 || ^17.0.0 || ^18.0.0 || ^19.0.0 || ^20.0.0 || ^21.0.0
+  checksum: 10/fa987dc5cec1a16e2f1f6ac65bec3745b8bc88f01c166416d5bb688f8c629d69d133d7c05ae3326e135ad6f6afc97550bf41e91ab41f71c21307368b8beec6ba
+  languageName: node
+  linkType: hard
+
 "react-popper@npm:^2.3.0":
   version: 2.3.0
   resolution: "react-popper@npm:2.3.0"
@@ -7964,6 +8009,7 @@ __metadata:
     luxon: "npm:^3.4.4"
     react-big-calendar: "npm:^1.13.1"
     react-collapsible: "npm:^2.10.0"
+    react-phone-input-2: "npm:^2.15.1"
     typescript: "npm:^5.0"
     vite: "npm:^5"
     vite-tsconfig-paths: "npm:^4.3.1"
