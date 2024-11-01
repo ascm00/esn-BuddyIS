@@ -134,6 +134,15 @@ export const PersonInvite = Component(
 				</div>
 				<div className='pb-2'>
 					<SelectField
+						field="studyProgram"
+						label="Study program *"
+						options="StudyProgram"
+					>
+						<Field field="name" />
+					</SelectField>
+				</div>
+				<div className='pb-2'>
+					<SelectField
 						field="countryOfUniversity"
 						label="Home university country *"
 						createNewForm={<>
@@ -195,6 +204,9 @@ export const PersonInvite = Component(
 			<Field field="countryOfUniversity.name" />
 			<Field field="university.name" />
 			<Field field="faculty.name" />
+			<HasOne field="studyProgram">
+				<Field field="name" />
+			</HasOne>
 		</>
 	),
 	'PersonInvite',

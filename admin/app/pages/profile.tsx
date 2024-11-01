@@ -9,6 +9,7 @@ import { EntitySubTree, Field, HasRole, Link, useIdentity } from '@contember/int
 
 export default () => {
     const myId = useIdentity()?.person?.id
+    console.log(myId)
 
 
 	return (

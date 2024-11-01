@@ -8,7 +8,7 @@ import { renderElement, renderLeaf } from '@app/lib/plugins/rich-text/renderer/r
 import { RichTextRendererField } from '@app/lib/plugins/rich-text/renderer/RichTextRendererField'
 import { Card, CardContent, CardFooter, CardHeader } from '@app/lib/ui/card'
 import { formatDateTime } from '@app/lib/utils/formatting'
-import { Component, FieldView, HasMany, HasRole, If, Link } from '@contember/interface'
+import { Component, FieldView, HasMany, HasRole, If, Link, EntityListSubTree } from '@contember/interface'
 import { Field } from '@contember/react-binding'
 import { PencilIcon } from 'lucide-react'
 import { ImageField } from '@app/lib/form'
@@ -17,6 +17,7 @@ import { ImageFieldView } from '@app/components/fieldViews/ImageFieldView'
 export default () => {
 
 	const now = new Date().toISOString()
+
 
 	return (
 		<>
@@ -63,6 +64,30 @@ export default () => {
 		</>
 	)
 }
+
+// const N2NFeed = Component(() => {
+// 	const now = new Date().toISOString()
+
+
+// 	return (
+// 		<>
+// 			<DataGrid entities={`N2nParty[date > "${now}"]`} initialSorting={{ date: 'asc' }}>
+// 			<DataGridLoader>
+// 				<DataGridFeed>
+// 					<PartyCard />
+// 				</DataGridFeed>
+// 			</DataGridLoader>
+// 			</DataGrid>
+// 		</>
+// 	)
+// }, () => (
+// 	<>
+// 		<EntityListSubTree entities={`N2nParty[date > "${new Date().toISOString()}"]`}>
+// 			<Field field="name" />
+
+// 		</EntityListSubTree>
+// 	</>
+// ))
 
 const EventCard = Component(() => (
 	<Card className='max-w-[82%] mx-auto bg-white shadow-md rounded-lg'>
