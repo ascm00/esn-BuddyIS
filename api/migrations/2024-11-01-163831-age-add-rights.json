@@ -1,0 +1,75 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/PersonAgeView",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"age": true,
+								"person": true
+							}
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/PersonAgeView",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"age": true,
+								"person": true
+							}
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/PersonAgeView",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"age": true,
+								"person": true
+							}
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/PersonAgeView",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"age": true,
+								"person": true
+							}
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/PersonAgeView",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"age": true,
+								"person": true
+							}
+						}
+					}
+				}
+			]
+		}
+	]
+}

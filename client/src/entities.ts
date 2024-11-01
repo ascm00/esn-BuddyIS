@@ -194,6 +194,7 @@ export type Country <OverRelation extends string | never = never> = {
 		usersByRegistrationMadeByPerson: { entity: Person; by: {registrationMadeByPerson: EventRegistration['unique']}  }
 		usersByRegistrations: { entity: Person; by: {registrations: EventRegistration['unique']}  }
 		usersByNotes: { entity: Person; by: {notes: Note['unique']}  }
+		usersByAgeView: { entity: Person; by: {ageView: PersonAgeView['unique']}  }
 		universitiesByUsers: { entity: University; by: {users: Person['unique']}  }
 	}
 }
@@ -312,6 +313,7 @@ export type Faculty <OverRelation extends string | never = never> = {
 		usersByRegistrationMadeByPerson: { entity: Person; by: {registrationMadeByPerson: EventRegistration['unique']}  }
 		usersByRegistrations: { entity: Person; by: {registrations: EventRegistration['unique']}  }
 		usersByNotes: { entity: Person; by: {notes: Note['unique']}  }
+		usersByAgeView: { entity: Person; by: {ageView: PersonAgeView['unique']}  }
 	}
 }
 export type Hobby <OverRelation extends string | never = never> = {
@@ -368,6 +370,7 @@ export type Image <OverRelation extends string | never = never> = {
 		userProfilePictureByRegistrationMadeByPerson: { entity: Person; by: {registrationMadeByPerson: EventRegistration['unique']}  }
 		userProfilePictureByRegistrations: { entity: Person; by: {registrations: EventRegistration['unique']}  }
 		userProfilePictureByNotes: { entity: Person; by: {notes: Note['unique']}  }
+		userProfilePictureByAgeView: { entity: Person; by: {ageView: PersonAgeView['unique']}  }
 		eventPictureByRegistrations: { entity: Event; by: {registrations: EventRegistration['unique']}  }
 		eventPictureByContactPerson: { entity: Event; by: {contactPerson: Person['unique']}  }
 		partyPictureByHours: { entity: N2nParty; by: {hours: N2nHour['unique']}  }
@@ -505,6 +508,7 @@ export type Person <OverRelation extends string | never = never> = {
 		| Omit<{ registrationMadeByPerson: EventRegistration['unique']}, OverRelation>
 		| Omit<{ registrations: EventRegistration['unique']}, OverRelation>
 		| Omit<{ notes: Note['unique']}, OverRelation>
+		| Omit<{ ageView: PersonAgeView['unique']}, OverRelation>
 	columns: {
 		id: string
 		createdAt: string
@@ -531,6 +535,7 @@ export type Person <OverRelation extends string | never = never> = {
 		internationalBuddyPair: BuddyPair
 		applicationsFr: ApplicationFr
 		profilePicture: Image
+		ageView: PersonAgeView
 	}
 	hasMany: {
 		czechBuddyPair: BuddyPair<'czechStudent'>
@@ -553,6 +558,23 @@ export type Person <OverRelation extends string | never = never> = {
 		coordinatingBuddyPairsByPicture: { entity: BuddyPair; by: {picture: Image['unique']}  }
 		registrationMadeByPersonByPaymentId: { entity: EventRegistration; by: {paymentId: string}  }
 		registrationsByPaymentId: { entity: EventRegistration; by: {paymentId: string}  }
+	}
+}
+export type PersonAgeView <OverRelation extends string | never = never> = {
+	name: 'PersonAgeView'
+	unique:
+		| Omit<{ id: string}, OverRelation>
+		| Omit<{ person: Person['unique']}, OverRelation>
+	columns: {
+		id: string
+		age: number | null
+	}
+	hasOne: {
+		person: Person
+	}
+	hasMany: {
+	}
+	hasManyBy: {
 	}
 }
 export type Section <OverRelation extends string | never = never> = {
@@ -659,6 +681,7 @@ export type StudyProgram <OverRelation extends string | never = never> = {
 		usersByRegistrationMadeByPerson: { entity: Person; by: {registrationMadeByPerson: EventRegistration['unique']}  }
 		usersByRegistrations: { entity: Person; by: {registrations: EventRegistration['unique']}  }
 		usersByNotes: { entity: Person; by: {notes: Note['unique']}  }
+		usersByAgeView: { entity: Person; by: {ageView: PersonAgeView['unique']}  }
 	}
 }
 export type TenantPerson <OverRelation extends string | never = never> = {
@@ -712,6 +735,7 @@ export type University <OverRelation extends string | never = never> = {
 		usersByRegistrationMadeByPerson: { entity: Person; by: {registrationMadeByPerson: EventRegistration['unique']}  }
 		usersByRegistrations: { entity: Person; by: {registrations: EventRegistration['unique']}  }
 		usersByNotes: { entity: Person; by: {notes: Note['unique']}  }
+		usersByAgeView: { entity: Person; by: {ageView: PersonAgeView['unique']}  }
 	}
 }
 
@@ -737,6 +761,7 @@ export type ContemberClientEntities = {
 	N2nParty: N2nParty
 	Note: Note
 	Person: Person
+	PersonAgeView: PersonAgeView
 	Section: Section
 	Semester: Semester
 	Sport: Sport

@@ -1,0 +1,123 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "createView",
+			"entity": {
+				"name": "PersonAgeView",
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "person_age_view",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"columnType": "uuid",
+						"nullable": false,
+						"type": "Uuid"
+					},
+					"age": {
+						"name": "age",
+						"columnName": "age",
+						"columnType": "integer",
+						"nullable": true,
+						"type": "Integer"
+					},
+					"person": {
+						"type": "OneHasOne",
+						"name": "person",
+						"target": "Person",
+						"joiningColumn": {
+							"columnName": "person_id",
+							"onDelete": "restrict"
+						},
+						"nullable": true,
+						"inversedBy": "ageView"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				},
+				"view": {
+					"sql": "\n\tSELECT\n\t\tgen_random_uuid() AS id,\n\t\tp.id AS person_id,\n\t\tEXTRACT(YEAR FROM AGE(NOW(), p.birthdate)) AS age\n\tFROM\n\t\tperson AS p\n",
+					"dependencies": [
+						"Person"
+					]
+				}
+			}
+		},
+		{
+			"modification": "createRelationInverseSide",
+			"entityName": "Person",
+			"relation": {
+				"type": "OneHasOne",
+				"name": "ageView",
+				"target": "PersonAgeView",
+				"ownedBy": "person",
+				"nullable": true
+			}
+		},
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/Person/operations/create/ageView",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/Person/operations/update/ageView",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/Person/operations/read/ageView",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/Person/operations/update/ageView",
+					"value": "personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/Person/operations/read/ageView",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Person/operations/create/ageView",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Person/operations/update/ageView",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Person/operations/read/ageView",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/Person/operations/update/ageView",
+					"value": "personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/Person/operations/read/ageView",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/Person/operations/read/ageView",
+					"value": true
+				}
+			]
+		}
+	]
+}

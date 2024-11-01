@@ -897,6 +897,10 @@ export const ContemberClientNames: SchemaNames = {
         "languages": {
           "type": "many",
           "entity": "Language"
+        },
+        "ageView": {
+          "type": "one",
+          "entity": "PersonAgeView"
         }
       },
       "scalars": [
@@ -914,6 +918,25 @@ export const ContemberClientNames: SchemaNames = {
         "xname",
         "active",
         "firstName"
+      ]
+    },
+    "PersonAgeView": {
+      "name": "PersonAgeView",
+      "fields": {
+        "id": {
+          "type": "column"
+        },
+        "age": {
+          "type": "column"
+        },
+        "person": {
+          "type": "one",
+          "entity": "Person"
+        }
+      },
+      "scalars": [
+        "id",
+        "age"
       ]
     },
     "Section": {

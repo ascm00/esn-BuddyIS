@@ -33,6 +33,7 @@ import { coordinatorRole, czechBuddyId, czechBuddyRole, esnMemberRole, internati
 	update: true,
 })
 @c.Allow(ozsRole, {read: true,})
+
 export class Person {
 	createdAt = c.dateTimeColumn().notNull().default('now')
 	personId = c.uuidColumn().notNull()
@@ -65,4 +66,22 @@ export class Person {
 	registrations = c.oneHasMany(EventRegistration, 'person')
 	notes = c.oneHasMany(Note, 'author')
 	languages = c.manyHasMany(Language, 'person')
+	
+	ageView = c.oneHasOneInverse(PersonAgeView, 'person')
+}
+
+@c.Allow([internationalStudentRole, czechBuddyRole, ozsRole, coordinatorRole, esnMemberRole], {
+	read: true,
+})
+@c.View(`
+	SELECT
+		gen_random_uuid() AS id,
+		p.id AS person_id,
+		EXTRACT(YEAR FROM AGE(NOW(), p.birthdate)) AS age
+	FROM
+		person AS p
+`, { dependencies: () => [Person], },)
+export class PersonAgeView {
+	age = c.intColumn()
+	person = c.oneHasOne(Person, 'ageView')
 }
