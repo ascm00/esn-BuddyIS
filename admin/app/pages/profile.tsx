@@ -22,7 +22,7 @@ export default () => {
 					<Slots.Back>
 						<BackButton />
 					</Slots.Back>
-					<EntitySubTree entity={`Person(id='${myId}')`} isCreating={false}>
+					<EntitySubTree entity={`Person(tenantPerson.id='${myId}')`} isCreating={false}>
 							<Slots.Actions>
 								<Link to="personEdit(id: $entity.id)">
 									<Button>
