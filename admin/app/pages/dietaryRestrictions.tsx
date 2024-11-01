@@ -22,7 +22,7 @@ export default () => {
 					<>
 						<Slots.Actions>
 							<CreateEntityModalButton
-								entityName="DietaryRestriction"
+								entityName="DietaryRestrictions"
 								buttonLabel="Create dietary restriction"
 								saveButtonLabel="Save data"
 								refreshOnPersist
