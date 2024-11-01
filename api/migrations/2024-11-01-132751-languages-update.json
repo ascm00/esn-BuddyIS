@@ -1,0 +1,70 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/Language/operations/create",
+					"value": {
+						"createdAt": true,
+						"name": true,
+						"person": true,
+						"applicationsCz": true
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/Language/operations/update",
+					"value": {
+						"createdAt": true,
+						"name": true,
+						"person": true,
+						"applicationsCz": true
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/Language/operations/create",
+					"value": {
+						"createdAt": true,
+						"name": true,
+						"person": true,
+						"applicationsCz": true
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/Language/operations/update",
+					"value": {
+						"createdAt": true,
+						"name": true,
+						"person": true,
+						"applicationsCz": true
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/Language/operations/create",
+					"value": {
+						"createdAt": true,
+						"name": true,
+						"person": true,
+						"applicationsCz": true
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/Language/operations/update",
+					"value": {
+						"createdAt": true,
+						"name": true,
+						"person": true,
+						"applicationsCz": true
+					}
+				}
+			]
+		}
+	]
+}

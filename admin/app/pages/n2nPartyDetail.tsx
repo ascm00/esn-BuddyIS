@@ -75,14 +75,6 @@ export default () => {
 							<div className="text-lg font-bold">
 								N2N hours
 							</div>
-							<Slots.Actions>
-								{/* <Link to="n2nHourCreate">
-									<Button>
-										Create N2N hour
-									</Button>
-								</Link> */}
-	
-							</Slots.Actions>
 							<DataGrid entities="N2nHour[party.id = $id]">
 								<DataGridToolbar>
 									<DataGridQueryFilter />

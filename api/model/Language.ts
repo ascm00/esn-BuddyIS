@@ -13,6 +13,8 @@ import { ApplicationCz } from './ApplicationCz'
 
 @c.Allow([internationalStudentRole, czechBuddyRole, ozsRole], {
 	read: true,
+	create: true,
+	update: true,
 })
 export class Language {
 	createdAt = c.dateTimeColumn().notNull().default('now')
