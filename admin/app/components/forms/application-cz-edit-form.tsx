@@ -65,7 +65,7 @@ export const ApplicationCzEditForm = Component(
 			required
 			label="Preferred gender"
 			orientation="horizontal"
-			options={{ man: 'Man', woman: 'Woman', dontCare: 'Don\'t care' }}
+			options={{ man: 'Man', woman: 'Woman', dontCare: 'Not preferred' }}
 		/>
 	</div>
 	</FormLayout>)

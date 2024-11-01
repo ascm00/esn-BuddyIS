@@ -60,7 +60,7 @@ export default () => {
 									<DataGridEnumColumn
 										field="preferredBuddySex"
 										header="Preferred buddy gender"
-										options={{ man: 'man', woman: 'woman', dontCare: 'dontCare' }}
+										options={{ man: 'Man', woman: 'Woman', dontCare: 'Not preferred' }}
 									/>
 								</DataGridTable>
 							</DataGridLoader>

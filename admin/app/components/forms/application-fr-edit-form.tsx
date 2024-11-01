@@ -63,7 +63,7 @@ export const ApplicationFrEditForm = Component(
 				required
 				label="Preferred gender of your buddy *"
 				orientation="horizontal"
-				options={{ man: 'Man', woman: 'Woman', dontCare: 'Don\'t care' }}
+				options={{ man: 'Man', woman: 'Woman', dontCare: 'Not preferred' }}
 			/>
 		</div>
 		</FormLayout>)
