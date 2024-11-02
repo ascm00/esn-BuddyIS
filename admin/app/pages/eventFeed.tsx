@@ -90,7 +90,7 @@ export default () => {
 // ))
 
 const EventCard = Component(() => (
-	<Card className='max-w-[82%] mx-auto bg-white shadow-md rounded-lg'>
+	<Card className='max-w-[95%] md:max-w-[82%] mx-auto bg-white shadow-md rounded-lg'>
   
 	  <CardContent className='py-4 px-6'>
 		<div className='flex flex-row justify-between items-center py-4 border-b border-gray-200'>
@@ -141,7 +141,7 @@ const EventCard = Component(() => (
   ))
 
   const PartyCard = Component(() => (
-	<Card className='max-w-[82%] mx-auto bg-white shadow-md rounded-lg'>
+	<Card className='max-w-[95%] md:max-w-[82%] mx-auto bg-white shadow-md rounded-lg'>
   
 	  <CardContent className='py-4 px-6'>
 		<div className='flex flex-row justify-between items-center py-4 border-b border-gray-200'>
