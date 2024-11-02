@@ -29,7 +29,6 @@ export default () => {
 									entityName="Semester"
 									buttonLabel="Create semester"
 									saveButtonLabel="Save data"
-									redirectOnPersistTo="semesters"
 									refreshOnPersist
 									createEntityForm={
 									<>
