@@ -73,7 +73,7 @@ export const ApplicationCzCreateForm = Component(
 						required
 						options={{ man: 'Man', woman: 'Woman', other: 'Other' }}
 					/>
-					<SelectField field={'studyProgram'} label="Study program *" options={'StudyProgram'}>
+					<SelectField field={'studyProgram'} label="Study program *" options={'StudyProgram'} description="If you are studying a program in Czech language, select 'Czech program'.">
 						<Field field={'name'} />
 					</SelectField>
 					<SelectField field={'university'} label="University *" options={'University'} description="Your home university">
