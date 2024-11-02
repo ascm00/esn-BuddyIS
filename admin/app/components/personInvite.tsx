@@ -204,6 +204,7 @@ export const PersonInvite = Component(
 			<Field field="xname" />
 			<Field field="esnCardId" />
 			<Field field="phoneNumber" />
+			<Field field="birthdate" />
 			<Field field="countryOfUniversity.name" />
 			<Field field="university.name" />
 			<Field field="faculty.name" />
