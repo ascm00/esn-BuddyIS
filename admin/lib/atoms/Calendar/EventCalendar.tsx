@@ -22,6 +22,7 @@ import { EditIcon } from 'lucide-react'
 import React from 'react'
 import { Calendar, Event } from '../Calendar'
 import { EventCreateForm } from '@app/components/forms/event-create-form'
+import { N2nPartyForm } from '@app/components/forms/n2n-party-form'
 
 export const EventsCalendar = Component<{ entities?: string }>(
 	() => {
@@ -31,26 +32,56 @@ export const EventsCalendar = Component<{ entities?: string }>(
 		const req = useCurrentRequest()
 		const eventList = useEntityListSubTree('events')
 		const buddyEvents = Array.from(eventList)
+		const partyList = useEntityListSubTree('parties')
+		const parties = Array.from(partyList)
 
 		const [selectedEvent, setSelectedEvent] = React.useState<EntityAccessor | null>(null)
+		const [selectedParty, setSelectedParty] = React.useState<EntityAccessor | null>(null)
 		const [updateDialogOpen, setUpdateDialogOpen] = React.useState(false)
-
+		const [updatePartyDialogOpen, setUpdatePartyDialogOpen] = React.useState(false)
+		
 		const handleSelectEvent = (event: Event) => {
-			const buddyEvent = buddyEvents[event.id]
-			setSelectedEvent(buddyEvent)
+			let buddyEvent: EntityAccessor | null = null
+			if (event.color === '#9b2be6') {
+				console.log('party')
+				buddyEvent = parties[event.id]
+				setSelectedParty(buddyEvent)
+				setSelectedEvent(null)
+			} else {
+				buddyEvent = buddyEvents[event.id]
+				setSelectedEvent(buddyEvent)
+				setSelectedParty(null)
+			}
 		}
 
-		const handleSelectedReservationUpdate = () => {
+		const handleUpdateEvent = () => {
 			if (!selectedEvent) return
 			setUpdateDialogOpen(true)
 		}
 
+		const handleUpdateParty = () => {
+			if (!selectedParty) return
+			setUpdatePartyDialogOpen(true)
+		}
+
 		const events: Event[] = buddyEvents.map((buddyEvent, index) => ({
 			id: index,
+			type: 'buddyEvent',
 			title: `${buddyEvent.getField('name').value}`,
 			start: new Date(buddyEvent.getField<string>('startDate').value!),
 			end: new Date(buddyEvent.getField<string>('endDate').value!),
 		}))
+		events.push(...parties.map((party, index) => ({
+			id: index,
+			type: 'party',
+			color: '#9b2be6',
+			title: `N2N: ${party.getField('name').value}`,
+			start: new Date(party.getField<string>('date').value!),
+			end: new Date(party.getField<string>('date').value!),
+		})))
+
+		console.log(events)
+
 
 		return (
 			<>
@@ -60,12 +91,32 @@ export const EventsCalendar = Component<{ entities?: string }>(
                             <Button
                                 className="flex gap-2 items-center"
                                 variant="secondary"
+                                disabled={!selectedParty}
+                                onClick={() => handleUpdateParty()}
+                            >
+                                <EditIcon className="w-4" />
+                                Edit party
+                            </Button>
+                            <Button
+                                className="flex gap-2 items-center"
+                                variant="secondary"
                                 disabled={!selectedEvent}
-                                onClick={() => handleSelectedReservationUpdate()}
+                                onClick={() => handleUpdateEvent()}
                             >
                                 <EditIcon className="w-4" />
                                 Edit event
                             </Button>
+							<CreateEntityModalButton
+                                entityName="N2nParty"
+                                buttonLabel="New N2N party"
+                                refreshOnPersist
+                                createEntityForm={
+                                    <>
+                                        <N2nPartyForm />
+                                    </>
+                                }
+                                dialogProps={{ className: 'overflow-y-auto max-h-screen' }}
+                            />
                             <CreateEntityModalButton
                                 entityName="Event"
                                 buttonLabel="New event"
@@ -117,6 +168,21 @@ export const EventsCalendar = Component<{ entities?: string }>(
 						</Binding>
 					</AlertDialogContent>
 				</AlertDialog>
+				<AlertDialog open={updatePartyDialogOpen} onOpenChange={setUpdatePartyDialogOpen}>
+					<AlertDialogContent className="overflow-y-auto max-h-screen">
+						<Binding>
+							<EntitySubTree entity={`N2nParty(id = "${selectedParty?.id}")`} isCreating={false} onPersistSuccess={() => redirect(req)}>
+								<N2nPartyForm />
+								<AlertDialogFooter>
+									<AlertDialogCancel>Zrušit</AlertDialogCancel>
+									<AlertDialogTrigger>
+										<PersistButton />
+									</AlertDialogTrigger>
+								</AlertDialogFooter>
+							</EntitySubTree>
+						</Binding>
+					</AlertDialogContent>
+				</AlertDialog>
 			</>
 		)
 	},
@@ -126,14 +192,10 @@ export const EventsCalendar = Component<{ entities?: string }>(
                 <Field field="name" />
                 <Field field="startDate" />
                 <Field field="endDate" />
-				{/* <HasOne field="client">
-					<Field field="name" />
-				</HasOne>
-				<HasOne field="program">
-					<Field field="name" />
-				</HasOne>
-				<Field field="startTime" />
-				<Field field="endTime" /> */}
+			</EntityListSubTree>
+			<EntityListSubTree entities="N2nParty" alias="parties">
+                <Field field="name" />
+                <Field field="date" />
 			</EntityListSubTree>
 		</>
 	),

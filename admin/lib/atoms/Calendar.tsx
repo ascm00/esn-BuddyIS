@@ -34,6 +34,7 @@ export type Event = {
 	title: string
 	start: Date
 	end: Date
+	color?: string
 }
 
 type CalendarProps = {
@@ -54,6 +55,15 @@ export const Calendar = Component<CalendarProps>(
 			[],
 		)
 
+		const eventStyleGetter = (event: Event) => {
+			return {
+				style: {
+					backgroundColor: event.color,
+					color: '#fff',
+				},
+			}
+		}
+
 		return (
 			<div className="flex flex-col min-h-[600px] w-full">
 				<BigCalendar
@@ -66,6 +76,7 @@ export const Calendar = Component<CalendarProps>(
 					onSelectEvent={onSelectEvent}
 					step={60}
 					views={views}
+					eventPropGetter={eventStyleGetter}
 				/>
 			</div>
 		)
