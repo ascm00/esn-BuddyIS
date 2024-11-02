@@ -134,7 +134,7 @@ export const RegistrationForm = (env : Env) => {
 						type="submit" 
 						className="w-full bg-primary text-primary-foreground shadow hover:bg-primary/90 font-bold py-3 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
 					>
-						Create User
+						Register
 					</button>
 				</form>
 			</CardContent>

@@ -71,7 +71,7 @@ const PersonalizedDataGrid = Component(
 							<DataGridTextColumn field="place" header="Place" />
 							{/* Capacity musí být kolik zbývá volných míst z kolika */}
 							<DataGridNumberColumn field="capacity" header="Capacity" />
-							<DataGridNumberColumn field="registeredCount" header="Registered" />
+							<DataGridNumberColumn field="registeredCount.registered_count" header="Registered" />
 							<DataGridNumberColumn field="fee" header="Entrance fee">
 								<Field field="fee" /> {' CZK'}
 							</DataGridNumberColumn>

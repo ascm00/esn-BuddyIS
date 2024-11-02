@@ -33,24 +33,20 @@ export const RegistrationCreateForm = Component<RegistrationCreateFormProps>(
 
     const allergies = currentEvent.getField('allergies').value ?? undefined
     const dietaryRestrictions = currentEvent.getField('dietaryRestrictions').value ?? undefined
-    const registeredCount = currentEvent.getField('registeredCount').value ?? undefined
 
 
     // This should be after processing the payment
     useEntityBeforePersist(() => {
-        if(typeof registeredCount === 'number'){
-            let updatedCount = registeredCount + 1
-            currentEvent.updateValues({registeredCount: updatedCount})
-
-            if(isOnWaitingList){
-                entity.updateValues({isWaitingList: true})
-            }
+        if(isOnWaitingList){
+            entity.updateValues({isWaitingList: true})
         }
     })
 
 
     useEntityPersistSuccess(async() => {
-        await createPayment(entity)
+        if(isPaid && !isOnWaitingList){
+            await createPayment(entity)
+        }
     })
     
     return (
@@ -129,7 +125,6 @@ export const RegistrationCreateForm = Component<RegistrationCreateFormProps>(
                 <Field field="dietaryRestrictions" />
                 <Field field="allergies" />
                 <Field field="mandatoryESNcard" />
-                <Field field="registeredCount" />
             </EntitySubTree>
             <HasOne field="event">
                 <Field field="name" />
@@ -137,7 +132,6 @@ export const RegistrationCreateForm = Component<RegistrationCreateFormProps>(
                 <Field field="dietaryRestrictions" />
                 <Field field="allergies" />
                 <Field field="mandatoryESNcard" />
-                <Field field="registeredCount" />
             </HasOne>
             <HasMany field="dietaryRestrictions">
                 <Field field="name" />
@@ -168,18 +162,12 @@ export const RegistrationAdminCreateForm = Component<RegistrationCreateFormProps
 
     const allergies = currentEvent.getField('allergies').value ?? undefined
     const dietaryRestrictions = currentEvent.getField('dietaryRestrictions').value ?? undefined
-    const registeredCount = currentEvent.getField('registeredCount').value ?? undefined
 
 
     // This should be after processing the payment
     useEntityBeforePersist(() => {
-        if(typeof registeredCount === 'number'){
-            let updatedCount = registeredCount + 1
-            currentEvent.updateValues({registeredCount: updatedCount})
-
-            if(isOnWaitingList){
-                entity.updateValues({isWaitingList: true})
-            }
+        if(isOnWaitingList){
+            entity.updateValues({isWaitingList: true})
         }
     })
     
@@ -244,7 +232,6 @@ export const RegistrationAdminCreateForm = Component<RegistrationCreateFormProps
                 <Field field="dietaryRestrictions" />
                 <Field field="allergies" />
                 <Field field="mandatoryESNcard" />
-                <Field field="registeredCount" />
             </EntitySubTree>
             <HasOne field="event">
                 <Field field="name" />
@@ -252,7 +239,6 @@ export const RegistrationAdminCreateForm = Component<RegistrationCreateFormProps
                 <Field field="dietaryRestrictions" />
                 <Field field="allergies" />
                 <Field field="mandatoryESNcard" />
-                <Field field="registeredCount" />
             </HasOne>
             <HasMany field="dietaryRestrictions">
                 <Field field="name" />

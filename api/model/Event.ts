@@ -37,7 +37,7 @@ export class Event {
 	capacity = c.intColumn()
 	fee = c.doubleColumn()
 	registrations = c.oneHasMany(EventRegistration, 'event')
-	registeredCount = c.intColumn().default(0)
+	registeredCount = c.oneHasOneInverse(RegisteredCount, 'event')
 	
 	place = c.stringColumn()
 	whatToBring = c.stringColumn()
@@ -58,4 +58,25 @@ export class Event {
 	isForCzechBuddies= c.boolColumn().default(false)
 	isForESNmembers = c.boolColumn().default(false)
 
+}
+
+
+@c.Allow([internationalStudentRole, ozsRole, czechBuddyRole, esnMemberRole, coordinatorRole], {
+	read: true,
+})
+@c.View(`
+	SELECT
+		gen_random_uuid() AS id,
+		e.id AS event_id,
+		COUNT(er.id) AS registered_count
+	FROM
+		event AS e
+	LEFT JOIN
+		event_registration AS er ON e.id = er.event_id
+	GROUP BY
+		e.id
+`, { dependencies: () => [EventRegistration], },)
+export class RegisteredCount {
+	registered_count = c.intColumn()
+	event = c.oneHasOne(Event, 'registeredCount')
 }

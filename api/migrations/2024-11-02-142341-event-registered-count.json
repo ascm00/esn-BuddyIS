@@ -1,0 +1,182 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "removeEntity",
+			"entityName": "RegisteredCount"
+		},
+		{
+			"modification": "createView",
+			"entity": {
+				"name": "RegisteredCount",
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "registered_count",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"columnType": "uuid",
+						"nullable": false,
+						"type": "Uuid"
+					},
+					"registered_count": {
+						"name": "registered_count",
+						"columnName": "registered_count",
+						"columnType": "integer",
+						"nullable": true,
+						"type": "Integer"
+					},
+					"event": {
+						"type": "OneHasOne",
+						"name": "event",
+						"target": "Event",
+						"joiningColumn": {
+							"columnName": "event_id",
+							"onDelete": "restrict"
+						},
+						"nullable": true,
+						"inversedBy": "registeredCount"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				},
+				"view": {
+					"sql": "\n\tSELECT\n\t\tgen_random_uuid() AS id,\n\t\te.id AS event_id,\n\t\tCOUNT(er.id) AS registered_count\n\tFROM\n\t\tevent AS e\n\tLEFT JOIN\n\t\tevent_registration AS er ON e.id = er.event_id\n\tGROUP BY\n\t\te.id\n",
+					"dependencies": [
+						"EventRegistration"
+					]
+				}
+			}
+		},
+		{
+			"modification": "createRelationInverseSide",
+			"entityName": "Event",
+			"relation": {
+				"type": "OneHasOne",
+				"name": "registeredCount",
+				"target": "RegisteredCount",
+				"ownedBy": "event",
+				"nullable": true
+			}
+		},
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/RegisteredCount",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"registered_count": true,
+								"event": true
+							}
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/Event/operations/create/registeredCount",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/Event/operations/update/registeredCount",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/Event/operations/read/registeredCount",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/RegisteredCount",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"registered_count": true,
+								"event": true
+							}
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/Event/operations/read/registeredCount",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/RegisteredCount",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"registered_count": true,
+								"event": true
+							}
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Event/operations/create/registeredCount",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Event/operations/update/registeredCount",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Event/operations/read/registeredCount",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/RegisteredCount",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"registered_count": true,
+								"event": true
+							}
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/Event/operations/read/registeredCount",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/RegisteredCount",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"registered_count": true,
+								"event": true
+							}
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/Event/operations/read/registeredCount",
+					"value": true
+				}
+			]
+		}
+	]
+}

@@ -35,7 +35,7 @@ const RegistrationNow = Component( () => {
 	
 	const registrationList = entity.getEntityList('registrations') ?? undefined
 
-	const registeredCount = entity.getField('registeredCount').value ?? undefined
+	const registeredCount = entity.getField('registeredCount.registered_count').value ?? undefined
 	const fee = entity.getField('fee').value ?? undefined
 	const capacity = entity.getField('capacity').value ?? undefined
 	const waitingList = entity.getField('waitingList').value ?? 0
@@ -184,7 +184,9 @@ const RegistrationNow = Component( () => {
 	<Field field="registrationEndDate" />
 	<Field field="startDate" />
 	<Field field="capacity" />
-	<Field field="registeredCount" />
+	<HasOne field="registeredCount">
+		<Field field="registered_count" />
+	</HasOne>
 	<Field field="waitingList" />
 	<Field field="fee" />
 	<HasMany field="registrations">
@@ -203,7 +205,7 @@ const RegistrationAdminCreate = Component(
 		const eventStartDateValue = entity.getField('startDate').value?.toString()
 		const eventStartDate = eventStartDateValue && new Date(eventStartDateValue)
 
-		const registeredCount = entity.getField('registeredCount').value ?? undefined
+		const registeredCount = entity.getField('registeredCount.registered_count').value ?? undefined
 		const capacity = entity.getField('capacity').value ?? undefined
 		const waitingList = entity.getField('waitingList').value ?? 0
 
@@ -266,7 +268,9 @@ const RegistrationAdminCreate = Component(
 		<>
 			<Field field="fee" />
 			<Field field="startDate" />
-			<Field field="registeredCount" />
+			<HasOne field="registeredCount">
+				<Field field="registered_count" />
+			</HasOne>
 			<Field field="capacity" />
 			<Field field="waitingList" />
 		</>
@@ -397,6 +401,14 @@ export default () => {
 											</TableCell>
 											<TableCell className="font-semibold">
 												<Field field="whatsappLink" />
+											</TableCell>
+										</TableRow>
+										<TableRow>
+											<TableCell>
+												Registered + on waiting list
+											</TableCell>
+											<TableCell className="font-semibold">
+													<Field field="registeredCount.registered_count" />
 											</TableCell>
 										</TableRow>
 										<TableRow>

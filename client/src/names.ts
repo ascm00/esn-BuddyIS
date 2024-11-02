@@ -360,7 +360,8 @@ export const ContemberClientNames: SchemaNames = {
           "entity": "EventRegistration"
         },
         "registeredCount": {
-          "type": "column"
+          "type": "one",
+          "entity": "RegisteredCount"
         },
         "place": {
           "type": "column"
@@ -431,7 +432,6 @@ export const ContemberClientNames: SchemaNames = {
         "allergies",
         "capacity",
         "fee",
-        "registeredCount",
         "place",
         "whatToBring",
         "whatsappLink",
@@ -937,6 +937,25 @@ export const ContemberClientNames: SchemaNames = {
       "scalars": [
         "id",
         "age"
+      ]
+    },
+    "RegisteredCount": {
+      "name": "RegisteredCount",
+      "fields": {
+        "id": {
+          "type": "column"
+        },
+        "registered_count": {
+          "type": "column"
+        },
+        "event": {
+          "type": "one",
+          "entity": "Event"
+        }
+      },
+      "scalars": [
+        "id",
+        "registered_count"
       ]
     },
     "Section": {

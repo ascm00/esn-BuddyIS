@@ -1,0 +1,183 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "removeField",
+			"entityName": "Event",
+			"fieldName": "registeredCount"
+		},
+		{
+			"modification": "createView",
+			"entity": {
+				"name": "RegisteredCount",
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "registered_count",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"columnType": "uuid",
+						"nullable": false,
+						"type": "Uuid"
+					},
+					"count": {
+						"name": "count",
+						"columnName": "count",
+						"columnType": "integer",
+						"nullable": true,
+						"type": "Integer"
+					},
+					"event": {
+						"type": "OneHasOne",
+						"name": "event",
+						"target": "Event",
+						"joiningColumn": {
+							"columnName": "event_id",
+							"onDelete": "restrict"
+						},
+						"nullable": true,
+						"inversedBy": "registeredCount"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				},
+				"view": {
+					"sql": "\n\tSELECT\n\t\tCOUNT(*) AS count\n\tFROM\n\t\tevent AS e\n\tJOIN\n\t\tevent_registration AS er ON er.event_id = e.id\n",
+					"dependencies": [
+						"EventRegistration"
+					]
+				}
+			}
+		},
+		{
+			"modification": "createRelationInverseSide",
+			"entityName": "Event",
+			"relation": {
+				"type": "OneHasOne",
+				"name": "registeredCount",
+				"target": "RegisteredCount",
+				"ownedBy": "event",
+				"nullable": true
+			}
+		},
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/RegisteredCount",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"count": true,
+								"event": true
+							}
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/Event/operations/create/registeredCount",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/Event/operations/update/registeredCount",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/Event/operations/read/registeredCount",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/RegisteredCount",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"count": true,
+								"event": true
+							}
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/Event/operations/read/registeredCount",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/RegisteredCount",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"count": true,
+								"event": true
+							}
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Event/operations/create/registeredCount",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Event/operations/update/registeredCount",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Event/operations/read/registeredCount",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/RegisteredCount",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"count": true,
+								"event": true
+							}
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/Event/operations/read/registeredCount",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/RegisteredCount",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"count": true,
+								"event": true
+							}
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/Event/operations/read/registeredCount",
+					"value": true
+				}
+			]
+		}
+	]
+}
