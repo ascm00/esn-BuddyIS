@@ -29,6 +29,7 @@ export default () => {
 									buttonLabel="Create country"
 									saveButtonLabel="Save data"
 									refreshOnPersist
+									redirectOnPersistTo="countries"
 									createEntityForm={
 									<>
 										<CountryCreateForm />

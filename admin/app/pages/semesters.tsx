@@ -30,6 +30,7 @@ export default () => {
 									buttonLabel="Create semester"
 									saveButtonLabel="Save data"
 									redirectOnPersistTo="semesters"
+									refreshOnPersist
 									createEntityForm={
 									<>
 										<SemesterForm />
