@@ -235,7 +235,7 @@ const RegistrationAdminCreate = Component(
 				return (
 					<CreateEntityModalButton
 						entityName="EventRegistration"
-						buttonLabel="Refister user"
+						buttonLabel="Register user"
 						saveButtonLabel="Register user"
 						refreshOnPersist
 						createEntityForm={
