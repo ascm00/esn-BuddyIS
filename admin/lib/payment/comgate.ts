@@ -11,7 +11,8 @@ export type ComgateCreatePaymentResult = {
 
 export const createPayment = async (registration: EntityAccessor) => {
 
-  console.log(import.meta.env.BASE_URL)
+  // zatím nefunguje import.meta.env.BASE_URL, proto
+  const start = 'https://esn-buddy-is.eu.contember.cloud'
 
   const url_paid = import.meta.env.BASE_URL + '/app/registration-payment-successful?id=' + registration.getField('event.id').value?.toString()
   const url_cancelled = import.meta.env.BASE_URL + '/registration-payment-unsuccessful?id=' + registration.getField('event.id').value?.toString()
