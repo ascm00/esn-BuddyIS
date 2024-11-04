@@ -64,7 +64,7 @@ export default () => {
 											Preferred country of university
 										</TableCell>
 										<TableCell className="font-semibold">
-											<Field field="preferredSex" />
+											<Field field="preferredCountry.name" />
 										</TableCell>
 									</TableRow>
 									<TableRow>
