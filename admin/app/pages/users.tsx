@@ -18,7 +18,7 @@ export default () => {
 					</Slots.Back>
 					<>
 						<Slots.Actions>
-							<HasRole role={roles => roles.has('admin') || roles.has('coordinator')}>
+							<HasRole role={roles => roles.has('admin') || roles.has('coordinator') || roles.has('esnMember')}>
 								<Link to="personCreate">
 										<Button>
 											Create user
@@ -32,7 +32,10 @@ export default () => {
 								<DataGridHasOneFilter field="countryOfUniversity" label="Home university country">
 									<Field field="name" />
 								</DataGridHasOneFilter>
-								<DataGridHasOneFilter field="university" label="University">
+								<DataGridHasOneFilter field="studyProgram" label="Study program">
+									<Field field="name" />
+								</DataGridHasOneFilter>
+								<DataGridHasOneFilter field="applicationsFr.semester" label="All international students per semester">
 									<Field field="name" />
 								</DataGridHasOneFilter>
 							</DataGridToolbar>
@@ -61,6 +64,9 @@ export default () => {
 										<Field field="email" />
 									</DataGridHasOneColumn>
 									<DataGridHasOneColumn field="university" header="Home university">
+										<Field field="name" />
+									</DataGridHasOneColumn>
+									<DataGridHasOneColumn field="studyProgram" header="Study program">
 										<Field field="name" />
 									</DataGridHasOneColumn>
 									<DataGridTextColumn field="esnCardId" header="Esn card id" />
