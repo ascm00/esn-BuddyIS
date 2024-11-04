@@ -92,6 +92,20 @@ export default () => {
 										</TableBody>
 									</Table>
 								</TableWrapper>
+								<TableWrapper className="bg-gray-50/50 h-fit border rounded-md max-w-lg">
+									<Table>
+										<TableRow>
+											<TableCell>
+												Description
+											</TableCell>
+										</TableRow>
+										<TableRow>
+											<TableCell className="font-semibold">
+												<Field field="description" />
+											</TableCell>
+										</TableRow>
+									</Table>
+								</TableWrapper>
 							</div>
 							<div className="w-full gap-8 flex flex-col">
 								<TableWrapper className="bg-gray-50/50 border rounded-md">
