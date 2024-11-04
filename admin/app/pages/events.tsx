@@ -60,13 +60,11 @@ const PersonalizedDataGrid = Component(
 											Detail
 										</Button>
 									</Link>
-									<HasRole role={'admin'}>
-										<Link to="eventEdit(id: $entity.id)">
-											<Button>
-												Edit
-											</Button>
-										</Link>
-									</HasRole>
+									<Link to="eventEdit(id: $entity.id)">
+										<Button>
+											Edit
+										</Button>
+									</Link>
 								</div>
 							</DataGridColumn>
 							<DataGridTextColumn field="name" header="Name" />
@@ -101,13 +99,6 @@ const PersonalizedDataGrid = Component(
 											Detail
 										</Button>
 									</Link>
-									<HasRole role={'admin'}>
-										<Link to="eventEdit(id: $entity.id)">
-											<Button>
-												Edit
-											</Button>
-										</Link>
-									</HasRole>
 								</div>
 							</DataGridColumn>
 							<DataGridTextColumn field="name" header="Name" />
@@ -142,13 +133,6 @@ const PersonalizedDataGrid = Component(
 											Detail
 										</Button>
 									</Link>
-									<HasRole role={'admin'}>
-										<Link to="eventEdit(id: $entity.id)">
-											<Button>
-												Edit
-											</Button>
-										</Link>
-									</HasRole>
 								</div>
 							</DataGridColumn>
 							<DataGridTextColumn field="name" header="Name" />

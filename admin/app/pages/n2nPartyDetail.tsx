@@ -24,17 +24,19 @@ export default () => {
 					</Slots.Back>
 					<EntitySubTree entity="N2nParty(id=$id)" isCreating={false}>
 						<Slots.Actions>
-						<CurrentEntityLazyModalEdit
-							dialogProps={{ className: 'overflow-y-auto max-h-screen' }}
-							redirectOnSuccess={`n2nPartyDetail(id: $id)`}
-							buttonContent={
-								<span className="flex items-center">
-									Edit N2N party
-								</span>
-							}
-						>
-							<N2nPartyForm />
-							</CurrentEntityLazyModalEdit>
+							<HasRole role={roles => roles.has('admin') || roles.has('coordinator') || roles.has('esnMember')}>
+								<CurrentEntityLazyModalEdit
+									dialogProps={{ className: 'overflow-y-auto max-h-screen' }}
+									redirectOnSuccess={`n2nPartyDetail(id: $id)`}
+									buttonContent={
+										<span className="flex items-center">
+											Edit N2N party
+										</span>
+									}
+								>
+									<N2nPartyForm />
+								</CurrentEntityLazyModalEdit>
+							</HasRole>
 							<HasRole role="admin">
 								<DeleteEntityModalButton 
 									message="Do you really want to delete?"

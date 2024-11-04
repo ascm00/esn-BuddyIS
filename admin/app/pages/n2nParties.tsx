@@ -54,16 +54,18 @@ export default () => {
 													Detail
 												</Button>
 											</Link>
-											<CurrentEntityLazyModalEdit
-												dialogProps={{ className: 'overflow-y-auto max-h-screen' }}
-												buttonContent={
-													<span className="flex items-center">
-														Edit
-													</span>
-												}
-											>
-												<N2nPartyForm />
-											</CurrentEntityLazyModalEdit>
+											<HasRole role={roles => roles.has('admin') || roles.has('coordinator') || roles.has('esnMember')}>
+												<CurrentEntityLazyModalEdit
+													dialogProps={{ className: 'overflow-y-auto max-h-screen' }}
+													buttonContent={
+														<span className="flex items-center">
+															Edit
+														</span>
+													}
+												>
+													<N2nPartyForm />
+												</CurrentEntityLazyModalEdit>
+											</HasRole>
 										</div>
 									</DataGridColumn>
 									<DataGridTextColumn field="name" header="Name" />
