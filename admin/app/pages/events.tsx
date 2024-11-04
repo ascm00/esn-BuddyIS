@@ -3,6 +3,7 @@ import { BackButton } from '@app/lib/buttons'
 import { DataGrid, DataGridColumn, DataGridDateColumn, DataGridEnumColumn, DataGridLoader, DataGridNumberColumn, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
+import { WhatsappLink } from '@app/lib/utils/link'
 import { Component, Field, HasRole, Link, useEntity, useIdentity, useProjectUserRoles } from '@contember/interface'
 
 export default () => {
@@ -79,7 +80,9 @@ const PersonalizedDataGrid = Component(
 							<DataGridDateColumn field="endDate" header="Event ends" />
 							<DataGridDateColumn field="registrationStartDate" header="Registration starts" />
 							<DataGridDateColumn field="registrationEndDate" header="Registration ends" />
-							<DataGridTextColumn field="whatsappLink" header="Whatsapp link" />
+							<DataGridColumn header="Whatsapp link">
+								<WhatsappLink />
+							</DataGridColumn>
 						</DataGridTable>
 					</DataGridLoader>
 					<DataGridPagination />
@@ -113,7 +116,9 @@ const PersonalizedDataGrid = Component(
 							<DataGridDateColumn field="endDate" header="Event ends" />
 							<DataGridDateColumn field="registrationStartDate" header="Registration starts" />
 							<DataGridDateColumn field="registrationEndDate" header="Registration ends" />
-							<DataGridTextColumn field="whatsappLink" header="Whatsapp link" />
+							<DataGridColumn header="Whatsapp link">
+								<WhatsappLink />
+							</DataGridColumn>
 						</DataGridTable>
 					</DataGridLoader>
 					<DataGridPagination />
@@ -147,7 +152,9 @@ const PersonalizedDataGrid = Component(
 							<DataGridDateColumn field="endDate" header="Event ends" />
 							<DataGridDateColumn field="registrationStartDate" header="Registration starts" />
 							<DataGridDateColumn field="registrationEndDate" header="Registration ends" />
-							<DataGridTextColumn field="whatsappLink" header="Whatsapp link" />
+							<DataGridColumn header="Whatsapp link">
+								<WhatsappLink />
+							</DataGridColumn>
 						</DataGridTable>
 					</DataGridLoader>
 					<DataGridPagination />

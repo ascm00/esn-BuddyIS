@@ -17,6 +17,7 @@ import { ImageFieldView, PersistButton } from '@contember/admin'
 import config from '../../config'
 import { Env } from '@app/lib/functions/types'
 import { EventPictureFieldView, ProfilePictureFieldView } from '@app/components/fieldViews/ImageFieldView'
+import { WhatsappLink } from '@app/lib/utils/link'
 
 const RegistrationNow = Component( () => {
 	const identity = useIdentity()
@@ -401,7 +402,7 @@ export default () => {
 												Whatsapp link
 											</TableCell>
 											<TableCell className="font-semibold">
-												<Field field="whatsappLink" />
+												<WhatsappLink />
 											</TableCell>
 										</TableRow>
 										<TableRow>

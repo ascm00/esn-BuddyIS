@@ -9,6 +9,7 @@ import { formatDateTime } from '@app/lib/formatting'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
 import { Table, TableBody, TableCell, TableRow, TableWrapper } from '@app/lib/ui/table'
+import { GetN2NLink } from '@app/lib/utils/link'
 import { EntitySubTree, Field, HasRole, Link, Component, useEntity } from '@contember/interface'
 import { TrashIcon } from 'lucide-react'
 
@@ -146,16 +147,3 @@ export default () => {
 	)
 }
 
-const GetN2NLink = Component(() => {
-	const entity = useEntity()
-	const link = entity.getField('link').value?.toString() ?? ''
-
-	if(link === '') {
-		return null
-	}
-	return <a className='text-blue-500' href={link} target="_blank">{link}</a>
-}, () => (
-	<>
-		<Field field="link" />
-	</>
-))

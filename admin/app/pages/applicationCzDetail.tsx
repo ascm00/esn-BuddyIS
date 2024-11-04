@@ -1,9 +1,11 @@
 import { Binding } from '@app/lib/binding'
 import { BackButton } from '@app/lib/buttons'
+import { RadioEnumField } from '@app/lib/form'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
 import { Table, TableBody, TableCell, TableRow, TableWrapper } from '@app/lib/ui/table'
-import { EntitySubTree, Field, Link } from '@contember/interface'
+import { EnumCell } from '@contember/admin'
+import { Component, EntitySubTree, Field, Link, useEntity } from '@contember/interface'
 
 export default () => {
 	return (
@@ -56,7 +58,7 @@ export default () => {
 											Preferred buddy gender
 										</TableCell>
 										<TableCell className="font-semibold">
-											<Field field="preferredSex" />
+											<PreferredSexCell />
 										</TableCell>
 									</TableRow>
 									<TableRow>
@@ -84,3 +86,21 @@ export default () => {
 		</>
 	)
 }
+
+const PreferredSexCell = Component(() => {
+	const entity = useEntity()
+	const preferredSex = entity.getField('preferredSex').value
+
+	if(preferredSex === 'dontCare') {
+		return 'Not preferred'
+	} else if (preferredSex === 'man') {
+		return 'Man'
+	} else if (preferredSex === 'woman') {
+		return 'Woman'
+	}
+	return null
+}, () => (
+	<>
+		<Field field="preferredSex" />
+	</>
+))

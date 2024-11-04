@@ -79,7 +79,6 @@ const PersonalizedDataGrid = Component(
 							<DataGridDateColumn field="endDate" header="Event ends" />
 							<DataGridDateColumn field="registrationStartDate" header="Registration starts" />
 							<DataGridDateColumn field="registrationEndDate" header="Registration ends" />
-							<DataGridTextColumn field="whatsappLink" header="Whatsapp link" />
 						</DataGridTable>
 					</DataGridLoader>
 					<DataGridPagination />

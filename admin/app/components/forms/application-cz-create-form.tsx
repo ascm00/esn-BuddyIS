@@ -45,10 +45,6 @@ export const ApplicationCzCreateForm = Component(
 			return (<div className='bg-blue-200 p-4 rounded-md'><div className='text-500'>Sorry, you can only apply for buddy once. You already applied this semester.</div></div>)
 		} else {
 			return (<FormLayout>
-				<Slots.Actions>
-					<PersistButton label="Apply for buddy"/>
-				</Slots.Actions>
-				{/* <Todo>Semestr by měla aplikace znát automaticky a měl by se k přihlášce automaticky přiřadit. Potřeba checkovat, jestli už se na buddyho daný semestr hlásil - Done</Todo> */}
 				<SelectField
 					field="semester"
 					label="Semester *"
@@ -108,6 +104,9 @@ export const ApplicationCzCreateForm = Component(
 						orientation="horizontal"
 						options={{ man: 'Man', woman: 'Woman', dontCare: 'Not preferred' }}
 					/>
+				</div>
+				<div className='flex flex-col space-y-4 w-36 pt-2'>
+					<PersistButton label="Apply for buddy"/>
 				</div>
 				</FormLayout>)
 		}

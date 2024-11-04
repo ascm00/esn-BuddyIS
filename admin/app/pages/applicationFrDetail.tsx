@@ -3,7 +3,7 @@ import { BackButton } from '@app/lib/buttons'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
 import { Table, TableBody, TableCell, TableRow, TableWrapper } from '@app/lib/ui/table'
-import { EntitySubTree, Field, Link } from '@contember/interface'
+import { Component, EntitySubTree, Field, Link, useEntity } from '@contember/interface'
 
 export default () => {
 	return (
@@ -64,7 +64,7 @@ export default () => {
 											Preferred buddy gender
 										</TableCell>
 										<TableCell className="font-semibold">
-											<Field field="preferredBuddySex" />
+											<PreferredSexCell />
 										</TableCell>
 									</TableRow>
 								</TableBody>
@@ -76,3 +76,21 @@ export default () => {
 		</>
 	)
 }
+
+const PreferredSexCell = Component(() => {
+	const entity = useEntity()
+	const preferredSex = entity.getField('preferredSex').value
+
+	if(preferredSex === 'dontCare') {
+		return 'Not preferred'
+	} else if (preferredSex === 'man') {
+		return 'Man'
+	} else if (preferredSex === 'woman') {
+		return 'Woman'
+	}
+	return null
+}, () => (
+	<>
+		<Field field="preferredBuddySex" />
+	</>
+))
