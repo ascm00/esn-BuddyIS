@@ -11,9 +11,7 @@ export const Layout = memo(({ children }: PropsWithChildren) => {
 			<LayoutComponent>
 
 				<Slots.Logo>
-					<Link to="index">
-						<Logo />
-					</Link>
+					<Logo />
 				</Slots.Logo>
 
 				<Slots.Navigation>
