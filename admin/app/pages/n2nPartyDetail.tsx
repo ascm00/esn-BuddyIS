@@ -1,3 +1,4 @@
+import { EventPictureFieldView } from '@app/components/fieldViews/ImageFieldView'
 import { N2nPartyForm } from '@app/components/forms/n2n-party-form'
 import { Binding } from '@app/lib/binding'
 import { BackButton } from '@app/lib/buttons'
@@ -8,7 +9,7 @@ import { formatDateTime } from '@app/lib/formatting'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
 import { Table, TableBody, TableCell, TableRow, TableWrapper } from '@app/lib/ui/table'
-import { EntitySubTree, Field, HasRole, Link } from '@contember/interface'
+import { EntitySubTree, Field, HasRole, Link, Component, useEntity } from '@contember/interface'
 import { TrashIcon } from 'lucide-react'
 
 export default () => {
@@ -50,28 +51,61 @@ export default () => {
 								</DeleteEntityModalButton>
 							</HasRole>
 						</Slots.Actions>
-						<TableWrapper className="bg-gray-50/50 max-w-lg border rounded-md">
-							<Table>
-								<TableBody>
-									<TableRow>
-										<TableCell>
-											Name
-										</TableCell>
-										<TableCell className="font-semibold">
-											<Field field="name" />
-										</TableCell>
-									</TableRow>
-									<TableRow>
-										<TableCell>
-											Start
-										</TableCell>
-										<TableCell className="font-semibold">
-											<Field field="date" format={formatDateTime} />
-										</TableCell>
-									</TableRow>
-								</TableBody>
-							</Table>
-						</TableWrapper>
+						<div className="flex gap-8 flex-col md:flex-row">
+							<div className="w-full gap-8 flex flex-col">
+								<TableWrapper className="bg-gray-50/50 max-w-lg border rounded-md">
+									<Table>
+										<TableBody>
+											<TableRow>
+												<TableCell>
+													Name
+												</TableCell>
+												<TableCell className="font-semibold">
+													<Field field="name" />
+												</TableCell>
+											</TableRow>
+											<TableRow>
+												<TableCell>
+													Start
+												</TableCell>
+												<TableCell className="font-semibold">
+													<Field field="date" format={formatDateTime} />
+												</TableCell>
+											</TableRow>
+											<TableRow>
+												<TableCell>
+													Club
+												</TableCell>
+												<TableCell className="font-semibold">
+													<Field field="club" />
+												</TableCell>
+											</TableRow>
+											<TableRow>
+												<TableCell>
+													BOOM events link
+												</TableCell>
+												<TableCell className="font-semibold">
+													<GetN2NLink />
+												</TableCell>
+											</TableRow>
+										</TableBody>
+									</Table>
+								</TableWrapper>
+							</div>
+							<div className="w-full gap-8 flex flex-col">
+								<TableWrapper className="bg-gray-50/50 border rounded-md">
+									<Table>
+									<TableBody>
+										<TableRow>
+											<TableCell className="text-2xl font-bold">
+												<EventPictureFieldView srcField="picture.url" width={100} height={100} />
+											</TableCell>
+										</TableRow>
+									</TableBody>
+									</Table>
+								</TableWrapper>
+							</div>
+						</div>
 					</EntitySubTree>
 					<HasRole role={roles => roles.has('admin') || roles.has('coordinator') || roles.has('esnMember')}>
 						<div className="flex flex-col gap-4">
@@ -111,3 +145,17 @@ export default () => {
 		</>
 	)
 }
+
+const GetN2NLink = Component(() => {
+	const entity = useEntity()
+	const link = entity.getField('link').value?.toString() ?? ''
+
+	if(link === '') {
+		return null
+	}
+	return <a className='text-blue-500' href={link} target="_blank">{link}</a>
+}, () => (
+	<>
+		<Field field="link" />
+	</>
+))
