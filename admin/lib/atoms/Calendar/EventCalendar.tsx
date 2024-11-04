@@ -45,12 +45,20 @@ export const EventsCalendar = Component<{ entities?: string }>(
 			if (event.color === '#9b2be6') {
 				console.log('party')
 				buddyEvent = parties[event.id]
+				let id = buddyEvent?.getField('id').value?.toString()
 				setSelectedParty(buddyEvent)
 				setSelectedEvent(null)
+				if (id) {
+					redirect('n2nPartyDetail(id: $id)', { id : id })
+				}
 			} else {
 				buddyEvent = buddyEvents[event.id]
 				setSelectedEvent(buddyEvent)
 				setSelectedParty(null)
+				let id = buddyEvent?.getField('id').value?.toString()
+				if (id) {
+					redirect('eventDetail(id: $id)', { id : id })
+				}
 			}
 		}
 
@@ -88,7 +96,7 @@ export const EventsCalendar = Component<{ entities?: string }>(
                 <HasRole role="admin">
                     <Slots.Actions>
                         <div className="flex gap-2 items-center">
-                            <Button
+                            {/* <Button
                                 className="flex gap-2 items-center"
                                 variant="secondary"
                                 disabled={!selectedParty}
@@ -105,8 +113,8 @@ export const EventsCalendar = Component<{ entities?: string }>(
                             >
                                 <EditIcon className="w-4" />
                                 Edit event
-                            </Button>
-							<CreateEntityModalButton
+                            </Button> */}
+							{/* <CreateEntityModalButton
                                 entityName="N2nParty"
                                 buttonLabel="New N2N party"
                                 refreshOnPersist
@@ -127,7 +135,7 @@ export const EventsCalendar = Component<{ entities?: string }>(
                                     </>
                                 }
                                 dialogProps={{ className: 'overflow-y-auto max-h-screen' }}
-                            />
+                            /> */}
                         </div>
                     </Slots.Actions>
                 </HasRole>
