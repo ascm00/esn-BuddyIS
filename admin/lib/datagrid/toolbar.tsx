@@ -16,9 +16,10 @@ import { DataGridToolbarVisibleElements } from './elements'
 
 export interface DataGridToolbarProps {
 	children?: ReactNode
+	noExport?: boolean
 }
 
-export const DataGridToolbar = Component<DataGridToolbarProps>(({ children }) => {
+export const DataGridToolbar = Component<DataGridToolbarProps>(({ children, noExport }) => {
 	const [showFilters, setShowFilters] = React.useState(false)
 	return (
 		<DataGridShowFiltersContext.Provider value={showFilters}>
@@ -50,7 +51,7 @@ export const DataGridToolbar = Component<DataGridToolbarProps>(({ children }) =>
 						</PopoverContent>
 					</Popover>
 
-					<DataGridAutoExport />
+					{!noExport && <DataGridAutoExport />}
 				</div>
 
 				<div className="flex flex-wrap gap-2">

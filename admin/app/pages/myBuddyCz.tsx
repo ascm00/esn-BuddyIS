@@ -41,11 +41,11 @@ const CzechStudentTasks = Component(
 		const entityId = useEntity().id
 
 		return (
-			<div className="flex flex-col gap-4">
-				<div className="text-lg font-bold">
-					Tasks
-				</div>
+			<div className="max-w-lg">
 					<DataGrid entities={`BuddyTask[buddyPair.id='${entityId}']`}>
+					<div className="text-lg font-bold">
+						Tasks
+					</div>
 						<DataGridLoader>
 							<DataGridTable>
 								<DataGridTextColumn field="description" header="Description" />

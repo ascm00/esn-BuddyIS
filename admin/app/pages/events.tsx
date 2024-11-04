@@ -14,7 +14,7 @@ export default () => {
 			<Binding>
 				<div className="flex flex-col gap-12">
 					<Slots.Title>
-						Events
+						All events
 					</Slots.Title>
 					<Slots.Back>
 						<BackButton />
@@ -87,7 +87,7 @@ const PersonalizedDataGrid = Component(
 			</HasRole>
 			<HasRole role={roles => roles.has('czechBuddy')}>
 				<DataGrid entities="Event[semester.isCurrent=true && isForCzechBuddies=true]">
-					<DataGridToolbar>
+					<DataGridToolbar noExport>
 						<DataGridQueryFilter />
 					</DataGridToolbar>
 					<DataGridLoader>
@@ -104,8 +104,8 @@ const PersonalizedDataGrid = Component(
 							<DataGridTextColumn field="name" header="Name" />
 							<DataGridTextColumn field="place" header="Place" />
 							{/* Capacity musí být kolik zbývá volných míst z kolika */}
-							<DataGridNumberColumn field="capacity" header="Capacity" />
-							<DataGridNumberColumn field="registeredCount.registered_count" header="Registered" />
+							{/* <DataGridNumberColumn field="capacity" header="Capacity" />
+							<DataGridNumberColumn field="registeredCount.registered_count" header="Registered" /> */}
 							<DataGridNumberColumn field="fee" header="Entrance fee">
 								<Field field="fee" /> {' CZK'}
 							</DataGridNumberColumn>
@@ -121,7 +121,7 @@ const PersonalizedDataGrid = Component(
 			</HasRole>
 			<HasRole role={roles => roles.has('internationalStudent')}>
 				<DataGrid entities="Event[semester.isCurrent=true && isForInternationalStudents=true]">
-					<DataGridToolbar>
+					<DataGridToolbar noExport>
 						<DataGridQueryFilter />
 					</DataGridToolbar>
 					<DataGridLoader>
@@ -138,8 +138,8 @@ const PersonalizedDataGrid = Component(
 							<DataGridTextColumn field="name" header="Name" />
 							<DataGridTextColumn field="place" header="Place" />
 							{/* Capacity musí být kolik zbývá volných míst z kolika */}
-							<DataGridNumberColumn field="capacity" header="Capacity" />
-							<DataGridNumberColumn field="registeredCount.registered_count" header="Registered" />
+							{/* <DataGridNumberColumn field="capacity" header="Capacity" />
+							<DataGridNumberColumn field="registeredCount.registered_count" header="Registered" /> */}
 							<DataGridNumberColumn field="fee" header="Entrance fee">
 								<Field field="fee" /> {' CZK'}
 							</DataGridNumberColumn>

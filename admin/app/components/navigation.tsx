@@ -35,6 +35,7 @@ export const Navigation = Component(
 		<MenuItem label="Home" icon={<Home className='text-blue-500' />} to="eventFeed" />
 		<MenuItem label="Events calendar" icon={<Calendar className='text-blue-500' />} to="calendar" />
 		<MenuItem label="All events" icon={<Calendar className='text-blue-500' />} to="events" />
+		<MenuItem label="My upcoming events" icon={<Calendar className='text-blue-500' />} to="myEvents" />
 	</HasRole>
 	<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('czechBuddy') || roles.has('coordinator')}>
 		<MenuItem label="Buddy" icon={<CheckSquare className='text-blue-500' />} to="myBuddyCz" />

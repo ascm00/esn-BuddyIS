@@ -69,7 +69,7 @@ export default () => {
 									</TableRow>
 									<TableRow>
 										<TableCell>
-											How many buddies you want to have
+											How many buddies max
 										</TableCell>
 										<TableCell className="font-semibold">
 											<Field field="howManyBuddies" />

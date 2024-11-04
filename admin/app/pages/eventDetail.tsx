@@ -13,9 +13,10 @@ import { CreateEntityModalButton } from '@app/lib/buttons/createEntityModalButto
 import { RegistrationAdminCreateForm, RegistrationCreateForm } from '@app/components/forms/registration-create-form'
 import { Delete, DollarSign, Trash, TrashIcon } from 'lucide-react'
 import { DeleteEntityModalButton } from '@app/lib/buttons/deleteEntityModalButton'
-import { PersistButton } from '@contember/admin'
+import { ImageFieldView, PersistButton } from '@contember/admin'
 import config from '../../config'
 import { Env } from '@app/lib/functions/types'
+import { EventPictureFieldView, ProfilePictureFieldView } from '@app/components/fieldViews/ImageFieldView'
 
 const RegistrationNow = Component( () => {
 	const identity = useIdentity()
@@ -81,20 +82,20 @@ const RegistrationNow = Component( () => {
 
 	if (eventAlreadyHappened) {
 		return (
-			<div className='bg-blue-200 p-4 rounded-md'>
+			<div className='bg-blue-200 p-4 rounded-md max-w-lg'>
 				<div className='text-500'>This event has already happened.</div>
 			</div>
 		)
 	} else if (registered()) {
 		return (
-			<div className='bg-blue-200 p-4 rounded-md'>
+			<div className='bg-blue-200 p-4 rounded-md max-w-lg'>
 				<div className='text-500'>You are already registered for this event. If you want to cancel your registration, contact us via email.</div>
 			</div>
 		)
 	} else {
 		if(notForMe) {
 			return (
-				<div className='bg-blue-200 p-4 rounded-md'>
+				<div className='bg-blue-200 p-4 rounded-md max-w-lg'>
 					<div className='text-500'>Unfortunately this event is not for your user role.</div>
 				</div>
 			)
@@ -139,7 +140,7 @@ const RegistrationNow = Component( () => {
 
 				return (
 					<>
-						<div className='bg-blue-200 p-4 rounded-md'>
+						<div className='bg-blue-200 p-4 rounded-md max-w-lg'>
 							<div className='text-500'>Event is full, but you can join waiting list.</div>
 						</div>
 						<div className='flex gap-6 flex-col md:flex-row'>
@@ -160,7 +161,7 @@ const RegistrationNow = Component( () => {
 				)
 			} else {
 				return (
-					<div className='bg-blue-200 p-4 rounded-md'>
+					<div className='bg-blue-200 p-4 rounded-md max-w-lg'>
 						<div className='text-500'>Event is full.</div>
 					</div>
 				)
@@ -168,7 +169,7 @@ const RegistrationNow = Component( () => {
 		} else {
 
 			return (
-				<div className='bg-blue-200 p-4 rounded-md'>
+				<div className='bg-blue-200 p-4 rounded-md max-w-lg'>
 					<div className='text-500'>Registration for this event is not open now. It is open from {formattedRegistrationStartDate} to {formattedRegistrationEndDate}.</div>
 				</div>
 			)
@@ -422,21 +423,19 @@ export default () => {
 									</TableBody>
 								</Table>
 							</TableWrapper>
+							<RegistrationNow />
 							</div>
 
 							<div className="w-full flex flex-col gap-4">
-								<TableWrapper className="bg-gray-50/50 h-fit border rounded-md">
+								<TableWrapper className="bg-gray-50/50 border rounded-md">
 									<Table>
+									<TableBody>
 										<TableRow>
-											<TableCell>
-												Refund policy
+											<TableCell className="text-2xl font-bold">
+												<EventPictureFieldView srcField="picture.url" width={100} height={100} />
 											</TableCell>
 										</TableRow>
-										<TableRow>
-											<TableCell className="font-semibold">
-												<Field field={'refundPolicy'} />
-											</TableCell>
-										</TableRow>
+									</TableBody>
 									</Table>
 								</TableWrapper>
 								<TableWrapper className="bg-gray-50/50 h-fit border rounded-md">
@@ -456,7 +455,20 @@ export default () => {
 										</TableRow>
 									</Table>
 								</TableWrapper>
-								<RegistrationNow />
+								<TableWrapper className="bg-gray-50/50 h-fit border rounded-md">
+									<Table>
+										<TableRow>
+											<TableCell>
+												Refund policy
+											</TableCell>
+										</TableRow>
+										<TableRow>
+											<TableCell className="font-semibold">
+												<Field field={'refundPolicy'} />
+											</TableCell>
+										</TableRow>
+									</Table>
+								</TableWrapper>
 							</div>
 						</div>
 						<HasRole role={roles => roles.has('admin') || roles.has('esnMemberRole') || roles.has('coordinator')}>
