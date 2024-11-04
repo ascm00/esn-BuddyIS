@@ -181,7 +181,7 @@ const EventCard = Component(() => {
 		<div className='flex flex-row gap-4 items-start'>
 			<div className='flex-1 max-w-lg'>
 				<p className='text-lg text-gray-600'>
-					<strong>📅 Start</strong> <Field field='date' format={formatDateTime} />
+					<strong>📅 Start</strong> <Field field='date' format={formatDateTimeShort} />
 				</p>
 				<p className='text-lg text-gray-600'>
 					<strong>📍 Club</strong> <Field field='club' />
