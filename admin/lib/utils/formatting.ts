@@ -16,6 +16,14 @@ export const formatDateTime = (date: string | null) => {
 	return d.toLocaleString()
 }
 
+export const formatDateTimeShort = (date: string | null) => {
+	if (date === null) {
+		return null
+	}
+	const d = new Date(date)
+	return d.toLocaleString(undefined, { hour: '2-digit', minute: '2-digit', year: 'numeric', month: '2-digit', day: '2-digit' })
+}
+
 export const formatBoolean = (value: boolean | null) => {
 	if (value === null) {
 		return null
