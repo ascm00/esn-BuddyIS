@@ -110,7 +110,7 @@ const EventCard = Component(() => {
 				</Link>
 			</div>
 		</div>
-		<div className='flex flex-row gap-4 items-start'>
+		<div className='flex flex-col md:flex-row gap-4 items-start'>
 			<div className='flex-1 max-w-lg'>
 				<p className='text-lg text-gray-600'>
 					<strong>📅 Start</strong> <Field field='startDate' format={formatDateTimeShort} />
@@ -128,7 +128,7 @@ const EventCard = Component(() => {
 					<strong>🔗 WhatsApp group link:</strong> <WhatsappLink />
 				</p>
 			</div>
-			<div className='flex-none mt-4 rounded-lg overflow-hidden w-40 h-40'>
+			<div className='flex-none mt-4 rounded-lg overflow-hidden w-3/4 md:w-40 aspect-square mx-auto'>
 				<img src={pictureUrl} alt="Image" className={`h-full w-full object-cover border rounded-lg`} />
 			</div>
 		</div>
@@ -178,7 +178,7 @@ const EventCard = Component(() => {
 				</Link>
 			</div>
 		</div>
-		<div className='flex flex-row gap-4 items-start'>
+		<div className='flex flex-col md:flex-row gap-4 items-start'>
 			<div className='flex-1 max-w-lg'>
 				<p className='text-lg text-gray-600'>
 					<strong>📅 Start</strong> <Field field='date' format={formatDateTimeShort} />
@@ -190,7 +190,7 @@ const EventCard = Component(() => {
 					<strong>🔗 BOOM events link:</strong> <GetN2NLink />
 				</p>
 			</div>
-			<div className='flex-none mt-4 rounded-lg overflow-hidden w-40 h-40'>
+			<div className='flex-none mt-4 rounded-lg overflow-hidden w-3/4 md:w-40 aspect-square mx-auto'>
 				<img src={pictureUrl} alt="Image" className={`h-full w-full object-cover border rounded-lg`} />
 			</div>
 		</div>
