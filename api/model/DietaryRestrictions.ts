@@ -11,6 +11,7 @@ import { coordinatorRole, czechBuddyRole, esnMemberRole, internationalStudentRol
 
 @c.Allow([internationalStudentRole, czechBuddyRole, ozsRole], {
 	read: true,
+	update: true,
 })
 export class DietaryRestrictions {
 	createdAt = c.dateTimeColumn().notNull().default('now')

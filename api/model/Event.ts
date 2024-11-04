@@ -11,6 +11,7 @@ import { EventRegistration } from './EventRegistration'
 
 @c.Allow([internationalStudentRole, ozsRole, czechBuddyRole], {
 	read: true,
+	update: ['registrations'],
 })
 @c.Allow(esnMemberRole, {
 	read: true,

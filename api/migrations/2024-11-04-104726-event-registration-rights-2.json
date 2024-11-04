@@ -1,0 +1,42 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/EventRegistration/operations/update",
+					"value": {
+						"createdAt": "person_personId_personId",
+						"payment": "person_personId_personId",
+						"paymentId": "person_personId_personId",
+						"note": "person_personId_personId",
+						"event": "person_personId_personId",
+						"isWaitingList": "person_personId_personId",
+						"personWhoMadeRegistration": "person_personId_personId",
+						"person": "person_personId_personId",
+						"allergies": "person_personId_personId",
+						"dietaryRestrictions": "person_personId_personId"
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/EventRegistration/operations/update",
+					"value": {
+						"createdAt": "person_personId_personId",
+						"payment": "person_personId_personId",
+						"paymentId": "person_personId_personId",
+						"note": "person_personId_personId",
+						"event": "person_personId_personId",
+						"isWaitingList": "person_personId_personId",
+						"personWhoMadeRegistration": "person_personId_personId",
+						"person": "person_personId_personId",
+						"allergies": "person_personId_personId",
+						"dietaryRestrictions": "person_personId_personId"
+					}
+				}
+			]
+		}
+	]
+}

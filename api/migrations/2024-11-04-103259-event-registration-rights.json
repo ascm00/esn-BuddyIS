@@ -1,0 +1,31 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/Event/operations/update",
+					"value": {
+						"registrations": true
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/Event/operations/update",
+					"value": {
+						"registrations": true
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/Event/operations/update",
+					"value": {
+						"registrations": true
+					}
+				}
+			]
+		}
+	]
+}

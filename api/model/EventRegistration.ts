@@ -22,11 +22,13 @@ import { payment } from './enum'
 	when: {person: {personId: internationalStudentId}},
 	read: true,
 	create: true,
+	update: true,
 })
 @c.Allow(czechBuddyRole, {
 	when: {person: {personId: czechBuddyId}},
 	read: true,
 	create: true,
+	update: true,
 })
 export class EventRegistration {
 	createdAt = c.dateTimeColumn().notNull().default('now')

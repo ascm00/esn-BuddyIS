@@ -1,0 +1,37 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/DietaryRestrictions/operations/update",
+					"value": {
+						"createdAt": true,
+						"name": true,
+						"registrations": true
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/DietaryRestrictions/operations/update",
+					"value": {
+						"createdAt": true,
+						"name": true,
+						"registrations": true
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/DietaryRestrictions/operations/update",
+					"value": {
+						"createdAt": true,
+						"name": true,
+						"registrations": true
+					}
+				}
+			]
+		}
+	]
+}
