@@ -13,7 +13,7 @@ export default () => {
 			<Binding>
 				<div className="flex flex-col gap-12">
 					<Slots.Title>
-						Application created successfully!
+						Application successfully submitted!
 					</Slots.Title>
 					<Slots.Back>
 						<BackButton />
