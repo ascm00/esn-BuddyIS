@@ -62,7 +62,6 @@ export const ApplicationFrCreateForm = Component(
 				alert('Please fill all the mandatory fields.')
 			}
 
-
 		}
 
 	if(closed){

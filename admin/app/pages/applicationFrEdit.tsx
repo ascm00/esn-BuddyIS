@@ -17,9 +17,9 @@ export default () => {
 						<BackButton />
 					</Slots.Back>
 					<EntitySubTree entity="ApplicationFr(id=$id)" isCreating={false}>
-						<Slots.Actions>
+						{/* <Slots.Actions>
 							<PersistButton />
-						</Slots.Actions>
+						</Slots.Actions> */}
 						<ApplicationFrEditForm />
 					</EntitySubTree>
 				</div>
