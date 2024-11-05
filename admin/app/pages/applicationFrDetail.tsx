@@ -77,7 +77,7 @@ export default () => {
 	)
 }
 
-const PreferredSexCell = Component(() => {
+export const PreferredSexCell = Component(() => {
 	const entity = useEntity()
 	const preferredSex = entity.getField('preferredBuddySex').value
 
