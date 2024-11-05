@@ -137,7 +137,7 @@ const EventCard = Component(() => {
 	  <CardFooter className='bg-gray-50 border-t border-gray-200 py-4 px-6'>
 		<p className='text-sm text-bold text-gray-500'>
 		  	<strong>Contact person</strong>
-			{' '} <Field field='contactPerson.firstName' /> {' '} <Field field='contactPerson.surname' /> {' ('} <Field field='contactPerson.tenantPerson.email' /> {', '} <Field field='contactPerson.phoneNumber' />{')'}
+			{' '} <Field field='contactPerson.firstName' /> {' '} <Field field='contactPerson.surname' /> {' ('} <Field field='contactPerson.tenantPerson.email' />{', '}<Field field='contactPerson.phoneNumber' />{')'}
 		</p>
 	  </CardFooter>
 	</Card>

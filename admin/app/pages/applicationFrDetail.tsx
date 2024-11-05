@@ -79,7 +79,7 @@ export default () => {
 
 const PreferredSexCell = Component(() => {
 	const entity = useEntity()
-	const preferredSex = entity.getField('preferredSex').value
+	const preferredSex = entity.getField('preferredBuddySex').value
 
 	if(preferredSex === 'dontCare') {
 		return 'Not preferred'
