@@ -31,7 +31,7 @@ export const EventCreateForm = Component(() => {
 		<InputField field="place" label="Place *" required/>
 		<InputField field="meetingPoint" label="Meeting point"/>
 		<InputField field="whatToBring" label="What to bring" />
-		<InputField field="whatsappLink" label="Whatsapp link" />
+		<InputField field="whatsappLink" label="Whatsapp link" description="Please add a valid link to the WhatsApp group starting with 'https://' or 'http://'. Otherwise, it will not be displayed." />
 		<SelectField field={'contactPerson'} label="Contact person" options={'Person'}>
 			<Field field={'firstName'} /> {' '} <Field field={'surname'} />
 		</SelectField>

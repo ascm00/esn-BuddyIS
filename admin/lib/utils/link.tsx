@@ -1,12 +1,18 @@
 import { Component, Field, useEntity } from "@contember/interface";
 
-export const WhatsappLink = Component(() => {
+export const WhatsappLink = Component(({text}: {text?: string}) => {
 	const entity = useEntity()
 	const link = entity.getField('whatsappLink').value?.toString() ?? ''
-	if (link === '') {
+	const regex = /^(https?:\/\/).+\.\w+$/;
+
+	if (link === '' || !regex.test(link)) {
 		return null
 	} else {
-		return <a className='text-blue-500' href={link} target="_blank">{link}</a>
+		if(text){
+			return <a className='text-blue-500' href={link} target="_blank">{text}</a>
+		} else {
+			return <a className='text-blue-500' href={link} target="_blank">{link}</a>
+		}
 	}
 }, () => (
     <>
@@ -14,14 +20,19 @@ export const WhatsappLink = Component(() => {
     </>
 ))
 
-export const GetN2NLink = Component(() => {
+export const GetN2NLink = Component(({text}: {text?: string}) => {
 	const entity = useEntity()
 	const link = entity.getField('link').value?.toString() ?? ''
+	const regex = /^(https?:\/\/).+\.\w+$/;
 
-	if(link === '') {
+	if (link === '' || !regex.test(link)) {
 		return null
 	}
-	return <a className='text-blue-500' href={link} target="_blank">{link}</a>
+    if(text){
+        return <a className='text-blue-500' href={link} target="_blank">{text}</a>
+    } else {
+        return <a className='text-blue-500' href={link} target="_blank">{link}</a>
+    }
 }, () => (
 	<>
 		<Field field="link" />

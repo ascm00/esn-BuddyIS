@@ -125,7 +125,7 @@ const EventCard = Component(() => {
 					<strong>💰 Price</strong> <Field field='fee' /> {' CZK'}
 				</p>
 				<p className='text-lg text-gray-600'>
-					<strong>🔗 WhatsApp group link:</strong> <WhatsappLink />
+					<WhatsappLink text='🔗 WhatsApp group link' />
 				</p>
 			</div>
 			<div className='flex-none mt-4 rounded-lg overflow-hidden w-3/4 md:w-40 aspect-square mx-auto'>
@@ -187,7 +187,7 @@ const EventCard = Component(() => {
 					<strong>📍 Club</strong> <Field field='club' />
 				</p>
 				<p className='text-lg text-gray-600'>
-					<strong>🔗 BOOM events link:</strong> <GetN2NLink />
+					<GetN2NLink text='🔗 BOOM events link' />
 				</p>
 			</div>
 			<div className='flex-none mt-4 rounded-lg overflow-hidden w-3/4 md:w-40 aspect-square mx-auto'>
