@@ -19,16 +19,15 @@ export const ApplicationFrCreateForm = Component(
 
 		//connects application to the current semester
 		// checks if applications are open for current semester. If not, user can't apply for buddy
-		const semesterList = useEntityListSubTree('currentSemester')
+		const semesterList = useEntityListSubTree('allSemesters')
 		let closed = true
 		for (const semester of semesterList) {
-			entity.connectEntityAtField('semester', semester)
 			let openForCzechBuddyRegistrationsDate = semester.getField('openForCzechBuddyRegistrationsDate').value
 			let closeBuddyRegistrations = semester.getField('closeBuddyRegistrations').value
 			if ((openForCzechBuddyRegistrationsDate && closeBuddyRegistrations) && (openForCzechBuddyRegistrationsDate <= now && closeBuddyRegistrations >= now)) {
 				closed = false
+				break
 			}
-			break
 		}
 
 		const currentUserApplicationsFrTry = useEntitySubTree('currentUserApplicationsFr') ?? undefined
@@ -37,7 +36,6 @@ export const ApplicationFrCreateForm = Component(
 		return (<div className='bg-blue-200 p-4 rounded-md'><div className='text-500'>Sorry, applications are closed now.</div></div>)
 	} else {
 		return ((!currentUserApplicationsFr && <FormLayout>
-			<Todo>Semestr by měla aplikace znát automaticky a měl by se k přihlášce automaticky přiřadit. Potřeba checkovat, jestli už se na buddyho daný semestr hlásil. - done. Nejde removenout jazyk. Select fieldy musí být mandatory.</Todo>
 			<SelectField
 					field="semester"
 					label="Semester *"
@@ -102,8 +100,8 @@ export const ApplicationFrCreateForm = Component(
 	}, (_, env) => (
 		<>
 			<EntityListSubTree
-				entities="Semester[isCurrent=true]"
-				alias={'currentSemester'}
+				entities="Semester"
+				alias={'allSemesters'}
 			>
 				<Field field="name" />
 				<Field field="id" />
