@@ -68,7 +68,7 @@ export const ApplicationCzCreateForm = Component(
 			if(semester && studyProgram && preferredCountryOfUniversity && languagesFilled && gender && preferredBuddySex && buddiesValid){
 				persist()
 			} else {
-				alert('Please fill all the mandatory fields and make sure that maximum number of buddies is between 1 and 10.')
+				alert('Please fill all the mandatory fields and make sure that number of buddies is between 1 and 10.')
 			}
 
 		}

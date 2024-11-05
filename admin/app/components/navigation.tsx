@@ -34,13 +34,14 @@ export const Navigation = Component(
 	<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('czechBuddy') || roles.has('coordinator') || roles.has('internationalStudent')}>
 		<MenuItem label="Home" icon={<Home className='text-blue-500' />} to="eventFeed" />
 		<MenuItem label="Events calendar" icon={<Calendar className='text-blue-500' />} to="calendar" />
-		<MenuItem label="All events" icon={<Calendar className='text-blue-500' />} to="events" />
-		<MenuItem label="My upcoming events" icon={<Calendar className='text-blue-500' />} to="myEvents" />
+		<MenuItem label="All events" icon={<CalendarPlus className='text-blue-500' />} to="events" />
+		<MenuItem label="My upcoming events" icon={<Clock className='text-blue-500' />} to="myEvents" />
 	</HasRole>
 	<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('czechBuddy') || roles.has('coordinator')}>
 		<MenuItem label="Buddy" icon={<CheckSquare className='text-blue-500' />} to="myBuddyCz" />
 	</HasRole>
 	<HasRole role="internationalStudent">
+		<MenuItem label="My application" icon={<FileText className='text-blue-500' />} to="myApplicationFr" />
 		<MenuItem label="My buddy" icon={<CheckSquare className='text-blue-500' />} to="myBuddy" />
 	</HasRole>
 	<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('czechBuddy') || roles.has('coordinator') || roles.has('internationalStudent')}>
