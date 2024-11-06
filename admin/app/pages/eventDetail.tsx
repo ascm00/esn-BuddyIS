@@ -32,8 +32,6 @@ const RegistrationNow = Component( () => {
 	const eventStartDateValue = entity.getField('startDate').value?.toString()
 	const eventStartDate = eventStartDateValue && new Date(eventStartDateValue)
 	
-	console.log(config.appUrl)
-	console.log(config.apiBaseUrl)
 	
 	const registrationList = entity.getEntityList('registrations') ?? undefined
 
@@ -212,7 +210,7 @@ const RegistrationAdminCreate = Component(
 		const waitingList = entity.getField('waitingList').value ?? 0
 
 		const isNotFull = (typeof registeredCount === 'number' && typeof capacity === 'number') && (registeredCount < capacity)
-		const isOnWaitingList = (typeof registeredCount === 'number' && typeof capacity === 'number' && typeof waitingList === 'number') && (registeredCount >= capacity && registeredCount < capacity + waitingList)
+		const isOnWaitingList = (typeof registeredCount === 'number' && typeof capacity === 'number' && typeof waitingList === 'number') && (registeredCount >= capacity && registeredCount < (capacity + waitingList))
 
 
 		if (eventStartDate && eventStartDate < new Date()) {
@@ -255,10 +253,11 @@ const RegistrationAdminCreate = Component(
 				<CreateEntityModalButton
 					entityName="EventRegistration"
 					buttonLabel="Register user"
-					saveButtonLabel="Register user"
+					saveButtonLabel="Put user on a waiting list"
 					refreshOnPersist
 					createEntityForm={
 					<>
+						<div className='bg-blue-200 p-4 rounded-md'><div className='text-500'>Capacity is full, but you can put user on a waiting list. You can also increase the capacity on Edit event page.</div></div>
 						<RegistrationAdminCreateForm isPaid={false} isOnWaitingList={true} />
 					</>
 					}
