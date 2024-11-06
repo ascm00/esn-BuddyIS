@@ -24,6 +24,7 @@ import { Language } from './Language'
 	read: true,
 	create: true,
 	update: true,
+	delete: true,
 })
 @c.Allow(ozsRole, {read: true})
 export class ApplicationCz {

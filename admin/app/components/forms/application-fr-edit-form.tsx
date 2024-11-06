@@ -44,16 +44,9 @@ export const ApplicationFrEditForm = Component(
 	return (
 	<>
 		<Slots.Actions>
-			<Button onClick={handlePersist}>Save</Button>
+			<Button onClick={handlePersist}>Save changes</Button>
 		</Slots.Actions>
 		<FormLayout>
-			<SelectField
-				field="semester"
-				label="Semester"
-				options="Semester"
-			>
-				<Field field="name" />
-			</SelectField>
 			<div>
 				<h2 className="text-xl font-semibold">Information about you</h2>
 				<hr className="my-2 border-gray-200" />

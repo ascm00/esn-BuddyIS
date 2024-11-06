@@ -1029,7 +1029,7 @@ export const ContemberClientNames: SchemaNames = {
         "openForCzechBuddyRegistrationsDate": {
           "type": "column"
         },
-        "closeCzechBuddyRegistrations": {
+        "closeBuddyRegistrations": {
           "type": "column"
         }
       },
@@ -1041,7 +1041,7 @@ export const ContemberClientNames: SchemaNames = {
         "endDate",
         "isCurrent",
         "openForCzechBuddyRegistrationsDate",
-        "closeCzechBuddyRegistrations"
+        "closeBuddyRegistrations"
       ]
     },
     "Sport": {

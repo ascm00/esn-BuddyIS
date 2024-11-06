@@ -1,0 +1,20 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/ApplicationCz/operations/delete",
+					"value": "person_personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/ApplicationFr/operations/delete",
+					"value": "person_personId_personId"
+				}
+			]
+		}
+	]
+}

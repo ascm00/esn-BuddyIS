@@ -27,5 +27,5 @@ export class Semester {
 	parties = c.oneHasMany(N2nParty, 'semester')
 	isCurrent = c.boolColumn().notNull().default(false)
 	openForCzechBuddyRegistrationsDate = c.dateTimeColumn().notNull()
-	closeCzechBuddyRegistrations = c.dateTimeColumn().notNull()
+	closeBuddyRegistrations = c.dateTimeColumn().notNull()
 }

@@ -1,4 +1,6 @@
-import { PersistButton } from '@app/lib/binding'
+import { Binding, PersistButton } from '@app/lib/binding'
+import { BackButton } from '@app/lib/buttons'
+import { DataGrid, DataGridQueryFilter, DataGridHasOneFilter, DataGridColumn, DataGridTable, DataGridToolbar, DataGridLoader, DataGridHasOneColumn, DataGridHasManyColumn, DataGridNumberColumn, DataGridEnumColumn, DataGridPagination } from '@app/lib/datagrid'
 import { Todo } from '@app/lib/dev'
 import { FormLayout, InputField, MultiSelectField, RadioEnumField, SelectField, TextareaField } from '@app/lib/form'
 import { formatDateTime } from '@app/lib/formatting'
@@ -6,7 +8,7 @@ import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
 import { Table, TableCell, TableRow, TableBody, TableWrapper } from '@app/lib/ui/table'
 import { formatDate } from '@app/lib/utils/formatting'
-import { Component, EntityListSubTree, EntitySubTree, Field, HasMany, HasOne, HasRole, identityEnvironmentExtension, If, Link, useEntity, useEntityListSubTree, useEntitySubTree, usePersist } from '@contember/interface'
+import { Component, EntityListSubTree, EntitySubTree, Field, HasMany, HasOne, HasRole, identityEnvironmentExtension, If, Link, useEntity, useEntityListSubTree, useEntitySubTree, useIdentity, usePersist } from '@contember/interface'
 
 export const ApplicationCzCreateForm = Component(
 	() => {
@@ -90,75 +92,29 @@ export const ApplicationCzCreateForm = Component(
 				</SelectField>
 			</FormLayout>)
 		} else if (applied) {
-			// const name = getEntity('person').getField('firstName').value?.toString() + ' ' + entity.getEntity('person').getField('surname').value?.toString()
-			// const motivation = entity.getField('motivation').value?.toString()
-			// const preferredSex = entity.getField('preferredSex').value?.toString()
-			// const preferredCountry = entity.getEntity('preferredCountry').getField('name').value?.toString()
-			// const howManyBuddies = entity.getField('howManyBuddies').value?.toString()
 			return (
 				<>
-					<div className='bg-blue-200 p-4 rounded-md'><div className='text-500'>Sorry, you can only apply for buddy once. You already applied this semester.</div></div>
-						{/* <Slots.Actions>
-							<Link to={`applicationCzEdit(id: '${id}')`}>
-								<Button>
-									Edit application
-								</Button>
-							</Link>
-						</Slots.Actions> */}
-						{/* <TableWrapper className="bg-gray-50/50 max-w-lg border rounded-md">
-							<Table>
-								<TableBody>
-									<TableRow>
-										<TableCell>
-											Name
-										</TableCell>
-										<TableCell className="font-semibold">
-											<Field field="person.firstName" /> {' '} <Field field="person.surname" />
-										</TableCell>
-									</TableRow>
-									<TableRow>
-										<TableCell>
-											Semester
-										</TableCell>
-										<TableCell className="font-semibold">
-											{semester.toString()}
-										</TableCell>
-									</TableRow>
-									<TableRow>
-										<TableCell>
-											Motivation
-										</TableCell>
-										<TableCell className="font-semibold">
-											{motivation}
-										</TableCell>
-									</TableRow>
-									<TableRow>
-										<TableCell>
-											Preferred buddy gender
-										</TableCell>
-										<TableCell className="font-semibold">
-											{preferredSex}
-										</TableCell>
-									</TableRow>
-									<TableRow>
-										<TableCell>
-											Preferred country of university
-										</TableCell>
-										<TableCell className="font-semibold">
-											{preferredCountry}
-										</TableCell>
-									</TableRow>
-									<TableRow>
-										<TableCell>
-											How many buddies max
-										</TableCell>
-										<TableCell className="font-semibold">
-											{howManyBuddies}
-										</TableCell>
-									</TableRow>
-								</TableBody>
-							</Table>
-						</TableWrapper> */}
+					<Slots.Actions>
+						<Link to="myApplicationsCz">
+							<Button>
+								All my buddy applications
+							</Button>
+						</Link>
+					</Slots.Actions>
+					<FormLayout>
+						<SelectField
+								field="semester"
+								label="Semester *"
+								options={`Semester[openForCzechBuddyRegistrationsDate <= "${now}" && closeBuddyRegistrations >= "${now}"]`}
+						>
+							<Field field="name" />
+							<div className='invisible'>
+								<Field field={'openForCzechBuddyRegistrationsDate'} format={formatDate}/>
+								<Field field={'closeBuddyRegistrations'} format={formatDate} />
+							</div>
+						</SelectField>
+					</FormLayout>
+					<div className='bg-blue-200 p-4 rounded-md'><div className='text-500'>You already applied for a buddy this semester. If you want to see your applications, click on the button "All my buddy applications" above.</div></div>
 				</>
 			)
 		} else {
@@ -291,3 +247,58 @@ export const ApplicationCzCreateForm = Component(
 	</>
 )
 )
+
+const ApplicationCzDataGrid = Component(() => {
+
+	const personId = useIdentity()?.person?.id
+
+	return (
+		<>
+			<Binding>
+				<div className="flex flex-col gap-12">
+					<Slots.Title>
+						My buddy applications
+					</Slots.Title>
+					<Slots.Back>
+						<BackButton />
+					</Slots.Back>
+						<DataGrid entities={`ApplicationCz[person.tenantPerson.id='${personId}']`}>
+							<DataGridToolbar>
+								<DataGridQueryFilter />
+                                <DataGridHasOneFilter field="semester" label="Semester">
+                                    <Field field="name" />
+                                </DataGridHasOneFilter>
+							</DataGridToolbar>
+							<DataGridLoader>
+								<DataGridTable>
+									<DataGridColumn>
+										<div className="flex gap-4">
+											<Link to="applicationCzEdit(id: $entity.id)">
+												<Button>
+													Edit
+												</Button>
+											</Link>
+										</div>
+									</DataGridColumn>
+									<DataGridHasOneColumn field="semester" header="Semester">
+										<Field field="name" />
+									</DataGridHasOneColumn>
+									<DataGridEnumColumn field="preferredSex" header="Preferred gender of buddy" options={{man: 'Man', woman: 'Woman', dontCare: 'Not preferred'}} />
+									<DataGridHasOneColumn field="preferredCountry" header="Preferred country of university">
+										<Field field="name" />
+									</DataGridHasOneColumn>
+                                    <DataGridHasManyColumn field="preferredLanguages" header="Preferred languages">
+                                        <Field field="name" />
+                                    </DataGridHasManyColumn>
+                                    <DataGridNumberColumn field="howManyBuddiesAssigned" header="Number of buddies assigned" />
+                                    <DataGridNumberColumn field="howManyBuddies" header="Maximum number of buddies" />
+								</DataGridTable>
+							</DataGridLoader>
+							<DataGridPagination />
+						</DataGrid>
+				</div>
+			</Binding>
+		</>
+	)
+
+})

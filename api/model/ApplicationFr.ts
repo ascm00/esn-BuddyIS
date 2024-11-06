@@ -26,6 +26,7 @@ import { Person } from './Person'
 	read: true,
 	create: true,
 	update: true,
+	delete: true,
 })
 @c.Allow(ozsRole, {read: true})
 export class ApplicationFr {
