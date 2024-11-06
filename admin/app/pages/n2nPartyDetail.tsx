@@ -83,7 +83,7 @@ export default () => {
 											</TableRow>
 											<TableRow>
 												<TableCell>
-													BOOM events link
+													Tickets link
 												</TableCell>
 												<TableCell className="font-semibold">
 													<GetN2NLink />

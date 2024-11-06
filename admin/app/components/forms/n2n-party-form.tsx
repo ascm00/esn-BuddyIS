@@ -16,7 +16,7 @@ export const N2nPartyForm = Component(() => {
 	<FormLayout>
 		<InputField field="name" label="Name" required />
 		<InputField field="date" label="Date & time" required />
-		<InputField field="link" label="BOOM Events link" required />
+		<InputField field="link" label="Tickets link" required />
 		<TextareaField field="description" label="Description" />
 		<ImageField
 			label="Picture"
