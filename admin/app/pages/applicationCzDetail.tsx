@@ -26,16 +26,6 @@ export default () => {
 									Edit application
 								</Button>
 							</Link>
-							<DeleteEntityModalButton 
-								message="Are you completely sure to delete your buddy application?"
-								deleteMessage="Delete"
-								cancelTo={'myApplicationsCz'}
-								afterPersistTo={'myApplicationsCz'}
-							>
-								<Button variant={'destructive'}>
-									<TrashIcon />
-								</Button>
-							</DeleteEntityModalButton>
 						</Slots.Actions>
 						<TableWrapper className="bg-gray-50/50 max-w-lg border rounded-md">
 							<Table>
