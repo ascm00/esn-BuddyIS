@@ -4,6 +4,7 @@ import { formatDateTime } from '@app/lib/formatting'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
 import { Table, TableBody, TableCell, TableRow, TableWrapper } from '@app/lib/ui/table'
+import { GoogleMapsLink } from '@app/lib/utils/link'
 import { EntitySubTree, Field, HasMany, HasRole, Link } from '@contember/interface'
 
 export default () => {
@@ -60,15 +61,7 @@ export default () => {
                                                 Place
                                             </TableCell>
                                             <TableCell className="font-semibold">
-                                                <Field field="place" />
-                                            </TableCell>
-                                        </TableRow>
-                                        <TableRow>
-                                            <TableCell>
-                                                Meeting point (if different from place)
-                                            </TableCell>
-                                            <TableCell className="font-semibold">
-                                                <Field field="meetingPoint" />
+                                                <GoogleMapsLink />
                                             </TableCell>
                                         </TableRow>
                                         <TableRow>

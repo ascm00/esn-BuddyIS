@@ -38,3 +38,23 @@ export const GetN2NLink = Component(({text}: {text?: string}) => {
 		<Field field="link" />
 	</>
 ))
+
+export const GoogleMapsLink = Component(() => {
+	const entity = useEntity()
+	const link = entity.getField('mapLink').value?.toString() ?? ''
+	console.log(link)
+	const regex = /^(https?:\/\/[^\s]+)$/;
+
+	if (link === '' || !regex.test(link)) {
+		console.log(regex.test(link))
+		console.log(entity.getField('place')?.value?.toString())
+		return (<div>{entity.getField('place')?.value?.toString()}</div>)
+	} else {
+        return <a className='text-blue-500' href={link} target="_blank">{entity.getField('place')?.value?.toString()}</a>
+    }
+}, () => (
+	<>
+		<Field field="place" />
+		<Field field="mapLink" />
+	</>
+))

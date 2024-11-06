@@ -5,6 +5,7 @@ import { BackButton } from '@app/lib/buttons'
 import { formatDateTime } from '@app/lib/formatting'
 import { Slots } from '@app/lib/layout'
 import { Table, TableBody, TableCell, TableRow, TableWrapper } from '@app/lib/ui/table'
+import { GoogleMapsLink } from '@app/lib/utils/link'
 import { Component, EntitySubTree, Field, HasOne, RedirectOnPersist, useEntity, useEntitySubTree } from '@contember/interface'
 
 export default () => {
@@ -90,15 +91,7 @@ const SumUp = Component(
 									Place
 								</TableCell>
 								<TableCell className="font-semibold">
-									<Field field="place" />
-								</TableCell>
-							</TableRow>
-							<TableRow>
-								<TableCell>
-									Meeting point (if different from place)
-								</TableCell>
-								<TableCell className="font-semibold">
-									<Field field="meetingPoint" />
+									<GoogleMapsLink />
 								</TableCell>
 							</TableRow>
 							<TableRow>

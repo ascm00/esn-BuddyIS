@@ -17,7 +17,7 @@ import { ImageFieldView, PersistButton } from '@contember/admin'
 import config from '../../config'
 import { Env } from '@app/lib/functions/types'
 import { EventPictureFieldView, ProfilePictureFieldView } from '@app/components/fieldViews/ImageFieldView'
-import { WhatsappLink } from '@app/lib/utils/link'
+import { GoogleMapsLink, WhatsappLink } from '@app/lib/utils/link'
 
 const RegistrationNow = Component( () => {
 	const identity = useIdentity()
@@ -370,15 +370,7 @@ export default () => {
 												Place
 											</TableCell>
 											<TableCell className="font-semibold">
-												<Field field="place" />
-											</TableCell>
-										</TableRow>
-										<TableRow>
-											<TableCell>
-												Meeting point (if different from place)
-											</TableCell>
-											<TableCell className="font-semibold">
-												<Field field="meetingPoint" />
+											<GoogleMapsLink />
 											</TableCell>
 										</TableRow>
 										<TableRow>

@@ -236,12 +236,12 @@ export type Event <OverRelation extends string | never = never> = {
 		capacity: number | null
 		fee: number | null
 		place: string | null
+		mapLink: string | null
 		whatToBring: string | null
 		whatsappLink: string | null
 		registrationStartDate: string | null
 		registrationEndDate: string | null
 		waitingList: number | null
-		meetingPoint: string | null
 		status: eventStatus | null
 		private: boolean | null
 		allowRegistrationWithoutPayment: boolean | null

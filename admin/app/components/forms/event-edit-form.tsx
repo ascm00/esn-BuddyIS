@@ -16,7 +16,7 @@ export const EventEditForm = Component(() => <FormLayout>
 	<InputField field="startDate" label="Start datetime *" required />
 	<InputField field="endDate" label="End datetime *" required />
 	<InputField field="place" label="Place *" required/>
-	<InputField field="meetingPoint" label="Meeting point"/>
+	<InputField field="mapLink" label="Google maps link" description="Please add a valid link to the Google maps starting with 'https://' or 'http://'. Otherwise, it will not be displayed."/>
 	<InputField field="whatToBring" label="What to bring" />
 	<InputField field="whatsappLink" label="Whatsapp link" />
 	<SelectField field={'contactPerson'} label="Contact person" options={'Person'}>

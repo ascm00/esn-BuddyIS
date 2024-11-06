@@ -366,6 +366,9 @@ export const ContemberClientNames: SchemaNames = {
         "place": {
           "type": "column"
         },
+        "mapLink": {
+          "type": "column"
+        },
         "whatToBring": {
           "type": "column"
         },
@@ -384,9 +387,6 @@ export const ContemberClientNames: SchemaNames = {
         "section": {
           "type": "one",
           "entity": "Section"
-        },
-        "meetingPoint": {
-          "type": "column"
         },
         "status": {
           "type": "column"
@@ -433,12 +433,12 @@ export const ContemberClientNames: SchemaNames = {
         "capacity",
         "fee",
         "place",
+        "mapLink",
         "whatToBring",
         "whatsappLink",
         "registrationStartDate",
         "registrationEndDate",
         "waitingList",
-        "meetingPoint",
         "status",
         "private",
         "allowRegistrationWithoutPayment",
