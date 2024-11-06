@@ -49,11 +49,11 @@ const MyApplicationFR = Component(() => {
 	return(<>
         <EntitySubTree entity={`ApplicationFr(person.tenantPerson.id='${id}')`} isCreating={false}>
         <Slots.Actions>
-            <Link to={`applicationFrEdit(id: '${applicationId}')`}>
+            {/* <Link to={`applicationFrEdit(id: '${applicationId}')`}>
                 <Button>
                     Edit application
                 </Button>
-            </Link>
+            </Link> */}
             <DeleteEntityModalButton 
 				message={`Are you completely sure to delete your buddy application? If you are already assigned to a buddy, it won't delete your buddy pair. In case you want to cancel your buddy pair, please contact us at 'helpdesk@esnvseprague.cz'.`}
 				deleteMessage="Delete"
