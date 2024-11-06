@@ -4,7 +4,7 @@ import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
 import { Table, TableBody, TableCell, TableRow, TableWrapper } from '@app/lib/ui/table'
 import { Component, DeleteEntityTrigger, EntitySubTree, Environment, Field, HasMany, HasOne, HasRole, If, Link, useEntity, useIdentity, useProjectUserRoles } from '@contember/interface'
-import { formatDateTime } from '@app/lib/utils/formatting'
+import { formatDateTime, formatDateTimeShort } from '@app/lib/utils/formatting'
 import { Todo } from '@app/lib/dev'
 import { RichTextRendererField } from '@app/lib/plugins/rich-text/renderer/RichTextRendererField'
 import { renderElement, renderLeaf } from '@app/lib/plugins/rich-text/renderer/renderers'
@@ -338,7 +338,7 @@ export default () => {
 												Event starts
 											</TableCell>
 											<TableCell className="font-semibold">
-												<Field field="startDate" format={formatDateTime} />
+												<Field field="startDate" format={formatDateTimeShort} />
 											</TableCell>
 										</TableRow>
 										<TableRow>
@@ -346,7 +346,7 @@ export default () => {
 												Event ends
 											</TableCell>
 											<TableCell className="font-semibold">
-												<Field field="endDate" format={formatDateTime} />
+												<Field field="endDate" format={formatDateTimeShort} />
 											</TableCell>
 										</TableRow>
 										<TableRow>
@@ -354,7 +354,7 @@ export default () => {
 												Registration starts
 											</TableCell>
 											<TableCell className="font-semibold">
-												<Field field="registrationStartDate" format={formatDateTime} />
+												<Field field="registrationStartDate" format={formatDateTimeShort} />
 											</TableCell>
 										</TableRow>
 										<TableRow>
@@ -362,7 +362,7 @@ export default () => {
 												Registration ends
 											</TableCell>
 											<TableCell className="font-semibold">
-												<Field field="registrationEndDate" format={formatDateTime} />
+												<Field field="registrationEndDate" format={formatDateTimeShort} />
 											</TableCell>
 										</TableRow>
 										<TableRow>

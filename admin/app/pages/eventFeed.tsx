@@ -13,7 +13,7 @@ import { Field } from '@contember/react-binding'
 import { PencilIcon } from 'lucide-react'
 import { ImageField } from '@app/lib/form'
 import { ImageFieldView } from '@app/components/fieldViews/ImageFieldView'
-import { GetN2NLink, WhatsappLink } from '@app/lib/utils/link'
+import { GetN2NLink, GoogleMapsLink, WhatsappLink } from '@app/lib/utils/link'
 
 export default () => {
 
@@ -119,7 +119,7 @@ const EventCard = Component(() => {
 					<strong>🏁 End</strong> <Field field='endDate' format={formatDateTimeShort} />
 				</p>
 				<p className='text-lg text-gray-600'>
-					<strong>📍 Place</strong> <Field field='place' />
+					<strong>📍 Place</strong> <GoogleMapsLink />
 				</p>
 				<p className='text-lg text-gray-600'>
 					<strong>💰 Price</strong> <Field field='fee' /> {' CZK'}
@@ -149,6 +149,7 @@ const EventCard = Component(() => {
 		<Field field='contactPerson.tenantPerson.email' />
 		<Field field='contactPerson.phoneNumber' />
 		<Field field='place' />
+		<Field field='mapLink' />
 		<Field field='fee' />
 		<Field field='whatToBring' />
 		<Field field='startDate' />
