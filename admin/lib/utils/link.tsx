@@ -48,7 +48,7 @@ export const GoogleMapsLink = Component(() => {
 	if (link === '' || !regex.test(link)) {
 		console.log(regex.test(link))
 		console.log(entity.getField('place')?.value?.toString())
-		return (<div>{entity.getField('place')?.value?.toString()}</div>)
+		return (<p>{entity.getField('place')?.value?.toString()}</p>)
 	} else {
         return <a className='text-blue-500' href={link} target="_blank">{entity.getField('place')?.value?.toString()}</a>
     }

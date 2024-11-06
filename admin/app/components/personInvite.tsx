@@ -173,9 +173,6 @@ export const PersonInvite = Component(
 					<SelectField
 						field="faculty"
 						label="Faculty at VSE (not required)"
-						createNewForm={<>
-							<InputField field="name" label="Name" required />
-						</>}
 						options="Faculty"
 					>
 						<Field field="name" />
