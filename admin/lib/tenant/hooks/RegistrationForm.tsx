@@ -23,9 +23,8 @@ export const RegistrationForm = (env : Env) => {
 	
 			if (response.ok) {
 				// User created successfully
-				console.log('User created successfully');
 				window.location.href = "/";
-				alert('User created successfully. Check your email to set your password.');
+				alert('User created successfully. Check your email to set your password. If you do not find it in your inbox, please check your spam folder.');
 			} else {
 				// Error creating user
 				console.error('Error creating user');
