@@ -46,9 +46,7 @@ export const GoogleMapsLink = Component(() => {
 	const regex = /^(https?:\/\/[^\s]+)$/;
 
 	if (link === '' || !regex.test(link)) {
-		console.log(regex.test(link))
-		console.log(entity.getField('place')?.value?.toString())
-		return (<p>{entity.getField('place')?.value?.toString()}</p>)
+		return (<>{entity.getField('place')?.value?.toString()}</>)
 	} else {
         return <a className='text-blue-500' href={link} target="_blank">{entity.getField('place')?.value?.toString()}</a>
     }
