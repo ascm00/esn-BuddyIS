@@ -14,9 +14,9 @@ export const createPayment = async (registration: EntityAccessor) => {
   // zatím nefunguje import.meta.env.BASE_URL, proto
   const start = 'https://esn-buddy-is.eu.contember.cloud'
 
-  const url_paid = import.meta.env.BASE_URL + '/app/registration-payment-successful?id=' + registration.getField('event.id').value?.toString()
-  const url_cancelled = import.meta.env.BASE_URL + '/registration-payment-unsuccessful?id=' + registration.getField('event.id').value?.toString()
-  const url_pending = import.meta.env.BASE_URL + '/registration-payment-pending?id=' + registration.getField('event.id').value?.toString()
+  const url_paid = start + '/app/registration-payment-successful?id=' + registration.getField('event.id').value?.toString()
+  const url_cancelled = start + '/registration-payment-unsuccessful?id=' + registration.getField('event.id').value?.toString()
+  const url_pending = start + '/registration-payment-pending?id=' + registration.getField('event.id').value?.toString()
   const price1 = registration.getEntity('event').getField<number>('fee').value
   let price : number = 0
   if(price1){
