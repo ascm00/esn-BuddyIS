@@ -55,7 +55,7 @@ const RegistrationNow = Component( () => {
 		if(identity?.person?.id) {
 			for (const registration of registrationList) {
 				let id = registration.getField('person.tenantPerson.id').value
-				if(identity.person.id === id){
+				if((identity.person.id === id) && (registration.getField('accepted').value)){
 					return true
 				}
 			}
@@ -191,6 +191,7 @@ const RegistrationNow = Component( () => {
 	<Field field="fee" />
 	<HasMany field="registrations">
 		<Field field="person.tenantPerson.id" />
+		<Field field="accepted" />
 	</HasMany>
 	</>
 ))
@@ -298,6 +299,11 @@ export default () => {
 									</Button>
 								</Link>
 								<HasRole role="admin">
+									<Link to="registrationsLogs(id: $entity.id)">
+										<Button>
+											Registration history
+										</Button>
+									</Link>
 									<DeleteEntityModalButton 
 										message="Do you really want to delete?"
 										deleteMessage="Delete"
@@ -468,7 +474,7 @@ export default () => {
 								<div className="flex justify-between">
 									<div className="text-xl font-bold">Registered users</div>
 								</div>
-								<DataGrid entities="EventRegistration[(isWaitingList != true) && (event.id = $id)]" filteringStateStorage={'session'}>
+								<DataGrid entities="EventRegistration[(isWaitingList != true) && (event.id = $id) && (accepted = true)]" filteringStateStorage={'session'}>
 									<DataGridToolbar>
 										<DataGridQueryFilter />
 										<DataGridHasOneFilter field="person" label="User">
@@ -522,7 +528,7 @@ export default () => {
 								<div className="flex justify-between">
 									<div className="text-xl font-bold">Waiting list</div>
 								</div>
-								<DataGrid entities="EventRegistration[isWaitingList = true && event.id = $id]" filteringStateStorage={'session'}>
+								<DataGrid entities="EventRegistration[isWaitingList = true && event.id = $id && accepted = true]" filteringStateStorage={'session'}>
 									<DataGridToolbar>
 										<DataGridQueryFilter />
 										<DataGridHasOneFilter field="person" label="User">

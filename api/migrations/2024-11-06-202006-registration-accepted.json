@@ -1,0 +1,83 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "createColumn",
+			"entityName": "EventRegistration",
+			"field": {
+				"name": "accepted",
+				"columnName": "accepted",
+				"columnType": "boolean",
+				"nullable": true,
+				"type": "Bool",
+				"default": false
+			},
+			"fillValue": false
+		},
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/EventRegistration/operations/create/accepted",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/EventRegistration/operations/update/accepted",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/EventRegistration/operations/read/accepted",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/EventRegistration/operations/create/accepted",
+					"value": "person_personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/EventRegistration/operations/update/accepted",
+					"value": "person_personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/EventRegistration/operations/read/accepted",
+					"value": "person_personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/EventRegistration/operations/create/accepted",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/EventRegistration/operations/update/accepted",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/EventRegistration/operations/read/accepted",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/EventRegistration/operations/create/accepted",
+					"value": "person_personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/EventRegistration/operations/update/accepted",
+					"value": "person_personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/EventRegistration/operations/read/accepted",
+					"value": "person_personId_personId"
+				}
+			]
+		}
+	]
+}

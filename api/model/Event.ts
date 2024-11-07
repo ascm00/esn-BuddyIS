@@ -69,7 +69,7 @@ export class Event {
 	SELECT
 		gen_random_uuid() AS id,
 		e.id AS event_id,
-		COUNT(er.id) AS registered_count
+		COUNT(er.id) FILTER (WHERE er.accepted = true) AS registered_count
 	FROM
 		event AS e
 	LEFT JOIN

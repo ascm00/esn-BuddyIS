@@ -38,6 +38,7 @@ export class EventRegistration {
     event = c.manyHasOne(Event, 'registrations')
     isWaitingList = c.boolColumn().default(false)
 	personWhoMadeRegistration = c.manyHasOne(Person, 'registrationMadeByPerson')
+	accepted = c.boolColumn().default(true) // when user pays or joins waiting list - eventRegistration is accepted
     person = c.manyHasOne(Person, 'registrations')
     allergies = c.manyHasMany(Allergy, 'registrations')
     dietaryRestrictions = c.manyHasMany(DietaryRestrictions, 'registrations')

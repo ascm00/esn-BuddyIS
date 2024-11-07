@@ -20,7 +20,7 @@ interface RegistrationCreateFormProps {
 export const RegistrationCreateForm = Component<RegistrationCreateFormProps>(
     ({isOnWaitingList, isPaid}) => {
     const entity = useEntity()
-
+    const identity = useIdentity()
     //connect to current event and logged in user
     const me = useEntitySubTree('me')
     const currentEvent = useEntitySubTree('currentEvent')
@@ -35,27 +35,43 @@ export const RegistrationCreateForm = Component<RegistrationCreateFormProps>(
     const dietaryRestrictions = currentEvent.getField('dietaryRestrictions').value ?? undefined
     const capacity = currentEvent.getField<number>('capacity').value ?? 0
     const waitingListNumber = currentEvent.getField<number>('waitingList').value ?? 0
+    
+    // Check if the user is already registered for this event
+    const registrationList = currentEvent.getEntityList('registrations') ?? undefined
+    const registered = () => { 
+		if(identity?.person?.id) {
+			for (const registration of registrationList) {
+				let id = registration.getField('person.tenantPerson.id').value
+				if((identity.person.id === id) && (registration.getField('accepted').value)){
+					return true
+				}
+			}
+		}
+		return false
+	}
 
-
-    // This should be after processing the payment
-    // Check if there are more users applying at a time
+    // Check if something changed in the event capacity
     useEntityBeforePersist(() => {
         const signedUpNumber = currentEvent.getField<number>('registeredCount.registered_count').value ?? 0
 
-        if(signedUpNumber >= (capacity + waitingListNumber)){
-            return entity.addError('Unfortunately someone else was faster and the capacity was reached.')
+        if(registered()){
+            return () => { entity.addError('You are already registered for this event. ') }
+        } else if(signedUpNumber >= (capacity + waitingListNumber)){
+            return () => { entity.addError('Unfortunately someone else was faster and the capacity was reached.') }
         } else if((signedUpNumber >= capacity) && (signedUpNumber < (capacity + waitingListNumber))){
             if(isOnWaitingList){
                 entity.updateValues({isWaitingList: true})
             } else {
-                return entity.addError('Unfortunately someone else was faster and the capacity was reached. But you can join waiting list.')
+                return () => { entity.addError('Unfortunately someone else was faster and the capacity was reached. But you can join waiting list.') }
             }
         }
     })
 
 
+    // When event registration is not for free - accepted is false and is set to true when payment is created
     useEntityPersistSuccess(async() => {
         if(isPaid && !isOnWaitingList){
+            entity.updateValues({accepted: false})
             await createPayment(entity)
         }
     })
@@ -139,6 +155,10 @@ export const RegistrationCreateForm = Component<RegistrationCreateFormProps>(
                 <Field field="capacity" />
                 <Field field="registeredCount.registered_count" />
                 <Field field="waitingList" />
+                <HasMany field="registrations">
+                    <Field field="accepted" />
+                    <Field field="person.tenantPerson.id" />
+                </HasMany>
             </EntitySubTree>
             <HasOne field="event">
                 <Field field="name" />
@@ -149,6 +169,10 @@ export const RegistrationCreateForm = Component<RegistrationCreateFormProps>(
                 <Field field="capacity" />
                 <Field field="registeredCount.registered_count" />
                 <Field field="waitingList" />
+                <HasMany field="registrations">
+                    <Field field="accepted" />
+                    <Field field="person.tenantPerson.id" />
+                </HasMany>
             </HasOne>
             <HasMany field="dietaryRestrictions">
                 <Field field="name" />
@@ -158,6 +182,7 @@ export const RegistrationCreateForm = Component<RegistrationCreateFormProps>(
             </HasMany>
             <Field field="note" />
             <Field field="isWaitingList" />
+            <Field field="accepted" />
         </>
     )
 )
@@ -182,17 +207,35 @@ export const RegistrationAdminCreateForm = Component<RegistrationCreateFormProps
     const capacity = currentEvent.getField<number>('capacity').value ?? 0
     const waitingListNumber = currentEvent.getField<number>('waitingList').value ?? 0
 
+    const registrationList = currentEvent.getEntityList('registrations') ?? undefined
+    const signedUserId = entity.getField('person.id').value?.toString() ?? undefined
+    
+    const registered = () : boolean => { 
+		if(signedUserId) {
+			for (const registration of registrationList) {
+				let id = registration.getField('person.id').value?.toString()
+                let accepted = registration.getField('accepted').value
+				if((signedUserId === id) && accepted){
+					return true
+				}
+			}
+		}
+        return false
+	}
 
     // This should be after processing the payment
     useEntityBeforePersist(() => {
+        console.log('useEntityBeforePersist')
         const signedUpNumber = currentEvent.getField<number>('registeredCount.registered_count').value ?? 0
-        if(signedUpNumber >= (capacity + waitingListNumber)){
-            return entity.addError('Unfortunately someone else was faster and the capacity was reached. You have to increase the capacity of the event.')
+        if(registered()){
+            return () => { entity.addError('User is already registered for this event.') }
+        } else if(signedUpNumber >= (capacity + waitingListNumber)){
+            return () => { entity.addError('Unfortunately someone else was faster and the capacity was reached. You have to increase the capacity of the event.') }
         } else if((signedUpNumber >= capacity) && (signedUpNumber < (capacity + waitingListNumber))){
             if(isOnWaitingList){
                 entity.updateValues({isWaitingList: true})
             } else {
-                return entity.addError('Unfortunately someone else was faster and the capacity was reached. You have to increase the capacity of the event.')
+                return () => { entity.addError('Unfortunately someone else was faster and the capacity was reached. You have to increase the capacity of the event.') }
             }
         }
 
@@ -245,13 +288,17 @@ export const RegistrationAdminCreateForm = Component<RegistrationCreateFormProps
             <EntitySubTree
                 entity={`Person(tenantPerson.id='${env.getExtension(identityEnvironmentExtension).identity?.person?.id}')`}
                 alias="me"
-            ></EntitySubTree>
+            >
+                <Field field="firstName" />
+                <Field field="surname" />
+            </EntitySubTree>
             <Field field={'id'} />
             <HasOne field="personWhoMadeRegistration" />
             <Field field={'payment'} />
             <HasOne field="person">
                 <Field field="firstName" />
                 <Field field="surname" />
+                <Field field="id" />
             </HasOne>
             <EntitySubTree entity={'Event(id=$id)'} alias={'currentEvent'}>
                 <Field field="name" />
@@ -262,6 +309,10 @@ export const RegistrationAdminCreateForm = Component<RegistrationCreateFormProps
                 <Field field="capacity" />
                 <Field field="waitingList" />
                 <Field field="registeredCount.registered_count" />
+                <HasMany field="registrations">
+                    <Field field="accepted" />
+                    <Field field="person.id" />
+                </HasMany>
             </EntitySubTree>
             <HasOne field="event">
                 <Field field="name" />
@@ -272,6 +323,10 @@ export const RegistrationAdminCreateForm = Component<RegistrationCreateFormProps
                 <Field field="capacity" />
                 <Field field="waitingList" />
                 <Field field="registeredCount.registered_count" />
+                <HasMany field="registrations">
+                    <Field field="accepted" />
+                    <Field field="person.id" />
+                </HasMany>
             </HasOne>
             <HasMany field="dietaryRestrictions">
                 <Field field="name" />

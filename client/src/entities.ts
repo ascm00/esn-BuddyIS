@@ -275,6 +275,7 @@ export type EventRegistration <OverRelation extends string | never = never> = {
 		paymentId: string | null
 		note: string | null
 		isWaitingList: boolean | null
+		accepted: boolean | null
 	}
 	hasOne: {
 		event: Event
