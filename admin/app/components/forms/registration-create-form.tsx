@@ -52,6 +52,10 @@ export const RegistrationCreateForm = Component<RegistrationCreateFormProps>(
 
     // Check if something changed in the event capacity
     useEntityBeforePersist(() => {
+        if(isPaid && !isOnWaitingList){
+            entity.updateValues({accepted: false})
+        }
+        
         const signedUpNumber = currentEvent.getField<number>('registeredCount.registered_count').value ?? 0
 
         if(registered()){
@@ -71,7 +75,6 @@ export const RegistrationCreateForm = Component<RegistrationCreateFormProps>(
     // When event registration is not for free - accepted is false and is set to true when payment is created
     useEntityPersistSuccess(async() => {
         if(isPaid && !isOnWaitingList){
-            entity.updateValues({accepted: false})
             await createPayment(entity)
         }
     })
