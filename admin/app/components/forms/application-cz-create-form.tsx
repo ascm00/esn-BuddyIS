@@ -54,6 +54,7 @@ export const ApplicationCzCreateForm = Component(
 			const preferredCountryOfUniversity = entity.getEntity('preferredCountry').getField('name').value
 			const howManyBuddies = entity.getField<number>('howManyBuddies').value ?? 0
 			const buddiesValid = howManyBuddies > 0 && howManyBuddies <= 10
+			const motivationValid = entity.getField('motivation').value ?? undefined
 
 			let languagesFilled = false
 			for (const languageEntity of entity.getEntityList('preferredLanguages') ?? []) {
@@ -67,7 +68,7 @@ export const ApplicationCzCreateForm = Component(
 			const gender = person?.getField('gender').value
 			const preferredBuddySex = entity.getField('preferredSex').value
 
-			if(semester && studyProgram && preferredCountryOfUniversity && languagesFilled && gender && preferredBuddySex && buddiesValid){
+			if(semester && studyProgram && preferredCountryOfUniversity && motivationValid && languagesFilled && gender && preferredBuddySex && buddiesValid){
 				persist()
 			} else {
 				alert('Please fill all the mandatory fields and make sure that number of buddies is between 1 and 10.')
@@ -153,7 +154,7 @@ export const ApplicationCzCreateForm = Component(
 					<hr className="my-2 border-gray-200" />
 				</div>
 				<div className='flex flex-col space-y-4'>
-					<TextareaField field="motivation" label="Motivation" />
+					<TextareaField field="motivation" label="Motivation *" required inputProps={{maxLength: 500}} description="Please describe why you want to be a buddy. Max length is 500 characters." />
 					<InputField field="howManyBuddies" label="Number of buddies *" description="How many buddies could you take care of at most? Minimum is 1." defaultValue={1} />
 					<SelectField
 						field="preferredCountry"

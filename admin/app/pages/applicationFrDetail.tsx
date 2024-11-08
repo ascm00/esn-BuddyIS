@@ -17,13 +17,13 @@ export default () => {
 						<BackButton />
 					</Slots.Back>
 					<EntitySubTree entity="ApplicationFr(id=$id)" isCreating={false}>
-						<Slots.Actions>
+						{/* <Slots.Actions>
 							<Link to="applicationFrEdit(id: $entity.id)">
 								<Button>
 									Edit application
 								</Button>
 							</Link>
-						</Slots.Actions>
+						</Slots.Actions> */}
 						<TableWrapper className="bg-gray-50/50 max-w-lg border rounded-md">
 							<Table>
 								<TableBody>

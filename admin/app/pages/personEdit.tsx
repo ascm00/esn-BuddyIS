@@ -4,7 +4,7 @@ import { PersonInvite } from '@app/components/personInvite'
 import { Binding, PersistButton } from '@app/lib/binding'
 import { BackButton } from '@app/lib/buttons'
 import { Slots } from '@app/lib/layout'
-import { EntitySubTree } from '@contember/interface'
+import { EntitySubTree, RedirectOnPersist } from '@contember/interface'
 
 export default () => {
 	return (

@@ -21,6 +21,7 @@ export const ApplicationCzEditForm = Component(
 			const studyProgram = person?.getEntity('studyProgram').getField('name').value
 			const preferredCountryOfUniversity = entity.getEntity('preferredCountry').getField('name').value
 			const howManyBuddies = entity.getField<number>('howManyBuddies').value ?? 0
+			const motivation = entity.getField('motivation').value ?? undefined
 			const buddiesValid = howManyBuddies > 0 && howManyBuddies <= 10
 
 			let languagesFilled = false
@@ -35,7 +36,7 @@ export const ApplicationCzEditForm = Component(
 			const gender = person?.getField('gender').value
 			const preferredBuddySex = entity.getField('preferredSex').value
 
-			if(semester && studyProgram && preferredCountryOfUniversity && languagesFilled && gender && preferredBuddySex && buddiesValid){
+			if(semester && studyProgram && preferredCountryOfUniversity && motivation && languagesFilled && gender && preferredBuddySex && buddiesValid){
 				persist()
 				redirect('applicationCzDetail(id: $entity.id)')
 			} else {
@@ -71,7 +72,7 @@ export const ApplicationCzEditForm = Component(
 		<hr className="my-2 border-gray-200" />
 	</div>
 	<div className='flex flex-col space-y-4'>
-		<TextareaField field="motivation" label="Motivation" />
+		<TextareaField field="motivation" label="Motivation *" inputProps={{maxLength: 500}} description="Please describe why you want to be a buddy. Max length is 500 characters." />
 		<InputField field="howManyBuddies" label="Number of buddies *" description="How many buddies could you take care of at most?" required />
 		<SelectField
 			field="preferredCountry"

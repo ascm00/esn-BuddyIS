@@ -123,15 +123,23 @@ export const PersonInvite = Component(
 					<InputField field="birthdate" label="Birthdate *" required />
 				</div>
 				<div className='pb-2'>
-					<InputField field="xname" label="InSIS username *" required/>
-					<p className="text-xs text-gray-500">InSIS username is the first part of your VŠE email address before @.</p>
-					<p className="text-xs text-gray-500">For example <strong>novp04</strong>@vse.cz</p>
+					<InputField 
+						field="xname" 
+						inputProps={{
+							pattern: "([a-z]{4}[0-9]{2}|none)"
+						}} 
+						label="InSIS username *" 
+						required
+					/>
+					<p className="text-xs text-gray-500">If user does not have one yet, write <strong>none</strong>.</p>
 				</div>
 				<ImageField baseField={'profilePicture'} urlField={'url'} />
-				<div className='pb-2'>
-					<InputField field="esnCardId" label="ESN Card ID (not required until you get one)"/>
-					<p className="text-xs text-gray-500">You have to add your <strong>ESN Card ID</strong>, when you get one. It will be required for the sign up for the events.</p>
-				</div>
+				<HasRole role={roles => roles.has('admin') || roles.has('coordinator') || roles.has('esnMember') || roles.has('internationalStudent')}>
+					<div className='pb-2'>
+						<InputField field="esnCardId" label="ESN Card ID (not required until you get one)"/>
+						<p className="text-xs text-gray-500">You have to add your <strong>ESN Card ID</strong>, when you get one. It will be required for the sign up for the events.</p>
+					</div>
+				</HasRole>
 				<div className='pb-2'>
 					<InputField field="phoneNumber" label="Phone Number *" required/>
 				</div>
@@ -169,15 +177,17 @@ export const PersonInvite = Component(
 					</SelectField>
 				</div>
 				{/* <CheckboxField field="active" label="Active" /> */}
-				<div className='pb-2'>
-					<SelectField
-						field="faculty"
-						label="Faculty at VSE (not required)"
-						options="Faculty"
-					>
-						<Field field="name" />
-					</SelectField>
-				</div>
+				<HasRole role={roles => roles.has('admin') || roles.has('coordinator') || roles.has('esnMember') || roles.has('czechBuddy') || roles.has('internationalStudent') || roles.has('ozsRole')}>
+					<div className='pb-2'>
+						<SelectField
+							field="faculty"
+							label="Faculty at VSE (not required)"
+							options="Faculty"
+						>
+							<Field field="name" />
+						</SelectField>
+					</div>
+				</HasRole>
 				<Slots.Actions>
 					<Button onClick={() => persist()}>Save data</Button>
 				</Slots.Actions>

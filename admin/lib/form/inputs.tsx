@@ -21,7 +21,7 @@ export const InputField = Component(({ field, label, description, inputProps, is
 	<FormFieldScope field={field}>
 		<FormContainer description={description} label={label}>
 			<FormInput field={field} isNonbearing={isNonbearing} defaultValue={defaultValue}>
-				<Input required={required} {...(inputProps ?? {})} className={cn('max-w-md', inputProps?.className)} />
+				<Input  required={required} {...(inputProps ?? {})} className={cn('max-w-md', inputProps?.className)} />
 			</FormInput>
 		</FormContainer>
 	</FormFieldScope>
@@ -32,13 +32,14 @@ export type TextareaFieldProps =
 	& Omit<FormContainerProps, 'children'>
 	& {
 	inputProps?: ComponentProps<typeof TextareaAutosize>
+	required?: boolean
 }
 
-export const TextareaField = Component(({ field, label, description, inputProps, isNonbearing, defaultValue }: TextareaFieldProps) => (
+export const TextareaField = Component(({ field, label, description, inputProps, isNonbearing, defaultValue, required }: TextareaFieldProps) => (
 	<FormFieldScope field={field}>
 		<FormContainer description={description} label={label}>
 			<FormInput field={field} isNonbearing={isNonbearing} defaultValue={defaultValue}>
-				<TextareaAutosize {...(inputProps ?? {})} className={cn('max-w-md', inputProps?.className)} />
+				<TextareaAutosize required={required} {...(inputProps ?? {})} className={cn('max-w-md', inputProps?.className)} />
 			</FormInput>
 		</FormContainer>
 	</FormFieldScope>

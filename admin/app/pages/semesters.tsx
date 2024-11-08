@@ -24,20 +24,22 @@ export default () => {
 						<BackButton />
 					</Slots.Back>
 					<>
-						<Slots.Actions>
-							<CreateEntityModalButton
-									entityName="Semester"
-									buttonLabel="Create semester"
-									saveButtonLabel="Save data"
-									refreshOnPersist
-									createEntityForm={
-									<>
-										<SemesterForm />
-									</>
-									}
-									dialogProps={{ className: 'overflow-y-auto max-h-screen' }}
-							/>
-						</Slots.Actions>
+						<HasRole role={roles => roles.has('admin')}>
+							<Slots.Actions>
+								<CreateEntityModalButton
+										entityName="Semester"
+										buttonLabel="Create semester"
+										saveButtonLabel="Save data"
+										refreshOnPersist
+										createEntityForm={
+										<>
+											<SemesterForm />
+										</>
+										}
+										dialogProps={{ className: 'overflow-y-auto max-h-screen' }}
+								/>
+							</Slots.Actions>
+						</HasRole>
 						<ShowCurrentSemester />
 						<DataGrid entities="Semester">
 							<DataGridToolbar>

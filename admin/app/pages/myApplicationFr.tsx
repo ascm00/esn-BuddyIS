@@ -8,7 +8,7 @@ import { Component, EntitySubTree, Environment, Field, Link, useEntity, useEntit
 import { identityEnvironmentExtension } from '@contember/interface'
 import { TrashIcon } from 'lucide-react'
 
-export default (env : Environment) => {
+export default () => {
 	return (
 		<>
 			<Binding>

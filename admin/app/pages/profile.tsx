@@ -75,14 +75,16 @@ export default () => {
                                                     <Field field="phoneNumber" />
                                                 </TableCell>
                                             </TableRow>
-                                            <TableRow>
-                                                <TableCell>
-                                                    Esn Card ID
-                                                </TableCell>
-                                                <TableCell className="font-semibold">
-                                                    <Field field="esnCardId" />
-                                                </TableCell>
-                                            </TableRow>
+                                            <HasRole role={roles => roles.has('admin') || roles.has('coordinator') || roles.has('esnMember') || roles.has('internationalStudent')}>
+                                                <TableRow>
+                                                    <TableCell>
+                                                        Esn Card ID
+                                                    </TableCell>
+                                                    <TableCell className="font-semibold">
+                                                        <Field field="esnCardId" />
+                                                    </TableCell>
+                                                </TableRow>
+                                            </HasRole>
                                             <TableRow>
                                                 <TableCell>
                                                     Home university country
@@ -99,14 +101,16 @@ export default () => {
                                                     <Field field="university.name" />
                                                 </TableCell>
                                             </TableRow>
-                                            <TableRow>
-                                                <TableCell>
-                                                    Faculty at VSE
-                                                </TableCell>
-                                                <TableCell className="font-semibold">
-                                                    <Field field="faculty.name" />
-                                                </TableCell>
-                                            </TableRow>
+                                            <HasRole role={roles => roles.has('admin') || roles.has('coordinator') || roles.has('esnMember') || roles.has('czechBuddy')}>
+                                                <TableRow>
+                                                    <TableCell>
+                                                        Faculty at VSE
+                                                    </TableCell>
+                                                    <TableCell className="font-semibold">
+                                                        <Field field="faculty.name" />
+                                                    </TableCell>
+                                                </TableRow>
+                                            </HasRole>
                                         </TableBody>
                                     </Table>
                                 </TableWrapper>
