@@ -3,7 +3,7 @@ import { Component, Field, useEntity } from "@contember/interface";
 export const WhatsappLink = Component(({text}: {text?: string}) => {
 	const entity = useEntity()
 	const link = entity.getField('whatsappLink').value?.toString() ?? ''
-	const regex = /^(https?:\/\/).+\.\w+$/;
+	const regex = /^(https?:\/\/[^\s/$.?#].[^\s]*)$/
 
 	if (link === '' || !regex.test(link)) {
 		return null
@@ -23,7 +23,7 @@ export const WhatsappLink = Component(({text}: {text?: string}) => {
 export const GetN2NLink = Component(({text}: {text?: string}) => {
 	const entity = useEntity()
 	const link = entity.getField('link').value?.toString() ?? ''
-	const regex = /^(https?:\/\/).+\.\w+$/;
+	const regex = /^(https?:\/\/[^\s/$.?#].[^\s]*)$/
 
 	if (link === '' || !regex.test(link)) {
 		return null
@@ -43,7 +43,7 @@ export const GoogleMapsLink = Component(() => {
 	const entity = useEntity()
 	const link = entity.getField('mapLink').value?.toString() ?? ''
 	console.log(link)
-	const regex = /^(https?:\/\/[^\s]+)$/;
+	const regex = /^(https?:\/\/[^\s/$.?#].[^\s]*)$/
 
 	if (link === '' || !regex.test(link)) {
 		return (<>{entity.getField('place')?.value?.toString()}</>)

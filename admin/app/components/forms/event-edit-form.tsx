@@ -67,9 +67,9 @@ export const EventEditForm = Component(() => <FormLayout>
 		</SelectField>
 		<p className="text-xs text-gray-500">Choose a section that organizes this event</p>
 	</div>
-	<InputField field="capacity" label="Capacity *" required />
-	<InputField field="waitingList" label="Waiting list"/>
-	<InputField field="fee" label="Entrance fee (CZK) *" required/>
+	<InputField field="capacity" label="Capacity *" inputProps={{min: 1}} required />
+	<InputField field="waitingList" label="Waiting list" inputProps={{min: 0}}/>
+	<InputField field="fee" label="Entrance fee (CZK) *" inputProps={{min: 0}} required/>
 	<InputField field="registrationStartDate" label="Registration start datetime *" />
 	<InputField field="registrationEndDate" label="Registration end date *" />
 

@@ -29,7 +29,7 @@ export default () => {
 							<HasRole role={roles => roles.has('admin') || roles.has('coordinator') || roles.has('esnMember')}>
 								<CurrentEntityLazyModalEdit
 									dialogProps={{ className: 'overflow-y-auto max-h-screen' }}
-									redirectOnSuccess={`n2nPartyDetail(id: $id)`}
+									redirectOnSuccess={`n2nPartyDetail(id: $entity.id)`}
 									buttonContent={
 										<span className="flex items-center">
 											Edit N2N party

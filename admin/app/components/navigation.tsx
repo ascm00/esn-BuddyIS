@@ -33,20 +33,20 @@ export const Navigation = Component(
 	</HasRole>
 	<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('czechBuddy') || roles.has('coordinator') || roles.has('internationalStudent')}>
 		<MenuItem label="Home" icon={<Home className='text-blue-500' />} to="eventFeed" />
-		<MenuItem label="Events calendar" icon={<Calendar className='text-blue-500' />} to="calendar" />
-		<MenuItem label="All events" icon={<CalendarPlus className='text-blue-500' />} to="events" />
+		<MenuItem label="Calendar" icon={<Calendar className='text-blue-500' />} to="calendar" />
+		<MenuItem label="Events" icon={<CalendarPlus className='text-blue-500' />} to="events" />
+		<MenuItem label="N2N Parties" icon={<PartyPopper className='text-blue-500' />} to="n2nParties" />
 		<MenuItem label="My upcoming events" icon={<Clock className='text-blue-500' />} to="myEvents" />
 	</HasRole>
 	<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('czechBuddy') || roles.has('coordinator')}>
-		<MenuItem label="My buddy applications" icon={<FileText className='text-blue-500' />} to="myApplicationsCz" />
 		<MenuItem label="Buddy" icon={<CheckSquare className='text-blue-500' />} to="myBuddyCz" />
+		<MenuItem label="My buddy applications" icon={<FileText className='text-blue-500' />} to="myApplicationsCz" />
 	</HasRole>
 	<HasRole role="internationalStudent">
 		<MenuItem label="My buddy application" icon={<FileText className='text-blue-500' />} to="myApplicationFr" />
 		<MenuItem label="My buddy" icon={<CheckSquare className='text-blue-500' />} to="myBuddy" />
 	</HasRole>
 	<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('czechBuddy') || roles.has('coordinator') || roles.has('internationalStudent')}>
-		<MenuItem label="N2N" icon={<PartyPopper className='text-blue-500' />} to="n2nParties" />
 		<MenuItem label="Profile" icon={<User className='text-blue-500' />} to="profile" />
 	</HasRole>
 	<HasRole role={roles => roles.has('admin') || roles.has('esnMember')}>
