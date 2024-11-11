@@ -43,8 +43,8 @@ export const Navigation = Component(
 		<MenuItem label="My buddy applications" icon={<FileText className='text-blue-500' />} to="myApplicationsCz" />
 	</HasRole>
 	<HasRole role="internationalStudent">
-		<MenuItem label="My buddy application" icon={<FileText className='text-blue-500' />} to="myApplicationFr" />
 		<MenuItem label="My buddy" icon={<CheckSquare className='text-blue-500' />} to="myBuddy" />
+		<MenuItem label="My buddy application" icon={<FileText className='text-blue-500' />} to="myApplicationFr" />
 	</HasRole>
 	<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('czechBuddy') || roles.has('coordinator') || roles.has('internationalStudent')}>
 		<MenuItem label="Profile" icon={<User className='text-blue-500' />} to="profile" />
