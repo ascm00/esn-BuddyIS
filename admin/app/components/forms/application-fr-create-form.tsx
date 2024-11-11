@@ -83,13 +83,13 @@ export const ApplicationFrCreateForm = Component(
 		<>
 			<div className='bg-blue-200 p-4 rounded-md max-w-lg'><div className='text-500'>You already applied for a buddy. Here is your application.</div></div>
 				<div>
-						<Slots.Actions>
+						{/* <Slots.Actions>
 							<Link to={`applicationFrEdit(id: '${currentUserApplicationsFr}')`}>
 								<Button>
 									Edit application
 								</Button>
 							</Link>
-						</Slots.Actions>
+						</Slots.Actions> */}
 						<TableWrapper className="bg-gray-50/50 max-w-lg border rounded-md">
 							<Table>
 								<TableBody>
