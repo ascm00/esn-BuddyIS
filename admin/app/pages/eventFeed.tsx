@@ -197,9 +197,11 @@ const AllEventsFeed = Component(() => {
 					<WhatsappLinkFromString link={event.link} text='🔗 WhatsApp group link' />
 				</p>
 			</div>
-			<div className='flex-none mt-4 rounded-lg overflow-hidden w-3/4 md:w-40 aspect-square mx-auto'>
-				<img src={event.pictureUrl} alt="Image" className={`h-full w-full object-cover border rounded-lg`} />
-			</div>
+			{event.pictureUrl &&
+				<div className='flex-none mt-4 rounded-lg overflow-hidden w-3/4 md:w-40 aspect-square mx-auto'>
+					<img src={event.pictureUrl} alt="Image" className={`h-full w-full object-cover border rounded-lg`} />
+				</div>
+  			}
 		</div>
 	  </CardContent>
   
@@ -242,131 +244,13 @@ const AllEventsFeed = Component(() => {
 					<GetN2NLinkFromString link={event.link} text='🔗 Tickets link' />
 				</p>
 			</div>
-			<div className='flex-none mt-4 rounded-lg overflow-hidden w-3/4 md:w-40 aspect-square mx-auto'>
-				<img src={event.pictureUrl} alt="Image" className={`h-full w-full object-cover border rounded-lg`} />
-			</div>
+			{event.pictureUrl &&
+				<div className='flex-none mt-4 rounded-lg overflow-hidden w-3/4 md:w-40 aspect-square mx-auto'>
+					<img src={event.pictureUrl} alt="Image" className={`h-full w-full object-cover border rounded-lg`} />
+				</div>
+  			}
 		</div>
 	  </CardContent>
   
 	</Card>
   )})
-
-const EventCard = Component(({}) => {
-
-	const pictureUrl = useEntity().getField('picture.url').value?.toString()
-
-	return (
-	<Card className='max-w-[95%] md:max-w-[82%] mx-auto bg-white shadow-md rounded-lg'>
-  
-	  <CardContent className='py-4 px-6'>
-		<div className='flex flex-row justify-between items-center py-4 border-b border-gray-200'>
-			<div className="text-2xl font-semibold text-gray-800">
-				<Field field="name" />
-			</div>
-			<div>
-				<Link to="eventDetail(id: $entity.id)">
-					<Button className=''>
-						Detail
-					</Button>
-				</Link>
-			</div>
-		</div>
-		<div className='flex flex-col md:flex-row gap-4 items-start'>
-			<div className='flex-1 max-w-lg'>
-				<p className='text-lg text-gray-600'>
-					<strong>📅 Start</strong> <Field field='startDate' format={formatDateTimeShort} />
-				</p>
-				<p className='text-lg text-gray-600'>
-					<strong>🏁 End</strong> <Field field='endDate' format={formatDateTimeShort} />
-				</p>
-				<p className='text-lg text-gray-600'>
-					<strong>📍 Place</strong> <GoogleMapsLink />
-				</p>
-				<p className='text-lg text-gray-600'>
-					<strong>💰 Price</strong> <Field field='fee' /> {' CZK'}
-				</p>
-				<p className='text-lg text-gray-600'>
-					<WhatsappLink text='🔗 WhatsApp group link' />
-				</p>
-			</div>
-			<div className='flex-none mt-4 rounded-lg overflow-hidden w-3/4 md:w-40 aspect-square mx-auto'>
-				<img src={pictureUrl} alt="Image" className={`h-full w-full object-cover border rounded-lg`} />
-			</div>
-		</div>
-	  </CardContent>
-  
-	  <CardFooter className='bg-gray-50 border-t border-gray-200 py-4 px-6'>
-		<p className='text-sm text-bold text-gray-500'>
-		  	<strong>Contact person</strong>
-			{' '} <Field field='contactPerson.firstName' /> {' '} <Field field='contactPerson.surname' /> {' ('} <Field field='contactPerson.tenantPerson.email' />{', '}<Field field='contactPerson.phoneNumber' />{')'}
-		</p>
-	  </CardFooter>
-	</Card>
-  )}, () => (
-	<>
-		<Field field='picture.url' />
-		<Field field='contactPerson.firstName' />
-		<Field field='contactPerson.surname' />
-		<Field field='contactPerson.tenantPerson.email' />
-		<Field field='contactPerson.phoneNumber' />
-		<Field field='place' />
-		<Field field='mapLink' />
-		<Field field='fee' />
-		<Field field='whatToBring' />
-		<Field field='startDate' />
-		<Field field='endDate' />
-		<Field field='name' />
-		<Field field='whatsappLink' />
-	</>
-  ))
-
-
-  const PartyCard = Component(() => {
-
-	const pictureUrl = useEntity().getField('picture.url').value?.toString()
-
-	return (
-	<Card className='max-w-[95%] md:max-w-[82%] mx-auto bg-white shadow-md rounded-lg'>
-  
-	  <CardContent className='py-4 px-6'>
-		<div className='flex flex-row justify-between items-center py-4 border-b border-gray-200'>
-			<div className="text-2xl font-semibold text-gray-800">
-				N2N: <Field field="name" />
-			</div>
-			<div>
-				<Link to="n2nPartyDetail(id: $entity.id)">
-					<Button>
-						Detail
-					</Button>
-				</Link>
-			</div>
-		</div>
-		<div className='flex flex-col md:flex-row gap-4 items-start'>
-			<div className='flex-1 max-w-lg'>
-				<p className='text-lg text-gray-600'>
-					<strong>📅 Start</strong> <Field field='date' format={formatDateTimeShort} />
-				</p>
-				<p className='text-lg text-gray-600'>
-					<strong>📍 Club</strong> <Field field='club' />
-				</p>
-				<p className='text-lg text-gray-600'>
-					<GetN2NLink text='🔗 Tickets link' />
-				</p>
-			</div>
-			<div className='flex-none mt-4 rounded-lg overflow-hidden w-3/4 md:w-40 aspect-square mx-auto'>
-				<img src={pictureUrl} alt="Image" className={`h-full w-full object-cover border rounded-lg`} />
-			</div>
-		</div>
-	  </CardContent>
-  
-	</Card>
-  )}, () => (
-	<>
-		<Field field='picture.url' />
-		<Field field='name' />
-		<Field field='date' />
-		<Field field='club' />
-		<Field field='link' />
-	</>
-  ))
-  
