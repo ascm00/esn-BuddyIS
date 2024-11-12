@@ -3,7 +3,7 @@ import { Component, Field, useEntity } from "@contember/interface";
 export const WhatsappLink = Component(({text}: {text?: string}) => {
 	const entity = useEntity()
 	const link = entity.getField('whatsappLink').value?.toString() ?? ''
-	const regex = /^(https?:\/\/[^\s/$.?#].[^\s]*)$/
+	const regex = /^(https?:\/\/[^\s]+)/
 
 	if (link === '' || !regex.test(link)) {
 		return null
@@ -22,7 +22,7 @@ export const WhatsappLink = Component(({text}: {text?: string}) => {
 
 export const WhatsappLinkFromString = Component(({text, link}: {text?: string, link?: string}) => {
 	link ??= ''
-	const regex = /^(https?:\/\/[^\s/$.?#].[^\s]*)$/
+	const regex = /^(https?:\/\/[^\s]+)/
 
 	if (link === '' || !regex.test(link)) {
 		return null
@@ -38,7 +38,7 @@ export const WhatsappLinkFromString = Component(({text, link}: {text?: string, l
 export const GetN2NLink = Component(({text}: {text?: string}) => {
 	const entity = useEntity()
 	const link = entity.getField('link').value?.toString() ?? ''
-	const regex = /^(https?:\/\/[^\s/$.?#].[^\s]*)$/
+	const regex = /^(https?:\/\/[^\s]+)/
 
 	if (link === '' || !regex.test(link)) {
 		return null
@@ -56,7 +56,7 @@ export const GetN2NLink = Component(({text}: {text?: string}) => {
 
 export const GetN2NLinkFromString = Component(({text, link}: {text?: string, link?: string}) => {
 	link??=''
-	const regex = /^(https?:\/\/[^\s/$.?#].[^\s]*)$/
+	const regex = /^(https?:\/\/[^\s]+)/
 
 	if (link === '' || !regex.test(link)) {
 		return null
@@ -72,7 +72,7 @@ export const GoogleMapsLink = Component(() => {
 	const entity = useEntity()
 	const link = entity.getField('mapLink').value?.toString() ?? ''
 	console.log(link)
-	const regex = /^(https?:\/\/[^\s/$.?#].[^\s]*)$/
+	const regex = /^(https?:\/\/[^\s]+)/
 
 	if (link === '' || !regex.test(link)) {
 		return (<>{entity.getField('place')?.value?.toString()}</>)
@@ -89,7 +89,7 @@ export const GoogleMapsLink = Component(() => {
 export const GoogleMapsLinkFromString = Component(({place, link}: {place?: string, link?: string}) => {
 	link ??= ''
 	place ??= ''
-	const regex = /^(https?:\/\/[^\s/$.?#].[^\s]*)$/
+	const regex = /^(https?:\/\/[^\s]+)/
 
 	if (link === '' || !regex.test(link)) {
 		return (<>{place}</>)
