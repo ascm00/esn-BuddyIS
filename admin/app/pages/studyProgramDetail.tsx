@@ -70,7 +70,7 @@ export default () => {
 													Detail
 												</Button>
 											</Link>
-											<HasRole role={roles => roles.has('admin') || roles.has('esnMemberRole') || roles.has('coordinator')}>
+											<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('coordinator')}>
 												<Link to="userEdit(id: $entity.id)">
 													<Button>
 														Edit

@@ -18,7 +18,7 @@ export default () => {
 						<BackButton />
 					</Slots.Back>
 					<EntitySubTree entity="Person(id=$id)" isCreating={false}>
-						<HasRole role={roles => roles.has('admin') || roles.has('esnMemberRole') || roles.has('coordinator')}>
+						<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('coordinator')}>
 							<Slots.Actions>
 								<Link to="personEdit(id: $entity.id)">
 									<Button>
@@ -106,7 +106,7 @@ export default () => {
 							</Table>
 						</TableWrapper>
 					</EntitySubTree>
-					<HasRole role={roles => roles.has('admin') || roles.has('esnMemberRole') || roles.has('coordinator')}>
+					<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('coordinator')}>
 							<div className="flex flex-col gap-4">
 								<div className="flex justify-between">
 									<div className="text-xl font-bold">Event registrations</div>

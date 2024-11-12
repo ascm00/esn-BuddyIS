@@ -92,7 +92,7 @@ export const UserEditForm = Component(
 						<Label htmlFor="option-one">internationalStudent</Label>
 					</div>
                     <div className="flex items-center space-x-2">
-						<RadioGroupItem value="esnMemberRole" id="option-one" />
+						<RadioGroupItem value="esnMember" id="option-one" />
 						<Label htmlFor="option-one">esnMember</Label>
 					</div>
                     <div className="flex items-center space-x-2">
