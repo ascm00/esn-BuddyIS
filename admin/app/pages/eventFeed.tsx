@@ -106,7 +106,7 @@ const AllEventsFeed = Component(() => {
 			<Field field="picture.url" />
 			<Field field="link" />
 		</EntityListSubTree>
-		<HasRole role={roles => roles.has('admin') || roles.has('esnMemberRole') || roles.has('coordinator')}>
+		<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('coordinator')}>
 			<EntityListSubTree entities={`Event[startDate > "${new Date().toISOString()}"]`} alias={'events'}>
 				<Field field={'id'} />
 				<Field field="name" />

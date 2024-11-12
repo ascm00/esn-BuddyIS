@@ -15,6 +15,10 @@ export const RegistrationForm = (env : Env) => {
 
 	const handleSubmit = async (event: React.FormEvent) => {
 		event.preventDefault();
+		if (!email ||!phoneNumber || !firstName || !surname || !xname || !birthdate) {
+			alert('Please fill all the mandatory fields.')
+			return
+		}
 	
 		try {
 			const response = await onRequestPost(email, firstName, surname, xname, phoneNumber, birthdate, env)
@@ -80,7 +84,7 @@ export const RegistrationForm = (env : Env) => {
 					</div>
 					<div className="mb-4 relative">
 						<label className="block text-gray-700 text-sm font-bold mb-2">
-							Phone Number
+							Phone Number *
 						</label>
 						<PhoneInput
 							country={'cz'}

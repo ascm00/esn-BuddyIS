@@ -34,8 +34,8 @@ export async function onRequestPost(email: string, firstname: string, surname: s
 	// 	}
 	// }
 
-	if (!email || !firstname || !surname || !xname || !birthdate) {
-		return new Response('Invalid data', { status: 400 })
+	if (!email ||!phoneNumber || !firstname || !surname || !xname || !birthdate) {
+		return new Response('Invalid data. Did you fill all the mandatory fields?', { status: 400 })
 	}
 
 	const invitationResult = await tenantClient(env, {
