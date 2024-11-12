@@ -20,6 +20,21 @@ export const WhatsappLink = Component(({text}: {text?: string}) => {
     </>
 ))
 
+export const WhatsappLinkFromString = Component(({text, link}: {text?: string, link?: string}) => {
+	link ??= ''
+	const regex = /^(https?:\/\/[^\s/$.?#].[^\s]*)$/
+
+	if (link === '' || !regex.test(link)) {
+		return null
+	} else {
+		if(text){
+			return <a className='text-blue-500' href={link} target="_blank">{text}</a>
+		} else {
+			return <a className='text-blue-500' href={link} target="_blank">{link}</a>
+		}
+	}
+})
+
 export const GetN2NLink = Component(({text}: {text?: string}) => {
 	const entity = useEntity()
 	const link = entity.getField('link').value?.toString() ?? ''
@@ -39,6 +54,20 @@ export const GetN2NLink = Component(({text}: {text?: string}) => {
 	</>
 ))
 
+export const GetN2NLinkFromString = Component(({text, link}: {text?: string, link?: string}) => {
+	link??=''
+	const regex = /^(https?:\/\/[^\s/$.?#].[^\s]*)$/
+
+	if (link === '' || !regex.test(link)) {
+		return null
+	}
+    if(text){
+        return <a className='text-blue-500' href={link} target="_blank">{text}</a>
+    } else {
+        return <a className='text-blue-500' href={link} target="_blank">{link}</a>
+    }
+})
+
 export const GoogleMapsLink = Component(() => {
 	const entity = useEntity()
 	const link = entity.getField('mapLink').value?.toString() ?? ''
@@ -56,3 +85,15 @@ export const GoogleMapsLink = Component(() => {
 		<Field field="mapLink" />
 	</>
 ))
+
+export const GoogleMapsLinkFromString = Component(({place, link}: {place?: string, link?: string}) => {
+	link ??= ''
+	place ??= ''
+	const regex = /^(https?:\/\/[^\s/$.?#].[^\s]*)$/
+
+	if (link === '' || !regex.test(link)) {
+		return (<>{place}</>)
+	} else {
+        return <a className='text-blue-500' href={link} target="_blank">{place}</a>
+    }
+})

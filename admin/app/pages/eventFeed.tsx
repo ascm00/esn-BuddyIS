@@ -8,12 +8,14 @@ import { renderElement, renderLeaf } from '@app/lib/plugins/rich-text/renderer/r
 import { RichTextRendererField } from '@app/lib/plugins/rich-text/renderer/RichTextRendererField'
 import { Card, CardContent, CardFooter, CardHeader } from '@app/lib/ui/card'
 import { formatDateTime, formatDateTimeShort } from '@app/lib/utils/formatting'
-import { Component, FieldView, HasMany, HasRole, If, Link, EntityListSubTree, useEntity } from '@contember/interface'
+import { Component, FieldView, HasMany, HasRole, If, Link, EntityListSubTree, useEntity, useEntityListSubTree, EntityAccessor } from '@contember/interface'
 import { Field } from '@contember/react-binding'
 import { PencilIcon } from 'lucide-react'
 import { ImageField } from '@app/lib/form'
 import { ImageFieldView } from '@app/components/fieldViews/ImageFieldView'
-import { GetN2NLink, GoogleMapsLink, WhatsappLink } from '@app/lib/utils/link'
+import { GetN2NLink, GetN2NLinkFromString, GoogleMapsLink, GoogleMapsLinkFromString, WhatsappLink, WhatsappLinkFromString } from '@app/lib/utils/link'
+import { identity$ } from '@contember/graphql-client-tenant'
+import { start } from 'slate'
 
 export default () => {
 
@@ -25,40 +27,7 @@ export default () => {
             <Binding>
 				<div className="flex flex-col gap-12">
 					<>
-						<HasRole role={roles => roles.has('admin') || roles.has('esnMemberRole') || roles.has('coordinator')}>
-							<DataGrid entities={`Event[startDate > "${now}"]`} initialSorting={{ startDate: 'asc' }}>
-								<DataGridLoader>
-									<DataGridFeed>
-										<EventCard />
-									</DataGridFeed>
-								</DataGridLoader>
-							</DataGrid>
-						</HasRole>
-						<HasRole role="internationalStudent">
-							<DataGrid entities={`Event[isForInternationalStudents=true && startDate > "${now}"]`} initialSorting={{ startDate: 'asc' }}>
-								<DataGridLoader>
-									<DataGridFeed>
-										<EventCard />
-									</DataGridFeed>
-								</DataGridLoader>
-							</DataGrid>
-						</HasRole>
-						<HasRole role="czechBuddy">
-							<DataGrid entities={`Event[isForCzechBuddies=true && startDate > "${now}"]`} initialSorting={{ startDate: 'asc' }}>
-								<DataGridLoader>
-									<DataGridFeed>
-										<EventCard />
-									</DataGridFeed>
-								</DataGridLoader>
-							</DataGrid>
-						</HasRole>
-						<DataGrid entities={`N2nParty[date > "${now}"]`} initialSorting={{ date: 'asc' }}>
-							<DataGridLoader>
-								<DataGridFeed>
-									<PartyCard />
-								</DataGridFeed>
-							</DataGridLoader>
-						</DataGrid>
+						<AllEventsFeed />
 					</>
 				</div>
 			</Binding>
@@ -66,31 +35,223 @@ export default () => {
 	)
 }
 
-// const N2NFeed = Component(() => {
-// 	const now = new Date().toISOString()
+const AllEventsFeed = Component(() => {
+
+	const n2nPartiesForESNMembers = Array.from(useEntityListSubTree('n2nParties'))
+	const eventsESNMembers = Array.from(useEntityListSubTree('events'))
+
+	const allEvents = eventsESNMembers.map((buddyEvent, index) => ({
+		id: index,
+		type: 'event',
+		identity: `${buddyEvent.getField<string>('id').value}`,
+		title: `${buddyEvent.getField<string>('name').value?.toString()}`,
+		place: `${buddyEvent.getField<string>('place').value?.toString()}`,
+		start: new Date(buddyEvent.getField<string>('startDate').value!),
+		end: new Date(buddyEvent.getField<string>('endDate').value!),
+		price: `${buddyEvent.getField<number>('fee').value?.toString()}`,
+		contactPerson: `${buddyEvent.getField<string>('contactPerson.firstName').value?.toString()}  ${buddyEvent.getField<string>('contactPerson.surname').value?.toString()}`,
+		contactPhone: `${buddyEvent.getField<string>('contactPerson.phoneNumber').value?.toString()}`,
+		contactEmail: `${buddyEvent.getField<string>('contactPerson.tenantPerson.email').value?.toString()}`,
+		pictureUrl: `${buddyEvent.getField<string>('picture.url').value}`,
+		whatsappLink: `${buddyEvent.getField<string>('whatsappLink').value}`,
+		link: `${buddyEvent.getField<string>('mapLink').value}`, //for events - link is mapLink
+	})).concat(n2nPartiesForESNMembers.map((party, index) => ({
+		id: index,
+		type: 'party',
+		identity: `${party.getField<string>('id').value?.toString()}`,
+		title: `N2N: ${party.getField('name').value?.toString()}`,
+		place: `${party.getField<string>('club').value?.toString()}`,
+		start: new Date(party.getField<string>('date').value!),
+		end: new Date(party.getField<string>('date').value!),
+		price: '0',
+		contactPerson: '',
+		contactPhone: '',
+		contactEmail: '',
+		pictureUrl: `${party.getField<string>('picture.url').value?.toString()}`,
+		whatsappLink: '',
+		link: `${party.getField<string>('link').value?.toString()}`, // for N2N parties - link is tickets link
+	}))).sort((a, b) => a.start.getTime() - b.start.getTime())
 
 
-// 	return (
-// 		<>
-// 			<DataGrid entities={`N2nParty[date > "${now}"]`} initialSorting={{ date: 'asc' }}>
-// 			<DataGridLoader>
-// 				<DataGridFeed>
-// 					<PartyCard />
-// 				</DataGridFeed>
-// 			</DataGridLoader>
-// 			</DataGrid>
-// 		</>
-// 	)
-// }, () => (
-// 	<>
-// 		<EntityListSubTree entities={`N2nParty[date > "${new Date().toISOString()}"]`}>
-// 			<Field field="name" />
+	
 
-// 		</EntityListSubTree>
-// 	</>
-// ))
+	return (
+		<>
+			<DataGridFeed>
+				{allEvents.map(event => (
+					<>
+						{event.type === 'party' && 
+							<div className="mb-6">
+								<PartyCard2 event={event} />
+							</div>
+						}
+						{event.type === 'event' && 
+							<div className="mb-6">
+								<EventCard2 event={event} /> 
+							</div>
+						}
+					</>
+				))}
+			</DataGridFeed>
+		</>
+	)
+}, () => (
+	<>
+	<Binding>
+		<EntityListSubTree entities={`N2nParty[date > "${new Date().toISOString()}"]`} alias={'n2nParties'}>
+			<Field field={'id'} />
+			<Field field="name" />
+			<Field field="club" />
+			<Field field="date" />
+			<Field field="picture.url" />
+			<Field field="link" />
+		</EntityListSubTree>
+		<HasRole role={roles => roles.has('admin') || roles.has('esnMemberRole') || roles.has('coordinator')}>
+			<EntityListSubTree entities={`Event[startDate > "${new Date().toISOString()}"]`} alias={'events'}>
+				<Field field={'id'} />
+				<Field field="name" />
+				<Field field="place" />
+				<Field field="mapLink" />
+				<Field field="startDate" />
+				<Field field="endDate" />
+				<Field field="fee" />
+				<Field field="contactPerson.firstName" />
+				<Field field="contactPerson.surname" />
+				<Field field='contactPerson.phoneNumber' />
+				<Field field='contactPerson.tenantPerson.email' />
+				<Field field="picture.url" />
+				<Field field="whatsappLink" />
+			</EntityListSubTree>
+		</HasRole>
+		<HasRole role={'internationalStudent'}>
+			<EntityListSubTree entities={`Event[isForInternationalStudents=true && startDate > "${new Date().toISOString()}"]`} alias={'events'}>
+				<Field field={'id'} />
+				<Field field="name" />
+				<Field field="place" />
+				<Field field="mapLink" />
+				<Field field="startDate" />
+				<Field field="endDate" />
+				<Field field="fee" />
+				<Field field="contactPerson.firstName" />
+				<Field field="contactPerson.surname" />
+				<Field field='contactPerson.phoneNumber' />
+				<Field field='contactPerson.tenantPerson.email' />
+				<Field field="picture.url" />
+				<Field field="whatsappLink" />
+			</EntityListSubTree>
+		</HasRole>
+		<HasRole role={'czechBuddy'}>
+			<EntityListSubTree entities={`Event[isForCzechBuddies=true && startDate > "${new Date().toISOString()}"]`} alias={'events'}>
+				<Field field={'id'} />
+				<Field field="name" />
+				<Field field="place" />
+				<Field field="mapLink" />
+				<Field field="startDate" />
+				<Field field="endDate" />
+				<Field field="fee" />
+				<Field field="contactPerson.firstName" />
+				<Field field="contactPerson.surname" />
+				<Field field='contactPerson.phoneNumber' />
+				<Field field='contactPerson.tenantPerson.email' />
+				<Field field="picture.url" />
+				<Field field="whatsappLink" />
+			</EntityListSubTree>
+		</HasRole>
+	</Binding>
+	</>
+))
 
-const EventCard = Component(() => {
+  const EventCard2 = Component(({event}: {event?: any}) => {
+
+	return (
+	<Card className='max-w-[95%] md:max-w-[82%] mx-auto bg-white shadow-md rounded-lg'>
+  
+	  <CardContent className='py-4 px-6'>
+		<div className='flex flex-row justify-between items-center py-4 border-b border-gray-200'>
+			<div className="text-2xl font-semibold text-gray-800">
+				{event.title}
+			</div>
+			<div>
+				<Link to={`eventDetail(id : '${event.identity}')`}>
+					<Button>
+						Detail
+					</Button>
+				</Link>
+			</div>
+		</div>
+		<div className='flex flex-col md:flex-row gap-4 items-start'>
+			<div className='flex-1 max-w-lg'>
+				<p className='text-lg text-gray-600'>
+					<strong>📅 Start</strong> {formatDateTimeShort(event.start.toISOString())}
+				</p>
+				<p className='text-lg text-gray-600'>
+					<strong>🏁 End</strong> {formatDateTimeShort(event.end.toISOString())}
+				</p>
+				<p className='text-lg text-gray-600'>
+					<strong>📍 Place</strong> <GoogleMapsLinkFromString place={event.place} link={event.link} />
+				</p>
+				<p className='text-lg text-gray-600'>
+					<strong>💰 Price</strong> {event.price} {' CZK'}
+				</p>
+				<p className='text-lg text-gray-600'>
+					<WhatsappLinkFromString link={event.link} text='🔗 WhatsApp group link' />
+				</p>
+			</div>
+			<div className='flex-none mt-4 rounded-lg overflow-hidden w-3/4 md:w-40 aspect-square mx-auto'>
+				<img src={event.pictureUrl} alt="Image" className={`h-full w-full object-cover border rounded-lg`} />
+			</div>
+		</div>
+	  </CardContent>
+  
+	  <CardFooter className='bg-gray-50 border-t border-gray-200 py-4 px-6'>
+		<p className='text-sm text-bold text-gray-500'>
+		  	<strong>Contact person</strong>
+			{' '} {event.contactPerson} {' ('} {event.contactEmail} {', '} {event.contactPhone} {')'}
+		</p>
+	  </CardFooter>
+	</Card>
+  )})
+
+  const PartyCard2 = Component(({event}: {event?: any}) => {
+
+	return (
+	<Card className='max-w-[95%] md:max-w-[82%] mx-auto bg-white shadow-md rounded-lg'>
+  
+	  <CardContent className='py-4 px-6'>
+		<div className='flex flex-row justify-between items-center py-4 border-b border-gray-200'>
+			<div className="text-2xl font-semibold text-gray-800">
+				{event.title}
+			</div>
+			<div>
+				<Link to={`n2nPartyDetail(id : '${event.identity}')`}>
+					<Button>
+						Detail
+					</Button>
+				</Link>
+			</div>
+		</div>
+		<div className='flex flex-col md:flex-row gap-4 items-start'>
+			<div className='flex-1 max-w-lg'>
+				<p className='text-lg text-gray-600'>
+					<strong>📅 Start</strong> {formatDateTimeShort(event.start.toISOString())}
+				</p>
+				<p className='text-lg text-gray-600'>
+					<strong>📍 Club</strong> {event.place}
+				</p>
+				<p className='text-lg text-gray-600'>
+					<GetN2NLinkFromString link={event.link} text='🔗 Tickets link' />
+				</p>
+			</div>
+			<div className='flex-none mt-4 rounded-lg overflow-hidden w-3/4 md:w-40 aspect-square mx-auto'>
+				<img src={event.pictureUrl} alt="Image" className={`h-full w-full object-cover border rounded-lg`} />
+			</div>
+		</div>
+	  </CardContent>
+  
+	</Card>
+  )})
+
+const EventCard = Component(({}) => {
 
 	const pictureUrl = useEntity().getField('picture.url').value?.toString()
 
@@ -158,6 +319,7 @@ const EventCard = Component(() => {
 		<Field field='whatsappLink' />
 	</>
   ))
+
 
   const PartyCard = Component(() => {
 

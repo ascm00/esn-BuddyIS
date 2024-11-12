@@ -10,24 +10,14 @@ export interface DataViewFeedProps {
 }
 
 export const DataGridFeed = Component<DataViewFeedProps>(({ children }) => (
-	<DataViewLayout
-		name="table"
-		label={
-			<>
-				<SheetIcon className={'w-3 h-3'} />
-				<span>{dict.datagrid.showTable}</span>
-			</>
-		}
-	>
-		<div className={'flex flex-col gap-4 items-center'}>
-			<div className={'w-full max-w-4xl flex flex-col gap-4'}>
-				<DataViewEachRow>
-					<DataGridFeedRenderer>{children}</DataGridFeedRenderer>
-				</DataViewEachRow>
-			</div>
+
+	<div className={'flex flex-col gap-4 items-center'}>
+		<div className={'w-full max-w-4xl flex flex-col gap-4'}>
+			<DataGridFeedRenderer>{children}</DataGridFeedRenderer>
 		</div>
-	</DataViewLayout>
+	</div>
 ))
+
 
 export const DataGridFeedRenderer = Component<DataViewFeedProps>(({ children }) => {
 	return <div>{children}</div>

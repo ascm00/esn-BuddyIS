@@ -88,8 +88,6 @@ export const EventsCalendar = Component<{ entities?: string }>(
 			end: new Date(party.getField<string>('date').value!),
 		})))
 
-		console.log(events)
-
 
 		return (
 			<>
