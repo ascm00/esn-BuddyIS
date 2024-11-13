@@ -4,6 +4,19 @@ import { Env } from "@app/lib/functions/types";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@app/lib/ui/card"
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
+import getUser from "@app/lib/functions/gql/getUser";
+import { contentClient } from "@app/lib/functions/utils/client";
+
+interface TenantPerson {
+	id: string;
+  }
+  
+interface ListTenantPersonResult {
+	data?: {
+	  listTenantPerson?: TenantPerson[];
+	};
+}
+
 
 export const RegistrationForm = (env : Env) => {
 	const [firstName, setFirstName] = useState('');
@@ -22,18 +35,37 @@ export const RegistrationForm = (env : Env) => {
 	
 		try {
 			const phoneNumberInRightFormat = '+' + phoneNumber
-			const response = await onRequestPost(email, firstName, surname, inSISusername, phoneNumberInRightFormat, birthdate, env)
-			console.log(response)
-
-	
-			if (response.ok) {
-				// User created successfully
-				window.location.href = "/";
-				alert('User created successfully. Check your email to set your password. If you do not find it in your inbox, please check your spam folder.');
+			const getUserByEmail = await contentClient(
+				env,
+				{
+					query: getUser,
+					variables: {
+						email,
+					},
+				},
+				env.VITE_CONTEMBER_ADMIN_INVITE_TOKEN,
+			)
+		
+			const getUserByEmailResult: ListTenantPersonResult = getUserByEmail
+			if(getUserByEmailResult.data?.listTenantPerson && getUserByEmailResult.data.listTenantPerson.length > 0){
+				console.error('Email already exists in the system. Please contact system administrator.')
+				alert('Email already exists in the system. If you forgot your password, you can reset it.')
 			} else {
-				// Error creating user
-				console.error('Error creating user');
+
+				const response = await onRequestPost(email, firstName, surname, inSISusername, phoneNumberInRightFormat, birthdate, env)
+				console.log(response)
+
+				if (response.ok) {
+					// User created successfully
+					window.location.href = "/";
+					alert('User created successfully. Check your email to set your password. If you do not find it in your inbox, please check your spam folder.');
+				} else {
+					// Error creating user
+					console.error('Error creating user');
+				}
+
 			}
+
 		} catch (error) {
 			console.error('Error creating user', error);
 		}

@@ -1,0 +1,14 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "createUniqueConstraint",
+			"entityName": "TenantPerson",
+			"unique": {
+				"fields": [
+					"email"
+				]
+			}
+		}
+	]
+}
