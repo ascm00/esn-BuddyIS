@@ -507,7 +507,7 @@ export default () => {
 											<DataGridNumberColumn field="paymentId" header="Payment ID" />
 											<DataGridTextColumn field="person.tenantPerson.email" header="Email" />
 											<DataGridTextColumn field="person.phoneNumber" header="Phone number" />
-											<DataGridTextColumn field="person.xname" header="InSIS username" />
+											<DataGridTextColumn field="person.inSISusername" header="InSIS username" />
 											<DataGridTextColumn field="person.esnCardId" header="ESN Card ID" />
 											<DataGridNumberColumn field="person.ageView.age" header="Age" />
 											<DataGridHasManyColumn field="allergies" header="Allergies">
@@ -560,7 +560,7 @@ export default () => {
 											</DataGridHasOneColumn>
 											<DataGridTextColumn field="person.tenantPerson.email" header="Email" />
 											<DataGridTextColumn field="person.phoneNumber" header="Phone number" />
-											<DataGridTextColumn field="person.xname" header="InSIS username" />
+											<DataGridTextColumn field="person.inSISusername" header="InSIS username" />
 											<DataGridTextColumn field="person.esnCardId" header="ESN Card ID" />
 											<DataGridNumberColumn field="person.ageView.age" header="Age" />
 											<DataGridHasManyColumn field="allergies" header="Allergies">

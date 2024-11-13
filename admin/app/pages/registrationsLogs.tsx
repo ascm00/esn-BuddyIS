@@ -52,7 +52,7 @@ export default () => {
                                 <DataGridEnumColumn field="payment" header="Payment" options={{ paid: 'Paid', cancelled: 'Cancelled', pending: 'Pending' }}/>
                                 <DataGridNumberColumn field="paymentId" header="Payment ID" />
                                 <DataGridTextColumn field="person.tenantPerson.email" header="Email" />
-                                <DataGridTextColumn field="person.xname" header="InSIS username" />
+                                <DataGridTextColumn field="person.inSISusername" header="InSIS username" />
                                 <DataGridTextColumn field="person.esnCardId" header="ESN Card ID" />
                                 <DataGridHasOneColumn field="personWhoMadeRegistration" header="Manually registered by">
                                     <Field field="firstName" /> {' '} <Field field="surname" />

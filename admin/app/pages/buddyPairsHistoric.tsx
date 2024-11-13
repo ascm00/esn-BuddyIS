@@ -59,13 +59,13 @@ export default () => {
 										<Field field="name" />
 									</DataGridHasOneColumn>
 									<DataGridHasOneColumn field="coordinator" header="Coordinator">
-										<Field field="firstName" /> {' '} <Field field="surname" /> {' ('} <Field field="xname" /> {') '}
+										<Field field="firstName" /> {' '} <Field field="surname" /> {' ('} <Field field="inSISusername" /> {') '}
 									</DataGridHasOneColumn>
 									<DataGridHasOneColumn field="czechStudent" header="Local buddy">
-										<Field field="firstName" /> {' '} <Field field="surname" /> {' ('} <Field field="xname" /> {') '}
+										<Field field="firstName" /> {' '} <Field field="surname" /> {' ('} <Field field="inSISusername" /> {') '}
 									</DataGridHasOneColumn>
 									<DataGridHasOneColumn field="internationalStudent" header="Foreign buddy">
-										<Field field="firstName" /> {' '} <Field field="surname" /> {' ('} <Field field="xname" /> {') '}
+										<Field field="firstName" /> {' '} <Field field="surname" /> {' ('} <Field field="inSISusername" /> {') '}
 									</DataGridHasOneColumn>
 									<DataGridBooleanColumn field="tenPoints" header="10 points" />
 								</DataGridTable>

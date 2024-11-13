@@ -1,0 +1,81 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "removeField",
+			"entityName": "Person",
+			"fieldName": "xname"
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "Person",
+			"field": {
+				"name": "inSISusername",
+				"columnName": "in_sisusername",
+				"columnType": "text",
+				"nullable": true,
+				"type": "String"
+			}
+		},
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/Person/operations/create/inSISusername",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/Person/operations/update/inSISusername",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/Person/operations/read/inSISusername",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/Person/operations/update/inSISusername",
+					"value": "personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/Person/operations/read/inSISusername",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Person/operations/create/inSISusername",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Person/operations/update/inSISusername",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Person/operations/read/inSISusername",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/Person/operations/update/inSISusername",
+					"value": "personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/Person/operations/read/inSISusername",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/Person/operations/read/inSISusername",
+					"value": true
+				}
+			]
+		}
+	]
+}

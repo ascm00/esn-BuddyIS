@@ -47,7 +47,7 @@ export class Person {
 	emailForInfo = c.stringColumn()
 	esnCardId = c.stringColumn()
 	surname = c.stringColumn()
-	xname = c.stringColumn()
+	inSISusername = c.stringColumn()
 	active = c.boolColumn()
 	faculty = c.manyHasOne(Faculty, 'users').setNullOnDelete()
 	studyProgram = c.manyHasOne(StudyProgram, 'users').setNullOnDelete()

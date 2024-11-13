@@ -9,19 +9,19 @@ export const RegistrationForm = (env : Env) => {
 	const [firstName, setFirstName] = useState('');
 	const [surname, setSurname] = useState('');
 	const [email, setEmail] = useState('');
-	const [xname, setXname] = useState('');
+	const [inSISusername, setInSISusername] = useState('');
 	const [phoneNumber, setPhoneNumber] = useState('');
 	const [birthdate, setBirthdate] = useState('');
 
 	const handleSubmit = async (event: React.FormEvent) => {
 		event.preventDefault();
-		if (!email ||!phoneNumber || !firstName || !surname || !xname || !birthdate) {
+		if (!email ||!phoneNumber || !firstName || !surname || !inSISusername || !birthdate) {
 			alert('Please fill all the mandatory fields.')
 			return
 		}
 	
 		try {
-			const response = await onRequestPost(email, firstName, surname, xname, phoneNumber, birthdate, env)
+			const response = await onRequestPost(email, firstName, surname, inSISusername, phoneNumber, birthdate, env)
 			console.log(response)
 
 	
@@ -126,8 +126,8 @@ export const RegistrationForm = (env : Env) => {
 						</label>
 						<input 
 							type="text" 
-							value={xname} 
-							onChange={(event) => setXname(event.target.value)} 
+							value={inSISusername} 
+							onChange={(event) => setInSISusername(event.target.value)} 
 							className="w-full px-4 py-1.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
 							required
 							pattern="([a-z]{4}[0-9]{2}|none)"

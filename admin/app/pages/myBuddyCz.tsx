@@ -218,10 +218,10 @@ const MoreBuddiesView = Component(
 								</div>
 							</DataGridColumn>
 							<DataGridHasOneColumn field="coordinator" header="Coordinator">
-								<Field field="firstName" /> {' '} <Field field="surname" /> {' ('} <Field field="xname" /> {') '}
+								<Field field="firstName" /> {' '} <Field field="surname" /> {' ('} <Field field="inSISusername" /> {') '}
 							</DataGridHasOneColumn>
 							<DataGridHasOneColumn field="internationalStudent" header="International student">
-								<Field field="firstName" /> {' '} <Field field="surname" /> {' ('} <Field field="xname" /> {') '}
+								<Field field="firstName" /> {' '} <Field field="surname" /> {' ('} <Field field="inSISusername" /> {') '}
 							</DataGridHasOneColumn>
 						</DataGridTable>
 					</DataGridLoader>

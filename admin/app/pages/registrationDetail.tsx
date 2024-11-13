@@ -86,7 +86,7 @@ export default () => {
 											Person InSIS username
 										</TableCell>
 										<TableCell className="font-semibold">
-											<Field field="person.xname" />
+											<Field field="person.inSISusername" />
 										</TableCell>
 									</TableRow>
                                     <TableRow>

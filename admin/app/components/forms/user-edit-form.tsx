@@ -117,7 +117,7 @@ export const UserEditForm = Component(
 			<InputField field="surname" label="Surname *" required />
 		</div>
 		<div className='pb-2'>
-			<InputField field="xname" label="InSIS username *" required/>
+			<InputField field="inSISusername" label="InSIS username *" required/>
 			<p className="text-xs text-gray-500">InSIS username is the first part of your VŠE email address before @.</p>
 			<p className="text-xs text-gray-500">For example <strong>novp</strong>@vse.cz</p>
 		</div>
@@ -202,7 +202,7 @@ export const UserEditForm = Component(
 			<Field field="personId" />
 			<Field field="firstName" />
 			<Field field="surname" />
-			<Field field="xname" />
+			<Field field="inSISusername" />
 			<Field field="esnCardId" />
 			<Field field="phoneNumber" />
 			<Field field="country.name" />

@@ -64,7 +64,7 @@ export default () => {
 										</DataGridColumn>
 									</HasRole>
 									<DataGridHasOneColumn field="person" header="Name" >
-										<Field field="firstName" /> {' '} <Field field="surname" /> {' ('} <Field field="xname" /> {') '}
+										<Field field="firstName" /> {' '} <Field field="surname" /> {' ('} <Field field="inSISusername" /> {') '}
 									</DataGridHasOneColumn>
 									<DataGridTextColumn field="person.studyProgram.name" header="Study program" />
 									<DataGridHasManyColumn field="person.languages" header="Languages spoken">

@@ -16,7 +16,7 @@ interface InvitationResult {
 	}
 }
 
-export async function onRequestPost(email: string, firstname: string, surname: string, xname: string, phoneNumber: string, birthdate: string, env: Env){
+export async function onRequestPost(email: string, firstname: string, surname: string, inSISusername: string, phoneNumber: string, birthdate: string, env: Env){
 	// const formData = await request.formData()
 	// const data: Record<string, any> = {}
 
@@ -34,7 +34,7 @@ export async function onRequestPost(email: string, firstname: string, surname: s
 	// 	}
 	// }
 
-	if (!email ||!phoneNumber || !firstname || !surname || !xname || !birthdate) {
+	if (!email ||!phoneNumber || !firstname || !surname || !inSISusername || !birthdate) {
 		return new Response('Invalid data. Did you fill all the mandatory fields?', { status: 400 })
 	}
 
@@ -69,7 +69,7 @@ export async function onRequestPost(email: string, firstname: string, surname: s
 			personId: personId,
 			firstName: firstname,
 			surname: surname,
-			xname: xname,
+			inSISusername: inSISusername,
 			phoneNumber: phoneNumber,
 			birthdate: birthdate,
 			//email: email,

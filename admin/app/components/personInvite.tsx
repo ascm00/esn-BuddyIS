@@ -124,7 +124,7 @@ export const PersonInvite = Component(
 				</div>
 				<div className='pb-2'>
 					<InputField 
-						field="xname" 
+						field="inSISusername" 
 						inputProps={{
 							pattern: "([a-z]{4}[0-9]{2}|none)"
 						}} 
@@ -208,7 +208,7 @@ export const PersonInvite = Component(
 				<Field field={'url'} />
 			</HasOne>
 			<Field field="surname" />
-			<Field field="xname" />
+			<Field field="inSISusername" />
 			<Field field="esnCardId" />
 			<Field field="phoneNumber" />
 			<Field field="birthdate" />

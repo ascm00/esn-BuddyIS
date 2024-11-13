@@ -36,7 +36,7 @@ export const InitialUserForm = Component(
 		const currentUser = useEntitySubTree('currentUser')
 
         const surname = currentUser.getField<string>('surname').value
-		const xname = currentUser.getField<string>('xname').value
+		const inSISusername = currentUser.getField<string>('inSISusername').value
 		const phoneNumber = currentUser.getField<string>('phoneNumber').value;
 		const esnCardId = currentUser.getField<string>('esnCardId').value;
 		const firstName = currentUser.getField<string>('firstName').value;
@@ -48,7 +48,7 @@ export const InitialUserForm = Component(
 			return (
 				window.location.href = '/app/events'	
 			)
-		} else if (!surname || !xname || !phoneNumber || !esnCardId || !firstName || !universityName || !facultyName || !countryName) {
+		} else if (!surname || !inSISusername || !phoneNumber || !esnCardId || !firstName || !universityName || !facultyName || !countryName) {
 			return (
 				window.location.href = '/app/initial-login-page'
 				// <InitialLoginPage />
@@ -66,12 +66,11 @@ export const InitialUserForm = Component(
 				<EntitySubTree entity={`Person(tenantPerson.id = '${personId}')`} alias={'currentUser'}>
 					<Field field={'personId'}/>
 					<Field field={'lastLoginDate'}/>
-					<Field field={'xname'}/>
+					<Field field={'inSISusername'}/>
 					<Field field={'phoneNumber'}/>
 					<Field field={'esnCardId'}/>
 					<Field field={'firstName'}/>
 					<Field field={'surname'}/>
-					<Field field={'xname'}/>
 					<HasOne field={'university'}>
 						<Field field={'name'}/>
 					</HasOne>
