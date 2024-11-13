@@ -37,7 +37,7 @@ import { coordinatorRole, czechBuddyId, czechBuddyRole, esnMemberRole, internati
 export class TenantPerson {
 	createdAt = c.dateTimeColumn().notNull().default('now')
 	identityId = c.uuidColumn().notNull()
-	email = c.stringColumn()
+	email = c.stringColumn().unique()
 	name = c.stringColumn()
 	otpUri = c.stringColumn()
 	otpActivatedAt = c.stringColumn()

@@ -21,7 +21,8 @@ export const RegistrationForm = (env : Env) => {
 		}
 	
 		try {
-			const response = await onRequestPost(email, firstName, surname, inSISusername, phoneNumber, birthdate, env)
+			const phoneNumberInRightFormat = '+' + phoneNumber
+			const response = await onRequestPost(email, firstName, surname, inSISusername, phoneNumberInRightFormat, birthdate, env)
 			console.log(response)
 
 	

@@ -710,6 +710,7 @@ export type TenantPerson <OverRelation extends string | never = never> = {
 	name: 'TenantPerson'
 	unique:
 		| Omit<{ id: string}, OverRelation>
+		| Omit<{ email: string}, OverRelation>
 		| Omit<{ person: Person['unique']}, OverRelation>
 	columns: {
 		id: string
