@@ -255,7 +255,7 @@ export const RegistrationAdminCreateForm = Component<RegistrationCreateFormProps
             }
             <Field field="event.dietaryRestrictions" />
 
-            <HasRole role={roles => roles.has('admin') || roles.has('esnMemberRole') || roles.has('coordinator')}>
+            <HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('coordinator')}>
                 <SelectField field={'person'} label="Person" options={'Person'}>
                     <Field field={'firstName'} /> {' '} <Field field={'surname'} />
                 </SelectField>
