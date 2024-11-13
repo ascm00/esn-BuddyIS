@@ -67,7 +67,7 @@ const MyEvents = Component(
 								<TableRow key={index}>
 									<TableCell>
 										<Link to={`eventDetail(id: '${registration?.getEntity('event')?.getField('id')?.value}')`}>
-											<Button>
+											<Button variant={'secondary'} size={'sm'}>
 												Detail
 											</Button>
 										</Link>
