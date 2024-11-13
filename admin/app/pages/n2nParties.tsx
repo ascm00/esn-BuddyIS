@@ -71,9 +71,6 @@ export default () => {
 									<DataGridTextColumn field="name" header="Name" />
 									<DataGridDateColumn field="date" header="Date" />
 									{/* <DataGridBooleanColumn field="open" header="Open" /> */}
-									<DataGridHasOneColumn field="semester" header="Semester">
-										<Field field="name" />
-									</DataGridHasOneColumn>
 									<DataGridTextColumn field="club" header="Club" />
 									<DataGridTextColumn field="link" header="Link" />
 								</DataGridTable>

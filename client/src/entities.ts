@@ -524,7 +524,7 @@ export type Person <OverRelation extends string | never = never> = {
 		emailForInfo: string | null
 		esnCardId: string | null
 		surname: string | null
-		xname: string | null
+		inSISusername: string | null
 		active: boolean | null
 		firstName: string | null
 	}

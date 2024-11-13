@@ -833,7 +833,7 @@ export const ContemberClientNames: SchemaNames = {
         "surname": {
           "type": "column"
         },
-        "xname": {
+        "inSISusername": {
           "type": "column"
         },
         "active": {
@@ -919,7 +919,7 @@ export const ContemberClientNames: SchemaNames = {
         "emailForInfo",
         "esnCardId",
         "surname",
-        "xname",
+        "inSISusername",
         "active",
         "firstName"
       ]

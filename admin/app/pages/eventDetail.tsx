@@ -8,7 +8,7 @@ import { formatDateTime, formatDateTimeShort } from '@app/lib/utils/formatting'
 import { Todo } from '@app/lib/dev'
 import { RichTextRendererField } from '@app/lib/plugins/rich-text/renderer/RichTextRendererField'
 import { renderElement, renderLeaf } from '@app/lib/plugins/rich-text/renderer/renderers'
-import { DataGrid, DataGridActionColumn, DataGridColumn, DataGridDateColumn, DataGridEnumColumn, DataGridHasManyColumn, DataGridHasManyFilter, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridNumberColumn, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridTextFilter, DataGridToolbar } from '@app/lib/datagrid'
+import { DataGrid, DataGridActionColumn, DataGridColumn, DataGridDateColumn, DataGridEnumColumn, DataGridEnumFilter, DataGridHasManyColumn, DataGridHasManyFilter, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridNumberColumn, DataGridNumberFilter, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridTextFilter, DataGridToolbar } from '@app/lib/datagrid'
 import { CreateEntityModalButton } from '@app/lib/buttons/createEntityModalButtons'
 import { RegistrationAdminCreateForm, RegistrationCreateForm } from '@app/components/forms/registration-create-form'
 import { Delete, DollarSign, Trash, TrashIcon } from 'lucide-react'
@@ -486,6 +486,11 @@ export default () => {
 										<DataGridHasManyFilter field="dietaryRestrictions" label="Dietary Restrictions">
 											<Field field="name" />
 										</DataGridHasManyFilter>
+										<DataGridNumberFilter field={'person.ageView.age'} label="Age" />
+										<DataGridEnumFilter field="payment" options={{ paid: 'Paid', cancelled: 'Cancelled', pending: 'Pending', unpaid: 'Unpaid' }} label="Payment status" />
+										<DataGridHasOneFilter field="personWhoMadeRegistration" label="Manually registered by">
+											<Field field="firstName" /> {' '} <Field field="surname" />
+										</DataGridHasOneFilter>
 									</DataGridToolbar>
 									<DataGridLoader>
 										<DataGridTable>
@@ -503,7 +508,7 @@ export default () => {
 													</a>
 												</Link>
 											</DataGridHasOneColumn>
-											<DataGridEnumColumn field="payment" header="Payment" options={{ paid: 'Paid', cancelled: 'Cancelled', pending: 'Pending' }}/>
+											<DataGridEnumColumn field="payment" header="Payment" options={{ paid: 'Paid', cancelled: 'Cancelled', pending: 'Pending', unpaid: 'Unpaid' }}/>
 											<DataGridNumberColumn field="paymentId" header="Payment ID" />
 											<DataGridTextColumn field="person.tenantPerson.email" header="Email" />
 											<DataGridTextColumn field="person.phoneNumber" header="Phone number" />
@@ -540,6 +545,10 @@ export default () => {
 										<DataGridHasManyFilter field="dietaryRestrictions" label="Dietary Restrictions">
 											<Field field="name" />
 										</DataGridHasManyFilter>
+										<DataGridNumberFilter field={'person.ageView.age'} label="Age" />
+										<DataGridHasOneFilter field="personWhoMadeRegistration" label="Manually registered by">
+											<Field field="firstName" /> {' '} <Field field="surname" />
+										</DataGridHasOneFilter>
 									</DataGridToolbar>
 									<DataGridLoader>
 										<DataGridTable>
@@ -570,6 +579,9 @@ export default () => {
 												<Field field="name" />
 											</DataGridHasManyColumn>
 											<DataGridTextColumn field="note" header="Note" />
+											<DataGridHasOneColumn field="personWhoMadeRegistration" header="Manually registered by">
+												<Field field="firstName" /> {' '} <Field field="surname" />
+											</DataGridHasOneColumn>
 										</DataGridTable>
 									</DataGridLoader>
 								</DataGrid>

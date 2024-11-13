@@ -1,6 +1,6 @@
 import { Binding } from '@app/lib/binding'
 import { BackButton } from '@app/lib/buttons'
-import { DataGrid, DataGridBooleanColumn, DataGridColumn, DataGridDateColumn, DataGridEnumFilter, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
+import { DataGrid, DataGridBooleanColumn, DataGridColumn, DataGridDateColumn, DataGridEnumColumn, DataGridEnumFilter, DataGridHasManyColumn, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
 import { Field, HasRole, Link } from '@contember/interface'
@@ -35,9 +35,11 @@ export default () => {
 								<DataGridHasOneFilter field="studyProgram" label="Study program">
 									<Field field="name" />
 								</DataGridHasOneFilter>
-								<DataGridHasOneFilter field="applicationsFr.semester" label="All international students per semester">
+								<DataGridHasOneFilter field="applicationsFr.semester" label="International students per semester">
 									<Field field="name" />
 								</DataGridHasOneFilter>
+								<DataGridEnumFilter field='gender' options={{man: 'Man', woman: 'Woman', other: 'Other'}} label="Gender" />
+								<DataGridEnumFilter field={'tenantPerson.roles'} options={{admin: 'Admin', coordinator: 'Coordinator', esnMember: 'ESN member', czechBuddy: 'Local buddy', internationalStudent: 'International student', ozsRole: 'OZS member'}} label="Role" />
 							</DataGridToolbar>
 							<DataGridLoader>
 								<DataGridTable>
@@ -60,20 +62,24 @@ export default () => {
 									<DataGridTextColumn field="firstName" header="First name" />
 									<DataGridTextColumn field="surname" header="Surname" />
 									<DataGridTextColumn field="phoneNumber" header="Phone number" />
+									<DataGridTextColumn field="inSISusername" header="inSIS username" />
 									<DataGridHasOneColumn field="tenantPerson" header="Email">
 										<Field field="email" />
 									</DataGridHasOneColumn>
 									<DataGridHasOneColumn field="university" header="Home university">
 										<Field field="name" />
 									</DataGridHasOneColumn>
+									<DataGridEnumColumn field='gender' options={{man: 'Man', woman: 'Woman', other: 'Other'}} header="Gender" />
 									<DataGridHasOneColumn field="studyProgram" header="Study program">
 										<Field field="name" />
 									</DataGridHasOneColumn>
 									<DataGridTextColumn field="esnCardId" header="Esn card id" />
-									<DataGridTextColumn field="inSISusername" header="inSIS username" />
 									<DataGridHasOneColumn field="countryOfUniversity" header="Country of home university">
 										<Field field="name" />
 									</DataGridHasOneColumn>
+									{/* <DataGridHasManyColumn field="registrations" header="Event reigstrations">
+										<Field field="event.name" />
+									</DataGridHasManyColumn> */}
 									<DataGridHasOneColumn field="tenantPerson" header="Role">
 										<Field field="roles" />
 									</DataGridHasOneColumn>
