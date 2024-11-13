@@ -219,12 +219,12 @@ export default () => {
 										<DataGridLoader>
 											<DataGridTable>
 												<DataGridColumn>
-													<div className="flex gap-4">
+													<div className="flex gap-2">
 														<HasRole role={roles => roles.has('admin') || roles.has('coordinator')}>
 															<Link to="buddyTaskEdit(id: $entity.id)">
-																<a>
+																<Button variant={'secondary'} size={'sm'}>
 																	Edit
-																</a>
+																</Button>
 															</Link>
 														</HasRole>
 													</div>

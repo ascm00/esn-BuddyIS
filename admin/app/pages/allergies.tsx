@@ -44,27 +44,28 @@ export default () => {
 								<DataGridTable>
 									<HasRole role="admin">
 										<DataGridColumn>
-											<div className="flex gap-4">
-											<CurrentEntityLazyModalEdit
-												dialogProps={{ className: 'overflow-y-auto max-h-screen' }}
-												buttonContent={
-													<span className="flex items-center">
-														Edit
-													</span>
-												}
-											>
-												<DietaryRestrictionAllergyForm />
-											</CurrentEntityLazyModalEdit>
-											<DeleteEntityModalButton 
-												message="Do you really want to delete?"
-												deleteMessage="Delete"
-												cancelTo={'allergies'}
-												afterPersistTo={'allergies'}
-											>
-												<Button variant={'destructive'}>
-													<TrashIcon />
-												</Button>
-											</DeleteEntityModalButton>
+											<div className="flex gap-2">
+												<DeleteEntityModalButton 
+													message="Do you really want to delete?"
+													deleteMessage="Delete"
+													cancelTo={'allergies'}
+													afterPersistTo={'allergies'}
+												>
+													<Button variant={'destructive'} size={'sm'}>
+														<TrashIcon className='w-4' />
+													</Button>
+												</DeleteEntityModalButton>
+												<CurrentEntityLazyModalEdit
+													dialogProps={{ className: 'overflow-y-auto max-h-screen' }}
+													buttonProps={{variant: 'secondary', size: 'sm'}}
+													buttonContent={
+														<span className="flex items-center">
+															Edit
+														</span>
+													}
+												>
+													<DietaryRestrictionAllergyForm />
+												</CurrentEntityLazyModalEdit>
 											</div>
 										</DataGridColumn>
 									</HasRole>

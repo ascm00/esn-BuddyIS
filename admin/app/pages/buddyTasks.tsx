@@ -33,14 +33,14 @@ export default () => {
 									<DataGridColumn>
 										<div className="flex gap-4">
 											<Link to="buddyTaskDetail(id: $entity.id)">
-												<a>
+												<Button variant={'secondary'} size={'sm'}>
 													Detail
-												</a>
+												</Button>
 											</Link>
 											<Link to="buddyTaskEdit(id: $entity.id)">
-												<a>
+												<Button variant={'secondary'} size={'sm'}>
 													Edit
-												</a>
+												</Button>
 											</Link>
 										</div>
 									</DataGridColumn>

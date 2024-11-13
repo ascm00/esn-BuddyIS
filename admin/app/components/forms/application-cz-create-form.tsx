@@ -275,7 +275,7 @@ const ApplicationCzDataGrid = Component(() => {
 									<DataGridColumn>
 										<div className="flex gap-4">
 											<Link to="applicationCzEdit(id: $entity.id)">
-												<Button>
+												<Button variant={'destructive'} size={'sm'}>
 													Edit
 												</Button>
 											</Link>

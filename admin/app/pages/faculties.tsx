@@ -45,14 +45,25 @@ export default () => {
 								<DataGridTable>
 									<HasRole role="admin">
 									<DataGridColumn>
-										<div className="flex gap-4">
+										<div className="flex gap-2">
+											<DeleteEntityModalButton 
+												message="Do you really want to delete?"
+												deleteMessage="Delete"
+												cancelTo={'faculties'}
+												afterPersistTo={'faculties'}
+											>
+												<Button variant={'destructive'} size={'sm'}>
+													<TrashIcon className='w-4' />
+												</Button>
+											</DeleteEntityModalButton>
 											<Link to="facultyDetail(id: $entity.id)">
-												<Button>
+												<Button variant={'secondary'} size={'sm'}>
 													Detail
 												</Button>
 											</Link>
 											<CurrentEntityLazyModalEdit
 												dialogProps={{ className: 'overflow-y-auto max-h-screen' }}
+												buttonProps={{variant: 'secondary', size: 'sm'}}
 												buttonContent={
 													<span className="flex items-center">
 														Edit
@@ -61,16 +72,6 @@ export default () => {
 											>
 												<FacultyEditForm />
 											</CurrentEntityLazyModalEdit>
-											<DeleteEntityModalButton 
-												message="Do you really want to delete?"
-												deleteMessage="Delete"
-												cancelTo={'faculties'}
-												afterPersistTo={'faculties'}
-											>
-												<Button variant={'destructive'}>
-													<TrashIcon />
-												</Button>
-											</DeleteEntityModalButton>
 										</div>
 										</DataGridColumn>
 									</HasRole>

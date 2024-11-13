@@ -32,12 +32,14 @@ export default () => {
 								<DataGridTable>
 									<HasRole role={roles => roles.has('admin') || roles.has('coordinator')}>
 										<DataGridColumn>
-											<div className="flex gap-4">
-												<Link to="applicationCzEdit(id: $entity.id)">
-													<Button>
-														Edit
-													</Button>
-												</Link>
+											<div className="flex gap-2">
+												<HasRole role="admin">
+													<Link to="applicationCzEdit(id: $entity.id)">
+														<Button variant={'secondary'} size={'sm'}>
+															Edit
+														</Button>
+													</Link>
+												</HasRole>
 											</div>
 										</DataGridColumn>
 									</HasRole>

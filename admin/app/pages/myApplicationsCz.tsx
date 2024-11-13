@@ -31,7 +31,7 @@ export default () => {
 							<DataGridLoader>
 								<DataGridTable>
 									<DataGridColumn>
-										<div className="flex gap-4">
+										<div className="flex gap-2">
 											{/* <Link to="applicationCzEdit(id: $entity.id)">
 												<Button>
 													Edit
@@ -43,8 +43,8 @@ export default () => {
 												cancelTo={'myApplicationsCz'}
 												afterPersistTo={'myApplicationsCz'}
 											>
-												<Button variant={'destructive'}>
-													<TrashIcon />
+												<Button variant={'destructive'} size={'sm'}>
+													<TrashIcon className='w-4'/>
 												</Button>
 											</DeleteEntityModalButton>
 										</div>

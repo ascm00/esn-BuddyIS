@@ -47,9 +47,9 @@ export default () => {
 							<DataGridLoader>
 								<DataGridTable>
 									<DataGridColumn>
-										<div className="flex gap-4">
+										<div className="flex gap-2">
 											<Link to="buddyPairDetail(id: $entity.id)">
-												<Button>
+												<Button variant={'secondary'} size={'sm'}>
 													Detail
 												</Button>
 											</Link>

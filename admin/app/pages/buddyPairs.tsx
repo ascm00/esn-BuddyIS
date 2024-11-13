@@ -53,7 +53,7 @@ export default () => {
 									<DataGridColumn>
 										<div className="flex gap-4">
 											<Link to="buddyPairDetail(id: $entity.id)">
-												<Button>
+												<Button variant={'secondary'} size={'sm'}>
 													Detail
 												</Button>
 											</Link>

@@ -66,13 +66,13 @@ export default () => {
 									<DataGridColumn>
 										<div className="flex gap-4">
 											<Link to="userDetail(id: $entity.id)">
-												<Button>
+												<Button variant={'secondary'} size={'sm'}>
 													Detail
 												</Button>
 											</Link>
 											<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('coordinator')}>
 												<Link to="userEdit(id: $entity.id)">
-													<Button>
+													<Button variant={'secondary'} size={'sm'}>
 														Edit
 													</Button>
 												</Link>

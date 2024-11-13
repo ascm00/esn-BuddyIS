@@ -52,15 +52,15 @@ const PersonalizedDataGrid = Component(
 					<DataGridLoader>
 						<DataGridTable>
 							<DataGridColumn>
-								<div className="flex gap-4">
+								<div className="flex gap-2">
 									<Link to="eventDetail(id: $entity.id)">
-										<Button>
+										<Button variant={'secondary'} size={'sm'}>
 											Detail
 										</Button>
 									</Link>
 									<HasRole role={'admin'}>
 										<Link to="eventEdit(id: $entity.id)">
-											<Button>
+											<Button variant={'secondary'} size={'sm'}>
 												Edit
 											</Button>
 										</Link>

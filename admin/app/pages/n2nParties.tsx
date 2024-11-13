@@ -48,15 +48,16 @@ export default () => {
 							<DataGridLoader>
 								<DataGridTable>
 									<DataGridColumn>
-										<div className="flex gap-4">
+										<div className="flex gap-2">
 											<Link to="n2nPartyDetail(id: $entity.id)">
-												<Button>
+												<Button variant={'secondary'} size={'sm'}>
 													Detail
 												</Button>
 											</Link>
 											<HasRole role={roles => roles.has('admin') || roles.has('coordinator') || roles.has('esnMember')}>
 												<CurrentEntityLazyModalEdit
 													dialogProps={{ className: 'overflow-y-auto max-h-screen' }}
+													buttonProps={{variant: 'secondary', size: 'sm'}}
 													buttonContent={
 														<span className="flex items-center">
 															Edit

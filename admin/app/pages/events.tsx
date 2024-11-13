@@ -5,6 +5,7 @@ import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
 import { WhatsappLink } from '@app/lib/utils/link'
 import { Component, Field, HasRole, Link, useEntity, useIdentity, useProjectUserRoles } from '@contember/interface'
+import { Edit, Eye, File } from 'lucide-react'
 
 export default () => {
 
@@ -55,14 +56,14 @@ const PersonalizedDataGrid = Component(
 					<DataGridLoader>
 						<DataGridTable>
 							<DataGridColumn>
-								<div className="flex gap-4">
+								<div className="flex gap-2">
 									<Link to="eventDetail(id: $entity.id)">
-										<Button>
+										<Button variant={'secondary'} size={'sm'}>
 											Detail
 										</Button>
 									</Link>
 									<Link to="eventEdit(id: $entity.id)">
-										<Button>
+										<Button variant={'secondary'} size={'sm'}>
 											Edit
 										</Button>
 									</Link>
@@ -96,9 +97,9 @@ const PersonalizedDataGrid = Component(
 					<DataGridLoader>
 						<DataGridTable>
 							<DataGridColumn>
-								<div className="flex gap-4">
+								<div className="flex gap-2">
 									<Link to="eventDetail(id: $entity.id)">
-										<Button>
+										<Button variant={'secondary'} size={'sm'}>
 											Detail
 										</Button>
 									</Link>
@@ -132,9 +133,9 @@ const PersonalizedDataGrid = Component(
 					<DataGridLoader>
 						<DataGridTable>
 							<DataGridColumn>
-								<div className="flex gap-4">
+								<div className="flex gap-2">
 									<Link to="eventDetail(id: $entity.id)">
-										<Button>
+										<Button variant={'secondary'} size={'sm'}>
 											Detail
 										</Button>
 									</Link>

@@ -31,16 +31,16 @@ export default () => {
 							<DataGridLoader>
 								<DataGridTable>
 									<DataGridColumn>
-										<div className="flex gap-4">
+										<div className="flex gap-2">
 											<Link to="n2nHourDetail(id: $entity.id)">
-												<a>
+												<Button variant={'secondary'} size={'sm'}>
 													Detail
-												</a>
+												</Button>
 											</Link>
 											<Link to="n2nHourEdit(id: $entity.id)">
-												<a>
+												<Button variant={'secondary'} size={'sm'}>
 													Edit
-												</a>
+												</Button>
 											</Link>
 										</div>
 									</DataGridColumn>

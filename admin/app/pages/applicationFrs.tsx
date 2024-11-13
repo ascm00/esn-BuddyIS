@@ -42,12 +42,7 @@ export default () => {
 								<DataGridTable>
 									<HasRole role={roles => roles.has('admin') || roles.has('coordinator')}>
 										<DataGridColumn>
-											<div className="flex gap-4">
-												<Link to="applicationFrEdit(id: $entity.id)">
-													<Button>
-														Edit
-													</Button>
-												</Link>
+											<div className="flex gap-2">
 												<HasRole role="admin">
 													<DeleteEntityModalButton 
 														message="Do you really want to delete?"
@@ -55,10 +50,15 @@ export default () => {
 														cancelTo={'applicationFrs'}
 														afterPersistTo={'applicationFrs'}
 													>
-														<Button variant={'destructive'}>
-															<TrashIcon />
+														<Button variant={'destructive'} size={'sm'}>
+															<TrashIcon className='w-4' />
 														</Button>
 													</DeleteEntityModalButton>
+													<Link to="applicationFrEdit(id: $entity.id)">
+														<Button variant={'secondary'} size={'sm'}>
+															Edit
+														</Button>
+													</Link>
 												</HasRole>
 											</div>
 										</DataGridColumn>

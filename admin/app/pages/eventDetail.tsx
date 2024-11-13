@@ -495,9 +495,9 @@ export default () => {
 									<DataGridLoader>
 										<DataGridTable>
 											<DataGridColumn>
-												<div className="flex gap-4">
+												<div className="flex gap-2">
 													<Link to="registrationDetail(id: $entity.id)">
-														<Button>Detail</Button>
+														<Button variant={'secondary'} size={'sm'}>Detail</Button>
 													</Link>
 												</div>
 											</DataGridColumn>
@@ -553,9 +553,9 @@ export default () => {
 									<DataGridLoader>
 										<DataGridTable>
 											<DataGridColumn>
-												<div className="flex gap-4">
+												<div className="flex gap-2">
 													<Link to="registrationDetail(id: $entity.id)">
-														<Button>Detail</Button>
+														<Button variant={'secondary'} size={'sm'}>Detail</Button>
 													</Link>
 												</div>
 											</DataGridColumn>
