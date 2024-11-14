@@ -522,6 +522,7 @@ export default () => {
 												<Field field="name" />
 											</DataGridHasManyColumn>
 											<DataGridTextColumn field="note" header="Note" />
+											<DataGridDateColumn field="createdAt" header="Registered At" children={<Field field="createdAt" format={formatDateTime} />}/>
 											<DataGridHasOneColumn field="personWhoMadeRegistration" header="Manually registered by">
 												<Field field="firstName" /> {' '} <Field field="surname" />
 											</DataGridHasOneColumn>
