@@ -37,14 +37,26 @@ export const createPayment = async (registration: EntityAccessor) => {
         url_pending: url_pending,
     }
 
-    console.log(data);
+    const checkStatusData = {
+      id: registration.getField('id').value?.toString()
+  }
 
       
     // web services API
     const apiUrl = 'https://t795yjlr41.execute-api.eu-north-1.amazonaws.com/testing_stage/create-payment';
+    const checkStatusUrl = 'https://t795yjlr41.execute-api.eu-north-1.amazonaws.com/testing_stage/payment-status'
   
   if(data.test && data.email && data.price && data.curr && data.label && data.refId && data.fullName && data.phoneNumber && data.url_paid && data.url_cancelled && data.url_pending) {
     try {
+
+      await fetch(checkStatusUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(checkStatusData),
+    });
+
       const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {

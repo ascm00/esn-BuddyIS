@@ -77,7 +77,6 @@ export const RegistrationCreateForm = Component<RegistrationCreateFormProps>(
     useEntityPersistSuccess(async() => {
         if(isPaid && !isOnWaitingList){
             await createPayment(entity)
-            await checkPaymentStatus(entity)
         }
     })
     
