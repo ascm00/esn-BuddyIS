@@ -1,0 +1,28 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "createTarget",
+			"target": {
+				"type": "webhook",
+				"name": "registration_created_target",
+				"url": "https://t795yjlr41.execute-api.eu-north-1.amazonaws.com/testing_stage/payment-status"
+			}
+		},
+		{
+			"modification": "createTrigger",
+			"trigger": {
+				"type": "basic",
+				"name": "registration_created",
+				"entity": "EventRegistration",
+				"create": true,
+				"delete": false,
+				"update": false,
+				"target": "registration_created_target",
+				"selection": [
+					"id"
+				]
+			}
+		}
+	]
+}
