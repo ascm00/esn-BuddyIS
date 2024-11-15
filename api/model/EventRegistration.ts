@@ -33,12 +33,12 @@ import { payment } from './enum'
 @c.Trigger({
 	name: 'registration_created',
 	create: true,
-	selection: 'id',
+	selection: `id`,
 	webhook: {
 		url: 'https://t795yjlr41.execute-api.eu-north-1.amazonaws.com/testing_stage/payment-status',
 		headers: {
 			'Content-Type': 'application/json',
-		}
+		},
 	}
   })
 export class EventRegistration {
