@@ -30,17 +30,17 @@ import { payment } from './enum'
 	create: true,
 	update: true,
 })
-@c.Trigger({
-	name: 'registration_created',
-	create: true,
-	selection: `id`,
-	webhook: {
-		url: 'https://t795yjlr41.execute-api.eu-north-1.amazonaws.com/testing_stage/payment-status',
-		headers: {
-			'Content-Type': 'application/json',
-		},
-	}
-  })
+// @c.Trigger({
+// 	name: 'registration_created',
+// 	create: true,
+// 	webhook: {
+// 		url: 'https://t795yjlr41.execute-api.eu-north-1.amazonaws.com/testing_stage/payment-status',
+// 		headers: {
+// 			'Content-Type': 'application/json',
+// 		},
+// 	},
+// 	selection: `id`,
+//   })
 export class EventRegistration {
 	createdAt = c.dateTimeColumn().notNull().default('now')
     payment = c.enumColumn(payment).default('pending')

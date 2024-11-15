@@ -11,6 +11,7 @@ import { createPayment } from '@app/lib/payment/comgate'
 import { Binding } from '@app/lib/binding'
 import { Button } from '@app/lib/ui/button'
 import React from 'react'
+import { checkPaymentStatus } from '@app/lib/payment/paymentStatus'
 
 interface RegistrationCreateFormProps {
     isOnWaitingList?: boolean
@@ -76,6 +77,7 @@ export const RegistrationCreateForm = Component<RegistrationCreateFormProps>(
     useEntityPersistSuccess(async() => {
         if(isPaid && !isOnWaitingList){
             await createPayment(entity)
+            await checkPaymentStatus(entity)
         }
     })
     

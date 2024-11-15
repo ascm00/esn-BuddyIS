@@ -1,0 +1,13 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "removeTrigger",
+			"name": "registration_created"
+		},
+		{
+			"modification": "removeTarget",
+			"name": "registration_created_target"
+		}
+	]
+}
