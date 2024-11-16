@@ -191,7 +191,7 @@ const LayoutCenterPanelUI = uic('div', { baseClass: 'flex flex-col flex-2 p-4 ga
 const LayoutCenterTopUI = uic('div', { baseClass: 'flex justify-between pb-4 mb-4 border-b' })
 
 const LayoutLeftSidebarUI = uic('div', {
-	baseClass: 'flex flex-col justify-between lg:border-r bg-white border-r-gray-300 lg:w-96 flex-auto gap-2 relative rounded-l-xl min-h-screen',
+	baseClass: 'flex flex-col justify-start lg:border-r bg-white border-r-gray-300 lg:w-96 flex-auto gap-2 relative rounded-l-xl min-h-screen',
 	variants: {
 		visibility: {
 			show: 'flex',
@@ -279,7 +279,7 @@ export const LayoutComponent = ({ children, ...rest }: PropsWithChildren<{}>) =>
 							<SlotTargets.Navigation />
 						</div> */}
 
-						<div className={'mt-auto rounded-bl py-2 px-2 pb-6 border-t'}>
+						<div className={'rounded-bl py-2 px-2 pb-6 border-t'}>
 							<LogoutTrigger>
 								<Button variant={'ghost'} size="sm" className="gap-2 hover:underline">
 									<LogOutIcon className="w-3 h-3 text-gray-500" /> {dict.logout}
