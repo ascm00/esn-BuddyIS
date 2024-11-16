@@ -196,7 +196,6 @@ const RegistrationNow = Component( () => {
 	</>
 ))
 
-
 const RegistrationAdminCreate = Component(
 	() => {
 		const entity = useEntity()
@@ -430,7 +429,7 @@ export default () => {
 									<TableBody>
 										<TableRow>
 											<TableCell className="text-2xl font-bold">
-												<EventPictureFieldView srcField="picture.url" width={100} height={100} />
+												<EventPictureFieldView />
 											</TableCell>
 										</TableRow>
 									</TableBody>
@@ -594,3 +593,5 @@ export default () => {
 		</>
 	)
 }
+
+

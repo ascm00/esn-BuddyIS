@@ -49,10 +49,10 @@ const AllEventsFeed = Component(() => {
 		start: new Date(buddyEvent.getField<string>('startDate').value!),
 		end: new Date(buddyEvent.getField<string>('endDate').value!),
 		price: `${buddyEvent.getField<number>('fee').value?.toString()}`,
-		contactPerson: `${buddyEvent.getField<string>('contactPerson.firstName').value?.toString()}  ${buddyEvent.getField<string>('contactPerson.surname').value?.toString()}`,
-		contactPhone: `${buddyEvent.getField<string>('contactPerson.phoneNumber').value?.toString()}`,
-		contactEmail: `${buddyEvent.getField<string>('contactPerson.tenantPerson.email').value?.toString()}`,
-		pictureUrl: `${buddyEvent.getField<string>('picture.url').value}`,
+		contactPerson: `${(buddyEvent.getField<string>('contactPerson.firstName').value?.toString() && buddyEvent.getField<string>('contactPerson.firstName').value?.toString() + ' ') ?? ''}${buddyEvent.getField<string>('contactPerson.surname').value?.toString() ?? ''}`,
+		contactPhone: `${buddyEvent.getField<string>('contactPerson.phoneNumber').value?.toString() ?? ''}`,
+		contactEmail: `${buddyEvent.getField<string>('contactPerson.tenantPerson.email').value?.toString() ?? ''}`,
+		pictureUrl: `${buddyEvent.getField<string>('picture.url').value ?? '/esn_star.png'}`,
 		whatsappLink: `${buddyEvent.getField<string>('whatsappLink').value}`,
 		link: `${buddyEvent.getField<string>('mapLink').value}`, //for events - link is mapLink
 	})).concat(n2nPartiesForESNMembers.map((party, index) => ({
@@ -67,7 +67,7 @@ const AllEventsFeed = Component(() => {
 		contactPerson: '',
 		contactPhone: '',
 		contactEmail: '',
-		pictureUrl: `${party.getField<string>('picture.url').value?.toString()}`,
+		pictureUrl: `${party.getField<string>('picture.url').value ?? 'esn_star.png'}`,
 		whatsappLink: '',
 		link: `${party.getField<string>('link').value?.toString()}`, // for N2N parties - link is tickets link
 	}))).sort((a, b) => a.start.getTime() - b.start.getTime())
@@ -163,6 +163,12 @@ const AllEventsFeed = Component(() => {
 
   const EventCard2 = Component(({event}: {event?: any}) => {
 
+	console.log(event.pictureUrl)
+	console.log(typeof(event.pictureUrl))
+	if(event.pictureUrl){
+		console.log('hellooo')
+	}
+
 	return (
 	<Card className='max-w-[95%] md:max-w-[82%] mx-auto bg-white shadow-md rounded-lg'>
   
@@ -205,12 +211,22 @@ const AllEventsFeed = Component(() => {
 		</div>
 	  </CardContent>
   
+	{ event.contactPerson &&
 	  <CardFooter className='bg-gray-50 border-t border-gray-200 py-4 px-6'>
+		{event.contactPhone &&
 		<p className='text-sm text-bold text-gray-500'>
 		  	<strong>Contact person</strong>
 			{' '} {event.contactPerson} {' ('} {event.contactEmail} {', '} {event.contactPhone} {')'}
 		</p>
+  		}
+		{!event.contactPhone &&
+		<p className='text-sm text-bold text-gray-500'>
+		  	<strong>Contact person</strong>
+			{' '} {event.contactPerson} {' ('}{event.contactEmail}{')'}
+		</p>
+  		}
 	  </CardFooter>
+  	}
 	</Card>
   )})
 
