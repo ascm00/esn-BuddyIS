@@ -67,7 +67,7 @@ const AllEventsFeed = Component(() => {
 		contactPerson: '',
 		contactPhone: '',
 		contactEmail: '',
-		pictureUrl: `${party.getField<string>('picture.url').value ?? 'esn_star.png'}`,
+		pictureUrl: `${party.getField<string>('picture.url').value ?? '/esn_star.png'}`,
 		whatsappLink: '',
 		link: `${party.getField<string>('link').value?.toString()}`, // for N2N parties - link is tickets link
 	}))).sort((a, b) => a.start.getTime() - b.start.getTime())
