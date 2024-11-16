@@ -467,7 +467,7 @@ export default () => {
 								<DataGrid entities="EventRegistration[(isWaitingList != true) && (event.id = $id) && (accepted = true)]" filteringStateStorage={'session'}>
 									<DataGridToolbar>
 										<DataGridQueryFilter />
-										<DataGridHasOneFilter field="person" label="User">
+										<DataGridHasOneFilter field="person" label="User" options={'Person[registrations[event.id = $id && accepted=true && isWaitingList=false]]'}>
 											<Field field="firstName" /> {' '} <Field field="surname" />
 										</DataGridHasOneFilter>
 										<DataGridHasManyFilter field="allergies" label="Allergies">
@@ -527,7 +527,7 @@ export default () => {
 								<DataGrid entities="EventRegistration[isWaitingList = true && event.id = $id && accepted = true]" filteringStateStorage={'session'}>
 									<DataGridToolbar>
 										<DataGridQueryFilter />
-										<DataGridHasOneFilter field="person" label="User">
+										<DataGridHasOneFilter field="person" label="User" options={'Person[registrations[event.id = $id && accepted=true && isWaitingList=true]]'}>
 											<Field field="firstName" /> {' '} <Field field="surname" />
 										</DataGridHasOneFilter>
 										<DataGridHasManyFilter field="allergies" label="Allergies">
