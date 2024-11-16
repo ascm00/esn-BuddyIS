@@ -133,7 +133,7 @@ export const PersonInvite = Component(
 					/>
 					<p className="text-xs text-gray-500">If user does not have one yet, write <strong>none</strong>.</p>
 				</div>
-				<ImageField baseField={'profilePicture'} urlField={'url'} />
+				<ImageField label='Profile picture' baseField={'profilePicture'} urlField={'url'} />
 				<HasRole role={roles => roles.has('admin') || roles.has('coordinator') || roles.has('esnMember') || roles.has('internationalStudent')}>
 					<div className='pb-2'>
 						<InputField field="esnCardId" label="ESN Card ID (not required until you get one)"/>
