@@ -7,6 +7,7 @@ import { Todo } from '@app/lib/dev'
 import { BlockEditorField } from '@app/lib/plugins/rich-text/editor'
 import { RichTextEditor } from '@contember/react-slate-editor-base'
 import { RichTextField } from '@app/lib/editor'
+import { PersistButton } from '@app/lib/binding'
 
 export const EventCreateForm = Component(() => {
 
@@ -98,6 +99,9 @@ export const EventCreateForm = Component(() => {
 		<CheckboxField field="isForInternationalStudents" label="International students" defaultValue={false}/>
 		<CheckboxField field="isForCzechBuddies" label="Czech buddies" defaultValue={false}/>
 		<CheckboxField field="isForESNmembers" label="ESN members" defaultValue={false}/>
+		<div className='flex flex-col space-y-4 w-36 pt-4'>
+			<PersistButton label='Save data' />
+		</div>
 	</FormLayout>)
 	}, () => (
 		<>

@@ -200,7 +200,7 @@ const AllEventsFeed = Component(() => {
 					<strong>💰 Price</strong> {event.price} {' CZK'}
 				</p>
 				<p className='text-lg text-gray-600'>
-					<WhatsappLinkFromString link={event.link} text='🔗 WhatsApp group link' />
+					<WhatsappLinkFromString link={event.whatsappLink} text='🔗 WhatsApp group link' />
 				</p>
 			</div>
 			{event.pictureUrl &&

@@ -1,3 +1,4 @@
+import { PersistButton } from '@app/lib/binding'
 import { Todo } from '@app/lib/dev'
 import { CheckboxField, FormLayout, InputField, RadioEnumField, SelectField, TextareaField } from '@app/lib/form'
 import { ImageField } from '@app/lib/plugins/image/ImageField'
@@ -85,4 +86,7 @@ export const EventEditForm = Component(() => <FormLayout>
 	<CheckboxField field="isForInternationalStudents" label="International students" defaultValue={false}/>
 	<CheckboxField field="isForCzechBuddies" label="Czech buddies" defaultValue={false}/>
 	<CheckboxField field="isForESNmembers" label="ESN members" defaultValue={false}/>
+	<div className='flex flex-col space-y-4 w-36 pt-4'>
+		<PersistButton label='Save data' />
+	</div>
 </FormLayout>)
