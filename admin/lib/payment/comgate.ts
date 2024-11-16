@@ -55,7 +55,7 @@ export const createPayment = async (registration: EntityAccessor) => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(checkStatusData),
-    });
+      });
 
       const response = await fetch(apiUrl, {
         method: 'POST',
