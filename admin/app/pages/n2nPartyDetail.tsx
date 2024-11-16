@@ -52,7 +52,7 @@ export default () => {
 								</DeleteEntityModalButton>
 							</HasRole>
 						</Slots.Actions>
-						<div className="flex gap-8 flex-col md:flex-row">
+						<div className="flex gap-24 flex-col md:flex-row">
 							<div className="w-full gap-8 flex flex-col">
 								<TableWrapper className="bg-gray-50/50 max-w-lg border rounded-md">
 									<Table>
@@ -108,17 +108,7 @@ export default () => {
 								</TableWrapper>
 							</div>
 							<div className="w-full gap-8 flex flex-col">
-								<TableWrapper className="bg-gray-50/50 border rounded-md">
-									<Table>
-									<TableBody>
-										<TableRow>
-											<TableCell className="text-2xl font-bold">
-												<EventPictureFieldView />
-											</TableCell>
-										</TableRow>
-									</TableBody>
-									</Table>
-								</TableWrapper>
+								<EventPictureFieldView />
 							</div>
 						</div>
 					</EntitySubTree>

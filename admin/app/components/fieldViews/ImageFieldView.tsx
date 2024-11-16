@@ -55,8 +55,8 @@ export const EventPictureFieldView = Component(
 		const pictureUrl = entity.getField<string>('picture.url').value ?? '/esn_star.png'
 		
 		return(
-			<div className='flex-none rounded-lg overflow-hidden w-full md:w-100 aspect-square mx-auto'>
-				<img src={pictureUrl} alt="Image" className={`h-full w-full object-cover border rounded-lg`} />
+			<div className='rounded-lg overflow-hidden'>
+				<img src={pictureUrl} alt="Image" className={`h-full w-full object-cover border rounded-lg max-h-md max-w-md`} />
 			</div>
 		)
 	},
@@ -66,21 +66,4 @@ export const EventPictureFieldView = Component(
 		</>
 	),
 	'ImageFieldView',
-)
-
-const EventPictureField = Component(
-	() => {
-		const entity = useEntity()
-		const pictureUrl = entity.getField<string>('picture.url').value ?? '/esn_star.png'
-
-		return(
-			<div className='flex-none rounded-lg overflow-hidden w-full md:w-100 aspect-square mx-auto'>
-				<img src={pictureUrl} alt="Image" className={`h-full w-full object-cover border rounded-lg`} />
-			</div>
-		)
-	}, () => (
-		<>
-			<Field field={'picture.url'} />
-		</>
-	)
 )

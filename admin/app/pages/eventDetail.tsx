@@ -81,20 +81,20 @@ const RegistrationNow = Component( () => {
 
 	if (eventAlreadyHappened) {
 		return (
-			<div className='bg-blue-200 p-4 rounded-md max-w-lg'>
+			<div className='bg-blue-200 p-4 rounded-md max-w-md'>
 				<div className='text-500'>This event has already happened.</div>
 			</div>
 		)
 	} else if (registered()) {
 		return (
-			<div className='bg-blue-200 p-4 rounded-md max-w-lg'>
+			<div className='bg-blue-200 p-4 rounded-md max-w-md'>
 				<div className='text-500'>You are already registered for this event. If you want to cancel your registration, contact us via email.</div>
 			</div>
 		)
 	} else {
 		if(notForMe) {
 			return (
-				<div className='bg-blue-200 p-4 rounded-md max-w-lg'>
+				<div className='bg-blue-200 p-4 rounded-md max-w-md'>
 					<div className='text-500'>Unfortunately this event is not for your user role.</div>
 				</div>
 			)
@@ -139,7 +139,7 @@ const RegistrationNow = Component( () => {
 
 				return (
 					<>
-						<div className='bg-blue-200 p-4 rounded-md max-w-lg'>
+						<div className='bg-blue-200 p-4 rounded-md max-w-md'>
 							<div className='text-500'>Event is full, but you can join waiting list.</div>
 						</div>
 						<div className='flex gap-6 flex-col md:flex-row'>
@@ -160,7 +160,7 @@ const RegistrationNow = Component( () => {
 				)
 			} else {
 				return (
-					<div className='bg-blue-200 p-4 rounded-md max-w-lg'>
+					<div className='bg-blue-200 p-4 rounded-md max-w-md'>
 						<div className='text-500'>Event is full.</div>
 					</div>
 				)
@@ -316,9 +316,9 @@ export default () => {
 								</HasRole>
 							</Slots.Actions>
 						</HasRole>
-						<div className="flex gap-8 flex-col md:flex-row">
-							<div className="w-full gap-8 flex flex-col">
-							<TableWrapper className="bg-gray-50/50 max-w-lg border rounded-md">
+						<div className="flex justify-between gap-24 flex-col md:flex-row">
+							<div className="w-full gap-4 flex flex-col">
+							<TableWrapper className="bg-gray-50/50 max-w-xl border rounded-md">
 								<Table>
 									<TableBody>
 										<TableRow>
@@ -355,22 +355,6 @@ export default () => {
 										</TableRow>
 										<TableRow>
 											<TableCell>
-												Registration starts
-											</TableCell>
-											<TableCell className="font-semibold">
-												<Field field="registrationStartDate" format={formatDateTimeShort} />
-											</TableCell>
-										</TableRow>
-										<TableRow>
-											<TableCell>
-												Registration ends
-											</TableCell>
-											<TableCell className="font-semibold">
-												<Field field="registrationEndDate" format={formatDateTimeShort} />
-											</TableCell>
-										</TableRow>
-										<TableRow>
-											<TableCell>
 												Place
 											</TableCell>
 											<TableCell className="font-semibold">
@@ -401,6 +385,59 @@ export default () => {
 												<WhatsappLink />
 											</TableCell>
 										</TableRow>
+									</TableBody>
+								</Table>
+							</TableWrapper>
+							<TableWrapper className="bg-gray-50/50 max-w-xl h-fit border rounded-md">
+								<Table>
+									<TableRow>
+										<TableCell>
+											Description
+										</TableCell>
+									</TableRow>
+									<TableRow>
+										<TableCell className="font-semibold">
+											<Field field="description" />
+										</TableCell>
+									</TableRow>
+								</Table>
+							</TableWrapper>
+							<TableWrapper className="bg-gray-50/50 max-w-xl h-fit border rounded-md">
+								<Table>
+									<TableRow>
+										<TableCell>
+											Refund policy
+										</TableCell>
+									</TableRow>
+									<TableRow>
+										<TableCell className="font-semibold">
+											<Field field={'refundPolicy'} />
+										</TableCell>
+									</TableRow>
+								</Table>
+							</TableWrapper>
+							</div>
+
+							<div className="w-full flex flex-col gap-4">
+								<EventPictureFieldView />
+								<TableWrapper className="bg-gray-50/50 max-w-md border rounded-md">
+									<Table>
+										<TableRow>
+											<TableCell>
+												Registration starts
+											</TableCell>
+											<TableCell className="font-semibold">
+												<Field field="registrationStartDate" format={formatDateTimeShort} />
+											</TableCell>
+										</TableRow>
+										<TableRow>
+											<TableCell>
+												Registration ends
+											</TableCell>
+											<TableCell className="font-semibold">
+												<Field field="registrationEndDate" format={formatDateTimeShort} />
+											</TableCell>
+										</TableRow>
 										<TableRow>
 											<TableCell>
 												Registered + on waiting list
@@ -417,55 +454,9 @@ export default () => {
 												<Field field="capacity" />
 											</TableCell>
 										</TableRow>
-									</TableBody>
-								</Table>
-							</TableWrapper>
-							<RegistrationNow />
-							</div>
-
-							<div className="w-full flex flex-col gap-4">
-								<TableWrapper className="bg-gray-50/50 border rounded-md">
-									<Table>
-									<TableBody>
-										<TableRow>
-											<TableCell className="text-2xl font-bold">
-												<EventPictureFieldView />
-											</TableCell>
-										</TableRow>
-									</TableBody>
 									</Table>
 								</TableWrapper>
-								<TableWrapper className="bg-gray-50/50 h-fit border rounded-md">
-									<Table>
-										<TableRow>
-											<TableCell>
-												Description
-											</TableCell>
-										</TableRow>
-										<TableRow>
-											<TableCell className="font-semibold">
-												{/* <HasOne field="description">
-													<Field field="data" />
-												</HasOne> */}
-												<Field field="description" />
-											</TableCell>
-										</TableRow>
-									</Table>
-								</TableWrapper>
-								<TableWrapper className="bg-gray-50/50 h-fit border rounded-md">
-									<Table>
-										<TableRow>
-											<TableCell>
-												Refund policy
-											</TableCell>
-										</TableRow>
-										<TableRow>
-											<TableCell className="font-semibold">
-												<Field field={'refundPolicy'} />
-											</TableCell>
-										</TableRow>
-									</Table>
-								</TableWrapper>
+								<RegistrationNow />
 							</div>
 						</div>
 						<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('coordinator')}>
