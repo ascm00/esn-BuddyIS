@@ -78,14 +78,6 @@ export default () => {
 												<Field field="czechStudent.phoneNumber" />
 											</TableCell>
 										</TableRow>
-										<TableRow>
-											<TableCell>
-												Home university country
-											</TableCell>
-											<TableCell className="font-semibold">
-												<Field field="czechStudent.countryOfUniversity.name" />
-											</TableCell>
-										</TableRow>
 									</TableBody>
 								</Table>
 							</TableWrapper>

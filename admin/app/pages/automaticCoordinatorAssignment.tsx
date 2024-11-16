@@ -48,6 +48,11 @@ const AutomaticCoordinatorAssignment = Component(() => {
 			// assign coordinators to buddy pairs
 			let i = 0
 			for (const buddyPair of currentSemesterBuddyPairs) {
+				if(coordinators.length === 0){
+					setMessage(message => message + '\n' + 'There are currently no coordinators in the system.')
+					setIsPairing(false)
+					break
+				}
 				if (i >= coordinators.length) {
 					i = 0
 				}
