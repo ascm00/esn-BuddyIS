@@ -37,12 +37,16 @@ const MyEvents = Component(
         const registrations = Array.from(currentUser.getEntityList('registrations'))
         
         registrations.forEach(registration => {
-            const startDate = registration?.getEntity('event')?.getField('startDate')?.value
-            if (typeof startDate === 'string' || typeof startDate === 'number') {
+			if(registration.getField('accepted').value === false){
+				registrations.splice(registrations.indexOf(registration), 1)
+			} else {
+				const startDate = registration?.getEntity('event')?.getField('startDate')?.value
+            	if (typeof startDate === 'string' || typeof startDate === 'number') {
                 if (new Date(startDate) < new Date()) {
                     registrations.splice(registrations.indexOf(registration), 1)
                 }
             }
+			}
         })
 
         if (registrations.length === 0) {
@@ -106,6 +110,7 @@ const MyEvents = Component(
         <>
         <EntitySubTree entity={`Person(tenantPerson.id = '${env.getExtension(identityEnvironmentExtension).identity?.person?.id}')`} alias={'currentUser'}>
             <HasMany field="registrations">
+				<Field field={'accepted'} />
                 <HasOne field={`event`}>
                     <Field field="name" />
                     <Field field="startDate" />
