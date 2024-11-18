@@ -168,7 +168,7 @@ const RegistrationNow = Component( () => {
 		} else {
 
 			return (
-				<div className='bg-blue-200 p-4 rounded-md max-w-lg'>
+				<div className='bg-blue-200 p-4 rounded-md max-w-md'>
 					<div className='text-500'>Registration for this event is not open now. It is open from {formattedRegistrationStartDate} to {formattedRegistrationEndDate}.</div>
 				</div>
 			)
