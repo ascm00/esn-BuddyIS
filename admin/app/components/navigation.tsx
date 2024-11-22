@@ -60,9 +60,7 @@ export const Navigation = Component(
 		<Collapsible>
 				<CollapsibleTrigger>Coordinating</CollapsibleTrigger>
 				<CollapsibleContent>
-					<HasRole role={roles => roles.has('admin')}>
-						<MenuItem label="All buddy pairs" icon={<Users className='text-blue-500' />} to="buddyPairs" />
-					</HasRole>
+					<MenuItem label="All buddy pairs" icon={<Users className='text-blue-500' />} to="buddyPairs" />
 					<MenuItem label="My buddy pairs" icon={<Users2 className='text-blue-500' />} to="myBuddyPairs" />		
 				</CollapsibleContent>
 		</Collapsible>

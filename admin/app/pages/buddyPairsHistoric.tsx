@@ -42,7 +42,7 @@ export default () => {
 								<DataGridHasOneFilter field="coordinator" label="Coordinator">
 									<Field field="firstName" /> {' '} <Field field="surname" />
 								</DataGridHasOneFilter>
-								<DataGridBooleanFilter field="tenPoints" label="10 points" />
+								<DataGridBooleanFilter field="tenPoints" label="10 points" noNullFilter />
 							</DataGridToolbar>
 							<DataGridLoader>
 								<DataGridTable>

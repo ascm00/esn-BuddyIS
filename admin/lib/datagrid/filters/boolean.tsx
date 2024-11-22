@@ -14,14 +14,15 @@ import { DataGridFilterMobileHiding } from './mobile'
 type DataGridBooleanFilterProps =
 	& Omit<DataViewBooleanFilterProps, 'children'>
 	& {
-		label: ReactNode
+		label: ReactNode,
+		noNullFilter?: boolean
 }
 
-export const DataGridBooleanFilter = Component(({ label, ...props }: DataGridBooleanFilterProps) => (
+export const DataGridBooleanFilter = Component(({ label, noNullFilter, ...props }: DataGridBooleanFilterProps) => (
 	<DataViewBooleanFilter {...props}>
 		<DataGridFilterMobileHiding>
 			<DataGridSingleFilterUI>
-				<DataGridBooleanFilterSelect label={label} />
+				<DataGridBooleanFilterSelect label={label} noNullFilter={noNullFilter ?? false} />
 				<DataGridBooleanFilterList />
 			</DataGridSingleFilterUI>
 		</DataGridFilterMobileHiding>
@@ -47,8 +48,9 @@ export const DataGridBooleanFilterList = () => (
 )
 
 
-export const DataGridBooleanFilterSelect = ({ label }: {
+export const DataGridBooleanFilterSelect = ({ label, noNullFilter }: {
 	label?: ReactNode
+	noNullFilter?: boolean
 }) => (
 	<Popover>
 		<PopoverTrigger asChild>
@@ -69,7 +71,7 @@ export const DataGridBooleanFilterSelect = ({ label }: {
 						</DataViewBooleanFilterTrigger>
 					))}
 				</div>
-				<DataGridNullFilter />
+				{!noNullFilter && <DataGridNullFilter />}
 			</div>
 		</PopoverContent>
 	</Popover>

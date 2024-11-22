@@ -22,7 +22,7 @@ export default () => {
 						<DataGrid entities={`BuddyPair[coordinator.tenantPerson.id='${personId}' && semester.isCurrent=true]`}>
 							<DataGridToolbar>
 								<DataGridQueryFilter />
-								<DataGridBooleanFilter field="tenPoints" label="10 points" />
+								<DataGridBooleanFilter field="tenPoints" label="10 points" noNullFilter />
 							</DataGridToolbar>
 							<DataGridLoader>
 								<DataGridTable>
