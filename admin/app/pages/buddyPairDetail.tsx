@@ -10,7 +10,7 @@ import { Button } from '@app/lib/ui/button'
 import { Table, TableBody, TableCell, TableRow, TableWrapper } from '@app/lib/ui/table'
 import { TextareaAutosize } from '@app/lib/ui/textarea'
 import { ImageFieldView } from '@app/components/fieldViews/ImageFieldView'
-import { Component, EntityAccessor, EntitySubTree, Field, HasMany, HasOne, HasRole, identityEnvironmentExtension, Link, useEntity, useEntityBeforePersist, useEntityPersistSuccess, useEntitySubTree } from '@contember/interface'
+import { Component, EntityAccessor, EntitySubTree, Field, HasMany, HasOne, HasRole, identityEnvironmentExtension, Link, RedirectOnPersist, useCurrentRequest, useEntity, useEntityBeforePersist, useEntityPersistSuccess, useEntitySubTree, useRedirect } from '@contember/interface'
 import { useCallback, useState } from 'react'
 import { DeleteEntityModalButton } from '@app/lib/buttons/deleteEntityModalButton'
 import { CurrentEntityLazyModalEdit } from '@app/lib/buttons/modalEdit'
@@ -246,9 +246,9 @@ export default () => {
 								filteringStateStorage={'session'}
 								initialSorting={{ createdAt: 'desc' }}
 							>
-								<DataGridToolbar>
+								{/* <DataGridToolbar>
 									<DataGridQueryFilter />
-								</DataGridToolbar>
+								</DataGridToolbar> */}
 								<DataGridLoader>
 									<DataGridNotes>
 										<NoteCard />
@@ -320,6 +320,7 @@ const UnpairButton = Component(() => {
 const AddNoteArea = Component(
 	() => {
 		const persist = usePersistWithFeedback()
+		const req = useCurrentRequest()
 		const entity = useEntity()
 		const notesList = entity.getEntityList('notes')
 		const currentUser = useEntitySubTree('currentUser')
@@ -344,6 +345,7 @@ const AddNoteArea = Component(
 					</Button>
 				</div>
 				<TextareaAutosize className="h-28" value={noteContent} onChange={e => setNoteContent(e.target.value)} />
+				<RedirectOnPersist to={req} />
 			</div>
 		)
 	},
