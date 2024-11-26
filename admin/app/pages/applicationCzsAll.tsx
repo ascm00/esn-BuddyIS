@@ -1,6 +1,6 @@
 import { Binding } from '@app/lib/binding'
 import { BackButton } from '@app/lib/buttons'
-import { DataGrid, DataGridColumn, DataGridEnumColumn, DataGridHasManyColumn, DataGridHasOneColumn, DataGridLoader, DataGridNumberColumn, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
+import { DataGrid, DataGridColumn, DataGridEnumColumn, DataGridEnumFilter, DataGridHasManyColumn, DataGridHasManyFilter, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridNumberColumn, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
 import { Field, HasRole, Link } from '@contember/interface'
@@ -27,6 +27,16 @@ export default () => {
 						<DataGrid entities="ApplicationCz">
 							<DataGridToolbar>
 								<DataGridQueryFilter />
+								<DataGridHasOneFilter field={'person.studyProgram'} label="Study Program">
+									<Field field={'name'} />
+								</DataGridHasOneFilter>
+								<DataGridHasManyFilter field={'person.languages'} label="Languages spoken">
+									<Field field={'name'} />
+								</DataGridHasManyFilter>
+								<DataGridHasManyFilter field={'preferredLanguages'} label="Preferred languages">
+									<Field field={'name'} />
+								</DataGridHasManyFilter>
+								<DataGridEnumFilter field={'preferredSex'} label="Preferred gender" options={{ man: 'Man', woman: 'Woman', dontCare: 'Not preferred' }} />
 							</DataGridToolbar>
 							<DataGridLoader>
 								<DataGridTable>
@@ -59,7 +69,7 @@ export default () => {
 									<DataGridEnumColumn
 										field="preferredSex"
 										header="Preferred gender"
-										options={{ man: 'man', woman: 'woman', dontCare: 'dontCare' }}
+										options={{ man: 'man', woman: 'woman', dontCare: 'Dont care' }}
 									/>
 									{/* <DataGridEnumColumn field="result" header="Result" options={{ accepted: 'accepted', declined: 'declined' }} /> */}
 								</DataGridTable>

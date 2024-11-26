@@ -1,6 +1,6 @@
 import { Binding } from '@app/lib/binding'
 import { BackButton } from '@app/lib/buttons'
-import { DataGrid, DataGridColumn, DataGridEnumColumn, DataGridHasManyColumn, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridNumberColumn, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
+import { DataGrid, DataGridColumn, DataGridEnumColumn, DataGridEnumFilter, DataGridHasManyColumn, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridNumberColumn, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
 import { Field, HasRole, Link } from '@contember/interface'
@@ -33,6 +33,16 @@ export default () => {
 								<DataGridHasOneFilter field={'person.studyProgram'} label={'Study program'}>
 									<Field field={'name'} />
 								</DataGridHasOneFilter>
+								<DataGridHasOneFilter field={'person.countryOfUniversity'} label={'Country of University'}>
+									<Field field={'name'} />
+								</DataGridHasOneFilter>
+								<DataGridHasOneFilter field={'person.languages'} label="Languages spoken">
+									<Field field={'name'} />
+								</DataGridHasOneFilter>
+								<DataGridEnumFilter field="preferredBuddySex"
+										label="Preferred buddy gender"
+										options={{ man: 'Man', woman: 'Woman', dontCare: 'Not preferred' }}
+								/>
 							</DataGridToolbar>
 							<DataGridLoader>
 								<DataGridTable>
@@ -62,6 +72,11 @@ export default () => {
 										field="preferredBuddySex"
 										header="Preferred buddy gender"
 										options={{ man: 'man', woman: 'woman', dontCare: 'dontCare' }}
+									/>
+									<DataGridEnumColumn
+										field="status"
+										header="Status"
+										options={{ toBePaired: 'To be paired', paired: 'Paired', notPaired: 'Not paired' }}
 									/>
 								</DataGridTable>
 							</DataGridLoader>
