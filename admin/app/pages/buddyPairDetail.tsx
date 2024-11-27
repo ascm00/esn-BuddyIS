@@ -272,9 +272,7 @@ const UnpairButton = Component(() => {
 		Array.from(czechStudent.getEntityList('applications')).forEach(application => {
 			if(application.getEntity('semester').getField('isCurrent').value === true) {
 				application.getField('status').updateValue('toBePaired')
-				let howManyBuddiesAssigned = application.getField<number>('howManyBuddiesAssigned').value ?? 1 // default value is 1 because we are unpairing
-				howManyBuddiesAssigned = howManyBuddiesAssigned - 1
-				application.getField('howManyBuddiesAssigned').updateValue(howManyBuddiesAssigned)
+
 			}
 		})
 	})
@@ -301,7 +299,7 @@ const UnpairButton = Component(() => {
 				</HasOne>
 				<Field field="status" />
 				<Field field="howManyBuddies" />
-				<Field field="howManyBuddiesAssigned" />
+				<Field field="howManyBuddiesAssigned.number" />
 			</HasMany>
 		</EntitySubTree>
 		<EntitySubTree entity="Person(internationalBuddyPair.id = $id)" alias={'internationalStudent'}>

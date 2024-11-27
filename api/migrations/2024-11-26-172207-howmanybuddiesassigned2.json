@@ -1,0 +1,119 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "removeEntity",
+			"entityName": "howManyBuddiesAssigned"
+		},
+		{
+			"modification": "createView",
+			"entity": {
+				"name": "howManyBuddiesAssigned",
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "how_many_buddies_assigned",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"columnType": "uuid",
+						"nullable": false,
+						"type": "Uuid"
+					},
+					"applicationCz": {
+						"type": "OneHasOne",
+						"name": "applicationCz",
+						"target": "ApplicationCz",
+						"joiningColumn": {
+							"columnName": "application_cz_id",
+							"onDelete": "restrict"
+						},
+						"nullable": true,
+						"inversedBy": "howManyBuddiesAssigned"
+					},
+					"number": {
+						"name": "number",
+						"columnName": "number",
+						"columnType": "integer",
+						"nullable": true,
+						"type": "Integer"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				},
+				"view": {
+					"sql": "\n\tSELECT\n\t\tgen_random_uuid() AS id,\n\t\tCOUNT(bp.id) AS number\n\tFROM\n\t\tapplication_cz AS ac\n\tJOIN\n\t\tbuddy_pair AS bp ON bp.czech_student_id = ac.person_id\n\tWHERE\n\t\tac.semester_id = bp.semester_id\n\tGROUP BY\n\t\tac.id\n"
+				}
+			}
+		},
+		{
+			"modification": "createRelationInverseSide",
+			"entityName": "ApplicationCz",
+			"relation": {
+				"type": "OneHasOne",
+				"name": "howManyBuddiesAssigned",
+				"target": "howManyBuddiesAssigned",
+				"ownedBy": "applicationCz",
+				"nullable": true
+			}
+		},
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/ApplicationCz/operations/create/howManyBuddiesAssigned",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/ApplicationCz/operations/update/howManyBuddiesAssigned",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/ApplicationCz/operations/read/howManyBuddiesAssigned",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/ApplicationCz/operations/create/howManyBuddiesAssigned",
+					"value": "person_personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/ApplicationCz/operations/update/howManyBuddiesAssigned",
+					"value": "person_personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/ApplicationCz/operations/read/howManyBuddiesAssigned",
+					"value": "person_personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/ApplicationCz/operations/create/howManyBuddiesAssigned",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/ApplicationCz/operations/update/howManyBuddiesAssigned",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/ApplicationCz/operations/read/howManyBuddiesAssigned",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/ApplicationCz/operations/read/howManyBuddiesAssigned",
+					"value": true
+				}
+			]
+		}
+	]
+}

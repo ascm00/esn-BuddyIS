@@ -65,12 +65,11 @@ const AutomaticPairing = Component(
                     if (czechStudentApplication && internationalStudentApplication) {
 
 
-                        const howManyBuddiesAssigned = czechStudentApplication.getField<number>('howManyBuddiesAssigned').value ?? 0
+                        const howManyBuddiesAssigned = czechStudentApplication.getField<number>('howManyBuddiesAssigned.number').value ?? 0
                         const howManyBuddies = czechStudentApplication.getField<number>('howManyBuddies').value ?? 0
 
-                        czechStudentApplication.updateValues({howManyBuddiesAssigned: howManyBuddiesAssigned + 1})
 
-                        if((howManyBuddiesAssigned + 1) >= howManyBuddies) {
+                        if(howManyBuddiesAssigned >= howManyBuddies) {
                             czechStudentApplication.getField('status').updateValue('paired')
                         }
 
@@ -230,7 +229,7 @@ const AutomaticPairing = Component(
                 <Field field={'preferredSex'} />
                 <Field field={'preferredCountry.name'} />
                 <Field field={'howManyBuddies'} />
-                <Field field={'howManyBuddiesAssigned'} />
+                <Field field={'howManyBuddiesAssigned.number'} />
             </EntityListSubTree>
             <EntityListSubTree entities={'ApplicationFr[status="toBePaired" && semester.isCurrent=true]'} alias={'currentSemesterFrApplications'}>
                 <Field field={'status'} />

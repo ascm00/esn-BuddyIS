@@ -291,7 +291,7 @@ const ApplicationCzDataGrid = Component(() => {
                                     <DataGridHasManyColumn field="preferredLanguages" header="Preferred languages">
                                         <Field field="name" />
                                     </DataGridHasManyColumn>
-                                    <DataGridNumberColumn field="howManyBuddiesAssigned" header="Number of buddies assigned" />
+                                    <DataGridNumberColumn field="howManyBuddiesAssigned.number" header="Number of buddies assigned" />
                                     <DataGridNumberColumn field="howManyBuddies" header="Maximum number of buddies" />
 								</DataGridTable>
 							</DataGridLoader>

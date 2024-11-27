@@ -5,6 +5,7 @@ import { Semester } from './Semester'
 import { Country } from './Country'
 import { Person } from './Person'
 import { Language } from './Language'
+import { oneHasOne } from '@contember/schema-definition/dist/src/model/definition'
 
 
 @c.Allow(esnMemberRole, {
@@ -34,10 +35,29 @@ export class ApplicationCz {
 	semester = c.manyHasOne(Semester, 'applications').setNullOnDelete()
 	motivation = c.stringColumn()
 	howManyBuddies = c.intColumn()
-	howManyBuddiesAssigned = c.intColumn().default(0)
+	howManyBuddiesAssigned = c.oneHasOneInverse(howManyBuddiesAssigned, 'applicationCz')
 	status = c.enumColumn(applicationStatus).default('toBePaired')
 	result = c.enumColumn(applicationCzResult)
 	preferredCountry = c.manyHasOne(Country, 'preferredApplicationsCz').setNullOnDelete()
 	preferredLanguages = c.manyHasMany(Language, 'applicationsCz')
 	preferredSex = c.enumColumn(preferredSex)
+}
+
+@c.View(`
+	SELECT
+		gen_random_uuid() AS id,
+		ac.id as application_cz_id,
+		COUNT(bp.id) AS number
+	FROM
+		application_cz AS ac
+	JOIN
+		buddy_pair AS bp ON bp.czech_student_id = ac.person_id
+	WHERE
+		ac.semester_id = bp.semester_id
+	GROUP BY
+		ac.id
+`)
+export class howManyBuddiesAssigned {
+	applicationCz = c.oneHasOne(ApplicationCz, 'howManyBuddiesAssigned')
+	number = c.intColumn()
 }

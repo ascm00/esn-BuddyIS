@@ -72,6 +72,8 @@ export default () => {
 										options={{ man: 'man', woman: 'woman', dontCare: 'Dont care' }}
 									/>
 									{/* <DataGridEnumColumn field="result" header="Result" options={{ accepted: 'accepted', declined: 'declined' }} /> */}
+									<DataGridNumberColumn header="Buddies assigned" field='howManyBuddiesAssigned.number' />
+									<DataGridNumberColumn header="Max buddies" field='howManyBuddies' />
 								</DataGridTable>
 							</DataGridLoader>
 							<DataGridPagination />

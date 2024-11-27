@@ -51,7 +51,8 @@ export const ContemberClientNames: SchemaNames = {
           "type": "column"
         },
         "howManyBuddiesAssigned": {
-          "type": "column"
+          "type": "one",
+          "entity": "howManyBuddiesAssigned"
         },
         "status": {
           "type": "column"
@@ -77,7 +78,6 @@ export const ContemberClientNames: SchemaNames = {
         "points",
         "motivation",
         "howManyBuddies",
-        "howManyBuddiesAssigned",
         "status",
         "result",
         "preferredSex"
@@ -1166,6 +1166,25 @@ export const ContemberClientNames: SchemaNames = {
         "id",
         "createdAt",
         "name"
+      ]
+    },
+    "howManyBuddiesAssigned": {
+      "name": "howManyBuddiesAssigned",
+      "fields": {
+        "id": {
+          "type": "column"
+        },
+        "applicationCz": {
+          "type": "one",
+          "entity": "ApplicationCz"
+        },
+        "number": {
+          "type": "column"
+        }
+      },
+      "scalars": [
+        "id",
+        "number"
       ]
     }
   }

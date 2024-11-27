@@ -192,7 +192,7 @@ export const galeShapleyCzechFirst = async(czechStudents: Array<EntityAccessor>,
 
 // Přidáme funkci pro získání počtu již přiřazených buddies
 const getAssignedBuddiesCount = (student: EntityAccessor): number => {
-  const value = student.getField('howManyBuddiesAssigned').value
+  const value = student.getField('howManyBuddiesAssigned.number').value
   return typeof value === 'number' ? value : parseInt(value as string, 10) || 0
 }
 
