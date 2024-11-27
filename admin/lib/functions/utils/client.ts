@@ -38,9 +38,7 @@ export async function contentClient<T>(env: Env, query: {
 
 export const tenantClient = (env: Env, query: { query: string, variables?: Record<string, any> }, token?: string) => {
 	let url = new URL(env.VITE_CONTEMBER_ADMIN_API_BASE_URL)
-	if(import.meta.env.DEV === true){
-		url.pathname = `/tenant`
-	}
+	url.pathname = `/tenant`
 
 	return fetch(url.toString(), {
 		method: 'POST',
