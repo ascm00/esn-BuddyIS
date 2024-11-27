@@ -11,10 +11,9 @@ export type ComgateCreatePaymentResult = {
 
 export const createPayment = async (registration: EntityAccessor) => {
 
-  // zatím nefunguje import.meta.env.BASE_URL, proto
-  const start = 'https://esn-buddy-is.eu.contember.cloud'
+  const start = import.meta.env.VITE_APP_URL
 
-  const url_paid = start + '/app/registration-payment-successful?id=' + registration.getField('event.id').value?.toString()
+  const url_paid = start + '/registration-payment-successful?id=' + registration.getField('event.id').value?.toString()
   const url_cancelled = start + '/registration-payment-unsuccessful?id=' + registration.getField('event.id').value?.toString()
   const url_pending = start + '/registration-payment-pending?id=' + registration.getField('event.id').value?.toString()
   const price1 = registration.getEntity('event').getField<number>('fee').value
@@ -43,8 +42,8 @@ export const createPayment = async (registration: EntityAccessor) => {
 
       
     // web services API
-    const apiUrl = 'https://t795yjlr41.execute-api.eu-north-1.amazonaws.com/testing_stage/create-payment';
-    const checkStatusUrl = 'https://t795yjlr41.execute-api.eu-north-1.amazonaws.com/testing_stage/payment-status'
+    const apiUrl = import.meta.env.VITE_AWS_CREATE_PAYMENT_API_URL
+    const checkStatusUrl = import.meta.env.VITE_AWS_CHECK_STATUS_URL
   
   if(data.test && data.email && data.price && data.curr && data.label && data.refId && data.fullName && data.phoneNumber && data.url_paid && data.url_cancelled && data.url_pending) {
     try {

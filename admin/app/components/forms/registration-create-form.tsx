@@ -12,6 +12,7 @@ import { Binding } from '@app/lib/binding'
 import { Button } from '@app/lib/ui/button'
 import React from 'react'
 import { checkPaymentStatus } from '@app/lib/payment/paymentStatus'
+import config from '../../../config'
 
 interface RegistrationCreateFormProps {
     isOnWaitingList?: boolean
@@ -22,6 +23,9 @@ export const RegistrationCreateForm = Component<RegistrationCreateFormProps>(
     ({isOnWaitingList, isPaid}) => {
     const entity = useEntity()
     const identity = useIdentity()
+    const url = import.meta.env.APP_URL as string
+    console.log('url', config.appUrl)
+    console.log('project_name', import.meta.env)
     //connect to current event and logged in user
     const me = useEntitySubTree('me')
     const currentEvent = useEntitySubTree('currentEvent')

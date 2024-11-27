@@ -6,21 +6,20 @@ export async function contentClient<T>(env: Env, query: {
 	variables?: Record<string, any>
 }, token?: string) {
 	try {
-		let url: URL
-		//has to be changed for microsoft azure production
-		if(env.VITE_CONTEMBER_ADMIN_API_BASE_URL === '/_api') {
-			url = new URL('https://api-esn-buddy-is.eu.contember.cloud/content/esn-buddy-is/live')
-		} else {
+		// const url = new URL(import.meta.env.VITE_CONTEMBER_CONTENT_API_URL as string)
+		let url : URL
+		if(import.meta.env.DEV === true){
 			url = new URL(env.VITE_CONTEMBER_ADMIN_API_BASE_URL)
+			url.pathname = `/content/${env.VITE_CONTEMBER_ADMIN_PROJECT_NAME}/live`
+		} else {
+			url = new URL(import.meta.env.VITE_CONTEMBER_CONTENT_API_URL as string)
 		}
-		url.pathname = `/content/${env.VITE_CONTEMBER_ADMIN_PROJECT_NAME}/live`
 
 		const response = await fetch(url.toString(), {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 				Authorization: `Bearer ${token ?? env.VITE_CONTEMBER_PUBLIC_TOKEN}`,
-				// Authorization: `Bearer 0000000000000000000000000000000000000000`,
 			},
 			body: JSON.stringify(query),
 		})
@@ -38,16 +37,10 @@ export async function contentClient<T>(env: Env, query: {
 }
 
 export const tenantClient = (env: Env, query: { query: string, variables?: Record<string, any> }, token?: string) => {
-	let url: URL
-	//has to be changed for microsoft azure production
-	if(env.VITE_CONTEMBER_ADMIN_API_BASE_URL === '/_api') {
-		// url = new URL('https://esn-buddy-is.eu.contember.cloud/_api')
-		url = new URL('https://api-esn-buddy-is.eu.contember.cloud/tenant')
-	} else {
-		url = new URL(env.VITE_CONTEMBER_ADMIN_API_BASE_URL)
-		url.pathname = '/tenant'
+	let url = new URL(env.VITE_CONTEMBER_ADMIN_API_BASE_URL)
+	if(import.meta.env.DEV === true){
+		url.pathname = `/tenant`
 	}
-	//url.pathname = '/tenant'
 
 	return fetch(url.toString(), {
 		method: 'POST',

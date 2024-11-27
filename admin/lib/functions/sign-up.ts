@@ -17,22 +17,6 @@ interface InvitationResult {
 }
 
 export async function onRequestPost(email: string, firstname: string, surname: string, inSISusername: string, phoneNumber: string, birthdate: string, env: Env){
-	// const formData = await request.formData()
-	// const data: Record<string, any> = {}
-
-	// for (const entry of formData.entries()) {
-	// 	const [key, value] = entry
-
-	// 	// biome-ignore lint/suspicious/noPrototypeBuiltins: <explanation>
-	// 	if (data.hasOwnProperty(key)) {
-	// 		if (!Array.isArray(data[key])) {
-	// 			data[key] = [data[key]]
-	// 		}
-	// 		data[key].push(value)
-	// 	} else {
-	// 		data[key] = value
-	// 	}
-	// }
 
 	if (!email ||!phoneNumber || !firstname || !surname || !inSISusername || !birthdate) {
 		return new Response('Invalid data. Did you fill all the mandatory fields?', { status: 400 })
