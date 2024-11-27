@@ -36,7 +36,7 @@ export class ApplicationCz {
 	motivation = c.stringColumn()
 	howManyBuddies = c.intColumn()
 	howManyBuddiesAssigned = c.oneHasOneInverse(howManyBuddiesAssigned, 'applicationCz')
-	status = c.enumColumn(applicationStatus).default('toBePaired')
+	status = c.oneHasOneInverse(ApplicationCzStatus, 'applicationCz')
 	result = c.enumColumn(applicationCzResult)
 	preferredCountry = c.manyHasOne(Country, 'preferredApplicationsCz').setNullOnDelete()
 	preferredLanguages = c.manyHasMany(Language, 'applicationsCz')
@@ -60,4 +60,22 @@ export class ApplicationCz {
 export class howManyBuddiesAssigned {
 	applicationCz = c.oneHasOne(ApplicationCz, 'howManyBuddiesAssigned')
 	number = c.intColumn()
+}
+
+@c.View(`
+	SELECT
+		gen_random_uuid() AS id,
+		ac.id as application_cz_id,
+		CASE 
+			WHEN hba.number IS NULL OR hba.number < ac.how_many_buddies THEN 'toBePaired'
+			WHEN hba.number >= ac.how_many_buddies THEN 'paired'
+		END AS status
+	FROM
+		application_cz AS ac
+	LEFT JOIN
+		how_many_buddies_assigned AS hba ON hba.application_cz_id = ac.id
+`)
+export class ApplicationCzStatus {
+	applicationCz = c.oneHasOne(ApplicationCz, 'status')
+	status = c.enumColumn(applicationStatus).default('toBePaired')
 }

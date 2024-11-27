@@ -35,13 +35,13 @@ export type ApplicationCz <OverRelation extends string | never = never> = {
 	unique:
 		| Omit<{ id: string}, OverRelation>
 		| Omit<{ howManyBuddiesAssigned: howManyBuddiesAssigned['unique']}, OverRelation>
+		| Omit<{ status: ApplicationCzStatus['unique']}, OverRelation>
 	columns: {
 		id: string
 		createdAt: string
 		points: number | null
 		motivation: string | null
 		howManyBuddies: number | null
-		status: applicationStatus | null
 		result: applicationCzResult | null
 		preferredSex: preferredSex | null
 	}
@@ -49,10 +49,28 @@ export type ApplicationCz <OverRelation extends string | never = never> = {
 		person: Person
 		semester: Semester
 		howManyBuddiesAssigned: howManyBuddiesAssigned
+		status: ApplicationCzStatus
 		preferredCountry: Country
 	}
 	hasMany: {
 		preferredLanguages: Language
+	}
+	hasManyBy: {
+	}
+}
+export type ApplicationCzStatus <OverRelation extends string | never = never> = {
+	name: 'ApplicationCzStatus'
+	unique:
+		| Omit<{ id: string}, OverRelation>
+		| Omit<{ applicationCz: ApplicationCz['unique']}, OverRelation>
+	columns: {
+		id: string
+		status: applicationStatus | null
+	}
+	hasOne: {
+		applicationCz: ApplicationCz
+	}
+	hasMany: {
 	}
 	hasManyBy: {
 	}
@@ -198,6 +216,7 @@ export type Country <OverRelation extends string | never = never> = {
 		usersByAgeView: { entity: Person; by: {ageView: PersonAgeView['unique']}  }
 		universitiesByUsers: { entity: University; by: {users: Person['unique']}  }
 		preferredApplicationsCzByHowManyBuddiesAssigned: { entity: ApplicationCz; by: {howManyBuddiesAssigned: howManyBuddiesAssigned['unique']}  }
+		preferredApplicationsCzByStatus: { entity: ApplicationCz; by: {status: ApplicationCzStatus['unique']}  }
 	}
 }
 export type DietaryRestrictions <OverRelation extends string | never = never> = {
@@ -558,6 +577,7 @@ export type Person <OverRelation extends string | never = never> = {
 		czechBuddyPairByTasks: { entity: BuddyPair; by: {tasks: BuddyTask['unique']}  }
 		czechBuddyPairByPicture: { entity: BuddyPair; by: {picture: Image['unique']}  }
 		applicationsByHowManyBuddiesAssigned: { entity: ApplicationCz; by: {howManyBuddiesAssigned: howManyBuddiesAssigned['unique']}  }
+		applicationsByStatus: { entity: ApplicationCz; by: {status: ApplicationCzStatus['unique']}  }
 		coordinatingBuddyPairsByInternationalStudent: { entity: BuddyPair; by: {internationalStudent: Person['unique']}  }
 		coordinatingBuddyPairsByNotes: { entity: BuddyPair; by: {notes: Note['unique']}  }
 		coordinatingBuddyPairsByTasks: { entity: BuddyPair; by: {tasks: BuddyTask['unique']}  }
@@ -655,6 +675,7 @@ export type Semester <OverRelation extends string | never = never> = {
 		eventsByRegisteredCount: { entity: Event; by: {registeredCount: RegisteredCount['unique']}  }
 		eventsByContactPerson: { entity: Event; by: {contactPerson: Person['unique']}  }
 		applicationsByHowManyBuddiesAssigned: { entity: ApplicationCz; by: {howManyBuddiesAssigned: howManyBuddiesAssigned['unique']}  }
+		applicationsByStatus: { entity: ApplicationCz; by: {status: ApplicationCzStatus['unique']}  }
 		applicationsFrByPerson: { entity: ApplicationFr; by: {person: Person['unique']}  }
 		applicationsFrByLimitations: { entity: ApplicationFr; by: {limitations: Limitations['unique']}  }
 		buddyPairsByInternationalStudent: { entity: BuddyPair; by: {internationalStudent: Person['unique']}  }
@@ -786,6 +807,7 @@ export type howManyBuddiesAssigned <OverRelation extends string | never = never>
 export type ContemberClientEntities = {
 	Allergy: Allergy
 	ApplicationCz: ApplicationCz
+	ApplicationCzStatus: ApplicationCzStatus
 	ApplicationFr: ApplicationFr
 	BuddyPair: BuddyPair
 	BuddyTask: BuddyTask

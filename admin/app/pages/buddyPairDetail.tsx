@@ -269,12 +269,12 @@ const UnpairButton = Component(() => {
 
 	useEntityBeforePersist(() => {
 		internationalStudent.getField('applicationsFr.status').updateValue('toBePaired')
-		Array.from(czechStudent.getEntityList('applications')).forEach(application => {
-			if(application.getEntity('semester').getField('isCurrent').value === true) {
-				application.getField('status').updateValue('toBePaired')
+		// Array.from(czechStudent.getEntityList('applications')).forEach(application => {
+		// 	if(application.getEntity('semester').getField('isCurrent').value === true) {
+		// 		application.getField('status').updateValue('toBePaired')
 
-			}
-		})
+		// 	}
+		// })
 	})
 
 	return (
@@ -297,7 +297,7 @@ const UnpairButton = Component(() => {
 				<HasOne field="semester">
 					<Field field="isCurrent" />
 				</HasOne>
-				<Field field="status" />
+				<Field field="status.status" />
 				<Field field="howManyBuddies" />
 				<Field field="howManyBuddiesAssigned.number" />
 			</HasMany>

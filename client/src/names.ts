@@ -55,7 +55,8 @@ export const ContemberClientNames: SchemaNames = {
           "entity": "howManyBuddiesAssigned"
         },
         "status": {
-          "type": "column"
+          "type": "one",
+          "entity": "ApplicationCzStatus"
         },
         "result": {
           "type": "column"
@@ -78,9 +79,27 @@ export const ContemberClientNames: SchemaNames = {
         "points",
         "motivation",
         "howManyBuddies",
-        "status",
         "result",
         "preferredSex"
+      ]
+    },
+    "ApplicationCzStatus": {
+      "name": "ApplicationCzStatus",
+      "fields": {
+        "id": {
+          "type": "column"
+        },
+        "applicationCz": {
+          "type": "one",
+          "entity": "ApplicationCz"
+        },
+        "status": {
+          "type": "column"
+        }
+      },
+      "scalars": [
+        "id",
+        "status"
       ]
     },
     "ApplicationFr": {

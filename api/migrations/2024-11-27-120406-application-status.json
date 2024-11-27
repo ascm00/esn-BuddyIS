@@ -1,0 +1,121 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "removeField",
+			"entityName": "ApplicationCz",
+			"fieldName": "status"
+		},
+		{
+			"modification": "createView",
+			"entity": {
+				"name": "ApplicationCzStatus",
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "application_cz_status",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"columnType": "uuid",
+						"nullable": false,
+						"type": "Uuid"
+					},
+					"applicationCz": {
+						"type": "OneHasOne",
+						"name": "applicationCz",
+						"target": "ApplicationCz",
+						"joiningColumn": {
+							"columnName": "application_cz_id",
+							"onDelete": "restrict"
+						},
+						"nullable": true,
+						"inversedBy": "status"
+					},
+					"status": {
+						"name": "status",
+						"columnName": "status",
+						"columnType": "applicationStatus",
+						"nullable": true,
+						"type": "Enum",
+						"default": "toBePaired"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				},
+				"view": {
+					"sql": "\n\tSELECT\n\t\tgen_random_uuid() AS id,\n\t\tac.id as application_cz_id,\n\t\tCASE \n\t\t\tWHEN hba.number >= ac.how_many_buddies THEN 'paired'\n\t\t\tELSE 'toBePaired'\n\t\tEND AS status\n\tFROM\n\t\tapplication_cz AS ac\n\tJOIN\n\t\thow_many_buddies_assigned AS hba ON hba.application_cz_id = ac.id\n"
+				}
+			}
+		},
+		{
+			"modification": "createRelationInverseSide",
+			"entityName": "ApplicationCz",
+			"relation": {
+				"type": "OneHasOne",
+				"name": "status",
+				"target": "ApplicationCzStatus",
+				"ownedBy": "applicationCz",
+				"nullable": true
+			}
+		},
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/ApplicationCz/operations/create/status",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/ApplicationCz/operations/update/status",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/ApplicationCz/operations/read/status",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/ApplicationCz/operations/create/status",
+					"value": "person_personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/ApplicationCz/operations/update/status",
+					"value": "person_personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/ApplicationCz/operations/read/status",
+					"value": "person_personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/ApplicationCz/operations/create/status",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/ApplicationCz/operations/update/status",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/ApplicationCz/operations/read/status",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/ApplicationCz/operations/read/status",
+					"value": true
+				}
+			]
+		}
+	]
+}

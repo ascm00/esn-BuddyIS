@@ -91,7 +91,7 @@ export default () => {
 									{/* <DataGridEnumColumn field="result" header="Result" options={{ accepted: 'accepted', declined: 'declined' }} /> */}
 									<DataGridNumberColumn header="Buddies assigned" field='howManyBuddiesAssigned.number' />
 									<DataGridNumberColumn header="Max buddies" field='howManyBuddies' />
-									<DataGridNumberColumn header="Application status" field='status' />
+									<DataGridEnumColumn header="Application status" field='status.status' options={{ toBePaired: 'To be paired', paired: 'Paired', notPaired: 'Not paired' }} />
 								</DataGridTable>
 							</DataGridLoader>
 							<DataGridPagination />

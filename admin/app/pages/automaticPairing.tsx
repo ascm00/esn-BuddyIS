@@ -63,16 +63,6 @@ const AutomaticPairing = Component(
     
                 pairs.forEach((czechStudentApplication, internationalStudentApplication) => {
                     if (czechStudentApplication && internationalStudentApplication) {
-
-
-                        const howManyBuddiesAssigned = czechStudentApplication.getField<number>('howManyBuddiesAssigned.number').value ?? 0
-                        const howManyBuddies = czechStudentApplication.getField<number>('howManyBuddies').value ?? 0
-
-
-                        if(howManyBuddiesAssigned >= howManyBuddies) {
-                            czechStudentApplication.getField('status').updateValue('paired')
-                        }
-
                         internationalStudentApplication.getField('status').updateValue('paired')
 
                         buddyPairs.createNewEntity(accessor => {
@@ -213,8 +203,8 @@ const AutomaticPairing = Component(
                 <HasOne field={'semester'} />
             </EntityListSubTree>
             
-            <EntityListSubTree entities={'ApplicationCz[status="toBePaired" && semester.isCurrent=true]'} alias={'currentSemesterCzApplications'}>
-                <Field field={'status'} />
+            <EntityListSubTree entities={'ApplicationCz[status.status="toBePaired" && semester.isCurrent=true]'} alias={'currentSemesterCzApplications'}>
+                <Field field={'status.status'} />
                 <HasOne field={'person'}>
                     <Field field={'gender'} />
                     <Field field={'firstName'} />
