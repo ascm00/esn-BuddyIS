@@ -459,8 +459,8 @@ const PasswordResetRequestSuccessPage = () => (
 const Layout = ({ children }: { children?: React.ReactNode }) => (
 	<div className="grid md:grid-cols-2 min-h-screen ">
 		<div className="bg-white p-4 flex items-center justify-center">{children}</div>
-		<div className="bg-gray-200 text-black p-4 flex items-center justify-center">
-			<div className="w-full max-w-md mx-auto">
+		<div className="bg-gray-200 text-black p-4 flex justify-center">
+			<div className="w-full max-w-md pt-10">
 				<img src="/esn-logo.png" className='pb-10'/>
 				<h1 className='pb-3 pt-3'>Our sponsor</h1>
 				<img src="/ceska_sporitelna_logo.png"/>
