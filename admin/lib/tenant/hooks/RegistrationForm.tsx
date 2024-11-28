@@ -21,6 +21,7 @@ interface ListTenantPersonResult {
 export const RegistrationForm = (env : Env) => {
 	const [firstName, setFirstName] = useState('');
 	const [surname, setSurname] = useState('');
+	const [checkbox, setCheckbox] = useState('');
 	const [email, setEmail] = useState('');
 	const [inSISusername, setInSISusername] = useState('');
 	const [phoneNumber, setPhoneNumber] = useState('');
@@ -167,6 +168,20 @@ export const RegistrationForm = (env : Env) => {
 						/>
 						<p className="text-xs text-gray-500 pt-1">InSIS username is the first part of your VŠE email address before @. For example <strong>novp04</strong>@vse.cz. If you do not have one yet, write <strong>none</strong>.</p>
 					</div>
+					<div className="mb-4 relative">
+						<label className="block text-gray-700 text-sm font-bold mb-2">
+							I accept <a href={`${import.meta.env.VITE_LOGIN_URL}/?page=conditions`} target="_blank" className="text-blue-600">conditions</a> *
+						</label>
+						<input 
+							type="checkbox"
+							value={checkbox}
+							onChange={(event) => setCheckbox(event.target.value)}
+							required 
+							className="mr-2"
+						/>
+						<span className="text-xs text-gray-500">Please check this box to proceed.</span>
+					</div>
+					
 					<button 
 						type="submit" 
 						className="w-full bg-primary text-primary-foreground shadow hover:bg-primary/90 font-bold py-3 px-4 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"

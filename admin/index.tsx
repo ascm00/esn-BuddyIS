@@ -150,7 +150,8 @@ const IndexPage = () => {
 			<IdentityState state="failed">
 				<Overlay>
 					<div className="bg-gray-100 flex flex-col gap-4 items-center justify-center p-16 rounded-lg shadow-lg border">
-						<p className="text-lg">Failed to load identity.</p>
+						<p className="text-lg">Failed to load identity. You have to be logged in.</p>
+						Login <a href={import.meta.env.VITE_LOGIN_URL}>here</a>.
 						<LogoutTrigger>
 							<Button className="w-full" variant="outline">
 								Logout
@@ -256,6 +257,142 @@ const registrationForeignPage = () => {
 
 }
 
+const conditionsPage = () => {
+
+	const styles = {
+		container: {
+		  padding: '20px',
+		  fontFamily: 'Arial, sans-serif',
+		  lineHeight: '1.6',
+		  color: '#333',
+		},
+		title: {
+		  fontSize: '2em',
+		  marginBottom: '10px',
+		  color: '#2c3e50',
+		},
+		subtitle: {
+		  fontSize: '1.5em',
+		  marginTop: '20px',
+		  color: '#34495e',
+		},
+		paragraph: {
+		  marginBottom: '15px',
+		},
+		list: {
+		  paddingLeft: '20px',
+		  marginBottom: '15px',
+		},
+		listItem: {
+		  marginBottom: '10px',
+		},
+		strong: {
+		  color: '#2c3e50',
+		},
+		link: {
+		  color: '#3498db',
+		  textDecoration: 'none',
+		},
+		linkHover: {
+		  textDecoration: 'underline',
+		},
+	  };
+	
+	  return (
+		<div style={styles.container}>
+		  <h1 style={styles.title}>Privacy and Data Protection</h1>
+		  <p style={styles.paragraph}>
+			At ESN VŠE Prague ("we" or "our organization"), your privacy is a top priority. This page explains how we handle
+			the information you share with us through our platform and associated services (collectively referred to as
+			"the Service").
+		  </p>
+	
+		  <section>
+			<h2 style={styles.subtitle}>What Information We Collect</h2>
+			<p style={styles.paragraph}>
+			  To provide a seamless experience, we collect the following types of data:
+			</p>
+			<ul style={styles.list}>
+			  <li style={styles.listItem}>Contact Details: Your email address, phone number, and name.</li>
+			  <li style={styles.listItem}>Personal Information: Your date of birth, gender, and home university.</li>
+			  <li style={styles.listItem}>Accommodation Information: Details related to your stay during the program.</li>
+			  <li style={styles.listItem}>
+				<strong style={styles.strong}>Activity Data:</strong> When you interact with the Service, we automatically
+				gather details like your IP address, browser type, and the pages you visit.
+			  </li>
+			</ul>
+		  </section>
+	
+		  <section>
+			<h2 style={styles.subtitle}>How We Use Your Data</h2>
+			<p style={styles.paragraph}>
+			  The information you provide is essential for:
+			</p>
+			<ul style={styles.list}>
+			  <li style={styles.listItem}>
+				Delivering and improving our services, ensuring that everything runs smoothly and matches your needs.
+			  </li>
+			  <li style={styles.listItem}>
+				Staying in touch—whether it’s program updates, event notifications, or useful tips. Don’t worry, you can
+				unsubscribe at any time.
+			  </li>
+			  <li style={styles.listItem}>
+				Meeting legal requirements and addressing valid requests from authorities.
+			  </li>
+			</ul>
+		  </section>
+	
+		  <section>
+			<h2 style={styles.subtitle}>Sharing Your Information</h2>
+			<p style={styles.paragraph}>
+			  We never sell your data. However, in certain cases, we may share it:
+			</p>
+			<ul style={styles.list}>
+			  <li style={styles.listItem}>
+				With trusted partners who help us operate the Service. These parties are bound by strict confidentiality
+				agreements.
+			  </li>
+			  <li style={styles.listItem}>To comply with legal obligations or enforce our policies.</li>
+			</ul>
+		  </section>
+	
+		  <section>
+			<h2 style={styles.subtitle}>Your Rights and Options</h2>
+			<p style={styles.paragraph}>
+			  You’re in control of your information. Here’s how:
+			</p>
+			<ul style={styles.list}>
+			  <li style={styles.listItem}>
+				<strong style={styles.strong}>Access and Updates:</strong> You can view or update your personal details
+				anytime through your account or by contacting us.
+			  </li>
+			  <li style={styles.listItem}>
+				<strong style={styles.strong}>Communication Preferences:</strong> Don’t want to hear from us? Simply opt out
+				using the link in our emails or reach out directly.
+			  </li>
+			</ul>
+		  </section>
+	
+		  <section>
+			<h2 style={styles.subtitle}>Our Commitment to Security</h2>
+			<p style={styles.paragraph}>
+			  We work hard to protect your data with up-to-date security measures. While no system is completely secure, we
+			  continuously strive to minimize risks.
+			</p>
+		  </section>
+	
+		  <section>
+			<h2 style={styles.subtitle}>Need Help?</h2>
+			<p style={styles.paragraph}>
+			  If you have any questions about this policy or how your data is handled, we’re here to help. Contact us via
+			  the official channels listed on our website. Or <a href="mailto:vedeni@esnvseprague.cz" target='_blank' className='text-blue-600'>here</a>.
+			</p>
+		  </section>
+		</div>
+	  )
+
+}
+
 
 const PasswordResetPage = () => {
 	const request = useCurrentRequest()
@@ -354,6 +491,7 @@ errorHandler(onRecoverableError =>
 								register: registrationPage,
 								registerLocal: registrationLocalPage,
 								registerForeign: registrationForeignPage,
+								conditions: conditionsPage,
 							}}
 						/>
 					</Toaster>
