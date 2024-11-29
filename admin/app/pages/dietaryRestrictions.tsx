@@ -16,7 +16,7 @@ export default () => {
 			<Binding>
 				<div className="flex flex-col gap-12">
 					<Slots.Title>
-						Dietary restrictions
+						Dietary restrictions 🚫
 					</Slots.Title>
 					<Slots.Back>
 						<BackButton />

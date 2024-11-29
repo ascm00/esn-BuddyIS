@@ -14,7 +14,7 @@ export default () => {
 			<Binding>
 				<div className="flex flex-col gap-12">
 					<Slots.Title>
-						Faculty detail
+						Faculty detail 🎓
 					</Slots.Title>
 					<Slots.Back>
 						<BackButton />
@@ -88,7 +88,7 @@ export default () => {
 									<DataGridHasOneColumn field="university" header="Home university">
 										<Field field="name" />
 									</DataGridHasOneColumn>
-									<DataGridTextColumn field="esnCardId" header="Esn card id" />
+									<DataGridTextColumn field="esnCardId" header="ESN Card id" />
 									<DataGridTextColumn field="inSISusername" header="InSIS username" />
 									<DataGridHasOneColumn field="countryOfUniversity" header="Country of home university">
 										<Field field="name" />

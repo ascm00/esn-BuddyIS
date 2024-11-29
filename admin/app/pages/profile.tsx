@@ -17,7 +17,7 @@ export default () => {
 			<Binding>
 				<div className="flex flex-col gap-12">
 					<Slots.Title>
-						My profile
+						My profile 👤
 					</Slots.Title>
 					<Slots.Back>
 						<BackButton />
@@ -78,7 +78,7 @@ export default () => {
                                             <HasRole role={roles => roles.has('admin') || roles.has('coordinator') || roles.has('esnMember') || roles.has('internationalStudent')}>
                                                 <TableRow>
                                                     <TableCell>
-                                                        Esn Card ID
+                                                        ESN Card ID
                                                     </TableCell>
                                                     <TableCell className="font-semibold">
                                                         <Field field="esnCardId" />

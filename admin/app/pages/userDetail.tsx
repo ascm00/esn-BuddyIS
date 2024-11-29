@@ -12,7 +12,7 @@ export default () => {
 			<Binding>
 				<div className="flex flex-col gap-12">
 					<Slots.Title>
-						User detail
+						User detail 👤
 					</Slots.Title>
 					<Slots.Back>
 						<BackButton />
@@ -72,7 +72,7 @@ export default () => {
 									</TableRow>
 									<TableRow>
 										<TableCell>
-											Esn Card ID
+											ESN Card ID
 										</TableCell>
 										<TableCell className="font-semibold">
 											<Field field="esnCardId" />

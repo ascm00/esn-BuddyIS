@@ -12,7 +12,7 @@ export default () => {
 			<Binding>
 				<div className="flex flex-col gap-12">
 					<Slots.Title>
-						Payment pending - we will inform you about the payment result
+						Payment pending - we will inform you about the payment result ⏳
 					</Slots.Title>
 					<Slots.Back>
 						<BackButton />

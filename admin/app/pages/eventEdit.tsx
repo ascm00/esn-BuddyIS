@@ -10,7 +10,7 @@ export default () => {
 			<Binding>
 				<div className="flex flex-col gap-12">
 					<Slots.Title>
-						Event edit
+						Event edit 🎈
 					</Slots.Title>
 					<Slots.Back>
 						<BackButton />

@@ -11,7 +11,7 @@ export default () => {
 			<Binding>
 				<div className="flex flex-col gap-12">
 					<Slots.Title>
-						N2n hours
+						N2n hours 🎉
 					</Slots.Title>
 					<Slots.Back>
 						<BackButton />

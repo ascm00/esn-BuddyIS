@@ -11,7 +11,7 @@ export default () => {
 			<Binding>
 				{/* <InitialUserForm /> */}
 				<div className="flex flex-col gap-12">
-					<Slots.Title>Nový uživatel</Slots.Title>
+					<Slots.Title>New user</Slots.Title>
 					<Slots.Back>
 						<BackButton />
 					</Slots.Back>

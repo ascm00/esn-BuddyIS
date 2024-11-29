@@ -11,7 +11,7 @@ export default () => {
 			<Binding>
 				<div className="flex flex-col gap-12">
 					<Slots.Title>
-						Limitations detail
+						Limitation detail 🚫
 					</Slots.Title>
 					<Slots.Back>
 						<BackButton />
@@ -20,7 +20,7 @@ export default () => {
 						<Slots.Actions>
 							<Link to="limitationsEdit(id: $entity.id)">
 								<Button>
-									Edit limitations
+									Edit limitation
 								</Button>
 							</Link>
 						</Slots.Actions>

@@ -13,7 +13,7 @@ export default () => {
 			<Binding>
 				<div className="flex flex-col gap-12">
 					<Slots.Title>
-						Payment successful - your registration is confirmed
+						Payment successful - your registration is confirmed ✅
 					</Slots.Title>
 					<Slots.Back>
 						<BackButton />

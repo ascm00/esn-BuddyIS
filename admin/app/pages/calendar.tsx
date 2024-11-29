@@ -8,7 +8,7 @@ export default () => {
 			<Binding>
 				<div className="flex flex-col gap-12">
 					<EventsCalendar />
-					<Slots.Title>Events calendar</Slots.Title>
+					<Slots.Title>Calendar 📅</Slots.Title>
 				</div>
 			</Binding>
 		</>

@@ -17,7 +17,7 @@ export default () => {
 			<Binding>
 				<div className="flex flex-col gap-12">
 					<Slots.Title>
-						Automatic buddy pairing
+						Automatic buddy pairing 🤖
 					</Slots.Title>
 					<Slots.Back>
 						<BackButton />
