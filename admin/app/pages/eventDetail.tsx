@@ -82,20 +82,20 @@ const RegistrationNow = Component( () => {
 	if (eventAlreadyHappened) {
 		return (
 			<div className='bg-blue-200 p-4 rounded-md max-w-md'>
-				<div className='text-500'>This event has already happened.</div>
+				<div className='text-500'>This event has already happened. ✔️</div>
 			</div>
 		)
 	} else if (registered()) {
 		return (
 			<div className='bg-blue-200 p-4 rounded-md max-w-md'>
-				<div className='text-500'>You are already registered for this event. If you want to cancel your registration, contact us via email.</div>
+				<div className='text-500'>You are already registered for this event. If you want to cancel your registration, contact us via email. ✔️</div>
 			</div>
 		)
 	} else {
 		if(notForMe) {
 			return (
 				<div className='bg-blue-200 p-4 rounded-md max-w-md'>
-					<div className='text-500'>Unfortunately this event is not for your user role.</div>
+					<div className='text-500'>Unfortunately this event is not for your user role. 🫠</div>
 				</div>
 			)
 		}
@@ -140,7 +140,7 @@ const RegistrationNow = Component( () => {
 				return (
 					<>
 						<div className='bg-blue-200 p-4 rounded-md max-w-md'>
-							<div className='text-500'>Event is full, but you can join waiting list.</div>
+							<div className='text-500'>Event is full, but you can join waiting list. 📄</div>
 						</div>
 						<div className='flex gap-6 flex-col md:flex-row'>
 							<CreateEntityModalButton
@@ -161,7 +161,7 @@ const RegistrationNow = Component( () => {
 			} else {
 				return (
 					<div className='bg-blue-200 p-4 rounded-md max-w-md'>
-						<div className='text-500'>Event is full.</div>
+						<div className='text-500'>Event is full. 🫠</div>
 					</div>
 				)
 			}
@@ -169,7 +169,7 @@ const RegistrationNow = Component( () => {
 
 			return (
 				<div className='bg-blue-200 p-4 rounded-md max-w-md'>
-					<div className='text-500'>Registration for this event is not open now. It is open from {formattedRegistrationStartDate} to {formattedRegistrationEndDate}.</div>
+					<div className='text-500'>Registration for this event is not open now. 🛑 It is open from {formattedRegistrationStartDate} to {formattedRegistrationEndDate}. 📅</div>
 				</div>
 			)
 		}
@@ -257,7 +257,7 @@ const RegistrationAdminCreate = Component(
 					refreshOnPersist
 					createEntityForm={
 					<>
-						<div className='bg-blue-200 p-4 rounded-md'><div className='text-500'>Capacity is full, but you can put user on a waiting list. You can also increase the capacity on Edit event page.</div></div>
+						<div className='bg-blue-200 p-4 rounded-md'><div className='text-500'>Capacity is full, but you can put user on a waiting list. You can also increase the capacity on Edit event page. ✏️</div></div>
 						<RegistrationAdminCreateForm isPaid={false} isOnWaitingList={true} />
 					</>
 					}

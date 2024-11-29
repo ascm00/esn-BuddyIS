@@ -77,7 +77,7 @@ export const ApplicationCzCreateForm = Component(
 		}
 	
 		if(closed){
-			return (<div className='bg-blue-200 p-4 rounded-md'><div className='text-500'>Sorry, applications for all semesters are closed now.</div></div>)
+			return (<div className='bg-blue-200 p-4 rounded-md'><div className='text-500'>Sorry, applications for all semesters are closed now. 😕</div></div>)
 		} else if (!semester) {
 			return (<FormLayout>
 				<SelectField
@@ -115,7 +115,7 @@ export const ApplicationCzCreateForm = Component(
 							</div>
 						</SelectField>
 					</FormLayout>
-					<div className='bg-blue-200 p-4 rounded-md'><div className='text-500'>You already applied for a buddy this semester. If you want to see your applications, click on the button "All my buddy applications" above.</div></div>
+					<div className='bg-blue-200 p-4 rounded-md'><div className='text-500'>You already applied for a buddy this semester. If you want to see your applications, click on the button "All my buddy applications" above. ☝️</div></div>
 				</>
 			)
 		} else {

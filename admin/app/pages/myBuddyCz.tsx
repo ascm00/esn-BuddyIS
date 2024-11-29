@@ -88,7 +88,7 @@ const MoreBuddiesView = Component(
 
 		if(numberOfBuddies === 0){
 			return (<div className='bg-blue-200 p-4 rounded-md'>
-				<div className='text-500'>You currently don't have a buddy. If you haven't applied yet, do it!</div>
+				<div className='text-500'>You currently don't have a buddy. If you haven't applied yet, go ahead and apply! 🚀</div>
 				<Slots.Actions>
 					<Link to="applicationCzCreate">
 						<Button>

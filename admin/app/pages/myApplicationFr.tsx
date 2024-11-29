@@ -34,7 +34,7 @@ const MyApplicationFR = Component(() => {
     if(!applicationId) {
         return (
             <>
-                <div className='bg-blue-200 p-4 rounded-md'><div className='text-500'>You have no buddy applications. Click on 'Apply for a buddy' to apply.</div></div>
+                <div className='bg-blue-200 p-4 rounded-md'><div className='text-500'>You have no buddy applications. Click on 'Apply for a buddy' to apply. ☝️</div></div>
                 <Slots.Actions>
                     <Link to="applicationFrCreate">
                     <Button>

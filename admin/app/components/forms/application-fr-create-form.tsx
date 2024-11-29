@@ -65,7 +65,7 @@ export const ApplicationFrCreateForm = Component(
 		}
 
 	if(closed){
-		return (<div className='bg-blue-200 p-4 rounded-md'><div className='text-500'>Sorry, applications are closed now.</div></div>)
+		return (<div className='bg-blue-200 p-4 rounded-md'><div className='text-500'>Sorry, applications are closed now. 😕</div></div>)
 	} else if (currentUserApplicationsFr) {
 		const name = currentUserApplicationsFrTry?.getEntity('person').getField('firstName').value?.toString() + ' ' + currentUserApplicationsFrTry?.getEntity('person').getField('surname').value?.toString()	
 		const semester = currentUserApplicationsFrTry?.getEntity('semester').getField('name').value?.toString()
@@ -81,7 +81,7 @@ export const ApplicationFrCreateForm = Component(
 		}
 		return (
 		<>
-			<div className='bg-blue-200 p-4 rounded-md max-w-lg'><div className='text-500'>You already applied for a buddy. Here is your application.</div></div>
+			<div className='bg-blue-200 p-4 rounded-md max-w-lg'><div className='text-500'>You already applied for a buddy. Here is your application. 👇</div></div>
 				<div>
 						{/* <Slots.Actions>
 							<Link to={`applicationFrEdit(id: '${currentUserApplicationsFr}')`}>

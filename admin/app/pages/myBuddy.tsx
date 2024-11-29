@@ -42,7 +42,7 @@ const BuddyView = Component(
 		
 		if(!buddyPair) {
 			return (<div className='bg-blue-200 p-4 rounded-md'>
-				<div className='text-500'>You currently don't have a buddy. If you haven't applied yet, do it!</div>
+				<div className='text-500'>You currently don't have a buddy. If you haven't applied yet, do it! 🚀</div>
 				<Slots.Actions>
 					<Link to="applicationFrCreate">
 						<Button>
