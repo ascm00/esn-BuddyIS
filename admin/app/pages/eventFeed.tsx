@@ -8,7 +8,7 @@ import { renderElement, renderLeaf } from '@app/lib/plugins/rich-text/renderer/r
 import { RichTextRendererField } from '@app/lib/plugins/rich-text/renderer/RichTextRendererField'
 import { Card, CardContent, CardFooter, CardHeader } from '@app/lib/ui/card'
 import { formatDateTime, formatDateTimeShort } from '@app/lib/utils/formatting'
-import { Component, FieldView, HasMany, HasRole, If, Link, EntityListSubTree, useEntity, useEntityListSubTree, EntityAccessor } from '@contember/interface'
+import { Component, FieldView, HasMany, HasRole, If, Link, EntityListSubTree, useEntity, useEntityListSubTree, EntityAccessor, identityEnvironmentExtension, EntitySubTree, useEntitySubTree } from '@contember/interface'
 import { Field } from '@contember/react-binding'
 import { PencilIcon } from 'lucide-react'
 import { ImageField } from '@app/lib/form'
@@ -39,6 +39,8 @@ const AllEventsFeed = Component(() => {
 
 	const n2nPartiesForESNMembers = Array.from(useEntityListSubTree('n2nParties'))
 	const eventsESNMembers = Array.from(useEntityListSubTree('events'))
+	const firstName = useEntitySubTree('currentUser').getField<string>('firstName').value ?? undefined
+	console.log(firstName)
 
 	const allEvents = eventsESNMembers.map((buddyEvent, index) => ({
 		id: index,
@@ -74,30 +76,47 @@ const AllEventsFeed = Component(() => {
 
 
 	
-
-	return (
-		<>
-			<DataGridFeed>
-				{allEvents.map(event => (
-					<>
-						{event.type === 'party' && 
-							<div className="mb-6">
-								<PartyCard2 event={event} />
-							</div>
-						}
-						{event.type === 'event' && 
-							<div className="mb-6">
-								<EventCard2 event={event} /> 
-							</div>
-						}
-					</>
-				))}
-			</DataGridFeed>
-		</>
-	)
-}, () => (
+	if(allEvents.length===0){
+		return (
+			<div className="mb-6">
+				<div className="p-4 border border-gray-300 rounded-md bg-blue-100">
+					<h2 className="text-xl font-bold text-blue-800">Welcome to Buddy IS, {firstName || 'student'}!</h2>
+					<p className="text-gray-700">We are glad to have you join us. On this page, you will see events. Currently, there are no events in the calendar. Once they are, you will see them on this page.</p>
+					<p className="text-gray-500">If you encounter any issues in the system, please reach out to <a href="mailto:helpdesk@esnvseprague.cz" className='text-blue-600'>helpdesk@esnvseprague.cz</a>.</p>
+				</div>
+			</div>
+		)
+	} else {
+		return (
+			<>
+				<DataGridFeed>
+					{allEvents.map(event => (
+						<>
+							{event.type === 'party' && 
+								<div className="mb-6">
+									<PartyCard2 event={event} />
+								</div>
+							}
+							{event.type === 'event' && 
+								<div className="mb-6">
+									<EventCard2 event={event} /> 
+								</div>
+							}
+						</>
+					))}
+				</DataGridFeed>
+			</>
+		)
+	}
+}, (_, env) => (
 	<>
 	<Binding>
+		<EntitySubTree
+			entity={`Person(tenantPerson.id='${env.getExtension(identityEnvironmentExtension).identity?.person?.id}')`}
+			alias={'currentUser'}
+		>
+			<Field field={'firstName'} />
+		</EntitySubTree>
 		<EntityListSubTree entities={`N2nParty[date > "${new Date().toISOString()}"]`} alias={'n2nParties'}>
 			<Field field={'id'} />
 			<Field field="name" />
