@@ -43,6 +43,17 @@ export class ApplicationCz {
 	preferredSex = c.enumColumn(preferredSex)
 }
 
+@c.Allow(esnMemberRole, {
+	read: true,
+})
+@c.Allow(coordinatorRole, {
+	read: true,
+})
+@c.Allow(czechBuddyRole, {
+	when: {applicationCz: {person: {personId: czechBuddyId}}},
+	read: true,
+})
+@c.Allow(ozsRole, {read: true})
 @c.View(`
 	SELECT
 		gen_random_uuid() AS id,
@@ -62,6 +73,17 @@ export class howManyBuddiesAssigned {
 	number = c.intColumn()
 }
 
+@c.Allow(esnMemberRole, {
+	read: true,
+})
+@c.Allow(coordinatorRole, {
+	read: true,
+})
+@c.Allow(czechBuddyRole, {
+	when: {applicationCz: {person: {personId: czechBuddyId}}},
+	read: true,
+})
+@c.Allow(ozsRole, {read: true})
 @c.View(`
 	SELECT
 		gen_random_uuid() AS id,

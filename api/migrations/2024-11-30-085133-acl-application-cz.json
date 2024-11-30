@@ -1,0 +1,184 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/ApplicationCzStatus",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"applicationCz": true,
+								"status": true
+							},
+							"create": {
+								"applicationCz": true,
+								"status": true
+							},
+							"update": {
+								"applicationCz": true,
+								"status": true
+							},
+							"delete": true
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/howManyBuddiesAssigned",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"applicationCz": true,
+								"number": true
+							},
+							"create": {
+								"applicationCz": true,
+								"number": true
+							},
+							"update": {
+								"applicationCz": true,
+								"number": true
+							},
+							"delete": true
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/ApplicationCzStatus",
+					"value": {
+						"predicates": {
+							"applicationCz_person_personId": {
+								"applicationCz": {
+									"person": {
+										"personId": "personId"
+									}
+								}
+							}
+						},
+						"operations": {
+							"read": {
+								"applicationCz": "applicationCz_person_personId",
+								"status": "applicationCz_person_personId"
+							},
+							"create": {
+								"applicationCz": "applicationCz_person_personId",
+								"status": "applicationCz_person_personId"
+							},
+							"update": {
+								"applicationCz": "applicationCz_person_personId",
+								"status": "applicationCz_person_personId"
+							},
+							"delete": "applicationCz_person_personId"
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/howManyBuddiesAssigned",
+					"value": {
+						"predicates": {
+							"applicationCz_person_personId": {
+								"applicationCz": {
+									"person": {
+										"personId": "personId"
+									}
+								}
+							}
+						},
+						"operations": {
+							"read": {
+								"applicationCz": "applicationCz_person_personId",
+								"number": "applicationCz_person_personId"
+							},
+							"create": {
+								"applicationCz": "applicationCz_person_personId",
+								"number": "applicationCz_person_personId"
+							},
+							"update": {
+								"applicationCz": "applicationCz_person_personId",
+								"number": "applicationCz_person_personId"
+							},
+							"delete": "applicationCz_person_personId"
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/ApplicationCzStatus",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"applicationCz": true,
+								"status": true
+							},
+							"create": {
+								"applicationCz": true,
+								"status": true
+							},
+							"update": {
+								"applicationCz": true,
+								"status": true
+							},
+							"delete": true
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/howManyBuddiesAssigned",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"applicationCz": true,
+								"number": true
+							},
+							"create": {
+								"applicationCz": true,
+								"number": true
+							},
+							"update": {
+								"applicationCz": true,
+								"number": true
+							},
+							"delete": true
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/ApplicationCzStatus",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"applicationCz": true,
+								"status": true
+							}
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/howManyBuddiesAssigned",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"applicationCz": true,
+								"number": true
+							}
+						}
+					}
+				}
+			]
+		}
+	]
+}

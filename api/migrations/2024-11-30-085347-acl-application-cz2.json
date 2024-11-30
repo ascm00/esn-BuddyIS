@@ -1,0 +1,82 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "remove",
+					"path": "/roles/coordinator/entities/ApplicationCzStatus/operations/create"
+				},
+				{
+					"op": "remove",
+					"path": "/roles/coordinator/entities/ApplicationCzStatus/operations/update"
+				},
+				{
+					"op": "remove",
+					"path": "/roles/coordinator/entities/ApplicationCzStatus/operations/delete"
+				},
+				{
+					"op": "remove",
+					"path": "/roles/coordinator/entities/howManyBuddiesAssigned/operations/create"
+				},
+				{
+					"op": "remove",
+					"path": "/roles/coordinator/entities/howManyBuddiesAssigned/operations/update"
+				},
+				{
+					"op": "remove",
+					"path": "/roles/coordinator/entities/howManyBuddiesAssigned/operations/delete"
+				},
+				{
+					"op": "remove",
+					"path": "/roles/czechBuddy/entities/ApplicationCzStatus/operations/create"
+				},
+				{
+					"op": "remove",
+					"path": "/roles/czechBuddy/entities/ApplicationCzStatus/operations/update"
+				},
+				{
+					"op": "remove",
+					"path": "/roles/czechBuddy/entities/ApplicationCzStatus/operations/delete"
+				},
+				{
+					"op": "remove",
+					"path": "/roles/czechBuddy/entities/howManyBuddiesAssigned/operations/create"
+				},
+				{
+					"op": "remove",
+					"path": "/roles/czechBuddy/entities/howManyBuddiesAssigned/operations/update"
+				},
+				{
+					"op": "remove",
+					"path": "/roles/czechBuddy/entities/howManyBuddiesAssigned/operations/delete"
+				},
+				{
+					"op": "remove",
+					"path": "/roles/esnMember/entities/ApplicationCzStatus/operations/create"
+				},
+				{
+					"op": "remove",
+					"path": "/roles/esnMember/entities/ApplicationCzStatus/operations/update"
+				},
+				{
+					"op": "remove",
+					"path": "/roles/esnMember/entities/ApplicationCzStatus/operations/delete"
+				},
+				{
+					"op": "remove",
+					"path": "/roles/esnMember/entities/howManyBuddiesAssigned/operations/create"
+				},
+				{
+					"op": "remove",
+					"path": "/roles/esnMember/entities/howManyBuddiesAssigned/operations/update"
+				},
+				{
+					"op": "remove",
+					"path": "/roles/esnMember/entities/howManyBuddiesAssigned/operations/delete"
+				}
+			]
+		}
+	]
+}
