@@ -385,7 +385,7 @@ const conditionsPage = () => {
 			<h2 style={styles.subtitle}>Need Help?</h2>
 			<p style={styles.paragraph}>
 			  If you have any questions about this policy or how your data is handled, we’re here to help. Contact us via
-			  the official channels listed on our website. Or <a href="mailto:vedeni@esnvseprague.cz" target='_blank' className='text-blue-600'>here</a>.
+			  the official channels listed on our website. Or <a href="mailto:helpdesk@esnvseprague.cz" target='_blank' className='text-blue-600'>here</a>.
 			</p>
 		  </section>
 		</div>
