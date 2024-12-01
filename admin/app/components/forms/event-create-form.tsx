@@ -40,8 +40,8 @@ export const EventCreateForm = Component(() => {
 			<Field field={'firstName'} /> {' '} <Field field={'surname'} />
 		</ConnectUser> */}
 		<div className='pb-3'>
-			<CheckboxField field="mandatoryESNcard" label="ESN Card mandatory" defaultValue={true}/>
-			<p className="text-xs text-gray-500">Is ESN Card mandatory for this event?</p>
+			<CheckboxField field="mandatoryESNcard" label="ESNcard mandatory" defaultValue={true}/>
+			<p className="text-xs text-gray-500">Is ESNcard mandatory for this event?</p>
 		</div>
 		<ImageField
 			label="Picture"

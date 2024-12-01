@@ -91,7 +91,7 @@ export default () => {
 									</TableRow>
                                     <TableRow>
 										<TableCell>
-											Person ESN Card ID
+											Person ESNcard ID
 										</TableCell>
 										<TableCell className="font-semibold">
 											<Field field="person.esnCardId" />

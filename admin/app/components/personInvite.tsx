@@ -136,8 +136,8 @@ export const PersonInvite = Component(
 				<ImageField label='Profile picture' baseField={'profilePicture'} urlField={'url'} />
 				<HasRole role={roles => roles.has('admin') || roles.has('coordinator') || roles.has('esnMember') || roles.has('internationalStudent')}>
 					<div className='pb-2'>
-						<InputField field="esnCardId" label="ESN Card ID (not required until you get one)"/>
-						<p className="text-xs text-gray-500">You have to add your <strong>ESN Card ID</strong>, when you get one. It will be required for the sign up for the events.</p>
+						<InputField field="esnCardId" label="ESNcard ID (not required until you get one)"/>
+						<p className="text-xs text-gray-500">You have to add your <strong>ESNcard ID</strong>, when you get one. It will be required for the sign up for the events.</p>
 					</div>
 				</HasRole>
 				<div className='pb-2'>

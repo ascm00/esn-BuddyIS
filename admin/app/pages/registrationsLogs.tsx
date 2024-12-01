@@ -53,7 +53,7 @@ export default () => {
                                 <DataGridNumberColumn field="paymentId" header="Payment ID" />
                                 <DataGridTextColumn field="person.tenantPerson.email" header="Email" />
                                 <DataGridTextColumn field="person.inSISusername" header="InSIS username" />
-                                <DataGridTextColumn field="person.esnCardId" header="ESN Card ID" />
+                                <DataGridTextColumn field="person.esnCardId" header="ESNcard ID" />
                                 <DataGridHasOneColumn field="personWhoMadeRegistration" header="Manually registered by">
                                     <Field field="firstName" /> {' '} <Field field="surname" />
                                 </DataGridHasOneColumn>

@@ -73,16 +73,17 @@ export default () => {
 									<DataGridHasOneColumn field="studyProgram" header="Study program">
 										<Field field="name" />
 									</DataGridHasOneColumn>
-									<DataGridTextColumn field="esnCardId" header="Esn card id" />
+									<DataGridTextColumn field="esnCardId" header="ESNcard id" />
 									<DataGridHasOneColumn field="countryOfUniversity" header="Country of home university">
 										<Field field="name" />
 									</DataGridHasOneColumn>
 									{/* <DataGridHasManyColumn field="registrations" header="Event reigstrations">
 										<Field field="event.name" />
 									</DataGridHasManyColumn> */}
-									<DataGridHasOneColumn field="tenantPerson" header="Role">
+									{/* <DataGridHasOneColumn field="tenantPerson" header="Role">
 										<Field field="roles" />
-									</DataGridHasOneColumn>
+									</DataGridHasOneColumn> */}
+									<DataGridEnumColumn field="tenantPerson.roles" header="Role" options={{admin: 'Admin', coordinator: 'Coordinator', esnMember: 'ESN member', czechBuddy: 'Local buddy', internationalStudent: 'International student', ozsRole: 'OZS member'}} />
 								</DataGridTable>
 							</DataGridLoader>
 							<DataGridPagination />

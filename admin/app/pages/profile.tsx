@@ -78,7 +78,7 @@ export default () => {
                                             <HasRole role={roles => roles.has('admin') || roles.has('coordinator') || roles.has('esnMember') || roles.has('internationalStudent')}>
                                                 <TableRow>
                                                     <TableCell>
-                                                        ESN Card ID
+                                                        ESNcard ID
                                                     </TableCell>
                                                     <TableCell className="font-semibold">
                                                         <Field field="esnCardId" />

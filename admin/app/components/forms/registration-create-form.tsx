@@ -99,9 +99,9 @@ export const RegistrationCreateForm = Component<RegistrationCreateFormProps>(
             { mandatoryESNcard &&
             <div className='pb-3'>
                 <HasOne field={'person'}>
-                    <InputField field="esnCardId" label="ESN Card Number *" required />
+                    <InputField field="esnCardId" label="ESNcard Number *" required />
                 </HasOne>
-                <p className="text-xs text-gray-500">Please fill your ESN Card Number. You cannot register without filling it.</p>
+                <p className="text-xs text-gray-500">Please fill your ESNcard Number. You cannot register without filling it.</p>
             </div>}
 
             { dietaryRestrictions &&

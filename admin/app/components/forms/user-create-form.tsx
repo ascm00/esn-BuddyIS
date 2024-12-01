@@ -6,7 +6,7 @@ export const UserCreateForm = Component(() => <FormLayout>
 	<InputField field="firstName" label="First name" required />
 	<InputField field="surname" label="Surname" required />
 	<InputField field="inSISusername" label="InSIS username" />
-	<InputField field="esnCardId" label="Esn card number" />
+	<InputField field="esnCardId" label="ESNcard ID" />
 	<InputField field="phoneNumber" label="Phone number" />
 	<SelectField
 		field="university"
