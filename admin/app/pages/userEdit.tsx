@@ -17,9 +17,6 @@ export default () => {
 						<BackButton />
 					</Slots.Back>
 					<EntitySubTree entity="Person(id=$id)" isCreating={false}>
-						<Slots.Actions>
-							<PersistButton />
-						</Slots.Actions>
 						<PersonForm />
 					</EntitySubTree>
 				</div>

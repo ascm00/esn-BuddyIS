@@ -81,7 +81,7 @@ const AllEventsFeed = Component(() => {
 			<div className="mb-6">
 				<div className="p-4 border border-gray-300 rounded-md bg-blue-100">
 					<h2 className="text-xl font-bold text-blue-800">Welcome to Buddy IS, {firstName || 'student'}! 👋</h2>
-					<p className="text-gray-700">🤗 We’re thrilled to have you on board! Right now, there aren’t any events listed, but once they’re ready, you’ll find them all here. Stay tuned!</p>
+					<p className="text-gray-700">🤗 We’re thrilled to have you on board! Right now, there aren’t any events listed, but once they’re ready, you’ll find them here. Stay tuned!</p>
 					<p className="text-gray-500">⚠️ If you encounter any technical issues in the system, reach out to <a href="mailto:helpdesk@esnvseprague.cz" className='text-blue-600'>helpdesk@esnvseprague.cz</a>.</p>
 				</div>
 			</div>
