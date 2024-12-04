@@ -83,13 +83,6 @@ export const ApplicationFrCreateForm = Component(
 		<>
 			<div className='bg-blue-200 p-4 rounded-md max-w-lg'><div className='text-500'>You already applied for a buddy. Here is your application. 👇</div></div>
 				<div>
-						{/* <Slots.Actions>
-							<Link to={`applicationFrEdit(id: '${currentUserApplicationsFr}')`}>
-								<Button>
-									Edit application
-								</Button>
-							</Link>
-						</Slots.Actions> */}
 						<TableWrapper className="bg-gray-50/50 max-w-lg border rounded-md">
 							<Table>
 								<TableBody>
@@ -170,7 +163,7 @@ export const ApplicationFrCreateForm = Component(
 				<h2 className="text-xl font-semibold">Information about you</h2>
 				<hr className="my-2 border-gray-200" />
 				<div className='flex flex-col space-y-4'>
-					<HasOne field={'person'}>
+					<EntitySubTree entity={`Person(tenantPerson.id='${env.getExtension(identityEnvironmentExtension).identity?.person?.id}')`} isCreating={false}>
 						<RadioEnumField
 							field="gender"
 							label="Your gender *"
@@ -181,19 +174,13 @@ export const ApplicationFrCreateForm = Component(
 						<SelectField field={'studyProgram'} label="Study program *" options={'StudyProgram'}>
 							<Field field={'name'} />
 						</SelectField>
-						{/* <SelectField field={'university'} label="Home university" options={'University'} description="If you are coming to VŠE as an exchange student. Please choose the university you're coming from. Otherwise leave it blank.">
-							<Field field={'name'} />
-						</SelectField> */}
 						<SelectField field={'countryOfUniversity'} label="Home university country *" options={'Country'} description="Country where you attend university.">
 							<Field field={'name'} />
 						</SelectField>
-						{/* <SelectField field={'faculty'} label="Faculty at VSE" options={'Faculty'}>
-							<Field field={'name'} />
-						</SelectField> */}
 						<MultiSelectField field="languages" label="Languages spoken *">
 							<Field field="name" />
 						</MultiSelectField>
-				</HasOne>
+					</EntitySubTree>
 			</div>
 			<div>
 				<h2 className="text-xl font-semibold">Application details</h2>
