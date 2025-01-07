@@ -50,14 +50,6 @@ export default () => {
 											</TableRow>
 											<TableRow>
 												<TableCell>
-													Motivation
-												</TableCell>
-												<TableCell className="font-semibold">
-													<Field field="motivation" />
-												</TableCell>
-											</TableRow>
-											<TableRow>
-												<TableCell>
 													Preferred buddy gender
 												</TableCell>
 												<TableCell className="font-semibold">
