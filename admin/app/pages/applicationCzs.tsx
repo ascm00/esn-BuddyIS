@@ -64,6 +64,11 @@ export default () => {
 															<TrashIcon className='w-4' />
 														</Button>
 													</DeleteEntityModalButton>
+													<Link to="applicationDetail(id: $entity.id)">
+														<Button variant={'secondary'} size={'sm'}>
+															Detail
+														</Button>
+													</Link>
 													<Link to="applicationCzEdit(id: $entity.id)">
 														<Button variant={'secondary'} size={'sm'}>
 															Edit
