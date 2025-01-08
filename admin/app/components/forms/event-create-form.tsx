@@ -74,7 +74,7 @@ export const EventCreateForm = Component(() => {
 		<div className='pb-3'>
 			<SelectField
 				field="section"
-				label="Section *"
+				label="Process *"
 				options="Section"
 			>
 				<Field field="name" />

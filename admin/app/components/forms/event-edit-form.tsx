@@ -61,7 +61,7 @@ export const EventEditForm = Component(() => <FormLayout>
 	<div className='pb-3'>
 		<SelectField
 			field="section"
-			label="Section *"
+			label="Process *"
 			options="Section"
 		>
 			<Field field="name" />
