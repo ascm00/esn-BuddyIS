@@ -17,7 +17,7 @@ export const IdentityLoader = ({ children }: {
 			<Redirect />
 		</IdentityState>
 		<IdentityState state={'failed'}>
-			<div className="flex justify-center items-center h-screen bg-gray-100">
+			{/* <div className="flex justify-center items-center h-screen bg-gray-100">
 				<Card className="w-72">
 					<CardContent className="flex flex-col items-center gap-2">
 						<CircleAlert className="h-12 w-12 text-destructive" />
@@ -32,8 +32,8 @@ export const IdentityLoader = ({ children }: {
 						</div>
 					</CardContent>
 				</Card>
-
-			</div>
+			</div> */}
+			<Redirect />
 		</IdentityState>
 		<IdentityState state={'success'}>
 			{children}
