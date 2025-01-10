@@ -12,6 +12,7 @@ import { Overlay } from '@app/lib/ui/overlay'
 import { Pages, useIdentity, useField, Component, HasOne, Field, useEntity } from '@contember/interface'
 import { ContemberClient } from '@contember/react-client'
 import { createErrorHandler } from '@contember/react-devbar'
+import { entrypointConfig } from './config'
 import {
 	IDP,
 	IDPInitTrigger,
@@ -24,7 +25,7 @@ import {
 	PasswordResetRequestForm,
 } from '@contember/react-identity'
 import { Link, RoutingProvider, useCurrentRequest, useRedirect } from '@contember/react-routing'
-import { Divide, MailIcon } from 'lucide-react'
+import { CircleAlert, Divide, MailIcon } from 'lucide-react'
 import { useEffect, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import PersonCreate from '@app/pages/personCreate'
@@ -50,66 +51,127 @@ const rootEl = document.body.appendChild(document.createElement('div'))
 const hasTokenFromEnv = import.meta.env.VITE_CONTEMBER_ADMIN_SESSION_TOKEN !== '__SESSION_TOKEN__'
 const appUrl = '/app/'
 
-const Login = () => {
-	const showToast = useShowToast()
-	return (
-		<>
-			<IDP
-				onInitError={error =>
-					showToast(
-						<ToastContent>
-							{dict.tenant.login.idpInitError} {error}
-						</ToastContent>,
-						{ type: 'error' },
-					)
-				}
-				onResponseError={error =>
-					showToast(
-						<ToastContent>
-							{dict.tenant.login.idpResponseError} {error}
-						</ToastContent>,
-						{ type: 'error' },
-					)
-				}
-			>
-				<Card className="w-96 relative">
-					<CardHeader>
-						<CardTitle className="text-2xl">{dict.tenant.login.title}</CardTitle>
-						<CardDescription>{dict.tenant.login.description}</CardDescription>
-					</CardHeader>
-					<CardContent>
-						{hasTokenFromEnv && (
-							<AnchorButton href={appUrl} size="lg" className="w-full" variant="destructive">
-								Continue as default user
-							</AnchorButton>
-						)}
-						<Link to="register">
-							<AnchorButton size="lg" className="w-full" variant="secondary">
-								Create account
-							</AnchorButton>
-						</Link>
-						<LoginForm>
-							<form className="grid gap-4">
-								<LoginFormFields />
-							</form>
-						</LoginForm>
+// const Login = () => {
+// 	const showToast = useShowToast()
+// 	return (
+// 		<>
+// 			<IDP
+// 				onInitError={error =>
+// 					showToast(
+// 						<ToastContent>
+// 							{dict.tenant.login.idpInitError} {error}
+// 						</ToastContent>,
+// 						{ type: 'error' },
+// 					)
+// 				}
+// 				onResponseError={error =>
+// 					showToast(
+// 						<ToastContent>
+// 							{dict.tenant.login.idpResponseError} {error}
+// 						</ToastContent>,
+// 						{ type: 'error' },
+// 					)
+// 				}
+// 			>
+// 				<Card className="w-96 relative">
+// 					<CardHeader>
+// 						<CardTitle className="text-2xl">{dict.tenant.login.title}</CardTitle>
+// 						<CardDescription>{dict.tenant.login.description}</CardDescription>
+// 					</CardHeader>
+// 					<CardContent>
+// 						{hasTokenFromEnv && (
+// 							<AnchorButton href={appUrl} size="lg" className="w-full" variant="destructive">
+// 								Continue as default user
+// 							</AnchorButton>
+// 						)}
+// 						<Link to="register">
+// 							<AnchorButton size="lg" className="w-full" variant="secondary">
+// 								Create account
+// 							</AnchorButton>
+// 						</Link>
+// 						<LoginForm>
+// 							<form className="grid gap-4">
+// 								<LoginFormFields />
+// 							</form>
+// 						</LoginForm>
 
-						{/* Un-comment this to setup idp sign in */}
-						{/*{Object.entries(Idps).map(([idp, label]) => (*/}
-						{/*	<IDPInitTrigger key={idp} identityProvider={idp}>*/}
-						{/*		<Button variant="outline" className="w-full">*/}
-						{/*			{label}*/}
-						{/*		</Button>*/}
-						{/*	</IDPInitTrigger>*/}
-						{/*))}*/}
-					</CardContent>
-					<IDPState state={['processing_init', 'processing_response', 'success']}>
-						<Loader />
-					</IDPState>
-				</Card>
-			</IDP>
-		</>
-	)
+// 						{/* Un-comment this to setup idp sign in */}
+// 						{/*{Object.entries(Idps).map(([idp, label]) => (*/}
+// 						{/*	<IDPInitTrigger key={idp} identityProvider={idp}>*/}
+// 						{/*		<Button variant="outline" className="w-full">*/}
+// 						{/*			{label}*/}
+// 						{/*		</Button>*/}
+// 						{/*	</IDPInitTrigger>*/}
+// 						{/*))}*/}
+// 					</CardContent>
+// 					<IDPState state={['processing_init', 'processing_response', 'success']}>
+// 						<Loader />
+// 					</IDPState>
+// 				</Card>
+// 			</IDP>
+// 		</>
+// 	)
+// }
+
+export const Login = ({ idps, hasTokenFromEnv, appUrl, magicLink }: {
+	appUrl: string
+	hasTokenFromEnv: boolean
+	idps: Record<string, string>
+	magicLink: boolean
+}) => {
+	const showToast = useShowToast()
+	const redirect = useRedirect()
+	return <>
+		<IDP
+			onInitError={error => showToast(<ToastContent>{dict.tenant.login.idpInitError} {error}</ToastContent>, { type: 'error' })}
+			onResponseError={error => showToast(
+				<ToastContent>{dict.tenant.login.idpResponseError} {error}</ToastContent>, { type: 'error' })}
+		>
+
+			<Card className="w-96 relative">
+				<CardHeader>
+					<CardTitle className="text-2xl">{dict.tenant.login.title}</CardTitle>
+					<CardDescription>
+						{dict.tenant.login.description}
+					</CardDescription>
+				</CardHeader>
+				<CardContent>
+					{hasTokenFromEnv && <AnchorButton href={appUrl} size="lg" className="w-full" variant="destructive">
+						Continue as default user
+					</AnchorButton>}
+					<Link to="register">
+						<AnchorButton size="lg" className="w-full" variant="secondary">
+							Create account
+						</AnchorButton>
+					</Link>
+					<LoginForm>
+						<form className="grid gap-4">
+							<LoginFormFields />
+						</form>
+					</LoginForm>
+
+					{Object.entries(idps).map(([idp, label]) => (
+						<IDPInitTrigger key={idp} identityProvider={idp}>
+							<Button variant="outline" className="w-full">
+								{label}
+							</Button>
+						</IDPInitTrigger>
+					))}
+
+					{/* {magicLink && <PasswordlessSignInInitForm onSuccess={({ result }) => {
+						redirect('magicLinkSent(request_id: $requestId)', { requestId: result.requestId })
+					}}>
+						<form>
+							<PasswordlessSignInInitFormFields />
+						</form>
+					</PasswordlessSignInInitForm>} */}
+				</CardContent>
+				<IDPState state={['processing_init', 'processing_response', 'success']}>
+					<Loader />
+				</IDPState>
+			</Card>
+		</IDP>
+	</>
 }
 
 const LoggedIn = Component(
@@ -139,7 +201,12 @@ const IndexPage = () => {
 	return (
 		<IdentityProvider>
 			<IdentityState state={['none', 'cleared']}>
-				<Login />
+				<Login
+					appUrl={entrypointConfig.appUrl}
+					hasTokenFromEnv={entrypointConfig.hasTokenFromEnv}
+					idps={entrypointConfig.idps}
+					magicLink={entrypointConfig.magicLink}
+				/>
 			</IdentityState>
 			<IdentityState state="success">
 				<LoggedIn />
@@ -149,15 +216,17 @@ const IndexPage = () => {
 			</IdentityState>
 			<IdentityState state="failed">
 				<Overlay>
-					<div className="bg-gray-100 flex flex-col gap-4 items-center justify-center p-16 rounded-lg shadow-lg border">
-						<p className="text-lg">Failed to load identity. You have to be logged in.</p>
-						Login <a href={import.meta.env.VITE_LOGIN_URL}>here</a>.
-						<LogoutTrigger>
-							<Button className="w-full" variant="outline">
-								Logout
-							</Button>
-						</LogoutTrigger>
-					</div>
+					<Card className="w-72">
+						<CardContent className="flex flex-col items-center gap-2">
+							<CircleAlert className="h-12 w-12 text-destructive" />
+							<p className="text-center text-lg text-gray-600">
+								{dict.identityLoader.fail}
+							</p>
+							<LogoutTrigger>
+								<Button>Login again</Button>
+							</LogoutTrigger>
+						</CardContent>
+					</Card>
 				</Overlay>
 			</IdentityState>
 		</IdentityProvider>
