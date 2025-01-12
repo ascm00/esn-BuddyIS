@@ -94,6 +94,8 @@ export const dict = {
 		false: 'No',
 		trueIcon: '✅',
 		falseIcon: '❌',
+		willBePaired: '✅ Student will be paired',
+		willNotBePaired: '❌ Student will not be paired',
 	},
 	logout: 'Log out',
 	inviteErrors: {

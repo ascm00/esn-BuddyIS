@@ -37,6 +37,13 @@ export const formatBooleanPair = (value: boolean | null) => {
 	return value ? dict.boolean.falseIcon : dict.boolean.trueIcon
 }
 
+export const formatBooleanPairDetail = (value: boolean | null) => {
+	if (value === null) {
+		return null
+	}
+	return value ? dict.boolean.willNotBePaired : dict.boolean.willBePaired
+}
+
 export const createEnumFormatter = (enumValues: Record<string, string>) => (value: string | null) => {
 	if (value === null) {
 		return null

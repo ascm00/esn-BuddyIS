@@ -9,6 +9,7 @@ import { Component, EntitySubTree, Field, HasRole, Link, useEntity } from '@cont
 import { TrashIcon } from 'lucide-react'
 import { DeleteEntityModalButton } from '@app/lib/buttons/deleteEntityModalButton'
 import { PersistCheckbox } from '@app/components/PersistCheckbox'
+import { formatBooleanPairDetail } from '@app/lib/formatting'
 export default () => {
 	return (
 		<>
@@ -106,6 +107,14 @@ export default () => {
 													</TableCell>
 													<TableCell className="font-semibold">
 														<PersistCheckbox field={'notPair'} description='If you check this button. Student will not be paired.' />
+													</TableCell>
+												</TableRow>
+												<TableRow>
+													<TableCell>
+														Will be paired?
+													</TableCell>
+													<TableCell className="font-semibold">
+														<Field field={'notPair'} format={formatBooleanPairDetail} />
 													</TableCell>
 												</TableRow>
 											</HasRole>
