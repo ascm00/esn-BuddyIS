@@ -79,48 +79,55 @@ export default () => {
 								</TableWrapper>
 							</div>
 							<div className="w-full gap-4 flex flex-col">
-								<TableWrapper className="bg-gray-50/50 max-w-lg border rounded-md">
-									<Table>
-										<TableBody>
-											<TableRow>
-												<TableCell>
-													Motivation
-												</TableCell>
-											</TableRow>
-											<TableRow>
-												<TableCell className="font-semibold">
-													<Field field="motivation" />
-												</TableCell>
-											</TableRow>
-											<HasRole role={roles => roles.has('admin') || roles.has('coordinator')}>
+									<TableWrapper className="bg-gray-50/50 max-w-lg border rounded-md">
+										<Table>
+											<TableBody>
 												<TableRow>
 													<TableCell>
-														Read
-													</TableCell>
-													<TableCell className="font-semibold">
-														<PersistCheckbox field={'read'} />
+														Motivation
 													</TableCell>
 												</TableRow>
 												<TableRow>
-													<TableCell>
-														Do NOT pair
-													</TableCell>
 													<TableCell className="font-semibold">
-														<PersistCheckbox field={'notPair'} description='If you check this button. Student will not be paired.' />
+														<Field field="motivation" />
 													</TableCell>
 												</TableRow>
-												<TableRow>
-													<TableCell>
-														Will be paired?
-													</TableCell>
-													<TableCell className="font-semibold">
-														<Field field={'notPair'} format={formatBooleanPairDetail} />
-													</TableCell>
-												</TableRow>
-											</HasRole>
-										</TableBody>
-									</Table>
-								</TableWrapper>
+											</TableBody>
+										</Table>
+									</TableWrapper>
+
+									<HasRole role={roles => roles.has('admin') || roles.has('coordinator')}>
+										<TableWrapper className="bg-gray-50/50 max-w-lg border rounded-md">
+											<Table>
+												<TableBody>
+													<TableRow>
+														<TableCell>
+															Read
+														</TableCell>
+														<TableCell className="font-semibold">
+															<PersistCheckbox field={'read'} />
+														</TableCell>
+													</TableRow>
+													<TableRow>
+														<TableCell>
+															Do NOT pair
+														</TableCell>
+														<TableCell className="font-semibold">
+															<PersistCheckbox field={'notPair'} description='If you check this button. Student will not be paired.' />
+														</TableCell>
+													</TableRow>
+													<TableRow>
+														<TableCell>
+															Will be paired?
+														</TableCell>
+														<TableCell className="font-semibold">
+															<Field field={'notPair'} format={formatBooleanPairDetail} />
+														</TableCell>
+													</TableRow>
+												</TableBody>
+											</Table>
+										</TableWrapper>
+									</HasRole>
 							</div>
 						</div>
 					</EntitySubTree>

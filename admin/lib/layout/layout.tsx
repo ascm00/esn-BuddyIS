@@ -323,11 +323,11 @@ export const LayoutComponent = ({ children, ...rest }: PropsWithChildren<{}>) =>
 
 				</LayoutBoxUI>
 
-				{/* <LayoutFooterUI>
+				<LayoutFooterUI>
 					<div>
 						<SlotTargets.Footer />
 					</div>
-				</LayoutFooterUI> */}
+				</LayoutFooterUI>
 			</LayoutMaxWidthUI>
 		</LayoutBodyUI>
 	)

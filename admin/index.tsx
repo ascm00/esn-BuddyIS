@@ -345,6 +345,11 @@ const conditionsPage = () => {
 		  marginTop: '20px',
 		  color: '#34495e',
 		},
+		subtitle2: {
+			fontSize: '1.3em',
+			marginTop: '20px',
+			color: '#34495e',
+		  },
 		paragraph: {
 		  marginBottom: '15px',
 		},
@@ -448,6 +453,39 @@ const conditionsPage = () => {
 			  We work hard to protect your data with up-to-date security measures. While no system is completely secure, we
 			  continuously strive to minimize risks.
 			</p>
+		  </section>
+
+		  <section>
+			<h2 style={styles.subtitle}>Payments</h2>
+			<p style={styles.paragraph}>
+				We have integrated the payment gateway provided by Comgate, a.s. For more details about their services, visit their official website: <a href="https://www.comgate.cz/platebni-brana" target='_blank' className='text-blue-600'>https://www.comgate.cz/platebni-brana</a>.
+			</p>
+			<p style={styles.paragraph}>
+				We have integrated the payment gateway provided by Comgate, a.s. For more details about their services, visit their official website: <a href="https://www.comgate.cz/platebni-brana" target='_blank' className='text-blue-600'>https://www.comgate.cz/platebni-brana</a>.
+			</p>
+			<h2 style={styles.subtitle2}>Payment Methods</h2>
+			<p style={styles.paragraph}>
+				The Comgate Payment Gateway supports a variety of payment methods, including credit/debit cards, bank transfers, and QR code payments.
+			</p>
+			<h2 style={styles.subtitle2}>Card Payments</h2>
+			<p style={styles.paragraph}>
+				Supported cards include Visa, Visa Electron, Mastercard, and Maestro, as well as Apple Pay and Google Pay. Advanced features such as recurring payments, pre-authorization, and card memorization are available.
+			</p>
+			<h2 style={styles.subtitle2}>Bank Transfers</h2>
+			<p style={styles.paragraph}>
+				Bank transfers are a secure method preferred by approximately 20% of users for reasons such as avoiding card usage, exceeding card limits, or convenience. Payments are confirmed immediately via online or mobile banking, ensuring safety through encrypted communication. Options include traditional transfers, QR code payments, and PSD2-compliant open banking.
+			</p>
+			<p style={styles.paragraph}>
+				For detailed information on payment methods, fees, and the transaction process, visit: <a href="https://help.comgate.cz/v1/docs/en/payments-by-a-card" target='_blank' className='text-blue-600'>https://help.comgate.cz/v1/docs/en/payments-by-a-card</a> or <a href="https://help.comgate.cz/docs/en/bank-transfers" target='_blank' className='text-blue-600'>https://help.comgate.cz/docs/en/bank-transfers</a>.
+			</p>
+			<h2 style={styles.subtitle2}>Contact</h2>
+			<p style={styles.paragraph}>
+				Contact details for Comgate, a.s.:<br/>
+				Address: Gočárova třída 1754 / 48b, Hradec Králové<br/>
+				Email: <a href="mailto:platby-podpora@comgate.cz">platby-podpora@comgate.cz</a><br/>
+				Phone: <a href="tel:+420228224267">+420 228 224 267</a>
+			</p>
+
 		  </section>
 	
 		  <section>

@@ -19,7 +19,14 @@ export const Layout = memo(({ children }: PropsWithChildren) => {
 				</Slots.Navigation>
 
 				<Slots.Footer>
-					<p><small>Created with <a className="content-link" href="https://www.contember.com/">AI-assisted Contember Studio</a></small></p>
+					<div className='flex flex-row'>
+						<div className='mr-2 text-sm'>
+							<p><a href="https://app.esnvseprague.cz/?page=conditions" target='_blank'>Conditions</a> | </p>
+						</div>
+						<div>
+							<img src="/footer.png" alt="card logos" style={{ width: '200px', height: '20px' }} />
+						</div>
+					</div>
 				</Slots.Footer>
 
 				{children}
