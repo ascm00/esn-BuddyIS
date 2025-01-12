@@ -203,7 +203,7 @@ const AutomaticPairing = Component(
                 <HasOne field={'semester'} />
             </EntityListSubTree>
             
-            <EntityListSubTree entities={'ApplicationCz[status.status="toBePaired" && semester.isCurrent=true]'} alias={'currentSemesterCzApplications'}>
+            <EntityListSubTree entities={'ApplicationCz[status.status="toBePaired" && semester.isCurrent=true && notPair!=true]'} alias={'currentSemesterCzApplications'}>
                 <Field field={'status.status'} />
                 <HasOne field={'person'}>
                     <Field field={'gender'} />

@@ -8,6 +8,7 @@ import { EnumCell } from '@contember/admin'
 import { Component, EntitySubTree, Field, Link, useEntity } from '@contember/interface'
 import { TrashIcon } from 'lucide-react'
 import { DeleteEntityModalButton } from '@app/lib/buttons/deleteEntityModalButton'
+import { PersistCheckbox } from '@app/components/PersistCheckbox'
 export default () => {
 	return (
 		<>
@@ -93,6 +94,7 @@ export default () => {
 										</TableBody>
 									</Table>
 								</TableWrapper>
+
 							</div>
 						</div>
 					</EntitySubTree>

@@ -23,6 +23,20 @@ export const formatBoolean = (value: boolean | null) => {
 	return value ? dict.boolean.true : dict.boolean.false
 }
 
+export const formatBooleanIcon = (value: boolean | null) => {
+	if (value === null) {
+		return null
+	}
+	return value ? dict.boolean.trueIcon : dict.boolean.falseIcon
+}
+
+export const formatBooleanPair = (value: boolean | null) => {
+	if (value === null) {
+		return null
+	}
+	return value ? dict.boolean.falseIcon : dict.boolean.trueIcon
+}
+
 export const createEnumFormatter = (enumValues: Record<string, string>) => (value: string | null) => {
 	if (value === null) {
 		return null

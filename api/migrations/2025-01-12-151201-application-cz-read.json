@@ -1,0 +1,136 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "createColumn",
+			"entityName": "ApplicationCz",
+			"field": {
+				"name": "read",
+				"columnName": "read",
+				"columnType": "boolean",
+				"nullable": true,
+				"type": "Bool",
+				"default": false
+			},
+			"fillValue": false
+		},
+		{
+			"modification": "createColumn",
+			"entityName": "ApplicationCz",
+			"field": {
+				"name": "notPair",
+				"columnName": "not_pair",
+				"columnType": "boolean",
+				"nullable": true,
+				"type": "Bool",
+				"default": false
+			},
+			"fillValue": false
+		},
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/ApplicationCz/operations/create/read",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/ApplicationCz/operations/create/notPair",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/ApplicationCz/operations/update/read",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/ApplicationCz/operations/update/notPair",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/ApplicationCz/operations/read/read",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/ApplicationCz/operations/read/notPair",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/ApplicationCz/operations/create/read",
+					"value": "person_personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/ApplicationCz/operations/create/notPair",
+					"value": "person_personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/ApplicationCz/operations/update/read",
+					"value": "person_personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/ApplicationCz/operations/update/notPair",
+					"value": "person_personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/ApplicationCz/operations/read/read",
+					"value": "person_personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/ApplicationCz/operations/read/notPair",
+					"value": "person_personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/ApplicationCz/operations/create/read",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/ApplicationCz/operations/create/notPair",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/ApplicationCz/operations/update/read",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/ApplicationCz/operations/update/notPair",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/ApplicationCz/operations/read/read",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/ApplicationCz/operations/read/notPair",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/ApplicationCz/operations/read/read",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/ApplicationCz/operations/read/notPair",
+					"value": true
+				}
+			]
+		}
+	]
+}

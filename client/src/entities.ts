@@ -44,6 +44,8 @@ export type ApplicationCz <OverRelation extends string | never = never> = {
 		howManyBuddies: number | null
 		result: applicationCzResult | null
 		preferredSex: preferredSex | null
+		read: boolean | null
+		notPair: boolean | null
 	}
 	hasOne: {
 		person: Person

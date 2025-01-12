@@ -41,6 +41,8 @@ export class ApplicationCz {
 	preferredCountry = c.manyHasOne(Country, 'preferredApplicationsCz').setNullOnDelete()
 	preferredLanguages = c.manyHasMany(Language, 'applicationsCz')
 	preferredSex = c.enumColumn(preferredSex)
+	read = c.boolColumn().default(false)
+	notPair = c.boolColumn().default(false)
 }
 
 @c.Allow(esnMemberRole, {

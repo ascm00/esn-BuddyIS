@@ -2,7 +2,8 @@ import { Navigation } from '@app/components/navigation'
 import { Binding } from '@app/lib/binding'
 import { BackButton } from '@app/lib/buttons'
 import { DeleteEntityModalButton } from '@app/lib/buttons/deleteEntityModalButton'
-import { DataGrid, DataGridColumn, DataGridEnumColumn, DataGridEnumFilter, DataGridHasManyColumn, DataGridHasManyFilter, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridNumberColumn, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
+import { DataGrid, DataGridBooleanColumn, DataGridColumn, DataGridEnumColumn, DataGridEnumFilter, DataGridHasManyColumn, DataGridHasManyFilter, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridNumberColumn, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
+import { formatBoolean, formatBooleanIcon, formatBooleanPair } from '@app/lib/formatting'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
 import { Field, HasRole, Link } from '@contember/interface'
@@ -53,7 +54,7 @@ export default () => {
 									<HasRole role={roles => roles.has('admin') || roles.has('coordinator')}>
 										<DataGridColumn>
 											<div className="flex gap-2">
-												<HasRole role="admin">
+												<HasRole role={roles => roles.has('admin') || roles.has('coordinator')}>
 													<DeleteEntityModalButton 
 														message="Do you really want to delete?"
 														deleteMessage="Delete"
@@ -78,6 +79,7 @@ export default () => {
 											</div>
 										</DataGridColumn>
 									</HasRole>
+									<DataGridBooleanColumn field='read' header='Read' children={<Field field={'read'} format={formatBooleanIcon} />} />
 									<DataGridHasOneColumn field="person" header="Name" >
 										<Field field="firstName" /> {' '} <Field field="surname" /> {' ('} <Field field="inSISusername" /> {') '}
 									</DataGridHasOneColumn>
@@ -96,6 +98,7 @@ export default () => {
 									{/* <DataGridEnumColumn field="result" header="Result" options={{ accepted: 'accepted', declined: 'declined' }} /> */}
 									<DataGridNumberColumn header="Buddies assigned" field='howManyBuddiesAssigned.number' />
 									<DataGridNumberColumn header="Max buddies" field='howManyBuddies' />
+									<DataGridBooleanColumn field='notPair' header='Ready to pair' children={<Field field={'notPair'} format={formatBooleanPair} />} />
 									<DataGridEnumColumn header="Application status" field='status.status' options={{ toBePaired: 'To be paired', paired: 'Paired', notPaired: 'Not paired' }} />
 								</DataGridTable>
 							</DataGridLoader>

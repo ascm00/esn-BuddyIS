@@ -71,6 +71,12 @@ export const ContemberClientNames: SchemaNames = {
         },
         "preferredSex": {
           "type": "column"
+        },
+        "read": {
+          "type": "column"
+        },
+        "notPair": {
+          "type": "column"
         }
       },
       "scalars": [
@@ -80,7 +86,9 @@ export const ContemberClientNames: SchemaNames = {
         "motivation",
         "howManyBuddies",
         "result",
-        "preferredSex"
+        "preferredSex",
+        "read",
+        "notPair"
       ]
     },
     "ApplicationCzStatus": {

@@ -92,6 +92,8 @@ export const dict = {
 	boolean: {
 		true: 'Yes',
 		false: 'No',
+		trueIcon: '✅',
+		falseIcon: '❌',
 	},
 	logout: 'Log out',
 	inviteErrors: {

@@ -5,9 +5,10 @@ import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
 import { Table, TableBody, TableCell, TableRow, TableWrapper } from '@app/lib/ui/table'
 import { EnumCell } from '@contember/admin'
-import { Component, EntitySubTree, Field, Link, useEntity } from '@contember/interface'
+import { Component, EntitySubTree, Field, HasRole, Link, useEntity } from '@contember/interface'
 import { TrashIcon } from 'lucide-react'
 import { DeleteEntityModalButton } from '@app/lib/buttons/deleteEntityModalButton'
+import { PersistCheckbox } from '@app/components/PersistCheckbox'
 export default () => {
 	return (
 		<>
@@ -90,6 +91,24 @@ export default () => {
 													<Field field="motivation" />
 												</TableCell>
 											</TableRow>
+											<HasRole role={roles => roles.has('admin') || roles.has('coordinator')}>
+												<TableRow>
+													<TableCell>
+														Read
+													</TableCell>
+													<TableCell className="font-semibold">
+														<PersistCheckbox field={'read'} />
+													</TableCell>
+												</TableRow>
+												<TableRow>
+													<TableCell>
+														Do NOT pair
+													</TableCell>
+													<TableCell className="font-semibold">
+														<PersistCheckbox field={'notPair'} description='If you check this button. Student will not be paired.' />
+													</TableCell>
+												</TableRow>
+											</HasRole>
 										</TableBody>
 									</Table>
 								</TableWrapper>
