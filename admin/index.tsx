@@ -376,9 +376,9 @@ const conditionsPage = () => {
 		<div style={styles.container}>
 		  <h1 style={styles.title}>Privacy and Data Protection</h1>
 		  <p style={styles.paragraph}>
-			At ESN VŠE Prague ("we" or "our organization"), your privacy is a top priority. This page explains how we handle
+			At ESN VŠE Prague, z. s. ("we" or "our organization"), your privacy is a top priority. This page explains how we handle
 			the information you share with us through our platform and associated services (collectively referred to as
-			"the Service").
+			"the Service"). Our official address is: nám. W. Churchilla 4, 130 67 Praha 3, and our registration number (IČ) is 26631369.
 		  </p>
 	
 		  <section>
