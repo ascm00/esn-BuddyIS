@@ -57,9 +57,6 @@ export const RegistrationCreateForm = Component<RegistrationCreateFormProps>(
 
     // Check if something changed in the event capacity
     useEntityBeforePersist(() => {
-        // if(isPaid && !isOnWaitingList){
-        //      entity.updateValues({accepted: false})
-        // }
         
         const signedUpNumber = currentEvent.getField<number>('registeredCount.registered_count').value ?? 0
 

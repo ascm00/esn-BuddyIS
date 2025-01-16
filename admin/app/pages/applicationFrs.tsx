@@ -37,6 +37,7 @@ export default () => {
 								<DataGridHasOneFilter field={'person.studyProgram'} label={'Study program'}>
 									<Field field={'name'} />
 								</DataGridHasOneFilter>
+								<DataGridEnumFilter field={'status'} options={{ toBePaired: 'No', paired: 'Yes' }} label="Paired" />
 								<DataGridHasOneFilter field={'person.countryOfUniversity'} label={'Country of University'}>
 									<Field field={'name'} />
 								</DataGridHasOneFilter>

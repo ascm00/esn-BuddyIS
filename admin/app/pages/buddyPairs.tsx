@@ -81,6 +81,12 @@ export default () => {
 										<Field field="inSISusername" />
 									</DataGridHasOneColumn>
 									<DataGridBooleanColumn field="tenPoints" header="10 points" />
+									<DataGridHasOneColumn field="czechStudent" header="Local buddy study program">
+										<Field field="studyProgram.name" />
+									</DataGridHasOneColumn>
+									<DataGridHasOneColumn field="internationalStudent" header="Foreign buddy study program">
+										<Field field="studyProgram.name" />
+									</DataGridHasOneColumn>
 								</DataGridTable>
 							</DataGridLoader>
 							<DataGridPagination />

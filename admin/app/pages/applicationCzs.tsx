@@ -2,7 +2,7 @@ import { Navigation } from '@app/components/navigation'
 import { Binding } from '@app/lib/binding'
 import { BackButton } from '@app/lib/buttons'
 import { DeleteEntityModalButton } from '@app/lib/buttons/deleteEntityModalButton'
-import { DataGrid, DataGridBooleanColumn, DataGridColumn, DataGridEnumColumn, DataGridEnumFilter, DataGridHasManyColumn, DataGridHasManyFilter, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridNumberColumn, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
+import { DataGrid, DataGridBooleanColumn, DataGridBooleanFilterSelect, DataGridColumn, DataGridEnumColumn, DataGridEnumFilter, DataGridHasManyColumn, DataGridHasManyFilter, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridNumberColumn, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
 import { formatBoolean, formatBooleanIcon, formatBooleanPair } from '@app/lib/formatting'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
@@ -41,6 +41,7 @@ export default () => {
 								<DataGridHasOneFilter field={'person.studyProgram'} label="Study Program">
 									<Field field={'name'} />
 								</DataGridHasOneFilter>
+								<DataGridEnumFilter field={'status.status'} options={{ toBePaired: 'No', paired: 'Yes' }} label="Paired" />
 								<DataGridHasManyFilter field={'person.languages'} label="Languages spoken">
 									<Field field={'name'} />
 								</DataGridHasManyFilter>
