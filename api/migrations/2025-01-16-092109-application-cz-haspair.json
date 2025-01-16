@@ -1,0 +1,175 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "createView",
+			"entity": {
+				"name": "Paired",
+				"primary": "id",
+				"primaryColumn": "id",
+				"tableName": "paired",
+				"fields": {
+					"id": {
+						"name": "id",
+						"columnName": "id",
+						"columnType": "uuid",
+						"nullable": false,
+						"type": "Uuid"
+					},
+					"applicationCz": {
+						"type": "OneHasOne",
+						"name": "applicationCz",
+						"target": "ApplicationCz",
+						"joiningColumn": {
+							"columnName": "application_cz_id",
+							"onDelete": "restrict"
+						},
+						"nullable": true,
+						"inversedBy": "hasPair"
+					},
+					"isPaired": {
+						"name": "isPaired",
+						"columnName": "is_paired",
+						"columnType": "boolean",
+						"nullable": true,
+						"type": "Bool"
+					}
+				},
+				"unique": [],
+				"indexes": [],
+				"eventLog": {
+					"enabled": true
+				},
+				"view": {
+					"sql": "\n\tSELECT\n\t\tgen_random_uuid() AS id,\n\t\tac.id as application_cz_id,\n\t\tCASE \n\t\t\tWHEN hba.number > 0 THEN true\n\t\t\tELSE false\n\t\tEND AS is_paired\n\tFROM\n\t\tapplication_cz AS ac\n\tLEFT JOIN\n\t\thow_many_buddies_assigned AS hba ON hba.application_cz_id = ac.id\n"
+				}
+			}
+		},
+		{
+			"modification": "createRelationInverseSide",
+			"entityName": "ApplicationCz",
+			"relation": {
+				"type": "OneHasOne",
+				"name": "hasPair",
+				"target": "Paired",
+				"ownedBy": "applicationCz",
+				"nullable": true
+			}
+		},
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/Paired",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"applicationCz": true,
+								"isPaired": true
+							}
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/ApplicationCz/operations/create/hasPair",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/ApplicationCz/operations/update/hasPair",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/ApplicationCz/operations/read/hasPair",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/Paired",
+					"value": {
+						"predicates": {
+							"applicationCz_person_personId": {
+								"applicationCz": {
+									"person": {
+										"personId": "personId"
+									}
+								}
+							}
+						},
+						"operations": {
+							"read": {
+								"applicationCz": "applicationCz_person_personId",
+								"isPaired": "applicationCz_person_personId"
+							}
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/ApplicationCz/operations/create/hasPair",
+					"value": "person_personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/ApplicationCz/operations/update/hasPair",
+					"value": "person_personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/ApplicationCz/operations/read/hasPair",
+					"value": "person_personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Paired",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"applicationCz": true,
+								"isPaired": true
+							}
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/ApplicationCz/operations/create/hasPair",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/ApplicationCz/operations/update/hasPair",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/ApplicationCz/operations/read/hasPair",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/Paired",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"applicationCz": true,
+								"isPaired": true
+							}
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/ApplicationCz/operations/read/hasPair",
+					"value": true
+				}
+			]
+		}
+	]
+}

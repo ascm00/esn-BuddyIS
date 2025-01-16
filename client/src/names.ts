@@ -77,6 +77,10 @@ export const ContemberClientNames: SchemaNames = {
         },
         "notPair": {
           "type": "column"
+        },
+        "hasPair": {
+          "type": "one",
+          "entity": "Paired"
         }
       },
       "scalars": [
@@ -814,6 +818,25 @@ export const ContemberClientNames: SchemaNames = {
         "id",
         "createdAt",
         "content"
+      ]
+    },
+    "Paired": {
+      "name": "Paired",
+      "fields": {
+        "id": {
+          "type": "column"
+        },
+        "applicationCz": {
+          "type": "one",
+          "entity": "ApplicationCz"
+        },
+        "isPaired": {
+          "type": "column"
+        }
+      },
+      "scalars": [
+        "id",
+        "isPaired"
       ]
     },
     "Person": {

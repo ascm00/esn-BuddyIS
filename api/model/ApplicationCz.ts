@@ -43,6 +43,7 @@ export class ApplicationCz {
 	preferredSex = c.enumColumn(preferredSex)
 	read = c.boolColumn().default(false)
 	notPair = c.boolColumn().default(false)
+	hasPair = c.oneHasOneInverse(Paired, 'applicationCz')
 }
 
 @c.Allow(esnMemberRole, {
@@ -102,4 +103,33 @@ export class howManyBuddiesAssigned {
 export class ApplicationCzStatus {
 	applicationCz = c.oneHasOne(ApplicationCz, 'status')
 	status = c.enumColumn(applicationStatus).default('toBePaired')
+}
+
+@c.Allow(esnMemberRole, {
+	read: true,
+})
+@c.Allow(coordinatorRole, {
+	read: true,
+})
+@c.Allow(czechBuddyRole, {
+	when: {applicationCz: {person: {personId: czechBuddyId}}},
+	read: true,
+})
+@c.Allow(ozsRole, {read: true})
+@c.View(`
+	SELECT
+		gen_random_uuid() AS id,
+		ac.id as application_cz_id,
+		CASE 
+			WHEN hba.number > 0 THEN true
+			ELSE false
+		END AS is_paired
+	FROM
+		application_cz AS ac
+	LEFT JOIN
+		how_many_buddies_assigned AS hba ON hba.application_cz_id = ac.id
+`)
+export class Paired {
+	applicationCz = c.oneHasOne(ApplicationCz, 'hasPair')
+	isPaired = c.boolColumn()
 }
