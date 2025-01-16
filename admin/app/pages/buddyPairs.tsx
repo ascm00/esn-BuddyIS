@@ -43,7 +43,7 @@ export default () => {
 						<DataGrid entities="BuddyPair[semester.isCurrent=true]">
 							<DataGridToolbar>
 								<DataGridQueryFilter />
-								<DataGridHasOneFilter field="coordinator" label="Coordinator">
+								<DataGridHasOneFilter field="coordinator" label="Coordinator" options={'Person[tenantPerson.roles = "coordinator"]'}>
 									<Field field="firstName" /> {' '} <Field field="surname" />
 								</DataGridHasOneFilter>
 								<DataGridBooleanFilter field="tenPoints" label="10 points" noNullFilter />
