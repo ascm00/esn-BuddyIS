@@ -28,7 +28,7 @@ export interface DataViewExportTriggerProps {
 	exportFactory?: ExportFactory
 }
 
-
+// This function copies all emails from the datagrid after filters
 export const DataViewCopyEmails = ({ fields, children, baseName, exportFactory }: DataViewExportTriggerProps) => {
 	console.log('fields', fields)
 	const entityName = useDataViewEntityListProps().entityName
@@ -36,9 +36,13 @@ export const DataViewCopyEmails = ({ fields, children, baseName, exportFactory }
 	const fetchData = useDataViewFetchAllData({ children: fields ?? globalChildren })
 	const doCopy = useCallback(async () => {
 		const fetchResult = await fetchData()
-		console.log(fetchResult.data)
 		const emailsArray = fetchResult.data.map((item: any) => item?.person_2092813789?.tenantPerson_1330802003?.email);
-		navigator.clipboard.writeText(emailsArray.join(', '));
+		const textArea = document.createElement('textarea')
+		textArea.value = emailsArray.join(', ')
+		document.body.appendChild(textArea)
+		textArea.select()
+		document.execCommand('copy');
+		document.body.removeChild(textArea)
 
 	}, [baseName, entityName, exportFactory, fetchData])
 
