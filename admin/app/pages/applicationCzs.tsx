@@ -36,7 +36,7 @@ export default () => {
 						</HasRole>
 						</Slots.Actions>
 						<DataGrid entities="ApplicationCz[semester.isCurrent=true]">
-							<DataGridToolbar>
+							<DataGridToolbar copyingMails>
 								<DataGridQueryFilter />
 								<DataGridHasOneFilter field={'person.studyProgram'} label="Study Program">
 									<Field field={'name'} />
@@ -102,6 +102,7 @@ export default () => {
 									<DataGridNumberColumn header="Max buddies" field='howManyBuddies' />
 									<DataGridBooleanColumn field='notPair' header='Ready to pair' children={<Field field={'notPair'} format={formatBooleanPair} />} />
 									<DataGridEnumColumn header="Application status" field='status.status' options={{ toBePaired: 'To be paired', paired: 'Paired', notPaired: 'Not paired' }} />
+									<DataGridTextColumn header="Email" field='person.tenantPerson.email' />
 								</DataGridTable>
 							</DataGridLoader>
 							<DataGridPagination />

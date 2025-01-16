@@ -465,7 +465,7 @@ export default () => {
 									<div className="text-xl font-bold">Registered users</div>
 								</div>
 								<DataGrid entities="EventRegistration[(isWaitingList != true) && (event.id = $id) && (accepted = true)]" filteringStateStorage={'session'}>
-									<DataGridToolbar>
+									<DataGridToolbar copyingMails>
 										<DataGridQueryFilter />
 										<DataGridHasOneFilter field="person" label="User" options={'Person[registrations[event.id = $id && accepted=true && isWaitingList=false]]'}>
 											<Field field="firstName" /> {' '} <Field field="surname" />

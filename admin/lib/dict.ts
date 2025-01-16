@@ -71,6 +71,7 @@ export const dict = {
 		filters: 'Filters',
 		exclude: 'Exclude',
 		export: 'Export',
+		copy: 'Copy emails'
 	},
 	select: {
 		confirmNew: 'Confirm',

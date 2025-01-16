@@ -1,4 +1,4 @@
-import { Component } from '@contember/interface'
+import { Component, Field } from '@contember/interface'
 import * as React from 'react'
 import { ReactNode } from 'react'
 import { DataGridShowFiltersContext } from './filters/mobile'
@@ -13,13 +13,15 @@ import { dataAttribute } from '@contember/utilities'
 import { dict } from '../dict'
 import { DataGridAutoExport } from './export'
 import { DataGridToolbarVisibleElements } from './elements'
+import { DataGridCopyEmails, DataViewCopyEmails } from './copy'
 
 export interface DataGridToolbarProps {
 	children?: ReactNode
 	noExport?: boolean
+	copyingMails?: boolean
 }
 
-export const DataGridToolbar = Component<DataGridToolbarProps>(({ children, noExport }) => {
+export const DataGridToolbar = Component<DataGridToolbarProps>(({ children, noExport, copyingMails }) => {
 	const [showFilters, setShowFilters] = React.useState(false)
 	return (
 		<DataGridShowFiltersContext.Provider value={showFilters}>
@@ -52,6 +54,7 @@ export const DataGridToolbar = Component<DataGridToolbarProps>(({ children, noEx
 					</Popover>
 
 					{!noExport && <DataGridAutoExport />}
+					{copyingMails && <DataGridCopyEmails />}
 				</div>
 
 				<div className="flex flex-wrap gap-2">

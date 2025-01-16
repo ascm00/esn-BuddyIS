@@ -32,7 +32,7 @@ export default () => {
 							</Link> */}
 						</Slots.Actions>
 						<DataGrid entities="ApplicationFr[semester.isCurrent=true]">
-							<DataGridToolbar>
+							<DataGridToolbar copyingMails>
 								<DataGridQueryFilter />
 								<DataGridHasOneFilter field={'person.studyProgram'} label={'Study program'}>
 									<Field field={'name'} />
@@ -92,6 +92,9 @@ export default () => {
 										header="Status"
 										options={{ toBePaired: 'To be paired', paired: 'Paired', notPaired: 'Not paired' }}
 									/>
+									<DataGridHasOneColumn field="person" header="Email" >
+										<Field field="tenantPerson.email" />
+									</DataGridHasOneColumn>
 								</DataGridTable>
 							</DataGridLoader>
 							<DataGridPagination />
