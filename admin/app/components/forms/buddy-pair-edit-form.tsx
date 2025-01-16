@@ -7,11 +7,11 @@ export const BuddyPairEditForm = Component(
 	const entity = useEntity()
 
 	useEntityBeforePersist(()=> {
-		const coordinator = entity.getField<string>('coordinator.tenantPerson.email').value ?? undefined
+		//const coordinator = entity.getField<string>('coordinator.tenantPerson.email').value ?? undefined
 		const localBuddy = entity.getField<string>('czechStudent.tenantPerson.email').value ?? undefined
 
-        if(!(coordinator && localBuddy)){
-            return () => { entity.addError('Coordinator and local buddy must not be empty.') }
+        if(!(localBuddy)){
+            return () => { entity.addError('Local buddy must not be empty.') }
         }
 	})
 
