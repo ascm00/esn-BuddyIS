@@ -20,7 +20,7 @@ export default () => {
 						<BackButton />
 					</Slots.Back>
 						<DataGrid entities={`BuddyPair[coordinator.tenantPerson.id='${personId}' && semester.isCurrent=true]`}>
-							<DataGridToolbar>
+							<DataGridToolbar copyingMails>
 								<DataGridQueryFilter />
 								<DataGridBooleanFilter field="tenPoints" label="10 points" noNullFilter />
 							</DataGridToolbar>
