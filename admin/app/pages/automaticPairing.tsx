@@ -40,7 +40,7 @@ const AutomaticPairing = Component(
         const [isPairing, setIsPairing] = useState(false)
         const [pairingEnded, setPairingEnded] = useState(false)
         const [pairingStarted, setPairingStarted] = useState(false)
-        const [message, setMessage] = useState('Pairing has started...')
+        const [message, setMessage] = useState('Pairing has started. It can take about 30 seconds...')
         const [displayedMessages, setDisplayedMessages] = useState<string[]>([]) 
         const buddyPairs = useEntityListSubTree('buddyPairs')
 
