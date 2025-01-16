@@ -36,6 +36,7 @@ export const DataViewCopyEmails = ({ fields, children, baseName, exportFactory }
 	const fetchData = useDataViewFetchAllData({ children: fields ?? globalChildren })
 	const doCopy = useCallback(async () => {
 		const fetchResult = await fetchData()
+		console.log(fetchResult.data)
 		const emailsArray = fetchResult.data.map((item: any) => item?.person_2092813789?.tenantPerson_1330802003?.email);
 		navigator.clipboard.writeText(emailsArray.join(', '));
 
