@@ -37,12 +37,23 @@ export const DataViewCopyEmails = ({ fields, children, baseName, exportFactory }
 	const doCopy = useCallback(async () => {
 		const fetchResult = await fetchData()
 		const emailsArray = fetchResult.data.map((item: any) => item?.person_2092813789?.tenantPerson_1330802003?.email);
-		const textArea = document.createElement('textarea')
-		textArea.value = emailsArray.join(', ')
-		document.body.appendChild(textArea)
-		textArea.select()
-		document.execCommand('copy');
-		document.body.removeChild(textArea)
+		try {
+			await navigator.clipboard.writeText(emailsArray.join(', '))
+			console.log('Text successfully copied to clipboard')
+		} catch (error) {
+			console.log('Coppying failed:', error);
+			const textArea = document.createElement('textarea')
+			textArea.value = emailsArray.join(', ')
+			document.body.appendChild(textArea)
+			textArea.select()
+			const successful = document.execCommand('copy');
+			if (successful) {
+				console.log('Succesfully copied with execCommand');
+			} else {
+				console.log('Copy with execCommand failed');
+			}
+			document.body.removeChild(textArea)
+		}
 
 	}, [baseName, entityName, exportFactory, fetchData])
 

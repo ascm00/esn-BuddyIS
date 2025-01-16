@@ -47,6 +47,9 @@ export default () => {
 									<DataGridHasOneColumn field="internationalStudent" header="Foreign buddy">
 										<Field field="firstName" /> {' '} <Field field="surname" /> {' ('} <Field field="inSISusername" /> {') '}
 									</DataGridHasOneColumn>
+									<DataGridHasOneColumn field="internationalStudent" header="Foreign buddy study program">
+										<Field field={'studyProgram.name'} />
+									</DataGridHasOneColumn>
 									<DataGridBooleanColumn field="tenPoints" header="10 points" />
 								</DataGridTable>
 							</DataGridLoader>
