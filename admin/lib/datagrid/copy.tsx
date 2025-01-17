@@ -39,9 +39,6 @@ export const DataViewCopyEmails = ({ fields, children, baseName, exportFactory, 
 	const fetchData = useDataViewFetchAllData({ children: fields ?? globalChildren })
 	const doCopy = useCallback(async () => {
 		const fetchResult = await fetchData()
-		console.log(fetchResult.data)
-		console.log(fetchResult.data[0][1])
-
 		//JSON returns structure like this: person_2092813789?.tenantPerson_1330802003?. Because it may vary in browsers, we have to check it
 		let emailsArray;
 		if (where === 'applications' || where === 'eventDetail') {
