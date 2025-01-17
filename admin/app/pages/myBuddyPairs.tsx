@@ -44,13 +44,31 @@ export default () => {
 									<DataGridHasOneColumn field="czechStudent" header="Local buddy InSIS username">
 										<Field field="inSISusername" />
 									</DataGridHasOneColumn>
-									<DataGridHasOneColumn field="internationalStudent" header="Foreign buddy">
-										<Field field="firstName" /> {' '} <Field field="surname" /> {' ('} <Field field="inSISusername" /> {') '}
+									<DataGridHasOneColumn field="internationalStudent" header="Foreign buddy first name">
+										<Field field="firstName" />
 									</DataGridHasOneColumn>
-									<DataGridHasOneColumn field="internationalStudent" header="Foreign buddy study program">
-										<Field field={'studyProgram.name'} />
+									<DataGridHasOneColumn field="internationalStudent" header="Foreign buddy surname">
+										<Field field="surname" />
+									</DataGridHasOneColumn>
+									<DataGridHasOneColumn field="internationalStudent" header="Foreign buddy InSIS username">
+										<Field field="inSISusername" />
 									</DataGridHasOneColumn>
 									<DataGridBooleanColumn field="tenPoints" header="10 points" />
+									<DataGridHasOneColumn field="czechStudent" header="Local buddy study program">
+										<Field field="studyProgram.name" />
+									</DataGridHasOneColumn>
+									<DataGridHasOneColumn field="internationalStudent" header="Foreign buddy study program">
+										<Field field="studyProgram.name" />
+									</DataGridHasOneColumn>
+									<DataGridHasOneColumn field="czechStudent" header="Local buddy email">
+										<Field field="tenantPerson.email" />
+									</DataGridHasOneColumn>
+									<DataGridHasOneColumn field="internationalStudent" header="Foreign buddy email">
+										<Field field="tenantPerson.email" />
+									</DataGridHasOneColumn>
+									<DataGridHasOneColumn field="internationalStudent" header="Foreign buddy home university country">
+										<Field field="countryOfUniversity.name" />
+									</DataGridHasOneColumn>
 								</DataGridTable>
 							</DataGridLoader>
 							<DataGridPagination />

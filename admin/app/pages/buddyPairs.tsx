@@ -60,7 +60,7 @@ export default () => {
 										</div>
 									</DataGridColumn>
 									<DataGridHasOneColumn field="coordinator" header="Coordinator">
-										<Field field="firstName" /> {' '} <Field field="surname" /> {' ('} <Field field="inSISusername" /> {') '}
+										<Field field="firstName" />{' '}<Field field="surname" />{' ('}<Field field="inSISusername" />{') '}
 									</DataGridHasOneColumn>
 									<DataGridHasOneColumn field="czechStudent" header="Local buddy first name">
 										<Field field="firstName" />
@@ -86,6 +86,15 @@ export default () => {
 									</DataGridHasOneColumn>
 									<DataGridHasOneColumn field="internationalStudent" header="Foreign buddy study program">
 										<Field field="studyProgram.name" />
+									</DataGridHasOneColumn>
+									<DataGridHasOneColumn field="czechStudent" header="Local buddy email">
+										<Field field="tenantPerson.email" />
+									</DataGridHasOneColumn>
+									<DataGridHasOneColumn field="internationalStudent" header="Foreign buddy email">
+										<Field field="tenantPerson.email" />
+									</DataGridHasOneColumn>
+									<DataGridHasOneColumn field="internationalStudent" header="Foreign buddy home university country">
+										<Field field="countryOfUniversity.name" />
 									</DataGridHasOneColumn>
 								</DataGridTable>
 							</DataGridLoader>
