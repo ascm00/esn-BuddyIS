@@ -46,6 +46,15 @@ export default () => {
 								<DataGridHasOneFilter field="coordinator" label="Coordinator" options={'Person[tenantPerson.roles = "coordinator"]'}>
 									<Field field="firstName" /> {' '} <Field field="surname" />
 								</DataGridHasOneFilter>
+								<DataGridHasOneFilter field={'czechStudent.studyProgram'} label="Local buddy study program">
+									<Field field={'name'} />
+								</DataGridHasOneFilter>
+								<DataGridHasOneFilter field={'internationalStudent.studyProgram'} label="Foreigner study program">
+									<Field field={'name'} />
+								</DataGridHasOneFilter>
+								<DataGridHasOneFilter field={'internationalStudent.countryOfUniversity'} label="Foreigner university country">
+									<Field field={'name'} />
+								</DataGridHasOneFilter>
 								<DataGridBooleanFilter field="tenPoints" label="10 points" noNullFilter />
 							</DataGridToolbar>
 							<DataGridLoader>
