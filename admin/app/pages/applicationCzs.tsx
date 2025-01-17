@@ -36,7 +36,7 @@ export default () => {
 						</HasRole>
 						</Slots.Actions>
 						<DataGrid entities="ApplicationCz[semester.isCurrent=true]">
-							<DataGridToolbar copyingMails>
+							<DataGridToolbar copyingMails="applications">
 								<DataGridQueryFilter />
 								<DataGridHasOneFilter field={'person.studyProgram'} label="Study Program">
 									<Field field={'name'} />

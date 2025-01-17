@@ -41,7 +41,7 @@ export default () => {
 							</HasRole>
 						</Slots.Actions>
 						<DataGrid entities="BuddyPair[semester.isCurrent=true]">
-							<DataGridToolbar>
+							<DataGridToolbar copyingMails="buddyPairs">
 								<DataGridQueryFilter />
 								<DataGridHasOneFilter field="coordinator" label="Coordinator" options={'Person[tenantPerson.roles = "coordinator"]'}>
 									<Field field="firstName" /> {' '} <Field field="surname" />

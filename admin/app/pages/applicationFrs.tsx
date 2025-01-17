@@ -32,7 +32,7 @@ export default () => {
 							</Link> */}
 						</Slots.Actions>
 						<DataGrid entities="ApplicationFr[semester.isCurrent=true]">
-							<DataGridToolbar copyingMails>
+							<DataGridToolbar copyingMails="applications">
 								<DataGridQueryFilter />
 								<DataGridHasOneFilter field={'person.studyProgram'} label={'Study program'}>
 									<Field field={'name'} />
