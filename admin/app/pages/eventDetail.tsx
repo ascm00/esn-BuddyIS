@@ -288,7 +288,7 @@ export default () => {
 					</Slots.Back>
 					<EntitySubTree entity="Event(id=$id)" isCreating={false}>
 						<Slots.Title>
-							<div className='flex flex-row gap-3'><Field field={'name'} /><PlacesLeftTag /></div>
+							<div className='flex flex-row gap-3'><div>Event detail 🎈</div><PlacesLeftTag /></div>
 						</Slots.Title>
 						<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('coordinator')}>
 							<Slots.Actions>
@@ -322,14 +322,14 @@ export default () => {
 							<TableWrapper className="bg-gray-50/50 max-w-xl border rounded-md">
 								<Table>
 									<TableBody>
-										{/* <TableRow>
+										<TableRow>
 											<TableCell>
 												Name
 											</TableCell>
 											<TableCell className="text-2xl font-semibold">
 												<Field field="name" />
 											</TableCell>
-										</TableRow> */}
+										</TableRow>
 										<TableRow>
 											<TableCell>
 												Contact person
