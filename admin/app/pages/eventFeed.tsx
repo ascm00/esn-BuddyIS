@@ -182,12 +182,6 @@ const AllEventsFeed = Component(() => {
 
   const EventCard2 = Component(({event}: {event?: any}) => {
 
-	console.log(event.pictureUrl)
-	console.log(typeof(event.pictureUrl))
-	if(event.pictureUrl){
-		console.log('hellooo')
-	}
-
 	return (
 	<Card className='max-w-[95%] md:max-w-[82%] mx-auto bg-white shadow-md rounded-lg'>
   

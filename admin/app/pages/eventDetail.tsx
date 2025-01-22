@@ -18,6 +18,7 @@ import config from '../../config'
 import { Env } from '@app/lib/functions/types'
 import { EventPictureFieldView, ProfilePictureFieldView } from '@app/components/fieldViews/ImageFieldView'
 import { GoogleMapsLink, WhatsappLink } from '@app/lib/utils/link'
+import { PlacesLeftTag } from '@app/lib/ui/event-status'
 
 const RegistrationNow = Component( () => {
 	const identity = useIdentity()
@@ -282,13 +283,13 @@ export default () => {
 		<>
 			<Binding>
 				<div className="flex flex-col gap-12">
-					<Slots.Title>
-						Event detail 🎈
-					</Slots.Title>
 					<Slots.Back>
 						<BackButton />
 					</Slots.Back>
 					<EntitySubTree entity="Event(id=$id)" isCreating={false}>
+						<Slots.Title>
+							<div className='flex flex-row gap-3'><Field field={'name'} /><PlacesLeftTag /></div>
+						</Slots.Title>
 						<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('coordinator')}>
 							<Slots.Actions>
 								<RegistrationAdminCreate />
@@ -321,14 +322,14 @@ export default () => {
 							<TableWrapper className="bg-gray-50/50 max-w-xl border rounded-md">
 								<Table>
 									<TableBody>
-										<TableRow>
+										{/* <TableRow>
 											<TableCell>
 												Name
 											</TableCell>
 											<TableCell className="text-2xl font-semibold">
 												<Field field="name" />
 											</TableCell>
-										</TableRow>
+										</TableRow> */}
 										<TableRow>
 											<TableCell>
 												Contact person
@@ -438,22 +439,24 @@ export default () => {
 												<Field field="registrationEndDate" format={formatDateTimeShort} />
 											</TableCell>
 										</TableRow>
-										<TableRow>
-											<TableCell>
-												Registered + on waiting list
-											</TableCell>
-											<TableCell className="font-semibold">
-													<Field field="registeredCount.registered_count" />
-											</TableCell>
-										</TableRow>
-										<TableRow>
-											<TableCell>
-												Capacity
-											</TableCell>
-											<TableCell className="font-semibold">
-												<Field field="capacity" />
-											</TableCell>
-										</TableRow>
+										<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('coordinator')}>
+											<TableRow>
+												<TableCell>
+													Registered + on waiting list
+												</TableCell>
+												<TableCell className="font-semibold">
+														<Field field="registeredCount.registered_count" />
+												</TableCell>
+											</TableRow>
+											<TableRow>
+												<TableCell>
+													Capacity
+												</TableCell>
+												<TableCell className="font-semibold">
+													<Field field="capacity" />
+												</TableCell>
+											</TableRow>
+										</HasRole>
 									</Table>
 								</TableWrapper>
 								<RegistrationNow />
