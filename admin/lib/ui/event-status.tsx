@@ -38,13 +38,13 @@ export const PlacesLeftTag = Component(
 		} else if(placesLeft >= 1 && placesLeft < 10){
             return (
 				<div className="bg-orange-100 mt-1 text-orange-700 px-3 py-1 rounded text-sm font-semibold">
-					Last {placesLeft} places left
+					{placesLeft} places left
 				</div>
 			)
         } else if(placesLeft >= 10 && placesLeft <= 15){
             return (
 				<div className="bg-yellow-100 mt-1 text-yellow-700 px-3 py-1 rounded text-sm font-semibold">
-					Last {placesLeft} places left
+						{placesLeft} places left
 				</div>
 			)
         } else {
