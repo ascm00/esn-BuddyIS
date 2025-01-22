@@ -24,12 +24,11 @@ export const RegistrationCreateForm = Component<RegistrationCreateFormProps>(
     const entity = useEntity()
     const identity = useIdentity()
     const url = import.meta.env.APP_URL as string
-    console.log('url', config.appUrl)
-    console.log('project_name', import.meta.env)
     //connect to current event and logged in user
     const me = useEntitySubTree('me')
     const currentEvent = useEntitySubTree('currentEvent')
     entity.connectEntityAtField('event', currentEvent)
+    console.log('event',entity.getEntity('event').getField('name').value)
     entity.connectEntityAtField('person', me)
 
     // check if the user has ESN card filled on his profile and if its mandatory for this event
@@ -151,21 +150,8 @@ export const RegistrationCreateForm = Component<RegistrationCreateFormProps>(
                     <Field field="email" />
                 </HasOne>
             </EntitySubTree>
-            <EntitySubTree entity={'Event(id=$id)'} alias={'currentEvent'}>
-                <Field field="name" />
-                <Field field="fee" />
-                <Field field="dietaryRestrictions" />
-                <Field field="allergies" />
-                <Field field="mandatoryESNcard" />
-                <Field field="capacity" />
-                <Field field="registeredCount.registered_count" />
-                <Field field="waitingList" />
-                <HasMany field="registrations">
-                    <Field field="accepted" />
-                    <Field field="person.tenantPerson.id" />
-                </HasMany>
-            </EntitySubTree>
             <HasOne field="event">
+                <Field field={'id'} />
                 <Field field="name" />
                 <Field field="fee" />
                 <Field field="dietaryRestrictions" />
@@ -179,6 +165,21 @@ export const RegistrationCreateForm = Component<RegistrationCreateFormProps>(
                     <Field field="person.tenantPerson.id" />
                 </HasMany>
             </HasOne>
+            <EntitySubTree entity={'Event(id=$id)'} alias={'currentEvent'}>
+                <Field field={'id'} />
+                <Field field="name" />
+                <Field field="fee" />
+                <Field field="dietaryRestrictions" />
+                <Field field="allergies" />
+                <Field field="mandatoryESNcard" />
+                <Field field="capacity" />
+                <Field field="registeredCount.registered_count" />
+                <Field field="waitingList" />
+                <HasMany field="registrations">
+                    <Field field="accepted" />
+                    <Field field="person.tenantPerson.id" />
+                </HasMany>
+            </EntitySubTree>
             <HasMany field="dietaryRestrictions">
                 <Field field="name" />
             </HasMany>
