@@ -23,7 +23,7 @@ export const createPayment = async (registration: EntityAccessor) => {
   }
     
     const data = {
-        test: '1', // testing mode on
+        test: '0', // testing mode on
         email: registration.getEntity('person.tenantPerson').getField<string>('email').value,
         price: price.toString(),
         curr: 'CZK',
