@@ -27,7 +27,7 @@ export default () => {
 							</HasRole>
 						</Slots.Actions>
 						<DataGrid entities="Person">
-							<DataGridToolbar>
+							<DataGridToolbar copyingMails='person'>
 								<DataGridQueryFilter />
 								<DataGridHasOneFilter field="countryOfUniversity" label="Home university country">
 									<Field field="name" />

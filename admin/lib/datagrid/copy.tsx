@@ -47,6 +47,8 @@ export const DataViewCopyEmails = ({ fields, children, baseName, exportFactory, 
 			emailsArray = getEmailAddresses(fetchResult.data, 'czechStudent_');
 		} else if (where === 'buddyPairsInternational') {
 			emailsArray = getEmailAddresses(fetchResult.data, 'internationalStudent_');
+		} else if (where === 'person'){
+			emailsArray = getEmailAddressesOnPersonList(fetchResult.data);
 		}
 
 		// const emailsArray = fetchResult.data.map((item: any) => item?.person_2092813789?.tenantPerson_1330802003?.email);
@@ -97,6 +99,22 @@ function getEmailAddresses(data: any[], personStartsWith: string): string[] {
 		  }
 		}
 	  }
+	}
+	return emails
+  }
+
+  function getEmailAddressesOnPersonList(data: any[]): string[] {
+	const emails: string[] = [];
+	for (const application of data) {
+		// Find all keys that start with "tenantPerson_" within the current "person_" object
+		const tenantPersonKeys = Object.keys(application).filter(key => key.startsWith('tenantPerson_'))
+  
+		for (const tenantPersonKey of tenantPersonKeys) {
+		  const email = application[tenantPersonKey]?.email
+		  if (email) {
+			emails.push(email)
+		  }
+		}
 	}
 	return emails
   }
