@@ -46,7 +46,7 @@ export class EventRegistration {
     payment = c.enumColumn(payment).default('pending')
 	paymentId = c.stringColumn().unique()
     note = c.stringColumn()
-    event = c.manyHasOne(Event, 'registrations')
+    event = c.manyHasOne(Event, 'registrations').cascadeOnDelete()
     isWaitingList = c.boolColumn().default(false)
 	personWhoMadeRegistration = c.manyHasOne(Person, 'registrationMadeByPerson')
 	accepted = c.boolColumn().default(true) // when user pays or joins waiting list - eventRegistration is accepted
