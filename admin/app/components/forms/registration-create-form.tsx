@@ -31,6 +31,11 @@ export const RegistrationCreateForm = Component<RegistrationCreateFormProps>(
     console.log('event',entity.getEntity('event').getField('name').value)
     entity.connectEntityAtField('person', me)
 
+    //if event is not paid, payment status should be unpaid
+    if(!isPaid){
+        entity.getField('payment').updateValue('unpaid')
+    }
+
     // check if the user has ESN card filled on his profile and if its mandatory for this event
     const myEsnCardId = entity.getField('person.esnCardId').value ?? undefined
     const mandatoryESNcard = currentEvent.getField('mandatoryESNcard').value ?? undefined
@@ -291,6 +296,7 @@ export const RegistrationAdminCreateForm = Component<RegistrationCreateFormProps
         </>)  
     }, (_, env) => (
         <>
+            <Field field={'payment'} />
             <EntitySubTree
                 entity={`Person(tenantPerson.id='${env.getExtension(identityEnvironmentExtension).identity?.person?.id}')`}
                 alias="me"
