@@ -32,10 +32,16 @@ export const PlacesLeftTag = Component(
 		if (placesLeft < 1) {
 			return (
 				<div className="bg-red-100 mt-1 text-red-700 px-3 py-1 rounded text-sm font-semibold">
-					Obsazeno
+					Event full
 				</div>
 			)
-		} else if(placesLeft >= 1 && placesLeft < 10){
+		} else if(placesLeft === 1){
+            return (
+				<div className="bg-orange-100 mt-1 text-orange-700 px-3 py-1 rounded text-sm font-semibold">
+					{placesLeft} place left
+				</div>
+			)
+        } else if(placesLeft > 1 && placesLeft < 10){
             return (
 				<div className="bg-orange-100 mt-1 text-orange-700 px-3 py-1 rounded text-sm font-semibold">
 					{placesLeft} places left
@@ -49,9 +55,10 @@ export const PlacesLeftTag = Component(
 			)
         } else {
 			return (
-				<div className="bg-green-100 mt-1 text-green-700 px-3 py-1 rounded text-sm font-semibold">
-					More than 15 places left
-				</div>
+				// <div className="bg-green-100 mt-1 text-green-700 px-3 py-1 rounded text-sm font-semibold">
+				// 	More than 15 places left
+				// </div>
+				<></>
 			)
 		}
 	}, () => (
