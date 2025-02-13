@@ -351,3 +351,16 @@ export const RegistrationAdminCreateForm = Component<RegistrationCreateFormProps
         </>
     )
 )
+
+export const RegistrationEditForm = Component(
+    () => <FormLayout>
+            <div>
+                <h2 className="text-2xl font-semibold"><Field field={'person.firstName'} /> <Field field={'person.surname'} /></h2>
+            </div>
+            <CheckboxField field={'isWaitingList'} label="Waiting list" />
+            <RadioEnumField field="payment" label="Payment" required options={{paid: 'Paid', unpaid: 'Unpaid', pending: 'Pending'}} />
+            <div className='pb-3'>
+                <TextareaField field="note" label="Note" />
+                <p className="text-xs text-gray-500">Any additional notes to organizers. For example some limitations. Write "NO" if you don't have any.</p>
+            </div>
+    </FormLayout>)
