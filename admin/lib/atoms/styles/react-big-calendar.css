@@ -449,6 +449,7 @@ button.rbc-input::-moz-focus-inner {
 }
 
 .rbc-agenda-view {
+  color: black;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -464,10 +465,12 @@ button.rbc-input::-moz-focus-inner {
 .rbc-agenda-view table.rbc-agenda-table {
   width: 100%;
   border: 1px solid #ddd;
+  color: black;
   border-spacing: 0;
   border-collapse: collapse;
 }
 .rbc-agenda-view table.rbc-agenda-table tbody > tr > td {
+  color: black;
   padding: 5px 10px;
   vertical-align: top;
 }
@@ -485,8 +488,10 @@ button.rbc-input::-moz-focus-inner {
 }
 .rbc-agenda-view table.rbc-agenda-table tbody > tr + tr {
   border-top: 1px solid #ddd;
+  color: black;
 }
 .rbc-agenda-view table.rbc-agenda-table thead > tr > th {
+  color: black;
   padding: 3px 5px;
   text-align: left;
   border-bottom: 1px solid #ddd;
