@@ -26,7 +26,7 @@ export const EventCreateForm = Component(() => {
 			<hr className="my-2 border-gray-200" />
 		</div>
 		<InputField field="name" label="Name *" required />
-		<TextareaField field="description" label="Description *" />
+		<TextareaField field="description" label="Description *" required />
 		<InputField field="startDate" label="Start datetime *" required />
 		<InputField field="endDate" label="End datetime *" required />
 		<InputField field="place" label="Place *" required/>

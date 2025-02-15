@@ -100,7 +100,14 @@ export const RegistrationCreateForm = Component<RegistrationCreateFormProps>(
             { mandatoryESNcard &&
             <div className='pb-3'>
                 <HasOne field={'person'}>
-                    <InputField field="esnCardId" label="ESNcard Number *" required />
+                    <InputField 
+                        field="esnCardId" 
+                        label="ESNcard Number *" 
+                        required 
+                        inputProps={{
+                            pattern: '^1971\\d{3}[A-Za-z][A-Za-z0-9]{3,4}$'
+                        }}
+                    />
                 </HasOne>
                 <p className="text-xs text-gray-500">Please fill your ESNcard Number. You cannot register without filling it.</p>
             </div>}
@@ -359,6 +366,18 @@ export const RegistrationEditForm = Component(
             </div>
             <CheckboxField field={'isWaitingList'} label="Waiting list" />
             <RadioEnumField field="payment" label="Payment" required options={{paid: 'Paid', unpaid: 'Unpaid', pending: 'Pending'}} />
+            <div className='pb-3'>
+                <MultiSelectField field={'dietaryRestrictions'} label="Dietary Restrictions" options={'DietaryRestrictions'}>
+                    <Field field={'name'} />
+                </MultiSelectField>
+                <p className="text-xs text-gray-500">Please select all dietary restrictions that you have. If you don't have any, leave it blank.</p>
+            </div>
+            <div className='pb-3'>
+                <MultiSelectField field={'allergies'} label="Allergies" options={'Allergy'}>
+                    <Field field={'name'} />
+                </MultiSelectField>
+                <p className="text-xs text-gray-500">Please select all allergies that you have. If you don't have any allergies, leave it blank.</p>
+            </div>
             <div className='pb-3'>
                 <TextareaField field="note" label="Note" />
                 <p className="text-xs text-gray-500">Any additional notes to organizers. For example some limitations. Write "NO" if you don't have any.</p>
