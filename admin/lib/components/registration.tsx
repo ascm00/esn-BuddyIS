@@ -20,7 +20,7 @@ export const AddToRegisteredUsersButton = Component(
 		}
 
 		return (
-			<Button variant={'default'} size={'sm'} onClick={() => addToRegisteredUsers()}>Add to registered users</Button>
+			<Button variant={'default'} size={'sm'} onClick={() => addToRegisteredUsers()}>Add user</Button>
 		)
 	}, ()=>(
 		<>
