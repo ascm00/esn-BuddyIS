@@ -18,17 +18,20 @@ export const N2nPartyForm = Component(() => {
 		<InputField field="date" label="Date & time" required />
 		<InputField field="link" label="Tickets link" required />
 		<TextareaField field="description" label="Description" />
-		<ImageField
-			label="Picture"
-			baseField="picture"
-			urlField="url"
-			widthField="width"
-			heightField="height"
-			fileNameField="meta.fileName"
-			fileTypeField="meta.fileType"
-			fileSizeField="meta.fileSize"
-			lastModifiedField="meta.lastModified"
-		/>
+		<div className='pb-3'>
+			<ImageField
+				label="Picture"
+				baseField="picture"
+				urlField="url"
+				widthField="width"
+				heightField="height"
+				fileNameField="meta.fileName"
+				fileTypeField="meta.fileType"
+				fileSizeField="meta.fileSize"
+				lastModifiedField="meta.lastModified"
+			/>
+			<p className="text-xs text-gray-500">Please ensure that picture is no larger than 1.5MB. If necessary, use <a href="https://tinypng.com" target='_blank'><strong>TinyPNG</strong></a> or other tool to reduce the file size.</p>
+		</div>
 		<InputField field={'club'} label={'Club'} />
 	</FormLayout>)
 }, ()=>(
