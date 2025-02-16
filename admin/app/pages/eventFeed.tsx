@@ -229,7 +229,7 @@ const AllEventsFeed = Component(() => {
 		{event.contactPhone &&
 		<p className='text-sm text-bold text-gray-500'>
 		  	<strong>Contact person</strong>
-			{' '} {event.contactPerson} {' ('} {event.contactEmail} {', '} {event.contactPhone} {')'}
+			{' '}{event.contactPerson}{' ('}{event.contactEmail}{', '}{event.contactPhone}{')'}
 		</p>
   		}
 		{!event.contactPhone &&
