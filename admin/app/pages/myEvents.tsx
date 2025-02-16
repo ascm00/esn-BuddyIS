@@ -6,6 +6,7 @@ import { Button } from '@app/lib/ui/button'
 import { Component, EntitySubTree, Field, HasOne, HasMany, HasRole, identityEnvironmentExtension, Link, useEntity, useIdentity, useProjectUserRoles, useEntitySubTree } from '@contember/interface'
 import { Input } from '@app/lib/ui/input'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow, TableWrapper } from '@app/lib/ui/table'
+import { formatPaymentStatusTag } from '@app/lib/formatting/paymentStatus'
 
 export default () => {
 
@@ -40,12 +41,15 @@ const MyEvents = Component(
 			if(registration.getField('accepted').value === false){
 				registrations.splice(registrations.indexOf(registration), 1)
 			} else {
+				if(registration.getEntity('event').getField('name').value === null){
+					registrations.splice(registrations.indexOf(registration), 1)
+				}
 				const startDate = registration?.getEntity('event')?.getField('startDate')?.value
             	if (typeof startDate === 'string' || typeof startDate === 'number') {
-                if (new Date(startDate) < new Date()) {
-                    registrations.splice(registrations.indexOf(registration), 1)
-                }
-            }
+					if (new Date(startDate) < new Date()) {
+						registrations.splice(registrations.indexOf(registration), 1)
+					}
+            	}
 			}
         })
 
@@ -61,6 +65,7 @@ const MyEvents = Component(
 							<TableRow>
                                 <TableHead></TableHead>
 								<TableHead>Name</TableHead>
+								<TableHead>Payment status</TableHead>
 								<TableHead>Place</TableHead>
 								<TableHead>Start</TableHead>
 								<TableHead>End</TableHead>
@@ -77,6 +82,7 @@ const MyEvents = Component(
 										</Link>
 									</TableCell>
                                     <TableCell>{registration?.getEntity('event')?.getField('name')?.value?.toString()}</TableCell>
+									<TableCell>{formatPaymentStatusTag(registration?.getField('payment')?.value?.toString() ?? null)}</TableCell>
 									<TableCell>{registration?.getEntity('event')?.getField('place')?.value?.toString()}</TableCell>
 									<TableCell>
 										{registration?.getEntity('event')?.getField('startDate')?.value ? 
@@ -111,6 +117,7 @@ const MyEvents = Component(
         <EntitySubTree entity={`Person(tenantPerson.id = '${env.getExtension(identityEnvironmentExtension).identity?.person?.id}')`} alias={'currentUser'}>
             <HasMany field="registrations">
 				<Field field={'accepted'} />
+				<Field field={'payment'} />
                 <HasOne field={`event`}>
                     <Field field="name" />
                     <Field field="startDate" />

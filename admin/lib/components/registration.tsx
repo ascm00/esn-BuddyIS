@@ -15,7 +15,6 @@ export const AddToRegisteredUsersButton = Component(
 			isWaitingList.updateValue(false)
 			paymentStatus.updateValue('unpaid')
 			persist()
-            // redirect(`eventDetail(id: "${eventId}")`)
             window.location.reload()
             
 		}
