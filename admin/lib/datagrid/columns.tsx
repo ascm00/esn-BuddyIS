@@ -1,7 +1,7 @@
 import { Component, Field } from '@contember/interface'
 import * as React from 'react'
 import { ReactNode } from 'react'
-import { TableCell, TableHead } from '../ui/table'
+import { DataGridTableCell, TableCell, TableHead } from '../ui/table'
 import { DataGridColumnHeader } from './column-header'
 import { DataViewElement } from '@contember/react-dataview'
 import { formatBoolean, formatDate, formatNumber } from '../formatting'
@@ -147,7 +147,7 @@ export const DataGridColumn = Component<DataGridColumnProps>(({ children, header
 					</TableHead>,
 				)
 			}
-			cell={wrapIsVisible(<TableCell>{children}</TableCell>)}
+			cell={wrapIsVisible(<DataGridTableCell>{children}</DataGridTableCell>)}
 		/>
 	)
 })

@@ -8,7 +8,7 @@ import { formatDateTime, formatDateTimeShort } from '@app/lib/utils/formatting'
 import { Todo } from '@app/lib/dev'
 import { RichTextRendererField } from '@app/lib/plugins/rich-text/renderer/RichTextRendererField'
 import { renderElement, renderLeaf } from '@app/lib/plugins/rich-text/renderer/renderers'
-import { DataGrid, DataGridActionColumn, DataGridColumn, DataGridDateColumn, DataGridEnumColumn, DataGridEnumFilter, DataGridHasManyColumn, DataGridHasManyFilter, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridNumberColumn, DataGridNumberFilter, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridTextFilter, DataGridToolbar } from '@app/lib/datagrid'
+import { DataGrid, DataGridActionColumn, DataGridColumn, DataGridDateColumn, DataGridEnumColumn, DataGridEnumFilter, DataGridHasManyColumn, DataGridHasManyFilter, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridNumberColumn, DataGridNumberFilter, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridTextFilter, DataGridToolbar } from '@app/lib/datagrid'
 import { CreateEntityModalButton } from '@app/lib/buttons/createEntityModalButtons'
 import { RegistrationAdminCreateForm, RegistrationCreateForm } from '@app/components/forms/registration-create-form'
 import { Delete, DollarSign, Trash, TrashIcon } from 'lucide-react'
@@ -19,6 +19,7 @@ import { Env } from '@app/lib/functions/types'
 import { EventPictureFieldView, ProfilePictureFieldView } from '@app/components/fieldViews/ImageFieldView'
 import { GoogleMapsLink, WhatsappLink } from '@app/lib/utils/link'
 import { PlacesLeftTag } from '@app/lib/ui/event-status'
+import { formatPaymentStatusTag } from '@app/lib/formatting/paymentStatus'
 
 const RegistrationNow = Component( () => {
 	const identity = useIdentity()
@@ -501,7 +502,9 @@ export default () => {
 													</a>
 												</Link>
 											</DataGridHasOneColumn>
-											<DataGridEnumColumn field="payment" header="Payment" options={{ paid: 'Paid', cancelled: 'Cancelled', pending: 'Pending', unpaid: 'Unpaid' }}/>
+											<DataGridColumn header="Payment">
+												<Field field={'payment'} format={formatPaymentStatusTag} />
+											</DataGridColumn>
 											<DataGridNumberColumn field="paymentId" header="Payment ID" />
 											<DataGridTextColumn field="person.tenantPerson.email" header="Email" />
 											<DataGridTextColumn field="person.phoneNumber" header="Phone number" />
@@ -521,6 +524,7 @@ export default () => {
 											</DataGridHasOneColumn>
 										</DataGridTable>
 									</DataGridLoader>
+									<DataGridPagination />
 								</DataGrid>
 							</div>
 							<div className="flex flex-col gap-4">
@@ -578,6 +582,7 @@ export default () => {
 											</DataGridHasOneColumn>
 										</DataGridTable>
 									</DataGridLoader>
+									<DataGridPagination />
 								</DataGrid>
 							</div>
 						</HasRole>

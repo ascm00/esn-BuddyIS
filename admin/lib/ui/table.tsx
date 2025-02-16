@@ -40,6 +40,11 @@ export const TableCell = uic('td', {
 	displayName: 'TableCell',
 })
 
+export const DataGridTableCell = uic('td', {
+	baseClass: 'px-4 py-3 align-middle [&:has([role=checkbox])]:pr-0 whitespace-nowrap',
+	displayName: 'DataGridTableCell',
+})
+
 export const TableCaption = uic('caption', {
 	baseClass: 'mt-4 text-sm text-muted-foreground',
 	displayName: 'TableCaption',
