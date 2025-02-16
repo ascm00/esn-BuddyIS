@@ -124,7 +124,7 @@ const RegistrationNow = Component( () => {
 	} else {
 		if(notForMe) {
 			return (
-				<div className='bg-blue-200 p-4 rounded-md'>
+				<div className='bg-blue-200 p-4 rounded-md max-w-md'>
 					<div className='text-500'>Unfortunately this event is not for your user role. 🫠</div>
 				</div>
 			)
@@ -169,7 +169,7 @@ const RegistrationNow = Component( () => {
 
 				return (
 					<>
-						<div className='bg-blue-200 p-4 rounded-md'>
+						<div className='bg-blue-200 p-4 rounded-md max-w-md'>
 							<div className='text-500'>Event is full, but you can join waiting list. 📄</div>
 						</div>
 						<div className='flex gap-6 flex-col md:flex-row'>
@@ -190,7 +190,7 @@ const RegistrationNow = Component( () => {
 				)
 			} else {
 				return (
-					<div className='bg-blue-200 p-4 rounded-md'>
+					<div className='bg-blue-200 p-4 rounded-md max-w-md'>
 						<div className='text-500'>Event is full. 🫠</div>
 					</div>
 				)
@@ -198,7 +198,7 @@ const RegistrationNow = Component( () => {
 		} else {
 
 			return (
-				<div className='bg-blue-200 p-4 rounded-md'>
+				<div className='bg-blue-200 p-4 rounded-md max-w-md'>
 					<div className='text-500'>Registration for this event is not open now. 🛑 It is open from {formattedRegistrationStartDate} to {formattedRegistrationEndDate}. 📅</div>
 				</div>
 			)
