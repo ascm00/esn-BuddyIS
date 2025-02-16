@@ -43,17 +43,20 @@ export const EventCreateForm = Component(() => {
 			<CheckboxField field="mandatoryESNcard" label="ESNcard mandatory" defaultValue={true}/>
 			<p className="text-xs text-gray-500">Is ESNcard mandatory for this event?</p>
 		</div>
-		<ImageField
-			label="Picture"
-			baseField="picture"
-			urlField="url"
-			widthField="width"
-			heightField="height"
-			fileNameField="meta.fileName"
-			fileTypeField="meta.fileType"
-			fileSizeField="meta.fileSize"
-			lastModifiedField="meta.lastModified"
-		/>
+		<div className='pb-3'>
+			<ImageField
+				label="Picture"
+				baseField="picture"
+				urlField="url"
+				widthField="width"
+				heightField="height"
+				fileNameField="meta.fileName"
+				fileTypeField="meta.fileType"
+				fileSizeField="meta.fileSize"
+				lastModifiedField="meta.lastModified"
+			/>
+			<p className="text-xs text-gray-500">Please ensure each picture is no larger than 1.5MB. If necessary, use <a href="https://tinypng.com" target='_blank'><strong>TinyPNG</strong></a> or other tool to reduce the file size.</p>
+		</div>
 		<div className='pt-4'>
 			<h2 className="text-2xl font-semibold">Limitations</h2>
 			<hr className="my-2 border-gray-200" />
