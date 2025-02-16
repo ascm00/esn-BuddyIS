@@ -3,7 +3,7 @@ import { BackButton } from '@app/lib/buttons'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
 import { Table, TableBody, TableCell, TableRow, TableWrapper } from '@app/lib/ui/table'
-import { Component, DeleteEntityTrigger, EntitySubTree, Environment, Field, HasMany, HasOne, HasRole, If, Link, useEntity, useIdentity, useProjectUserRoles } from '@contember/interface'
+import { Component, DeleteEntityTrigger, EntitySubTree, Environment, Field, HasMany, HasOne, HasRole, If, Link, useEntity, useIdentity, usePersist, useProjectUserRoles } from '@contember/interface'
 import { formatDateTime, formatDateTimeShort } from '@app/lib/utils/formatting'
 import { Todo } from '@app/lib/dev'
 import { RichTextRendererField } from '@app/lib/plugins/rich-text/renderer/RichTextRendererField'
@@ -20,6 +20,7 @@ import { EventPictureFieldView, ProfilePictureFieldView } from '@app/components/
 import { GoogleMapsLink, WhatsappLink } from '@app/lib/utils/link'
 import { PlacesLeftTag } from '@app/lib/ui/event-status'
 import { formatPaymentStatusTag } from '@app/lib/formatting/paymentStatus'
+import { AddToRegisteredUsersButton, PaymentButton } from '@app/lib/components/registration'
 
 const RegistrationNow = Component( () => {
 	const identity = useIdentity()
@@ -65,6 +66,20 @@ const RegistrationNow = Component( () => {
 		return false
 	}
 
+	const registrationWaitingForPayment = () => { 
+		if(identity?.person?.id) {
+			for (const registration of registrationList) {
+				let id = registration.getField('person.tenantPerson.id').value
+				if((identity.person.id === id) && (registration.getField('accepted').value)){
+					if(isPaid && registration.getField('payment').value === 'unpaid'){
+						return registration
+					}
+				}
+			}
+		}
+		return null
+	}
+
 	// Checks if the user is allowed to register for the event
 	let notForMe = false
 	const isForCzechBuddies = entity.getField('isForCzechBuddies').value ?? false
@@ -88,15 +103,28 @@ const RegistrationNow = Component( () => {
 			</div>
 		)
 	} else if (registered()) {
-		return (
-			<div className='bg-blue-200 p-4 rounded-md max-w-md'>
-				<div className='text-500'>You are already registered for this event. If you want to cancel your registration, contact us via email. ✔️</div>
-			</div>
-		)
+		if(registrationWaitingForPayment()){
+			return (
+				<>
+				<div className='bg-blue-200 p-4 rounded-md max-w-md'>
+					<div className='text-500'>‼️ You are already registered for this event, but the registration is not paid. If you want to pay, click the button below.</div>
+				</div>
+				<div className='max-w-md'>
+					<PaymentButton registration={registrationWaitingForPayment()} />
+				</div>
+				</>
+			)
+		} else {
+			return (
+				<div className='bg-blue-200 p-4 rounded-md max-w-md'>
+					<div className='text-500'>You are already registered for this event. If you want to cancel your registration, contact us via email. ✔️</div>
+				</div>
+			)
+		}
 	} else {
 		if(notForMe) {
 			return (
-				<div className='bg-blue-200 p-4 rounded-md max-w-md'>
+				<div className='bg-blue-200 p-4 rounded-md'>
 					<div className='text-500'>Unfortunately this event is not for your user role. 🫠</div>
 				</div>
 			)
@@ -141,7 +169,7 @@ const RegistrationNow = Component( () => {
 
 				return (
 					<>
-						<div className='bg-blue-200 p-4 rounded-md max-w-md'>
+						<div className='bg-blue-200 p-4 rounded-md'>
 							<div className='text-500'>Event is full, but you can join waiting list. 📄</div>
 						</div>
 						<div className='flex gap-6 flex-col md:flex-row'>
@@ -162,7 +190,7 @@ const RegistrationNow = Component( () => {
 				)
 			} else {
 				return (
-					<div className='bg-blue-200 p-4 rounded-md max-w-md'>
+					<div className='bg-blue-200 p-4 rounded-md'>
 						<div className='text-500'>Event is full. 🫠</div>
 					</div>
 				)
@@ -170,7 +198,7 @@ const RegistrationNow = Component( () => {
 		} else {
 
 			return (
-				<div className='bg-blue-200 p-4 rounded-md max-w-md'>
+				<div className='bg-blue-200 p-4 rounded-md'>
 					<div className='text-500'>Registration for this event is not open now. 🛑 It is open from {formattedRegistrationStartDate} to {formattedRegistrationEndDate}. 📅</div>
 				</div>
 			)
@@ -192,8 +220,19 @@ const RegistrationNow = Component( () => {
 	<Field field="waitingList" />
 	<Field field="fee" />
 	<HasMany field="registrations">
-		<Field field="person.tenantPerson.id" />
+		<HasOne field={'person'}>
+			<Field field="tenantPerson.id" />
+			<Field field="tenantPerson.email" />
+			<Field field="firstName" />
+			<Field field="surname" />
+			<Field field="phoneNumber" />
+		</HasOne>
 		<Field field="accepted" />
+		<Field field="payment" />
+		<HasOne field={'event'}>
+			<Field field="fee" />
+			<Field field="id" />
+		</HasOne>
 	</HasMany>
 	</>
 ))
@@ -552,6 +591,7 @@ export default () => {
 										<DataGridTable>
 											<DataGridColumn>
 												<div className="flex gap-2">
+													<AddToRegisteredUsersButton />
 													<Link to="registrationDetail(id: $entity.id)">
 														<Button variant={'secondary'} size={'sm'}>Detail</Button>
 													</Link>
