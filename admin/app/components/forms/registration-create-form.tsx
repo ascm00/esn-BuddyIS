@@ -104,9 +104,9 @@ export const RegistrationCreateForm = Component<RegistrationCreateFormProps>(
                         field="esnCardId" 
                         label="ESNcard Number *" 
                         required 
-                        inputProps={{
-                            pattern: '^1971\\d{3}[A-Za-z][A-Za-z0-9]{3,4}$'
-                        }}
+                        // inputProps={{
+                        //     pattern: '^1971\\d{3}[A-Za-z][A-Za-z0-9]{3,4}$'
+                        // }}
                     />
                 </HasOne>
                 <p className="text-xs text-gray-500">Please fill your ESNcard Number. You cannot register without filling it.</p>
