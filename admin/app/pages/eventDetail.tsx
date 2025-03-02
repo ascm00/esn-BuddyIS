@@ -319,6 +319,7 @@ const RegistrationAdminCreate = Component(
 	))
 
 export default () => {
+	const identity = useIdentity()
 	return (
 		<>
 			<Binding>
@@ -338,22 +339,40 @@ export default () => {
 										Edit event
 									</Button>
 								</Link>
-								<HasRole role="admin">
+								<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('coordinator')}>
 									<Link to="registrationsLogs(id: $entity.id)">
 										<Button>
 											Registration history
 										</Button>
 									</Link>
-									<DeleteEntityModalButton 
-										message="Do you really want to delete?"
-										deleteMessage="Delete"
-										cancelTo={'events'}
-										afterPersistTo={'events'}
-									>
-										<Button variant={'destructive'}>
-											<TrashIcon />
-										</Button>
-									</DeleteEntityModalButton>
+								</HasRole>
+								<If condition={`[contactPerson.tenantPerson.id = "${identity?.person?.id}" && contactPerson.tenantPerson.roles != "admin"]`}>
+									<div className=''>
+										<DeleteEntityModalButton 
+											message="Do you really want to delete?"
+											deleteMessage="Delete"
+											cancelTo={'events'}
+											afterPersistTo={'events'}
+										>
+											<Button variant={'destructive'}>
+												<TrashIcon />
+											</Button>
+										</DeleteEntityModalButton>
+									</div>
+								</If>
+								<HasRole role={roles => roles.has('admin')}>
+									<div className=''>
+										<DeleteEntityModalButton 
+											message="Do you really want to delete?"
+											deleteMessage="Delete"
+											cancelTo={'events'}
+											afterPersistTo={'events'}
+										>
+											<Button variant={'destructive'}>
+												<TrashIcon />
+											</Button>
+										</DeleteEntityModalButton>
+									</div>
 								</HasRole>
 							</Slots.Actions>
 						</HasRole>
@@ -544,7 +563,6 @@ export default () => {
 											<DataGridColumn header="Payment">
 												<Field field={'payment'} format={formatPaymentStatusTag} />
 											</DataGridColumn>
-											<DataGridNumberColumn field="paymentId" header="Payment ID" />
 											<DataGridTextColumn field="person.tenantPerson.email" header="Email" />
 											<DataGridTextColumn field="person.phoneNumber" header="Phone number" />
 											<DataGridTextColumn field="person.inSISusername" header="InSIS username" />
@@ -558,6 +576,7 @@ export default () => {
 											</DataGridHasManyColumn>
 											<DataGridTextColumn field="note" header="Note" />
 											<DataGridDateColumn field="createdAt" header="Registered At" children={<Field field="createdAt" format={formatDateTime} />}/>
+											<DataGridNumberColumn field="paymentId" header="Payment ID" />
 											<DataGridHasOneColumn field="personWhoMadeRegistration" header="Manually registered by">
 												<Field field="firstName" /> {' '} <Field field="surname" />
 											</DataGridHasOneColumn>
