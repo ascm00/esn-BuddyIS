@@ -49,6 +49,7 @@ export class EventRegistration {
     event = c.manyHasOne(Event, 'registrations').cascadeOnDelete()
     isWaitingList = c.boolColumn().default(false)
 	personWhoMadeRegistration = c.manyHasOne(Person, 'registrationMadeByPerson')
+	deletedByPerson = c.manyHasOne(Person, 'deleteMadeByPerson')
 	accepted = c.boolColumn().default(true) // when user pays or joins waiting list - eventRegistration is accepted
     person = c.manyHasOne(Person, 'registrations')
     allergies = c.manyHasMany(Allergy, 'registrations')

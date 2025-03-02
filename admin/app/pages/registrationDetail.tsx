@@ -8,11 +8,12 @@ import { formatBoolean } from '@app/lib/formatting'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
 import { Table, TableBody, TableCell, TableRow, TableWrapper } from '@app/lib/ui/table'
-import { Component, EntitySubTree, Field, HasMany, HasOne, HasRole, Link, useEntity } from '@contember/interface'
+import { Component, EntitySubTree, Field, HasMany, HasOne, HasRole, identityEnvironmentExtension, If, Link, useEntity, useEntitySubTree, useIdentity } from '@contember/interface'
 import { useState } from 'react'
 import { useEffect } from 'react'
 
 export default () => {
+	const identity = useIdentity()
 
 	return (
 		<>
@@ -26,11 +27,43 @@ export default () => {
 					</Slots.Back>
 					<EntitySubTree entity="EventRegistration(id=$id)" isCreating={false}>
 						<Slots.Actions>
+							<If condition={`[event.contactPerson.tenantPerson.id = "${identity?.person?.id}" && event.contactPerson.tenantPerson.roles != "admin"]`}>
+								<If condition={'[accepted = true]'}>
+									<Link to={'registrationEdit(id: $entity.id)'}>
+										<Button>Edit registration</Button>
+									</Link>
+									<CurrentEntityLazyModalEdit
+										redirectOnSuccess={'eventDetail(id: $entity.event.id)'}
+										dialogProps={{ className: 'overflow-y-auto max-h-screen' }}
+										saveButton='Delete'
+										button={
+											<Button variant={'destructive'} className="flex items-center">
+												Delete registration
+											</Button>
+										}
+									>
+										<SetRegistrationUnaccepted />
+									</CurrentEntityLazyModalEdit>
+								</If>
+							</If>
                             <HasRole role={roles => roles.has('admin')}>
-								<Link to={'registrationEdit(id: $entity.id)'}>
-									<Button>Edit registration</Button>
-								</Link>
-								<DeleteRegistration />
+								<If condition={'[accepted = true]'}>
+									<Link to={'registrationEdit(id: $entity.id)'}>
+										<Button>Edit registration</Button>
+									</Link>
+									<CurrentEntityLazyModalEdit
+										redirectOnSuccess={'eventDetail(id: $entity.event.id)'}
+										dialogProps={{ className: 'overflow-y-auto max-h-screen' }}
+										saveButton='Delete'
+										button={
+											<Button variant={'destructive'} className="flex items-center">
+												Delete registration
+											</Button>
+										}
+									>
+										<SetRegistrationUnaccepted />
+									</CurrentEntityLazyModalEdit>
+								</If>
 							</HasRole>
 						</Slots.Actions>
 						<TableWrapper className="bg-gray-50/50 max-w-lg border rounded-md">
@@ -133,7 +166,15 @@ export default () => {
 											Manually registered by
 										</TableCell>
 										<TableCell className="font-semibold">
-											<Field field="personWhoMadeRegistration.firstName" /> {' '} <Field field="personWhoMadeRegistration.surname" />
+											<Field field="personWhoMadeRegistration.firstName" />{' '}<Field field="personWhoMadeRegistration.surname" />
+										</TableCell>
+									</TableRow>
+									<TableRow>
+										<TableCell>
+											Deleted by
+										</TableCell>
+										<TableCell className="font-semibold">
+											<Field field="deletedByPerson.firstName" />{' '}<Field field="deletedByPerson.surname" />
 										</TableCell>
 									</TableRow>
 								</TableBody>
@@ -148,22 +189,66 @@ export default () => {
 
 const DeleteRegistration = Component(() => {
 
+	// const entity = useEntity()
+	// const me = useEntitySubTree('me')
+	// entity.connectEntityAtField('deletedByPerson', me)
+	// entity.getField('accepted').updateValue(false)
+
     return (
-        <DeleteEntityModalButton 
-            message="Do you really want to delete this registration?"
-            deleteMessage="Delete registration"
-            cancelTo={`eventDetail(id: $entity.event.id)`}
-            afterPersistTo={`events`}
-        >
-            <Button variant={'destructive'}>
-                Delete registration
-            </Button>
-        </DeleteEntityModalButton>
+		<CurrentEntityLazyModalEdit
+			redirectOnSuccess={'eventDetail(id: $entity.event.id)'}
+			dialogProps={{ className: 'overflow-y-auto max-h-screen' }}
+			saveButton='Delete'
+			buttonContent={
+				<span className="flex items-center">
+					Delete registration
+				</span>
+			}
+		>
+			<SetRegistrationUnaccepted />
+		</CurrentEntityLazyModalEdit>
     )
-}, ()=>(
+}, (_, env)=>(
     <>
+	 	<EntitySubTree
+			entity={`Person(tenantPerson.id='${env.getExtension(identityEnvironmentExtension).identity?.person?.id}')`}
+			alias="me"
+		>
+			<Field field="firstName" />
+			<Field field="surname" />
+		</EntitySubTree>
         <HasOne field="event">
             <Field field="id" />
         </HasOne>
+		<Field field={'accepted'} />
+		<HasOne field="deletedByPerson" />
+		
+    </>
+))
+
+const SetRegistrationUnaccepted = Component(() => {
+	const entity = useEntity()
+	const me = useEntitySubTree('me')
+	entity.connectEntityAtField('deletedByPerson', me)
+	entity.getField('accepted').updateValue(false)
+
+    return (
+		<div>Do you really want to delete this registration?</div>
+    )
+}, (_, env)=>(
+    <>
+	 	<EntitySubTree
+			entity={`Person(tenantPerson.id='${env.getExtension(identityEnvironmentExtension).identity?.person?.id}')`}
+			alias="me"
+		>
+			<Field field="firstName" />
+			<Field field="surname" />
+		</EntitySubTree>
+        <HasOne field="event">
+            <Field field="id" />
+        </HasOne>
+		<Field field={'accepted'} />
+		<HasOne field="deletedByPerson" />
+		
     </>
 ))

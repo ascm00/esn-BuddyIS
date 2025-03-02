@@ -62,6 +62,7 @@ export class Person {
 	profilePicture = c.manyHasOne(Image, 'userProfilePicture')
 	coordinatingBuddyPairs = c.oneHasMany(BuddyPair, 'coordinator')
 	registrationMadeByPerson = c.oneHasMany(EventRegistration, 'personWhoMadeRegistration')
+	deleteMadeByPerson = c.oneHasMany(EventRegistration, 'deletedByPerson')
 
 	registrations = c.oneHasMany(EventRegistration, 'person')
 	notes = c.oneHasMany(Note, 'author')

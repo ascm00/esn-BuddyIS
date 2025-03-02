@@ -1,0 +1,152 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "updateRelationOnDelete",
+			"entityName": "EventRegistration",
+			"fieldName": "event",
+			"onDelete": "cascade"
+		},
+		{
+			"modification": "createRelation",
+			"entityName": "EventRegistration",
+			"owningSide": {
+				"type": "ManyHasOne",
+				"name": "deletedByPerson",
+				"target": "Person",
+				"joiningColumn": {
+					"columnName": "deleted_by_person_id",
+					"onDelete": "restrict"
+				},
+				"nullable": true,
+				"inversedBy": "deleteMadeByPerson"
+			},
+			"inverseSide": {
+				"type": "OneHasMany",
+				"name": "deleteMadeByPerson",
+				"target": "EventRegistration",
+				"ownedBy": "deletedByPerson"
+			}
+		},
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/EventRegistration/operations/create/deletedByPerson",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/EventRegistration/operations/update/deletedByPerson",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/EventRegistration/operations/read/deletedByPerson",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/Person/operations/create/deleteMadeByPerson",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/Person/operations/update/deleteMadeByPerson",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/coordinator/entities/Person/operations/read/deleteMadeByPerson",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/EventRegistration/operations/create/deletedByPerson",
+					"value": "person_personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/EventRegistration/operations/update/deletedByPerson",
+					"value": "person_personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/EventRegistration/operations/read/deletedByPerson",
+					"value": "person_personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/Person/operations/update/deleteMadeByPerson",
+					"value": "personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/Person/operations/read/deleteMadeByPerson",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/EventRegistration/operations/create/deletedByPerson",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/EventRegistration/operations/update/deletedByPerson",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/EventRegistration/operations/read/deletedByPerson",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Person/operations/create/deleteMadeByPerson",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Person/operations/update/deleteMadeByPerson",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/Person/operations/read/deleteMadeByPerson",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/EventRegistration/operations/create/deletedByPerson",
+					"value": "person_personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/EventRegistration/operations/update/deletedByPerson",
+					"value": "person_personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/EventRegistration/operations/read/deletedByPerson",
+					"value": "person_personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/Person/operations/update/deleteMadeByPerson",
+					"value": "personId_personId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/Person/operations/read/deleteMadeByPerson",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/Person/operations/read/deleteMadeByPerson",
+					"value": true
+				}
+			]
+		}
+	]
+}

@@ -507,6 +507,10 @@ export const ContemberClientNames: SchemaNames = {
           "type": "one",
           "entity": "Person"
         },
+        "deletedByPerson": {
+          "type": "one",
+          "entity": "Person"
+        },
         "accepted": {
           "type": "column"
         },
@@ -937,6 +941,10 @@ export const ContemberClientNames: SchemaNames = {
           "entity": "BuddyPair"
         },
         "registrationMadeByPerson": {
+          "type": "many",
+          "entity": "EventRegistration"
+        },
+        "deleteMadeByPerson": {
           "type": "many",
           "entity": "EventRegistration"
         },

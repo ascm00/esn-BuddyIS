@@ -215,6 +215,7 @@ export type Country <OverRelation extends string | never = never> = {
 		usersByApplicationsFr: { entity: Person; by: {applicationsFr: ApplicationFr['unique']}  }
 		usersByCoordinatingBuddyPairs: { entity: Person; by: {coordinatingBuddyPairs: BuddyPair['unique']}  }
 		usersByRegistrationMadeByPerson: { entity: Person; by: {registrationMadeByPerson: EventRegistration['unique']}  }
+		usersByDeleteMadeByPerson: { entity: Person; by: {deleteMadeByPerson: EventRegistration['unique']}  }
 		usersByRegistrations: { entity: Person; by: {registrations: EventRegistration['unique']}  }
 		usersByNotes: { entity: Person; by: {notes: Note['unique']}  }
 		usersByAgeView: { entity: Person; by: {ageView: PersonAgeView['unique']}  }
@@ -306,6 +307,7 @@ export type EventRegistration <OverRelation extends string | never = never> = {
 	hasOne: {
 		event: Event
 		personWhoMadeRegistration: Person
+		deletedByPerson: Person
 		person: Person
 	}
 	hasMany: {
@@ -339,6 +341,7 @@ export type Faculty <OverRelation extends string | never = never> = {
 		usersByApplicationsFr: { entity: Person; by: {applicationsFr: ApplicationFr['unique']}  }
 		usersByCoordinatingBuddyPairs: { entity: Person; by: {coordinatingBuddyPairs: BuddyPair['unique']}  }
 		usersByRegistrationMadeByPerson: { entity: Person; by: {registrationMadeByPerson: EventRegistration['unique']}  }
+		usersByDeleteMadeByPerson: { entity: Person; by: {deleteMadeByPerson: EventRegistration['unique']}  }
 		usersByRegistrations: { entity: Person; by: {registrations: EventRegistration['unique']}  }
 		usersByNotes: { entity: Person; by: {notes: Note['unique']}  }
 		usersByAgeView: { entity: Person; by: {ageView: PersonAgeView['unique']}  }
@@ -396,6 +399,7 @@ export type Image <OverRelation extends string | never = never> = {
 		userProfilePictureByApplicationsFr: { entity: Person; by: {applicationsFr: ApplicationFr['unique']}  }
 		userProfilePictureByCoordinatingBuddyPairs: { entity: Person; by: {coordinatingBuddyPairs: BuddyPair['unique']}  }
 		userProfilePictureByRegistrationMadeByPerson: { entity: Person; by: {registrationMadeByPerson: EventRegistration['unique']}  }
+		userProfilePictureByDeleteMadeByPerson: { entity: Person; by: {deleteMadeByPerson: EventRegistration['unique']}  }
 		userProfilePictureByRegistrations: { entity: Person; by: {registrations: EventRegistration['unique']}  }
 		userProfilePictureByNotes: { entity: Person; by: {notes: Note['unique']}  }
 		userProfilePictureByAgeView: { entity: Person; by: {ageView: PersonAgeView['unique']}  }
@@ -552,6 +556,7 @@ export type Person <OverRelation extends string | never = never> = {
 		| Omit<{ applicationsFr: ApplicationFr['unique']}, OverRelation>
 		| Omit<{ coordinatingBuddyPairs: BuddyPair['unique']}, OverRelation>
 		| Omit<{ registrationMadeByPerson: EventRegistration['unique']}, OverRelation>
+		| Omit<{ deleteMadeByPerson: EventRegistration['unique']}, OverRelation>
 		| Omit<{ registrations: EventRegistration['unique']}, OverRelation>
 		| Omit<{ notes: Note['unique']}, OverRelation>
 		| Omit<{ ageView: PersonAgeView['unique']}, OverRelation>
@@ -589,6 +594,7 @@ export type Person <OverRelation extends string | never = never> = {
 		n2nHours: N2nHour
 		coordinatingBuddyPairs: BuddyPair<'coordinator'>
 		registrationMadeByPerson: EventRegistration<'personWhoMadeRegistration'>
+		deleteMadeByPerson: EventRegistration<'deletedByPerson'>
 		registrations: EventRegistration<'person'>
 		notes: Note<'author'>
 		languages: Language
@@ -606,6 +612,7 @@ export type Person <OverRelation extends string | never = never> = {
 		coordinatingBuddyPairsByTasks: { entity: BuddyPair; by: {tasks: BuddyTask['unique']}  }
 		coordinatingBuddyPairsByPicture: { entity: BuddyPair; by: {picture: Image['unique']}  }
 		registrationMadeByPersonByPaymentId: { entity: EventRegistration; by: {paymentId: string}  }
+		deleteMadeByPersonByPaymentId: { entity: EventRegistration; by: {paymentId: string}  }
 		registrationsByPaymentId: { entity: EventRegistration; by: {paymentId: string}  }
 	}
 }
@@ -750,6 +757,7 @@ export type StudyProgram <OverRelation extends string | never = never> = {
 		usersByApplicationsFr: { entity: Person; by: {applicationsFr: ApplicationFr['unique']}  }
 		usersByCoordinatingBuddyPairs: { entity: Person; by: {coordinatingBuddyPairs: BuddyPair['unique']}  }
 		usersByRegistrationMadeByPerson: { entity: Person; by: {registrationMadeByPerson: EventRegistration['unique']}  }
+		usersByDeleteMadeByPerson: { entity: Person; by: {deleteMadeByPerson: EventRegistration['unique']}  }
 		usersByRegistrations: { entity: Person; by: {registrations: EventRegistration['unique']}  }
 		usersByNotes: { entity: Person; by: {notes: Note['unique']}  }
 		usersByAgeView: { entity: Person; by: {ageView: PersonAgeView['unique']}  }
@@ -805,6 +813,7 @@ export type University <OverRelation extends string | never = never> = {
 		usersByApplicationsFr: { entity: Person; by: {applicationsFr: ApplicationFr['unique']}  }
 		usersByCoordinatingBuddyPairs: { entity: Person; by: {coordinatingBuddyPairs: BuddyPair['unique']}  }
 		usersByRegistrationMadeByPerson: { entity: Person; by: {registrationMadeByPerson: EventRegistration['unique']}  }
+		usersByDeleteMadeByPerson: { entity: Person; by: {deleteMadeByPerson: EventRegistration['unique']}  }
 		usersByRegistrations: { entity: Person; by: {registrations: EventRegistration['unique']}  }
 		usersByNotes: { entity: Person; by: {notes: Note['unique']}  }
 		usersByAgeView: { entity: Person; by: {ageView: PersonAgeView['unique']}  }

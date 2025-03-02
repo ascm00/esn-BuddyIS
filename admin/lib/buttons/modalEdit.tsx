@@ -38,6 +38,7 @@ export interface ModalEditProps {
 	onPersist?: () => void
 	additionalEnvironment?: Record<string, string>
 	dialogProps?: React.ComponentProps<typeof AlertDialogContent>
+	saveButton?: string
 }
 
 export const CurrentEntityLazyModalEdit: FC<PropsWithChildren<Omit<ModalEditProps, 'entity'>>> = Component(
@@ -54,6 +55,7 @@ export const CurrentEntityLazyModalEdit: FC<PropsWithChildren<Omit<ModalEditProp
 		additionalEnvironment,
 		triggerAsChild,
 		dialogProps,
+		saveButton,
 	}) => {
 		const entity = useEntity()
 		const entitySpec = `${entity.name}(id = $id)`
@@ -103,7 +105,7 @@ export const CurrentEntityLazyModalEdit: FC<PropsWithChildren<Omit<ModalEditProp
 									<AlertDialogFooter>
 										<AlertDialogCancel>Cancel</AlertDialogCancel>
 										<AlertDialogAction asChild>
-											<SaveButton onPersist={onPersist} />
+											<SaveButton onPersist={onPersist} saveButton={saveButton} />
 										</AlertDialogAction>
 									</AlertDialogFooter>
 								</Binding>
@@ -122,7 +124,8 @@ export const CurrentEntityLazyModalEdit: FC<PropsWithChildren<Omit<ModalEditProp
 export const SaveButton: FC<{
 	onPersist: (() => void) | undefined
 	redirectOnSuccess?: string
-}> = ({ onPersist, redirectOnSuccess }) => {
+	saveButton?: string
+}> = ({ onPersist, redirectOnSuccess, saveButton }) => {
 	const triggerPersist = usePersistWithFeedback()
 	const isDirty = useDirtinessState()
 	const onClick = useCallback(async () => {
@@ -133,7 +136,7 @@ export const SaveButton: FC<{
 	}, [triggerPersist, onPersist])
 	return (
 		<Button onClick={onClick} disabled={!isDirty}>
-			Save data
+			{saveButton ?? 'Save data'}
 		</Button>
 	)
 }

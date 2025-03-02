@@ -55,7 +55,10 @@ export default () => {
                                 <DataGridTextColumn field="person.inSISusername" header="InSIS username" />
                                 <DataGridTextColumn field="person.esnCardId" header="ESNcard ID" />
                                 <DataGridHasOneColumn field="personWhoMadeRegistration" header="Manually registered by">
-                                    <Field field="firstName" /> {' '} <Field field="surname" />
+                                    <Field field="firstName" />{' '}<Field field="surname" />
+                                </DataGridHasOneColumn>
+                                <DataGridHasOneColumn field="deletedByPerson" header="Deleted by">
+                                    <Field field="firstName" />{' '}<Field field="surname" />
                                 </DataGridHasOneColumn>
                             </DataGridTable>
                         </DataGridLoader>
