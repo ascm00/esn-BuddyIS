@@ -238,24 +238,24 @@ export default () => {
 						</div>
 					</EntitySubTree>
 					<div className="flex flex-col gap-4">
-							<div className="flex justify-between">
-								<div className="text-lg font-bold">Notes</div>
-							</div>
-							<DataGrid
-								entities="Note[buddyPair.id = $id]"
-								filteringStateStorage={'session'}
-								initialSorting={{ createdAt: 'desc' }}
-							>
-								{/* <DataGridToolbar>
-									<DataGridQueryFilter />
-								</DataGridToolbar> */}
-								<DataGridLoader>
-									<DataGridNotes>
-										<NoteCard />
-									</DataGridNotes>
-								</DataGridLoader>
-							</DataGrid>
+						<div className="flex justify-between">
+							<div className="text-lg font-bold">Notes</div>
 						</div>
+						<DataGrid
+							entities="Note[buddyPair.id = $id]"
+							filteringStateStorage={'session'}
+							initialSorting={{ createdAt: 'desc' }}
+						>
+							{/* <DataGridToolbar>
+								<DataGridQueryFilter />
+							</DataGridToolbar> */}
+							<DataGridLoader>
+								<DataGridNotes>
+									<NoteCard />
+								</DataGridNotes>
+							</DataGridLoader>
+						</DataGrid>
+					</div>
 				</div>
 			</Binding>
 		</>
