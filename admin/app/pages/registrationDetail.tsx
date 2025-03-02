@@ -26,7 +26,7 @@ export default () => {
 					</Slots.Back>
 					<EntitySubTree entity="EventRegistration(id=$id)" isCreating={false}>
 						<Slots.Actions>
-                            <HasRole role={roles => roles.has('admin') || roles.has('coordinator') || roles.has('esnMember')}>
+                            <HasRole role={roles => roles.has('admin')}>
 								<Link to={'registrationEdit(id: $entity.id)'}>
 									<Button>Edit registration</Button>
 								</Link>
