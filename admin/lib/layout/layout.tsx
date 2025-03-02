@@ -324,7 +324,7 @@ export const LayoutComponent = ({ children, ...rest }: PropsWithChildren<{}>) =>
 				</LayoutBoxUI>
 
 				<LayoutFooterUI>
-					<div>
+					<div className='hidden md:block'>
 						<SlotTargets.Footer />
 					</div>
 				</LayoutFooterUI>
