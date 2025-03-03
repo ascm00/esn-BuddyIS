@@ -1,0 +1,32 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/esnMember/entities/BuddyTask/operations/update",
+					"value": {
+						"createdAt": true,
+						"description": true,
+						"buddyPair": true,
+						"done": true,
+						"confirmed": true
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/ozsRole/entities/BuddyTask/operations/update",
+					"value": {
+						"createdAt": true,
+						"description": true,
+						"buddyPair": true,
+						"done": true,
+						"confirmed": true
+					}
+				}
+			]
+		}
+	]
+}

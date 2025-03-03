@@ -16,6 +16,7 @@ import { BuddyPair } from './BuddyPair'
 @c.Allow([esnMemberRole, ozsRole], {
 	read: true,
 	create: true,
+	update: true,
 })
 @c.Allow(coordinatorRole, {
 	read: true,
