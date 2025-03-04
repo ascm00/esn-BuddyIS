@@ -6,9 +6,12 @@ import { CurrentEntityLazyModalEdit } from '@app/lib/buttons/modalEdit'
 import { DataGrid, DataGridBooleanColumn, DataGridColumn, DataGridDateColumn, DataGridHasManyColumn, DataGridHasOneColumn, DataGridLoader, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
+import { useIsMobile } from '@app/lib/utils/use-mobile'
 import { Field, HasRole, Link } from '@contember/interface'
+import { History, PlusCircle } from 'lucide-react'
 
 export default () => {
+	const isMobile = useIsMobile()
 	return (
 		<>
 			<Binding>
@@ -24,12 +27,13 @@ export default () => {
 							<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('coordinator')}>
 								<Link to="n2nPartiesAllSemesters">
 									<Button>
-										All semesters N2N parties
+										{isMobile ? <History /> : 'All semesters N2N parties'}
 									</Button>
 								</Link>
 								<CreateEntityModalButton
 									entityName="N2nParty"
 									buttonLabel="Create N2N party"
+									button={<Button>{isMobile ? <PlusCircle /> : 'Create N2N party'}</Button>}
 									saveButtonLabel="Save data"
 									refreshOnPersist
 									createEntityForm={

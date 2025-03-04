@@ -3,9 +3,12 @@ import { BackButton } from '@app/lib/buttons'
 import { DataGrid, DataGridBooleanColumn, DataGridColumn, DataGridDateColumn, DataGridEnumColumn, DataGridEnumFilter, DataGridHasManyColumn, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
+import { useIsMobile } from '@app/lib/utils/use-mobile'
 import { Field, HasRole, Link } from '@contember/interface'
+import { PlusCircle } from 'lucide-react'
 
 export default () => {
+	const isMobile = useIsMobile()
 	return (
 		<>
 			<Binding>
@@ -21,7 +24,7 @@ export default () => {
 							<HasRole role={roles => roles.has('admin') || roles.has('coordinator') || roles.has('esnMember')}>
 								<Link to="personCreate">
 										<Button>
-											Create user
+											{isMobile ? <PlusCircle /> : 'Create user'}
 										</Button>
 								</Link>
 							</HasRole>

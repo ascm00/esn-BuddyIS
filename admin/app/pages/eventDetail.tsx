@@ -11,7 +11,7 @@ import { renderElement, renderLeaf } from '@app/lib/plugins/rich-text/renderer/r
 import { DataGrid, DataGridActionColumn, DataGridColumn, DataGridDateColumn, DataGridEnumColumn, DataGridEnumFilter, DataGridHasManyColumn, DataGridHasManyFilter, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridNumberColumn, DataGridNumberFilter, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridTextFilter, DataGridToolbar } from '@app/lib/datagrid'
 import { CreateEntityModalButton } from '@app/lib/buttons/createEntityModalButtons'
 import { RegistrationAdminCreateForm, RegistrationCreateForm } from '@app/components/forms/registration-create-form'
-import { Delete, DollarSign, Trash, TrashIcon } from 'lucide-react'
+import { Delete, DollarSign, Edit, History, PlusCircle, Trash, TrashIcon } from 'lucide-react'
 import { DeleteEntityModalButton } from '@app/lib/buttons/deleteEntityModalButton'
 import { ImageFieldView, PersistButton } from '@contember/admin'
 import config from '../../config'
@@ -21,8 +21,10 @@ import { GoogleMapsLink, WhatsappLink } from '@app/lib/utils/link'
 import { PlacesLeftTag } from '@app/lib/ui/event-status'
 import { formatPaymentStatusTag } from '@app/lib/formatting/paymentStatus'
 import { AddToRegisteredUsersButton, PaymentButton } from '@app/lib/components/registration'
+import { useIsMobile } from '@app/lib/utils/use-mobile'
 
 const RegistrationNow = Component( () => {
+	const isMobile = useIsMobile()
 	const identity = useIdentity()
 	const entity = useEntity()
 	const eventId = entity.getField('id').value
@@ -242,6 +244,7 @@ const RegistrationAdminCreate = Component(
 		const entity = useEntity()
 		const fee = entity.getField('fee').value ?? undefined
 		const isPaid = typeof fee === 'number' && (fee > 0)
+		const isMobile = useIsMobile()
 
 		const eventStartDateValue = entity.getField('startDate').value?.toString()
 		const eventStartDate = eventStartDateValue && new Date(eventStartDateValue)
@@ -261,7 +264,8 @@ const RegistrationAdminCreate = Component(
 				return (
 					<CreateEntityModalButton
 						entityName="EventRegistration"
-						buttonLabel="Register user"
+						buttonLabel={"Register user"}
+						button={<Button>{isMobile ? <PlusCircle /> : 'Register user'}</Button>}
 						saveButtonLabel="Register user"
 						refreshOnPersist
 						createEntityForm={
@@ -276,7 +280,7 @@ const RegistrationAdminCreate = Component(
 				return (
 					<CreateEntityModalButton
 						entityName="EventRegistration"
-						buttonLabel="Register user"
+						button={<Button>{isMobile ? <PlusCircle /> : 'Register user'}</Button>}
 						saveButtonLabel="Register user"
 						refreshOnPersist
 						createEntityForm={
@@ -293,7 +297,7 @@ const RegistrationAdminCreate = Component(
 			return (
 				<CreateEntityModalButton
 					entityName="EventRegistration"
-					buttonLabel="Register user"
+					button={<Button>{isMobile ? <PlusCircle /> : 'Register user'}</Button>}
 					saveButtonLabel="Put user on a waiting list"
 					refreshOnPersist
 					createEntityForm={
@@ -320,6 +324,7 @@ const RegistrationAdminCreate = Component(
 
 export default () => {
 	const identity = useIdentity()
+	const isMobile = useIsMobile()
 	return (
 		<>
 			<Binding>
@@ -336,13 +341,13 @@ export default () => {
 								<RegistrationAdminCreate />
 								<Link to="eventEdit(id: $entity.id)">
 									<Button>
-										Edit event
+										{isMobile ? <Edit /> : 'Edit event'}
 									</Button>
 								</Link>
 								<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('coordinator')}>
 									<Link to="registrationsLogs(id: $entity.id)">
 										<Button>
-											Registration history
+											{isMobile ? <History /> : 'Edit event'}
 										</Button>
 									</Link>
 								</HasRole>

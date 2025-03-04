@@ -4,10 +4,12 @@ import { DeleteEntityModalButton } from '@app/lib/buttons/deleteEntityModalButto
 import { DataGrid, DataGridColumn, DataGridEnumColumn, DataGridEnumFilter, DataGridHasManyColumn, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridNumberColumn, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
+import { useIsMobile } from '@app/lib/utils/use-mobile'
 import { Field, HasRole, Link } from '@contember/interface'
-import { TrashIcon } from 'lucide-react'
+import { History, TrashIcon } from 'lucide-react'
 
 export default () => {
+	const isMobile = useIsMobile()
 	return (
 		<>
 			<Binding>
@@ -22,7 +24,7 @@ export default () => {
 						<Slots.Actions>
 							<Link to="applicationFrsAll">
 								<Button>
-									All semesters applications
+									{isMobile ? <History /> : 'All semesters applications'}
 								</Button>
 							</Link>
 							{/* <Link to="applicationFrCreate">

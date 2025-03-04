@@ -368,6 +368,7 @@ import { useIsMobile } from '../utils/use-mobile'
 export const LayoutComponent = ({ children }: PropsWithChildren) => {
 	const isActive = useHasActiveSlotsFactory()
 	const hasRightSidebar = isActive('Sidebar')
+	const isMobile = useIsMobile()
 
 	return (
 		<SidebarProvider>
@@ -404,8 +405,8 @@ export const LayoutComponent = ({ children }: PropsWithChildren) => {
 
 							<Separator orientation="vertical" className="mr-2 h-4" />
 
-							<SlotTargets.Back />
-							<SlotTargets.Title />
+							{!isMobile && <SlotTargets.Back />}
+							{!isMobile && <SlotTargets.Title />}
 						</SidebarInsetHeaderActions>
 						<SidebarInsetHeaderActions>
 							<SlotTargets.Actions />
@@ -413,6 +414,7 @@ export const LayoutComponent = ({ children }: PropsWithChildren) => {
 					</SidebarInsetHeader>
 
 					<SidebarInsetContent>
+						{isMobile && (<div className='pb-3 font-bold'><SlotTargets.Title /></div>)}
 						{children}
 					</SidebarInsetContent>
 				</SidebarInset>

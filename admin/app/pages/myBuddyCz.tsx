@@ -12,6 +12,8 @@ import { TextareaAutosize } from '@app/lib/ui/textarea'
 import { ImageFieldView } from '@app/components/fieldViews/ImageFieldView'
 import { Component, EntityListSubTree, EntitySubTree, Field, HasMany, HasOne, HasRole, identityEnvironmentExtension, If, Link, useEntity, useEntityListSubTree, useEntitySubTree, useIdentity } from '@contember/interface'
 import { useCallback, useState } from 'react'
+import { PlusCircle } from 'lucide-react'
+import { useIsMobile } from '@app/lib/utils/use-mobile'
 
 export default () => {
 
@@ -77,6 +79,7 @@ const MoreBuddiesView = Component(
 	() => {
 
 		const myId = useIdentity()?.person?.id
+		const isMobile = useIsMobile()
 
 		const buddyPairs = useEntityListSubTree('buddyPairs')
 		let numberOfBuddies = 0
@@ -92,7 +95,7 @@ const MoreBuddiesView = Component(
 				<Slots.Actions>
 					<Link to="applicationCzCreate">
 						<Button>
-							Apply for buddy
+							{isMobile ? <PlusCircle /> : 'Apply for buddy'}
 						</Button>
 					</Link>
 				</Slots.Actions></div>)

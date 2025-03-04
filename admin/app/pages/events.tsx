@@ -4,12 +4,14 @@ import { DataGrid, DataGridColumn, DataGridDateColumn, DataGridEnumColumn, DataG
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
 import { WhatsappLink } from '@app/lib/utils/link'
+import { useIsMobile } from '@app/lib/utils/use-mobile'
 import { Component, Field, HasRole, Link, useEntity, useIdentity, useProjectUserRoles } from '@contember/interface'
-import { Edit, Eye, File } from 'lucide-react'
+import { Edit, Eye, File, History, PlusCircle } from 'lucide-react'
 
 export default () => {
 
 	const roles = useProjectUserRoles()
+	const isMobile = useIsMobile()
 
 	return (
 		<>
@@ -26,12 +28,13 @@ export default () => {
 							<Slots.Actions>
 								<Link to="eventsAllSemesters">
 									<Button>
-										All semesters events
+										{isMobile ? <History /> : 'All semesters events'}
 									</Button>
 								</Link>
 								<Link to="eventCreate">
 									<Button>
-										Create event
+										{!isMobile && 'Create event'}
+										{isMobile && <PlusCircle />}
 									</Button>
 								</Link>
 							</Slots.Actions>

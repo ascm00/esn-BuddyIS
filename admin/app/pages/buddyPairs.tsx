@@ -5,9 +5,12 @@ import { CreateEntityModalButton } from '@app/lib/buttons/createEntityModalButto
 import { DataGrid, DataGridBooleanColumn, DataGridBooleanFilter, DataGridColumn, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
+import { useIsMobile } from '@app/lib/utils/use-mobile'
 import { Field, HasRole, Link } from '@contember/interface'
+import { History, PlusCircle } from 'lucide-react'
 
 export default () => {
+	const isMobile = useIsMobile()
 	return (
 		<>
 			<Binding>
@@ -22,13 +25,13 @@ export default () => {
 						<Slots.Actions>
 						<Link to="buddyPairsHistoric">
 								<Button>
-									All semesters buddy pairs
+									{isMobile ? <History /> : 'All semesters buddy pairs'}
 								</Button>
 							</Link>
 							<HasRole role={roles => roles.has('admin')}>
 								<CreateEntityModalButton
 									entityName="BuddyPair"
-									buttonLabel="Create buddy pair"
+									button={<Button>{isMobile ? <PlusCircle /> : 'Create buddy pair'}</Button>}
 									saveButtonLabel="Save data"
 									refreshOnPersist
 									createEntityForm={

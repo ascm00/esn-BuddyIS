@@ -6,10 +6,12 @@ import { DataGrid, DataGridBooleanColumn, DataGridBooleanFilter, DataGridBoolean
 import { formatBoolean, formatBooleanIcon, formatBooleanPair } from '@app/lib/formatting'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
+import { useIsMobile } from '@app/lib/utils/use-mobile'
 import { Field, HasRole, Link } from '@contember/interface'
-import { TrashIcon } from 'lucide-react'
+import { History, TrashIcon } from 'lucide-react'
 
 export default () => {
+	const isMobile = useIsMobile()
 	return (
 		<>
 			<Binding>
@@ -25,7 +27,7 @@ export default () => {
 						<HasRole role={roles => roles.has('admin') || roles.has('coordinator') || roles.has('ozsRole')}>
 							<Link to="applicationCzsAll">
 								<Button>
-									All semesters applications
+									{isMobile ? <History /> : 'All semesters applications'}
 								</Button>
 							</Link>
 							{/* <Link to="applicationCzAdminCreate">
