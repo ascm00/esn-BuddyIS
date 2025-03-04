@@ -70,38 +70,40 @@ export default () => {
 											<Field field="phoneNumber" />
 										</TableCell>
 									</TableRow>
-									<TableRow>
-										<TableCell>
-											ESNcard ID
-										</TableCell>
-										<TableCell className="font-semibold">
-											<Field field="esnCardId" />
-										</TableCell>
-									</TableRow>
-									<TableRow>
-										<TableCell>
-											Home university country
-										</TableCell>
-										<TableCell className="font-semibold">
-											<Field field="countryOfUniversity.name" />
-										</TableCell>
-									</TableRow>
-									<TableRow>
-										<TableCell>
-											Home university
-										</TableCell>
-										<TableCell className="font-semibold">
-											<Field field="university.name" />
-										</TableCell>
-									</TableRow>
-									<TableRow>
-										<TableCell>
-											Faculty at VSE
-										</TableCell>
-										<TableCell className="font-semibold">
-											<Field field="faculty.name" />
-										</TableCell>
-									</TableRow>
+									<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('coordinator')}>
+										<TableRow>
+											<TableCell>
+												ESNcard ID
+											</TableCell>
+											<TableCell className="font-semibold">
+												<Field field="esnCardId" />
+											</TableCell>
+										</TableRow>
+										<TableRow>
+											<TableCell>
+												Home university country
+											</TableCell>
+											<TableCell className="font-semibold">
+												<Field field="countryOfUniversity.name" />
+											</TableCell>
+										</TableRow>
+										<TableRow>
+											<TableCell>
+												Home university
+											</TableCell>
+											<TableCell className="font-semibold">
+												<Field field="university.name" />
+											</TableCell>
+										</TableRow>
+										<TableRow>
+											<TableCell>
+												Faculty at VSE
+											</TableCell>
+											<TableCell className="font-semibold">
+												<Field field="faculty.name" />
+											</TableCell>
+										</TableRow>
+									</HasRole>
 								</TableBody>
 							</Table>
 						</TableWrapper>

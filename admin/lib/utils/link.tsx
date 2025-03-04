@@ -1,4 +1,5 @@
 import { Component, Field, useEntity } from "@contember/interface";
+import { Link2 } from "lucide-react";
 
 export const WhatsappLink = Component(({text}: {text?: string}) => {
 	const entity = useEntity()
@@ -25,12 +26,12 @@ export const WhatsappLinkFromString = Component(({text, link}: {text?: string, l
 	const regex = /^(https?:\/\/[^\s]+)/
 
 	if (link === '' || !regex.test(link)) {
-		return null
+		return <><Link2 className="h-4 w-4 mr-2 text-gray-400" /><p>WhatsApp link to be added</p></>
 	} else {
 		if(text){
-			return <a className='text-blue-500' href={link} target="_blank">{text}</a>
+			return <><Link2 className="h-4 w-4 mr-2 text-gray-400" /><a className='text-blue-500' href={link} target="_blank">{text}</a></>
 		} else {
-			return <a className='text-blue-500' href={link} target="_blank">{link}</a>
+			return <><Link2 className="h-4 w-4 mr-2 text-gray-400" /><a className='text-blue-500' href={link} target="_blank">{link}</a></>
 		}
 	}
 })
