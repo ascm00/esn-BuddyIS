@@ -8,7 +8,7 @@ import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
 import { useIsMobile } from '@app/lib/utils/use-mobile'
 import { Field, HasRole, Link } from '@contember/interface'
-import { History, TrashIcon } from 'lucide-react'
+import { History, PlusCircle, TrashIcon } from 'lucide-react'
 
 export default () => {
 	const isMobile = useIsMobile()
@@ -25,6 +25,11 @@ export default () => {
 					<>
 						<Slots.Actions>
 						<HasRole role={roles => roles.has('admin') || roles.has('coordinator') || roles.has('ozsRole')}>
+							<Link to="applicationCzCreateAdmin">
+								<Button>
+									{isMobile ? <PlusCircle /> : 'Create application'}
+								</Button>
+							</Link>
 							<Link to="applicationCzsAll">
 								<Button>
 									{isMobile ? <History /> : 'All semesters applications'}
