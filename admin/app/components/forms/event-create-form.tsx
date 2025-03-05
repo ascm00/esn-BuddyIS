@@ -33,7 +33,7 @@ export const EventCreateForm = Component(() => {
 		<InputField field="mapLink" label="Google maps link" description="Please add a valid link to the Google maps starting with 'https://' or 'http://'. Otherwise, it will not be displayed."/>
 		<InputField field="whatToBring" label="What to bring" />
 		<InputField field="whatsappLink" label="Whatsapp link" description="Please add a valid link to the WhatsApp group starting with 'https://' or 'http://'. Otherwise, it will not be displayed." />
-		<SelectField field={'contactPerson'} label="Contact person" options={'Person'}>
+		<SelectField field={'contactPerson'} label="Contact person" options={'Person[tenantPerson.roles = "admin" || tenantPerson.roles = "esnMember" || tenantPerson.roles = "coordinator"]'}>
 			<Field field={'firstName'} /> {' '} <Field field={'surname'} />
 		</SelectField>
 		{/* <ConnectUser field='contactPerson'>
