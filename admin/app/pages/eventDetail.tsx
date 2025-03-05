@@ -347,7 +347,7 @@ export default () => {
 								<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('coordinator')}>
 									<Link to="registrationsLogs(id: $entity.id)">
 										<Button>
-											{isMobile ? <History /> : 'Edit event'}
+											{isMobile ? <History /> : 'Registration history'}
 										</Button>
 									</Link>
 								</HasRole>
