@@ -339,12 +339,24 @@ export default () => {
 						<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('coordinator')}>
 							<Slots.Actions>
 								<RegistrationAdminCreate />
-								<Link to="eventEdit(id: $entity.id)">
-									<Button>
-										{isMobile ? <Edit /> : 'Edit event'}
-									</Button>
-								</Link>
-								<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('coordinator')}>
+								<If condition={`[contactPerson.tenantPerson.id = "${identity?.person?.id}" && contactPerson.tenantPerson.roles != "admin"]`}>
+									<Link to="eventEdit(id: $entity.id)">
+										<Button>
+											{isMobile ? <Edit /> : 'Edit event'}
+										</Button>
+									</Link>
+									<Link to="registrationsLogs(id: $entity.id)">
+										<Button>
+											{isMobile ? <History /> : 'Registration history'}
+										</Button>
+									</Link>
+								</If>
+								<HasRole role={roles => roles.has('admin')}>
+									<Link to="eventEdit(id: $entity.id)">
+										<Button>
+											{isMobile ? <Edit /> : 'Edit event'}
+										</Button>
+									</Link>
 									<Link to="registrationsLogs(id: $entity.id)">
 										<Button>
 											{isMobile ? <History /> : 'Registration history'}
