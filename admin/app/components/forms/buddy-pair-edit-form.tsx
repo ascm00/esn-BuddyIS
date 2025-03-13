@@ -30,13 +30,13 @@ export const BuddyPairEditForm = Component(
 				>
 					<Field field="firstName" /> {' '} <Field field="surname" />  {' ('} <Field field="tenantPerson.email" /> {')'}
 				</SelectField>
-				{/* <SelectField
+				<SelectField
 					field="internationalStudent"
 					label="Foreign buddy"
 					options={`Person[tenantPerson.roles='internationalStudent']`}
 				>
 					<Field field="firstName" /> {' '} <Field field="surname" />  {' ('} <Field field="tenantPerson.email" /> {')'}
-				</SelectField> */}
+				</SelectField>
 			</FormLayout>
 			)
 
