@@ -267,15 +267,9 @@ const UnpairButton = Component(() => {
 	const czechStudent = useEntitySubTree('czechStudent')
 	const internationalStudent = useEntitySubTree('internationalStudent')
 
-	useEntityBeforePersist(() => {
+	const internationalStudentToBePaired = () => {
 		internationalStudent.getField('applicationsFr.status').updateValue('toBePaired')
-		// Array.from(czechStudent.getEntityList('applications')).forEach(application => {
-		// 	if(application.getEntity('semester').getField('isCurrent').value === true) {
-		// 		application.getField('status').updateValue('toBePaired')
-
-		// 	}
-		// })
-	})
+	}
 
 	return (
 		<DeleteEntityModalButton 
@@ -283,6 +277,7 @@ const UnpairButton = Component(() => {
 			deleteMessage="Unpair"
 			cancelTo={'buddyPairs'}
 			afterPersistTo={'buddyPairs'}
+			onDeleteFunction={internationalStudentToBePaired}
 		>
 			<Button variant={'destructive'}>
 				Unpair

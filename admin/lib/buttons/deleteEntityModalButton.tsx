@@ -19,12 +19,13 @@ interface DeleteEntityProps {
     deleteMessage?: string 
     children: React.ReactNode
     cancelTo: RoutingLinkTarget,
-    afterPersistTo?: RoutingLinkTarget
+    afterPersistTo?: RoutingLinkTarget,
+    onDeleteFunction?: () => void
 }
 
 const SlotButton = Slot as ComponentType<React.ButtonHTMLAttributes<HTMLButtonElement>>
 
-export const DeleteEntityModalButton = Component<DeleteEntityProps>(({message, deleteMessage, children, cancelTo, afterPersistTo}) => {
+export const DeleteEntityModalButton = Component<DeleteEntityProps>(({message, deleteMessage, children, cancelTo, afterPersistTo, onDeleteFunction}) => {
     const redirect = useRedirect()
 
     return (
@@ -41,7 +42,7 @@ export const DeleteEntityModalButton = Component<DeleteEntityProps>(({message, d
                     <FeedbackTrigger>
                         <DeleteEntityTrigger immediatePersist onPersistSuccess={ () => afterPersistTo ? redirect(afterPersistTo) : null}>
                             <AlertDialogAction asChild>
-                                <Button variant="destructive">
+                                <Button variant="destructive" onClick={() => onDeleteFunction && onDeleteFunction()}>
                                     {deleteMessage || 'Delete'}
                                 </Button>
                             </AlertDialogAction>
