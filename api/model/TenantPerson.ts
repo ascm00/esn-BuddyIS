@@ -1,6 +1,6 @@
 import { c } from '@contember/schema-definition'
 import { Person } from './Person'
-import { coordinatorRole, czechBuddyId, czechBuddyRole, esnMemberRole, internationalStudentId, internationalStudentRole, ozsRole } from './acl'
+import { coordinatorRole, czechBuddyId, czechBuddyRole, emailCheckRole, esnMemberRole, internationalStudentId, internationalStudentRole, ozsRole } from './acl'
 
 @c.View(`
 	SELECT
@@ -22,17 +22,21 @@ import { coordinatorRole, czechBuddyId, czechBuddyRole, esnMemberRole, internati
 	create: true,
 	update: true,
 })
+@c.Allow([emailCheckRole], {
+	read: ['email', 'id'],
+})
 @c.Allow([internationalStudentRole, czechBuddyRole], {
-	read: true,
 	create: true,
 })
 @c.Allow([internationalStudentRole], {
 	when: {identityId: internationalStudentId},
 	update: true,
+	read: true,
 })
 @c.Allow([czechBuddyRole], {
 	when: {identityId: czechBuddyId},
 	update: true,
+	read: true,
 })
 @c.Allow(ozsRole, {read: true,})
 export class TenantPerson {
