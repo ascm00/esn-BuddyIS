@@ -28,7 +28,7 @@ export async function onRequestPost(email: string, firstname: string, surname: s
 			email: email,
 			projectSlug: env.VITE_CONTEMBER_ADMIN_PROJECT_NAME,
 			name: `${firstname} ${surname}`,
-			memberships: [{ role: env.role, variables: [] }],
+			memberships: [{ role: env.VITE_CONTEMBER_SIGNUP_TOKEN, variables: [] }],
 			options: { method: 'RESET_PASSWORD'},
 		},
 	})
@@ -70,7 +70,7 @@ export async function onRequestPost(email: string, firstname: string, surname: s
 					updateData: upsertData,
 				},
 			},
-			env.VITE_CONTEMBER_ADMIN_INVITE_TOKEN,
+			env.VITE_CONTEMBER_SIGNUP_TOKEN,
 		)
 
 		return new Response(JSON.stringify({ createUser }), { status: 200, headers: { location: '/' } })
