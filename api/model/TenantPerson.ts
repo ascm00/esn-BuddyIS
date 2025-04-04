@@ -22,9 +22,9 @@ import { coordinatorRole, czechBuddyId, czechBuddyRole, emailCheckRole, esnMembe
 	create: true,
 	update: true,
 })
-// @c.Allow([emailCheckRole], {
-// 	read: ['email', 'id'],
-// })
+@c.Allow([emailCheckRole], {
+	read: ['email', 'id'],
+})
 @c.Allow([internationalStudentRole, czechBuddyRole], {
 	create: true,
 })
