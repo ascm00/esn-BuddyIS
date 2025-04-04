@@ -1,0 +1,59 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/paymentGate",
+					"value": {
+						"stages": "*",
+						"s3": {
+							"**": {
+								"upload": true,
+								"read": true
+							}
+						},
+						"entities": {
+							"EventRegistration": {
+								"predicates": {},
+								"operations": {
+									"read": {
+										"createdAt": true,
+										"payment": true,
+										"paymentId": true,
+										"note": true,
+										"event": true,
+										"isWaitingList": true,
+										"personWhoMadeRegistration": true,
+										"deletedByPerson": true,
+										"accepted": true,
+										"person": true,
+										"allergies": true,
+										"dietaryRestrictions": true
+									},
+									"update": {
+										"createdAt": true,
+										"payment": true,
+										"paymentId": true,
+										"note": true,
+										"event": true,
+										"isWaitingList": true,
+										"personWhoMadeRegistration": true,
+										"deletedByPerson": true,
+										"accepted": true,
+										"person": true,
+										"allergies": true,
+										"dietaryRestrictions": true
+									}
+								}
+							}
+						},
+						"variables": {}
+					}
+				}
+			]
+		}
+	]
+}

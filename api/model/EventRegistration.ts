@@ -3,7 +3,7 @@ import { Event } from './Event'
 import { Allergy } from './Allergy'
 import { DietaryRestrictions } from './DietaryRestrictions'
 import { Person } from './Person'
-import { coordinatorRole, czechBuddyId, czechBuddyRole, esnMemberRole, internationalStudentId, internationalStudentRole } from './acl'
+import { coordinatorRole, czechBuddyId, czechBuddyRole, esnMemberRole, internationalStudentId, internationalStudentRole, paymentGateRole } from './acl'
 import { payment } from './enum'
 
 @c.Allow(esnMemberRole, {
@@ -11,6 +11,10 @@ import { payment } from './enum'
 	create: true,
 	update: true ,
 	delete: true,
+})
+@c.Allow(paymentGateRole, {
+	read: true,
+	update: true,
 })
 @c.Allow(coordinatorRole, {
 	read: true,
@@ -30,17 +34,6 @@ import { payment } from './enum'
 	create: true,
 	update: true,
 })
-// @c.Trigger({
-// 	name: 'registration_created',
-// 	create: true,
-// 	webhook: {
-// 		url: 'https://t795yjlr41.execute-api.eu-north-1.amazonaws.com/testing_stage/payment-status',
-// 		headers: {
-// 			'Content-Type': 'application/json',
-// 		},
-// 	},
-// 	selection: `id`,
-//   })
 export class EventRegistration {
 	createdAt = c.dateTimeColumn().notNull().default('now')
     payment = c.enumColumn(payment).default('pending')

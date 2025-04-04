@@ -2,6 +2,7 @@ import { c } from '@contember/schema-definition'
 
 export const internationalStudentRole = c.createRole('internationalStudent', { stages: '*', s3: { '**': { upload: true, read: true } } })
 export const esnMemberRole = c.createRole('esnMember', { stages: '*', s3: { '**': { upload: true, read: true } } })
+export const paymentGateRole = c.createRole('paymentGate', { stages: '*', s3: { '**': { upload: true, read: true } } })
 export const ozsRole = c.createRole('ozsRole', { stages: '*', s3: { '**': { upload: true, read: true } } })
 export const czechBuddyRole = c.createRole('czechBuddy', { stages: '*', s3: { '**': { upload: true, read: true } } })
 export const coordinatorRole = c.createRole('coordinator', { stages: '*', s3: { '**': { upload: true, read: true } } })
