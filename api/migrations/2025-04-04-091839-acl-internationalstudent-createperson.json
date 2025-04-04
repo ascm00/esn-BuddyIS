@@ -1,0 +1,116 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/Person/operations/create",
+					"value": {
+						"createdAt": true,
+						"personId": true,
+						"birthdate": true,
+						"tenantPerson": true,
+						"gender": true,
+						"registrationDate": true,
+						"lastLoginDate": true,
+						"phoneNumber": true,
+						"university": true,
+						"emailForInfo": true,
+						"esnCardId": true,
+						"surname": true,
+						"inSISusername": true,
+						"active": true,
+						"faculty": true,
+						"studyProgram": true,
+						"countryOfUniversity": true,
+						"firstName": true,
+						"organizedEvents": true,
+						"czechBuddyPair": true,
+						"internationalBuddyPair": true,
+						"applications": true,
+						"applicationsFr": true,
+						"n2nHours": true,
+						"profilePicture": true,
+						"coordinatingBuddyPairs": true,
+						"registrationMadeByPerson": true,
+						"deleteMadeByPerson": true,
+						"registrations": true,
+						"notes": true,
+						"languages": true,
+						"ageView": true
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/TenantPerson/operations/create",
+					"value": {
+						"createdAt": true,
+						"identityId": true,
+						"email": true,
+						"name": true,
+						"otpUri": true,
+						"otpActivatedAt": true,
+						"idpOnly": true,
+						"roles": true,
+						"person": true
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/Person/operations/create",
+					"value": {
+						"createdAt": true,
+						"personId": true,
+						"birthdate": true,
+						"tenantPerson": true,
+						"gender": true,
+						"registrationDate": true,
+						"lastLoginDate": true,
+						"phoneNumber": true,
+						"university": true,
+						"emailForInfo": true,
+						"esnCardId": true,
+						"surname": true,
+						"inSISusername": true,
+						"active": true,
+						"faculty": true,
+						"studyProgram": true,
+						"countryOfUniversity": true,
+						"firstName": true,
+						"organizedEvents": true,
+						"czechBuddyPair": true,
+						"internationalBuddyPair": true,
+						"applications": true,
+						"applicationsFr": true,
+						"n2nHours": true,
+						"profilePicture": true,
+						"coordinatingBuddyPairs": true,
+						"registrationMadeByPerson": true,
+						"deleteMadeByPerson": true,
+						"registrations": true,
+						"notes": true,
+						"languages": true,
+						"ageView": true
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/TenantPerson/operations/create",
+					"value": {
+						"createdAt": true,
+						"identityId": true,
+						"email": true,
+						"name": true,
+						"otpUri": true,
+						"otpActivatedAt": true,
+						"idpOnly": true,
+						"roles": true,
+						"person": true
+					}
+				}
+			]
+		}
+	]
+}

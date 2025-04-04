@@ -22,6 +22,7 @@ import { coordinatorRole, czechBuddyId, czechBuddyRole, esnMemberRole, internati
 	update: true,
 })
 @c.Allow([internationalStudentRole, czechBuddyRole], {
+	create: true,
 	read: true,
 })
 @c.Allow([internationalStudentRole], {
