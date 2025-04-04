@@ -29,7 +29,7 @@ export async function onRequestPost(email: string, firstname: string, surname: s
 			email: email,
 			projectSlug: env.VITE_CONTEMBER_ADMIN_PROJECT_NAME,
 			name: `${firstname} ${surname}`,
-			memberships: [{ role: env.VITE_CONTEMBER_SIGNUP_TOKEN, variables: [] }],
+			memberships: [{ role: env.role, variables: [] }],
 			options: { method: 'RESET_PASSWORD'},
 		},
 	})
