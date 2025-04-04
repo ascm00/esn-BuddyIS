@@ -295,6 +295,7 @@ const registrationForeignPage = () => {
 				BASE_URL={config.baseUrl}
 				VITE_CONTEMBER_ADMIN_API_BASE_URL={config.apiBaseUrl}
 				VITE_CONTEMBER_ADMIN_INVITE_TOKEN={config.adminInviteToken}
+				VITE_CONTEMBER_SIGNUP_TOKEN={config.signupToken}
 				VITE_CONTEMBER_ADMIN_LOGIN_TOKEN={config.loginToken}
 				VITE_CONTEMBER_ADMIN_PROJECT_NAME={config.projectName}
 				VITE_CONTEMBER_PUBLIC_TOKEN={config.publicToken}
@@ -315,6 +316,7 @@ const registrationForeignPage = () => {
 			<RegistrationForm
 			VITE_CONTEMBER_ADMIN_API_BASE_URL={config.apiBaseUrl}
 			VITE_CONTEMBER_ADMIN_INVITE_TOKEN={config.adminInviteToken}
+			VITE_CONTEMBER_SIGNUP_TOKEN={config.signupToken}
 			BASE_URL={config.baseUrl}
 			VITE_CONTEMBER_ADMIN_LOGIN_TOKEN={config.loginToken}
 			VITE_CONTEMBER_ADMIN_PROJECT_NAME={config.projectName}

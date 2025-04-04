@@ -1,3 +1,4 @@
+import config from '../../config'
 import createUserQuery from './gql/createUser'
 import inviteQuery from './gql/invite'
 import { Env } from './types'
