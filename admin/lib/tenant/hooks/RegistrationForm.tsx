@@ -44,7 +44,7 @@ export const RegistrationForm = (env : Env) => {
 						email,
 					},
 				},
-				env.VITE_CONTEMBER_ADMIN_INVITE_TOKEN,
+				env.VITE_CONTEMBER_CHECKEMAIL_TOKEN,
 			)
 		
 			const getUserByEmailResult: ListTenantPersonResult = getUserByEmail

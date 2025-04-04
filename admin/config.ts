@@ -10,6 +10,7 @@ const signupToken = import.meta.env.VITE_CONTEMBER_SIGNUP_TOKEN
 const adminWebUrl = import.meta.env.VITE_CONTEMBER_ADMIN_WEB_URL
 const loginToken = import.meta.env.VITE_CONTEMBER_ADMIN_LOGIN_TOKEN
 const appUrl = import.meta.env.VITE_APP_URL
+const checkEmailToken = import.meta.env.VITE_CONTEMBER_CHECKEMAIL_TOKEN
 
 export default {
     apiBaseUrl,
@@ -17,6 +18,7 @@ export default {
     publicToken,
     adminInviteToken,
     projectName,
+	checkEmailToken,
     baseUrl,
 	signupToken,
     sessionToken,
