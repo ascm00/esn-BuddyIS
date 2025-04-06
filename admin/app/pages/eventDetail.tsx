@@ -23,6 +23,9 @@ import { formatPaymentStatusTag } from '@app/lib/formatting/paymentStatus'
 import { AddToRegisteredUsersButton, PaymentButton } from '@app/lib/components/registration'
 import { useIsMobile } from '@app/lib/utils/use-mobile'
 
+/* The above code is a TypeScript React component called `RegistrationNow`. It is responsible for
+rendering different UI elements based on various conditions related to event registration. Here is a
+breakdown of what the code is doing: */
 const RegistrationNow = Component( () => {
 	const isMobile = useIsMobile()
 	const identity = useIdentity()

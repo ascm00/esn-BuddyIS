@@ -4,7 +4,7 @@ import { Menu, MenuButton, MenuDivider, MenuItem, MenuItemExternal } from '@app/
 import { useSidebar } from '@app/lib/ui/sidebar'
 import { Button } from '@app/lib/ui/button'
 import { Component, EntityListSubTree, Field, HasRole, LogoutTrigger, useEntityListSubTree } from '@contember/interface'
-import { Activity, AlertCircle, Book, BookOpen, Building, Calendar, CalendarDays, CalendarPlus, CheckSquare, Clock, Cpu, Dot, File, FileText, GitBranch, Globe, GraduationCap, Grid, Handshake, Heart, Home, LanguagesIcon, Layout, Lightbulb, Link2, LogOutIcon, MapPin, MessageSquare, PartyPopper, Settings, Shuffle, Smile, User, UserCheck, UserPlus, Users, Users2, UtensilsCrossed } from 'lucide-react'
+import { Activity, AlertCircle, Book, BookOpen, Building, Calendar, CalendarDays, CalendarPlus, CheckSquare, Clock, Cpu, Dot, File, FileText, GitBranch, Globe, GraduationCap, Grid, Handshake, Heart, Home, LanguagesIcon, Layout, LayoutDashboard, Lightbulb, Link2, List, LogOutIcon, MapPin, MessageSquare, PartyPopper, Settings, Shuffle, Smile, User, UserCheck, UserCircle, UserPlus, Users, Users2, UtensilsCrossed } from 'lucide-react'
 import { dict } from '@app/lib/dict'
 
 export const Navigation = Component(
@@ -24,14 +24,18 @@ export const Navigation = Component(
 	</HasRole>
 	<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('czechBuddy') || roles.has('coordinator') || roles.has('internationalStudent')}>
 		<MenuItem label="Home" icon={<Home className='text-blue-500' />} to="eventFeed" />
-		<MenuItem label="Calendar" icon={<Calendar className='text-blue-500' />} to="calendar" />
-		<MenuItem label="Events" icon={<CalendarPlus className='text-blue-500' />} to="events" />
-		<MenuItem label="N2N Parties" icon={<PartyPopper className='text-blue-500' />} to="n2nParties" />
-		<MenuItem label="My upcoming events" icon={<Clock className='text-blue-500' />} to="myEvents" />
+		<MenuItem label="Events" icon={<CalendarPlus className='text-blue-500' />} to={'index'}>
+			<MenuItem label="Event dashboard" icon={<LayoutDashboard className='text-blue-500' />} to={'index'} />
+			<MenuItem label="Event list" icon={<List className='text-blue-500' />} to={'events'} />
+			<MenuItem label="N2N Party list" icon={<List className='text-blue-500' />} to="n2nParties" />
+			<MenuItem label="My upcoming events" icon={<Clock className='text-blue-500' />} to="myEvents" />
+		</MenuItem>
 	</HasRole>
 	<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('czechBuddy') || roles.has('coordinator')}>
-		<MenuItem label="Buddy" icon={<CheckSquare className='text-blue-500' />} to="myBuddyCz" />
-		<MenuItem label="My buddy applications" icon={<FileText className='text-blue-500' />} to="myApplicationsCz" />
+		<MenuItem label="Buddy" icon={<UserPlus className='text-blue-500' />}>
+			<MenuItem label="My buddy" icon={<CheckSquare className='text-blue-500' />} to="myBuddyCz" />
+			<MenuItem label="My buddy applications" icon={<FileText className='text-blue-500' />} to="myApplicationsCz" />
+		</MenuItem>
 	</HasRole>
 	<HasRole role="internationalStudent">
 		<MenuItem label="My buddy" icon={<CheckSquare className='text-blue-500' />} to="myBuddy" />
@@ -39,27 +43,20 @@ export const Navigation = Component(
 	</HasRole>
 	<MenuItemExternal label="Trip tips" icon={<Lightbulb className='text-blue-500' />} to="https://grey-cabbage-5c9.notion.site/Welcome-to-TripTip-1189c74d1bea8025bec8cc0fc36b1f7c" />
 	<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('czechBuddy') || roles.has('coordinator') || roles.has('internationalStudent')}>
-		<MenuItem label="Profile" icon={<User className='text-blue-500' />} to="profile" />
-	</HasRole>
-	<HasRole role={roles => roles.has('admin') || roles.has('esnMember')}>
-		<MenuItem label="Users" icon={<Users className='text-blue-500' />} to="users" />
+		<MenuItem label="Profile" icon={<UserCircle className='text-blue-500' />} to="profile" />
 	</HasRole>
 
-	<HasRole role={roles => roles.has('admin') || roles.has('coordinator')}>
+	<HasRole role={roles => roles.has('admin') || roles.has('coordinator') || roles.has('esnMember')}>
 		<MenuDivider />
-		<MenuItem label="Local applications" icon={<Handshake className='text-blue-500' />} to="applicationCzs" />
-		<MenuItem label="Foreign applications" icon={<Handshake className='text-blue-500' />} to="applicationFrs" />
-		<MenuItem label="Coordinating" icon={<Users className='text-blue-500' />}>
-			<MenuItem label="All buddy pairs" to="buddyPairs" />
-			<MenuItem label="My buddy pairs" to="myBuddyPairs" />
-		</MenuItem>
-		{/* <Collapsible>
-				<CollapsibleTrigger>Coordinating</CollapsibleTrigger>
-				<CollapsibleContent>
-					<MenuItem label="All buddy pairs" icon={<Users className='text-blue-500' />} to="buddyPairs" />
-					<MenuItem label="My buddy pairs" icon={<Users2 className='text-blue-500' />} to="myBuddyPairs" />		
-				</CollapsibleContent>
-		</Collapsible> */}
+		<MenuItem label="Users" icon={<Users className='text-blue-500' />} to="users" />
+		<HasRole role={roles => roles.has('admin') || roles.has('coordinator')}>
+			<MenuItem label="Local applications" icon={<Handshake className='text-blue-500' />} to="applicationCzs" />
+			<MenuItem label="Foreign applications" icon={<Handshake className='text-blue-500' />} to="applicationFrs" />
+			<MenuItem label="Coordinating" icon={<Users className='text-blue-500' />}>
+				<MenuItem label="All buddy pairs" to="buddyPairs" />
+				<MenuItem label="My buddy pairs" to="myBuddyPairs" />
+			</MenuItem>
+		</HasRole>
 	</HasRole>
 	<HasRole role={roles => roles.has('admin')}>
 		<MenuItem label="Coupling" icon={<UserCheck className='text-blue-500' />}>
@@ -77,20 +74,6 @@ export const Navigation = Component(
 	
 	<HasRole role={roles => roles.has('admin')}>
 		<MenuDivider />
-		{/* <MenuItem label="Settings" icon={<Settings className='text-blue-500' />}>
-			<MenuItem label="Semester" icon={<Clock className='text-blue-500' />} to="semesters" />
-			<MenuItem label="Study Programs" icon={<GraduationCap className='text-blue-500' />} to="studyPrograms" />
-			<MenuItem label="Partner universities" icon={<Building className='text-blue-500' />} to="universities" />
-			<MenuItem label="Faculties at VSE" icon={<BookOpen className='text-blue-500' />} to="faculties" />
-			<MenuItem label="Sections" icon={<Grid className='text-blue-500' />} to="sections" />
-			<MenuItem label="Countries" icon={<MapPin className='text-blue-500' />} to="countries" />
-			<MenuItem label="Dietary Restrictions" icon={<UtensilsCrossed className='text-blue-500' />} to="" />
-			<MenuItem label="Allergies" icon={<AlertCircle className='text-blue-500' />} to="" /> */}
-			{/* <MenuItem label="Languages" icon={<MessageSquare className='text-blue-500' />} to="languages" />
-			<MenuItem label="Hobbies" icon={<Heart className='text-blue-500' />} to="hobbies" />
-			<MenuItem label="Limitations" to="limitations" />
-			<MenuItem label="Sports" icon={<Activity className='text-blue-500' />} to="sports" /> */}
-		{/* </MenuItem> */}
 		<MenuItem label="Settings" icon={<Settings className='text-blue-500' />} to="settings">
 			<MenuItem label="Semester" icon={<Clock className='text-blue-500' />} to="semesters" />
 			<MenuItem label="Study Programs" icon={<GraduationCap className='text-blue-500' />} to="studyPrograms" />
