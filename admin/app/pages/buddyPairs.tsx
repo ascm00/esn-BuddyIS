@@ -3,6 +3,7 @@ import { Binding } from '@app/lib/binding'
 import { BackButton } from '@app/lib/buttons'
 import { CreateEntityModalButton } from '@app/lib/buttons/createEntityModalButtons'
 import { DataGrid, DataGridBooleanColumn, DataGridBooleanFilter, DataGridColumn, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
+import { SetCurrentSemesterByDefault } from '@app/lib/datagrid/filters/sessionStorageSemesterFilter'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
 import { useIsMobile } from '@app/lib/utils/use-mobile'
@@ -23,11 +24,7 @@ export default () => {
 					</Slots.Back>
 					<>
 						<Slots.Actions>
-						<Link to="buddyPairsHistoric">
-								<Button>
-									{isMobile ? <History /> : 'All semesters buddy pairs'}
-								</Button>
-							</Link>
+							<SetCurrentSemesterByDefault keyParam='buddyPairs__BuddyPair-filters' /> 
 							<HasRole role={roles => roles.has('admin')}>
 								<CreateEntityModalButton
 									entityName="BuddyPair"
@@ -43,9 +40,12 @@ export default () => {
 								/>
 							</HasRole>
 						</Slots.Actions>
-						<DataGrid entities="BuddyPair[semester.isCurrent=true]">
+						<DataGrid entities="BuddyPair">
 							<DataGridToolbar copyingMails="buddyPairs">
 								<DataGridQueryFilter />
+								<DataGridHasOneFilter field={'semester'} label="Semester">
+									<Field field={'name'} />
+								</DataGridHasOneFilter>
 								<DataGridHasOneFilter field="coordinator" label="Coordinator" options={'Person[tenantPerson.roles = "coordinator"]'}>
 									<Field field="firstName" /> {' '} <Field field="surname" />
 								</DataGridHasOneFilter>

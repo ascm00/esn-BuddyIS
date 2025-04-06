@@ -1,6 +1,7 @@
 import { Binding } from '@app/lib/binding'
 import { BackButton } from '@app/lib/buttons'
 import { DataGrid, DataGridBooleanColumn, DataGridBooleanFilter, DataGridColumn, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
+import { SetCurrentSemesterByDefault } from '@app/lib/datagrid/filters/sessionStorageSemesterFilter'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
 import { Field, Link, useIdentity } from '@contember/interface'
@@ -19,9 +20,13 @@ export default () => {
 					<Slots.Back>
 						<BackButton />
 					</Slots.Back>
-						<DataGrid entities={`BuddyPair[coordinator.tenantPerson.id='${personId}' && semester.isCurrent=true]`}>
+						<SetCurrentSemesterByDefault keyParam={`myBuddyPairs__BuddyPair[coordinator.tenantPerson.id='${personId}']-filters`} /> 
+						<DataGrid entities={`BuddyPair[coordinator.tenantPerson.id='${personId}']`}>
 							<DataGridToolbar copyingMails="buddyPairs">
 								<DataGridQueryFilter />
+								<DataGridHasOneFilter field={'semester'} label="Semester">
+									<Field field={'name'} />
+								</DataGridHasOneFilter>
 								<DataGridBooleanFilter field="tenPoints" label="10 points" noNullFilter />
 							</DataGridToolbar>
 							<DataGridLoader>

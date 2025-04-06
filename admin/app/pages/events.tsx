@@ -1,11 +1,12 @@
 import { Binding } from '@app/lib/binding'
 import { BackButton } from '@app/lib/buttons'
-import { DataGrid, DataGridColumn, DataGridDateColumn, DataGridEnumColumn, DataGridLoader, DataGridNumberColumn, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
+import { DataGrid, DataGridColumn, DataGridDateColumn, DataGridDateFilter, DataGridEnumColumn, DataGridHasOneFilter, DataGridLoader, DataGridNumberColumn, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
+import { SetCurrentSemesterByDefault } from '@app/lib/datagrid/filters/sessionStorageSemesterFilter'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
 import { WhatsappLink } from '@app/lib/utils/link'
 import { useIsMobile } from '@app/lib/utils/use-mobile'
-import { Component, Field, HasRole, Link, useEntity, useIdentity, useProjectUserRoles } from '@contember/interface'
+import { Component, EntityListSubTree, Field, HasRole, Link, useEntity, useEntityList, useEntityListSubTree, useIdentity, useProjectUserRoles } from '@contember/interface'
 import { Edit, Eye, File, History, PlusCircle } from 'lucide-react'
 
 export default () => {
@@ -25,12 +26,8 @@ export default () => {
 					</Slots.Back>
 					<>
 						<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('coordinator')}>
+							<SetCurrentSemesterByDefault keyParam='events__Event-filters' /> 
 							<Slots.Actions>
-								<Link to="eventsAllSemesters">
-									<Button>
-										{isMobile ? <History /> : 'All semesters events'}
-									</Button>
-								</Link>
 								<Link to="eventCreate">
 									<Button>
 										{!isMobile && 'Create event'}
@@ -52,9 +49,13 @@ const PersonalizedDataGrid = Component(
 		return(
 			<>
 			<HasRole role={roles => roles.has('admin') || roles.has('coordinator') || roles.has('esnMember')}>
-				<DataGrid entities="Event[semester.isCurrent=true]">
+				<DataGrid entities="Event">
 					<DataGridToolbar>
 						<DataGridQueryFilter />
+						<DataGridHasOneFilter field="semester" label="Semester">
+							<Field field="name" />
+						</DataGridHasOneFilter>
+						<DataGridDateFilter field="startDate" label="Event date" />
 					</DataGridToolbar>
 					<DataGridLoader>
 						<DataGridTable>

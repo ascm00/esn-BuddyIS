@@ -401,9 +401,8 @@ export const LayoutComponent = ({ children }: PropsWithChildren) => {
 				<SidebarInset className="max-h-screen overflow-hidden">
 					<SidebarInsetHeader>
 						<SidebarInsetHeaderActions>
-							{/* <SidebarTrigger className="-ml-1" />
-
-							<Separator orientation="vertical" className="mr-2 h-4" />*/}
+							{isMobile && <><SidebarTrigger className="-ml-1" />
+							<Separator orientation="vertical" className="mr-2 h-4" /></>}
 
 							{!isMobile && <SlotTargets.Back />}
 							{!isMobile && <SlotTargets.Title />}

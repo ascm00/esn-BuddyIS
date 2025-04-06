@@ -3,6 +3,7 @@ import { Binding } from '@app/lib/binding'
 import { BackButton } from '@app/lib/buttons'
 import { DeleteEntityModalButton } from '@app/lib/buttons/deleteEntityModalButton'
 import { DataGrid, DataGridBooleanColumn, DataGridBooleanFilter, DataGridBooleanFilterSelect, DataGridColumn, DataGridEnumColumn, DataGridEnumFilter, DataGridHasManyColumn, DataGridHasManyFilter, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridNumberColumn, DataGridNumberFilter, DataGridNumberFilterSelect, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
+import { SetCurrentSemesterByDefault } from '@app/lib/datagrid/filters/sessionStorageSemesterFilter'
 import { formatBoolean, formatBooleanIcon, formatBooleanPair } from '@app/lib/formatting'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
@@ -25,14 +26,10 @@ export default () => {
 					<>
 						<Slots.Actions>
 						<HasRole role={roles => roles.has('admin') || roles.has('coordinator') || roles.has('ozsRole')}>
+							<SetCurrentSemesterByDefault keyParam='applicationCzs__ApplicationCz-filters' /> 
 							<Link to="applicationCzCreateAdmin">
 								<Button>
 									{isMobile ? <PlusCircle /> : 'Create application'}
-								</Button>
-							</Link>
-							<Link to="applicationCzsAll">
-								<Button>
-									{isMobile ? <History /> : 'All semesters applications'}
 								</Button>
 							</Link>
 							{/* <Link to="applicationCzAdminCreate">
@@ -42,9 +39,12 @@ export default () => {
 							</Link> */}
 						</HasRole>
 						</Slots.Actions>
-						<DataGrid entities="ApplicationCz[semester.isCurrent=true]">
+						<DataGrid entities="ApplicationCz">
 							<DataGridToolbar copyingMails="applications">
 								<DataGridQueryFilter />
+								<DataGridHasOneFilter field={'semester'} label="Semester">
+									<Field field={'name'} />
+								</DataGridHasOneFilter>
 								<DataGridHasOneFilter field={'person.studyProgram'} label="Study Program">
 									<Field field={'name'} />
 								</DataGridHasOneFilter>
