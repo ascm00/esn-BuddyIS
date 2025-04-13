@@ -1,6 +1,6 @@
 import { c } from '@contember/schema-definition'
 import { Person } from './Person'
-import { coordinatorRole, czechBuddyId, czechBuddyRole, emailCheckRole, esnMemberRole, internationalStudentId, internationalStudentRole, ozsRole } from './acl'
+import { coordinatorRole, czechBuddyId, czechBuddyIdentityId, czechBuddyRole, emailCheckRole, esnMemberRole, internationalStudentId, internationalStudentIdentityId, internationalStudentRole, ozsRole } from './acl'
 
 @c.View(`
 	SELECT
@@ -29,12 +29,12 @@ import { coordinatorRole, czechBuddyId, czechBuddyRole, emailCheckRole, esnMembe
 	create: true,
 })
 @c.Allow([internationalStudentRole], {
-	when: {identityId: internationalStudentId},
+	when: {identityId: internationalStudentIdentityId},
 	update: true,
 	read: true,
 })
 @c.Allow([czechBuddyRole], {
-	when: {identityId: czechBuddyId},
+	when: {identityId: czechBuddyIdentityId},
 	update: true,
 	read: true,
 })
