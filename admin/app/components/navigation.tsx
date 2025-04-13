@@ -39,8 +39,10 @@ export const Navigation = Component(
 		</MenuItem>
 	</HasRole>
 	<HasRole role="internationalStudent">
-		<MenuItem label="My buddy" icon={<CheckSquare className='text-blue-500' />} to="myBuddy" />
-		<MenuItem label="My buddy application" icon={<FileText className='text-blue-500' />} to="myApplicationFr" />
+		<MenuItem label="Buddy" icon={<UserPlus className='text-blue-500' />}>
+			<MenuItem label="My buddy" icon={<CheckSquare className='text-blue-500' />} to="myBuddy" />
+			<MenuItem label="My buddy application" icon={<FileText className='text-blue-500' />} to="myApplicationFr" />
+		</MenuItem>
 	</HasRole>
 	<MenuItemExternal label="Trip tips" icon={<Lightbulb className='text-blue-500' />} to="https://grey-cabbage-5c9.notion.site/Welcome-to-TripTip-1189c74d1bea8025bec8cc0fc36b1f7c" />
 	<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('czechBuddy') || roles.has('coordinator') || roles.has('internationalStudent')}>
