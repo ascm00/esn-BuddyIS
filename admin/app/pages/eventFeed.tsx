@@ -12,7 +12,7 @@ import { BackButton } from '@app/lib/buttons'
 export default () => {
   return (
     <>
-      <Slots.Title>Upcoming events</Slots.Title>
+      <Slots.Title>Upcoming events 🎈</Slots.Title>
       <Slots.Back>
 					<BackButton />
 			</Slots.Back>
