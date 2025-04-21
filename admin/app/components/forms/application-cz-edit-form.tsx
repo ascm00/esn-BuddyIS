@@ -49,6 +49,13 @@ export const ApplicationCzEditForm = Component(
 	<Slots.Actions>
 		<Button onClick={handlePersist}>Save changes</Button>
 	</Slots.Actions>
+	<SelectField field={'semester'} label="Semester *">
+		<Field field="name" />
+		<div className='hidden'>
+			<Field field="openForCzechBuddyRegistrationsDate" format={formatDate} />
+			<Field field="closeBuddyRegistrations" format={formatDate} />
+		</div>
+	</SelectField>
 	<div>
 		<h2 className="text-xl font-semibold">Information about you</h2>
 		<hr className="my-2 border-gray-200" />

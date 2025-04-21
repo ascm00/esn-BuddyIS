@@ -2,11 +2,12 @@ import { Binding } from '@app/lib/binding'
 import { BackButton } from '@app/lib/buttons'
 import { DeleteEntityModalButton } from '@app/lib/buttons/deleteEntityModalButton'
 import { DataGrid, DataGridColumn, DataGridEnumColumn, DataGridEnumFilter, DataGridHasManyColumn, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridNumberColumn, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
+import { SetCurrentSemesterByDefault } from '@app/lib/datagrid/filters/sessionStorageSemesterFilter'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
 import { useIsMobile } from '@app/lib/utils/use-mobile'
 import { Field, HasRole, Link } from '@contember/interface'
-import { History, TrashIcon } from 'lucide-react'
+import { History, PlusCircle, TrashIcon } from 'lucide-react'
 
 export default () => {
 	const isMobile = useIsMobile()
@@ -22,20 +23,26 @@ export default () => {
 					</Slots.Back>
 					<>
 						<Slots.Actions>
-							<Link to="applicationFrsAll">
-								<Button>
-									{isMobile ? <History /> : 'All semesters applications'}
-								</Button>
-							</Link>
+							<HasRole role={roles => roles.has('admin') || roles.has('coordinator') || roles.has('ozsRole')}>
+								<SetCurrentSemesterByDefault keyParam='applicationFrs__ApplicationFr-filters' /> 
+								<Link to="applicationFrCreateAdmin">
+									<Button>
+										{isMobile ? <PlusCircle /> : 'Create application'}
+									</Button>
+								</Link>
+							</HasRole>
 							{/* <Link to="applicationFrCreate">
 								<Button>
 									Create application FR
 								</Button>
 							</Link> */}
 						</Slots.Actions>
-						<DataGrid entities="ApplicationFr[semester.isCurrent=true]">
+						<DataGrid entities="ApplicationFr">
 							<DataGridToolbar copyingMails="applications">
 								<DataGridQueryFilter />
+								<DataGridHasOneFilter field={'semester'} label="Semester">
+									<Field field={'name'} />
+								</DataGridHasOneFilter>
 								<DataGridHasOneFilter field={'person.studyProgram'} label={'Study program'}>
 									<Field field={'name'} />
 								</DataGridHasOneFilter>

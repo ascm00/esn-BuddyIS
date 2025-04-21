@@ -45,7 +45,6 @@ export const ApplicationCzEditFormAdmin = Component(
 			
 			if(currentSemesterApplications > 0){
 				alert('Student already has an application for this semester.')
-
 			} else if(semester && studyProgram && preferredCountryOfUniversity && motivationValid && languagesFilled && gender && preferredBuddySex && buddiesValid){
 				persist()
 			} else {

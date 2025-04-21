@@ -111,8 +111,7 @@ const preparePreferencesForCzech = (czechStudents: Array<EntityAccessor>, intern
     </>
   * @returns {pairs, unpairedCzechStudents} Object with buddy pairs and list of unpaired czech students
  */
-export const galeShapleyCzechFirst = async(czechStudents: Array<EntityAccessor>,internationalStudents: Array<EntityAccessor>
-) => {
+export const galeShapleyCzechFirst = async(czechStudents: Array<EntityAccessor>,internationalStudents: Array<EntityAccessor>) => {
   const pairs = new Map<EntityAccessor, EntityAccessor>() // Maping czech and foreign students
   const czechStudentAssignments = new Map<EntityAccessor, number>() // Number of assignments for each czech student
 
@@ -190,7 +189,7 @@ export const galeShapleyCzechFirst = async(czechStudents: Array<EntityAccessor>,
   return { pairs, unpairedCzechStudents }
 }
 
-// Přidáme funkci pro získání počtu již přiřazených buddies
+// Fuknce pro získání počtu již přiřazených buddies
 const getAssignedBuddiesCount = (student: EntityAccessor): number => {
   const value = student.getField('howManyBuddiesAssigned.number').value
   return typeof value === 'number' ? value : parseInt(value as string, 10) || 0

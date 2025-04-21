@@ -37,7 +37,7 @@
 // Layout.displayName = 'Layout'
 
 import { Logo } from './logo'
-import { Navigation } from './navigation'
+import { Navigation, UserNavigation } from './navigation'
 import { Component, Field, Link } from '@contember/interface'
 import { Binding, IdentityLoader } from '@app/lib/binding'
 import { DimensionsSwitcher } from '@app/lib/dimensions'
@@ -59,6 +59,9 @@ export const Layout = Component(({ children }: PropsWithChildren) => <IdentityLo
 				</DimensionsSwitcher>
 			</Binding> */}
 		</Slots.Navigation>
+		<Slots.UserNavigation>
+			<UserNavigation />
+		</Slots.UserNavigation>
 		<Slots.Footer>
 			<div className='flex flex-row'>
 				<div className='mr-2 text-sm'>

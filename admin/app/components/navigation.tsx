@@ -2,10 +2,14 @@ import { Binding } from '@app/lib/binding'
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@app/lib/ui/collapsible'
 import { Menu, MenuButton, MenuDivider, MenuItem, MenuItemExternal } from '@app/lib/ui/menu'
 import { useSidebar } from '@app/lib/ui/sidebar'
-import { Button } from '@app/lib/ui/button'
-import { Component, EntityListSubTree, Field, HasRole, LogoutTrigger, useEntityListSubTree } from '@contember/interface'
-import { Activity, AlertCircle, Book, BookOpen, Building, Calendar, CalendarDays, CalendarPlus, CheckSquare, Clock, Cpu, Dot, File, FileText, GitBranch, Globe, GraduationCap, Grid, Handshake, Heart, Home, LanguagesIcon, Layout, LayoutDashboard, Lightbulb, Link2, List, LogOutIcon, MapPin, MessageSquare, PartyPopper, Settings, Shuffle, Smile, User, UserCheck, UserCircle, UserPlus, Users, Users2, UtensilsCrossed } from 'lucide-react'
+import { Button, AnchorButton } from '@app/lib/ui/button'
+import { Component, EntityListSubTree, Field, HasRole, LogoutTrigger, useEntityListSubTree, Link, useIdentity } from '@contember/interface'
+import { Activity, AlertCircle, Book, BookOpen, Building, Calendar, ChevronsUpDown, BellIcon,  CalendarDays, BadgeCheckIcon, CalendarPlus, CheckSquare, Clock, Cpu, Dot, File, FileText, GitBranch, Globe, GraduationCap, Grid, Handshake, Heart, Home, LanguagesIcon, Layout, LayoutDashboard, Lightbulb, Link2, List, LogOutIcon, MapPin, MessageSquare, PartyPopper, Settings, Shuffle, Smile, User, UserCheck, UserCircle, UserPlus, Users, Users2, UtensilsCrossed } from 'lucide-react'
 import { dict } from '@app/lib/dict'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@app/lib/ui/dropdown'
+import { SidebarMenuButton } from '@app/lib/ui/sidebar'
+import { Avatar, AvatarFallback } from '@app/lib/ui/avatar'
+import { useIsMobile } from '@app/lib/utils/use-mobile'
 
 export const Navigation = Component(
 	() => {
@@ -89,39 +93,81 @@ export const Navigation = Component(
 			<MenuItem label="Allergies" icon={<AlertCircle className='text-blue-500' />} to="allergies" />
 		</MenuItem>
 	</HasRole>
-	{state === 'collapsed' && (
-		<LogoutTrigger>
-			<Button variant={'link'} size="sm" className="gap-2">
-				<LogOutIcon className="w-3 h-3 text-gray-500" />
-			</Button>
-		</LogoutTrigger>
-	)}
-	{state !== 'collapsed' && (
-		<div className='margin-auto'>
-			<LogoutTrigger>
-				<Button variant={'link'} size="sm" className="gap-2">
-					<LogOutIcon className="w-3 h-3 text-gray-500" /> {dict.logout}
-				</Button>
-			</LogoutTrigger>
-		</div>
-	)}
 
 </Menu>)
 }
-// }, () => (
-// 	<>
-// 	<Binding>
-// 		<>
-// 			<EntityListSubTree
-// 				entities={`Semester`}
-// 				alias={'allSemesters'}
-// 			>
-// 				<Field field="name" />
-// 				<Field field="openForCzechBuddyRegistrationsDate" />
-// 				<Field field="closeBuddyRegistrations" />
-// 			</EntityListSubTree>
-// 		</>
-// 	</Binding>
-// 	</>
-// )
 )
+
+export const UserNavigation = () => {
+	const isMobile = useIsMobile()
+	const identity = useIdentity()
+
+	const userEmail = identity?.person?.email
+	const userInitial = userEmail?.substr(0, 1).toLocaleUpperCase()
+
+	return (
+		<DropdownMenu>
+			<DropdownMenuTrigger asChild>
+				<SidebarMenuButton size="lg" className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground">
+					<Avatar className="icon h-6 w-6 rounded-lg">
+						<AvatarFallback avatarFallbackColorString={userEmail} className="rounded-lg">
+							{userInitial}
+						</AvatarFallback>
+					</Avatar>
+					<div className="grid flex-1 text-left text-sm leading-tight">
+						<span className="truncate font-semibold">{userEmail}</span>
+					</div>
+					<ChevronsUpDown className="ml-auto size-4" />
+				</SidebarMenuButton>
+			</DropdownMenuTrigger>
+			<DropdownMenuContent
+				className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg"
+				side={isMobile ? 'bottom' : 'right'}
+				align="end"
+				sideOffset={4}
+			>
+				<DropdownMenuLabel className="p-0 font-normal">
+					<div className="flex items-center gap-2 pl-3 pr-1 py-1.5 text-left text-sm">
+						<Avatar className="h-8 w-8 rounded-lg">
+							<AvatarFallback avatarFallbackColorString={userEmail} className="rounded-lg">
+								{userInitial}
+							</AvatarFallback>
+						</Avatar>
+						<div className="grid flex-1 text-left text-sm leading-tight">
+							<span className="truncate font-semibold">{userEmail}</span>
+						</div>
+					</div>
+				</DropdownMenuLabel>
+				<DropdownMenuSeparator />
+				<DropdownMenuGroup>
+					<DropdownMenuItem>
+						<Link to="tenant/security">
+							<AnchorButton variant="ghost" size="xs" className="flex gap-2">
+								<BadgeCheckIcon size={16} />
+								Change password
+							</AnchorButton>
+						</Link>
+					</DropdownMenuItem>
+					{/* <HasRole role="admin">
+						<DropdownMenuItem>
+							<Link to="tenant/apiKeys">
+								<AnchorButton variant="ghost" size="xs" className="flex gap-2">
+									<BellIcon size={16} />
+									API keys
+								</AnchorButton>
+							</Link>
+						</DropdownMenuItem>
+					</HasRole> */}
+				</DropdownMenuGroup>
+				<DropdownMenuSeparator />
+				<DropdownMenuItem>
+					<LogoutTrigger>
+						<Button variant="ghost" size="xs" className="flex gap-2">
+							<LogOutIcon size={16} /> Logout
+						</Button>
+					</LogoutTrigger>
+				</DropdownMenuItem>
+			</DropdownMenuContent>
+		</DropdownMenu>
+	)
+}

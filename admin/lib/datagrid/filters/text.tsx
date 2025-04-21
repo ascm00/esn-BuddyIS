@@ -93,7 +93,7 @@ export const DataGridTextFilterInner = ({ label }: {
 					<InputBare placeholder={dict.datagrid.textPlaceholder} className={'w-full ml-2'} />
 				</DataViewTextFilterInput>
 
-				<div className={'ml-auto flex gap-1 items-center'}>
+				{/* <div className={'ml-auto flex gap-1 items-center'}>
 					<DataViewNullFilterTrigger action={'unset'}>
 						<DataGridActiveFilterUI className={'ml-auto'}>
 							<span className={'italic'}>{dict.datagrid.na}</span>
@@ -114,7 +114,7 @@ export const DataGridTextFilterInner = ({ label }: {
 							<DataGridNullFilter />
 						</PopoverContent>
 					</Popover>
-				</div>
+				</div> */}
 			</InputLike>
 		</>
 	)
