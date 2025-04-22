@@ -8,7 +8,7 @@ export default () => {
 			<Binding>
 				<div className="flex flex-col gap-12">
 					<Slots.Title>
-						Limitation create 🚫
+						Limitation create
 					</Slots.Title>
 					<Slots.Back>
 						<BackButton />

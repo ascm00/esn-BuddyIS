@@ -22,7 +22,7 @@ export default () => {
 			<Binding>
 				<div className="flex flex-col gap-12">
 					<Slots.Title>
-						Current semester - Local applications 🤝
+						Current semester - Local applications
 					</Slots.Title>
 					<Slots.Back>
 						<BackButton />

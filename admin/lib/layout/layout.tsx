@@ -405,7 +405,7 @@ export const LayoutComponent = ({ children }: PropsWithChildren) => {
 							<Separator orientation="vertical" className="mr-2 h-4" /></>}
 
 							{!isMobile && <SlotTargets.Back />}
-							{!isMobile && <SlotTargets.Title />}
+							{!isMobile && (<div className='text-2xl font-semibold'><SlotTargets.Title /></div>)}
 						</SidebarInsetHeaderActions>
 						<SidebarInsetHeaderActions>
 							<SlotTargets.Actions />

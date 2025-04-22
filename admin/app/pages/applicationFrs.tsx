@@ -19,7 +19,7 @@ export default () => {
 			<HasRole role={roles => roles.has('admin') || roles.has('coordinator') || roles.has('ozsRole')}>
 				<div className="flex flex-col gap-12">
 					<Slots.Title>
-						Current semester - Foreign applications 🤝
+						Current semester - Foreign applications
 					</Slots.Title>
 					<Slots.Back>
 						<BackButton />

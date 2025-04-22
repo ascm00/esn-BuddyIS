@@ -19,7 +19,7 @@ export default () => {
 			<Binding>
 				<div className="flex flex-col gap-12">
 					<Slots.Title>
-						Semester detail 🎓
+						Semester detail
 					</Slots.Title>
 					<Slots.Back>
 						<BackButton />

@@ -19,7 +19,7 @@ export default () => {
 			<Binding>
 				<div className="flex flex-col gap-12">
 					<Slots.Title>
-						My buddy 🤝
+						My buddy
 					</Slots.Title>
 					<Slots.Back>
 						<BackButton />

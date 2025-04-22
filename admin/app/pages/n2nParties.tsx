@@ -21,7 +21,7 @@ export default () => {
 			<Binding>
 				<div className="flex flex-col gap-12">
 					<Slots.Title>
-						N2N parties 🎉
+						N2N parties
 					</Slots.Title>
 					<Slots.Back>
 						<BackButton />

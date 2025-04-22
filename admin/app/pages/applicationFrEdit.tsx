@@ -11,7 +11,7 @@ export default () => {
 			<Binding>
 				<div className="flex flex-col gap-12">
 					<Slots.Title>
-						Foreign student - Application for buddy edit 🤝
+						Foreign student - Application for buddy edit
 					</Slots.Title>
 					<Slots.Back>
 						<BackButton />
