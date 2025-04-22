@@ -16,7 +16,7 @@ export const Navigation = Component(
 	const { state } = useSidebar()
 
 	return (<Menu>
-	<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('czechBuddy') || roles.has('coordinator')}>
+	{/* <HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('czechBuddy') || roles.has('coordinator')}>
 		<div className='pb-2'>
 			<MenuButton label="Apply for buddy" to="applicationCzCreate" />
 		</div>
@@ -25,7 +25,10 @@ export const Navigation = Component(
 		<div className='pb-2'>
 			<MenuButton label="Apply for buddy" to="applicationFrCreate" />
 		</div>
-	</HasRole>
+	</HasRole> */}
+	<Binding>
+		<ApplyForBuddy />
+	</Binding>
 	<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('czechBuddy') || roles.has('coordinator') || roles.has('internationalStudent')}>
 		<MenuItem label="Home" icon={<Home className='text-blue-500' />} to="eventFeed" />
 		<MenuItem label="Events" icon={<CalendarPlus className='text-blue-500' />} to={'index'}>
@@ -96,6 +99,52 @@ export const Navigation = Component(
 
 </Menu>)
 }
+)
+
+const ApplyForBuddy = Component(
+	() => {
+
+		let open = false
+		const now = new Date().toISOString()
+		const semestersList = useEntityListSubTree('allSemesters')
+		for (const semester of semestersList) {
+			let openForCzechBuddyRegistrationsDate = semester.getField('openForCzechBuddyRegistrationsDate').value
+			let closeBuddyRegistrations = semester.getField('closeBuddyRegistrations').value
+			if ((openForCzechBuddyRegistrationsDate && closeBuddyRegistrations) && (openForCzechBuddyRegistrationsDate <= now && closeBuddyRegistrations >= now)) {
+				open = true
+				break
+			}
+		}
+
+		return (
+			<div className=''>
+				{open && <>
+					<HasRole role={roles => roles.has('czechBuddy')}>
+					<div className='pb-2'>
+						<MenuButton label="Apply for buddy" to="applicationCzCreate" />
+					</div>
+				</HasRole>
+				<HasRole role={roles => roles.has('internationalStudent')}>
+					<div className='pb-2'>
+						<MenuButton label="Apply for buddy" to="applicationFrCreate" />
+					</div>
+				</HasRole>
+				</>}
+			</div>
+		)
+
+	}, () => (
+		<Binding>
+		<EntityListSubTree
+			entities={`Semester`}
+			alias={'allSemesters'}
+		>
+			<Field field="name" />
+			<Field field="openForCzechBuddyRegistrationsDate" />
+			<Field field="closeBuddyRegistrations" />
+		</EntityListSubTree>
+		</Binding>
+	)
 )
 
 export const UserNavigation = () => {

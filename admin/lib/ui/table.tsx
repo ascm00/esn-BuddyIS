@@ -11,7 +11,7 @@ export const Table = uic('table', {
 })
 
 export const TableHeader = uic('thead', {
-	baseClass: '[&_tr]:border-b',
+	baseClass: '[&_tr]:border-b bg-blue-50',
 	displayName: 'TableHeader',
 })
 
