@@ -419,36 +419,30 @@ export default () => {
 										</TableRow>
 										<TableRow>
 											<TableCell>
-												Event starts
-											</TableCell>
-											<TableCell className="font-semibold">
-												<Field field="startDate" format={formatDateTimeShort} />
-											</TableCell>
-										</TableRow>
-										<TableRow>
-											<TableCell>
-												Event ends
-											</TableCell>
-											<TableCell className="font-semibold">
-												<Field field="endDate" format={formatDateTimeShort} />
-											</TableCell>
-										</TableRow>
-										<TableRow>
-											<TableCell>
 												Place
 											</TableCell>
 											<TableCell className="font-semibold">
 											<GoogleMapsLink />
 											</TableCell>
 										</TableRow>
-										<TableRow>
-											<TableCell>
-												Entrance fee
-											</TableCell>
-											<TableCell className="font-semibold">
-												<Field field="fee" /> {' CZK'}
-											</TableCell>
-										</TableRow>
+										<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('coordinator')}>
+											<TableRow>
+												<TableCell>
+													Registered + on waiting list
+												</TableCell>
+												<TableCell className="font-semibold">
+													<Field field="registeredCount.registered_count" />
+												</TableCell>
+											</TableRow>
+											<TableRow>
+												<TableCell>
+													Capacity
+												</TableCell>
+												<TableCell className="font-semibold">
+													<Field field="capacity" />
+												</TableCell>
+											</TableRow>
+										</HasRole>
 										<TableRow>
 											<TableCell>
 												What to bring
@@ -498,44 +492,36 @@ export default () => {
 							</TableWrapper>
 							</div>
 
-							<div className="w-full flex flex-col gap-4">
+							<div className="w-full flex flex-col gap-4 pb-12">
 								<EventPictureFieldView />
 								<TableWrapper className="bg-gray-50/50 max-w-md border rounded-md">
 									<Table>
 										<TableRow>
 											<TableCell>
-												Registration starts
+												Event
 											</TableCell>
 											<TableCell className="font-semibold">
-												<Field field="registrationStartDate" format={formatDateTimeShort} />
+												From: <Field field="startDate" format={formatDateTimeShort} /><br />
+												To: <Field field="endDate" format={formatDateTimeShort} />
 											</TableCell>
 										</TableRow>
 										<TableRow>
 											<TableCell>
-												Registration ends
+												Registration
 											</TableCell>
 											<TableCell className="font-semibold">
-												<Field field="registrationEndDate" format={formatDateTimeShort} />
+												From: <Field field="registrationStartDate" format={formatDateTimeShort} /><br />
+												To: <Field field="registrationEndDate" format={formatDateTimeShort} />
 											</TableCell>
 										</TableRow>
-										<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('coordinator')}>
-											<TableRow>
-												<TableCell>
-													Registered + on waiting list
-												</TableCell>
-												<TableCell className="font-semibold">
-														<Field field="registeredCount.registered_count" />
-												</TableCell>
-											</TableRow>
-											<TableRow>
-												<TableCell>
-													Capacity
-												</TableCell>
-												<TableCell className="font-semibold">
-													<Field field="capacity" />
-												</TableCell>
-											</TableRow>
-										</HasRole>
+										<TableRow>
+											<TableCell>
+												Entrance fee
+											</TableCell>
+											<TableCell className="font-semibold">
+												<Field field="fee" /> {' CZK'}
+											</TableCell>
+										</TableRow>
 									</Table>
 								</TableWrapper>
 								<RegistrationNow />
