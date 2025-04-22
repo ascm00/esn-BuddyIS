@@ -1,16 +1,20 @@
 import { Binding } from '@app/lib/binding'
 import { BackButton } from '@app/lib/buttons'
 import { DataGrid, DataGridBooleanColumn, DataGridColumn, DataGridDateColumn, DataGridEnumColumn, DataGridEnumFilter, DataGridHasManyColumn, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
+import { UDDropdown } from '@app/lib/datagrid/UDDropdown'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
 import { useIsMobile } from '@app/lib/utils/use-mobile'
 import { Field, HasRole, Link } from '@contember/interface'
-import { PlusCircle } from 'lucide-react'
+import { EditIcon, PlusCircle } from 'lucide-react'
+import PersonEdit from './personEdit'
+import { DropdownMenuItem } from '@app/lib/ui/dropdown'
 
 export default () => {
 	const isMobile = useIsMobile()
 	return (
 		<>
+		<HasRole role={roles => roles.has('admin') || roles.has('coordinator') || roles.has('esnMember')}>
 			<Binding>
 				<div className="flex flex-col gap-12">
 					<Slots.Title>
@@ -53,13 +57,6 @@ export default () => {
 													Detail
 												</Button>
 											</Link>
-											<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('coordinator')}>
-												<Link to="userEdit(id: $entity.id)">
-													<Button variant={'secondary'} size={'sm'}>
-														Edit
-													</Button>
-												</Link>
-											</HasRole>
 										</div>
 									</DataGridColumn>
 									<DataGridTextColumn field="firstName" header="First name" />
@@ -87,6 +84,22 @@ export default () => {
 										<Field field="roles" />
 									</DataGridHasOneColumn> */}
 									<DataGridEnumColumn field="tenantPerson.roles" header="Role" options={{admin: 'Admin', coordinator: 'Coordinator', esnMember: 'ESN member', czechBuddy: 'Local buddy', internationalStudent: 'International student', ozsRole: 'OZS member'}} />
+									<DataGridColumn>
+											<div className='flex justify-end'>
+											<UDDropdown
+												editFormRedirect={
+													<>
+													<Link to="personEdit(id: $entity.id)">
+														<DropdownMenuItem className="hover:bg-accent" onSelect={e => e.preventDefault()}>
+															<EditIcon className="w-4 mr-2" />
+															<span>Edit</span>
+														</DropdownMenuItem>
+													</Link>
+													</>
+												}
+											/>
+											</div>
+										</DataGridColumn>
 								</DataGridTable>
 							</DataGridLoader>
 							<DataGridPagination />
@@ -94,6 +107,7 @@ export default () => {
 					</>
 				</div>
 			</Binding>
+			</HasRole>
 		</>
 	)
 }

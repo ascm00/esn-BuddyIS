@@ -5,18 +5,21 @@ import { CreateEntityModalButton } from '@app/lib/buttons/createEntityModalButto
 import { DeleteEntityModalButton } from '@app/lib/buttons/deleteEntityModalButton'
 import { CurrentEntityLazyModalEdit } from '@app/lib/buttons/modalEdit'
 import { DataGrid, DataGridColumn, DataGridLoader, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
+import { UDDropdown } from '@app/lib/datagrid/UDDropdown'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
+import { DropdownMenuItem } from '@app/lib/ui/dropdown'
 import { HasRole, Link } from '@contember/interface'
 import { TrashIcon } from 'lucide-react'
 
 export default () => {
 	return (
 		<>
+			<HasRole role={roles => roles.has('admin')}>
 			<Binding>
 				<div className="flex flex-col gap-12">
 					<Slots.Title>
-						Study programs 🎓
+						Study programs
 					</Slots.Title>
 					<Slots.Back>
 						<BackButton />
@@ -42,39 +45,40 @@ export default () => {
 							</DataGridToolbar>
 							<DataGridLoader>
 								<DataGridTable>
-									<HasRole role="admin">
-										<DataGridColumn>
-											<div className="flex gap-2">
+									<DataGridColumn>
+										<Link to="studyProgramDetail(id: $entity.id)">
+											<Button variant={'secondary'} size={'sm'}>
+												Detail
+											</Button>
+										</Link>
+									</DataGridColumn>
+									<DataGridTextColumn field="name" header="Name" />
+									<DataGridColumn>
+										<div className='flex justify-end'>
+										<UDDropdown
+											editForm={
+												<>
+													<StudyProgramForm />
+												</>
+											}
+											deleteForm={
+												<div className='w-full'>
 												<DeleteEntityModalButton 
 													message="Do you really want to delete?"
 													deleteMessage="Delete"
 													cancelTo={'studyPrograms'}
 													afterPersistTo={'studyPrograms'}
 												>
-													<Button variant={'destructive'} size={'sm'}>
-														<TrashIcon className='w-4' />
-													</Button>
+													<DropdownMenuItem className='w-[150px]' onSelect={e => e.preventDefault()}>
+														<TrashIcon className="w-4 mr-2" color='red' />
+														<span>Delete</span>
+													</DropdownMenuItem>
 												</DeleteEntityModalButton>
-												<Link to="studyProgramDetail(id: $entity.id)">
-													<Button variant={'secondary'} size={'sm'}>
-														Detail
-													</Button>
-												</Link>
-												<CurrentEntityLazyModalEdit
-													dialogProps={{ className: 'overflow-y-auto max-h-screen' }}
-													buttonProps={{variant: 'secondary', size: 'sm'}}
-													buttonContent={
-														<span className="flex items-center">
-															Edit
-														</span>
-													}
-												>
-													<StudyProgramForm />
-												</CurrentEntityLazyModalEdit>
-											</div>
-										</DataGridColumn>
-									</HasRole>
-									<DataGridTextColumn field="name" header="Name" />
+												</div>
+											}
+										/>
+										</div>
+									</DataGridColumn>
 								</DataGridTable>
 							</DataGridLoader>
 							<DataGridPagination />
@@ -82,6 +86,7 @@ export default () => {
 					</>
 				</div>
 			</Binding>
+			</HasRole>
 		</>
 	)
 }

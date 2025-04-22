@@ -14,7 +14,7 @@ export default () => {
 			<Binding>
 				<div className="flex flex-col gap-12">
 					<Slots.Title>
-						University detail 🏫
+						University detail
 					</Slots.Title>
 					<Slots.Back>
 						<BackButton />
@@ -70,13 +70,6 @@ export default () => {
 													Detail
 												</Button>
 											</Link>
-											<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('coordinator')}>
-												<Link to="userEdit(id: $entity.id)">
-													<Button variant={'secondary'} size={'sm'}>
-														Edit
-													</Button>
-												</Link>
-											</HasRole>
 										</div>
 									</DataGridColumn>
 									<DataGridTextColumn field="firstName" header="First name" />

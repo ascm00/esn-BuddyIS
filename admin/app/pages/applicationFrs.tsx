@@ -3,17 +3,20 @@ import { BackButton } from '@app/lib/buttons'
 import { DeleteEntityModalButton } from '@app/lib/buttons/deleteEntityModalButton'
 import { DataGrid, DataGridColumn, DataGridEnumColumn, DataGridEnumFilter, DataGridHasManyColumn, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridNumberColumn, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
 import { SetCurrentSemesterByDefault } from '@app/lib/datagrid/filters/sessionStorageSemesterFilter'
+import { UDDropdown } from '@app/lib/datagrid/UDDropdown'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
+import { DropdownMenuItem } from '@app/lib/ui/dropdown'
 import { useIsMobile } from '@app/lib/utils/use-mobile'
 import { Field, HasRole, Link } from '@contember/interface'
-import { History, PlusCircle, TrashIcon } from 'lucide-react'
+import { EditIcon, History, PlusCircle, TrashIcon } from 'lucide-react'
 
 export default () => {
 	const isMobile = useIsMobile()
 	return (
 		<>
 			<Binding>
+			<HasRole role={roles => roles.has('admin') || roles.has('coordinator') || roles.has('ozsRole')}>
 				<div className="flex flex-col gap-12">
 					<Slots.Title>
 						Current semester - Foreign applications 🤝
@@ -23,14 +26,12 @@ export default () => {
 					</Slots.Back>
 					<>
 						<Slots.Actions>
-							<HasRole role={roles => roles.has('admin') || roles.has('coordinator') || roles.has('ozsRole')}>
 								<SetCurrentSemesterByDefault keyParam='applicationFrs__ApplicationFr-filters' /> 
 								<Link to="applicationFrCreateAdmin">
 									<Button>
 										{isMobile ? <PlusCircle /> : 'Create application'}
 									</Button>
 								</Link>
-							</HasRole>
 							{/* <Link to="applicationFrCreate">
 								<Button>
 									Create application FR
@@ -60,29 +61,6 @@ export default () => {
 							</DataGridToolbar>
 							<DataGridLoader>
 								<DataGridTable>
-									<HasRole role={roles => roles.has('admin') || roles.has('coordinator')}>
-										<DataGridColumn>
-											<div className="flex gap-2">
-												<HasRole role="admin">
-													<DeleteEntityModalButton 
-														message="Do you really want to delete?"
-														deleteMessage="Delete"
-														cancelTo={'applicationFrs'}
-														afterPersistTo={'applicationFrs'}
-													>
-														<Button variant={'destructive'} size={'sm'}>
-															<TrashIcon className='w-4' />
-														</Button>
-													</DeleteEntityModalButton>
-													<Link to="applicationFrEdit(id: $entity.id)">
-														<Button variant={'secondary'} size={'sm'}>
-															Edit
-														</Button>
-													</Link>
-												</HasRole>
-											</div>
-										</DataGridColumn>
-									</HasRole>
 									<DataGridHasOneColumn field="person" header="Name" >
 										<Field field="firstName" />{' '}<Field field="surname" />{' ('}<Field field="inSISusername" />{') '}
 									</DataGridHasOneColumn>
@@ -104,12 +82,44 @@ export default () => {
 									<DataGridHasOneColumn field="person" header="Email" >
 										<Field field="tenantPerson.email" />
 									</DataGridHasOneColumn>
+									<HasRole role={roles => roles.has('admin') || roles.has('coordinator')}>
+										<DataGridColumn>
+											<UDDropdown
+												editFormRedirect={
+													<>
+													<Link to="applicationFrEdit(id: $entity.id)">
+														<DropdownMenuItem className="hover:bg-accent" onSelect={e => e.preventDefault()}>
+															<EditIcon className="w-4 mr-2" />
+															<span>Edit</span>
+														</DropdownMenuItem>
+													</Link>
+													</>
+												}
+												deleteForm={
+													<div className='w-full'>
+													<DeleteEntityModalButton 
+														message="Do you really want to delete?"
+														deleteMessage="Delete"
+														cancelTo={'applicationFrs'}
+														afterPersistTo={'applicationFrs'}
+													>
+														<DropdownMenuItem className='w-[150px]' onSelect={e => e.preventDefault()}>
+															<TrashIcon className="w-4 mr-2" color='red' />
+															<span>Delete</span>
+														</DropdownMenuItem>
+													</DeleteEntityModalButton>
+													</div>
+												}
+											/>
+										</DataGridColumn>
+									</HasRole>
 								</DataGridTable>
 							</DataGridLoader>
 							<DataGridPagination />
 						</DataGrid>
 					</>
 				</div>
+				</HasRole>
 			</Binding>
 		</>
 	)

@@ -11,20 +11,22 @@ import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
 import { TrashIcon } from 'lucide-react'
 import { Component, EntityListSubTree, EntitySubTree, Field, HasOne, HasRole, Link, useEntity, useEntityListSubTree } from '@contember/interface'
+import { UDDropdown } from '@app/lib/datagrid/UDDropdown'
+import { DropdownMenuItem } from '@app/lib/ui/dropdown'
 
 export default () => {
 	return (
 		<>
+			<HasRole role={roles => roles.has('admin')}>
 			<Binding>
 				<div className="flex flex-col gap-12">
 					<Slots.Title>
-						Semesters 🎓
+						Semesters
 					</Slots.Title>
 					<Slots.Back>
 						<BackButton />
 					</Slots.Back>
 					<>
-						<HasRole role={roles => roles.has('admin')}>
 							<Slots.Actions>
 								<CreateEntityModalButton
 										entityName="Semester"
@@ -39,51 +41,51 @@ export default () => {
 										dialogProps={{ className: 'overflow-y-auto max-h-screen' }}
 								/>
 							</Slots.Actions>
-						</HasRole>
-						<ShowCurrentSemester />
 						<DataGrid entities="Semester">
 							<DataGridToolbar>
 								<DataGridQueryFilter />
 							</DataGridToolbar>
+							<ShowCurrentSemester />
 							<DataGridLoader>
 								<DataGridTable>
-									<HasRole role="admin">
-										<DataGridColumn>
-											<div className="flex gap-2">
+									<DataGridColumn>
+										<Link to="semesterDetail(id: $entity.id)">
+											<Button variant={'secondary'} size={'sm'}>
+												Set current
+											</Button>
+										</Link>
+									</DataGridColumn>
+									<DataGridTextColumn field="name" header="Name" />
+									<DataGridDateColumn field="startDate" header="Start date" />
+									<DataGridDateColumn field="endDate" header="End date" />
+									<DataGridDateColumn field='openForCzechBuddyRegistrationsDate' header="Open Czech buddies registration" />
+									<DataGridDateColumn field='closeBuddyRegistrations' header="Close buddy Registration" />
+									<DataGridColumn>
+										<div className='flex justify-end'>
+										<UDDropdown
+											editForm={
+												<>
+													<SemesterForm />
+												</>
+											}
+											deleteForm={
+												<div className='w-full'>
 												<DeleteEntityModalButton 
 													message="Do you really want to delete?"
 													deleteMessage="Delete"
 													cancelTo={'semesters'}
 													afterPersistTo={'semesters'}
 												>
-													<Button variant={'destructive'} size={'sm'}>
-														<TrashIcon className='w-4'/>
-													</Button>
+													<DropdownMenuItem className='w-[150px]' onSelect={e => e.preventDefault()}>
+														<TrashIcon className="w-4 mr-2" color='red' />
+														<span>Delete</span>
+													</DropdownMenuItem>
 												</DeleteEntityModalButton>
-												<Link to="semesterDetail(id: $entity.id)">
-													<Button variant={'secondary'} size={'sm'}>
-														Set current
-													</Button>
-												</Link>
-												<CurrentEntityLazyModalEdit
-													dialogProps={{ className: 'overflow-y-auto max-h-screen' }}
-													buttonProps={{variant:'secondary', size:'sm'}}
-													buttonContent={
-														<span className="flex items-center">
-															Edit
-														</span>
-													}
-												>
-													<SemesterForm />
-												</CurrentEntityLazyModalEdit>
-											</div>
-										</DataGridColumn>
-									</HasRole>
-									<DataGridTextColumn field="name" header="Name" />
-									<DataGridDateColumn field="startDate" header="Start date" />
-									<DataGridDateColumn field="endDate" header="End date" />
-									<DataGridDateColumn field='openForCzechBuddyRegistrationsDate' header="Open Czech buddies registration" />
-									<DataGridDateColumn field='closeBuddyRegistrations' header="Close buddy Registration" />
+												</div>
+											}
+										/>
+										</div>
+									</DataGridColumn>
 								</DataGridTable>
 							</DataGridLoader>
 							<DataGridPagination />
@@ -91,6 +93,7 @@ export default () => {
 					</>
 				</div>
 			</Binding>
+			</HasRole>
 		</>
 	)
 }

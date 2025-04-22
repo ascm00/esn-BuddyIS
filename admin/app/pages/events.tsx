@@ -9,10 +9,12 @@ import { Button } from '@app/lib/ui/button'
 import { WhatsappLink } from '@app/lib/utils/link'
 import { useIsMobile } from '@app/lib/utils/use-mobile'
 import { Component, EntityListSubTree, Field, HasRole, Link, useEntity, useEntityList, useEntityListSubTree, useIdentity, useProjectUserRoles } from '@contember/interface'
-import { Edit, EditIcon, Eye, File, FileText, History, PlusCircle, PlusCircleIcon } from 'lucide-react'
+import { Edit, EditIcon, Eye, File, FileText, History, PlusCircle, PlusCircleIcon, TrashIcon } from 'lucide-react'
 import EventCreate from './eventCreate'
 import { EventCreateForm } from '@app/components/forms/event-create-form'
 import { DropdownMenuItem } from '@app/lib/ui/dropdown'
+import { DeleteEntityButton } from '@contember/admin'
+import { DeleteEntityModalButton } from '@app/lib/buttons/deleteEntityModalButton'
 
 export default () => {
 
@@ -102,6 +104,21 @@ const PersonalizedDataGrid = Component(
 												</DropdownMenuItem>
 											</Link>
 											</>
+										}
+										deleteForm={
+											<div className='w-full'>
+											<DeleteEntityModalButton 
+												message="Do you really want to delete?"
+												deleteMessage="Delete"
+												cancelTo={'events'}
+												afterPersistTo={'events'}
+											>
+												<DropdownMenuItem className='w-[150px]' onSelect={e => e.preventDefault()}>
+													<TrashIcon className="w-4 mr-2" color='red' />
+													<span>Delete</span>
+												</DropdownMenuItem>
+											</DeleteEntityModalButton>
+											</div>
 										}
 									/>
 							</DataGridColumn>

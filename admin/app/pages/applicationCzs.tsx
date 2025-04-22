@@ -1,20 +1,24 @@
+import { ApplicationCzEditForm } from '@app/components/forms/application-cz-edit-form'
 import { Navigation } from '@app/components/navigation'
 import { Binding } from '@app/lib/binding'
 import { BackButton } from '@app/lib/buttons'
 import { DeleteEntityModalButton } from '@app/lib/buttons/deleteEntityModalButton'
 import { DataGrid, DataGridBooleanColumn, DataGridBooleanFilter, DataGridBooleanFilterSelect, DataGridColumn, DataGridEnumColumn, DataGridEnumFilter, DataGridHasManyColumn, DataGridHasManyFilter, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridNumberColumn, DataGridNumberFilter, DataGridNumberFilterSelect, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
 import { SetCurrentSemesterByDefault } from '@app/lib/datagrid/filters/sessionStorageSemesterFilter'
+import { UDDropdown } from '@app/lib/datagrid/UDDropdown'
 import { formatBoolean, formatBooleanIcon, formatBooleanPair } from '@app/lib/formatting'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
+import { DropdownMenuItem } from '@app/lib/ui/dropdown'
 import { useIsMobile } from '@app/lib/utils/use-mobile'
 import { Field, HasRole, Link } from '@contember/interface'
-import { History, PlusCircle, TrashIcon } from 'lucide-react'
+import { EditIcon, History, PlusCircle, TrashIcon } from 'lucide-react'
 
 export default () => {
 	const isMobile = useIsMobile()
 	return (
 		<>
+		<HasRole role={roles => roles.has('admin') || roles.has('coordinator') || roles.has('ozsRole')}>
 			<Binding>
 				<div className="flex flex-col gap-12">
 					<Slots.Title>
@@ -25,7 +29,6 @@ export default () => {
 					</Slots.Back>
 					<>
 						<Slots.Actions>
-						<HasRole role={roles => roles.has('admin') || roles.has('coordinator') || roles.has('ozsRole')}>
 							<SetCurrentSemesterByDefault keyParam='applicationCzs__ApplicationCz-filters' /> 
 							<Link to="applicationCzCreateAdmin">
 								<Button>
@@ -37,7 +40,6 @@ export default () => {
 									Create application CZ
 								</Button>
 							</Link> */}
-						</HasRole>
 						</Slots.Actions>
 						<DataGrid entities="ApplicationCz">
 							<DataGridToolbar copyingMails="applications">
@@ -64,24 +66,9 @@ export default () => {
 										<DataGridColumn>
 											<div className="flex gap-2">
 												<HasRole role={roles => roles.has('admin') || roles.has('coordinator')}>
-													<DeleteEntityModalButton 
-														message="Do you really want to delete?"
-														deleteMessage="Delete"
-														cancelTo={'applicationCzs'}
-														afterPersistTo={'applicationCzs'}
-													>
-														<Button variant={'destructive'} size={'sm'}>
-															<TrashIcon className='w-4' />
-														</Button>
-													</DeleteEntityModalButton>
 													<Link to="applicationDetail(id: $entity.id)">
 														<Button variant={'secondary'} size={'sm'}>
 															Detail
-														</Button>
-													</Link>
-													<Link to="applicationCzEdit(id: $entity.id)">
-														<Button variant={'secondary'} size={'sm'}>
-															Edit
 														</Button>
 													</Link>
 												</HasRole>
@@ -110,6 +97,39 @@ export default () => {
 									<DataGridBooleanColumn field='notPair' header='Ready to pair' children={<Field field={'notPair'} format={formatBooleanPair} />} />
 									<DataGridEnumColumn header="Application status" field='status.status' options={{ toBePaired: 'To be paired', paired: 'Paired', notPaired: 'Not paired' }} />
 									<DataGridTextColumn header="Email" field='person.tenantPerson.email' />
+									<HasRole role={roles => roles.has('admin') || roles.has('coordinator')}>
+										<DataGridColumn>
+											<div className='flex justify-end'>
+											<UDDropdown
+												editFormRedirect={
+													<>
+													<Link to="applicationCzEdit(id: $entity.id)">
+														<DropdownMenuItem className="hover:bg-accent" onSelect={e => e.preventDefault()}>
+															<EditIcon className="w-4 mr-2" />
+															<span>Edit</span>
+														</DropdownMenuItem>
+													</Link>
+													</>
+												}
+												deleteForm={
+													<div className='w-full'>
+													<DeleteEntityModalButton 
+														message="Do you really want to delete?"
+														deleteMessage="Delete"
+														cancelTo={'applicationCzs'}
+														afterPersistTo={'applicationCzs'}
+													>
+														<DropdownMenuItem className='w-[150px]' onSelect={e => e.preventDefault()}>
+															<TrashIcon className="w-4 mr-2" color='red' />
+															<span>Delete</span>
+														</DropdownMenuItem>
+													</DeleteEntityModalButton>
+													</div>
+												}
+											/>
+											</div>
+										</DataGridColumn>
+									</HasRole>
 								</DataGridTable>
 							</DataGridLoader>
 							<DataGridPagination />
@@ -117,6 +137,7 @@ export default () => {
 					</>
 				</div>
 			</Binding>
+			</HasRole>
 		</>
 	)
 }

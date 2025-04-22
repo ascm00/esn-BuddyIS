@@ -9,10 +9,13 @@ import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
 import { TrashIcon } from 'lucide-react'
 import { HasRole, Link } from '@contember/interface'
+import { UDDropdown } from '@app/lib/datagrid/UDDropdown'
+import { DropdownMenuItem } from '@radix-ui/react-dropdown-menu'
 
 export default () => {
 	return (
 		<>
+		<HasRole role="admin">
 			<Binding>
 				<div className="flex flex-col gap-12">
 					<Slots.Title>
@@ -42,34 +45,33 @@ export default () => {
 							</DataGridToolbar>
 							<DataGridLoader>
 								<DataGridTable>
-									<HasRole role="admin">
-										<DataGridColumn>
-											<div className="flex gap-2">
+									<DataGridTextColumn field="name" header="Name" />
+									<DataGridColumn>
+										<div className='flex justify-end'>
+										<UDDropdown
+											editForm={
+												<>
+													<DietaryRestrictionAllergyForm />
+												</>
+											}
+											deleteForm={
+												<div className='w-full'>
 												<DeleteEntityModalButton 
 													message="Do you really want to delete?"
 													deleteMessage="Delete"
 													cancelTo={'allergies'}
 													afterPersistTo={'allergies'}
 												>
-													<Button variant={'destructive'} size={'sm'}>
-														<TrashIcon className='w-4' />
-													</Button>
+													<DropdownMenuItem className='w-[150px]' onSelect={e => e.preventDefault()}>
+														<TrashIcon className="w-4 mr-2" color='red' />
+														<span>Delete</span>
+													</DropdownMenuItem>
 												</DeleteEntityModalButton>
-												<CurrentEntityLazyModalEdit
-													dialogProps={{ className: 'overflow-y-auto max-h-screen' }}
-													buttonProps={{variant: 'secondary', size: 'sm'}}
-													buttonContent={
-														<span className="flex items-center">
-															Edit
-														</span>
-													}
-												>
-													<DietaryRestrictionAllergyForm />
-												</CurrentEntityLazyModalEdit>
-											</div>
-										</DataGridColumn>
-									</HasRole>
-									<DataGridTextColumn field="name" header="Name" />
+												</div>
+											}
+										/>
+										</div>
+									</DataGridColumn>
 								</DataGridTable>
 							</DataGridLoader>
 							<DataGridPagination />
@@ -77,6 +79,7 @@ export default () => {
 					</>
 				</div>
 			</Binding>
+		</HasRole>
 		</>
 	)
 }

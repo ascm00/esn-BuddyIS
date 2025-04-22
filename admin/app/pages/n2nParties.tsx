@@ -2,15 +2,17 @@ import { N2nPartyForm } from '@app/components/forms/n2n-party-form'
 import { Binding } from '@app/lib/binding'
 import { BackButton } from '@app/lib/buttons'
 import { CreateEntityModalButton } from '@app/lib/buttons/createEntityModalButtons'
+import { DeleteEntityModalButton } from '@app/lib/buttons/deleteEntityModalButton'
 import { CurrentEntityLazyModalEdit } from '@app/lib/buttons/modalEdit'
 import { DataGrid, DataGridBooleanColumn, DataGridColumn, DataGridDateColumn, DataGridHasManyColumn, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
 import { SetCurrentSemesterByDefault } from '@app/lib/datagrid/filters/sessionStorageSemesterFilter'
 import { UDDropdown } from '@app/lib/datagrid/UDDropdown'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
+import { DropdownMenuItem } from '@app/lib/ui/dropdown'
 import { useIsMobile } from '@app/lib/utils/use-mobile'
 import { Field, HasRole, Link } from '@contember/interface'
-import { History, PlusCircle } from 'lucide-react'
+import { History, PlusCircle, TrashIcon } from 'lucide-react'
 
 export default () => {
 	const isMobile = useIsMobile()
@@ -68,13 +70,30 @@ export default () => {
 										<DataGridTextColumn field="club" header="Club" />
 										<DataGridTextColumn field="link" header="Link" />
 										<DataGridColumn>
+											<div className='flex justify-end'>
 											<UDDropdown
 												editForm={
 													<>
 														<N2nPartyForm />
 													</>
 												}
+												deleteForm={
+													<div className='w-full'>
+													<DeleteEntityModalButton 
+														message="Do you really want to delete?"
+														deleteMessage="Delete"
+														cancelTo={'n2nParties'}
+														afterPersistTo={'n2nParties'}
+													>
+														<DropdownMenuItem className='w-[150px]' onSelect={e => e.preventDefault()}>
+															<TrashIcon className="w-4 mr-2" color='red' />
+															<span>Delete</span>
+														</DropdownMenuItem>
+													</DeleteEntityModalButton>
+													</div>
+												}
 											/>
+											</div>
 										</DataGridColumn>
 									</DataGridTable>
 								</DataGridLoader>

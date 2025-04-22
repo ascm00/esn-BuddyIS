@@ -1,20 +1,20 @@
 import { DeleteEntityDialog } from '../binding'
+import { DeleteEntityModalButton } from '../buttons/deleteEntityModalButton'
+import { CurrentEntityLazyModalEdit } from '../buttons/modalEdit'
 import { AlertDialogContent } from '../ui/alert-dialog'
 import { DefaultDropdown, DropdownMenuItem } from '../ui/dropdown'
 import { EditIcon, TrashIcon } from 'lucide-react'
 import React from 'react'
-import { CurrentEntityLazyModalEdit } from '../buttons/modalEdit'
-import { RedirectOnPersist } from '@contember/interface'
 
 type UDDropdown = {
 	editForm?: React.ReactNode
-	editFormRedirect?: React.ReactNode
+    editFormRedirect?: React.ReactNode
 	children?: React.ReactNode
 	dialogProps?: React.ComponentProps<typeof AlertDialogContent>
-	disableDelete?: boolean
+	deleteForm?: React.ReactNode
 }
 
-export const UDDropdown = React.memo<UDDropdown>(({ editForm, children, dialogProps, editFormRedirect, disableDelete = false }) => {
+export const UDDropdown = React.memo<UDDropdown>(({ editForm, editFormRedirect, children, dialogProps, deleteForm }) => {
 	return (
 		<DefaultDropdown>
 			{children}
@@ -22,7 +22,7 @@ export const UDDropdown = React.memo<UDDropdown>(({ editForm, children, dialogPr
 				<CurrentEntityLazyModalEdit
 					dialogProps={dialogProps}
 					button={
-						<DropdownMenuItem className="hover:bg-accent" onSelect={e => e.preventDefault()}>
+						<DropdownMenuItem className="hover:bg-accent" onSelect={e => e.preventDefault()} onPointerMove={e => e.preventDefault()}>
 							<EditIcon className="w-4 mr-2" />
 							<span>Edit</span>
 						</DropdownMenuItem>
@@ -31,20 +31,21 @@ export const UDDropdown = React.memo<UDDropdown>(({ editForm, children, dialogPr
 					{editForm}
 				</CurrentEntityLazyModalEdit>
 			)}
-			{editFormRedirect}
-			{!disableDelete && (
+            {editFormRedirect}
+            {deleteForm}
+			{/* {!disableDelete && (
 				<>
 					<DeleteEntityDialog
 						trigger={
 							<DropdownMenuItem onSelect={e => e.preventDefault()}>
-								<TrashIcon className="w-4 mr-2" color='red' />
+								<TrashIcon className="w-4 mr-2" />
 								<span>Delete</span>
 							</DropdownMenuItem>
 						}
-						immediatePersist
 					/>
 				</>
-			)}
+			)} */}
+            {}
 		</DefaultDropdown>
 	)
 })
