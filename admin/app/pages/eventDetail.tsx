@@ -337,7 +337,7 @@ export default () => {
 					</Slots.Back>
 					<EntitySubTree entity="Event(id=$id)" isCreating={false}>
 						<Slots.Title>
-							<div className='flex flex-row gap-3'><div>Event detail 🎈</div><PlacesLeftTag /></div>
+							<div className='flex flex-row gap-3'><div className='mt-1'>Event detail</div><PlacesLeftTag /></div>
 						</Slots.Title>
 						<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('coordinator')}>
 							<Slots.Actions>
