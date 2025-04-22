@@ -5,6 +5,7 @@ import { CreateEntityModalButton } from '@app/lib/buttons/createEntityModalButto
 import { CurrentEntityLazyModalEdit } from '@app/lib/buttons/modalEdit'
 import { DataGrid, DataGridBooleanColumn, DataGridColumn, DataGridDateColumn, DataGridHasManyColumn, DataGridHasOneColumn, DataGridHasOneFilter, DataGridLoader, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
 import { SetCurrentSemesterByDefault } from '@app/lib/datagrid/filters/sessionStorageSemesterFilter'
+import { UDDropdown } from '@app/lib/datagrid/UDDropdown'
 import { Slots } from '@app/lib/layout'
 import { Button } from '@app/lib/ui/button'
 import { useIsMobile } from '@app/lib/utils/use-mobile'
@@ -53,25 +54,12 @@ export default () => {
 								<DataGridLoader>
 									<DataGridTable>
 										<DataGridColumn>
-											<div className="flex gap-2">
+											<div className="flex gap-2 -mr-3">
 												<Link to="n2nPartyDetail(id: $entity.id)">
 													<Button variant={'secondary'} size={'sm'}>
 														Detail
 													</Button>
 												</Link>
-												<HasRole role={roles => roles.has('admin') || roles.has('coordinator') || roles.has('esnMember')}>
-													<CurrentEntityLazyModalEdit
-														dialogProps={{ className: 'overflow-y-auto max-h-screen' }}
-														buttonProps={{variant: 'secondary', size: 'sm'}}
-														buttonContent={
-															<span className="flex items-center">
-																Edit
-															</span>
-														}
-													>
-														<N2nPartyForm />
-													</CurrentEntityLazyModalEdit>
-												</HasRole>
 											</div>
 										</DataGridColumn>
 										<DataGridTextColumn field="name" header="Name" />
@@ -79,9 +67,18 @@ export default () => {
 										{/* <DataGridBooleanColumn field="open" header="Open" /> */}
 										<DataGridTextColumn field="club" header="Club" />
 										<DataGridTextColumn field="link" header="Link" />
+										<DataGridColumn>
+											<UDDropdown
+												editForm={
+													<>
+														<N2nPartyForm />
+													</>
+												}
+											/>
+										</DataGridColumn>
 									</DataGridTable>
 								</DataGridLoader>
-								<DataGridPagination />
+								<DataGridPagination entity='N2N parties' />
 							</DataGrid>
 						</HasRole>
 						<HasRole role={roles => roles.has('czechBuddy') || roles.has('internationalStudent')}>
@@ -121,9 +118,18 @@ export default () => {
 										{/* <DataGridBooleanColumn field="open" header="Open" /> */}
 										<DataGridTextColumn field="club" header="Club" />
 										<DataGridTextColumn field="link" header="Link" />
+										<DataGridColumn>
+											<UDDropdown
+												editForm={
+													<>
+														<N2nPartyForm />
+													</>
+												}
+											/>
+										</DataGridColumn>
 									</DataGridTable>
 								</DataGridLoader>
-								<DataGridPagination />
+								<DataGridPagination entity='N2N parties' />
 							</DataGrid>
 						</HasRole>
 					</>

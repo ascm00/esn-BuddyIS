@@ -7,8 +7,8 @@ import { DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '../u
 import { dictFormat } from '../dict'
 import { dict } from '../dict'
 
-export const DataGridPagination = () => (
-	<div className="flex gap-6 lg:gap-8 justify-between mt-4">
+export const DataGridPagination = ({entity} : {entity?: string}) => (
+	<div className="flex gap-6 lg:gap-8 justify-between mb-3 ml-3">
 		<div className="">
 			<DataViewPagingStateView render={it => <>
 				<div className={'flex gap-2 items-center'}>
@@ -16,6 +16,7 @@ export const DataGridPagination = () => (
 						{it.totalCount === undefined ? <Loader2Icon className="animate-spin h-3 w-3 inline-block" />
 							: dictFormat(dict.datagrid.pageRowsCount, {
 								totalCount: it.totalCount.toString(),
+								entity: entity ?? 'rows',
 							})
 						}
 					</div>

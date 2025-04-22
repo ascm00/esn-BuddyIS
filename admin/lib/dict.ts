@@ -65,7 +65,7 @@ export const dict = {
 
 		pageInfo: 'Page ${page} of ${pagesCount}',
 		pageInfoShort: 'Page ${page}',
-		pageRowsCount: '${totalCount} rows total',
+		pageRowsCount: '${totalCount} ${entity} total',
 
 		filter: 'Filter',
 		filters: 'Filters',

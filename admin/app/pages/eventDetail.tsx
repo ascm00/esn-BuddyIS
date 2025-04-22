@@ -602,7 +602,7 @@ export default () => {
 											</DataGridHasOneColumn>
 										</DataGridTable>
 									</DataGridLoader>
-									<DataGridPagination />
+									<DataGridPagination entity='registered users' />
 								</DataGrid>
 							</div>
 							<div className="flex flex-col gap-4">
@@ -661,7 +661,7 @@ export default () => {
 											</DataGridHasOneColumn>
 										</DataGridTable>
 									</DataGridLoader>
-									<DataGridPagination />
+									<DataGridPagination entity='users on waiting list' />
 								</DataGrid>
 							</div>
 						</HasRole>

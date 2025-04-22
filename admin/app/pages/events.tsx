@@ -2,12 +2,17 @@ import { Binding } from '@app/lib/binding'
 import { BackButton } from '@app/lib/buttons'
 import { DataGrid, DataGridColumn, DataGridDateColumn, DataGridDateFilter, DataGridEnumColumn, DataGridHasOneFilter, DataGridLoader, DataGridNumberColumn, DataGridPagination, DataGridQueryFilter, DataGridTable, DataGridTextColumn, DataGridToolbar } from '@app/lib/datagrid'
 import { SetCurrentSemesterByDefault } from '@app/lib/datagrid/filters/sessionStorageSemesterFilter'
+import { UDDropdown } from '@app/lib/datagrid/UDDropdown'
 import { Slots } from '@app/lib/layout'
+import { AlertDialogHeader } from '@app/lib/ui/alert-dialog'
 import { Button } from '@app/lib/ui/button'
 import { WhatsappLink } from '@app/lib/utils/link'
 import { useIsMobile } from '@app/lib/utils/use-mobile'
 import { Component, EntityListSubTree, Field, HasRole, Link, useEntity, useEntityList, useEntityListSubTree, useIdentity, useProjectUserRoles } from '@contember/interface'
-import { Edit, Eye, File, History, PlusCircle } from 'lucide-react'
+import { Edit, EditIcon, Eye, File, FileText, History, PlusCircle, PlusCircleIcon } from 'lucide-react'
+import EventCreate from './eventCreate'
+import { EventCreateForm } from '@app/components/forms/event-create-form'
+import { DropdownMenuItem } from '@app/lib/ui/dropdown'
 
 export default () => {
 
@@ -36,7 +41,9 @@ export default () => {
 								</Link>
 							</Slots.Actions>
 						</HasRole>
-						<PersonalizedDataGrid />
+						<div className='-mt-12'>
+							<PersonalizedDataGrid />
+						</div>
 					</>
 				</div>
 			</Binding>
@@ -48,6 +55,7 @@ const PersonalizedDataGrid = Component(
 	() => {
 		return(
 			<>
+			<div className='flex flex-col gap-12'>
 			<HasRole role={roles => roles.has('admin') || roles.has('coordinator') || roles.has('esnMember')}>
 				<DataGrid entities="Event">
 					<DataGridToolbar>
@@ -60,15 +68,10 @@ const PersonalizedDataGrid = Component(
 					<DataGridLoader>
 						<DataGridTable>
 							<DataGridColumn>
-								<div className="flex gap-2">
+								<div className="flex gap-2 -mr-3">
 									<Link to="eventDetail(id: $entity.id)">
 										<Button variant={'secondary'} size={'sm'}>
 											Detail
-										</Button>
-									</Link>
-									<Link to="eventEdit(id: $entity.id)">
-										<Button variant={'secondary'} size={'sm'}>
-											Edit
 										</Button>
 									</Link>
 								</div>
@@ -88,9 +91,23 @@ const PersonalizedDataGrid = Component(
 							<DataGridColumn header="Whatsapp link">
 								<WhatsappLink />
 							</DataGridColumn>
+							<DataGridColumn>
+								<UDDropdown
+										editFormRedirect={
+											<>
+											<Link to="eventEdit(id: $entity.id)">
+												<DropdownMenuItem className="hover:bg-accent" onSelect={e => e.preventDefault()}>
+													<EditIcon className="w-4 mr-2" />
+													<span>Edit</span>
+												</DropdownMenuItem>
+											</Link>
+											</>
+										}
+									/>
+							</DataGridColumn>
 						</DataGridTable>
 					</DataGridLoader>
-					<DataGridPagination />
+					<DataGridPagination entity='events' />
 				</DataGrid>
 			</HasRole>
 			<HasRole role={roles => roles.has('czechBuddy')}>
@@ -126,7 +143,7 @@ const PersonalizedDataGrid = Component(
 							</DataGridColumn>
 						</DataGridTable>
 					</DataGridLoader>
-					<DataGridPagination />
+					<DataGridPagination entity='events' />
 				</DataGrid>
 			</HasRole>
 			<HasRole role={roles => roles.has('internationalStudent')}>
@@ -162,9 +179,10 @@ const PersonalizedDataGrid = Component(
 							</DataGridColumn>
 						</DataGridTable>
 					</DataGridLoader>
-					<DataGridPagination />
+					<DataGridPagination entity='events' />
 				</DataGrid>
 			</HasRole>
+			</div>
 		</>
 		)
 	}
