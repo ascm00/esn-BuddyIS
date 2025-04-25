@@ -23,7 +23,7 @@ export default () => {
 					</Slots.Back>
 					<EntitySubTree entity="ApplicationCz(id=$id)" isCreating={false}>
 						<Slots.Actions>
-							<Link to="applicationCzCreate(id: $entity.id)">
+							<Link to="applicationCzEdit(id: $entity.id)">
 								<Button>
 									Edit application
 								</Button>

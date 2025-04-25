@@ -59,6 +59,7 @@ export default () => {
 									<Field field={'name'} />
 								</DataGridHasManyFilter>
 								<DataGridEnumFilter field={'preferredSex'} label="Preferred gender" options={{ man: 'Man', woman: 'Woman', dontCare: 'Not preferred' }} />
+								<DataGridBooleanFilter field="notPair" label="DO NOT pair" noNullFilter />
 							</DataGridToolbar>
 							<DataGridLoader>
 								<DataGridTable>
