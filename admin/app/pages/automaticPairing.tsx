@@ -58,10 +58,10 @@ const AutomaticPairing = Component(
             try {
                 console.log(currentSemesterCzApplications)
                 console.log(currentSemesterFrApplications)
-                const { pairs, unpairedCzechStudents } = await galeShapleyCzechFirst(currentSemesterCzApplications, currentSemesterFrApplications)
-                console.log(pairs)
+                const { finalPairs, unpairedCzechStudents } = await galeShapleyCzechFirst(currentSemesterCzApplications, currentSemesterFrApplications)
+                console.log(finalPairs)
     
-                pairs.forEach((czechStudentApplication, internationalStudentApplication) => {
+                finalPairs.forEach((czechStudentApplication, internationalStudentApplication) => {
                     if (czechStudentApplication && internationalStudentApplication) {
                         internationalStudentApplication.getField('status').updateValue('paired')
 
