@@ -7,6 +7,20 @@ import { Table, TableBody, TableCell, TableRow, TableWrapper } from '@app/lib/ui
 import { Component, EntitySubTree, Environment, Field, Link, useEntity, useEntitySubTree, useIdentity } from '@contember/interface'
 import { identityEnvironmentExtension } from '@contember/interface'
 import { TrashIcon } from 'lucide-react'
+import { Alert, AlertDescription, AlertTitle } from '@app/lib/ui/alert'
+import { Clock } from 'lucide-react'
+
+function NoApplications() {
+	return (
+	  <Alert variant={'default'} className='bg-blue-100'>
+		<Clock className="h-4 w-4" />
+		<AlertTitle>No buddy application</AlertTitle>
+		<AlertDescription>
+            You have no buddy applications. Click on 'Apply for a buddy' to apply. ☝️
+		</AlertDescription>
+	  </Alert>
+	)
+}
 
 export default () => {
 	return (
@@ -34,7 +48,7 @@ const MyApplicationFR = Component(() => {
     if(!applicationId) {
         return (
             <>
-                <div className='bg-blue-200 p-4 rounded-md'><div className='text-500'>You have no buddy applications. Click on 'Apply for a buddy' to apply. ☝️</div></div>
+                <NoApplications />
                 <Slots.Actions>
                     <Link to="applicationFrCreate">
                     <Button>

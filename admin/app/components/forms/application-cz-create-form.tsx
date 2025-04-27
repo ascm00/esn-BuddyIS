@@ -24,6 +24,18 @@ export function NoSemesterOpen() {
 	)
 }
 
+function AlreadyApplied() {
+	return (
+	  <Alert variant={'default'} className='bg-blue-100'>
+		<Clock className="h-4 w-4" />
+		<AlertTitle>Already applied</AlertTitle>
+		<AlertDescription>
+			You already applied for a buddy this semester. If you want to see your applications, click on the button "All my buddy applications" above. ☝️
+		</AlertDescription>
+	  </Alert>
+	)
+}
+
 export const ApplicationCzCreateForm = Component(
 	() => {
 
@@ -129,7 +141,7 @@ export const ApplicationCzCreateForm = Component(
 							</div>
 						</SelectField>
 					</FormLayout>
-					<div className='bg-blue-200 p-4 rounded-md'><div className='text-500'>You already applied for a buddy this semester. If you want to see your applications, click on the button "All my buddy applications" above. ☝️</div></div>
+					<div className='mt-2'><AlreadyApplied /></div>
 				</>
 			)
 		} else {

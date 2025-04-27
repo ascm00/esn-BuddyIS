@@ -42,7 +42,7 @@ export const BuddyView = Component(
 
 		
 		if(!buddyPair) {
-			return (<div className='bg-blue-200 p-4 rounded-md'>
+			return (<div className='rounded-md'>
 				<NoBuddyAlert />
 				<Slots.Actions>
 					<Link to="applicationFrCreate">

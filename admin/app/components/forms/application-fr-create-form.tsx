@@ -10,6 +10,21 @@ import { Button } from '@app/lib/ui/button'
 import { TableWrapper, TableBody, Table, TableCell, TableRow } from '@app/lib/ui/table'
 import { PreferredSexCell } from '@app/pages/applicationFrDetail'
 import { NoSemesterOpen } from './application-cz-create-form'
+import { Alert, AlertDescription, AlertTitle } from '@app/lib/ui/alert'
+import { Clock } from 'lucide-react'
+
+function AlreadyApplied() {
+	return (
+	  <Alert variant={'default'} className='bg-blue-100'>
+		<Clock className="h-4 w-4" />
+		<AlertTitle>Already applied</AlertTitle>
+		<AlertDescription>
+			You already applied for a buddy. Here is your application. 👇
+		</AlertDescription>
+	  </Alert>
+	)
+}
+
 export const ApplicationFrCreateForm = Component(
 	(_, env) => {
 
@@ -82,7 +97,7 @@ export const ApplicationFrCreateForm = Component(
 		}
 		return (
 		<>
-			<div className='bg-blue-200 p-4 rounded-md max-w-lg'><div className='text-500'>You already applied for a buddy. Here is your application. 👇</div></div>
+			<AlreadyApplied />
 				<div>
 						<TableWrapper className="bg-gray-50/50 max-w-lg border rounded-md">
 							<Table>
