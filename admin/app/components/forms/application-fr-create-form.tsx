@@ -9,6 +9,7 @@ import { formatDate } from '@app/lib/formatting'
 import { Button } from '@app/lib/ui/button'
 import { TableWrapper, TableBody, Table, TableCell, TableRow } from '@app/lib/ui/table'
 import { PreferredSexCell } from '@app/pages/applicationFrDetail'
+import { NoSemesterOpen } from './application-cz-create-form'
 export const ApplicationFrCreateForm = Component(
 	(_, env) => {
 
@@ -65,7 +66,7 @@ export const ApplicationFrCreateForm = Component(
 		}
 
 	if(closed){
-		return (<div className='bg-blue-200 p-4 rounded-md'><div className='text-500'>Sorry, applications are closed now. 😕</div></div>)
+		return (<NoSemesterOpen />)
 	} else if (currentUserApplicationsFr) {
 		const name = currentUserApplicationsFrTry?.getEntity('person').getField('firstName').value?.toString() + ' ' + currentUserApplicationsFrTry?.getEntity('person').getField('surname').value?.toString()	
 		const semester = currentUserApplicationsFrTry?.getEntity('semester').getField('name').value?.toString()

@@ -5,6 +5,7 @@ import { InitialUserForm } from '@app/components/initialUserForm'
 import InitialUserPage from './initialUserPage'
 import EventFeed from './eventFeed'
 import BuddyPairs from './buddyPairs'
+import Dashboard from './dashboard'
 
 export default () => {
 	const redirect = useRedirect()
@@ -19,7 +20,7 @@ export default () => {
 					<BuddyPairs />
 				</HasRole>
 				<HasRole role={roles => roles.has('admin') || roles.has('coordinator') || roles.has('internationalStudent') || roles.has('czechBuddy') || roles.has('esnMember')}>
-					<EventFeed />
+					<Dashboard />
 				</HasRole>
 			</>
 		)

@@ -25,7 +25,7 @@ export default () => {
   )
 }
 
-const AllEventsFeed = Component(() => {
+export const AllEventsFeed = Component(() => {
   const n2nPartiesForESNMembers = Array.from(useEntityListSubTree('n2nParties'))
   const eventsESNMembers = Array.from(useEntityListSubTree('events'))
   const firstName = useEntitySubTree('currentUser').getField<string>('firstName').value ?? undefined

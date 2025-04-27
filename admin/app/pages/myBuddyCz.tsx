@@ -12,8 +12,21 @@ import { TextareaAutosize } from '@app/lib/ui/textarea'
 import { ImageFieldView } from '@app/components/fieldViews/ImageFieldView'
 import { Component, EntityListSubTree, EntitySubTree, Field, HasMany, HasOne, HasRole, identityEnvironmentExtension, If, Link, useEntity, useEntityListSubTree, useEntitySubTree, useIdentity } from '@contember/interface'
 import { useCallback, useState } from 'react'
-import { PlusCircle } from 'lucide-react'
+import { PlusCircle, UserPlus, UsersIcon } from 'lucide-react'
 import { useIsMobile } from '@app/lib/utils/use-mobile'
+import { Alert, AlertDescription, AlertTitle } from '@app/lib/ui/alert'
+
+export function NoBuddyAlert() {
+  return (
+    <Alert variant={'default'} className='bg-blue-100'>
+      <UserPlus className="h-4 w-4" />
+      <AlertTitle>No buddy yet</AlertTitle>
+      <AlertDescription>
+        You don't have a buddy assigned right now. If you haven't applied yet, don't miss out — apply today and start your journey! 🚀
+      </AlertDescription>
+    </Alert>
+  )
+}
 
 export default () => {
 
@@ -75,7 +88,7 @@ const CzechStudentTasks = Component(
 	)
 )
 
-const MoreBuddiesView = Component(
+export const MoreBuddiesView = Component(
 	() => {
 
 		const myId = useIdentity()?.person?.id
@@ -90,8 +103,8 @@ const MoreBuddiesView = Component(
 		}
 
 		if(numberOfBuddies === 0){
-			return (<div className='bg-blue-200 p-4 rounded-md'>
-				<div className='text-500'>You currently don't have a buddy. If you haven't applied yet, go ahead and apply! 🚀</div>
+			return (<div className='rounded-md'>
+				<NoBuddyAlert />
 				<Slots.Actions>
 					<Link to="applicationCzCreate">
 						<Button>

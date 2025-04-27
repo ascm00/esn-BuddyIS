@@ -30,9 +30,9 @@ export const Navigation = Component(
 		<ApplyForBuddy />
 	</Binding>
 	<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('czechBuddy') || roles.has('coordinator') || roles.has('internationalStudent')}>
-		<MenuItem label="Home" icon={<Home className='text-blue-500' />} to="eventFeed" />
-		<MenuItem label="Events" icon={<CalendarPlus className='text-blue-500' />} to={'index'}>
-			<MenuItem label="All events" icon={<LayoutDashboard className='text-blue-500' />} to={'index'} />
+		<MenuItem label="Home" icon={<Home className='text-blue-500' />} to="index" />
+		<MenuItem label="Events" icon={<CalendarPlus className='text-blue-500' />} to={'eventFeed'}>
+			<MenuItem label="All events" icon={<LayoutDashboard className='text-blue-500' />} to={'eventFeed'} />
 			<MenuItem label="My upcoming events" icon={<Clock className='text-blue-500' />} to="myEvents" />
 			<MenuItem label="Calendar" icon={<Calendar className='text-blue-500' />} to="calendar" />
 			<MenuItem label="Event list" icon={<List className='text-blue-500' />} to={'events'} />

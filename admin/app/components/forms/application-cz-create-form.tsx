@@ -9,6 +9,20 @@ import { Button } from '@app/lib/ui/button'
 import { Table, TableCell, TableRow, TableBody, TableWrapper } from '@app/lib/ui/table'
 import { formatDate } from '@app/lib/utils/formatting'
 import { Component, EntityListSubTree, EntitySubTree, Field, HasMany, HasOne, HasRole, identityEnvironmentExtension, If, Link, useEntity, useEntityListSubTree, useEntitySubTree, useIdentity, usePersist } from '@contember/interface'
+import { Alert, AlertDescription, AlertTitle } from '@app/lib/ui/alert'
+import { Clock } from 'lucide-react'
+
+export function NoSemesterOpen() {
+	return (
+	  <Alert variant={'default'} className='bg-blue-100'>
+		<Clock className="h-4 w-4" />
+		<AlertTitle>No semester open</AlertTitle>
+		<AlertDescription>
+			Sorry, applications for all semesters are closed now. 😕
+		</AlertDescription>
+	  </Alert>
+	)
+}
 
 export const ApplicationCzCreateForm = Component(
 	() => {
@@ -77,7 +91,7 @@ export const ApplicationCzCreateForm = Component(
 		}
 	
 		if(closed){
-			return (<div className='bg-blue-200 p-4 rounded-md'><div className='text-500'>Sorry, applications for all semesters are closed now. 😕</div></div>)
+			return (<NoSemesterOpen />)
 		} else if (!semester) {
 			return (<FormLayout>
 				<SelectField

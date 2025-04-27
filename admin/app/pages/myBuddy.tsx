@@ -12,6 +12,7 @@ import { TextareaAutosize } from '@app/lib/ui/textarea'
 import { ImageFieldView } from '@app/components/fieldViews/ImageFieldView'
 import { Component, EntityListSubTree, EntitySubTree, Field, HasMany, HasOne, HasRole, identityEnvironmentExtension, If, Link, useEntity, useEntitySubTree, useIdentity } from '@contember/interface'
 import { useCallback, useState } from 'react'
+import { NoBuddyAlert } from './myBuddyCz'
 
 export default () => {
 
@@ -33,7 +34,7 @@ export default () => {
 	)
 }
 
-const BuddyView = Component(
+export const BuddyView = Component(
 	() => {
 		const myId = useIdentity()?.person?.id
 		const buddyPair = useEntitySubTree('buddyPair').getField('id').value
@@ -42,7 +43,7 @@ const BuddyView = Component(
 		
 		if(!buddyPair) {
 			return (<div className='bg-blue-200 p-4 rounded-md'>
-				<div className='text-500'>You currently don't have a buddy. If you haven't applied yet, do it! 🚀</div>
+				<NoBuddyAlert />
 				<Slots.Actions>
 					<Link to="applicationFrCreate">
 						<Button>
