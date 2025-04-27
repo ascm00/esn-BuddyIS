@@ -137,15 +137,6 @@ export default () => {
 										{/* <DataGridBooleanColumn field="open" header="Open" /> */}
 										<DataGridTextColumn field="club" header="Club" />
 										<DataGridTextColumn field="link" header="Link" />
-										<DataGridColumn>
-											<UDDropdown
-												editForm={
-													<>
-														<N2nPartyForm />
-													</>
-												}
-											/>
-										</DataGridColumn>
 									</DataGridTable>
 								</DataGridLoader>
 								<DataGridPagination entity='N2N parties' />

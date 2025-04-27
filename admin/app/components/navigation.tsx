@@ -52,9 +52,6 @@ export const Navigation = Component(
 		</MenuItem>
 	</HasRole>
 	<MenuItemExternal label="Trip tips" icon={<Lightbulb className='text-blue-500' />} to="https://grey-cabbage-5c9.notion.site/Welcome-to-TripTip-1189c74d1bea8025bec8cc0fc36b1f7c" />
-	<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('czechBuddy') || roles.has('coordinator') || roles.has('internationalStudent')}>
-		<MenuItem label="Profile" icon={<UserCircle className='text-blue-500' />} to="profile" />
-	</HasRole>
 
 	<HasRole role={roles => roles.has('admin') || roles.has('coordinator') || roles.has('esnMember')}>
 		<MenuDivider />
@@ -189,6 +186,16 @@ export const UserNavigation = () => {
 				</DropdownMenuLabel>
 				<DropdownMenuSeparator />
 				<DropdownMenuGroup>
+				<HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('czechBuddy') || roles.has('coordinator') || roles.has('internationalStudent')}>
+					<DropdownMenuItem>
+						<Link to="profile">
+							<AnchorButton variant="ghost" size="xs" className="flex gap-2">
+								<UserCircle size={16} />
+								Profile
+							</AnchorButton>
+						</Link>
+					</DropdownMenuItem>
+					</HasRole>
 					<DropdownMenuItem>
 						<Link to="tenant/security">
 							<AnchorButton variant="ghost" size="xs" className="flex gap-2">
