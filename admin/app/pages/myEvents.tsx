@@ -38,18 +38,17 @@ const MyEvents = Component(
         const registrations = Array.from(currentUser.getEntityList('registrations'))
         
         registrations.forEach(registration => {
-			if(registration.getField('accepted').value === false){
+			if(registration.getField<boolean>('accepted').value === false){
 				registrations.splice(registrations.indexOf(registration), 1)
-			} else {
-				if(registration.getEntity('event').getField('name').value === null){
+			} 
+			if(registration.getEntity('event').getField('name').value === null){
+				registrations.splice(registrations.indexOf(registration), 1)
+			}
+			const startDate = registration?.getEntity('event')?.getField('startDate')?.value
+			if (typeof startDate === 'string' || typeof startDate === 'number') {
+				if (new Date(startDate) < new Date()) {
 					registrations.splice(registrations.indexOf(registration), 1)
 				}
-				const startDate = registration?.getEntity('event')?.getField('startDate')?.value
-            	if (typeof startDate === 'string' || typeof startDate === 'number') {
-					if (new Date(startDate) < new Date()) {
-						registrations.splice(registrations.indexOf(registration), 1)
-					}
-            	}
 			}
         })
 
