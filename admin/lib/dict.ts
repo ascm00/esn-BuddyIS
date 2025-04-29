@@ -20,7 +20,7 @@ export const dict = {
 		cancelButton: 'Cancel',
 	},
 	identityLoader: {
-		fail: 'Failed to load identity',
+		fail: 'You are not logged in. Please log in to your account.',
 	},
 	persist: {
 		persistButton: 'Save data',
