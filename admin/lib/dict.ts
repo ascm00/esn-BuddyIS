@@ -285,7 +285,7 @@ export const dict = {
 			token: 'Reset code',
 			password: 'Password',
 			passwordConfirmation: 'Confirm password',
-			submit: 'Reset password',
+			submit: 'Set password',
 			errorMessages: {
 				FIELD_REQUIRED: 'This field is required',
 				INVALID_VALUE: 'Invalid value',
