@@ -1,6 +1,6 @@
 import { CheckboxField, FormLayout, InputField, SelectField } from '@app/lib/form'
 import { Component, EntityListSubTree, Field, HasMany, HasOne, useEntity, useEntityBeforePersist, useEntityListSubTree } from '@contember/interface'
-
+  
 export const BuddyPairCreateForm = Component(
 	
 	() => {

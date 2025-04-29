@@ -1,12 +1,6 @@
 import { CheckboxField, FormLayout, InputField, RadioEnumField, SelectField, TextareaField } from '@app/lib/form'
-import { identityEnvironmentExtension } from '@contember/admin'
 import { ImageField } from '@app/lib/plugins/image/ImageField'
 import { Component, EntityListSubTree, Field, HasMany, HasOne, useEntity, useEntityListSubTree } from '@contember/interface'
-import { ConnectUser } from '../ConnectUser'
-import { Todo } from '@app/lib/dev'
-import { BlockEditorField } from '@app/lib/plugins/rich-text/editor'
-import { RichTextEditor } from '@contember/react-slate-editor-base'
-import { RichTextField } from '@app/lib/editor'
 import { PersistButton } from '@app/lib/binding'
 
 export const EventCreateForm = Component(() => {
@@ -154,9 +148,6 @@ export const EventCreateForm = Component(() => {
 		<Field field={'isForInternationalStudents'} />
 		<Field field={'isForCzechBuddies'} />
 		<Field field={'isForESNmembers'} />
-
-
-
 		</>
 	)
 
