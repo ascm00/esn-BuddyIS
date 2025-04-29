@@ -139,16 +139,16 @@ export const Login = ({ idps, hasTokenFromEnv, appUrl, magicLink }: {
 					{hasTokenFromEnv && <AnchorButton href={appUrl} size="lg" className="w-full" variant="destructive">
 						Continue as default user
 					</AnchorButton>}
-					<Link to="register">
-						<AnchorButton size="lg" className="w-full" variant="secondary">
-							Create account
-						</AnchorButton>
-					</Link>
 					<LoginForm>
 						<form className="grid gap-4">
 							<LoginFormFields />
 						</form>
 					</LoginForm>
+					<Link to="register">
+						<AnchorButton size="lg" className="w-full" variant="outline">
+							Create account
+						</AnchorButton>
+						</Link>
 
 					{Object.entries(idps).map(([idp, label]) => (
 						<IDPInitTrigger key={idp} identityProvider={idp}>

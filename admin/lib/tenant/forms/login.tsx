@@ -28,11 +28,11 @@ export const LoginFormFields = () => {
 				type="password" required readOnly={form.state === 'otp-required'}
 			>
 				{dict.tenant.login.password}
-				<Link to="resetRequest">
+				{/* <Link to="resetRequest">
 					<a className="float-end underline text-gray-600 text-sm font-normal">
 						{dict.tenant.login.forgotPassword}
 					</a>
-				</Link>
+				</Link> */}
 			</TenantFormField>
 
 			{(form.state === 'otp-required' || fieldErrors.includes('otpToken')) && (
@@ -47,6 +47,11 @@ export const LoginFormFields = () => {
 			<Button type="submit" className="w-full" disabled={form.state === 'submitting'}>
 				{dict.tenant.login.login}
 			</Button>
+			<Link to="resetRequest">
+				<a className="float-end underline text-gray-600 text-sm font-normal pb-3 -mt-2">
+					{dict.tenant.login.forgotPassword}
+				</a>
+			</Link>
 		</div>
 	)
 }
