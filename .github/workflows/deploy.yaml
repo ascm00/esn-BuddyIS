@@ -24,7 +24,7 @@ jobs:
 
       - name: Create .env.production from secret
         run: |
-          if [[ "${GITHUB_REF##*/}" == "deploy/prod" ]]; then
+          if [[ "$GITHUB_REF_NAME" == "deploy/prod" ]]; then
             echo "${{ secrets.ENV_FILE_PROD }}" > .env.production
           else
             echo "${{ secrets.ENV_FILE_TEST }}" > .env.production
@@ -35,7 +35,7 @@ jobs:
           set -a
           source .env.production
           set +a
-          if [[ "${GITHUB_REF##*/}" == "deploy/prod" ]]; then
+          if [[ "$GITHUB_REF_NAME" == "deploy/prod" ]]; then
             yarn run deploy $CONTEMBER_DEPLOY_DSN_PROD --yes
           else
             yarn run deploy $CONTEMBER_DEPLOY_DSN_TEST --yes
