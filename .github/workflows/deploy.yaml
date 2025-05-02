@@ -36,12 +36,12 @@ jobs:
           source .env.production
           set +a
           if [[ "$GITHUB_REF_NAME" == "deploy/prod" ]]; then
-            yarn run deploy $CONTEMBER_DEPLOY_DSN_PROD --yes
+            yarn run deploy $CONTEMBER_DEPLOY_DSN --yes
           else
             yarn run deploy $CONTEMBER_DEPLOY_DSN_TEST --yes
           fi
         env:
-          CONTEMBER_DEPLOY_DSN_PROD: ${{ secrets.CONTEMBER_DEPLOY_DSN_PROD }}
+          CONTEMBER_DEPLOY_DSN: ${{ secrets.CONTEMBER_DEPLOY_DSN }}
           CONTEMBER_DEPLOY_DSN_TEST: ${{ secrets.CONTEMBER_DEPLOY_DSN_TEST }}
 
 #     Uncomment this block if you are using Cloudflare Workers for Contember actions
