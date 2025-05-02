@@ -25,6 +25,7 @@ Icon
 # Environment variable
 .env*
 !.env.example
+!.env.development
 
 # Thumbnails
 ._*
