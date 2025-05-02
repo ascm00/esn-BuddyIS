@@ -58,7 +58,7 @@ export default () => {
 									<DataGridTextColumn field="name" header="Name" />
 									<DataGridDateColumn field="startDate" header="Start date" />
 									<DataGridDateColumn field="endDate" header="End date" />
-									<DataGridDateColumn field='openForCzechBuddyRegistrationsDate' header="Open Czech buddies registration" />
+									<DataGridDateColumn field='openForCzechBuddyRegistrationsDate' header="Open buddy registration" />
 									<DataGridDateColumn field='closeBuddyRegistrations' header="Close buddy Registration" />
 									<DataGridColumn>
 										<div className='flex justify-end'>
