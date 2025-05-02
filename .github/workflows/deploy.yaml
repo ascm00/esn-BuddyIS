@@ -30,16 +30,19 @@ jobs:
             echo "${{ secrets.ENV_FILE_TEST }}" > .env.production
           fi
 
-      - name: Print .env.production
-        run: cat .env.production
-
-      - name: Deploy Contember
+      - name: Load .env.production and deploy
         run: |
+          set -a
+          source .env.production
+          set +a
           if [[ "${GITHUB_REF##*/}" == "deploy/prod" ]]; then
-            yarn run deploy ${{ secrets.CONTEMBER_DEPLOY_DSN_PROD }} --yes
+            yarn run deploy $CONTEMBER_DEPLOY_DSN_PROD --yes
           else
-            yarn run deploy ${{ secrets.CONTEMBER_DEPLOY_DSN_TEST }} --yes
+            yarn run deploy $CONTEMBER_DEPLOY_DSN_TEST --yes
           fi
+        env:
+          CONTEMBER_DEPLOY_DSN_PROD: ${{ secrets.CONTEMBER_DEPLOY_DSN_PROD }}
+          CONTEMBER_DEPLOY_DSN_TEST: ${{ secrets.CONTEMBER_DEPLOY_DSN_TEST }}
 
 #     Uncomment this block if you are using Cloudflare Workers for Contember actions
 
