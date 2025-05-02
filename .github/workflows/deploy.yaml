@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - 'deploy/prod'
-      - 'deploy/test'
+      - 'deploy/staging'
 
 jobs:
   deploy:
@@ -27,15 +27,18 @@ jobs:
           if [[ "${GITHUB_REF##*/}" == "deploy/prod" ]]; then
             echo "${{ secrets.ENV_FILE_PROD }}" > .env.production
           else
-            echo "${{ secrets.ENV_FILE_TEST }}" > .env.production
+            echo "${{ secrets.ENV_FILE_STAGING }}" > .env.production
           fi
+
+      - name: Print .env.production
+        run: cat .env.production
 
       - name: Deploy Contember
         run: |
           if [[ "${GITHUB_REF##*/}" == "deploy/prod" ]]; then
             yarn run deploy ${{ secrets.CONTEMBER_DEPLOY_DSN_PROD }} --yes
           else
-            yarn run deploy ${{ secrets.CONTEMBER_DEPLOY_DSN_TEST }} --yes
+            yarn run deploy ${{ secrets.CONTEMBER_DEPLOY_DSN_STAGING }} --yes
           fi
 
 #     Uncomment this block if you are using Cloudflare Workers for Contember actions
