@@ -9,7 +9,7 @@ Before you begin, ensure you have:
 
 ### Project Overview
 
-Your project consists of the following packages:
+Project consists of the following packages:
 
 #### [@app/admin](./admin)
 
