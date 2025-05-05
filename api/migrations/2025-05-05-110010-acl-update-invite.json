@@ -1,0 +1,28 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/invite",
+					"value": {
+						"stages": "*",
+						"s3": {
+							"**": {
+								"upload": true,
+								"read": true
+							}
+						},
+						"tenant": {
+							"invite": true
+						},
+						"entities": {},
+						"variables": {}
+					}
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,14 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "remove",
+					"path": "/roles/invite"
+				}
+			]
+		}
+	]
+}

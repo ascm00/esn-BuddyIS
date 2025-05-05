@@ -19,7 +19,7 @@ export async function contentClient<T>(env: Env, query: {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
-				Authorization: `Bearer ${token ?? env.VITE_CONTEMBER_ADMIN_INVITE_TOKEN}`,
+				Authorization: `Bearer ${token ?? env.VITE_CONTEMBER_SIGNUP_TOKEN}`,
 			},
 			body: JSON.stringify(query),
 		})

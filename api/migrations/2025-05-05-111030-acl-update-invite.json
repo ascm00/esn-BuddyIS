@@ -1,0 +1,24 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/tenant/invite",
+					"value": {
+						"czechBuddyRole": true
+					}
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/tenant/invite",
+					"value": {
+						"internationalStudentRole": true
+					}
+				}
+			]
+		}
+	]
+}
