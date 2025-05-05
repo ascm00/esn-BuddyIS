@@ -66,9 +66,7 @@ export async function onRequestPost(email: string, firstname: string, surname: s
 			{
 				query: createUserQuery,
 				variables: {
-					personId,
 					createData: upsertData,
-					updateData: upsertData,
 				},
 			},
 		)

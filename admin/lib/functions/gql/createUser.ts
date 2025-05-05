@@ -1,5 +1,5 @@
-export default `mutation($personId: UUID!, $createData: PersonCreateInput!, $updateData: PersonUpdateInput!) {
-	upsertPerson(by: { id: $personId }, create: $createData, update: $updateData) {
+export default `mutation($createData: PersonCreateInput!) {
+	createPerson(data: $createData) {
 		errorMessage
 		errors {
 			message
