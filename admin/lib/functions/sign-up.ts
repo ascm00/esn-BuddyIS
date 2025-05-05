@@ -68,10 +68,9 @@ export async function onRequestPost(email: string, firstname: string, surname: s
 				variables: {
 					personId,
 					createData: upsertData,
-					updateData: upsertData,
 				},
 			},
-			env.VITE_CONTEMBER_SIGNUP_TOKEN,
+			import.meta.env.VITE_CONTEMBER_SIGNUP_TOKEN,
 		)
 
 		return new Response(JSON.stringify({ createUser }), { status: 200, headers: { location: '/' } })
