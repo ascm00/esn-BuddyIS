@@ -1,0 +1,146 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/emailCheck/entities/Person",
+					"value": {
+						"predicates": {},
+						"operations": {
+							"read": {
+								"createdAt": true,
+								"personId": true,
+								"birthdate": true,
+								"tenantPerson": true,
+								"gender": true,
+								"registrationDate": true,
+								"lastLoginDate": true,
+								"phoneNumber": true,
+								"university": true,
+								"emailForInfo": true,
+								"esnCardId": true,
+								"surname": true,
+								"inSISusername": true,
+								"active": true,
+								"faculty": true,
+								"studyProgram": true,
+								"countryOfUniversity": true,
+								"firstName": true,
+								"organizedEvents": true,
+								"czechBuddyPair": true,
+								"internationalBuddyPair": true,
+								"applications": true,
+								"applicationsFr": true,
+								"n2nHours": true,
+								"profilePicture": true,
+								"coordinatingBuddyPairs": true,
+								"registrationMadeByPerson": true,
+								"deleteMadeByPerson": true,
+								"registrations": true,
+								"notes": true,
+								"languages": true,
+								"ageView": true
+							},
+							"update": {
+								"createdAt": true,
+								"personId": true,
+								"birthdate": true,
+								"tenantPerson": true,
+								"gender": true,
+								"registrationDate": true,
+								"lastLoginDate": true,
+								"phoneNumber": true,
+								"university": true,
+								"emailForInfo": true,
+								"esnCardId": true,
+								"surname": true,
+								"inSISusername": true,
+								"active": true,
+								"faculty": true,
+								"studyProgram": true,
+								"countryOfUniversity": true,
+								"firstName": true,
+								"organizedEvents": true,
+								"czechBuddyPair": true,
+								"internationalBuddyPair": true,
+								"applications": true,
+								"applicationsFr": true,
+								"n2nHours": true,
+								"profilePicture": true,
+								"coordinatingBuddyPairs": true,
+								"registrationMadeByPerson": true,
+								"deleteMadeByPerson": true,
+								"registrations": true,
+								"notes": true,
+								"languages": true,
+								"ageView": true
+							}
+						}
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/emailCheck/entities/TenantPerson/operations/update",
+					"value": {
+						"createdAt": true,
+						"identityId": true,
+						"email": true,
+						"name": true,
+						"otpUri": true,
+						"otpActivatedAt": true,
+						"idpOnly": true,
+						"roles": true,
+						"person": true
+					}
+				},
+				{
+					"op": "remove",
+					"path": "/roles/emailCheck/entities/TenantPerson/operations/read/id"
+				},
+				{
+					"op": "add",
+					"path": "/roles/emailCheck/entities/TenantPerson/operations/read/createdAt",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/emailCheck/entities/TenantPerson/operations/read/identityId",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/emailCheck/entities/TenantPerson/operations/read/name",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/emailCheck/entities/TenantPerson/operations/read/otpUri",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/emailCheck/entities/TenantPerson/operations/read/otpActivatedAt",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/emailCheck/entities/TenantPerson/operations/read/idpOnly",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/emailCheck/entities/TenantPerson/operations/read/roles",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/emailCheck/entities/TenantPerson/operations/read/person",
+					"value": true
+				}
+			]
+		}
+	]
+}

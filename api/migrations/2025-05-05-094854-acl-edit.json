@@ -1,0 +1,55 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "remove",
+					"path": "/roles/emailCheck/entities/Person"
+				},
+				{
+					"op": "remove",
+					"path": "/roles/emailCheck/entities/TenantPerson/operations/update"
+				},
+				{
+					"op": "remove",
+					"path": "/roles/emailCheck/entities/TenantPerson/operations/read/createdAt"
+				},
+				{
+					"op": "remove",
+					"path": "/roles/emailCheck/entities/TenantPerson/operations/read/identityId"
+				},
+				{
+					"op": "remove",
+					"path": "/roles/emailCheck/entities/TenantPerson/operations/read/name"
+				},
+				{
+					"op": "remove",
+					"path": "/roles/emailCheck/entities/TenantPerson/operations/read/otpUri"
+				},
+				{
+					"op": "remove",
+					"path": "/roles/emailCheck/entities/TenantPerson/operations/read/otpActivatedAt"
+				},
+				{
+					"op": "remove",
+					"path": "/roles/emailCheck/entities/TenantPerson/operations/read/idpOnly"
+				},
+				{
+					"op": "remove",
+					"path": "/roles/emailCheck/entities/TenantPerson/operations/read/roles"
+				},
+				{
+					"op": "remove",
+					"path": "/roles/emailCheck/entities/TenantPerson/operations/read/person"
+				},
+				{
+					"op": "add",
+					"path": "/roles/emailCheck/entities/TenantPerson/operations/read/id",
+					"value": true
+				}
+			]
+		}
+	]
+}
