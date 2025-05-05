@@ -1,0 +1,46 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "remove",
+					"path": "/roles/czechBuddy/tenant/invite/czechBuddyRole"
+				},
+				{
+					"op": "remove",
+					"path": "/roles/czechBuddy/tenant/invite/internationalStudentRole"
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/tenant/invite/czechBuddy",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/tenant/invite/internationalStudent",
+					"value": true
+				},
+				{
+					"op": "remove",
+					"path": "/roles/internationalStudent/tenant/invite/internationalStudentRole"
+				},
+				{
+					"op": "remove",
+					"path": "/roles/internationalStudent/tenant/invite/czechBuddyRole"
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/tenant/invite/czechBuddy",
+					"value": true
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/tenant/invite/internationalStudent",
+					"value": true
+				}
+			]
+		}
+	]
+}
