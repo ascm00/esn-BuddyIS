@@ -1,0 +1,24 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/tenant",
+					"value": {
+						"invite": true
+					}
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/tenant",
+					"value": {
+						"invite": true
+					}
+				}
+			]
+		}
+	]
+}
