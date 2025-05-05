@@ -1,4 +1,4 @@
-export default `mutation($personId: UUID!, $createData: PersonCreateInput!, $updateData: PersonUpdateInput!) {
+export default `mutation($createData: PersonCreateInput!) {
 	createPerson(data: $createData) {
 		errorMessage
 		errors {
