@@ -15,7 +15,6 @@ Project consists of the following packages:
 
 - **Location:** `./admin`
 - **Description:** A React SPA that serves as the administration UI, built with Contember DataBinding for seamless integration with the Contember API.
-- **Sentry:** [Sentry](https://sentry.io) is integrated into the project. To enable Sentry, set the `VITE_SENTRY_DSN` environment variable in the `.env.production` file.
 
 #### [@app/api](./api)
 
