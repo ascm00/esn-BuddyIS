@@ -250,7 +250,7 @@ export const MoreBuddiesView = Component(
 	}, (_, env) => (
 		<>
 		<EntityListSubTree
-			entities={`BuddyPair[czechStudent.tenantPerson.id='${env.getExtension(identityEnvironmentExtension).identity?.person?.id}']`}
+			entities={`BuddyPair[czechStudent.tenantPerson.id='${env.getExtension(identityEnvironmentExtension).identity?.person?.id}' && semester.isCurrent=true]`}
 			alias={'buddyPairs'}>
 			<Field field="id" />
 		</EntityListSubTree>
