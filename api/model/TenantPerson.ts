@@ -38,6 +38,9 @@ import { coordinatorRole, czechBuddyId, czechBuddyIdentityId, czechBuddyRole, em
 	update: true,
 	read: true,
 })
+@c.Allow([czechBuddyRole, internationalStudentRole], {
+	read: ['email'],
+})
 @c.Allow(ozsRole, {read: true,})
 export class TenantPerson {
 	createdAt = c.dateTimeColumn().notNull().default('now')
