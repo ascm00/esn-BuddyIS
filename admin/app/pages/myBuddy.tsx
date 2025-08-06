@@ -114,7 +114,7 @@ export const BuddyView = Component(
 														Name
 													</TableCell>
 													<TableCell className="text-2xl font-semibold">
-														<Field field="czechStudent.firstName" /> {' '} <Field field="internationalStudent.surname" />
+														<Field field="czechStudent.firstName" /> {' '} <Field field="czechStudent.surname" />
 													</TableCell>
 												</TableRow>
 												<TableRow>
