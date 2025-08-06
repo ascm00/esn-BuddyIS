@@ -1,0 +1,100 @@
+{
+	"formatVersion": 5,
+	"modifications": [
+		{
+			"modification": "patchAclSchema",
+			"patch": [
+				{
+					"op": "add",
+					"path": "/roles/czechBuddy/entities/TenantPerson/operations/read/id",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/entities/TenantPerson/operations/read/createdAt",
+					"value": "identityId_identityId"
+				},
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/entities/TenantPerson/operations/read/identityId",
+					"value": "identityId_identityId"
+				},
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/entities/TenantPerson/operations/read/name",
+					"value": "identityId_identityId"
+				},
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/entities/TenantPerson/operations/read/otpUri",
+					"value": "identityId_identityId"
+				},
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/entities/TenantPerson/operations/read/otpActivatedAt",
+					"value": "identityId_identityId"
+				},
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/entities/TenantPerson/operations/read/idpOnly",
+					"value": "identityId_identityId"
+				},
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/entities/TenantPerson/operations/read/roles",
+					"value": "identityId_identityId"
+				},
+				{
+					"op": "replace",
+					"path": "/roles/czechBuddy/entities/TenantPerson/operations/read/person",
+					"value": "identityId_identityId"
+				},
+				{
+					"op": "add",
+					"path": "/roles/internationalStudent/entities/TenantPerson/operations/read/id",
+					"value": true
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/TenantPerson/operations/read/createdAt",
+					"value": "identityId_identityId"
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/TenantPerson/operations/read/identityId",
+					"value": "identityId_identityId"
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/TenantPerson/operations/read/name",
+					"value": "identityId_identityId"
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/TenantPerson/operations/read/otpUri",
+					"value": "identityId_identityId"
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/TenantPerson/operations/read/otpActivatedAt",
+					"value": "identityId_identityId"
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/TenantPerson/operations/read/idpOnly",
+					"value": "identityId_identityId"
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/TenantPerson/operations/read/roles",
+					"value": "identityId_identityId"
+				},
+				{
+					"op": "replace",
+					"path": "/roles/internationalStudent/entities/TenantPerson/operations/read/person",
+					"value": "identityId_identityId"
+				}
+			]
+		}
+	]
+}

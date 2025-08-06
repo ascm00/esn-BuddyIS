@@ -60,7 +60,7 @@ export const ApplicationCzEditFormAdmin = Component(
 	<SelectField field={'semester'} label="Semester *">
 		<Field field={'name'} />
 	</SelectField>
-	<SelectField field={'person'} label="Student *" options={'Person[tenantPerson.roles = "localBuddy" || tenantPerson.roles = "esnMember" || tenantPerson.roles = "coordinator" || tenantPerson.roles = "admin"]'}>
+	<SelectField field={'person'} label="Student *" options={'Person[tenantPerson.roles = "czechBuddy" || tenantPerson.roles = "esnMember" || tenantPerson.roles = "coordinator" || tenantPerson.roles = "admin"]'}>
 		<Field field={'firstName'} /> {' '} <Field field={'surname'} />
 		<div className='hidden'>
 			<Field field="gender" />

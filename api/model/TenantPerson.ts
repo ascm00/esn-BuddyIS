@@ -27,6 +27,7 @@ import { coordinatorRole, czechBuddyId, czechBuddyIdentityId, czechBuddyRole, em
 })
 @c.Allow([internationalStudentRole, czechBuddyRole], {
 	create: true,
+	read: true,
 })
 @c.Allow([internationalStudentRole], {
 	when: {identityId: internationalStudentIdentityId},
@@ -37,9 +38,6 @@ import { coordinatorRole, czechBuddyId, czechBuddyIdentityId, czechBuddyRole, em
 	when: {identityId: czechBuddyIdentityId},
 	update: true,
 	read: true,
-})
-@c.Allow([czechBuddyRole, internationalStudentRole], {
-	read: ['email'],
 })
 @c.Allow(ozsRole, {read: true,})
 export class TenantPerson {

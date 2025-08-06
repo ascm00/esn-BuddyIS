@@ -17,7 +17,7 @@ export default () => {
 						<BackButton />
 					</Slots.Back>
 					<EntitySubTree entity="ApplicationFr" isCreating>
-						<RedirectOnPersist to="applicationFrDetail(id: $entity.id)" />
+						<RedirectOnPersist to="applicationFrs" />
 						{/* <Slots.Actions>
 							<PersistButton />
 						</Slots.Actions> */}

@@ -55,7 +55,7 @@ export const BuddyPairCreateForm = Component(
 				<SelectField
 					field="czechStudent"
 					label="Local buddy"
-					options={`Person[(applications.semester.isCurrent = true && applications.status.status='toBePaired') && (tenantPerson.roles='coordinator' || tenantPerson.roles='admin' || tenantPerson.roles='czechBuddy')]`}
+					options={`Person[(applications.semester.isCurrent = true && applications.status.status='toBePaired') && (tenantPerson.roles='coordinator' || tenantPerson.roles='admin' || tenantPerson.roles='czechBuddy' || tenantPerson.roles='esnMember')]`}
 				>
 					<Field field="firstName" /> {' '} <Field field="surname" />  {' ('} <Field field="tenantPerson.email" /> {')'}
 				</SelectField>
