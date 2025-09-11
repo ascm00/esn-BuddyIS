@@ -5,11 +5,14 @@ import { Button } from '@app/lib/ui/button'
 import { formatDateTimeShort } from '@app/lib/utils/formatting'
 import { Component, FieldView, HasMany, HasRole, If, Link, EntityListSubTree, useEntity, useEntityListSubTree, EntityAccessor, identityEnvironmentExtension, EntitySubTree, useEntitySubTree } from '@contember/interface'
 import { Field } from '@contember/react-binding'
-import { CalendarIcon, MapPinIcon, TagIcon, PhoneIcon, MailIcon, ExternalLinkIcon, Link2 } from 'lucide-react'
+import { CalendarIcon, MapPinIcon, TagIcon, PhoneIcon, MailIcon, ExternalLinkIcon, Link2, PlusCircle } from 'lucide-react'
 import { GetN2NLinkFromString, GoogleMapsLinkFromString, WhatsappLinkFromString } from '@app/lib/utils/link'
 import { BackButton } from '@app/lib/buttons'
+import { useIsMobile } from '@app/lib/utils/use-mobile'
 
 export default () => {
+
+  const isMobile = useIsMobile()
   return (
     <>
       <Slots.Title>Upcoming events</Slots.Title>
@@ -17,6 +20,16 @@ export default () => {
 					<BackButton />
 			</Slots.Back>
       <Binding>
+        <HasRole role={roles => roles.has('admin') || roles.has('esnMember') || roles.has('coordinator')}>
+              <Slots.Actions>
+								<Link to="eventCreate">
+									<Button>
+										{!isMobile && 'Create event'}
+										{isMobile && <PlusCircle />}
+									</Button>
+								</Link>
+							</Slots.Actions>
+          </HasRole>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           <AllEventsFeed />
         </div>
