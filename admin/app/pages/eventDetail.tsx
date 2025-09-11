@@ -85,6 +85,20 @@ const RegistrationNow = Component( () => {
 		return null
 	}
 
+	const registrationWaitingIsNotOnWaitingList = () => { 
+		if(identity?.person?.id) {
+			for (const registration of registrationList) {
+				let id = registration.getField('person.tenantPerson.id').value
+				if((identity.person.id === id) && (registration.getField('accepted').value)){
+					if(isPaid && registration.getField('payment').value === 'unpaid' && registration.getField('isWaitingList').value === true){
+						return registration
+					}
+				}
+			}
+		}
+		return null
+	}
+
 	// Checks if the user is allowed to register for the event
 	let notForMe = false
 	const isForCzechBuddies = entity.getField('isForCzechBuddies').value ?? false
@@ -114,9 +128,14 @@ const RegistrationNow = Component( () => {
 				<div className='bg-blue-200 p-4 rounded-md max-w-md'>
 					<div className='text-500'>‼️ You are already registered for this event, but the registration is not paid. If you want to pay, click the button below.</div>
 				</div>
-				<div className='max-w-md'>
+
+				{registrationWaitingIsNotOnWaitingList() 
+				? <div className='max-w-md'>
 					<PaymentButton registration={registrationWaitingForPayment()} />
-				</div>
+				</div> 
+				: <div className='bg-blue-200 p-4 rounded-md max-w-md'>
+					<div className='text-500'>You are already registered for this event, but you are on waiting list. We will contact you if a place becomes available.</div>
+				</div>}
 				</>
 			)
 		} else {
