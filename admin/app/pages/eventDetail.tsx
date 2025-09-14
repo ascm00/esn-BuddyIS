@@ -85,6 +85,20 @@ const RegistrationNow = Component( () => {
 		return null
 	}
 
+	const registrationWaitingForPaymentWaitingList = () => { 
+		if(identity?.person?.id) {
+			for (const registration of registrationList) {
+				let id = registration.getField('person.tenantPerson.id').value
+				if((identity.person.id === id) && (registration.getField('accepted').value && registration.getField('isWaitingList').value === false)){
+					if(isPaid && registration.getField('payment').value === 'unpaid'){
+						return registration
+					}
+				}
+			}
+		}
+		return null
+	}
+
 
 	// Checks if the user is allowed to register for the event
 	let notForMe = false
@@ -112,13 +126,18 @@ const RegistrationNow = Component( () => {
 		if(registrationWaitingForPayment()){
 			return (
 				<>
+
+				{registrationWaitingForPaymentWaitingList() 
+				? <>
 				<div className='bg-blue-200 p-4 rounded-md max-w-md'>
 					<div className='text-500'>‼️ You are already registered for this event, but the registration is not paid. If you want to pay, click the button below.</div>
 				</div>
-
 				<div className='max-w-md'>
 					<PaymentButton registration={registrationWaitingForPayment()} />
-				</div>
+					</div></>
+				: <div className='bg-blue-200 p-4 rounded-md max-w-md'>
+					<div className='text-500'>✅ You are already registered for this event, but you are on the waiting list. We will contact you if a spot becomes available.</div>
+				</div>}
 				</>
 			)
 		} else {
@@ -227,6 +246,7 @@ const RegistrationNow = Component( () => {
 	<Field field="waitingList" />
 	<Field field="fee" />
 	<HasMany field="registrations">
+		<Field field="isWaitingList" />
 		<HasOne field={'person'}>
 			<Field field="tenantPerson.id" />
 			<Field field="tenantPerson.email" />
