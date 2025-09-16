@@ -5,13 +5,17 @@ The API is defined using Contember schema-definition. Entities like `Person`, `E
 ### Running migrations
 
 ```bash
-yarn contember:start-engine
-yarn contember migrations:execute --yes
+npm run contember migrations:diff <migration name>
+```
+
+for example
+```bash
+npm run contember migrations:diff add-categories
 ```
 
 ### Adding a field (example)
 
 1. Edit the corresponding model under `api/model`.
-2. Run `yarn contember migrations:execute --yes`.
+2. Run `npm run contember migrations:diff <migration name>`.
 3. Update admin UI to surface the field if needed.
 
