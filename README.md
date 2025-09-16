@@ -21,6 +21,19 @@ Project consists of the following packages:
 - **Location:** `./api`
 - **Description:** Defines the data model and permissions for the Contember API.
 
+## Documentation
+
+Documentation lives under `docs/`:
+
+- `docs/reference/` – API reference for public components, functions, and types
+- `docs/guides/` – How-to guides and usage examples
+<<<<<<< Current (Your changes)
+=======
+- `docs/processes/` – Important system processes and flows (events, pairing, payments)
+>>>>>>> Incoming (Background Agent changes)
+
+To view docs, open the markdown files directly in your editor or any markdown viewer.
+
 ## Running the Project Locally
 
 Follow these steps to set up and run your project locally:
