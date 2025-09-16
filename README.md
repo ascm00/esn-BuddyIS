@@ -27,10 +27,7 @@ Documentation lives under `docs/`:
 
 - `docs/reference/` – API reference for public components, functions, and types
 - `docs/guides/` – How-to guides and usage examples
-<<<<<<< Current (Your changes)
-=======
 - `docs/processes/` – Important system processes and flows (events, pairing, payments)
->>>>>>> Incoming (Background Agent changes)
 
 To view docs, open the markdown files directly in your editor or any markdown viewer.
 
