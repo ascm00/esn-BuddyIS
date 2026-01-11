@@ -126,7 +126,7 @@ export const PersonInvite = Component(
 					<InputField 
 						field="inSISusername" 
 						inputProps={{
-							pattern: "([a-z]{4}[0-9]{2}|none)"
+							pattern: "([a-z]{4}[0-9]{2,3}|none)"
 						}} 
 						label="InSIS username *" 
 						required

@@ -164,7 +164,7 @@ export const RegistrationForm = (env : Env) => {
 							onChange={(event) => setInSISusername(event.target.value)} 
 							className="w-full px-4 py-1.5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
 							required
-							pattern="([a-z]{4}[0-9]{2}|none)"
+							pattern="([a-z]{4}[0-9]{2,3}|none)"
 						/>
 						<p className="text-xs text-gray-500 pt-1">InSIS username is the first part of your VŠE email address before @. For example <strong>novp04</strong>@vse.cz. If you do not have one yet, write <strong>none</strong>.</p>
 					</div>
