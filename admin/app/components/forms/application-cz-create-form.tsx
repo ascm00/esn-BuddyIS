@@ -18,7 +18,7 @@ export function NoSemesterOpen() {
 		<Clock className="h-4 w-4" />
 		<AlertTitle>No semester open</AlertTitle>
 		<AlertDescription>
-			Sorry, applications for all semesters are closed now. 😕
+			Sorry, applications for all semesters are closed now. 😕 Registration will open on June 1, 2026.
 		</AlertDescription>
 	  </Alert>
 	)
